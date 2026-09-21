@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="slide-in-left"]{visibility:hidden}</style>
 <title>Negócios entre Gerações — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Parceria entre gerações traz escala para negócios familiares e alcança comunidade digital.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-41">
-<link rel="stylesheet" href="css/principal.css?v=74-41">
-<link rel="stylesheet" href="../css/shell.css?v=74-41">
+<link rel="stylesheet" href="../css/base.css?v=74-46">
+<link rel="stylesheet" href="css/principal.css?v=74-46">
+<link rel="stylesheet" href="../css/shell.css?v=74-46">
 </head>
 <body>
 
@@ -111,7 +115,7 @@
     </div>
 
     <figure class="hero-figure">
-      <img src="assets/imgImage23.png" alt="Thalles de Azevedo Pereira e Maria Madalena Alves de Souza, empreendedores da Pão e Prosperidade">
+      <img src="assets/imgImage23.png" data-fx="slide-in-left" alt="Thalles de Azevedo Pereira e Maria Madalena Alves de Souza, empreendedores da Pão e Prosperidade">
       <figcaption class="hero-meta">
         <span class="hero-edition">#74 set. 26</span>
         <span class="hero-author">Por: Bruna Cruz</span>
@@ -197,7 +201,7 @@
   </section>
 
   <!-- ============ BLOCO 5 — CITAÇÃO ============ -->
-  <section class="bl bl-quote">
+  <section class="bl bl-quote" data-fx="pin-horizontal">
     <div class="backdrop" aria-hidden="true">
       <span class="quote-e143"><img src="assets/imgEllipse143.svg" alt=""></span>
       <span class="quote-curve"><img src="assets/imgSubtract1.svg" alt=""></span>
@@ -209,10 +213,9 @@
     </figure>
 
     <blockquote class="quote-block">
-      <div class="quote-marquee">
+      <div class="quote-marquee" data-fx-item>
         <p>"Cada geração enxerga o mundo de uma forma diferente. O desafio é conciliar novas ideias com aquilo que já funciona."</p>
       </div>
-      <img class="quote-rule" src="assets/imgArrow2.svg" alt="">
       <footer class="quote-author">Igor Chohfi, empreendedor</footer>
     </blockquote>
   </section>
@@ -235,23 +238,23 @@
 
   <!-- ============ BLOCO 7 — CINCO ACORDOS ============ -->
   <section class="bl bl-pacts">
-    <ol class="pacts">
-      <li><span class="pact-num"><img src="assets/imgGroup8615.svg" alt=""><b>1</b></span><span class="pact-txt">Definir quem decide cada assunto</span></li>
-      <li><span class="pact-num"><img src="assets/imgGroup8616.svg" alt=""><b>2</b></span><span class="pact-txt">Registrar responsabilidades</span></li>
-      <li><span class="pact-num"><img src="assets/imgGroup8615.svg" alt=""><b>3</b></span><span class="pact-txt">Estabelecer metas em comum</span></li>
-      <li><span class="pact-num"><img src="assets/imgGroup8616.svg" alt=""><b>4</b></span><span class="pact-txt">Reuniões periódicas de alinhamento</span></li>
-      <li><span class="pact-num"><img src="assets/imgGroup8615.svg" alt=""><b>5</b></span><span class="pact-txt">Acompanhar indicadores do negócio</span></li>
+    <ol class="pacts" data-fx="slide-in-up" data-fx-margem="200">
+      <li data-fx-item><span class="pact-num"><img src="assets/imgGroup8615.svg" alt=""><b>1</b></span><span class="pact-txt">Definir quem decide cada assunto</span></li>
+      <li data-fx-item><span class="pact-num"><img src="assets/imgGroup8616.svg" alt=""><b>2</b></span><span class="pact-txt">Registrar responsabilidades</span></li>
+      <li data-fx-item><span class="pact-num"><img src="assets/imgGroup8615.svg" alt=""><b>3</b></span><span class="pact-txt">Estabelecer metas em comum</span></li>
+      <li data-fx-item><span class="pact-num"><img src="assets/imgGroup8616.svg" alt=""><b>4</b></span><span class="pact-txt">Reuniões periódicas de alinhamento</span></li>
+      <li data-fx-item><span class="pact-num"><img src="assets/imgGroup8615.svg" alt=""><b>5</b></span><span class="pact-txt">Acompanhar indicadores do negócio</span></li>
     </ol>
 
     <!-- ====== CARROSSEL DE BANNERS ====== -->
     <div class="bcar" data-bcar>
       <div class="bcar-view">
         <div class="bcar-track" data-btrack>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-46" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-46" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-46" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-46" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-46" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
         </div>
       </div>
       <div class="bcar-dots">
@@ -354,11 +357,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-41"></script>
-<script src="js/principal.js?v=74-41"></script>
+<script src="../js/shell.js?v=74-46"></script>
+<script src="js/principal.js?v=74-46"></script>
 <!-- animações de scroll (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-41"></script>
+<script src="../js/scroll-fx.js?v=74-46"></script>
 </body>
 </html>

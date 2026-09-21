@@ -133,16 +133,23 @@ troca `src` e `alt`. Só uma imagem é baixada por visita.
 Na PRODUTO houve outro detalhe: o banner caía sobre o morango
 (`.trabalho-detalhe`, absoluto), e foi preciso dar folga no topo.
 
-## Efeitos de scroll (GSAP)
+## Efeitos de scroll e de entrada (GSAP)
 
-Efeitos amarrados ao scroll ficam num componente compartilhado entre edições,
+Efeitos amarrados ao scroll e efeitos de entrada (ao carregar) ficam num
+componente compartilhado entre edições,
 [`js/scroll-fx.js`](js/scroll-fx.js) (GSAP 3.15.0 + ScrollTrigger via jsDelivr).
 A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou com
 "reduzir movimento" no sistema, tudo fica como no CSS.
 
 | efeito | o que faz | em uso |
 | --- | --- | --- |
-| `card-accordeon` | itens começam fechados e crescem com o scroll, empurrando o que vem abaixo; fecham ao subir | `74/principal.html` (cards bege de `.bl-gen`) |
+| `card-accordeon` (scroll) | itens começam fechados e crescem com o scroll, empurrando o que vem abaixo; fecham ao subir | `74/principal.html` (cards bege de `.bl-gen`) |
+| `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o texto para o lado (1:1); no fim, a página volta a rolar | `74/principal.html` (citação `.bl-quote`) |
+| `slide-in-up` (scroll disparado) | cada item aparece sem fade e sobe ao passar da sua linha perto do fundo da tela, em cascata; desce e se esconde ao voltar | `74/principal.html` (lista `.pacts`, margem 200) |
+| `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
+
+Efeito de entrada exige um trecho anti-piscada no `<head>` da página (está na
+skill).
 
 Catálogo completo, atributos, checklist (atenção às páginas de **decoração
 global**) e verificação: [`.claude/skills/scroll-fx/SKILL.md`](.claude/skills/scroll-fx/SKILL.md).
@@ -174,17 +181,16 @@ atributos `data-fx`; o estado inicial vai no JS (sem JS a página fica como no
 CSS); nada mede layout antes de `document.fonts.ready`; ajuste feito no
 componente vale para todas as páginas que o usam.
 
-O `probe.py` da PRINCIPAL mede no topo da página, com os cards fechados: o que
-fica abaixo de `.bl-gen` aparece 394px acima do esperado. É o efeito, não
-regressão.
+O `probe.py` da PRINCIPAL bloqueia o `js/scroll-fx.js` e mede o layout do CSS,
+sem as animações (cards abertos, nada congelado).
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-41**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-46**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-41/?v=74-42/g' *.html 74/*.html
+sed -i 's/?v=74-46/?v=74-47/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache

@@ -138,7 +138,9 @@
 /* =========================================================
    BLOCO 5 — CITACAO  (402 x 606)
    ========================================================= */
-.bl-quote { min-height: 606px; }
+/* 519 = 606 do Figma - 87: sem a seta (.quote-rule) e com metade do vao ate a
+   secao seguinte (51px em vez de 102), ajuste pedido fora do Figma */
+.bl-quote { min-height: 519px; }
 
 .quote-e143 { left: -25.12%; right: -19.9%; top: -199px; height: 299px; }
 .quote-e143 img { transform: rotate(180deg); }
@@ -163,7 +165,6 @@
   flex: none; width: 2686px;
   font-size: 49px; font-weight: 700; color: var(--vermelho); line-height: normal; white-space: nowrap;
 }
-.quote-rule { width: 362px; height: 15px; margin: 21px 0 0 20px; transform: rotate(180deg); }
 .quote-author {
   width: 246px; margin: 12px auto 0;
   font-size: 16px; font-weight: 700; font-style: italic; color: var(--cinza);

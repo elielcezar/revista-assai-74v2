@@ -12,6 +12,9 @@ from playwright.sync_api import sync_playwright
 # +433 dentro da secao dos pactos, +357 nas secoes seguintes
 # folga de 80px entre o texto dos pactos e o carrossel (pedido fora do Figma):
 # +80 do .bl-carousel para baixo
+# sem a seta da citacao (.quote-rule) e com metade do vao ate CONFIANCA (pedido
+# fora do Figma): autor -36; -87 do .bl-trust para baixo
+# mede o layout do CSS: o js/scroll-fx.js (animacoes) fica bloqueado
 EXPECT = [
     ("header.head",            0, 0),
     (".head-logo",            54, 78),
@@ -51,34 +54,33 @@ EXPECT = [
     (".quote-laptop",         40, 4022),
     (".quote-bread",         127, 4056),
     (".quote-marquee",        12, 4254),
-    (".quote-rule",           20, 4352),
-    (".quote-author",         78, 4379),
+    (".quote-author",         78, 4343),
 
-    (".bl-trust",              0, 4492),
-    (".trust-text h2",        20, 4499),
-    (".trust-rays",          157, 5114),
-    (".trust-ball",          -17, 5151),
-    (".trust-cta",            84, 5257),
+    (".bl-trust",              0, 4405),
+    (".trust-text h2",        20, 4412),
+    (".trust-rays",          157, 5027),
+    (".trust-ball",          -17, 5064),
+    (".trust-cta",            84, 5170),
 
-    (".bl-pacts",              0, 5362),
-    (".pacts",               -15, 5362),
-    (".pacts-text h2",        20, 6239),
+    (".bl-pacts",              0, 5275),
+    (".pacts",               -15, 5275),
+    (".pacts-text h2",        20, 6152),
 
-    (".bl-carousel",           0, 6669),
-    (".carousel",             20, 6669),
-    (".carousel-nav--prev",   15, 6877),
-    (".carousel-nav--next",  358, 6877),
-    (".video-play",           32, 7201),
-    (".video-sound",         303, 7225),
-    (".video-ring",         -153, 7330),
+    (".bl-carousel",           0, 6582),
+    (".carousel",             20, 6582),
+    (".carousel-nav--prev",   15, 6790),
+    (".carousel-nav--next",  358, 6790),
+    (".video-play",           32, 7114),
+    (".video-sound",         303, 7138),
+    (".video-ring",         -153, 7243),
 
-    (".bl-closing",            0, 7539),
-    (".closing-card",          0, 7529),  # sem sangria: cabe nos 402 da coluna
-    (".closing-card h2",      20, 7623),  # grupo centrado em 406px
-    (".closing-outro p",      24, 8128),
+    (".bl-closing",            0, 7452),
+    (".closing-card",          0, 7442),  # sem sangria: cabe nos 402 da coluna
+    (".closing-card h2",      20, 7536),  # grupo centrado em 406px
+    (".closing-outro p",      24, 8041),
 
-    ("footer.foot",            0, 8349),
-    (".foot-bar",              0, 8394),
+    ("footer.foot",            0, 8262),
+    (".foot-bar",              0, 8307),
 ]
 
 
@@ -88,7 +90,7 @@ def main():
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 402, "height": 900}, device_scale_factor=1)
         # QA nao dispara pageview no Analytics (tag GTM das paginas)
-        pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick"), lambda r: r.abort())
+        pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick|scroll-fx\.js"), lambda r: r.abort())
         pg.goto(url, wait_until="networkidle")
         # mede so o frame do Figma: esconde o invólucro (css/shell.css)
         pg.add_style_tag(content=".dt-sidebar { display: none !important; }")
