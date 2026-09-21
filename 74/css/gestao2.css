@@ -52,8 +52,9 @@
 .d-e141 { left: 13px; top: 4071px; width: 369px; height: 369px; }
 .d-e143 { left: 77px; top: 2315px; width: 240px; height: 240px; }
 
-/* celular com a promocao, girado */
-.d-img28 { left: 51px; top: 2874.15px; width: 302.222px; height: 279.461px;
+/* celular com a promocao, girado — centralizado na coluna (+48) e com a ponta
+   de baixo 10px acima do titulo .h-funciona (-58), ajuste pedido fora do Figma */
+.d-img28 { left: 99px; top: 2816.15px; width: 302.222px; height: 279.461px;
   display: flex; align-items: center; justify-content: center; }
 .d-img28 > span { display: block; flex: none; transform: rotate(-52.64deg); }
 .d-img28 > span > span { display: block; position: relative; width: 147px; height: 268px; overflow: hidden; }
@@ -199,7 +200,9 @@
   color: var(--azul-medio); text-transform: uppercase; line-height: normal; }
 
 .carousel { position: relative; width: 402px; margin: 55px 0 0 20px; height: 266px; }
-.carousel-viewport { width: 382px; height: 266px; overflow: hidden; }
+/* arrastavel com mouse e dedo (js/gestao2.js); pan-y mantem a rolagem vertical da pagina */
+.carousel-viewport { width: 382px; height: 266px; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.carousel-viewport.is-dragging { cursor: grabbing; user-select: none; }
 .carousel-track { display: flex; gap: 22px; width: max-content; transition: transform .45s ease; }
 
 .cslide { position: relative; flex: none; width: 275px; height: 266px; margin: 0; }

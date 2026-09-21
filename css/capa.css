@@ -131,8 +131,18 @@ a.hero, a.card { display: block; position: relative; overflow: hidden; text-deco
 .card--inset .card-tag { left: 37px; top: 158px; }
 .card--inset .card-title { left: 39px; top: 185px; width: 262px; }
 
-/* o rodape do Figma cobre os 38 px finais dos cards da ultima linha:
-   os cards ficam acima da faixa branca, a barra preta por cima */
-/* o z-index vai no rodape inteiro: na barra, ela cobria os icones (irmaos com
-   z-index auto) e o rodape aparecia como um bloco preto vazio */
-.capa .foot { margin-top: -38px; z-index: 7; }
+/* o rodape sobe 38 px para a ultima linha encostar na faixa branca do Figma.
+   z-index vai no .foot inteiro — na barra sozinha ela cobria os icones
+   (irmaos com z-index auto) e o rodape virava um bloco preto vazio.
+   fundo transparente: a faixa branca nao pinta por cima dos cards. */
+.capa .foot {
+  margin-top: -38px;
+  z-index: 7;
+  background: transparent;
+  pointer-events: none;
+}
+.capa .foot-bar { z-index: 0; }
+.capa .foot-top,
+.capa .foot-share,
+.capa .foot-brand,
+.capa .foot-stores { z-index: 1; pointer-events: auto; }
