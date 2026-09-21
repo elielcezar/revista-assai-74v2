@@ -2,6 +2,22 @@
 (function () {
   "use strict";
 
+  /* ---------- mobile: a coluna de 402px cabe na largura da tela ---------- */
+  // zoom (e nao transform) encolhe tambem a altura do layout, entao o rodape
+  // fecha a pagina sem sobra em branco; acima de 402px nada muda
+  var FRAME_W = 402;
+  var page = document.querySelector(".page");
+
+  function fitPage() {
+    if (!page) return;
+    var vw = document.documentElement.clientWidth || window.innerWidth;
+    page.style.zoom = vw < FRAME_W ? String(vw / FRAME_W) : "";
+  }
+
+  fitPage();
+  window.addEventListener("resize", fitPage);
+  window.addEventListener("orientationchange", fitPage);
+
   /* ---------- sidebar: em janelas baixas, rola a lista ate o item ativo ---------- */
   // ancora dois itens acima do ativo, como na #73, para dar contexto
   function centerActive() {

@@ -2,6 +2,13 @@
 (function () {
   "use strict";
 
+  // posicao horizontal do ponteiro nas coordenadas da coluna: no mobile o
+  // js/shell.js aplica zoom no .page, e o arrasto tem que acompanhar o dedo
+  function px(e) {
+    var page = document.querySelector(".page");
+    return e.clientX / ((page && parseFloat(page.style.zoom)) || 1);
+  }
+
   /* ---------- menu: no Figma a faixa aparece rolada ate o item ativo ---------- */
   var nav = document.querySelector(".head-nav");
   if (nav) nav.scrollLeft = 19;
@@ -25,7 +32,7 @@
     gal.addEventListener("pointerdown", function (e) {
       if (e.pointerType !== "mouse" || e.button !== 0) return;
       gid = e.pointerId;
-      gx = e.clientX;
+      gx = px(e);
       g0 = gal.scrollLeft;
       gal.classList.add("is-dragging");
       try { gal.setPointerCapture(gid); } catch (err) {}
@@ -34,7 +41,7 @@
 
     gal.addEventListener("pointermove", function (e) {
       if (e.pointerId !== gid) return;
-      gal.scrollLeft = g0 - (e.clientX - gx);
+      gal.scrollLeft = g0 - (px(e) - gx);
     });
 
     function gdrop(e) {

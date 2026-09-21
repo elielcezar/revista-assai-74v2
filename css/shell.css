@@ -9,6 +9,18 @@
 .dt-sidebar { display: none; }
 
 /* =========================================================
+   MOBILE (< 402px)
+   a coluna do Figma tem 402px fixos; em telas mais estreitas o js/shell.js
+   aplica zoom = largura da tela / 402 no .page (mesma ideia do scale da #73).
+   clip (e nao hidden) corta a sobra horizontal sem criar rolagem nem mudar
+   o overflow-y da pagina.
+   ========================================================= */
+@media (max-width: 401px) {
+  html, body { overflow-x: clip; max-width: 100%; }
+  .page { margin: 0; }
+}
+
+/* =========================================================
    DESKTOP (>= 1024px)
    sidebar fixa 313 + vão 420 = coluna em x:733 (frame 1920 do Figma)
    ========================================================= */

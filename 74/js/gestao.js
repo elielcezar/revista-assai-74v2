@@ -2,6 +2,13 @@
 (function () {
   "use strict";
 
+  // posicao horizontal do ponteiro nas coordenadas da coluna: no mobile o
+  // js/shell.js aplica zoom no .page, e o arrasto tem que acompanhar o dedo
+  function px(e) {
+    var page = document.querySelector(".page");
+    return e.clientX / ((page && parseFloat(page.style.zoom)) || 1);
+  }
+
   /* ---------- carrossel (6 cards de 275px, gap 22) ---------- */
   var root = document.querySelector("[data-carousel]");
   if (root) {
@@ -48,7 +55,7 @@
     view.addEventListener("pointerdown", function (e) {
       if (e.pointerType === "mouse" && e.button !== 0) return;
       pid = e.pointerId;
-      dx0 = e.clientX;
+      dx0 = px(e);
       base = offsetOf(index);
       moved = false;
       track.style.transition = "none";
@@ -59,7 +66,7 @@
 
     view.addEventListener("pointermove", function (e) {
       if (e.pointerId !== pid) return;
-      var dx = e.clientX - dx0;
+      var dx = px(e) - dx0;
       if (Math.abs(dx) > 4) moved = true;
       var off = Math.max(0, Math.min(maxOffset(), base - dx));
       track.style.transform = "translateX(" + -off + "px)";
@@ -71,7 +78,7 @@
       pid = null;
       view.classList.remove("is-dragging");
       track.style.transition = "";
-      if (moved) go(nearest(Math.max(0, Math.min(maxOffset(), base - (e.clientX - dx0)))));
+      if (moved) go(nearest(Math.max(0, Math.min(maxOffset(), base - (px(e) - dx0)))));
     }
     view.addEventListener("pointerup", drop);
     view.addEventListener("pointercancel", drop);

@@ -2,6 +2,13 @@
 (function () {
   "use strict";
 
+  // posicao horizontal do ponteiro nas coordenadas da coluna: no mobile o
+  // js/shell.js aplica zoom no .page, e o arrasto tem que acompanhar o dedo
+  function px(e) {
+    var page = document.querySelector(".page");
+    return e.clientX / ((page && parseFloat(page.style.zoom)) || 1);
+  }
+
   /* ---------- carrossel ---------- */
   var root = document.querySelector("[data-carousel]");
   if (root) {
@@ -48,7 +55,7 @@
     view.addEventListener("pointerdown", function (e) {
       if (e.pointerType === "mouse" && e.button !== 0) return;
       pid = e.pointerId;
-      dx0 = e.clientX;
+      dx0 = px(e);
       base = offsets[index];
       moved = false;
       track.style.transition = "none";
@@ -59,7 +66,7 @@
 
     view.addEventListener("pointermove", function (e) {
       if (e.pointerId !== pid) return;
-      var dx = e.clientX - dx0;
+      var dx = px(e) - dx0;
       if (Math.abs(dx) > 4) moved = true;
       var off = Math.max(0, Math.min(MAX, base - dx));
       track.style.transform = "translateX(" + -off + "px)";
@@ -71,7 +78,7 @@
       pid = null;
       view.classList.remove("is-dragging");
       track.style.transition = "";
-      if (moved) go(nearest(Math.max(0, Math.min(MAX, base - (e.clientX - dx0)))));
+      if (moved) go(nearest(Math.max(0, Math.min(MAX, base - (px(e) - dx0)))));
     }
     view.addEventListener("pointerup", drop);
     view.addEventListener("pointercancel", drop);
@@ -89,7 +96,7 @@
     quote.addEventListener("pointerdown", function (e) {
       if (e.pointerType !== "mouse" || e.button !== 0) return;
       qid = e.pointerId;
-      qx = e.clientX;
+      qx = px(e);
       q0 = quote.scrollLeft;
       quote.classList.add("is-dragging");
       try { quote.setPointerCapture(qid); } catch (err) {}
@@ -98,7 +105,7 @@
 
     quote.addEventListener("pointermove", function (e) {
       if (e.pointerId !== qid) return;
-      quote.scrollLeft = q0 - (e.clientX - qx);
+      quote.scrollLeft = q0 - (px(e) - qx);
     });
 
     function endDrag(e) {
@@ -141,7 +148,7 @@
     bview.addEventListener("pointerdown", function (e) {
       if (e.pointerType === "mouse" && e.button !== 0) return;
       bpid = e.pointerId;
-      bx = e.clientX;
+      bx = px(e);
       bbase = bi * bwidth();
       bmoved = false;
       btrack.style.transition = "none";
@@ -152,7 +159,7 @@
 
     bview.addEventListener("pointermove", function (e) {
       if (e.pointerId !== bpid) return;
-      var dx = e.clientX - bx;
+      var dx = px(e) - bx;
       if (Math.abs(dx) > 4) bmoved = true;
       var max = (bslides.length - 1) * bwidth();
       btrack.style.transform = "translateX(" + -Math.max(0, Math.min(max, bbase - dx)) + "px)";
@@ -165,7 +172,7 @@
       bview.classList.remove("is-dragging");
       btrack.style.transition = "";
       // encaixa no banner mais proximo
-      if (bmoved) bgo(Math.round((bbase - (e.clientX - bx)) / bwidth()));
+      if (bmoved) bgo(Math.round((bbase - (px(e) - bx)) / bwidth()));
     }
     bview.addEventListener("pointerup", bdrop);
     bview.addEventListener("pointercancel", bdrop);

@@ -90,7 +90,12 @@ ingênua dava 440.
 página. O markup fica entre os comentários `INVÓLUCRO` … `/INVÓLUCRO`, logo
 depois do `<body>`, e é igual em todas as páginas; só muda o `is-active`.
 
-- **Mobile**: menu horizontal no HEAD.
+- **Mobile**: menu horizontal no HEAD. Em telas com menos de 402px (quase todo
+  celular real), o `js/shell.js` aplica `zoom = largura / 402` no `.page` e o
+  `css/shell.css` corta a sobra com `overflow-x: clip` — sem isso a coluna de
+  402px estourava a tela e dava rolagem lateral (a simulação do Chrome não
+  mostra). Os carrosséis dividem o movimento do dedo pelo zoom (`px(e)`) para o
+  arrasto acompanhar o dedo.
 - **Desktop (≥ 1024px)**: sidebar fixa de 313px (logo + navegação) com fundo
   `assets/shell/dt-bg-pattern.png`. A faixa cinza do HEAD some e o HEAD fica
   com 141px. A coluna de 402px fica em x:733 a partir de 1920px; abaixo disso
@@ -130,11 +135,11 @@ Na PRODUTO houve outro detalhe: o banner caía sobre o morango
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-31**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-32**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-31/?v=74-32/g' *.html 74/*.html
+sed -i 's/?v=74-32/?v=74-33/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache
