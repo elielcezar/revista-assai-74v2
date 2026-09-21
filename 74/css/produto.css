@@ -8,6 +8,8 @@
    ========================================================= */
 
 .produto .head { --head-bg: var(--amarelo-escuro); }
+/* logo em PNG (1179x129): contain evita esticar na caixa 283x30 do base.css */
+.produto .head-logo { object-fit: contain; }
 
 /* blocos: 402 de largura, altura minima do Figma, decoracoes recortadas */
 .bl {
@@ -127,7 +129,7 @@
 /* =========================================================
    BLOCO 4 — o trabalho que sustenta a vitrine  (402 x 1224)
    ========================================================= */
-.bl-trabalho { min-height: 1224px; }
+.bl-trabalho { min-height: 1224px; margin-bottom: 60px; }
 
 .trabalho-foto { position: relative; height: 490px; margin-left: -65px; width: 531px; overflow: hidden; border-radius: 0 0 300px 300px; }
 .trabalho-foto img {

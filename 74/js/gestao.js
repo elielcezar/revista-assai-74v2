@@ -86,12 +86,19 @@
     view.addEventListener("dragstart", function (e) { e.preventDefault(); });
   }
 
-  /* ---------- botao de som ---------- */
+  /* ---------- video: autoplay mudo, o botao liga e desliga o som ---------- */
   var sound = document.querySelector(".casal-sound");
-  if (sound) {
+  var video = document.querySelector(".casal-play video");
+  if (sound && video) {
+    // garante o mudo mesmo onde o atributo chega tarde (alguns Safari)
+    video.muted = true;
     sound.addEventListener("click", function () {
-      var on = sound.getAttribute("aria-pressed") === "true";
-      sound.setAttribute("aria-pressed", String(!on));
+      var on = sound.getAttribute("aria-pressed") !== "true";
+      video.muted = !on;
+      // se o autoplay foi bloqueado (modo economia de bateria), o clique da o play
+      if (on && video.paused) video.play().catch(function () {});
+      sound.setAttribute("aria-pressed", String(on));
+      sound.setAttribute("aria-label", on ? "Desativar o som do vídeo" : "Ativar o som do vídeo");
     });
   }
 

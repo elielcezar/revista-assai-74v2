@@ -11,6 +11,7 @@ from playwright.sync_api import sync_playwright
 # banner rotativo antes do titulo do bloco 'trabalho' (419 da imagem + margens):
 #  +520 no que vem depois dele dentro do bloco
 #  +470 nos blocos seguintes (o bloco do trabalho absorve 50px no min-height)
+# margin-bottom de 60px no .bl-trabalho (pedido fora do Figma): +60 do .bl-alcance para baixo
 EXPECT = [
     ("header.head",              0, 0),
     (".head-logo",              54, 78),
@@ -41,19 +42,19 @@ EXPECT = [
     (".h-trabalho",             22, 4537),
     (".t-trabalho",             22, 4623),
 
-    (".bl-alcance",              0, 5103),
-    (".alcance-foto",        -4.5, 5103),
-    (".alcance-faixa",           0, 5402),
-    (".estatisticas",           20, 5526),
+    (".bl-alcance",              0, 5163),
+    (".alcance-foto",        -4.5, 5163),
+    (".alcance-faixa",           0, 5462),
+    (".estatisticas",           20, 5586),
 
-    (".bl-fecho",                0, 6116),
-    (".h-continuidade",         20, 6116),
-    (".t-continuidade",         20, 6202),
-    (".foto-final",         -129.5, 6558),
-    (".h-reputacao",            21, 6869),
-    (".t-reputacao",            21, 6955),
+    (".bl-fecho",                0, 6176),
+    (".h-continuidade",         20, 6176),
+    (".t-continuidade",         20, 6262),
+    (".foto-final",         -129.5, 6618),
+    (".h-reputacao",            21, 6929),
+    (".t-reputacao",            21, 7015),
 
-    ("footer.foot",              0, 7215),
+    ("footer.foot",              0, 7275),
 ]
 
 
@@ -68,7 +69,7 @@ def main():
         # mede so o frame do Figma: esconde o invólucro (css/shell.css)
         pg.add_style_tag(content=".dt-sidebar { display: none !important; }")
         pg.wait_for_timeout(700)
-        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 6861 + banner 470)\n")
+        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 6861 + banner 470 + margem 60)\n")
         print(f"{'selector':<24}{'left':>18}{'top':>20}   w x h")
         print("-" * 96)
         bad = 0

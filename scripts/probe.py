@@ -10,6 +10,8 @@ from playwright.sync_api import sync_playwright
 # selector -> (left, top) esperado em coordenadas absolutas da pagina (Figma)
 # o carrossel de banners (405px + 28 de margem) empurra o que vem depois:
 # +433 dentro da secao dos pactos, +357 nas secoes seguintes
+# folga de 80px entre o texto dos pactos e o carrossel (pedido fora do Figma):
+# +80 do .bl-carousel para baixo
 EXPECT = [
     ("header.head",            0, 0),
     (".head-logo",            54, 78),
@@ -62,21 +64,21 @@ EXPECT = [
     (".pacts",               -15, 5362),
     (".pacts-text h2",        20, 6239),
 
-    (".bl-carousel",           0, 6589),
-    (".carousel",             20, 6589),
-    (".carousel-nav--prev",   15, 6797),
-    (".carousel-nav--next",  358, 6797),
-    (".video-play",           32, 7121),
-    (".video-sound",         303, 7145),
-    (".video-ring",         -153, 7250),
+    (".bl-carousel",           0, 6669),
+    (".carousel",             20, 6669),
+    (".carousel-nav--prev",   15, 6877),
+    (".carousel-nav--next",  358, 6877),
+    (".video-play",           32, 7201),
+    (".video-sound",         303, 7225),
+    (".video-ring",         -153, 7330),
 
-    (".bl-closing",            0, 7459),
-    (".closing-card",         -5, 7449),
-    (".closing-card h2",      20, 7543),  # grupo centrado em 406px
-    (".closing-outro p",      24, 8048),
+    (".bl-closing",            0, 7539),
+    (".closing-card",          0, 7529),  # sem sangria: cabe nos 402 da coluna
+    (".closing-card h2",      20, 7623),  # grupo centrado em 406px
+    (".closing-outro p",      24, 8128),
 
-    ("footer.foot",            0, 8269),
-    (".foot-bar",              0, 8314),
+    ("footer.foot",            0, 8349),
+    (".foot-bar",              0, 8394),
 ]
 
 

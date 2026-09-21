@@ -115,7 +115,7 @@ a.hero, a.card { display: block; position: relative; overflow: hidden; text-deco
 .card--mkt .card-bg { inset: auto; left: .03%; top: -16.33%; width: 99.96%; height: 126.28%; object-fit: cover; }
 .card--mkt .card-fade {
   height: 233px; mix-blend-mode: multiply;
-  background: linear-gradient(209.1deg, rgba(0,0,0,0) 41.4%, rgba(61,38,38,.9) 72.7%);
+  background: linear-gradient(29.1deg, rgba(0,0,0,0) 41.4%, rgba(61,38,38,.9) 72.7%); /* escuro no canto superior direito, atras do texto */
 }
 .card--mkt .card-title { left: 236px; top: 73px; width: 165px; text-align: left; }
 .card--mkt .card-tag { left: 235.86px; top: 130px; }

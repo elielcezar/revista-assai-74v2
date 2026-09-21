@@ -224,7 +224,8 @@
 .bcar-dot.is-active { background: var(--vermelho); }
 .bcar-dot:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
 
-.pacts-text { padding: 92px 20px 0 20px; }
+/* 80px de folga ate o carrossel (ajuste pedido fora do Figma) */
+.pacts-text { padding: 92px 20px 80px 20px; }
 .pacts-text h2 { width: 362px; font-size: 24px; font-weight: 700; color: var(--vermelho); text-transform: uppercase; line-height: normal; }
 .pacts-text p { width: 362px; margin-top: 23px; font-size: 18px; line-height: normal; color: #000; }
 .pacts-text p + p { margin-top: 20px; }
@@ -285,7 +286,12 @@
 .video-ring { position: absolute; left: -38.06%; right: -35.07%; top: 231px; height: 299px; display: block; }
 .video-ring img { width: 100%; height: 100%; }
 .video-play { position: absolute; left: 50%; margin-left: -169px; top: 102px; width: 338px; height: 338px; display: block; }
-.video-play img { width: 338px; height: 338px; }
+/* video em circulo com o anel vermelho de 10px que antes vinha desenhado no PNG */
+.video-play video {
+  display: block; width: 338px; height: 338px; box-sizing: border-box;
+  border: 10px solid var(--vermelho); border-radius: 50%;
+  object-fit: cover; background: var(--vermelho);
+}
 .video-sound { position: absolute; left: 303px; top: 126px; width: 45px; height: 45px; display: block; }
 .video-sound-bg  { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
 .video-sound-ico { position: absolute; left: 7px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
@@ -296,9 +302,10 @@
 .bl-closing { min-height: 810px; }
 
 .closing-card {
-  position: relative; width: 413px; margin: -10px 0 0 -5px; min-height: 511px;
-  background: var(--vermelho); border: 1px solid #000;
-  border-radius: 0 0 40px 30px;
+  /* cabe nos 402 da coluna, sem borda: os cantos de baixo nao sao mais cortados */
+  position: relative; width: 402px; margin: -10px 0 0 0; min-height: 511px;
+  background: var(--vermelho);
+  border-radius: 0 0 40px 40px;
   /* grupo de texto do Figma: 406px de altura com conteudo centrado verticalmente */
   padding: 46px 25px 57px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 38px;

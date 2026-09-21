@@ -135,11 +135,11 @@ Na PRODUTO houve outro detalhe: o banner caía sobre o morango
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-32**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-41**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-32/?v=74-33/g' *.html 74/*.html
+sed -i 's/?v=74-41/?v=74-42/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache

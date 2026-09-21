@@ -275,7 +275,12 @@
 .s-casal { min-height: 824px; }
 /* o video e conteudo: fica no fluxo. So o botao de som (que o sobrepoe) e absoluto. */
 .casal-play { display: block; margin-left: 58px; width: 277px; height: 277px; }
-.casal-play img { width: 277px; height: 277px; }
+/* video em circulo com o anel azul de 9px que antes vinha desenhado no PNG */
+.casal-play video {
+  display: block; width: 277px; height: 277px; box-sizing: border-box;
+  border: 9px solid #00adee; border-radius: 50%;
+  object-fit: cover; background: #00adee;
+}
 .casal-sound { position: absolute; left: 335px; top: 120px; width: 45px; height: 45px; display: block; z-index: 3; }
 .casal-sound-bg  { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
 .casal-sound-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }

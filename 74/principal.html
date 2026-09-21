@@ -32,9 +32,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-32">
-<link rel="stylesheet" href="css/principal.css?v=74-32">
-<link rel="stylesheet" href="../css/shell.css?v=74-32">
+<link rel="stylesheet" href="../css/base.css?v=74-41">
+<link rel="stylesheet" href="css/principal.css?v=74-41">
+<link rel="stylesheet" href="../css/shell.css?v=74-41">
 </head>
 <body>
 
@@ -83,7 +83,6 @@
         <li style="--mc:#ff5564"><a href="../categoria-academia.html">ACADEMIA ASSAÍ</a></li>
         <li style="--mc:#00bebe"><a href="#">COLUNA</a></li>
         <li style="--mc:#0082c8"><a href="../categoria-noticias.html">NOTÍCIAS DO ASSAÍ</a></li>
-        <li style="--mc:#666666"><a href="#">DOWNLOAD</a></li>
         <li style="--mc:#666666"><a href="../editorial.html">EDITORIAL</a></li>
         <li style="--mc:#666666"><a href="../parceiros.html">PARCEIROS</a></li>
         <li style="--mc:#666666"><a href="../expediente.html">EXPEDIENTE</a></li>
@@ -248,11 +247,11 @@
     <div class="bcar" data-bcar>
       <div class="bcar-view">
         <div class="bcar-track" data-btrack>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-32" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-32" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-32" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-32" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-32" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-41" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
         </div>
       </div>
       <div class="bcar-dots">
@@ -307,10 +306,14 @@
 
     <div class="video">
       <span class="video-ring" aria-hidden="true"><img src="assets/imgEllipse144.svg" alt=""></span>
-      <button class="video-play" type="button" aria-label="Assistir ao vídeo Negócios entre Gerações">
-        <img src="assets/imgVideoGeracoes.png" alt="" width="338" height="338">
-      </button>
-      <button class="video-sound" type="button" aria-label="Ativar ou desativar o som" aria-pressed="false">
+      <!-- comeca sozinho e mudo (regra dos navegadores para autoplay); o som
+           entra pelo botao .video-sound (js/principal.js) -->
+      <div class="video-play">
+        <video src="assets/principal/geracoes.mp4" poster="assets/principal/geracoes-poster.jpg"
+               width="338" height="338" autoplay muted loop playsinline preload="auto"
+               aria-label="Vídeo Negócios entre Gerações: Thalles e Madalena"></video>
+      </div>
+      <button class="video-sound" type="button" aria-label="Ativar o som do vídeo" aria-pressed="false">
         <img class="video-sound-bg" src="assets/imgEllipse6.svg" alt="">
         <img class="video-sound-ico" src="assets/imgSound1.gif" alt="">
       </button>
@@ -351,7 +354,7 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-32"></script>
-<script src="js/principal.js?v=74-32"></script>
+<script src="../js/shell.js?v=74-41"></script>
+<script src="js/principal.js?v=74-41"></script>
 </body>
 </html>

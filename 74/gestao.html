@@ -32,9 +32,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-32">
-<link rel="stylesheet" href="css/gestao.css?v=74-32">
-<link rel="stylesheet" href="../css/shell.css?v=74-32">
+<link rel="stylesheet" href="../css/base.css?v=74-41">
+<link rel="stylesheet" href="css/gestao.css?v=74-41">
+<link rel="stylesheet" href="../css/shell.css?v=74-41">
 </head>
 <body>
 
@@ -83,7 +83,6 @@
         <li style="--mc:#ff5564"><a href="../categoria-academia.html">ACADEMIA ASSAÍ</a></li>
         <li style="--mc:#00bebe"><a href="#">COLUNA</a></li>
         <li style="--mc:#0082c8"><a href="../categoria-noticias.html">NOTÍCIAS DO ASSAÍ</a></li>
-        <li style="--mc:#666666"><a href="#">DOWNLOAD</a></li>
         <li style="--mc:#666666"><a href="../editorial.html">EDITORIAL</a></li>
         <li style="--mc:#666666"><a href="../parceiros.html">PARCEIROS</a></li>
         <li style="--mc:#666666"><a href="../expediente.html">EXPEDIENTE</a></li>
@@ -358,11 +357,15 @@
 
     <!-- ====== BLOCO 9 — vídeo + controle contábil ====== -->
     <section class="s s-casal">
-      <button class="casal-play" type="button" aria-label="Assistir ao vídeo do canal casal.urbano">
-        <img src="assets/gestao/imgCasalUrbano.png" alt="" width="277" height="277">
-      </button>
+      <!-- comeca sozinho e mudo (regra dos navegadores para autoplay); o som
+           entra pelo botao .casal-sound (js/gestao.js) -->
+      <div class="casal-play">
+        <video src="assets/gestao/casal-urbano.mp4" poster="assets/gestao/casal-urbano-poster.jpg"
+               width="277" height="277" autoplay muted loop playsinline preload="auto"
+               aria-label="Vídeo do canal casal.urbano sobre a salada inclusa no pedido"></video>
+      </div>
       <span class="d-img1466" aria-hidden="true"><img src="assets/gestao/imgRectangle1466.png" alt=""></span>
-      <button class="casal-sound" type="button" aria-label="Ativar ou desativar o som" aria-pressed="false">
+      <button class="casal-sound" type="button" aria-label="Ativar o som do vídeo" aria-pressed="false">
         <img class="casal-sound-bg" src="assets/gestao/imgEllipse6.svg" alt="">
         <img class="casal-sound-ico" src="assets/gestao/imgSound1.gif" alt="">
       </button>
@@ -462,7 +465,7 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-32"></script>
-<script src="js/gestao.js?v=74-32"></script>
+<script src="../js/shell.js?v=74-41"></script>
+<script src="js/gestao.js?v=74-41"></script>
 </body>
 </html>

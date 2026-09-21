@@ -14,6 +14,9 @@
   --grad-card: linear-gradient(-37.021deg, #e30613 11.522%, #ffdc00 118.65%);
 }
 
+/* header na cor da categoria GESTÃO (#f0051e), igual a GESTÃO 01 */
+.head { --head-bg: var(--vermelho); }
+
 /* o artigo inteiro e um unico contexto de posicionamento:
    .art-bg carrega as decoracoes, o texto flui por cima */
 .art {

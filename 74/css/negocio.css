@@ -230,7 +230,7 @@
 .t-varias p + p { margin-top: 20px; }
 
 .foto-picole { position: relative; width: 247px; height: 330px; margin: 76px 0 0 28px; }
-.foto-picole img:first-child { width: 247px; height: 330px; object-fit: cover; }
+.foto-picole video { display: block; width: 247px; height: 330px; object-fit: cover; }
 .foto-picole-seta { position: absolute; left: 246px; top: 95px; width: 49px; height: 253px; object-fit: contain; }
 
 .h-fonte { width: 447px; margin: 94px 0 0 -23px; text-align: center; }
