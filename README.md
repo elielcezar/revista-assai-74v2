@@ -9,6 +9,7 @@ compartilhadas na raiz.
 
 ```
 /                     index.html (capa da #74) · categoria-*.html (10) · expediente.html
+                      editorial.html · parceiros.html · parceiro-1.html … parceiro-5.html
                       css/ (base, shell, capa, expediente, categoria-*) · js/ · fonts/
                       assets/ (capa, categorias, expediente, shell + ícones do head/rodapé)
 /74/                  as 10 matérias da edição #74 + css/ + js/ + assets/
@@ -26,7 +27,10 @@ compartilhadas na raiz.
 3. Cada categoria abre com a matéria da **#74** e lista abaixo a matéria
    equivalente da **#73**.
 4. As matérias da #74 abrem em `74/`, as da #73 em `73/`.
-5. O item CAPA, em qualquer página das duas edições, volta para o `index.html`
+5. EDITORIAL e PARCEIROS abrem na raiz (`editorial.html`, `parceiros.html` e
+   as matérias `parceiro-1.html` … `parceiro-5.html`), copiados da #73. CSS,
+   JS e assets continuam em `73/`.
+6. O item CAPA, em qualquer página das duas edições, volta para o `index.html`
    da raiz.
 
 Endereços antigos (`mkt.html`, `gestao.html`… na raiz) são stubs de redirect
@@ -49,9 +53,11 @@ que mandam para a categoria correspondente, com `meta refresh` e
 | ACADEMIA ASSAÍ | [`74/academia.html`](74/academia.html) | `4424:19140` |
 | NOTÍCIAS DO ASSAÍ | [`74/noticias2.html`](74/noticias2.html) | `4424:19218` |
 | EXPEDIENTE | [`expediente.html`](expediente.html) | `1624:984` (da #73) |
+| EDITORIAL | [`editorial.html`](editorial.html) | `1624:798` (da #73) |
+| PARCEIROS | [`parceiros.html`](parceiros.html) | `1624:891` (da #73) |
+| PARCEIRO 1–5 | [`parceiro-1.html`](parceiro-1.html) … [`parceiro-5.html`](parceiro-5.html) | `1659:541` (da #73) |
 
-Ainda não existem: COLUNA, DOWNLOAD, EDITORIAL e PARCEIROS. No menu ficam
-como `#`.
+Ainda não existem: COLUNA e DOWNLOAD. No menu ficam como `#`.
 
 ## Arquitetura
 
@@ -92,7 +98,9 @@ depois do `<body>`, e é igual em todas as páginas; só muda o `is-active`.
   da sidebar.
 
 As páginas de categoria usam um shell próprio, herdado da #73:
-`css/categoria-shell.css` e `js/categoria-menu.js`.
+`css/categoria-shell.css` e `js/categoria-menu.js`. EDITORIAL e PARCEIROS
+na raiz usam o shell original da #73 (`73/css/revista-73-shell.css` e
+`73/js/revista-73-menu.js`).
 
 ## Carrosséis e banners
 
