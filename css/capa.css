@@ -67,7 +67,7 @@ a.hero, a.card { display: block; position: relative; overflow: hidden; text-deco
 .grid--2:nth-of-type(2) { gap: 8px; margin-left: -1px; margin-top: 8px; }
 
 /* banner de publicidade entre as linhas de cards */
-.banner { width: 402px; margin: 9px 0 0; }
+.banner { width: 402px; margin: 9px 0 0 !important; }
 .banner img { max-width: 100%; height: auto; }
 
 .grid--2:nth-of-type(2) .card:nth-child(1) { width: 199px; }

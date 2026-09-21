@@ -219,9 +219,10 @@
 .stat-t { font-size: 18px; font-weight: 700; color: #fff; line-height: 19.96px; white-space: nowrap; }
 
 /* =========================================================
-   BLOCO 7 — um produto pode gerar várias empresas  (402 x 1352)
+   BLOCO 7 — um produto pode gerar várias empresas  (402 x 2099)
+   o min-height original era 1352; +747 do video Bimbo
    ========================================================= */
-.bl-varias { min-height: 1352px; padding-top: 43px; }
+.bl-varias { min-height: 2099px; padding-top: 43px; }
 
 .h-varias { width: 359px; margin: 0 auto; }
 .t-varias { width: 359px; margin: 32px auto 0; }
@@ -261,6 +262,11 @@
 .pill--3 .pill-seta { left: 65px; }
 .pill--4 { left: 115px; top: 274px; width: 158px; background: #7d000b; color: #7d000b; }
 .pill--4 .pill-seta { left: 69px; }
+
+/* banner de video (Bimbo) depois do grafico de faturamento.
+   Esta pagina e decoracao por bloco: o video no fluxo empurra o bloco seguinte. */
+.adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; }
+.adbox video { display: block; width: 402px; height: auto; }
 
 /* =========================================================
    BLOCO 8 — continuar crescendo  (402 x 421)

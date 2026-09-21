@@ -147,9 +147,9 @@
 .badge--sul      { left: 148px; top: 286px; }
 
 /* =========================================================
-   BLOCO 5 — votação pública   (3443 .. 4316)
+   BLOCO 5 — votação pública   (3443 .. 4888)  (+572 do video)
    ========================================================= */
-.bl-votacao { min-height: 873px; }
+.bl-votacao { min-height: 1445px; }
 
 .d-bg-photo { left: 0; top: 108px; width: 410px; height: 387px; background: var(--vermelho-forte); }
 
@@ -174,15 +174,21 @@
 .t-votacao p { font-size: 18px; color: #fff; line-height: normal; }
 .t-votacao p + p { margin-top: 18px; }
 
+/* banner de video (Academia Assaí) antes das fotos da votacao.
+   As fotos sao absolute neste bloco: o top delas e o min-height
+   acompanham a altura do video. */
+.adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; background: #fff; }
+.adbox video { display: block; width: 402px; height: auto; }
+
 .foto-votacao-r, .foto-votacao-l {
-  position: absolute; z-index: 1; top: 540px; width: 278px; height: 333px;
+  position: absolute; z-index: 1; top: 1112px; width: 278px; height: 333px;
 }
 .foto-votacao-r { left: 124px; }
 .foto-votacao-l { left: -24px; }
 .foto-votacao img { width: 100%; height: 100%; }
 
 /* =========================================================
-   BLOCO 6 — pode ser você   (4316 .. 5448)
+   BLOCO 6 — pode ser você   (4888 .. 6020)
    ========================================================= */
 .bl-voce { min-height: 1132px; }
 
@@ -196,7 +202,7 @@
 .t-voce strong { font-weight: 700; color: var(--vermelho-forte); }
 
 /* =========================================================
-   BLOCO 7 — impulso real   (5448 .. 6292)
+   BLOCO 7 — impulso real   (6020 .. 6864)
    ========================================================= */
 .bl-premio { min-height: 844px; }
 

@@ -79,6 +79,14 @@
     view.addEventListener("dragstart", function (e) { e.preventDefault(); });
   }
 
+  /* ---------- banner de video: autoplay mudo (politica dos navegadores) ---------- */
+  var advid = document.querySelector(".adbox video");
+  if (advid) {
+    advid.muted = true;
+    var play = advid.play();
+    if (play && play.catch) play.catch(function () {});
+  }
+
   /* ---------- voltar ao topo ---------- */
   var toTop = document.querySelector(".foot-top");
   if (toTop) {

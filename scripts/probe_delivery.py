@@ -7,6 +7,8 @@ import pathlib
 import re
 from playwright.sync_api import sync_playwright
 
+# do banner rotativo em diante, os tops levam +475 (419 da imagem + 56 de margem):
+# texto e decoracoes da .art-bg foram deslocados juntos
 EXPECT = [
     ("header.head",              0,    0),
     (".head-logo",              54,   78),
@@ -28,23 +30,24 @@ EXPECT = [
     (".t-mercado",               20, 3193),
 
     (".q-oriento",               -7, 3323),
+    (".adbox",                    0, 3738),
 
-    (".t-conferem",              20, 3772),
-    (".t-bloqueio",              20, 4261),
-    (".t-repassar",              20, 4949),
-    (".t-acompanhando",          27, 5071),
+    (".t-conferem",              20, 4247),
+    (".t-bloqueio",              20, 4736),
+    (".t-repassar",              20, 5424),
+    (".t-acompanhando",          27, 5546),
 
-    (".q-pausar",                 0, 5314),
-    (".h-fiscalizacao",         109, 5812),
-    (".t-discussao",             23, 5935),
-    (".t-senacon",               20, 6120),
+    (".q-pausar",                 0, 5789),
+    (".h-fiscalizacao",         109, 6287),
+    (".t-discussao",             23, 6410),
+    (".t-senacon",               20, 6595),
 
-    (".h-confira",               25, 6585),
-    (".t-confira",               30, 6631),
-    (".dicas",                    0, 6859),
-    (".t-final",                 20, 7405),
+    (".h-confira",               25, 7060),
+    (".t-confira",               30, 7106),
+    (".dicas",                    0, 7334),
+    (".t-final",                 20, 7880),
 
-    ("footer.foot",              0, 7574),
+    ("footer.foot",              0, 8049),
 ]
 
 
@@ -59,7 +62,7 @@ def main():
         # mede so o frame do Figma: esconde o invólucro (css/shell.css)
         pg.add_style_tag(content=".dt-sidebar { display: none !important; }")
         pg.wait_for_timeout(700)
-        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 7690)\n")
+        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 7690 + banner 475)\n")
         print(f"{'selector':<24}{'left':>18}{'top':>20}   w x h")
         print("-" * 96)
         bad = 0

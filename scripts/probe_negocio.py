@@ -7,6 +7,8 @@ import pathlib
 import re
 from playwright.sync_api import sync_playwright
 
+# video Bimbo depois de .foto-faturamento: os tops seguintes levam +747
+# (715 da proporcao 720x1280 em 402px + 56 de margem, menos 24px de folga do min-height)
 EXPECT = [
     ("header.head",              0,    0),
     (".head-logo",              54,   78),
@@ -68,12 +70,13 @@ EXPECT = [
     (".pill--2",                   56, 7226),
     (".pill--3",                  231, 7317),
     (".pill--4",                   99, 7417),
+    (".adbox",                      0, 7515),
 
-    (".bl-continuar",               0, 7511),
-    (".h-continuar",                20, 7566),
-    (".t-continuar",                20, 7625),
+    (".bl-continuar",               0, 8258),
+    (".h-continuar",                20, 8313),
+    (".t-continuar",                20, 8372),
 
-    ("footer.foot",                 0, 7932),
+    ("footer.foot",                 0, 8679),
 ]
 
 
@@ -88,7 +91,7 @@ def main():
         # mede so o frame do Figma: esconde o invólucro (css/shell.css)
         pg.add_style_tag(content=".dt-sidebar { display: none !important; }")
         pg.wait_for_timeout(700)
-        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 8048)\n")
+        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 8048 + video 747)\n")
         print(f"{'selector':<24}{'left':>18}{'top':>20}   w x h")
         print("-" * 96)
         bad = 0

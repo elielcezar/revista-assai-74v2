@@ -7,6 +7,9 @@ import pathlib
 import re
 from playwright.sync_api import sync_playwright
 
+# video Academia Assaí antes de .foto-votacao: os tops seguintes levam +572
+# (544 da proporcao 720x974 em 402px + 28 de margem abaixo; a margem de cima
+#  ocupou os 28px que ja existiam entre o botao e as fotos)
 EXPECT = [
     ("header.head",              0,    0),
     (".head-logo",              54,   78),
@@ -33,15 +36,16 @@ EXPECT = [
     (".btn-pill",                 20, 3642),
     (".h-votacao",                24, 3777),
     (".t-votacao",                24, 3827),
+    (".adbox",                     0, 4165),
 
-    (".h-voce",                   24, 4556),
-    (".t-voce",                   24, 4606),
+    (".h-voce",                   24, 5128),
+    (".t-voce",                   24, 5178),
 
-    (".h-premio",                 24, 5654),
-    (".t-premio",                 24, 5731),
-    (".logo-premio",             129, 6402),
+    (".h-premio",                 24, 6226),
+    (".t-premio",                 24, 6303),
+    (".logo-premio",             129, 6974),
 
-    ("footer.foot",                0, 6474),
+    ("footer.foot",                0, 7046),
 ]
 
 
@@ -56,7 +60,7 @@ def main():
         # mede so o frame do Figma: esconde o invólucro (css/shell.css)
         pg.add_style_tag(content=".dt-sidebar { display: none !important; }")
         pg.wait_for_timeout(700)
-        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 6590)\n")
+        print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (figma 6590 + video 572)\n")
         print(f"{'selector':<24}{'left':>18}{'top':>20}   w x h")
         print("-" * 96)
         bad = 0

@@ -15,11 +15,18 @@
 .art {
   position: relative;
   width: 402px;
-  min-height: 7392px;
+  min-height: 7867px;
   background: #fff;
   overflow: hidden;
 }
 .art-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+/* espaco de banner (um anuncio por vez, sorteado em js/delivery.js).
+   ATENCAO: as decoracoes ficam em .art-bg por coordenada absoluta, entao as que
+   estao abaixo do banner foram empurradas na mesma medida. */
+.adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; background: #fff; }
+.adbox img { max-width: 100%; height: auto; }
+
 .art-bg > span { position: absolute; display: block; }
 .art-bg img { width: 100%; height: 100%; }
 
@@ -52,48 +59,48 @@
 
 .d-e122a { left: 20px; top: 1863px; width: 362px; height: 362px; }
 
-.d-shutter1 { left: -7px; top: 3731px; width: 428px; height: 309px; }
+.d-shutter1 { left: -7px; top: 4206px; width: 428px; height: 309px; }
 .d-shutter1 img { object-fit: cover; }
 
-.d-e121 { left: -104px; top: 4259.5px; width: 609px; height: 304.5px; }
-.d-r2b  { left: -3px;   top: 4040px; width: 410px; height: 230px; background: var(--laranja); }
+.d-e121 { left: -104px; top: 4734.5px; width: 609px; height: 304.5px; }
+.d-r2b  { left: -3px;   top: 4515px; width: 410px; height: 230px; background: var(--laranja); }
 
-.d-gemini2 { left: 109px; top: 4360px; width: 296px; height: 385px; overflow: hidden; }
+.d-gemini2 { left: 109px; top: 4835px; width: 296px; height: 385px; overflow: hidden; }
 .d-gemini2 img {
   position: absolute; left: -67.23%; top: -1.63%; width: 187.84%; height: 113.39%; max-width: none;
 }
 
-.d-camada1 { left: -46px; top: 4452px; width: 458px; height: 229px; }
+.d-camada1 { left: -46px; top: 4927px; width: 458px; height: 229px; }
 
-.d-e122b { left: 34px; top: 5024px; width: 320px; height: 320px; z-index: 1; }
+.d-e122b { left: 34px; top: 5499px; width: 320px; height: 320px; z-index: 1; }
 
 .d-r1472 {
-  left: -94px; top: 5132px; width: 567px; height: 519px;
+  left: -94px; top: 5607px; width: 567px; height: 519px;
   border-radius: 280px 280px 0 0;
   background-image: linear-gradient(-66.61deg, #e30613 11.52%, #ffdc00 118.65%);
 }
 
-.d-shutter2 { left: 248px; top: 5503px; width: 254px; height: 256px; overflow: hidden; }
+.d-shutter2 { left: 248px; top: 5978px; width: 254px; height: 256px; overflow: hidden; }
 .d-shutter2 img {
   position: absolute; left: -50%; top: 0; width: 150%; height: 100%; max-width: none;
 }
 
 .d-r1474 {
-  left: -84px; top: 5561px; width: 567px; height: 332px;
+  left: -84px; top: 6036px; width: 567px; height: 332px;
   border-radius: 280px 280px 0 0; background: var(--bordo, #ba0042);
 }
-.d-e120b { left: 71px; top: 5578px; width: 258px; height: 129px; }
+.d-e120b { left: 71px; top: 6053px; width: 258px; height: 129px; }
 
 .d-r1487 {
-  left: -78px; top: 6301px; width: 567px; height: 340px;
+  left: -78px; top: 6776px; width: 567px; height: 340px;
   border-radius: 280px 280px 0 0;
   background-image: linear-gradient(-56.57deg, #e30613 11.52%, #ffdc00 118.65%);
 }
 .d-r1486 {
-  left: -98px; top: 6330px; width: 567px; height: 347px;
+  left: -98px; top: 6805px; width: 567px; height: 347px;
   border-radius: 280px 280px 0 0; background: var(--azul-claro);
 }
-.d-r1518 { left: -11px; top: 6665px; width: 413px; height: 496px; background: var(--azul-claro); }
+.d-r1518 { left: -11px; top: 7140px; width: 413px; height: 496px; background: var(--azul-claro); }
 
 /* =========================================================
    BLOCO 1 — abertura   (0 .. 927)
@@ -179,7 +186,7 @@
 .q-oriento p { width: 362px; font-size: 26px; font-weight: 700; color: var(--amarelo); text-align: center; line-height: normal; }
 
 /* =========================================================
-   BLOCO 5 — bloqueio e ranqueamento   (3528 .. 5132)
+   BLOCO 5 — bloqueio e ranqueamento   (4003 .. 5607)  (+475 do banner)
    ========================================================= */
 .s-bloqueio { min-height: 1604px; padding-top: 62px; }
 
@@ -202,7 +209,7 @@
 }
 
 /* =========================================================
-   BLOCO 6 — pausar / fiscalização   (5132 .. 6301)
+   BLOCO 6 — pausar / fiscalização   (5607 .. 6776)
    ========================================================= */
 .s-pausar { min-height: 1169px; }
 
@@ -227,7 +234,7 @@
 .t-senacon strong { font-weight: 700; }
 
 /* =========================================================
-   BLOCO 7 — confira e leia tudo   (6301 .. 7392)
+   BLOCO 7 — confira e leia tudo   (6776 .. 7867)
    ========================================================= */
 .s-confira { min-height: 1091px; padding-top: 102px; }
 
