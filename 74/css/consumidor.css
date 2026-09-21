@@ -45,9 +45,6 @@
 /* -- meia-elipse rosa→marrom atras do prato do hero (metade inferior da caixa 610 em y=-109) -- */
 .d-e117a { left: -121px; top: 196px; width: 610px; height: 305px; }
 
-/* -- cúpula rosa→marrom atras da marmita (meia-elipse virada, caixa 517 em y=2857) -- */
-.d-e117b { left: -54px; top: 2857px; width: 517px; height: 258.5px; transform: scaleY(-1); }
-
 /* -- arco roxo (bowl) no topo do hero -- */
 .d-arco { left: -117px; top: 0; width: 617px; height: 461px; transform: rotate(180deg); }
 
@@ -58,12 +55,9 @@
 /* -- fotos que sangram, sobrepondo a transicao entre fundos -- */
 .d-vinho    { left: -113px; top: 1424px; width: 639px; height: 360px; }
 .d-vinho img { object-fit: cover; }
-.d-veggies  {
-  left: -17px; top: 2877px; width: 431px; height: 243px;
-  border-radius: 216px 216px 0 0; overflow: hidden;
-  box-shadow: -10px 18px 8px 0 rgba(0,0,0,.3);
-}
-.d-veggies img { width: 100%; height: 100%; object-fit: fill; object-position: bottom; }
+/* marmita + cupula rosa numa arte so (elipse-1117.png, 402x289); a base da
+   marmita fica em y=3120, onde terminava a foto antiga */
+.d-marmita { left: 0; top: 2846px; width: 402px; height: 289px; }
 
 /* -- gradiente vertical laranja -> branco (eixo do meio ate a base) -- */
 .d-grad-laranja {
@@ -110,7 +104,8 @@
 }
 
 .hero-foto { position: relative; height: 396px; margin: 45px 0 0 7px; width: 381px; overflow: hidden; }
-.hero-foto img { width: 381px; height: 360px; object-fit: cover; object-position: 20% top; }
+/* foto quadrada (prato inteiro) — 381x381 cabe nos 396 da caixa sem mexer no fluxo */
+.hero-foto img { width: 381px; height: 381px; object-fit: contain; }
 
 .hero-meta {
   width: 160px; margin: 0px 0 0 125px;
