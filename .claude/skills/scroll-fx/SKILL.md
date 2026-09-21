@@ -6,10 +6,11 @@ description: >-
   efeitos de scroll e efeitos de entrada ao carregar a página. Use quando o
   usuário pedir para aplicar um efeito do catálogo (ex.: "aplica o
   card-accordeon nos cards X da página Y", "slide-in-left na imagem do hero",
-  "pin-horizontal na citação", "slide-in-up nos itens da lista"), pedir
+  "pin-horizontal na citação/no carrossel", "slide-in-up nos itens da lista"), pedir
   cards/listas que abrem e fecham acompanhando o scroll empurrando o conteúdo
   abaixo, uma frase/faixa larga que corre para o lado enquanto a tela fica
-  congelada (scroll horizontal com a página travada), itens de lista que entram
+  congelada (scroll horizontal com a página travada — texto ou galeria/carrossel
+  de imagens), itens de lista que entram
   subindo em cascata conforme chegam à tela, ou um elemento que entra deslizando
   ao carregar a página.
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
@@ -95,18 +96,27 @@ volta a rolar de onde parou. Rolando para cima, desfaz.
 |---|---|---|
 | `data-fx-inicio` | `50%` | ponto da tela, a partir do topo, onde o centro do trilho trava |
 
-**Como funciona (não refaça com o pin do ScrollTrigger):** o componente põe o
-`.page` dentro de dois invólucros — um `sticky` que gruda a coluna inteira e um
-espaçador com a altura do percurso do texto. O ponto da trava é lido do layout
-real a cada frame, e o texto anda pelo `scrollLeft` do trilho. O pin do
+**Como funciona (não refaça com o pin do ScrollTrigger):** o componente põe a
+coluna dentro de dois invólucros — um `sticky` que gruda a coluna inteira e um
+espaçador com a altura do percurso do trilho. O ponto da trava é lido do layout
+real a cada frame, e o trilho anda pelo `scrollLeft`. **Vários por página:**
+cada congelamento embrulha o anterior (stickies aninhados), mede a sua trava ao
+vivo e se desfaz na ordem inversa. O pin do
 ScrollTrigger foi testado e **falhou**: com o zoom do mobile a coluna encolhia
 (360 → 322px) e, com um `card-accordeon` acima, travava no lugar errado e
 saltava 73px.
 
 Checklist:
-- **Um por página** (congela a coluna inteira; o segundo é ignorado).
 - O trilho (`data-fx-item`) tem `overflow-x` (`auto`/`hidden`) e conteúdo mais
   largo que ele — o percurso é `scrollWidth - clientWidth`. Se couber, nada trava.
+  Serve texto ou galeria: no carrossel da PRINCIPAL o trilho é a
+  `.carousel-viewport` (382px, `overflow: hidden`) com a trilha de 2085px dentro.
+- **Tire os controles próprios do trilho** — setas, arrasto, e qualquer
+  `transform`/`transition` que mova o conteúdo: brigariam com o `scrollLeft`
+  animado. No carrossel saíram os botões `.carousel-nav`, o bloco do carrossel
+  em `js/principal.js` e o `cursor: grab`/`transition` do CSS (o probe também
+  perdeu as entradas das setas). Arrasto que só mexe no `scrollLeft` pode ficar
+  (a citação mantém o dela).
 - Não depende do tipo de decoração: a coluna inteira congela junto, então
   funciona também nas páginas de decoração global.
 - Sem `position: sticky`/`fixed` que dependa do `.page` como pai direto de
@@ -116,7 +126,9 @@ Checklist:
   `js/principal.js`), ele continua funcionando: o efeito só escreve o
   `scrollLeft` enquanto o leitor rola.
 
-Em uso: `74/principal.html`, citação (`.bl-quote` / `.quote-marquee`).
+Em uso: `74/principal.html` — citação (`.bl-quote` / `.quote-marquee`, 2296px de
+percurso) e carrossel da matéria (`.bl-carousel` / `.carousel-viewport`, 1703px),
+os dois na mesma página.
 
 ### `slide-in-up` — scroll disparado
 
@@ -229,7 +241,9 @@ posição do CSS (o `probe` da página confere).
 
 **`pin-horizontal`:** role por posições da faixa congelada (início, 25%, 50%,
 fim, depois) e meça: topo do `.page`, fundo do bloco de cima e topo do de baixo
-**parados** (±1px) enquanto o `scrollLeft` do trilho vai de 0 ao máximo;
+**parados** (±1px) enquanto o `scrollLeft` do trilho vai de 0 ao máximo; com
+vários na página, cada trilho rola sozinho (os outros parados) e o centro dele
+fica fixo no ponto da trava;
 largura da coluna igual à da tela em 360px (zoom); sem overflow horizontal; no
 desktop (1440px), coluna e sidebar na mesma posição que sem o efeito.
 

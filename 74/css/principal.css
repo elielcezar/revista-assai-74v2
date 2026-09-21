@@ -237,10 +237,9 @@
 .bl-carousel { min-height: 870px; }
 
 .carousel { position: relative; width: 382px; margin-left: 20px; height: 430px; }
-/* arrastavel com mouse e dedo (js/principal.js); pan-y mantem a rolagem vertical da pagina */
-.carousel-viewport { width: 382px; height: 430px; overflow: hidden; cursor: grab; touch-action: pan-y; }
-.carousel-viewport.is-dragging { cursor: grabbing; user-select: none; }
-.carousel-track { position: relative; width: 2085px; height: 430px; transition: transform .45s ease; }
+/* corre para o lado com o scroll (pin-horizontal, js/scroll-fx.js), sem setas nem arrasto */
+.carousel-viewport { width: 382px; height: 430px; overflow: hidden; }
+.carousel-track { position: relative; width: 2085px; height: 430px; }
 
 .carousel-bg {
   position: absolute; inset: 0; display: block;
@@ -277,11 +276,6 @@
 .ccap--title { width: 266px; text-transform: uppercase; }
 .ccap--sm { font-size: 18px; }
 
-.carousel-nav { position: absolute; top: 208px; width: 25px; height: 25px; z-index: 2; }
-.carousel-nav img { width: 25px; height: 25px; }
-.carousel-nav--prev { left: 15px; }
-.carousel-nav--next { left: 338px; }
-.carousel-nav--next img { transform: rotate(180deg); }
 
 .video { position: relative; height: 440px; }
 .video-ring { position: absolute; left: -38.06%; right: -35.07%; top: 231px; height: 299px; display: block; }

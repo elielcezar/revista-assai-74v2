@@ -15,6 +15,7 @@ from playwright.sync_api import sync_playwright
 # sem a seta da citacao (.quote-rule) e com metade do vao ate CONFIANCA (pedido
 # fora do Figma): autor -36; -87 do .bl-trust para baixo
 # mede o layout do CSS: o js/scroll-fx.js (animacoes) fica bloqueado
+# carrossel da materia sem setas (corre com o scroll): .carousel-nav fora da lista
 EXPECT = [
     ("header.head",            0, 0),
     (".head-logo",            54, 78),
@@ -68,8 +69,6 @@ EXPECT = [
 
     (".bl-carousel",           0, 6582),
     (".carousel",             20, 6582),
-    (".carousel-nav--prev",   15, 6790),
-    (".carousel-nav--next",  358, 6790),
     (".video-play",           32, 7114),
     (".video-sound",         303, 7138),
     (".video-ring",         -153, 7243),

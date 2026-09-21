@@ -159,10 +159,11 @@
      Opção no contêiner:
        data-fx-inicio="50%"  ponto da tela onde o centro do trilho trava
 
-     Como congela: o .page vai para dentro de dois invólucros — o de fora ganha
+     Como congela: a coluna vai para dentro de dois invólucros — o de fora ganha
      um espaçador com altura igual ao percurso do texto; o de dentro é position: sticky com
      top negativo, então a coluna inteira "gruda" no ponto da trava enquanto o
-     scroll atravessa essa altura extra. Sticky é do navegador: não treme e
+     scroll atravessa essa altura extra. Vários por página: cada um embrulha o
+     anterior (stickies aninhados), e cada um mede a sua trava ao vivo. Sticky é do navegador: não treme e
      respeita o zoom do mobile (o pin do ScrollTrigger, com position: fixed,
      aplicava o zoom duas vezes). O ponto da trava é medido do layout real a
      cada frame, então continua certo com um card-accordeon acima abrindo e
@@ -171,19 +172,22 @@
   function pinHorizontal(sec) {
     var trilho = sec.querySelector("[data-fx-item]");
     var page = document.querySelector(".page");
-    // um por página: congela a coluna inteira
-    if (!trilho || !page || page.parentElement.classList.contains("fx-congela")) return;
+    if (!trilho || !page) return;
     var inicio = pct(sec.getAttribute("data-fx-inicio"), 50);
+
+    // embrulha o que estiver mais por fora: a coluna, ou o congelamento anterior
+    var alvo = page;
+    while (alvo.parentElement && alvo.parentElement !== document.body) alvo = alvo.parentElement;
 
     var fora = document.createElement("div");   // coluna + espaçador
     var dentro = document.createElement("div"); // gruda (sticky)
     var espaco = document.createElement("div"); // altura extra = percurso do texto
     fora.className = "fx-congela-fora";
     dentro.className = "fx-congela";
-    page.parentNode.insertBefore(fora, page);
+    alvo.parentNode.insertBefore(fora, alvo);
     fora.appendChild(dentro);
     fora.appendChild(espaco);
-    dentro.appendChild(page);
+    dentro.appendChild(alvo);
     dentro.style.position = "sticky";
     // espaçador, não padding: o sticky só anda dentro da área de conteúdo do pai
 
@@ -197,9 +201,10 @@
     }
     function atualizar() {
       // ponto da trava (scroll em px de tela), do layout de agora: o trilho medido
-      // em relação à própria coluna não é afetado pelo sticky
-      var rp = page.getBoundingClientRect(), rt = trilho.getBoundingClientRect();
-      var centro = rt.top + rt.height / 2 - rp.top;        // do topo da coluna
+      // em relação ao próprio invólucro grudante não é afetado por este sticky
+      // (e já inclui o que os congelamentos de dentro deslocaram)
+      var rp = dentro.getBoundingClientRect(), rt = trilho.getBoundingClientRect();
+      var centro = rt.top + rt.height / 2 - rp.top;        // do topo do invólucro
       var alvo = window.innerHeight * inicio / 100;          // onde o centro para
       var topoFora = fora.getBoundingClientRect().top + window.scrollY;
       trava = topoFora + centro - alvo;
@@ -220,7 +225,7 @@
     // o que vem abaixo do trilho só chega depois do congelamento: conta o que
     // ainda falta congelar (depois dele, o sticky já empurrou a coluna)
     var registro = {
-      contenedor: sec,
+      contenedor: trilho, // conta para tudo o que vem depois do trilho, mesmo no mesmo bloco
       encolhido: function () {
         var andou = (dentro.getBoundingClientRect().top - fora.getBoundingClientRect().top) / zoom();
         return Math.max(0, dist - andou);
@@ -235,7 +240,7 @@
       window.removeEventListener("resize", medir);
       window.removeEventListener("load", medir);
       if (pedido) cancelAnimationFrame(pedido);
-      fora.parentNode.insertBefore(page, fora);
+      fora.parentNode.insertBefore(alvo, fora);
       fora.remove();
       trilho.scrollLeft = 0;
     };
@@ -387,7 +392,8 @@
         return efeitos[el.getAttribute("data-fx")](el);
       });
       return function () {
-        limpezas.forEach(function (f) { if (f) f(); });
+        // ao contrário: congelamentos aninhados se desfazem de fora para dentro
+        limpezas.slice().reverse().forEach(function (f) { if (f) f(); });
       };
     });
   }

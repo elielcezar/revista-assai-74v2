@@ -9,83 +9,8 @@
     return e.clientX / ((page && parseFloat(page.style.zoom)) || 1);
   }
 
-  /* ---------- carrossel ---------- */
-  var root = document.querySelector("[data-carousel]");
-  if (root) {
-    var track = root.querySelector("[data-track]");
-    var slides = Array.prototype.slice.call(root.querySelectorAll("[data-slide]"));
-    var prev = root.querySelector("[data-prev]");
-    var next = root.querySelector("[data-next]");
-    var VIEW = 382;
-    var MAX = 2085 - VIEW;
-    var index = 0;
-
-    // desloca a trilha pelo centro de cada imagem, mantendo o slide 1 em 0
-    // (estado inicial do Figma: trilha sem deslocamento)
-    var first = slides[0].offsetLeft + slides[0].offsetWidth / 2;
-    var offsets = slides.map(function (el) {
-      var center = el.offsetLeft + el.offsetWidth / 2;
-      return Math.max(0, Math.min(MAX, Math.round(center - first)));
-    });
-
-    function go(i) {
-      index = (i + slides.length) % slides.length;
-      track.style.transform = "translateX(" + -offsets[index] + "px)";
-    }
-
-    if (prev) prev.addEventListener("click", function () { go(index - 1); });
-    if (next) next.addEventListener("click", function () { go(index + 1); });
-
-    go(0);
-
-    /* ---------- arrastar (mouse e dedo) ---------- */
-    // a trilha anda com transform, entao a transicao sai durante o arrasto
-    // e o slide mais proximo e "encaixado" ao soltar
-    var view = root.querySelector(".carousel-viewport");
-    var dx0 = 0, base = 0, pid = null, moved = false;
-
-    function nearest(off) {
-      var best = 0;
-      for (var i = 1; i < offsets.length; i++) {
-        if (Math.abs(offsets[i] - off) < Math.abs(offsets[best] - off)) best = i;
-      }
-      return best;
-    }
-
-    view.addEventListener("pointerdown", function (e) {
-      if (e.pointerType === "mouse" && e.button !== 0) return;
-      pid = e.pointerId;
-      dx0 = px(e);
-      base = offsets[index];
-      moved = false;
-      track.style.transition = "none";
-      view.classList.add("is-dragging");
-      try { view.setPointerCapture(pid); } catch (err) {}
-      if (e.pointerType === "mouse") e.preventDefault();
-    });
-
-    view.addEventListener("pointermove", function (e) {
-      if (e.pointerId !== pid) return;
-      var dx = px(e) - dx0;
-      if (Math.abs(dx) > 4) moved = true;
-      var off = Math.max(0, Math.min(MAX, base - dx));
-      track.style.transform = "translateX(" + -off + "px)";
-    });
-
-    function drop(e) {
-      if (e.pointerId !== pid) return;
-      try { view.releasePointerCapture(pid); } catch (err) {}
-      pid = null;
-      view.classList.remove("is-dragging");
-      track.style.transition = "";
-      if (moved) go(nearest(Math.max(0, Math.min(MAX, base - (px(e) - dx0)))));
-    }
-    view.addEventListener("pointerup", drop);
-    view.addEventListener("pointercancel", drop);
-
-    // arrastar em cima de uma imagem nao vira "arrastar imagem" no desktop
-    view.addEventListener("dragstart", function (e) { e.preventDefault(); });
-  }
+  /* o carrossel da matéria (.carousel) não tem mais setas nem arrasto: ele
+     corre para o lado com o scroll, pelo pin-horizontal do js/scroll-fx.js */
 
   /* ---------- citacao: arrastar com o mouse ---------- */
   // no toque o proprio overflow-x ja rola; aqui so o mouse, que nao tem esse gesto
