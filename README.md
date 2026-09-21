@@ -133,6 +133,51 @@ troca `src` e `alt`. Só uma imagem é baixada por visita.
 Na PRODUTO houve outro detalhe: o banner caía sobre o morango
 (`.trabalho-detalhe`, absoluto), e foi preciso dar folga no topo.
 
+## Efeitos de scroll (GSAP)
+
+Efeitos amarrados ao scroll ficam num componente compartilhado entre edições,
+[`js/scroll-fx.js`](js/scroll-fx.js) (GSAP 3.15.0 + ScrollTrigger via jsDelivr).
+A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou com
+"reduzir movimento" no sistema, tudo fica como no CSS.
+
+| efeito | o que faz | em uso |
+| --- | --- | --- |
+| `card-accordeon` | itens começam fechados e crescem com o scroll, empurrando o que vem abaixo; fecham ao subir | `74/principal.html` (cards bege de `.bl-gen`) |
+
+Catálogo completo, atributos, checklist (atenção às páginas de **decoração
+global**) e verificação: [`.claude/skills/scroll-fx/SKILL.md`](.claude/skills/scroll-fx/SKILL.md).
+
+### Procedimento (validado no `card-accordeon`)
+
+**Aplicar um efeito do catálogo** — um pedido de uma linha basta:
+*"aplica o `card-accordeon` nos cards X da página Y"*. A skill `scroll-fx` é
+carregada sozinha pelo Claude Code (fica em `.claude/skills/`) e cuida do resto:
+
+1. Confere o tipo de decoração da página (por bloco: ok; global: decidir antes).
+2. Liga o GSAP + `../js/scroll-fx.js` no fim do `<body>` e marca o HTML com
+   `data-fx` / `data-fx-item`. Ajustes finos vão em atributos
+   (`data-fx-inicio`, `data-fx-ritmo`), sem tocar no JS.
+3. Verifica em 402px e 360px, descendo e subindo, e com a fonte atrasada.
+
+**Criar um efeito novo** (fora do catálogo):
+
+1. Descrever o comportamento: elemento, movimento, quando começa/termina, o que
+   acontece ao rolar para cima.
+2. Implementar com a skill `gsap-animar-html` (inventário → auditoria → código
+   em camada separada → verificação), validar na página e aprovar visualmente.
+3. Promover a componente: função em `js/scroll-fx.js`, registrada em `efeitos`,
+   e documentada na skill `scroll-fx` (HTML de exemplo, atributos, checklist).
+   Daí em diante ele entra no catálogo e vale para todas as edições.
+
+Regras que o procedimento garante: nenhum HTML/CSS existente é alterado além dos
+atributos `data-fx`; o estado inicial vai no JS (sem JS a página fica como no
+CSS); nada mede layout antes de `document.fonts.ready`; ajuste feito no
+componente vale para todas as páginas que o usam.
+
+O `probe.py` da PRINCIPAL mede no topo da página, com os cards fechados: o que
+fica abaixo de `.bl-gen` aparece 394px acima do esperado. É o efeito, não
+regressão.
+
 ## Cache
 
 CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-41**. Ao mexer em
