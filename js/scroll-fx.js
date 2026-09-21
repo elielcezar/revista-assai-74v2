@@ -249,8 +249,9 @@
   /* =========================================================
      slide-in-up  (scroll, disparado — não acompanha o scroll 1:1)
      Cada item fica escondido até o topo dele passar da sua linha (a `margem`
-     px do fundo da tela); aí aparece, sem fade, e sobe até o lugar. Rolando de
-     volta para cima, desce e se esconde ao cruzar a mesma linha.
+     px do fundo da tela); aí aparece, sem fade, NA BORDA DE BAIXO DA TELA e
+     percorre todo o caminho, visível, até o lugar. Rolando de volta para cima,
+     desce até a borda de baixo e se esconde ao cruzar a mesma linha.
 
        <ol data-fx="slide-in-up">
          <li data-fx-item>…</li>                   ← cada item decide sozinho
@@ -260,7 +261,8 @@
        data-fx-margem="60"           px de tela acima do fundo em que o 1º item entra
        data-fx-escalonamento="0.1"   cada item seguinte espera +10% dessa margem
                                      (60, 66, 72, 78, 84…) — cascata
-       data-fx-deslocamento="40"     px que o item sobe ao entrar (e desce ao sair)
+       data-fx-deslocamento="base"   de onde o item sobe: "base" = da borda de
+                                     baixo da tela; ou um número de px (ex. 40)
        data-fx-duracao="0.6"         segundos
 
      Por que não um gatilho do ScrollTrigger: o ponto de disparo pré-calculado
@@ -273,11 +275,18 @@
     if (!itens.length) return;
     var margem = pct(sec.getAttribute("data-fx-margem"), 60);
     var escala = pct(sec.getAttribute("data-fx-escalonamento"), 0.1);
-    var desloc = pct(sec.getAttribute("data-fx-deslocamento"), 40);
+    var attrDesloc = sec.getAttribute("data-fx-deslocamento");
+    var fixo = (attrDesloc && attrDesloc !== "base") ? pct(attrDesloc, 40) : null;
     var duracao = pct(sec.getAttribute("data-fx-duracao"), 0.6);
 
+    // quanto o item precisa descer (px de CSS) para ficar na borda de baixo da tela
+    function ateBase(topoTela) {
+      return fixo !== null ? fixo : Math.max(0, (window.innerHeight - topoTela) / zoom());
+    }
+
     var visivel = itens.map(function () { return false; });
-    gsap.set(itens, { visibility: "hidden", y: desloc });
+    // acima do que vem depois (ex.: banner logo abaixo), senão o item passaria por trás
+    gsap.set(itens, { visibility: "hidden", position: "relative", zIndex: 2 });
 
     function checar() {
       var z = zoom();
@@ -289,10 +298,12 @@
         if (dentro === visivel[i]) return;
         visivel[i] = dentro;
         if (dentro) {
-          gsap.set(el, { visibility: "visible" });
+          // se ainda estava descendo (saída interrompida), continua de onde está
+          var deOnde = gsap.isTweening(el) ? gsap.getProperty(el, "y") : ateBase(topo);
+          gsap.set(el, { visibility: "visible", y: deOnde });
           gsap.to(el, { y: 0, duration: duracao, ease: "power2.out", overwrite: true });
         } else {
-          gsap.to(el, { y: desloc, duration: duracao, ease: "power2.in", overwrite: true,
+          gsap.to(el, { y: ateBase(topo), duration: duracao, ease: "power2.in", overwrite: true,
             onComplete: function () { gsap.set(el, { visibility: "hidden" }); } });
         }
       });
@@ -313,7 +324,7 @@
       window.removeEventListener("load", noScroll);
       if (pedido) cancelAnimationFrame(pedido);
       gsap.killTweensOf(itens);
-      gsap.set(itens, { clearProps: "visibility,transform" });
+      gsap.set(itens, { clearProps: "visibility,transform,position,zIndex" });
     };
   }
 

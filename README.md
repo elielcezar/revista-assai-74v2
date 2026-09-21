@@ -145,7 +145,7 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | --- | --- | --- |
 | `card-accordeon` (scroll) | itens começam fechados e crescem com o scroll, empurrando o que vem abaixo; fecham ao subir | `74/principal.html` (cards bege de `.bl-gen`) |
 | `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o trilho (texto ou galeria) para o lado (1:1); no fim, a página volta a rolar. Vários por página | `74/principal.html` (citação `.bl-quote` e carrossel `.bl-carousel`) |
-| `slide-in-up` (scroll disparado) | cada item aparece sem fade e sobe ao passar da sua linha perto do fundo da tela, em cascata; desce e se esconde ao voltar | `74/principal.html` (lista `.pacts`, margem 200) |
+| `slide-in-up` (scroll disparado) | ao passar da sua linha perto do fundo da tela, cada item aparece sem fade na borda de baixo e sobe o caminho inteiro até o lugar, em cascata; desce e se esconde ao voltar | `74/principal.html` (lista `.pacts`, margem 200) |
 | `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
 
 Efeito de entrada exige um trecho anti-piscada no `<head>` da página (está na
@@ -186,11 +186,11 @@ sem as animações (cards abertos, nada congelado).
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-47**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-48**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-47/?v=74-48/g' *.html 74/*.html
+sed -i 's/?v=74-48/?v=74-49/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache

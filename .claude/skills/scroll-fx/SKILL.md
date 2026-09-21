@@ -133,9 +133,10 @@ os dois na mesma página.
 ### `slide-in-up` — scroll disparado
 
 Cada item fica **escondido** até o topo dele passar da sua linha (a `margem` px
-do fundo da tela); aí **aparece sem fade** (100% de opacidade) e **sobe** até o
-lugar. Cada item seguinte espera um pouco mais (cascata). Rolando de volta para
-cima, **desce e se esconde** ao cruzar a mesma linha. Não acompanha o scroll
+do fundo da tela); aí **aparece sem fade** (100% de opacidade) **na borda de
+baixo da tela** e **percorre todo o caminho, visível, até o lugar**. Cada item
+seguinte espera um pouco mais (cascata). Rolando de volta para cima, **desce até
+a borda de baixo e se esconde** ao cruzar a mesma linha. Não acompanha o scroll
 1:1: é uma animação de tempo fixo disparada pela posição.
 
 ```html
@@ -149,7 +150,7 @@ cima, **desce e se esconde** ao cruzar a mesma linha. Não acompanha o scroll
 |---|---|---|
 | `data-fx-margem` | `60` | px de tela acima do fundo em que o **1º** item entra (maior = entra mais tarde) |
 | `data-fx-escalonamento` | `0.1` | cada item seguinte espera +10% dessa margem (margem 200 → 200, 220, 240…) |
-| `data-fx-deslocamento` | `40` | px que o item sobe ao entrar (e desce ao sair) |
+| `data-fx-deslocamento` | `base` | de onde sobe: `base` = da borda de baixo da tela (caminho inteiro visível); ou px fixos (ex.: `40`) |
 | `data-fx-duracao` | `0.6` | segundos |
 
 **Como funciona (não refaça com gatilho do ScrollTrigger):** cada item lê a
@@ -162,6 +163,10 @@ Lendo a posição ao vivo, nada acima interfere.
 Checklist:
 - Os itens não podem ter `transform` nem `transition` de `transform`/`visibility`
   no CSS (o efeito anima `y` e troca `visibility`).
+- Enquanto sobem, os itens passam por cima do que vem logo abaixo: o componente
+  põe `position: relative; z-index: 2` inline neles (sem isso, um banner/imagem
+  seguinte, pintado depois no HTML, os esconderia no meio do caminho). Confira
+  que nada abaixo tem `z-index` maior.
 - Sem JS ou com "reduzir movimento", os itens ficam visíveis no lugar.
 
 Em uso: `74/principal.html`, lista dos 5 acordos (`.pacts`), margem 200.
