@@ -1,0 +1,106 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — base compartilhada
+   fontes, reset, tokens de marca, COMPONENTE HEAD e RODAPE
+   ========================================================= */
+
+/* ---------- fontes ---------- */
+@font-face { font-family: "FS Lola"; src: url("../fonts/FSLola-Regular.otf") format("opentype");      font-weight: 400; font-style: normal; font-display: block; }
+@font-face { font-family: "FS Lola"; src: url("../fonts/FSLola-Italic.otf") format("opentype");       font-weight: 400; font-style: italic; font-display: block; }
+@font-face { font-family: "FS Lola"; src: url("../fonts/FSLola-Medium.otf") format("opentype");       font-weight: 500; font-style: normal; font-display: block; }
+@font-face { font-family: "FS Lola"; src: url("../fonts/FSLola-MediumItalic.otf") format("opentype"); font-weight: 500; font-style: italic; font-display: block; }
+@font-face { font-family: "FS Lola"; src: url("../fonts/FSLola-Bold.otf") format("opentype");         font-weight: 700; font-style: normal; font-display: block; }
+@font-face { font-family: "FS Lola"; src: url("../fonts/FSLola-BoldItalic.otf") format("opentype");   font-weight: 700; font-style: italic; font-display: block; }
+/* RaspoutineMedium-fix.otf: copia com os compostos "seac" (o-acute, a-acute...) convertidos
+   em contornos reais. No arquivo original o Chrome lia largura 229 (defaultWidthX) para esses
+   glifos em vez dos 562 do hmtx, o que colava o "o" no "c" em "Negocios". */
+@font-face { font-family: "Raspoutine"; src: url("../fonts/RaspoutineMedium-fix.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: block; }
+
+/* ---------- reset minimo ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+img { display: block; }
+figure { margin: 0; }
+html, body { margin: 0; padding: 0; }
+h1, h2, h3, p, ul, ol, blockquote { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+:root {
+  --azul: #004696;
+  --vermelho: #f0051e;
+  --vermelho-escuro: #aa0113;
+  --laranja: #ff7300;
+  --amarelo-escuro: #ffaa00;
+  --amarelo: #ffdc00;
+  --roxo: #532f82;
+  --pink: #b40082;
+  --rosa: #ff5564;
+  --anil: #00bebe;
+  --azul-claro: #0082c8;
+  --cinza: #666;
+  --pill-grad: linear-gradient(-19.49deg, #e30613 11.522%, #ffdc00 118.65%);
+}
+
+body {
+  background: #fff;
+  color: #000;
+  font-family: "FS Lola", "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  width: 402px;
+  margin: 0 auto;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* =========================================================
+   COMPONENTE HEAD  (402 x 182)
+   ========================================================= */
+.head { position: relative; width: 402px; height: 182px; overflow: hidden; background: #fff; }
+
+/* --head-bg permite que cada pagina tinja o header com a cor da sua categoria */
+.head-brand { height: 141px; background: var(--head-bg, var(--azul)); position: relative; }
+.head-logo { position: absolute; width: 283px; height: 30px; top: 78px; left: 50%; margin-left: -147px; }
+
+.head-nav {
+  height: 41px;
+  background: #d9d9d9;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.head-nav::-webkit-scrollbar { display: none; }
+.head-nav ul { display: flex; align-items: flex-start; gap: 14px; padding: 5px 0 0 8px; height: 41px; width: max-content; }
+.head-nav li { border-bottom: 5px solid var(--mc); display: flex; align-items: center; justify-content: center; }
+.head-nav a {
+  font-family: "Inter", "FS Lola", Arial, sans-serif;
+  font-size: 11px; font-weight: 400; color: #000; white-space: nowrap;
+  padding: 10px 0 4px; line-height: normal;
+}
+.head-nav .is-active a { font-weight: 700; }
+
+/* =========================================================
+   COMPONENTE RODAPE  (402 x 116)
+   ========================================================= */
+.foot { position: relative; width: 402px; height: 116px; background: #fff; overflow: hidden; }
+.foot-bar { position: absolute; left: 0; top: 45px; width: 402px; height: 71px; background: #000; display: block; }
+
+.foot-top { position: absolute; left: 18px; top: 72px; width: 19px; height: 18px; display: flex; align-items: center; justify-content: center; }
+.foot-top img { width: 18px; height: 19px; transform: rotate(90deg); }
+
+.foot-share { position: absolute; left: 50px; top: 72px; width: 17px; height: 20px; display: block; }
+.foot-share-a { position: absolute; left: 0; top: 0; width: 17px; height: 20px; }
+.foot-share-b { position: absolute; left: 5px; top: 4px; width: 6px; height: 4px; }
+.foot-share-c { position: absolute; left: 5px; top: 12px; width: 6px; height: 4px; }
+
+.foot-brand { position: absolute; left: 169px; top: 62px; width: 50px; height: 37px; overflow: hidden; display: block; }
+/* o "clip path group" do Figma e um retangulo 50x37 inteiro: o overflow do pai ja basta */
+.foot-brand img { width: 50px; height: 37px; }
+
+.foot-stores {
+  position: absolute; left: 292px; top: 76.9px;
+  font-size: 10px; font-weight: 500; color: #fff; white-space: nowrap; line-height: normal;
+}
+.foot-stores img { position: absolute; left: 70.5px; top: -4.9px; width: 20px; height: 19px; }

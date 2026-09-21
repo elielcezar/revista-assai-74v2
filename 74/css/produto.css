@@ -1,0 +1,212 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina PRODUTO
+   Figma: 4543:3135 — 402 x 6861
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Header desta pagina e laranja-escuro (categoria PRODUTO), com
+   uma variante da logo exportada especificamente para esta instancia.
+   ========================================================= */
+
+.produto .head { --head-bg: var(--amarelo-escuro); }
+
+/* blocos: 402 de largura, altura minima do Figma, decoracoes recortadas */
+.bl {
+  position: relative;
+  width: 402px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* camada de decoracao — so o que sangra / gira / sobrepoe */
+.backdrop { position: absolute; inset: 0; pointer-events: none; }
+.backdrop span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+/* espaco de banner (um anuncio por vez, sorteado em js/produto.js).
+   Aqui cada .bl leva sua propria .backdrop, entao o banner entre blocos
+   nao desalinha decoracao — diferente da MKT. */
+.adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; }
+/* no bloco do trabalho o banner entra depois do morango (.trabalho-detalhe, que e
+   absoluto e acompanha a foto), por isso a folga maior em cima e menor ate o titulo */
+.bl-trabalho .adbox { margin-top: 179px; }
+.bl-trabalho .adbox + .h-trabalho { margin-top: 40px; }
+.adbox img { max-width: 100%; height: auto; }
+
+
+/* =========================================================
+   BLOCO 1 — abertura  (402 x 1080)
+   ========================================================= */
+.bl-hero { min-height: 1080px; }
+
+.hero-aneis { left: -123px; top: 42px; width: 633px; height: 320px; overflow: visible; }
+.hero-aneis img { position: absolute; left: 0; top: -13.75%; width: 100%; height: 113.75%; }
+.hero-fatias { left: -114px; top: 42px; width: 548px; height: 306px; }
+.hero-fatias img { object-fit: cover; }
+.hero-selfie {
+  left: 187px; top: 317px; width: 106px; height: 161px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-selfie img { width: 161px; height: 106px; object-fit: cover; transform: rotate(90deg); }
+
+.hero-badge {
+  position: relative; margin: 384px 0 0 23px;
+  display: flex; flex-direction: column; gap: 14px; align-items: flex-start; width: 131px;
+}
+.hero-edition {
+  display: flex; align-items: center; justify-content: center;
+  width: 131px; height: 26px; background: var(--amarelo-escuro);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.hero-author { height: 22px; font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
+
+.hero-title { display: flex; flex-direction: column; margin: 15px 0 0 20px; line-height: normal; }
+.hero-title .laranja { font-size: 60px; font-weight: 700; color: var(--laranja); }
+.hero-title .vermelho { font-size: 58px; font-weight: 700; color: var(--vermelho); margin-top: -10px; }
+
+.hero-lead {
+  width: 361px; height: 72px; margin: 21px 0 0 23px;
+  font-size: 20px; font-style: italic; color: var(--cinza); line-height: 23px;
+}
+
+.t-hero { width: 361px; margin: 30px 0 0 23px; }
+.t-hero p { font-size: 18px; line-height: normal; color: #000; }
+.t-hero p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 2 — da curiosidade à decisão + 4 perguntas  (402 x 1174)
+   ========================================================= */
+.bl-perguntas { min-height: 1174px; padding-top: 21px; }
+
+.h-curiosidade {
+  width: 362px; margin-left: 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  line-height: normal; text-transform: uppercase;
+}
+.t-curiosidade { width: 362px; margin: 32px 0 0 20px; }
+.t-curiosidade p { font-size: 18px; line-height: normal; color: #000; }
+.t-curiosidade p + p { margin-top: 20px; }
+
+.foto-ingredientes { position: relative; height: 165px; margin: 24px 0 0 90.5px; width: 221px; }
+.foto-ingredientes img { width: 221px; height: 165px; object-fit: cover; }
+
+.h-pergunte {
+  width: 359px; margin: 24px auto 0;
+  font-size: 24px; font-weight: 700; color: var(--laranja); text-align: center; line-height: normal;
+}
+
+.perguntas { display: flex; flex-direction: column; gap: 14px; width: 362px; margin: 24px 0 0 20px; }
+.perguntas li {
+  height: 75px; border-radius: 21px; background: var(--vermelho);
+  border: 1px solid #ff5564;
+  display: flex; align-items: center; justify-content: center; padding: 8px 17px 8px 21px;
+  font-size: 18px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+
+/* =========================================================
+   BLOCO 3 — caso Patrícia (vermelho)  (402 x 973)
+   ========================================================= */
+.bl-caso { min-height: 973px; }
+
+.caso-vermelho { left: -19px; top: 448px; width: 457px; height: 525px; background: var(--vermelho); }
+.caso-arco { left: -147px; top: 158px; width: 696px; height: 299px; }
+
+.caso-foto {
+  position: absolute; left: 32px; top: 29px; width: 338px; height: 338px;
+}
+.caso-foto img { width: 338px; height: 338px; }
+
+.h-caso {
+  position: relative; width: 362px; margin: 398px 0 0 22px;
+  font-size: 24px; font-weight: 700; color: var(--amarelo);
+  line-height: normal; text-transform: uppercase;
+}
+.t-caso { position: relative; width: 362px; margin: 32px 0 0 22px; }
+.t-caso p { font-size: 18px; line-height: normal; color: #fff; }
+.t-caso p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 4 — o trabalho que sustenta a vitrine  (402 x 1224)
+   ========================================================= */
+.bl-trabalho { min-height: 1224px; }
+
+.trabalho-foto { position: relative; height: 490px; margin-left: -65px; width: 531px; overflow: hidden; border-radius: 0 0 300px 300px; }
+.trabalho-foto img {
+  position: absolute; width: 75.64%; height: 109.52%;
+  left: 12.18%; top: -9.52%; max-width: none; object-fit: cover;
+}
+
+/* dimensao real pre-rotacao (targetAspectRatio do Figma: 129x146); a bbox
+   184x190 fornecida pelo Figma ja e a caixa delimitadora POS-rotacao */
+.trabalho-detalhe {
+  position: absolute; left: 150.2px; top: 449px; width: 129px; height: 146px;
+  transform: rotate(29.222deg); border-radius: 12px; overflow: hidden;
+}
+.trabalho-detalhe img { width: 100%; height: 100%; object-fit: cover; }
+
+.h-trabalho {
+  width: 362px; margin: 118px 0 0 22px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  line-height: normal; text-transform: uppercase;
+}
+.t-trabalho { width: 362px; margin: 32px 0 0 22px; }
+.t-trabalho p { font-size: 18px; line-height: normal; color: #000; }
+.t-trabalho p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 5 — o alcance das redes  (402 x 1013)
+   ========================================================= */
+.bl-alcance { min-height: 1013px; }
+
+.alcance-foto { position: relative; height: 299px; margin-left: -4.5px; width: 411px; overflow: hidden; background: #fff; }
+.alcance-foto img {
+  position: absolute; left: -56.5px; top: 0; width: 476px; height: 268px; max-width: none;
+}
+
+.alcance-faixa {
+  position: relative; height: 104px;
+  background-image: linear-gradient(-33.17deg, #e30613 11.52%, #ffdc00 118.65%);
+  display: flex; align-items: center; justify-content: center;
+  padding: 23px 20px 20px;
+}
+.h-alcance {
+  font-size: 24px; font-weight: 700; color: #fff; white-space: nowrap;
+  text-align: center; line-height: normal; text-transform: uppercase;
+}
+
+.estatisticas { display: flex; flex-direction: column; gap: 11px; width: 362px; margin: 20px 0 0 20px; }
+.estatisticas li {
+  border-radius: 21px; background: var(--vermelho); border: 1px solid #ff5564;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 20px; text-align: center;
+}
+.estatisticas li:first-child { min-height: 121px; }
+.estatisticas li:nth-child(2),
+.estatisticas li:nth-child(3) { min-height: 197px; }
+.estatisticas strong { font-size: 19px; font-weight: 700; color: #fff; line-height: normal; }
+.estatisticas .fonte { margin-top: 16px; font-size: 16px; font-weight: 400; color: #fff; line-height: normal; }
+
+/* =========================================================
+   BLOCO 6 — continuidade e reputação  (402 x 1099)
+   ========================================================= */
+.bl-fecho { min-height: 1099px; }
+
+.h-continuidade {
+  width: 362px; margin-left: 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  line-height: normal; text-transform: uppercase;
+}
+.t-continuidade { width: 362px; margin: 32px 0 0 20px; }
+.t-continuidade p { font-size: 18px; line-height: normal; color: #000; }
+.t-continuidade p + p { margin-top: 20px; }
+
+.foto-final { position: relative; height: 254px; margin: 36px 0 0 -129.5px; width: 661px; overflow: hidden; }
+.foto-final img { position: absolute; left: 0; top: 0; width: 100%; height: 101.44%; max-width: none; }
+
+.h-reputacao {
+  width: 360px; margin: 57px 0 0 21px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  line-height: normal; text-transform: uppercase;
+}
+.t-reputacao { width: 360px; margin: 32px 0 0 21px; }
+.t-reputacao p { font-size: 18px; line-height: normal; color: #000; }
+.t-reputacao p + p { margin-top: 20px; }

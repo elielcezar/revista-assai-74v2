@@ -1,0 +1,100 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina EXPEDIENTE
+   Mesma pagina da #73 (73/expediente.html, Figma 1624:984), refeita flow-first.
+   402 x 1683  (HEAD 182 + artigo 1385 + RODAPE 116)
+   Coordenadas de referencia = render da #73 (reference/expediente73_render.png).
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+   ========================================================= */
+
+.expediente { --head-bg: #000; text-rendering: optimizeLegibility; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* "Corpo de texto": FS Lola 18, centralizado; a linha em branco da #73 = 1 linha (24.3px) */
+.expediente article { padding-bottom: 69px; }
+.ex-block h2,
+.ex-block p,
+.ex-contato h2,
+.ex-contato address {
+  font-size: 18px; font-weight: 400; font-style: normal; line-height: 1.35;
+  text-align: center; color: #000;
+}
+.ex-block h2,
+.ex-contato h2 { font-weight: 700; text-transform: uppercase; }
+.ex-block b { font-weight: 700; }
+.ex-block h2 + p { margin-top: 24.3px; }
+
+/* =========================================================
+   CONSELHO EDITORIAL  (logo y 218, texto y 282)
+   ========================================================= */
+.ex-conselho { padding: 36px 24px 0; }
+.ex-logo-assai { width: 85px; height: 61px; margin: 0 auto 3px; object-fit: contain; }
+
+/* =========================================================
+   REDES SOCIAIS  (faixa degradê y 500, 402 x 147)
+   ========================================================= */
+.ex-redes {
+  min-height: 147px; margin-top: 48px; padding: 16px 16px 0 24px;
+  background: url("../assets/expediente/gradientes-redes-sociais.png") center / cover no-repeat;
+}
+.ex-redes h2 {
+  margin: 0 5px 20px; font-size: 20px; font-weight: 700; line-height: 1.2;
+  text-align: center; color: var(--vermelho);
+}
+
+.ex-soc { display: flex; justify-content: space-between; }
+.ex-soc a {
+  display: flex; align-items: center; justify-content: center;
+  width: 54px; height: 54px;
+  background: url("../assets/expediente/bkg-redes.png") center / contain no-repeat;
+}
+.ex-soc img { width: 35px; height: 33px; object-fit: contain; }
+.ex-soc a:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; border-radius: 50%; }
+
+/* queda das moedas: so arma quando o JS roda (sem JS os icones ficam visiveis) */
+.ex-soc.is-armed li { opacity: 0; transform: translateY(var(--fall)); }
+.ex-soc.is-armed.is-in li {
+  animation: ex-coin-fall var(--dur) cubic-bezier(.55, .085, .68, .53) var(--delay) both;
+}
+@keyframes ex-coin-fall {
+  0%   { transform: translateY(var(--fall)); opacity: 0; }
+  70%  { opacity: 1; }
+  100% { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ex-soc.is-armed li { opacity: 1; transform: none; animation: none !important; }
+}
+
+/* =========================================================
+   MEGAMIDIA GROUP  (logo y 705, texto y 798)
+   ========================================================= */
+.ex-megamidia { margin-top: 58px; padding: 0 31px 0 20px; }
+/* x 141 na pagina: o padding do bloco e assimetrico, entao nao da para centralizar */
+.ex-logo-mm { display: block; width: 120px; margin: 0 0 35px 121px; }
+.ex-logo-mm img { width: 120px; height: 58px; object-fit: contain; }
+/* o link segue direto o titulo; a linha em branco vem depois dele */
+.ex-megamidia h2 + .ex-site { margin: 0 0 24.3px; }
+.ex-site a { font-weight: 700; color: var(--azul); }
+
+/* =========================================================
+   REVISTA ASSAÍ BONS NEGÓCIOS  (texto y 1076)
+   ========================================================= */
+.ex-revista { margin-top: 59px; padding: 0 23px 0 26px; }
+
+/* =========================================================
+   DÚVIDAS E SUGESTÕES  (cartão y 1345, 359 x 153)
+   ========================================================= */
+.ex-contato {
+  position: relative;
+  width: 359px; min-height: 153px; margin: 123px 0 0 19px; padding: 25px 28px 0;
+  background: rgba(217, 217, 217, .59); border-radius: 13px;
+}
+/* meia-lua azul e icone sobrepoem a borda de cima do cartao */
+.ex-contato-cap { position: absolute; left: 123px; top: -37px; width: 113px; height: 55px; }
+.ex-contato-ico { position: absolute; left: 155px; top: -29px; width: 48px; height: 47px; }
+.ex-contato-cap img, .ex-contato-ico img { width: 100%; height: 100%; object-fit: contain; }
+.ex-contato h2 { position: relative; }
+.ex-mail { text-decoration: underline; }

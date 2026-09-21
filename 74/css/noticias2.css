@@ -1,0 +1,216 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina NOTICIAS 02
+   Figma: 4424:19218 — 402 x 5798  (HEAD 182 + artigo 5500 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Coordenadas do CSS = y da pagina menos os 182px do HEAD.
+   ========================================================= */
+
+@font-face { font-family: "Cal Sans"; src: url("../../fonts/CalSans-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: block; }
+
+.noticias2 .head { --head-bg: var(--azul-claro); }
+
+.bl { position: relative; width: 402px; background: #fff; overflow: hidden; display: flow-root; }
+
+/* =========================================================
+   BLOCO 1 — hero   (0 .. 844)
+   ========================================================= */
+.hero-foto { position: relative; left: -24px; width: 487px; height: 396px; overflow: hidden; }
+.hero-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero-title {
+  width: 363px; margin: 27px 0 0 19px;
+  font-size: 34px; font-weight: 700; color: var(--laranja); line-height: 36px;
+}
+.hero-sub {
+  width: 363px; margin: 5px 0 0 19px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 37.57px; color: var(--azul); line-height: 40.24px;
+}
+.hero-lead {
+  width: 361px; margin: 21px 0 0 19px;
+  font-size: 20px; font-style: italic; color: rgba(0, 0, 0, .6); line-height: 23px;
+}
+
+.badge74 {
+  width: 140px; margin: 25px 0 0 19px;
+  display: flex; flex-direction: column; gap: 13px; align-items: stretch;
+}
+.badge74-ed {
+  display: flex; align-items: center; justify-content: center;
+  height: 26px; padding: 2px 15px; background: var(--azul-claro);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.badge74-autor { height: 23px; font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
+
+/* =========================================================
+   BLOCO 2 — ilustração custo do arroz   (844 .. 1192)
+   ========================================================= */
+.bl-arroz { height: 348px; background: var(--laranja); margin-top: 36px; overflow: visible; }
+
+.t-arroz {
+  width: 340px; margin: 41px 0 0 30px;
+  font-size: 18px; color: #fff; line-height: 19.69px;
+}
+.foto-arroz {
+  position: relative; z-index: 2; width: 220px; height: 167px; margin: 37px 0 0 77px;
+}
+.foto-arroz img { width: 100%; height: 100%; object-fit: cover; }
+
+.cifrao {
+  position: absolute; z-index: 1; font-family: "Cal Sans", sans-serif; font-weight: 400; color: #fcd200; line-height: 1;
+}
+.cifrao--1 { left: 68px; top: 246px; font-size: 53px; }
+.cifrao--2 { left: 201px; top: 205px; font-size: 74px; }
+.cifrao--3 { left: 368px; top: 315px; font-size: 74px; }
+
+/* =========================================================
+   BLOCO 3 — como escolher com segurança   (1192 .. 1801)
+   ========================================================= */
+.t-seguranca { width: 347px; margin: 83px 0 0 21px; }
+.t-seguranca p { font-size: 18px; color: #000; line-height: 19.69px; }
+.t-seguranca p + p { margin-top: 20px; }
+.t-seguranca strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 4 — foto feijão   (1801 .. 2254)
+   ========================================================= */
+.foto-feijao { position: relative; left: -2px; width: 407px; height: 407px; margin: 52px 0 0 0; overflow: hidden; }
+.foto-feijao img { width: 100%; height: 100%; object-fit: cover; }
+
+/* =========================================================
+   BLOCO 5 — comece a comparação   (2254 .. 2853)
+   ========================================================= */
+/* z-index 2: as tigelas e o pacote de feijao passam por cima do bloco bege seguinte */
+.bl-comparacao { height: 553px; overflow: visible; z-index: 2; }
+
+.h-comparacao {
+  width: 350px; margin: 46px 0 0 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho); line-height: 26.62px; text-transform: uppercase;
+}
+.t-comparacao { width: 350px; margin: 23px 0 0 20px; }
+.t-comparacao p { font-size: 18px; color: #000; line-height: 19.69px; }
+.t-comparacao p + p { margin-top: 20px; }
+.t-comparacao strong { font-weight: 700; }
+.t-comparacao p:first-child { font-weight: 700; }
+
+.gallery {
+  position: relative; width: 404px; height: 181px; margin: 27px 0 0 -2px;
+  overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
+}
+.gallery::-webkit-scrollbar { display: none; }
+.gallery-view { position: relative; width: 771px; height: 181px; }
+.gallery-icon {
+  position: absolute; top: 66px; width: 85px; height: 85px; object-fit: cover;
+}
+.gallery-icon:nth-child(1) { left: 0; }
+.gallery-icon:nth-child(2) { left: 79px; }
+.gallery-icon:nth-child(3) { left: 158px; }
+.gallery-icon:nth-child(4) { left: 237px; }
+.gallery-icon:nth-child(5) { left: 449px; }
+.gallery-icon:nth-child(6) { left: 528px; }
+.gallery-icon:nth-child(7) { left: 607px; }
+.gallery-icon:nth-child(8) { left: 686px; }
+.gallery-bag {
+  position: absolute; top: 0; left: 318px; width: 135px; height: 174px; overflow: hidden;
+}
+.gallery-bag img {
+  position: absolute; width: 215.74%; height: 113.87%;
+  left: -56.82%; top: -7.21%; max-width: none;
+}
+
+/* =========================================================
+   BLOCO 6 — exemplo de cálculo   (2853 .. 3198)
+   ========================================================= */
+.bl-exemplo { background: #ffe3cc; width: 390px; height: 296px; z-index: 1; }
+
+.t-exemplo {
+  width: 350px; margin: 93px 0 0 17px;
+  font-size: 18px; color: #000; line-height: 19.69px;
+}
+
+/* =========================================================
+   BLOCO 7 — rendimento   (3198 .. 3695)
+   ========================================================= */
+.h-rendimento {
+  width: 350px; margin: 49px 0 0 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho); line-height: 26.62px; text-transform: uppercase;
+}
+.t-rendimento { width: 350px; margin: 23px 0 0 20px; }
+.t-rendimento p { font-size: 18px; color: #000; line-height: 19.69px; }
+.t-rendimento p + p { margin-top: 20px; }
+.t-rendimento strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 8 — foto em arco   (3603 .. 3861)
+   O anel colorido e a cupula degrade (imgArcoRing) recoberta pela
+   cupula branca (imgArcoMask), que sobra so a faixa nas bordas.
+   Os dois SVG saem do Figma como meia-elipse virada para baixo:
+   scaleY(-1) transforma em arco.
+   ========================================================= */
+.bl-arco { height: 258px; margin-top: 66px; overflow: visible; background: none; }
+
+.arco-ring { position: absolute; left: 0; top: -30px; width: 442px; height: 221px; transform: scaleY(-1); z-index: 1; }
+.arco-mask { position: absolute; left: -8px; top: -7px; width: 432px; height: 216px; transform: scaleY(-1); z-index: 2; }
+
+.foto-arco {
+  position: relative; z-index: 3;
+  width: 415px; height: 258px; border-radius: 200px 200px 0 0; overflow: hidden;
+}
+.foto-arco img {
+  position: absolute; width: 98.9%; height: 112.45%;
+  left: 0; top: -7.76%; max-width: none;
+}
+
+/* =========================================================
+   BLOCO 9 — o cliente reconhece a regularidade   (3860 .. 4405)
+   ========================================================= */
+.bl-regularidade { background: var(--laranja); height: 545px; margin-top: -1px; }
+
+.h-regularidade {
+  width: 350px; margin: 52px 0 0 20px;
+  font-size: 24px; font-weight: 700; color: var(--amarelo); line-height: 26.62px; text-transform: uppercase;
+}
+.t-regularidade { width: 350px; margin: 23px 0 0 20px; }
+.t-regularidade p { font-size: 18px; color: #fff; line-height: 19.69px; }
+.t-regularidade p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 10 — marcas próprias   (4405 .. 5079)
+   ========================================================= */
+.h-marcas {
+  width: 362px; margin: 58px 0 0 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho); line-height: 26.62px; text-transform: uppercase;
+}
+.t-marcas { width: 362px; margin: 23px 0 0 20px; }
+.t-marcas p { font-size: 18px; color: #000; line-height: 19.69px; }
+.t-marcas p + p { margin-top: 20px; }
+.t-marcas strong { font-weight: 700; }
+.t-marcas .t-vermelho { color: var(--vermelho); }
+
+/* =========================================================
+   BLOCO 11 — fechamento / cta   (5079 .. 5500)
+   ========================================================= */
+.bl-cta { padding-bottom: 14px; }
+
+/* o banner tem 696px no Figma: sangra a direita e o bloco recorta */
+.banner-chef { position: relative; width: 696px; height: 230px; margin: 66px 0 0 0; overflow: hidden; }
+.banner-chef img { width: 100%; height: 100%; object-fit: cover; }
+
+.h-cta {
+  width: 350px; margin: 41px 0 0 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho); text-align: center; line-height: 26.62px;
+}
+.h-cta .azul { color: var(--azul); font-weight: 400; }
+
+.btn-cta {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 351px; height: 42px; margin: 41px 0 0 20px; border-radius: 10px;
+  background: var(--vermelho); color: #fff; font-family: "Inter", sans-serif;
+  font-size: 18px; font-weight: 700; text-decoration: none;
+}
+.btn-cta-seta {
+  display: flex; align-items: center; justify-content: center;
+  width: 9.9px; height: 9.9px; flex: none;
+}
+.btn-cta-seta img { width: 15px; height: 14.73px; transform: rotate(45deg); }

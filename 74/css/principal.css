@@ -1,0 +1,314 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina PRINCIPAL
+   Figma: 4424:20329 — 402 x 8028
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+   ========================================================= */
+
+/* blocos: 402 de largura, altura minima do Figma, decoracoes recortadas */
+.bl {
+  position: relative;
+  width: 402px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* camada de decoracao — so o que sangra / gira / sobrepoe */
+.backdrop { position: absolute; inset: 0; pointer-events: none; }
+.backdrop span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+
+/* =========================================================
+   BLOCO 1 — HERO  (402 x 870)
+   ========================================================= */
+.bl-hero { min-height: 870px; }
+
+.hero-wash { left: -65px; top: 0; width: 554px; height: 487px; background: var(--laranja); opacity: .2; }
+.hero-e140 { left: -23.63%; right: -33.33%; top: 379px; height: 309px; }
+.hero-e141 { left: -15.92%; right: -40.55%; top: 401px; height: 308.5px; }
+.hero-e142 { left: -16.42%; right: -40.8%;  top: 412px; height: 309px; }
+.hero-e140 img, .hero-e141 img, .hero-e142 img { transform: rotate(180deg); }
+.hero-e139 { left: -11.69%; right: -38.06%; top: 410px; height: 311px; }
+
+.hero-head { position: relative; padding: 51px 20px 0 18px; }
+.bl-hero h1 { display: flex; flex-direction: column; gap: 5px; width: 364px; line-height: normal; }
+.h1-kicker { font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic; font-size: 42.571px; line-height: 37px; color: var(--azul); }
+.h1-main   { font-family: "FS Lola"; font-weight: 700; font-size: 66.696px; color: var(--vermelho); }
+
+.hero-lead {
+  width: 357px; margin: 14px 0 0 2px;
+  font-size: 20px; font-style: italic; font-weight: 400; line-height: 23px; color: var(--cinza);
+}
+
+.hero-figure { position: relative; margin-top: 25px; height: 446px; }
+.hero-figure > img { position: absolute; left: -10px; top: 0; width: 419px; height: 446px; object-fit: cover; }
+
+.hero-meta { position: absolute; left: 255px; top: -1px; width: 122px; display: flex; flex-direction: column; gap: 13px; align-items: flex-start; }
+.hero-edition {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 2px 15px; background: var(--vermelho);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.hero-author { font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
+
+.hero-band { position: relative; background: var(--vermelho); min-height: 149px; padding: 36px 24px 0 29px; }
+.hero-band p { width: 349px; font-size: 18px; line-height: normal; color: #fff; }
+
+/* =========================================================
+   BLOCO 2 — BANDAS  (402 x 866)
+   ========================================================= */
+.bl-bands { min-height: 866px; }
+
+.band { position: relative; }
+.band p { width: 349px; font-size: 18px; line-height: normal; color: #fff; }
+.band--red { background: var(--vermelho); min-height: 159px; padding: 32px 27px 0 26px; }
+.band--darkred { background: var(--vermelho-escuro); min-height: 302px; padding: 48px 27px 0 26px; }
+.band--darkred p + p { margin-top: 20px; }
+.band--darkred strong { font-weight: 700; }
+
+.bands-figure { position: absolute; left: -155px; top: 417px; width: 703px; height: 448px; }
+.bands-figure img { width: 703px; height: 448px; object-fit: cover; transform: scaleX(-1); }
+
+/* =========================================================
+   BLOCO 3 — O QUE CADA GERACAO TRAZ  (402 x 845)
+   ========================================================= */
+.bl-gen { min-height: 845px; padding-top: 57px; }
+
+.gen-title {
+  width: 347px; margin: 0 0 0 22px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  text-align: center; text-transform: uppercase; line-height: normal;
+}
+
+.gen-group { margin-top: 44px; }
+.gen-group + .gen-group { margin-top: 24px; }
+
+.gen-icon { display: flex; justify-content: flex-start; }
+.gen-icon--pencil { padding-left: 117px; }
+.gen-icon--pencil img { width: 148px; height: 38px; object-fit: cover; }
+.gen-icon--mouse { height: 67px; align-items: center; padding-left: 164px; }
+.gen-icon--mouse > span { display: block; width: 67px; height: 103px; overflow: hidden; transform: rotate(90deg); position: relative; }
+.gen-icon--mouse img { position: absolute; top: 0; left: -25.05%; width: 153.26%; height: 100%; max-width: none; }
+
+.gen-pill {
+  position: relative; width: 414px; margin-left: -11px; min-height: 58px;
+  display: flex; align-items: center; justify-content: center;
+  background-image: var(--pill-grad);
+  color: #fff; font-size: 20px; font-weight: 700; text-transform: uppercase;
+  text-align: center; line-height: normal; margin-top: 6px;
+}
+
+.gen-card {
+  width: 362px; margin: 0 auto; min-height: 197px;
+  background: rgba(255, 115, 0, .2);
+  border-radius: 0 0 25px 25px;
+  padding: 40px 19px 0 18px;
+}
+.gen-group:nth-of-type(2) .gen-pill { margin-top: 7px; }
+.gen-group:nth-of-type(2) .gen-card { padding-top: 47px; }
+/* largura do Figma: item = bullet 14 + gap 16 + texto 320 (transborda o padding) */
+.gen-list { display: flex; flex-direction: column; gap: 11px; width: 350px; }
+.gen-list li {
+  display: flex; align-items: center; gap: 16px;
+  font-size: 20px; font-weight: 700; color: #000; line-height: 21px;   /* h-[21px] do Figma */
+}
+.gen-list li::before {
+  content: ""; flex: none; width: 14px; height: 14px;
+  background: url("../assets/imgEllipse130.svg") center/contain no-repeat;
+}
+
+/* =========================================================
+   BLOCO 4 — DECADAS DE COZINHA  (402 x 1123)
+   ========================================================= */
+.bl-story { min-height: 1123px; }
+
+.story-fill  { left: -17px; top: 576px; width: 423px; height: 605px; }
+.story-arcs  { left: -22.39%; right: -22.64%; top: 283px; height: 299px; }
+.story-curve { left: 50%; margin-left: -270px; top: 248px; width: 539px; height: 270px; }
+
+.story-photo { position: absolute; left: -17px; top: -26px; width: 450px; height: 458px; }
+.story-photo > span { position: absolute; inset: 0; overflow: hidden; display: block; }
+.story-photo img { position: absolute; left: 3.25%; top: -37.83%; width: 92.54%; height: 161.72%; max-width: none; }
+
+.story-text { position: relative; padding: 384px 20px 0 20px; width: 402px; }
+.story-text h2 { width: 362px; font-size: 24px; font-weight: 700; color: var(--amarelo); text-transform: uppercase; line-height: normal; }
+.story-text p { width: 362px; margin-top: 23px; font-size: 18px; line-height: normal; color: #fff; }
+.story-text p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 5 — CITACAO  (402 x 606)
+   ========================================================= */
+.bl-quote { min-height: 606px; }
+
+.quote-e143 { left: -25.12%; right: -19.9%; top: -199px; height: 299px; }
+.quote-e143 img { transform: rotate(180deg); }
+.quote-curve { left: 50%; margin-left: -269px; top: -133px; width: 539px; height: 270px; }
+.quote-curve img { transform: rotate(180deg); }
+
+.quote-figure { position: relative; height: 353px; }
+.quote-laptop { position: absolute; left: 40px; top: 136px; width: 326px; height: 217px; object-fit: cover; }
+.quote-bread  { position: absolute; left: 127px; top: 170px; width: 216px; height: 144px; object-fit: cover; }
+
+.quote-block { position: relative; }
+.quote-marquee {
+  margin: 15px 0 0 12px; width: 390px; height: 77px;
+  display: flex; align-items: center;
+  overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
+}
+.quote-marquee::-webkit-scrollbar { display: none; }
+/* no desktop o texto e arrastado com o mouse (js/principal.js) */
+.quote-marquee { cursor: grab; }
+.quote-marquee.is-dragging { cursor: grabbing; user-select: none; }
+.quote-marquee p {
+  flex: none; width: 2686px;
+  font-size: 49px; font-weight: 700; color: var(--vermelho); line-height: normal; white-space: nowrap;
+}
+.quote-rule { width: 362px; height: 15px; margin: 21px 0 0 20px; transform: rotate(180deg); }
+.quote-author {
+  width: 246px; margin: 12px auto 0;
+  font-size: 16px; font-weight: 700; font-style: italic; color: var(--cinza);
+  text-align: center; line-height: normal;
+}
+
+/* =========================================================
+   BLOCO 6 — CONFIANCA E TRANSPARENCIA  (402 x 870)
+   ========================================================= */
+.bl-trust { min-height: 870px; }
+
+.trust-text { padding: 7px 20px 0 20px; }
+.trust-text h2 { width: 362px; font-size: 24px; font-weight: 700; color: var(--vermelho); text-transform: uppercase; line-height: normal; }
+.trust-text p { width: 362px; margin-top: 23px; font-size: 18px; line-height: normal; color: #000; }
+.trust-text p + p { margin-top: 20px; }
+
+.trust-globe { position: relative; height: 263px; margin-top: 63px; }
+.trust-rays { position: absolute; left: 157px; top: 15px; width: 335.435px; height: 172.848px; display: flex; align-items: center; justify-content: center; }
+.trust-rays > span { display: block; width: 335px; height: 172px; overflow: hidden; position: relative; transform: rotate(.15deg) scaleY(-1); }
+.trust-rays img { position: absolute; left: -97.04%; top: -.02%; width: 197.04%; height: 100.03%; max-width: none; }
+.trust-ball { position: absolute; left: -17px; top: 52px; width: 419px; height: 215px; display: block; }
+.trust-ball img { width: 100%; height: 100%; }
+.trust-cta {
+  position: absolute; left: 84px; top: 158px; width: 217px;
+  font-size: 24px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+
+/* =========================================================
+   BLOCO 7 — CINCO ACORDOS  (402 x 870)
+   ========================================================= */
+.bl-pacts { min-height: 870px; }
+
+.pacts { display: flex; flex-direction: column; gap: 8px; width: 430px; margin-left: -15px; }
+.pacts li {
+  display: flex; align-items: center; gap: 14px;
+  background: var(--azul); padding: 15px 84px 15px 37px;
+}
+.pact-num { position: relative; flex: none; width: 34px; height: 34px; display: block; }
+.pact-num img { width: 34px; height: 34px; }
+.pact-num b {
+  position: absolute; left: 10px; top: 3px; width: 14px;
+  font-size: 24px; font-weight: 700; color: #fff; line-height: normal;
+}
+.pact-txt { font-size: 18px; font-weight: 700; color: #fff; white-space: nowrap; line-height: normal; }
+
+/* carrossel de banners: arrasta com mouse e dedo; bolinhas na base */
+.bcar { width: 402px; margin-top: 28px; }
+.bcar-view { width: 402px; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.bcar-view.is-dragging { cursor: grabbing; user-select: none; }
+.bcar-track { display: flex; width: max-content; transition: transform .45s ease; }
+.bslide { flex: none; width: 402px; }
+.bslide img { max-width: 100%; height: auto; }
+.bcar-dots { display: flex; justify-content: center; align-items: center; gap: 9px; padding-top: 12px; }
+.bcar-dot {
+  width: 9px; height: 9px; border-radius: 50%; background: #d9d9d9;
+  padding: 0; border: 0; cursor: pointer; transition: background .2s ease;
+}
+.bcar-dot.is-active { background: var(--vermelho); }
+.bcar-dot:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+.pacts-text { padding: 92px 20px 0 20px; }
+.pacts-text h2 { width: 362px; font-size: 24px; font-weight: 700; color: var(--vermelho); text-transform: uppercase; line-height: normal; }
+.pacts-text p { width: 362px; margin-top: 23px; font-size: 18px; line-height: normal; color: #000; }
+.pacts-text p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 8 — CARROSSEL + VIDEO  (402 x 870)
+   ========================================================= */
+.bl-carousel { min-height: 870px; }
+
+.carousel { position: relative; width: 382px; margin-left: 20px; height: 430px; }
+/* arrastavel com mouse e dedo (js/principal.js); pan-y mantem a rolagem vertical da pagina */
+.carousel-viewport { width: 382px; height: 430px; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.carousel-viewport.is-dragging { cursor: grabbing; user-select: none; }
+.carousel-track { position: relative; width: 2085px; height: 430px; transition: transform .45s ease; }
+
+.carousel-bg {
+  position: absolute; inset: 0; display: block;
+  background-image: linear-gradient(-27.52deg, #e30613 11.522%, #ffdc00 118.65%);
+}
+.carousel-shape { position: absolute; left: 0; top: 0; width: 2074.81px; height: 427.744px; display: block; }
+.carousel-shape img { width: 100%; height: 100%; }
+
+.cslide { position: absolute; }
+.cslide > span { position: absolute; inset: 0; overflow: hidden; display: block; }
+.cslide img { position: absolute; width: 495.45%; height: 258.5%; max-width: none; }
+
+.cslide--1 { left: 107px;  top: 61px; width: 177px; height: 185px; }
+.cslide--1 img { left: -21.49%;  top: -18.97%; }
+.cslide--2 { left: 490px;  top: 51px; width: 179px; height: 187px; }
+.cslide--2 img { left: -147.93%; top: -16.21%; }
+.cslide--3 { left: 915px;  top: 54px; width: 177px; height: 185px; }
+.cslide--3 img { left: -147.93%; top: -129.25%; }
+.cslide--4 { left: 1328px; top: 46px; width: 183px; height: 192px; }
+.cslide--4 img { left: -20.66%;  top: -129.25%; }
+.cslide--5 { left: 1725px; top: 37px; width: 192px; height: 201px; }
+.cslide--5 img { left: -260.33%; top: -129.25%; }
+
+.carousel-captions {
+  position: absolute; left: 52px; top: 269px; width: 1949.821px; height: 100px;
+  padding: 10px 10px 21px;
+  display: flex; flex-direction: column; align-items: flex-start;
+}
+.carousel-caption-row { display: flex; align-items: center; gap: 96px; width: 100%; }
+.ccap {
+  flex: none; width: 320px;
+  font-size: 24px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+.ccap--title { width: 266px; text-transform: uppercase; }
+.ccap--sm { font-size: 18px; }
+
+.carousel-nav { position: absolute; top: 208px; width: 25px; height: 25px; z-index: 2; }
+.carousel-nav img { width: 25px; height: 25px; }
+.carousel-nav--prev { left: 15px; }
+.carousel-nav--next { left: 338px; }
+.carousel-nav--next img { transform: rotate(180deg); }
+
+.video { position: relative; height: 440px; }
+.video-ring { position: absolute; left: -38.06%; right: -35.07%; top: 231px; height: 299px; display: block; }
+.video-ring img { width: 100%; height: 100%; }
+.video-play { position: absolute; left: 50%; margin-left: -169px; top: 102px; width: 338px; height: 338px; display: block; }
+.video-play img { width: 338px; height: 338px; }
+.video-sound { position: absolute; left: 303px; top: 126px; width: 45px; height: 45px; display: block; }
+.video-sound-bg  { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
+.video-sound-ico { position: absolute; left: 7px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+
+/* =========================================================
+   BLOCO 9 — DIVERGENCIAS  (402 x 810)
+   ========================================================= */
+.bl-closing { min-height: 810px; }
+
+.closing-card {
+  position: relative; width: 413px; margin: -10px 0 0 -5px; min-height: 511px;
+  background: var(--vermelho); border: 1px solid #000;
+  border-radius: 0 0 40px 30px;
+  /* grupo de texto do Figma: 406px de altura com conteudo centrado verticalmente */
+  padding: 46px 25px 57px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 38px;
+}
+.closing-card h2 { width: 362px; font-size: 24px; font-weight: 700; color: var(--amarelo); text-transform: uppercase; text-align: center; line-height: normal; }
+.closing-body { width: 362px; text-align: center; }
+.closing-body p { font-size: 18px; line-height: normal; color: #fff; }
+.closing-body p + p { margin-top: 20px; }
+
+.closing-outro { padding: 88px 19px 0 24px; }
+.closing-outro p { width: 359px; font-size: 18px; font-weight: 700; color: var(--vermelho); line-height: normal; }
+.closing-outro p + p { margin-top: 20px; }
+

@@ -1,0 +1,216 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina ACADEMIA
+   Figma: 4424:19140 — 402 x 6590  (HEAD 182 + artigo 6292 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Coordenadas do CSS = y da pagina menos os 182px do HEAD.
+   ========================================================= */
+
+.academia .head { --head-bg: var(--rosa); }
+.academia { --vermelho-forte: #ba0042; }
+
+.bl { position: relative; width: 402px; background: #fff; overflow: hidden; display: flow-root; }
+.backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.backdrop > span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+/* =========================================================
+   BLOCO 1 — hero   (0 .. 911)
+   ========================================================= */
+.bl-hero { min-height: 911px; }
+
+.d-hero-wash { left: -65px; top: 0; width: 554px; height: 629px; background: var(--laranja); opacity: .2; }
+.d-swoosh-a { left: -146px; top: 514px; width: 739px; height: 361.5px; }
+.d-swoosh-b { left: -183px; top: 539px; width: 736px; height: 361px; }
+.d-swoosh-c { left: -185px; top: 552px; width: 740px; height: 361.5px; }
+.d-swoosh-a img, .d-swoosh-b img, .d-swoosh-c img { transform: rotate(180deg); }
+
+.hero-title {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; gap: 16px; align-items: center; justify-content: center;
+  width: 364px; margin: 45.5px 0 0 19px; text-align: center;
+}
+.hero-title-a {
+  display: block; width: 100%; height: 37px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 42.571px; color: var(--azul); line-height: 37px;
+}
+.hero-title-b {
+  display: block; width: 100%;
+  font-size: 66.696px; font-weight: 700; color: var(--rosa); line-height: 63px;
+}
+
+.hero-lead {
+  position: relative; z-index: 1;
+  width: 361px; margin: 27.5px 0 0 21px;
+  font-size: 20px; font-style: italic; color: var(--cinza); text-align: center; line-height: 23px;
+}
+
+.badge74 {
+  position: relative; z-index: 1;
+  width: 127px; margin: 41px 0 0 137.5px;
+  display: flex; flex-direction: column; gap: 13px; align-items: center;
+}
+.badge74-ed {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 2px 15px; background: var(--rosa);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.badge74-autor { font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
+
+.hero-foto {
+  position: absolute; z-index: 1;
+  left: -4px; top: 478px; width: 398px; height: 435px; margin: 0; overflow: hidden;
+}
+.hero-foto img {
+  position: absolute; left: -111.34%; top: -8.35%; width: 226.29%; height: 119.45%; max-width: none;
+}
+
+/* =========================================================
+   BLOCO 2 — um minuto   (911 .. 1755)
+   ========================================================= */
+.bl-minuto { min-height: 844px; }
+
+.d-minuto-fill { left: -2px; top: -26px; width: 406px; height: 817px; }
+.d-minuto-sub { left: -69px; top: 432.5px; width: 662px; height: 361.5px; }
+
+.t-minuto { position: relative; z-index: 1; width: 360px; margin: 67px 0 0 22px; }
+.t-minuto p { font-size: 18px; color: #fff; line-height: normal; }
+.t-minuto p + p { margin-top: 18px; }
+
+.quote-minuto {
+  position: absolute; z-index: 1;
+  left: 49px; top: 529px; width: 294px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 31.571px; color: var(--amarelo); text-align: center; line-height: normal;
+}
+
+/* =========================================================
+   BLOCO 3 — o caminho   (1755 .. 2599)
+   ========================================================= */
+.bl-caminho { min-height: 844px; }
+
+.h-caminho {
+  width: 353px; margin: 40px 0 0 24px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho); line-height: normal; text-transform: uppercase;
+}
+.t-caminho { width: 353px; margin: 23px 0 0 24px; }
+.t-caminho p { font-size: 18px; color: #000; line-height: normal; }
+.t-caminho p + p { margin-top: 18px; }
+
+.gallery {
+  position: relative; width: 395px; height: 391px;
+  margin: 66px 0 0 7px; overflow: hidden; background: #fff; padding: 10px;
+}
+/* cards dos premios (264x481 cada) andando item por item;
+   arrasta com mouse e dedo (js/academia.js) */
+.gallery-view { position: relative; width: 375px; height: 372px; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.gallery-view.is-dragging { cursor: grabbing; user-select: none; }
+.gallery-track { display: flex; align-items: center; gap: 12px; width: max-content; transition: transform .45s ease; }
+.gslide { flex: none; width: 204px; height: 372px; }
+.gslide img { width: 100%; height: 100%; object-fit: contain; }
+
+.gallery-arrow {
+  position: absolute; top: 168px; width: 25px; height: 25px; z-index: 2;
+  background: none; border: 0; padding: 0; cursor: pointer;
+}
+.gallery-arrow--l { left: 0; }
+.gallery-arrow--r { left: 351px; }
+.gallery-arrow--r img { transform: rotate(180deg); }
+.gallery-arrow img { width: 100%; height: 100%; pointer-events: none; }
+
+/* =========================================================
+   BLOCO 4 — 20 negócios   (2599 .. 3443)
+   ========================================================= */
+.bl-mapa { min-height: 844px; }
+
+.t-para-chegar { width: 362px; margin: 31px 0 0 20px; }
+.t-para-chegar p { font-size: 18px; color: #000; line-height: normal; }
+.t-para-chegar p + p { margin-top: 18px; }
+
+.h-20-negocios {
+  width: 362px; margin: 25px 0 0 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho-forte); line-height: normal; text-transform: uppercase;
+}
+
+.mapa-badges { position: relative; width: 354px; height: 362px; margin: 56px 0 0 15px; }
+.mapa-badges img { width: 100%; height: 100%; object-fit: cover; }
+.badge {
+  position: absolute; width: 37px; height: 37px; border-radius: 18px; background: var(--vermelho);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18.157px; font-weight: 700; line-height: normal;
+}
+.badge--norte    { left: 124px; top: 46px; }
+.badge--nordeste { left: 287px; top: 75px; }
+.badge--centro   { left: 166px; top: 135px; }
+.badge--sudeste  { left: 243px; top: 186px; }
+.badge--sul      { left: 148px; top: 286px; }
+
+/* =========================================================
+   BLOCO 5 — votação pública   (3443 .. 4316)
+   ========================================================= */
+.bl-votacao { min-height: 873px; }
+
+.d-bg-photo { left: 0; top: 108px; width: 410px; height: 387px; background: var(--vermelho-forte); }
+
+.btn-pill {
+  position: relative; z-index: 1;
+  display: flex; align-items: center; justify-content: center;
+  width: 351px; height: 42px; margin: 17px 0 0 20px; border-radius: 21px;
+  padding: 10px 24px; gap: 10px;
+  background: var(--rosa); color: #fff; font-family: "Inter", sans-serif;
+  font-size: 18px; font-weight: 700; text-decoration: none; line-height: normal;
+  white-space: nowrap;
+}
+.btn-pill-seta { width: 14px; height: 15px; transform: rotate(45deg); flex-shrink: 0; }
+.btn-pill--votacao { margin-top: 50px; }
+
+.h-votacao {
+  position: relative; z-index: 1;
+  width: 350px; margin: 93px 0 0 24px;
+  font-size: 24px; font-weight: 700; color: var(--amarelo); line-height: normal; text-transform: uppercase;
+}
+.t-votacao { position: relative; z-index: 1; width: 350px; margin: 23px 0 0 24px; }
+.t-votacao p { font-size: 18px; color: #fff; line-height: normal; }
+.t-votacao p + p { margin-top: 18px; }
+
+.foto-votacao-r, .foto-votacao-l {
+  position: absolute; z-index: 1; top: 540px; width: 278px; height: 333px;
+}
+.foto-votacao-r { left: 124px; }
+.foto-votacao-l { left: -24px; }
+.foto-votacao img { width: 100%; height: 100%; }
+
+/* =========================================================
+   BLOCO 6 — pode ser você   (4316 .. 5448)
+   ========================================================= */
+.bl-voce { min-height: 1132px; }
+
+.h-voce {
+  width: 350px; margin: 58px 0 0 24px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho-forte); line-height: normal; text-transform: uppercase;
+}
+.t-voce { width: 350px; margin: 23px 0 0 24px; }
+.t-voce p { font-size: 18px; color: #000; line-height: normal; }
+.t-voce p + p { margin-top: 18px; }
+.t-voce strong { font-weight: 700; color: var(--vermelho-forte); }
+
+/* =========================================================
+   BLOCO 7 — impulso real   (5448 .. 6292)
+   ========================================================= */
+.bl-premio { min-height: 844px; }
+
+.h-premio {
+  width: 350px; margin: 24px 0 0 24px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho-forte); line-height: normal; text-transform: uppercase;
+}
+.t-premio { width: 350px; margin: 23px 0 0 24px; }
+.t-premio p { font-size: 18px; color: #000; line-height: normal; }
+.t-premio p + p { margin-top: 18px; }
+
+.logo-premio {
+  position: relative; width: 144px; height: 63px; margin: 57px auto 0; overflow: hidden;
+}
+.logo-premio img {
+  position: absolute; left: 0; top: 2.55%; width: 100%; height: 94.91%; max-width: none;
+}

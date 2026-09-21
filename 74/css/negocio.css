@@ -1,0 +1,273 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina NOVO NEGÓCIO
+   Figma: 4424:19580 — 402 x 8048
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Imagens com scaleMode STRETCH + imageTransform [[a,0,c],[0,d,f]]:
+   img = (W/a, H/d), deslocada (-c*W/a, -f*H/d) dentro da moldura.
+   ========================================================= */
+
+.negocio .head { --head-bg: var(--pink); }
+
+/* blocos: 402 de largura, altura minima do Figma, decoracoes recortadas */
+.bl {
+  position: relative;
+  width: 402px;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* camada de decoracao — so o que sangra / gira / sobrepoe */
+.backdrop { position: absolute; inset: 0; pointer-events: none; }
+.backdrop span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+.h-secao { font-size: 24px; font-weight: 700; color: var(--pink); line-height: normal; text-transform: uppercase; }
+
+/* =========================================================
+   BLOCO 1 — abertura  (402 x 852)
+   ========================================================= */
+.bl-hero { min-height: 852px; }
+
+.hero-foto { left: 0; top: -218px; width: 402px; height: 571px; overflow: hidden; }
+.backdrop .hero-foto img { position: absolute; left: 0; top: -62.91px; width: 402px; height: 818.46px; }
+
+.hero-title { position: relative; margin-top: 387px; line-height: normal; }
+.hero-title .azul {
+  display: block; width: 361px; margin-left: 18px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 44.57px; color: var(--azul); text-align: center; line-height: 48px;
+}
+.hero-title .pink {
+  display: block; width: 361px; margin: 0 0 0 24px;
+  font-size: 73.7px; font-weight: 700; color: var(--pink); text-align: center;
+}
+
+.hero-lead {
+  position: relative; width: 349px; margin: 26px 0 0 26px;
+  font-size: 20px; font-style: italic; color: var(--cinza); text-align: center; line-height: normal;
+}
+
+.hero-badge {
+  position: relative; width: 127px; margin: 51px 0 0 142.5px;
+  display: flex; flex-direction: column; align-items: center; gap: 13px;
+}
+.hero-edition {
+  display: flex; align-items: center; justify-content: center;
+  width: 127px; height: 26px; background: var(--pink);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.hero-author { font-size: 18px; font-weight: 500; font-style: italic; color: #000; text-align: center; line-height: normal; }
+
+/* =========================================================
+   BLOCO 2 — a história do primeiro pudim  (402 x 1368)
+   ========================================================= */
+.bl-historia { min-height: 1368px; }
+
+.foto-39 { position: relative; width: 415px; height: 441px; margin-left: -7px; overflow: hidden; }
+.foto-39 img { position: absolute; left: 0; top: -80.07px; width: 415px; height: 521.07px; }
+
+.q-azul {
+  width: 365px; min-height: 160px; background: var(--azul-claro); border-radius: 25px;
+  display: flex; align-items: center; justify-content: center; padding: 20px 20px;
+}
+.q-azul p { width: 325px; font-size: 18px; color: #fff; text-align: center; line-height: normal; }
+.q-azul--1 { margin: -93px 0 0 11px; position: relative; z-index: 1; }
+
+.foto-40 { position: relative; height: 245px; width: 418px; margin: -67px 0 0 0; }
+.foto-40 img { width: 418px; height: 245px; object-fit: cover; }
+
+.rabisco-8717 { position: absolute; left: 82px; top: 551px; width: 102px; height: 25px; z-index: 2; }
+.rabisco-8717-a { position: absolute; left: 0; top: 1px; width: 102px; height: 24px; }
+.rabisco-8717-b { position: absolute; left: 73px; top: 0; width: 29px; height: 25px; }
+
+.q-azul--2 { min-height: 140px; margin: -70px 0 0 16px; position: relative; z-index: 1; }
+
+.foto-41 { position: relative; height: 305px; width: 459px; margin: -72px 0 0 -32px; }
+.foto-41 img { display: block; width: 459px; height: 305px; object-fit: fill; }
+
+/* SVG exportado ja inclinado: posicionado pelo absoluteRenderBounds */
+.callout-pudim { position: absolute; left: 201px; top: 891.78px; width: 145.63px; height: 84.57px; z-index: 2; }
+
+.q-azul--3 { min-height: 120px; margin: 43px 0 0 19px; position: relative; z-index: 1; }
+
+/* =========================================================
+   BLOCO 3 — o que vem depois da primeira venda  (402 x 976)
+   ========================================================= */
+.bl-depois { min-height: 976px; }
+
+.t-pink { position: relative; width: 349px; font-size: 20px; font-weight: 700; color: var(--pink); text-align: center; line-height: normal; }
+.t-pink--0 { margin: 44px 0 0 27px; }
+.t-pink--1 { margin: 37px 0 0 27px; }
+
+/* o SVG exportado ja vem com o topo reto (o Figma nao aplica a rotacao na exportacao) */
+.depois-arco { left: -244.4px; top: 128px; width: 891px; height: 428px; }
+
+.checklist { position: relative; width: 308px; margin: 84px 0 0 47px; }
+.checklist li { font-size: 18px; font-weight: 700; color: var(--amarelo); text-align: center; line-height: 19.96px; }
+.checklist li + li { margin-top: 19px; }
+
+.foto-guilherme {
+  position: relative; width: 280px; height: 280px; margin: 45px 0 0 61px;
+  border-radius: 50%; overflow: hidden;
+}
+.foto-guilherme img { display: block; width: 280px; height: 280px; object-fit: cover; }
+/* contorno de 10px INSIDE em degradê */
+.foto-guilherme::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; padding: 10px;
+  background: linear-gradient(322.7deg, #ff2d55 12%, #0e6eae 107.2%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+
+.t-validar { position: relative; width: 353px; margin: 45px 0 0 22px; font-size: 18px; color: #000; text-align: left; line-height: normal; }
+.t-validar strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 4 — um erro muito comum + cinco passos  (402 x 919)
+   ========================================================= */
+.bl-erro { min-height: 919px; padding-top: 52px; }
+
+.h-erro { width: 362px; margin-left: 22px; }
+.t-erro { width: 362px; margin: 20px 0 0 22px; }
+.t-erro p { font-size: 18px; color: #000; line-height: normal; }
+.t-erro p + p { margin-top: 20px; }
+.t-erro strong { font-weight: 700; }
+
+.h-cinco {
+  width: 259px; margin: 58px 0 0 66px;
+  font-size: 24px; font-weight: 700; color: var(--azul); text-align: center; line-height: normal;
+}
+
+.passos { width: 402px; margin-top: 18px; }
+.passos li {
+  min-height: 64px; background: var(--pink);
+  display: flex; align-items: center; gap: 14px; padding: 15px 20px;
+}
+.passos li + li { margin-top: 8px; }
+.passo-n {
+  flex: none; width: 34px; height: 34px; border-radius: 50%;
+  background-image: linear-gradient(228.5deg, #ffdc00 5.6%, #ff5564 82.5%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 700; color: #fff; line-height: normal;
+}
+.passo-t { font-size: 18px; font-weight: 700; color: #fff; line-height: normal; }
+
+/* =========================================================
+   BLOCO 5 — conhecimento é o investimento  (402 x 831)
+   ========================================================= */
+.bl-conhecimento { min-height: 831px; padding-top: 45px; }
+
+.h-conhecimento { width: 368px; margin-left: 18px; }
+.t-conhecimento { width: 368px; margin: 32px 0 0 18px; }
+.t-conhecimento p { font-size: 18px; color: #000; line-height: normal; }
+.t-conhecimento p + p { margin-top: 20px; }
+
+/* SVG exportado ja inclinado: posicionado pelo absoluteRenderBounds */
+.rabisco-sebrae { left: 66.42px; top: 476.43px; width: 263.78px; height: 45.6px; z-index: 2; }
+
+.q-sebrae { position: relative; width: 342px; margin: 90px 0 0 28px; font-size: 26px; font-weight: 700; color: var(--azul); text-align: center; line-height: 28.83px; }
+.fonte-sebrae { position: relative; width: 276px; margin: 30px 0 0 63px; font-size: 14px; font-weight: 700; color: var(--cinza); text-align: center; line-height: normal; }
+
+/* =========================================================
+   BLOCO 6 — e os números comprovam  (402 x 1031)
+   ========================================================= */
+.bl-numeros { min-height: 1031px; padding-top: 53px; }
+
+.h-numeros { width: 362px; margin: 0 auto; text-align: center; }
+
+/* fotos em arco: recorte com o path exportado do Figma */
+.foto-2024, .foto-2026-fundo, .foto-2026-recorte { position: absolute; left: 82px; width: 232px; margin: 0; overflow: hidden; }
+.foto-2024 img, .foto-2026-fundo img, .foto-2026-recorte img { position: absolute; left: 0.12px; width: 231.8px; }
+
+.foto-2024, .foto-2026-fundo {
+  height: 123px;
+  clip-path: path("M232 123C232 90.3784 219.779 59.0928 198.024 36.0259C176.27 12.9589 146.765 0 116 0C85.2349 0 55.7298 12.9589 33.9756 36.0259C12.2214 59.0928 0 90.3784 0 123H232Z");
+}
+.foto-2024 { top: 138px; }
+.foto-2024 img { top: -21.2px; height: 160.93px; }
+.foto-2026-fundo { top: 639px; }
+.foto-2026-fundo img { top: -111.84px; height: 251.53px; }
+
+.foto-2026-recorte {
+  top: 531px; height: 231px;
+  clip-path: path("M232 231C232 198.249 219.779 166.84 198.024 143.681C176.27 120.523 239.282 0 71.1869 0C40.4217 0 55.7298 120.523 33.9756 143.681C12.2214 166.84 0 198.249 0 231H232Z");
+}
+.foto-2026-recorte img { top: -4.76px; height: 252.51px; }
+
+/* abas do ano: topo arredondado */
+.ano {
+  position: relative; width: 365px; margin-left: 18.8px; padding: 20px;
+  border-radius: 25px 25px 0 0;
+  font-size: 32px; font-weight: 700; color: var(--amarelo); text-align: center; line-height: 35.49px;
+}
+.ano--2024 { height: 75px; margin-top: 171px; background: var(--azul-claro); }
+.ano--2026 { height: 71px; margin-top: 243px; background: var(--rosa); }
+
+/* faixas de 45px separadas por 5px, conteudo centralizado */
+.stats { position: relative; width: 402px; display: flex; flex-direction: column; gap: 5px; }
+.stats li {
+  height: 45px; padding: 0 20px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.stats--2024 { margin-top: -7px; }
+.stats--2024 li { background: linear-gradient(90deg, #00adee, #006388); }
+.stats--2026 { margin-top: 0; }
+.stats--2026 li { background: linear-gradient(264.35deg, rgba(205, 56, 39, .6) -13.8%, #ff5564 67.3%); }
+.stat-n { font-size: 24px; font-weight: 700; color: var(--amarelo); line-height: 26.62px; white-space: nowrap; }
+.stat-t { font-size: 18px; font-weight: 700; color: #fff; line-height: 19.96px; white-space: nowrap; }
+
+/* =========================================================
+   BLOCO 7 — um produto pode gerar várias empresas  (402 x 1352)
+   ========================================================= */
+.bl-varias { min-height: 1352px; padding-top: 43px; }
+
+.h-varias { width: 359px; margin: 0 auto; }
+.t-varias { width: 359px; margin: 32px auto 0; }
+.t-varias p { font-size: 18px; color: #000; line-height: normal; }
+.t-varias p + p { margin-top: 20px; }
+
+.foto-picole { position: relative; width: 247px; height: 330px; margin: 76px 0 0 28px; }
+.foto-picole img:first-child { width: 247px; height: 330px; object-fit: cover; }
+.foto-picole-seta { position: absolute; left: 246px; top: 95px; width: 49px; height: 253px; object-fit: contain; }
+
+.h-fonte { width: 447px; margin: 94px 0 0 -23px; text-align: center; }
+
+.foto-faturamento { position: relative; width: 435px; height: 344px; margin: 41px 0 0 -16px; }
+.foto-faturamento > img:first-child { width: 435px; height: 344px; object-fit: cover; }
+
+/* baloes: cantos retos, largura do Figma, ponta de 20x15 (apice a 10.68px) */
+.pill { position: absolute; display: block; height: 37px; padding: 9px; }
+.pill-txt {
+  display: block; font-size: 17.11px; font-weight: 700; color: #fff; text-align: center;
+  line-height: 18.98px; white-space: nowrap; text-transform: lowercase;
+}
+.pill-seta {
+  position: absolute; top: 37px; width: 0; height: 0;
+  border-left: 10.68px solid transparent; border-right: 9.32px solid transparent;
+  border-top: 15px solid currentColor;
+}
+.pill-seta--top {
+  top: -15px; border-top: 0; border-bottom: 15px solid currentColor;
+  border-left-width: 9.32px; border-right-width: 10.68px;
+}
+
+.pill--1 { left: 155px; top: 12px;  width: 123px; background: #ff5564; color: #ff5564; }
+.pill--1 .pill-seta { left: 51.5px; }
+.pill--2 { left: 72px;  top: 83px;  width: 87px;  background: #ef5400; color: #ef5400; }
+.pill--2 .pill-seta { left: 33.5px; }
+.pill--3 { left: 247px; top: 174px; width: 150px; background: #bc1d2b; color: #bc1d2b; }
+.pill--3 .pill-seta { left: 65px; }
+.pill--4 { left: 115px; top: 274px; width: 158px; background: #7d000b; color: #7d000b; }
+.pill--4 .pill-seta { left: 69px; }
+
+/* =========================================================
+   BLOCO 8 — continuar crescendo  (402 x 421)
+   ========================================================= */
+.bl-continuar { min-height: 421px; padding-top: 55px; }
+
+.h-continuar { width: 363px; margin-left: 20px; }
+.t-continuar { width: 363px; margin: 32px 0 0 20px; }
+.t-continuar p { font-size: 18px; color: #000; line-height: normal; }
+.t-continuar p + p { margin-top: 20px; }

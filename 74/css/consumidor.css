@@ -1,0 +1,231 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina CONSUMIDOR
+   Figma: 4424:19327 — 402 x 7272  (HEAD 182 + artigo 6974 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Esta pagina tinge o COMPONENTE HEAD de amarelo (categoria CONSUMIDOR)
+   via --head-bg, e usa uma variante rosa do logo (mix-blend-mode: multiply)
+   exportada especificamente para essa instancia no Figma.
+
+   Coordenadas do CSS = y da pagina menos os 182px do HEAD.
+   ========================================================= */
+
+.consumidor .head { --head-bg: var(--amarelo); }
+.consumidor .head-logo { mix-blend-mode: multiply; }
+
+/* o artigo inteiro e um unico contexto de posicionamento:
+   .art-bg carrega fundos coloridos, fotos que sangram e formas decorativas;
+   o texto flui por cima em <section> */
+.art {
+  position: relative;
+  width: 402px;
+  min-height: 7449px;
+  background: #fff;
+  overflow: hidden;
+}
+.art-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+/* espaco de banner (um anuncio por vez, sorteado em js/consumidor.js).
+   ATENCAO: as decoracoes ficam em .art-bg por coordenada absoluta, entao as que
+   estao abaixo do banner foram empurradas na mesma medida. */
+.adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; background: #fff; }
+.adbox img { max-width: 100%; height: auto; }
+
+.art-bg > span { position: absolute; display: block; }
+.art-bg > .d-num { display: flex; }
+.art-bg img { width: 100%; height: 100%; }
+
+/* display:flow-root impede que a margem do primeiro filho escape da secao */
+.s { position: relative; z-index: 1; display: flow-root; }
+
+/* =========================================================
+   CAMADA DE DECORAÇÃO  (ordem de pintura do Figma)
+   ========================================================= */
+
+/* -- meia-elipse rosa→marrom atras do prato do hero (metade inferior da caixa 610 em y=-109) -- */
+.d-e117a { left: -121px; top: 196px; width: 610px; height: 305px; }
+
+/* -- cúpula rosa→marrom atras da marmita (meia-elipse virada, caixa 517 em y=2857) -- */
+.d-e117b { left: -54px; top: 2857px; width: 517px; height: 258.5px; transform: scaleY(-1); }
+
+/* -- arco roxo (bowl) no topo do hero -- */
+.d-arco { left: -117px; top: 0; width: 617px; height: 461px; transform: rotate(180deg); }
+
+/* -- fundos solidos de secao -- */
+.d-roxo1    { left: -9px; top: 884px;  width: 416px; height: 576px; background: var(--roxo); }
+.d-laranja1 { left: -9px; top: 1783px; width: 416px; height: 596px; background: var(--amarelo-escuro); }
+
+/* -- fotos que sangram, sobrepondo a transicao entre fundos -- */
+.d-vinho    { left: -113px; top: 1424px; width: 639px; height: 360px; }
+.d-vinho img { object-fit: cover; }
+.d-veggies  {
+  left: -17px; top: 2877px; width: 431px; height: 243px;
+  border-radius: 216px 216px 0 0; overflow: hidden;
+  box-shadow: -10px 18px 8px 0 rgba(0,0,0,.3);
+}
+.d-veggies img { width: 100%; height: 100%; object-fit: fill; object-position: bottom; }
+
+/* -- gradiente vertical laranja -> branco (eixo do meio ate a base) -- */
+.d-grad-laranja {
+  left: -9px; top: 4209px; width: 416px; height: 623px;
+  background-image: linear-gradient(to bottom, #ffaa00 0%, #ffaa00 50%, #ffffff 100%);
+}
+
+/* -- fundos coloridos com topo arredondado das 3 secoes NOME/FOTO/EMBALAGEM -- */
+.d-rosa  { left: 0;   top: 4727px; width: 402px; height: 825px; background: var(--rosa); border-radius: 60px 60px 0 0; }
+.d-azul  { left: -1px; top: 5376px; width: 404px; height: 825px; background: var(--azul-claro); border-radius: 60px 60px 0 0; }
+.d-roxo2 { left: -1px; top: 5977px; width: 404px; height: 805px; background: var(--roxo); border-radius: 60px 60px 0 0; }
+
+/* -- circulos numerados sobre essas 3 secoes -- */
+.d-num {
+  width: 53px; height: 53px; border-radius: 26px; background: var(--vermelho);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 700; color: var(--amarelo); line-height: normal;
+}
+.d-num--1 { left: 177px; top: 4747px; }
+.d-num--2 { left: 177px; top: 5397px; }
+.d-num--3 { left: 177px; top: 5997px; }
+
+/* -- faixas rosa translucidas atras de "O cliente ve/imagina/recebe/compara/decide" -- */
+.d-faixa--1 { left: 130px; top: 6901px; width: 139px; height: 28px; }
+.d-faixa--2 { left: 102px; top: 7006px; width: 196px; height: 28px; }
+.d-faixa--3 { left: 117px; top: 7110px; width: 172px; height: 28px; }
+.d-faixa--4 { left: 102px; top: 7214px; width: 200px; height: 28px; }
+.d-faixa--5 { left: 112px; top: 7318px; width: 181px; height: 28px; }
+
+/* =========================================================
+   BLOCO 1 — abertura   (0 .. 884)
+   ========================================================= */
+.s-hero { min-height: 884px; padding-top: 42px; }
+
+.s-hero h1 {
+  width: 371px; margin-left: 18px;
+  font-size: 41px; font-weight: 700; color: #fff; line-height: 45px;
+}
+.s-hero h1 .am { color: var(--amarelo); }
+
+.hero-lead {
+  width: 365px; margin: 37px 0 0 17px;
+  font-size: 20px; font-style: italic; color: #fff; line-height: 23px;
+}
+
+.hero-foto { position: relative; height: 396px; margin: 45px 0 0 7px; width: 381px; overflow: hidden; }
+.hero-foto img { width: 381px; height: 360px; object-fit: cover; object-position: 20% top; }
+
+.hero-meta {
+  width: 160px; margin: 0px 0 0 125px;
+  display: flex; flex-direction: column; gap: 11px; align-items: flex-start;
+}
+.hero-edition {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 26px; background: var(--amarelo);
+  color: #000; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.hero-author { font-size: 18px; font-weight: 500; font-style: italic; color: #000; text-align: center; line-height: normal; }
+
+/* =========================================================
+   BLOCO 2 — pesquisa do Caltech   (884 .. 1783)
+   ========================================================= */
+.s-pesquisa { min-height: 899px; }
+.t-pesquisa { width: 362px; margin: 58px 0 0 22px; }
+.t-pesquisa p { font-size: 18px; line-height: normal; color: #fff; }
+.t-pesquisa p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 3 — o experimento   (1783 .. 2379)
+   ========================================================= */
+.s-experimento { min-height: 596px; }
+.h-experimento {
+  width: 344px; margin: 58px 0 0 22px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  line-height: normal; text-transform: uppercase;
+}
+.lista-experimento {
+  width: 369px; margin: 35px 0 0 15px;
+  list-style: disc; padding-left: 27px;
+}
+.lista-experimento li { font-size: 18px; line-height: normal; color: #000; }
+
+.t-demonstrou { width: 350px; margin: 69px 0 0 22px; }
+.t-demonstrou p { font-size: 18px; font-weight: 700; color: #000; line-height: normal; }
+.t-demonstrou p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 4 — a conclusão   (2379 .. 3734)
+   ========================================================= */
+.s-conclusao { min-height: 1355px; }
+.t-maastricht { width: 358px; margin: 61px 0 0 22px; }
+.t-maastricht p { font-size: 18px; line-height: normal; color: #000; }
+.t-maastricht p + p { margin-top: 20px; }
+
+.h-conclusao {
+  width: 346px; margin: 370px 0 0 20px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  line-height: normal; text-transform: uppercase;
+}
+
+.t-conclusao { width: 362px; margin: 25px 0 0 20px; }
+.t-conclusao p { font-size: 18px; line-height: normal; color: #000; }
+.t-conclusao p + p { margin-top: 20px; }
+.t-conclusao strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 5 — o preço é apenas uma parte   (3734 .. 4252)
+   ========================================================= */
+.s-sinais { min-height: 518px; }
+.h-sinais {
+  width: 347px; margin: 32px 0 0 22px;
+  font-size: 24px; font-weight: 700; color: var(--vermelho);
+  line-height: normal; text-transform: uppercase;
+}
+.h-sinais .fino { font-weight: 400; }
+
+.t-sinais { width: 356px; margin: 42px 0 0 22px; }
+.t-sinais p { font-size: 18px; color: #000; line-height: normal; }
+.t-sinais p + p, .t-sinais ol + p { margin-top: 20px; }
+.t-sinais ol { list-style: decimal; padding-left: 27px; margin-top: 20px; }
+.t-sinais li { font-size: 18px; color: #000; line-height: normal; }
+
+/* =========================================================
+   BLOCO 6 — nome e descritivo (rosa)   (4252 .. 4901)
+   ========================================================= */
+.s-nome { min-height: 649px; }
+.h-nome { width: 344px; margin: 84px auto 0; font-size: 24px; font-weight: 700; color: var(--amarelo);
+  text-align: center; text-transform: uppercase; line-height: normal; }
+.t-nome { width: 362px; margin: 31px 0 0 22px; }
+.t-nome p { font-size: 18px; line-height: normal; color: #fff; }
+.t-nome p + p { margin-top: 20px; }
+.t-nome strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 7 — foto (azul)   (4901 .. 5502)
+   ========================================================= */
+.s-foto { min-height: 601px; }
+.h-foto { width: 344px; margin: 85px auto 0; font-size: 24px; font-weight: 700; color: var(--amarelo);
+  text-align: center; text-transform: uppercase; line-height: normal; }
+.t-foto { width: 362px; margin: 30px 0 0 22px; }
+.t-foto p { font-size: 18px; line-height: normal; color: #fff; }
+.t-foto p + p { margin-top: 20px; }
+.t-foto strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 8 — embalagem (roxo)   (5502 .. 6307)
+   ========================================================= */
+.s-embalagem { min-height: 805px; }
+.h-embalagem { width: 344px; margin: 84px auto 0; font-size: 24px; font-weight: 700; color: var(--amarelo);
+  text-align: center; text-transform: uppercase; line-height: normal; }
+.t-embalagem { width: 362px; margin: 31px 0 0 22px; }
+.t-embalagem p { font-size: 18px; line-height: normal; color: #fff; }
+.t-embalagem p + p { margin-top: 20px; }
+.t-embalagem strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 9 — faça o teste da promessa   (6307 .. 6974)
+   ========================================================= */
+.s-teste { min-height: 667px; }
+.h-teste { width: 346px; margin: 61px auto 0; font-size: 24px; font-weight: 700; color: var(--vermelho);
+  text-align: center; text-transform: uppercase; line-height: normal; }
+
+.teste-texto { width: 362px; margin: 32px auto 0; font-size: 23px; font-weight: 700; color: #000;
+  text-align: center; line-height: normal; }
+.teste-texto .destaque { position: relative; }

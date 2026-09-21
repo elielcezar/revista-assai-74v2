@@ -1,0 +1,261 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina DELIVERY
+   Figma: 4424:19499 — 402 x 7690  (HEAD 182 + artigo 7392 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Coordenadas do CSS = y da pagina menos os 182px do HEAD.
+   ========================================================= */
+
+.delivery { --bordo: #ba0042; }
+.delivery .head { --head-bg: var(--roxo); }
+
+/* o artigo inteiro e um unico contexto de posicionamento:
+   .art-bg carrega fundos coloridos, fotos que sangram e formas decorativas;
+   o texto flui por cima em <section> */
+.art {
+  position: relative;
+  width: 402px;
+  min-height: 7392px;
+  background: #fff;
+  overflow: hidden;
+}
+.art-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.art-bg > span { position: absolute; display: block; }
+.art-bg img { width: 100%; height: 100%; }
+
+/* display:flow-root impede que a margem do primeiro filho escape da secao */
+.s { position: relative; z-index: 1; display: flow-root; }
+
+/* =========================================================
+   CAMADA DE DECORAÇÃO  (ordem de pintura do Figma)
+   ========================================================= */
+
+.d-e116 { left: -240px; top: 0; width: 868px; height: 434px; }
+
+.d-subtract {
+  left: -124px; top: 139px; width: 635px; height: 318px;
+}
+.d-subtract img { transform: rotate(180deg); }
+
+.d-fantasmas { left: 138px; top: 346px; width: 244px; height: 258px; position: absolute; }
+.d-fantasma-a { position: absolute; left: 15px; top: 29px; width: 229px; height: 229px; }
+.d-fantasma-b { position: absolute; left: 0; top: 0; width: 242px; height: 229px; }
+
+.d-e120a { left: -169px; top: 1300.5px; width: 747px; height: 373.5px; }
+.d-r2a   { left: -25px;  top: 958px; width: 444px; height: 429px; background: var(--vermelho); }
+.d-e118  { left: -180px; top: 1331.5px; width: 747px; height: 373.5px; }
+
+.d-icon-fantasma { left: 25px; top: 1516px; width: 350px; height: 325px; overflow: hidden; }
+.d-icon-fantasma img {
+  position: absolute; left: 0; top: -7.86%; width: 100%; height: 107.86%; max-width: none;
+}
+
+.d-e122a { left: 20px; top: 1863px; width: 362px; height: 362px; }
+
+.d-shutter1 { left: -7px; top: 3731px; width: 428px; height: 309px; }
+.d-shutter1 img { object-fit: cover; }
+
+.d-e121 { left: -104px; top: 4259.5px; width: 609px; height: 304.5px; }
+.d-r2b  { left: -3px;   top: 4040px; width: 410px; height: 230px; background: var(--laranja); }
+
+.d-gemini2 { left: 109px; top: 4360px; width: 296px; height: 385px; overflow: hidden; }
+.d-gemini2 img {
+  position: absolute; left: -67.23%; top: -1.63%; width: 187.84%; height: 113.39%; max-width: none;
+}
+
+.d-camada1 { left: -46px; top: 4452px; width: 458px; height: 229px; }
+
+.d-e122b { left: 34px; top: 5024px; width: 320px; height: 320px; z-index: 1; }
+
+.d-r1472 {
+  left: -94px; top: 5132px; width: 567px; height: 519px;
+  border-radius: 280px 280px 0 0;
+  background-image: linear-gradient(-66.61deg, #e30613 11.52%, #ffdc00 118.65%);
+}
+
+.d-shutter2 { left: 248px; top: 5503px; width: 254px; height: 256px; overflow: hidden; }
+.d-shutter2 img {
+  position: absolute; left: -50%; top: 0; width: 150%; height: 100%; max-width: none;
+}
+
+.d-r1474 {
+  left: -84px; top: 5561px; width: 567px; height: 332px;
+  border-radius: 280px 280px 0 0; background: var(--bordo, #ba0042);
+}
+.d-e120b { left: 71px; top: 5578px; width: 258px; height: 129px; }
+
+.d-r1487 {
+  left: -78px; top: 6301px; width: 567px; height: 340px;
+  border-radius: 280px 280px 0 0;
+  background-image: linear-gradient(-56.57deg, #e30613 11.52%, #ffdc00 118.65%);
+}
+.d-r1486 {
+  left: -98px; top: 6330px; width: 567px; height: 347px;
+  border-radius: 280px 280px 0 0; background: var(--azul-claro);
+}
+.d-r1518 { left: -11px; top: 6665px; width: 413px; height: 496px; background: var(--azul-claro); }
+
+/* =========================================================
+   BLOCO 1 — abertura   (0 .. 927)
+   ========================================================= */
+.s-hero { min-height: 927px; padding-top: 71px; }
+
+.hero-title {
+  width: 361px; margin-left: 21px; line-height: 70px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 57.571px; color: #ffea00;
+}
+.hero-title .am { font-size: 76.571px; color: var(--amarelo); }
+
+.hero-lead {
+  width: 358px; margin: 16px 0 0 24px;
+  font-size: 20px; font-style: italic; color: #fff; line-height: 23px;
+}
+
+.hero-badge {
+  width: 130px; margin: 155px 0 0 22px;
+  display: flex; flex-direction: column; gap: 13px; align-items: flex-start;
+}
+.hero-edition {
+  display: flex; align-items: center; justify-content: center;
+  width: 97px; height: 26px; padding: 0 15px; background: var(--roxo);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.hero-author { font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
+
+.t-hero { width: 362px; margin: 79px 0 0 19px; }
+.t-hero p { font-size: 18px; line-height: normal; color: #000; }
+.t-hero p + p { margin-top: 20px; }
+.t-hero strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 2 — por que isso acontece   (927 .. 2264)
+   ========================================================= */
+.s-porque { min-height: 1337px; padding-top: 89px; }
+
+.h-porque { width: 350px; margin-left: 25px; font-size: 24px; font-weight: 700; color: #ffcc00; line-height: normal; text-transform: uppercase; }
+.t-porque { width: 350px; margin: 30px 0 0 25px; }
+.t-porque p { font-size: 18px; line-height: normal; color: #fff; }
+.t-porque p + p { margin-top: 20px; }
+
+.q-porque { width: 335px; margin: 26px 0 0 25px; font-size: 26px; font-weight: 700; color: #fff; line-height: normal; }
+.q-porque-2 { width: 338px; margin: 46px 0 0 25px; font-size: 18px; font-weight: 700; color: var(--amarelo); line-height: normal; }
+
+/* =========================================================
+   BLOCO 3 — caso real   (2264 .. 3141)
+   ========================================================= */
+.s-caso { min-height: 877px; padding-top: 0px; }
+
+.h-caso { width: 361px; margin-left: 20px; font-size: 24px; font-weight: 700; color: var(--vermelho); line-height: normal; text-transform: uppercase; }
+.t-caso { width: 361px; margin: 21px 0 0 20px; }
+.t-caso p { font-size: 18px; line-height: normal; color: #000; }
+.t-caso p + p { margin-top: 20px; }
+
+.foto-juca {
+  position: absolute; left: 82px; top: 361px; width: 226px; height: 123px;
+  border: 6px solid #fff; overflow: hidden; z-index: 2;
+}
+.foto-juca img { width: 226px; height: 123px; max-width: none; object-fit: cover; object-position: 0 50%; }
+
+.q-juca {
+  width: 361px; min-height: 295px; margin: 103px 0 0 20px; border-radius: 50px;
+  background: var(--bordo);
+  display: flex; align-items: center; justify-content: center; padding: 130px 33px 20px;
+}
+.q-juca p { width: 295px; font-size: 20px; font-weight: 700; color: #fff; text-align: center; line-height: normal; }
+
+.t-mercado { width: 362px; margin: 61px 0 0 20px; font-size: 18px; color: #000; line-height: normal; }
+
+/* =========================================================
+   BLOCO 4 — citação grande (rosa)   (3141 .. 3528)
+   ========================================================= */
+.s-oriento { min-height: 387px; }
+
+.q-oriento {
+  position: relative; width: 417px; min-height: 387px; margin-left: -7px;
+  background: var(--bordo);
+  display: flex; align-items: center; justify-content: center; padding: 77px 27px;
+}
+.q-oriento p { width: 362px; font-size: 26px; font-weight: 700; color: var(--amarelo); text-align: center; line-height: normal; }
+
+/* =========================================================
+   BLOCO 5 — bloqueio e ranqueamento   (3528 .. 5132)
+   ========================================================= */
+.s-bloqueio { min-height: 1604px; padding-top: 62px; }
+
+.t-conferem { width: 362px; margin-left: 20px; font-size: 18px; color: #000; line-height: normal; }
+.t-conferem strong { font-weight: 700; }
+
+.t-bloqueio { width: 358px; margin: 409px 0 0 20px; }
+.t-bloqueio p { font-size: 18px; color: #fff; line-height: normal; }
+.t-bloqueio p:first-child { font-size: 24px; font-weight: 700; }
+.t-bloqueio p:first-child strong { font-weight: 700; }
+.t-bloqueio p + p { margin-top: 20px; }
+
+.t-repassar {
+  width: 358px; margin: 434px 0 0 20px;
+  font-size: 18px; font-weight: 700; color: #000; text-align: center; line-height: normal;
+}
+.t-acompanhando {
+  width: 355px; margin: 42px 0 0 27px;
+  font-size: 18px; font-weight: 700; color: #000; text-align: center; line-height: normal;
+}
+
+/* =========================================================
+   BLOCO 6 — pausar / fiscalização   (5132 .. 6301)
+   ========================================================= */
+.s-pausar { min-height: 1169px; }
+
+.q-pausar {
+  position: relative; width: 402px; min-height: 435px; padding: 253px 21px 0;
+  display: flex; align-items: flex-start; justify-content: center;
+}
+.q-pausar p { width: 360px; font-size: 20px; font-weight: 700; color: #fff; text-align: center; line-height: normal; }
+
+.h-fiscalizacao {
+  width: 177px; margin: 63px 0 0 109px;
+  font-size: 24px; font-weight: 700; color: var(--bordo); text-align: center;
+  line-height: normal; text-transform: uppercase;
+}
+.t-discussao {
+  width: 359px; margin: 69px auto 0;
+  font-size: 20px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+.t-senacon { width: 362px; margin: 97px 0 0 20px; }
+.t-senacon p { font-size: 18px; color: #000; line-height: normal; }
+.t-senacon p + p { margin-top: 20px; }
+.t-senacon strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 7 — confira e leia tudo   (6301 .. 7392)
+   ========================================================= */
+.s-confira { min-height: 1091px; padding-top: 102px; }
+
+.h-confira {
+  width: 350px; margin: 0 auto;
+  font-size: 24px; font-weight: 700; color: var(--amarelo); text-align: center;
+  line-height: normal; text-transform: uppercase;
+}
+.t-confira { width: 338px; margin: 19px auto 0; }
+.t-confira p { font-size: 18px; color: #fff; line-height: normal; }
+.t-confira p + p { margin-top: 20px; }
+
+/* cartoes empilhados: cada um sobe sobre o anterior, corner-radius 50 */
+.dicas { width: 402px; margin-top: 48px; display: flex; flex-direction: column; align-items: center; }
+.dica {
+  width: 402px; height: 120px; margin-bottom: -29px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px 26px 44px 25px;
+  border-radius: 50px;
+  font-size: 23px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+  box-shadow: 0 -3px 2px rgba(0,0,0,.25);
+}
+.dica--vermelho { background: var(--vermelho); white-space: nowrap; }
+.dica--laranja  { background: var(--laranja); white-space: nowrap; }
+.dica--grad     { background-image: linear-gradient(-37.02deg, #e30613 11.52%, #ffdc00 118.65%); font-size: 24px; }
+.dicas .dica:last-child { margin-bottom: 0; padding: 20px 26px; white-space: nowrap; }
+
+.t-final {
+  width: 362px; margin: 153px 0 0 20px;
+  font-size: 20px; font-weight: 700; color: #000; text-align: center; line-height: normal;
+}

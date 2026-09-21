@@ -1,0 +1,373 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina GESTÃO 01
+   Figma: 4424:20033 — 402 x 9507  (HEAD 182 + artigo 9209 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Coordenadas do CSS = coordenadas do frame "Gestão 1" no Figma
+   (y da pagina menos os 182 px do HEAD).
+   ========================================================= */
+
+:root {
+  --azul-medio: #0082c8;
+  --azul-claro2: #009fe3;
+  --grad-card: linear-gradient(-67.744deg, #e30613 11.522%, #ffdc00 118.65%);
+}
+
+.head { --head-bg: var(--vermelho); }
+
+/* o artigo inteiro e um unico contexto de posicionamento:
+   a camada .art-bg carrega as decoracoes, o texto flui por cima */
+.art {
+  position: relative;
+  width: 402px;
+  min-height: 9209px;
+  background: #fff;
+  overflow: hidden;
+}
+.art-bg { position: absolute; inset: 0; pointer-events: none; }
+.art-bg > span { position: absolute; display: block; }
+.art-bg img { width: 100%; height: 100%; }
+
+/* as secoes so controlam o ritmo vertical do texto.
+   display:flow-root impede que a margem do primeiro filho escape e empurre a secao. */
+.s { position: relative; display: flow-root; }
+
+/* =========================================================
+   CAMADA DE DECORAÇÃO  (ordem de pintura do Figma)
+   ========================================================= */
+
+/* -- textura atras dos cards da conta -- */
+.d-rect1488 { left: 0; top: 2635px; width: 402px; height: 322px; border-radius: 50px; overflow: hidden; }
+.d-rect1488 img { object-fit: cover; }
+
+/* -- blocos de fundo arredondados no topo -- */
+.d-grad1487 { left: -60px; top: 8833px; width: 567px; height: 340px;
+  border-radius: 280px 280px 0 0;
+  background-image: linear-gradient(-56.571deg, #e30613 11.522%, #ffdc00 118.65%); }
+.d-blue1485 { left: -29px; top: 8070px; width: 475px; height: 479px; background: var(--azul); }
+.d-img1481  { left: -8px;  top: 7554px; width: 416px; height: 235px; }
+.d-img1481 img { object-fit: cover; }
+.d-blue1472 { left: -81px; top: 5088px; width: 567px; height: 790px; background: var(--azul-claro2); border-radius: 280px 280px 0 0; }
+.d-blue1474 { left: -81px; top: 5708px; width: 567px; height: 376px; background: var(--azul);        border-radius: 280px 280px 0 0; }
+.d-blue1486 { left: -81px; top: 8862px; width: 567px; height: 347px; background: var(--azul-medio);  border-radius: 280px 280px 0 0; }
+/* girado 180deg no Figma: o arredondamento vai para baixo */
+.d-grad1480 { left: -80px; top: 7789px; width: 567px; height: 376px; }
+.d-grad1480 > span { display: block; width: 100%; height: 100%;
+  border-radius: 0 0 280px 280px;
+  background-image: linear-gradient(120.834deg, #e30613 11.522%, #ffdc00 118.65%); }
+
+/* -- tarjas amarelas atras das duas contas -- */
+.d-yellow1467 { left: 39px; top: 4811px; width: 105px; height: 23px; background: var(--amarelo); }
+.d-yellow1468 { left: 50px; top: 4889px; width: 140px; height: 23px; background: var(--amarelo); }
+
+/* -- balao de fala -- */
+.d-union { left: 68px; top: 2115px; width: 265px; height: 147.835px; }
+
+/* -- arcos (metade de baixo de um circulo de 747px) -- */
+.d-e118b, .d-e120, .d-e118a, .d-e119, .d-e116 { width: 747px; height: 373.5px; }
+.d-e118b { left: -177px; top: 1554.5px; }
+.d-e120  { left: -166px; top: 1523.5px; }
+.d-e118a { left: -234px; top: 205.5px; }
+.d-e119  { left: -260px; top: 192.5px; }
+.d-e116  { left: -267px; top: 185.5px; }
+
+/* -- fotos de sache (recorte nativo do Figma, ja giradas) -- */
+.d-sache1 { left: 159.46px; top: 1761px; width: 251.467px; height: 250.569px; z-index: 1; }
+.d-sache2 { left: 130.87px; top: 1761px; width: 174.094px; height: 249.322px; z-index: 2; }
+.d-sache3 { left: 105.24px; top: 2387px; width: 40.754px; height: 71.422px; }
+.d-sache4 { left: 181.24px; top: 2387px; width: 40.754px; height: 71.422px; }
+.d-sache5 { left: 258.24px; top: 2387px; width: 40.754px; height: 71.422px; }
+.d-sache1 img, .d-sache2 img, .d-sache3 img, .d-sache4 img, .d-sache5 img { object-fit: fill; }
+
+/* -- blocos azuis chapados -- */
+.d-blue1361 { left: -10px; top: 1192px; width: 414px; height: 434px; background: var(--azul-medio); }
+.d-blue1360 { left: 0;     top: -9px;   width: 402px; height: 379px; background: var(--azul-medio); }
+.d-blue2    { left: -1px;  top: 3748px; width: 410px; height: 412px; background: var(--azul-medio); }
+
+/* -- arte da abertura (sache + gotas), extraida da composicao do Figma:
+   o codegen exportou os recortes de Rectangle 1457 com percentuais invalidos -- */
+.d-heroart { left: 0; top: 203px; width: 402px; height: 458px; }
+
+/* -- arco do bloco do casal -- */
+.d-e121 { left: -102px; top: 4149.5px; width: 609px; height: 304.5px; }
+
+/* -- fotos e ilustracoes -- */
+.d-img1466 {
+  position: absolute; left: 23px; top: 196px; width: 345px; height: 196px;
+  overflow: visible; z-index: 2; pointer-events: none;
+}
+.d-img1466 img {
+  width: 100%; height: 100%; object-fit: contain;
+  transform: scale(1.18); transform-origin: 55% 85%;
+}
+
+.d-img1473 { left: 91px; top: 4986px; width: 221px; height: 204px; overflow: hidden; }
+.d-img1473 > span { position: absolute; inset: 0; display: block; overflow: hidden; }
+.d-img1473 img { position: absolute; left: 3.85%; top: 0; width: 92.31%; height: 100%; max-width: none; }
+
+.d-e126 { left: 122px; top: 5022px; width: 184px; height: 152px; mix-blend-mode: multiply; }
+
+.d-img1479 { left: 22px; top: 6150px; width: 347px; height: 104px; overflow: hidden; }
+.d-img1479 > span { position: absolute; inset: 0; display: block; overflow: hidden; }
+.d-img1479 img { position: absolute; left: .72%; top: -43.89%; width: 96.9%; height: 182%; max-width: none; }
+
+.d-img1478 { left: 79px; top: 6382px; width: 239px; height: 148px; overflow: hidden; }
+.d-img1478 > span { position: absolute; inset: 0; display: block; overflow: hidden; }
+.d-img1478 img { position: absolute; left: 16.25%; top: -4.5%; width: 67.5%; height: 109%; max-width: none; }
+
+.d-pct {
+  left: 190px; top: 6431px; width: 29px;
+  font-size: 46px; font-weight: 700; color: var(--vermelho);
+  text-align: center; line-height: normal;
+}
+
+/* -- faixas gradiente ficha tecnica x CMV -- */
+.d-grad1455 { left: -22px; top: 6263px; width: 443px; height: 110px;
+  background-image: linear-gradient(to right, #00adee, #006388); }
+.d-grad1477 { left: -23px; top: 6538px; width: 444px; height: 110px;
+  background-image: linear-gradient(to right, #00adee, #006388); }
+
+/* Line 1: cinza quente a 75% (medido no render do Figma) */
+.d-tabline { left: 247px; top: 7820px; width: 1px; height: 247px; background: rgba(112,107,95,.75); }
+
+/* -- listras amarelas atras da tabela -- */
+/* o seletor precisa vencer ".art-bg > span { display: block }", senao o gap nao vale
+   e as listras (31 + 5) saem do passo das linhas da tabela (36) */
+.art-bg > .d-stripes { left: 2px; top: 7818px; width: 390px; height: 247px;
+  display: flex; flex-direction: column; gap: 5px; }
+.d-stripes i { display: block; height: 31px; background: var(--amarelo); }
+.d-stripes i:nth-child(2), .d-stripes i:nth-child(4), .d-stripes i:nth-child(6) { opacity: .4; }
+.d-stripes i:nth-child(3), .d-stripes i:nth-child(5), .d-stripes i:nth-child(7) { opacity: .2; }
+
+/* -- chantilly do fecho -- */
+.d-image6 { left: 134px; top: 8790px; width: 132px; height: 132px; overflow: visible; z-index: 2; }
+.d-image6 img { width: 88%; height: 88%; margin: 0 6%; object-fit: contain; }
+.d-vec321 { left: 144px; top: 8880px; width: 113px; height: 33px; mix-blend-mode: multiply; }
+
+/* =========================================================
+   BLOCO 1 — abertura   (0 .. 928)
+   ========================================================= */
+.s-hero { min-height: 928px; padding-top: 60px; }
+
+.s-hero h1 { display: flex; flex-direction: column; }
+.h1-kicker {
+  width: 325px; margin-left: 20px; line-height: 60.5px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 48.571px; color: #fff;
+}
+.h1-main {
+  width: 362px; margin: -28px 0 0 20px; line-height: 116px;
+  font-weight: 700; font-size: 89px; color: var(--amarelo-escuro);
+}
+
+.hero-lead {
+  width: 341px; margin: 8px 0 0 20px;
+  font-size: 20px; font-style: italic; line-height: 23px; color: #fff;
+}
+
+.hero-meta {
+  width: 130px; margin: 37px 0 0 21px;
+  display: flex; flex-direction: column; gap: 13px; align-items: flex-start;
+}
+.hero-edition {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 2px 15px; background: var(--vermelho);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.hero-author { font-size: 18px; font-weight: 500; font-style: italic; color: #fff; line-height: normal; }
+
+.p-intro-1 { width: 362px; margin: 227px 0 0 20px; font-size: 18px; line-height: normal; color: #000; }
+.p-intro-2 { width: 361px; margin: 28px 0 0 21px; font-size: 18px; line-height: normal; color: #000; }
+
+/* =========================================================
+   BLOCO 2 — foto de abertura   (928 .. 1192)
+   ========================================================= */
+.s-foto { min-height: 264px; }
+.foto-gemini { position: relative; height: 264px; }
+.foto-gemini img { position: absolute; left: -45px; top: 0; width: 484px; height: 264px; object-fit: cover; }
+
+/* =========================================================
+   BLOCO 3 — Doce Pecado   (1192 .. 1626)
+   ========================================================= */
+.s-azul1 { min-height: 434px; padding-top: 63px; }
+.p-doce-1 { width: 362px; margin-left: 20px; font-size: 18px; line-height: normal; color: #fff; }
+.p-doce-2 { width: 358px; margin: 48px 0 0 20px; font-size: 18px; line-height: normal; color: #fff; }
+.p-doce-2 strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 4 — o problema nunca é um sachê   (1626 .. 2483)
+   ========================================================= */
+.s-sache { min-height: 857px; padding-top: 54px; }
+.h-sache { width: 213px; margin-left: 20px; font-size: 39px; font-weight: 700; color: var(--amarelo); line-height: normal; }
+.p-bianca { width: 361px; margin: 198px 0 0 21px; font-size: 18px; line-height: normal; color: #000; }
+.p-bianca strong { font-weight: 700; }
+.q-sache {
+  width: 203px; margin: 56px 0 0 95px;
+  font-size: 26px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+.p-multiplique { width: 362px; margin: 83px 0 0 20px; font-size: 18px; line-height: normal; color: #000; }
+
+/* =========================================================
+   BLOCO 5 — a conta   (2483 .. 3012)
+   ========================================================= */
+.s-contas { min-height: 529px; }
+.conta {
+  position: relative; width: 402px; border-radius: 50px;
+  font-size: 24px; font-weight: 700; text-align: center; line-height: normal;
+}
+.conta--1 { min-height: 191px; padding-top: 31px; background: var(--azul-medio); color: #fff; }
+.conta--2 { min-height: 176px; padding-top: 35px; margin-top: -109px; color: #fff;
+  background-image: linear-gradient(to right, #004696, #006388); }
+.conta--3 { min-height: 112px; padding-top: 46px; margin-top: -88px; background: var(--laranja); color: #000; }
+.conta--3 strong { font-weight: 700; }
+.conta > * { display: inline; }
+
+/* =========================================================
+   BLOCO 6 — margem   (3012 .. 3427)
+   ========================================================= */
+.s-margem { min-height: 415px; }
+.p-margem { width: 360px; margin-left: 22px; font-size: 18px; line-height: normal; color: #000; }
+.q-dono { width: 360px; margin: 49px 0 0 22px; }
+.q-dono p { font-size: 26px; font-weight: 700; color: var(--azul); line-height: normal; }
+.p-quando { width: 360px; margin: 75px 0 0 22px; font-size: 18px; line-height: normal; color: #000; }
+
+/* =========================================================
+   BLOCO 7 — carrossel   (3427 .. 3748)
+   ========================================================= */
+.s-carrossel { min-height: 321px; }
+.carousel { position: relative; width: 402px; height: 266px; }
+/* arrastavel com mouse e dedo (js/gestao.js); pan-y mantem a rolagem vertical da pagina */
+.carousel-viewport { width: 402px; height: 266px; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.carousel-viewport.is-dragging { cursor: grabbing; user-select: none; }
+.carousel-track { display: flex; gap: 22px; align-items: center; width: max-content; transition: transform .45s ease; }
+
+.cslide { position: relative; flex: none; width: 275px; height: 266px; }
+.cslide-bg { position: absolute; inset: 0; display: block; background-image: var(--grad-card); }
+.cslide-icon { position: absolute; inset: 0; display: block; }
+.cslide-icon img { position: absolute; max-width: none; }
+.cslide-cap {
+  position: absolute; left: 56px; top: 110px; width: 164px; height: 91px; margin: 0;
+  font-size: 22px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+.cslide-cap--wide { left: 35px; width: 206px; }
+
+.carousel-nav { position: absolute; top: 121px; width: 25px; height: 25px; z-index: 2; }
+.carousel-nav img { width: 25px; height: 25px; }
+.carousel-nav--prev { left: 16px; }
+.carousel-nav--next { left: 363px; }
+.carousel-nav--next img { transform: rotate(180deg); }
+
+/* =========================================================
+   BLOCO 8 — teste de demanda real   (3748 .. 4264)
+   ========================================================= */
+.s-teste { min-height: 516px; padding-top: 36px; }
+.h-teste { width: 292px; margin-left: 20px; font-size: 24px; font-weight: 700; color: var(--amarelo);
+  text-transform: uppercase; line-height: normal; }
+.t-teste { width: 366px; margin: 28px 0 0 22px; }
+.t-teste p { font-size: 18px; line-height: normal; color: #fff; }
+.t-teste p + p { margin-top: 20px; }
+.t-teste .b { font-weight: 700; }
+.t-teste .am { color: var(--amarelo); }
+
+/* =========================================================
+   BLOCO 9 — vídeo + controle contábil   (4264 .. 5088)
+   ========================================================= */
+.s-casal { min-height: 824px; }
+/* o video e conteudo: fica no fluxo. So o botao de som (que o sobrepoe) e absoluto. */
+.casal-play { display: block; margin-left: 58px; width: 277px; height: 277px; }
+.casal-play img { width: 277px; height: 277px; }
+.casal-sound { position: absolute; left: 335px; top: 120px; width: 45px; height: 45px; display: block; z-index: 3; }
+.casal-sound-bg  { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
+.casal-sound-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+
+.h-contabil { width: 357px; margin: 121px 0 0 22px; font-size: 24px; font-weight: 700; color: var(--azul);
+  text-transform: uppercase; line-height: normal; }
+.p-contabil { width: 359px; margin: 37px 0 0 23px; font-size: 18px; line-height: normal; color: #000; }
+.p-contabil strong { font-weight: 700; }
+.p-conta-a { width: 359px; margin: 28px 0 0 23px; font-size: 18px; line-height: normal; color: #000; }
+.p-conta-b { width: 359px; margin: 38px 0 0 23px; font-size: 18px; line-height: normal; color: #000; }
+
+/* =========================================================
+   BLOCO 10 — os dois passos   (5088 .. 6150)
+   ========================================================= */
+.s-passos { min-height: 1062px; padding-top: 90px; }
+.h-decida { width: 314px; margin-left: 45px; font-size: 38px; font-weight: 700; color: var(--amarelo);
+  text-align: center; line-height: normal; }
+
+.passo {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  font-family: "Inter", "FS Lola", Arial, sans-serif; font-weight: 700;
+  text-align: center; line-height: normal;
+}
+.passo-n { font-size: 16px; color: #fff; white-space: nowrap; }
+.passo-t { font-size: 22px; color: var(--amarelo); }
+.passo--1 { width: 251px; min-height: 80px; margin: 35px 0 0 75px; padding: 12px 47px 9px 45px; }
+.passo--1 .passo-t { width: 201px; }
+.passo--2 { width: 305px; min-height: 106px; margin: 93px 0 0 48px; padding: 12px 47px 9px 45px; }
+.passo--2 .passo-t { width: 260px; }
+
+.p-passo-1  { width: 345px; margin: 46px 0 0 30px; font-size: 18px; font-weight: 700; color: #fff;
+  text-align: center; line-height: normal; }
+.p-passo-1b { width: 345px; margin: 58px 0 0 29px; font-size: 18px; color: #000;
+  text-align: center; line-height: normal; }
+.p-passo-2  { width: 345px; margin: 39px 0 0 30px; font-size: 18px; font-weight: 700; color: #fff;
+  text-align: center; line-height: normal; }
+.p-passo-2 .am { color: var(--amarelo); }
+
+.h-entenda { width: 345px; margin: 84px 0 0 30px; font-size: 24px; font-weight: 700; color: var(--vermelho);
+  text-align: center; line-height: normal; }
+
+/* =========================================================
+   BLOCO 11 — ficha técnica x CMV   (6150 .. 7789)
+   ========================================================= */
+.s-cmv { min-height: 1639px; }
+.faixa { width: 293px; font-size: 18px; font-weight: 700; color: #fff; text-align: center; line-height: normal; }
+.faixa--1 { margin: 148px 0 0 57px; }
+.faixa--2 { margin: 225px 0 0 57px; }
+
+.p-item { width: 356px; margin: 80px 0 0 22px; font-size: 18px; line-height: normal; color: #000; }
+
+.h-calculo { width: 358px; margin: 59px 0 0 22px; font-size: 24px; font-weight: 700; color: var(--vermelho);
+  text-align: center; line-height: normal; }
+.formula { width: 348px; margin: 44px 0 0 30px; font-size: 18px; font-weight: 700; color: #000;
+  text-align: center; line-height: normal; }
+
+.t-ler { width: 356px; margin: 48px 0 0 22px; }
+.t-ler p { font-size: 18px; line-height: normal; color: #000; }
+.t-ler p:nth-child(2), .t-ler p:nth-child(4), .t-ler p:nth-child(6), .t-ler p:nth-child(8) { margin-top: 20px; }
+.t-ler .vm { color: var(--vermelho); }
+
+.p-porcentagem { width: 362px; margin: 66px 0 0 20px; font-size: 18px; font-weight: 700; color: #000; line-height: normal; }
+.p-porcentagem .vm { color: var(--vermelho); }
+
+/* =========================================================
+   BLOCO 12 — tabela de CMV ideal   (7789 .. 8070)
+   ========================================================= */
+.s-tabela { min-height: 281px; padding-top: 29px; }
+.cmv { border-collapse: collapse; margin-left: 17px; width: 351px; table-layout: fixed; }
+.cmv th, .cmv td {
+  padding: 8px; font-size: 18px; font-weight: 700; color: #000;
+  text-align: left; line-height: 20px; white-space: nowrap; background: none;
+}
+.cmv thead th:first-child { text-transform: uppercase; }
+.cmv thead th:last-child  { text-transform: uppercase; }
+.cmv th:first-child, .cmv td:first-child { width: 246px; }
+.cmv th:last-child,  .cmv td:last-child  { width: 105px; }
+/* a divisoria vertical e um no proprio no Figma (Line 1, x = 247) -> vai na camada de fundo */
+
+/* =========================================================
+   BLOCO 13 — as duas contas juntas   (8070 .. 8833)
+   ========================================================= */
+.s-azul3 { min-height: 763px; padding-top: 163px; }
+.t-junto { width: 362px; margin-left: 20px; }
+.t-junto p { font-size: 18px; line-height: normal; color: #fff; }
+.t-junto p + p { margin-top: 20px; }
+.t-junto .am { font-weight: 700; color: var(--amarelo); }
+.p-nenhuma { width: 362px; margin: 133px 0 0 20px; font-size: 18px; line-height: normal; color: #000; }
+
+/* =========================================================
+   BLOCO 14 — fecho   (8833 .. 9209)
+   ========================================================= */
+.s-fecho { min-height: 376px; padding-top: 130px; }
+.q-fecho { width: 338px; margin-left: 35px; }
+.q-fecho p { font-size: 26px; font-weight: 700; color: #fff; text-align: center; line-height: normal; }

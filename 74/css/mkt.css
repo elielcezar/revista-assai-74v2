@@ -1,0 +1,305 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina MKT DIGITAL
+   Figma: 4424:19757 — 402 x 8435  (HEAD 182 + artigo 8137 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Coordenadas do CSS = y da pagina menos os 182px do HEAD.
+   Imagens STRETCH + imageTransform [[a,0,c],[0,d,f]]: img = (W/a, H/d),
+   deslocada (-c*W/a, -f*H/d) dentro da moldura.
+   As "elipses" de fundo sao meias-elipses (arcos) no Figma: .dome = metade de
+   cima, .bowl = metade de baixo.
+   ========================================================= */
+
+.mkt .head { --head-bg: var(--laranja); }
+
+.art {
+  position: relative;
+  width: 402px;
+  min-height: 8575px;
+  background: #fff;
+  overflow: hidden;
+}
+.art-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+
+/* espaco de banner (um anuncio por vez, sorteado em js/mkt.js).
+   ATENCAO: esta pagina posiciona as decoracoes em .art-bg por coordenada absoluta,
+   entao as que ficam abaixo do banner foram empurradas na mesma medida. */
+.adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; }
+.adbox img { max-width: 100%; height: auto; }
+
+.art-bg > span { position: absolute; display: block; }
+.art-bg img { width: 100%; height: 100%; }
+
+.s { position: relative; z-index: 1; display: flow-root; }
+
+
+/* =========================================================
+   CAMADA DE DECORAÇÃO  (na ordem de pintura do Figma)
+   ========================================================= */
+.dome { border-radius: 50% 50% 0 0 / 100% 100% 0 0; }
+.bowl { border-radius: 0 0 50% 50% / 0 0 100% 100%; }
+.crop { overflow: hidden; }
+.art-bg .crop img { position: absolute; }
+
+.d-hero-foto { left: -20px; top: -1px; width: 428px; height: 396px; }
+.art-bg .d-hero-foto img { left: 13.52px; top: -87.42px; width: 409.65px; height: 573.6px; }
+
+.d-final-photo { left: -1px; top: 7690px; width: 403px; height: 333px; }
+.art-bg .d-final-photo img { left: -20.6px; top: 0; width: 499.35px; height: 333px; }
+
+.d-camada1 { left: 13px; top: 4746px; width: 375px; height: 189px; }
+
+.d-rect1446 { left: 0; top: 2715px; width: 402px; height: 235px; background: var(--laranja); }
+.d-e122a { left: -173px; top: 2387px; width: 747px; height: 373px; background: var(--laranja); }
+.d-e125 { left: -275px; top: 6116.5px; width: 951px; height: 474.5px; background: var(--amarelo-escuro); }
+.d-e123 { left: -173px; top: 2821px; width: 747px; height: 373px; background: var(--vermelho); }
+.d-rect1438 { left: 0; top: 835px; width: 408px; height: 324px; background: var(--laranja); }
+
+.d-foto1439 { left: -1px; top: 358px; width: 413px; height: 292px; }
+.art-bg .d-foto1439 img { left: -49.92px; top: -256px; width: 462.92px; height: 606.76px; }
+
+/* swoosh: arco em degradê coberto por um arco branco um pouco deslocado */
+.d-e120 { left: -197px; top: 957px; width: 860px; height: 430px; background: linear-gradient(48.5deg, #ff0000 35.9%, #00c0e8 77%); }
+.d-e121 { left: -186px; top: 973px; width: 914px; height: 457px; background: #fff; }
+.d-e116 { left: -173px; top: 488px; width: 747px; height: 373px; background: var(--laranja); }
+
+.d-hero-cutout { left: 10px; top: 342px; width: 390px; height: 281px; }
+.art-bg .d-hero-cutout img { left: -60.44px; top: -266.29px; width: 461.93px; height: 605.97px; }
+
+/* robo: relativeTransform do Figma (reflexao na diagonal, determinante -1) */
+.d-robot { left: 0; top: 0; width: 278px; height: 324px; transform-origin: 0 0; transform: matrix(0, -1, -1, 0, 309, 2563); }
+.art-bg .d-robot img { left: -53.9px; top: -8.08px; width: 332.71px; height: 333.72px; }
+
+.d-sandwich { left: -6px; top: 3145px; width: 416px; height: 336px; }
+.d-sandwich img { object-fit: fill; }
+
+.d-e122b { left: 48px; top: 3373px; width: 302px; height: 138px; background: var(--amarelo-escuro); }
+.d-e124 { left: 48px; top: 4797px; width: 302px; height: 138px; background: var(--vermelho); }
+
+.d-tomato { left: 191px; top: 3373px; width: 60px; height: 64px; transform: rotate(180deg); }
+.art-bg .d-tomato img { left: -13.74px; top: -42.06px; width: 147.35px; height: 147.29px; filter: brightness(.94) contrast(1.16); }
+
+/* manjericao: imageTransform com rotacao/cisalhamento -> matriz inversa */
+.d-basil { left: 110px; top: 3362px; width: 90px; height: 74px; }
+.art-bg .d-basil img {
+  left: 0; top: 0; width: 90px; height: 74px; transform-origin: 0 0;
+  transform: matrix(0.901235, 0.434951, -0.351351, 0.73346, 17.444, -9.711);
+}
+
+.d-line1 { left: 20px; top: 6777px; width: 124px; height: 5px; background: var(--vermelho); }
+.d-line2 { left: 247px; top: 7252px; width: 124px; height: 5px; background: var(--vermelho); }
+
+.d-chat-photo { left: 0; top: 5679px; width: 402px; height: 299px; }
+.art-bg .d-chat-photo img { left: 0; top: -146.63px; width: 402px; height: 445.63px; }
+
+.d-e126 { left: 48px; top: 7915px; width: 302px; height: 141.5px; background: var(--amarelo-escuro); }
+.d-e127 {
+  left: 170px; top: 7946px; width: 62px; height: 13px; border-radius: 50%;
+  background: #402800; opacity: .5; mix-blend-mode: multiply; filter: blur(4px);
+}
+.d-choc { left: 130px; top: 7846px; width: 122px; height: 138px; }
+.d-choc img { object-fit: cover; }
+
+/* celular: relativeTransform do Figma (rotacao de +81 graus) */
+.d-phone { left: 0; top: 0; width: 111px; height: 206px; transform-origin: 0 0; transform: matrix(0.157053, 0.98759, -0.98759, 0.157053, 285, 4720); }
+.d-phone img { object-fit: cover; }
+
+/* =========================================================
+   BLOCO 1 — hero
+   ========================================================= */
+
+.hero-title {
+  width: 361px; margin: 629px 0 0 19px; line-height: 55px;
+  font-size: 55px; font-weight: 700; color: #fff;
+}
+.hero-title .am { color: var(--amarelo); }
+
+.hero-title2 {
+  width: 360px; margin: -138px 0 0 19px; line-height: 55px;
+  font-size: 55px; font-weight: 700; color: var(--amarelo);
+  position: relative; z-index: 1;
+  display: none;
+}
+
+.hero-lead {
+  width: 362px; margin: 42px 0 0 20px;
+  font-size: 20px; font-style: italic; color: #fff; line-height: normal;
+}
+
+/* =========================================================
+   BLOCO 2 — caso real
+   ========================================================= */
+
+.badge74 {
+  width: 130px; margin: 79px 0 0 220px;
+  display: flex; flex-direction: column; gap: 15px; align-items: center;
+}
+.badge74-ed {
+  display: flex; align-items: center; justify-content: center;
+  width: 130px; height: 26px; padding: 0 15px; background: var(--laranja);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.badge74-autor { font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
+
+.t-caso1 { width: 365px; margin: 40px 0 0 20px; }
+.t-caso1 p { font-size: 18px; line-height: normal; color: #000; }
+.t-caso1 p + p { margin-top: 20px; }
+
+.gallery { position: relative; width: 359px; height: 441px; margin: 101px 0 0 43px; }
+
+/* galeria: uma imagem so (galeria-roll.jpg, 2688x420) que rola na horizontal.
+   O dedo usa o scroll nativo; o mouse arrasta via js/mkt.js. */
+.gallery-view {
+  width: 100%; height: 100%;
+  overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: none; scroll-behavior: smooth;
+  cursor: grab;
+}
+.gallery-view::-webkit-scrollbar { display: none; }
+/* durante o arrasto o scroll precisa ser imediato, senao briga com o smooth */
+.gallery-view.is-dragging { cursor: grabbing; user-select: none; scroll-behavior: auto; }
+.gallery-view img { width: auto; height: 100%; max-width: none; }
+
+.gallery-arrow {
+  position: absolute; top: 208px; width: 25px; height: 25px; z-index: 2;
+  background: none; border: 0; padding: 0; cursor: pointer;
+}
+.gallery-arrow--l { left: -33px; }
+.gallery-arrow--r { left: 319px; }
+.gallery-arrow img { width: 100%; height: 100%; pointer-events: none; }
+
+.t-caso2 { width: 365px; margin: 53px 0 0 19px; position: relative; z-index: 1; }
+.t-caso2 p { font-size: 18px; line-height: normal; color: #000; }
+.t-caso2 p + p { margin-top: 20px; }
+.t-caso2 .t-vermelho { color: var(--vermelho); }
+
+/* =========================================================
+   BLOCO 3 — vamos usar a ia para aprender
+   ========================================================= */
+
+.h-ia {
+  width: 195px; margin: 260px 0 0 21px;
+  font-size: 24px; font-weight: 700; color: #fff; line-height: normal;
+}
+.t-ia1 { width: 365px; margin: 26px 0 0 20px; font-size: 18px; color: #fff; line-height: normal; }
+.t-ia2 { width: 365px; margin: 32px 0 0 20px; font-size: 18px; color: #fff; line-height: normal; }
+
+.h-comecar {
+  width: 161px; margin: 124px 0 0 16px;
+  font-size: 24px; font-weight: 700; color: #fff; line-height: normal;
+}
+.t-comecar { width: 365px; margin: 26px 0 0 19px; }
+.t-comecar p { font-size: 18px; color: #fff; line-height: normal; }
+.t-comecar p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 4 — food styling / citação
+   ========================================================= */
+
+.food-badge-txt {
+  display: block; width: 156px; margin: 363px 0 0 112px;
+  font-size: 24px; font-weight: 700; color: #000; text-align: center; line-height: normal;
+  position: relative; z-index: 1;
+}
+.t-food-def {
+  width: 362px; margin: 55px 0 0 20px;
+  font-size: 18px; font-weight: 700; color: #000; text-align: center; line-height: normal;
+}
+
+.t-food { width: 359px; margin: 55px 0 0 20px; }
+.t-food p { font-size: 18px; color: #000; line-height: normal; }
+.t-food p + p { margin-top: 20px; }
+
+.t-quote { width: 360px; margin: 29px 0 0 20px; font-size: 18px; color: #000; line-height: normal; }
+
+/* =========================================================
+   BLOCO 5 — passo a passo
+   ========================================================= */
+
+.passo-badge-txt {
+  display: block; width: 177px; margin: 222px 0 0 103px;
+  font-size: 24px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+  position: relative; z-index: 1;
+}
+
+.t-melhor-foto {
+  width: 361px; margin: 54px 0 0 20px;
+  font-size: 18px; font-weight: 700; color: var(--vermelho); line-height: normal;
+}
+
+/* lista: numero centralizado na altura do texto, texto com 264px */
+.steps { width: 335px; margin: 26px 0 0 33px; padding: 3px 0; display: flex; flex-direction: column; gap: 28px; }
+.steps li { display: flex; align-items: center; gap: 17px; min-height: 35px; }
+.steps-n {
+  flex: none; width: 35px; height: 35px; border-radius: 50%;
+  background: #ff5564; color: #fff; font-size: 24px; font-weight: 700; line-height: 26.62px;
+  display: flex; align-items: center; justify-content: center;
+}
+.steps-t { width: 264px; font-size: 18px; font-weight: 700; color: #000; line-height: 19.96px; }
+
+.t-agora {
+  width: 361px; margin: 55px 0 0 20px;
+  font-size: 18px; font-weight: 700; color: var(--vermelho); line-height: normal;
+}
+
+/* =========================================================
+   BLOCO 6 — chat com a ia
+   ========================================================= */
+
+.t-voce-deve {
+  width: 361px; margin: 398px 0 0 20px;
+  font-size: 18px; font-weight: 700; color: var(--vermelho); line-height: normal;
+}
+
+/* ferramentas: posicoes do Figma relativas ao topo do primeiro quadrado (y 5899) */
+.tools { position: relative; width: 402px; height: 374px; margin: 87px 0 0 0; }
+.tool-bg { position: absolute; width: 100px; height: 100px; border-radius: 21px; background: #fff; }
+.tool-logo { position: absolute; overflow: hidden; }
+.tool-logo img { position: absolute; }
+.tool-txt { position: absolute; font-size: 20px; font-weight: 700; color: #fff; line-height: 22.18px; white-space: nowrap; }
+
+.tool--gemini .tool-bg { left: 90px; top: 0; }
+.tool--gemini .tool-logo { left: 104px; top: 15px; width: 72px; height: 72px; }
+.tool--gemini .tool-logo img { left: 0; top: 0; width: 72px; height: 72px; object-fit: cover; }
+.tool--gemini .tool-txt { left: 205px; top: 40px; }
+
+.tool--chatgpt .tool-bg { left: 89px; top: 137px; }
+.tool--chatgpt .tool-logo { left: 102px; top: 144px; width: 76px; height: 90px; }
+.tool--chatgpt .tool-logo img { left: -43px; top: 0; width: 160px; height: 90px; }
+.tool--chatgpt .tool-txt { left: 201px; top: 178px; }
+
+.tool--claude .tool-bg { left: 90px; top: 274px; }
+.tool--claude .tool-logo { left: 87px; top: 285px; width: 105px; height: 79px; }
+.tool--claude .tool-logo img { left: 0; top: 0; width: 105px; height: 79px; object-fit: contain; }
+.tool--claude .tool-txt { left: 205px; top: 314px; }
+
+/* =========================================================
+   BLOCO 7 — o prompt
+   ========================================================= */
+
+.t-copie { width: 362px; margin: 115px 0 0 20px; font-size: 18px; color: var(--vermelho); line-height: normal; }
+.t-prompt { width: 362px; margin: 103px 0 0 20px; font-size: 18px; color: #000; line-height: normal; }
+.t-segundos { width: 362px; margin: 108px 0 0 20px; font-size: 18px; color: var(--vermelho); line-height: normal; }
+.t-continua { width: 365px; margin: 78px 0 0 19px; }
+.t-continua p { font-size: 18px; color: #000; line-height: normal; }
+.t-continua p + p { margin-top: 20px; }
+.t-continua .t-vermelho { color: var(--vermelho); }
+
+/* =========================================================
+   BLOCO 8 — dica extra
+   ========================================================= */
+
+.dica-badge-txt {
+  display: block; width: 130px; margin: 363px auto 0;
+  font-size: 24px; font-weight: 700; color: #000; text-align: center; line-height: normal;
+  position: relative; z-index: 1;
+}
+
+.t-dica { width: 362px; margin: 100px 0 0 20px; }
+.t-dica p { font-size: 18px; color: #000; line-height: normal; }
+.t-dica p + p { margin-top: 20px; }
+
+.t-final {
+  width: 362px; margin: 63px 0 0 20px;
+  font-size: 18px; color: var(--vermelho); line-height: normal;
+}

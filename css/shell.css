@@ -1,0 +1,64 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — invólucro (shell) comum
+   seletor de edição, SIDEBAR DESKTOP e posição da coluna 402.
+   Incluir por último, depois do CSS da página.
+   Mesmo desenho da #73 (73/css/revista-73-shell.css).
+   ========================================================= */
+
+/* ---------- sidebar — oculta fora do desktop ---------- */
+.dt-sidebar { display: none; }
+
+/* =========================================================
+   DESKTOP (>= 1024px)
+   sidebar fixa 313 + vão 420 = coluna em x:733 (frame 1920 do Figma)
+   ========================================================= */
+@media (min-width: 1024px) {
+
+  body { background: #fff; }
+  body::before {
+    content: ""; position: fixed; inset: 0;
+    background: url("../assets/shell/dt-bg-pattern.png") center / cover no-repeat;
+    opacity: .4; pointer-events: none; z-index: -1;
+  }
+
+  /* a sidebar assume a navegação: some a faixa cinza do HEAD (41px) */
+  .head { height: 141px; }
+  .head-nav { display: none; }
+
+  .dt-sidebar {
+    display: flex; flex-direction: column; align-items: flex-start;
+    position: fixed; top: 0; left: 0; z-index: 1000;
+    width: 313px; height: 100vh; overflow: hidden;
+  }
+
+  .dt-logo { display: block; flex-shrink: 0; padding: 47px 0 32px 20px; }
+  .dt-logo img { width: 124px; height: 124px; object-fit: contain; }
+
+  .dt-nav {
+    display: flex; flex-direction: column; align-items: flex-start;
+    flex: 1; min-height: 0; width: 100%;
+    padding: 0 16px 48px 50px;
+    overflow-x: hidden; overflow-y: auto; scrollbar-width: none;
+  }
+  .dt-nav::-webkit-scrollbar { display: none; }
+
+  .dt-nav a {
+    display: flex; align-items: center; flex-shrink: 0;
+    height: 37.88px; padding-top: 11.44px;
+    border-bottom: 5.72px solid var(--mc);
+    font-family: "Inter", "FS Lola", Arial, sans-serif; font-size: 12.58px; font-weight: 500;
+    line-height: normal; color: #000; white-space: nowrap;
+    transition: opacity .15s ease;
+  }
+  .dt-nav a:hover { opacity: .75; }
+  .dt-nav a.is-active { font-weight: 800; }
+
+  .page { margin: 0 0 0 733px; }
+}
+
+/* desktop estreito (< 1920): sidebar desloca para centralizar um bloco de 1135px
+   e a coluna fica 400px à direita dela (medido na #73: 1440 -> sidebar 152.5, coluna 552.5) */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  .dt-sidebar { left: max(0px, calc((100vw - 1135px) / 2)); }
+  .page { margin-left: calc(max(0px, (100vw - 1135px) / 2) + 400px); }
+}

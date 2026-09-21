@@ -1,0 +1,236 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina GESTÃO 02
+   Figma: 4424:19879 — 402 x 7631
+   (HEAD 182 + GESTÃO 02 4723 + 3 blocos BL de 870 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   As coordenadas do CSS sao relativas ao inicio do artigo
+   (y da pagina menos os 182 px do HEAD).
+   ========================================================= */
+
+:root {
+  --azul-medio: #0082c8;
+  --azul-claro2: #00adee;
+  --grad-card: linear-gradient(-37.021deg, #e30613 11.522%, #ffdc00 118.65%);
+}
+
+/* o artigo inteiro e um unico contexto de posicionamento:
+   .art-bg carrega as decoracoes, o texto flui por cima */
+.art {
+  position: relative;
+  width: 402px;
+  min-height: 7333px;
+  background: #fff;
+  overflow: hidden;
+}
+.art-bg { position: absolute; inset: 0; pointer-events: none; }
+.art-bg > span { position: absolute; display: block; }
+.art-bg img { width: 100%; height: 100%; }
+
+/* display:flow-root impede que a margem do primeiro filho escape da secao */
+.s { position: relative; display: flow-root; }
+
+/* =========================================================
+   CAMADA DE DECORAÇÃO  (ordem de pintura do Figma)
+   ========================================================= */
+
+/* arcos: o Figma usa metade de um circulo grande */
+.d-e139 { left: -15px; top: 3048px; width: 431px; height: 189.5px; }
+.d-e142 { left: -149px; top: 370px; width: 680px; height: 330px; }
+.d-e142 img { transform: rotate(180deg); }
+
+.d-blue1509 { left: 0; top: 0; width: 412px; height: 526px; background: var(--azul-medio); }
+.d-blue1490 { left: -210px; top: 4273px; width: 788px; height: 450px;
+  background: var(--azul-medio); border-radius: 500px 500px 0 0; }
+.d-blue1476 { left: -12px; top: 3186px; width: 427px; height: 440px; background: var(--azul-medio); }
+.d-blue1507 { left: -4px; top: 4723px; width: 406px; height: 870px; background: var(--azul-medio); }
+
+.d-camada1 { left: -40px; top: 1480px; width: 483px; height: 245px; }
+.d-sub1 { left: -63px; top: 2993px; width: 491px; height: 232.5px; }
+.d-sub2 { left: -227.1px; top: -629px; width: 571.248px; height: 771px; }
+.d-sub2 img { transform: rotate(180deg); }
+.d-e141 { left: 13px; top: 4071px; width: 369px; height: 369px; }
+.d-e143 { left: 77px; top: 2315px; width: 240px; height: 240px; }
+
+/* celular com a promocao, girado */
+.d-img28 { left: 51px; top: 2874.15px; width: 302.222px; height: 279.461px;
+  display: flex; align-items: center; justify-content: center; }
+.d-img28 > span { display: block; flex: none; transform: rotate(-52.64deg); }
+.d-img28 > span > span { display: block; position: relative; width: 147px; height: 268px; overflow: hidden; }
+/* transformacao ajustada por medicao direta contra o screenshot do Figma:
+   o codegen original (left:-41.09% top:0 w:181.77% h:100%) desalinhava o celular ~26px */
+/* transformacao ajustada por busca em grade contra o screenshot do Figma
+   (erro final de 3px na bounding box escura do aparelho) */
+.d-img28 img { position: absolute; left: -41%; top: 0%; width: 181%; height: 99.55%; max-width: none; }
+
+/* faixas do bloco de alerta */
+.d-r53   { left: -57.5px; top: 6811px; width: 515px; height: 139px; }
+.d-r1477 { left: -56px;   top: 6972px; width: 514px; height: 141px; }
+
+/* =========================================================
+   BLOCO 1 — abertura   (0 .. 1480)
+   ========================================================= */
+.s-hero { min-height: 1480px; padding-top: 61px; }
+
+.s-hero h1 { display: flex; flex-direction: column; }
+.h1-kicker {
+  width: 323px; margin-left: 39px; line-height: 37px; text-align: center;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 35.571px; color: #fff;
+}
+.h1-main {
+  width: 323px; margin: 0 0 0 39px; line-height: 51px; text-align: center;
+  font-weight: 700; font-size: 46px; color: var(--amarelo-escuro);
+}
+
+/* a foto sangra dos dois lados e tem o topo arredondado */
+.hero-foto { position: relative; height: 343px; margin-top: 48px; }
+.hero-foto img {
+  position: absolute; left: -125px; top: 0; width: 607px; height: 343px;
+  object-fit: cover; object-position: 50% 30%;
+  border-radius: 300px 300px 0 0;
+}
+
+.hero-lead {
+  width: 362px; margin: 31px 0 0 20px;
+  font-size: 20px; font-style: italic; line-height: 23px; color: #fff; text-align: center;
+}
+
+.hero-meta {
+  width: 146px; margin: 44px 0 0 128px;
+  display: flex; flex-direction: column; gap: 13px; align-items: center;
+}
+.hero-edition {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 2px 15px; background: var(--vermelho);
+  color: #fff; font-size: 20px; font-weight: 500; white-space: nowrap; line-height: normal;
+}
+.hero-author { font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
+
+.t-intro { width: 362px; margin: 79px 0 0 20px; }
+.t-intro p { font-size: 18px; line-height: normal; color: #000; }
+.t-intro p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 2 — os dois pratos   (1480 .. 1881)
+   ========================================================= */
+.s-pratos { min-height: 401px; }
+.pratos-a, .pratos-b { position: absolute; top: 91px; width: 247px; height: 246px; }
+.pratos-a { left: -41px; }
+.pratos-b { left: 207px; }
+.pratos-a img, .pratos-b img { width: 247px; height: 246px; object-fit: cover; }
+
+/* =========================================================
+   BLOCO 3 — novos clientes ou fidelização   (1881 .. 2874)
+   ========================================================= */
+.s-fidelizacao { min-height: 993px; }
+.h-fidelizacao { width: 320px; margin-left: 22px; font-size: 24px; font-weight: 700;
+  color: var(--azul-medio); text-transform: uppercase; line-height: normal; }
+.t-fidelizacao { width: 358px; margin: 18px 0 0 22px; }
+.t-fidelizacao p { font-size: 18px; line-height: normal; color: #000; }
+.t-fidelizacao p + p { margin-top: 20px; }
+.t-fidelizacao .destaque { font-weight: 700; color: var(--azul-medio); }
+
+.q-marcos { width: 364px; margin: 346px 0 0 19px; text-align: center; }
+.q-marcos p { font-size: 26px; font-weight: 700; color: var(--vermelho); line-height: normal; }
+.q-marcos footer { margin-top: 42px; font-size: 16px; font-weight: 700; font-style: italic;
+  color: var(--cinza); line-height: normal; }
+
+/* =========================================================
+   BLOCO 4 — quando a estratégia funciona   (2874 .. 3693)
+   ========================================================= */
+.s-funciona { min-height: 819px; }
+.h-funciona { width: 275px; margin: 258px 0 0 67px; font-size: 24px; font-weight: 700;
+  color: var(--amarelo); text-transform: uppercase; text-align: center; line-height: normal; }
+.t-funciona { width: 352px; margin: 51px 0 0 24px; text-align: center; }
+.t-funciona p { font-size: 18px; line-height: normal; color: #fff; }
+.t-funciona p + p { margin-top: 20px; }
+.t-funciona strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 5 — metas diferentes   (3693 .. 4273)
+   ========================================================= */
+.s-metas { min-height: 580px; }
+.h-metas { width: 328px; margin-left: 22px; font-size: 24px; font-weight: 700;
+  color: var(--azul-medio); text-transform: uppercase; line-height: normal; }
+.t-metas { width: 358px; margin: 24px 0 0 24px; }
+.t-metas p { font-size: 18px; line-height: normal; color: #000; }
+.t-metas p + p { margin-top: 20px; }
+.t-metas strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 6 — o número que decide   (4273 .. 4723)
+   ========================================================= */
+.s-numero { min-height: 450px; padding-top: 204px; }
+.h-numero { width: 248px; margin-left: 78px; font-size: 24px; font-weight: 700;
+  color: var(--amarelo); text-transform: uppercase; text-align: center; line-height: normal; }
+.t-numero { width: 343px; margin: 33px 0 0 24px; font-size: 18px; font-weight: 700;
+  color: #fff; text-align: center; line-height: normal; }
+
+/* =========================================================
+   BLOCO 7 — o que fica de fora da conta   (4723 .. 5593)
+   ========================================================= */
+.s-fora { min-height: 870px; padding-top: 65px; }
+.h-fora { width: 334px; margin-left: 34px; font-size: 24px; font-weight: 700;
+  color: var(--amarelo); text-align: center; line-height: normal; }
+
+/* cartoes empilhados: cada um sobe 29px sobre o anterior */
+.fora-cards { width: 402px; margin-top: 47px; display: flex; flex-direction: column; align-items: center; }
+.fc {
+  width: 100%; height: 120px; margin-bottom: -29px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px 26px 44px 25px; border-radius: 50px;
+  filter: drop-shadow(0 -3px 2px rgba(0,0,0,.25));
+  font-size: 23px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+.fc--vermelho { background: var(--vermelho); }
+.fc--laranja  { background: var(--laranja); }
+.fc--grad     { background-image: var(--grad-card); }
+.fc--ultimo   { margin-bottom: 0; padding: 45px 26px 44px 25px; }
+
+/* =========================================================
+   BLOCO 8 — sete perguntas (carrossel)   (5593 .. 6463)
+   ========================================================= */
+.s-perguntas { min-height: 870px; }
+.perguntas-foto { position: relative; height: 284px; }
+.perguntas-foto img { position: absolute; left: -24px; top: 0; width: 426px; height: 284px; object-fit: cover; }
+
+.h-perguntas { width: 320px; margin: 57px 0 0 48px; font-size: 24px; font-weight: 700;
+  color: var(--azul-medio); text-transform: uppercase; line-height: normal; }
+
+.carousel { position: relative; width: 402px; margin: 55px 0 0 20px; height: 266px; }
+.carousel-viewport { width: 382px; height: 266px; overflow: hidden; }
+.carousel-track { display: flex; gap: 22px; width: max-content; transition: transform .45s ease; }
+
+.cslide { position: relative; flex: none; width: 275px; height: 266px; margin: 0; }
+.cslide-art { position: absolute; inset: 0; display: block; }
+.cslide-art img { position: absolute; max-width: none; }
+.cslide-art > span { position: absolute; display: block; overflow: hidden; }
+.cslide-art > span img { width: auto; height: auto; }
+.cslide figcaption {
+  position: absolute; margin: 0;
+  font-size: 18px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
+}
+
+.carousel-nav { position: absolute; top: 112px; width: 25px; height: 25px; z-index: 2; }
+.carousel-nav img { width: 25px; height: 25px; }
+.carousel-nav--prev { left: 15px; }
+.carousel-nav--next { left: 355px; }
+.carousel-nav--next img { transform: rotate(180deg); }
+
+/* =========================================================
+   BLOCO 9 — sinais de alerta   (6463 .. 7333)
+   ========================================================= */
+.s-alerta { min-height: 870px; padding-top: 14px; }
+.h-alerta { width: 320px; margin-left: 29px; font-size: 24px; font-weight: 700;
+  color: var(--vermelho); text-transform: uppercase; line-height: normal; }
+.t-alerta { width: 352px; margin: 23px 0 0 29px; }
+.t-alerta p { font-size: 18px; line-height: normal; color: #000; }
+.t-alerta p + p { margin-top: 20px; }
+
+.faixa { font-size: 20px; font-weight: 700; color: #fff; text-align: center; line-height: normal; }
+.faixa--verde    { width: 310px; margin: 90px 0 0 42px; }
+.faixa--vermelha { width: 309px; margin: 73px 0 0 41px; }
+
+.t-fecho { width: 355px; margin: 91px 0 0 23px; font-size: 20px; font-weight: 700;
+  color: var(--azul-medio); text-align: center; line-height: normal; }

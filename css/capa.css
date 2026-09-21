@@ -1,0 +1,138 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #74 — pagina CAPA
+   Figma: 4468:1434 — 402 x 2162  (HEAD 182 + artigo 1880 + RODAPE 116)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+   ========================================================= */
+
+.capa .head { --head-bg: #000; }
+
+a.hero, a.card { display: block; position: relative; overflow: hidden; text-decoration: none; color: inherit; }
+
+.backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.backdrop > span { position: absolute; display: block; }
+
+.card-fade { position: absolute; left: 0; width: 100%; height: 144px; pointer-events: none; z-index: 1; mix-blend-mode: multiply; }
+.card-fade--bottom { bottom: 0; background: linear-gradient(to bottom, transparent 0%, rgba(61,38,38,.9) 70.673%); }
+.card-fade--top { top: 0; background: linear-gradient(to top, transparent 0%, rgba(61,38,38,.9) 70.673%); }
+
+.card-tag {
+  position: absolute; z-index: 2; display: inline-flex; align-items: center; justify-content: center;
+  height: 19px; padding: 2px 12px;
+  color: #fff; font-family: "Inter", sans-serif; font-size: 13px; font-weight: 500;
+}
+.card-title {
+  position: absolute; z-index: 2; margin: 0;
+  color: #fff; font-size: 15px; font-weight: 500; line-height: normal;
+  text-shadow: 0 0 13px #000;
+}
+.card-tag--right, .card-title--right { text-align: right; }
+
+.card-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+
+/* =========================================================
+   HERO — PRINCIPAL   (0 .. 469)
+   ========================================================= */
+.hero {
+  width: 402px; height: 462px; margin-top: -3px;
+  background: radial-gradient(circle at 50% 50%, #ff7300 63%, #e85000 81.5%, #d12d00 100%);
+}
+
+.d-e140 { left: -33.5%; right: -23.46%; top: 119px; height: 309px; mix-blend-mode: multiply; }
+.d-e142 { left: -26.37%; right: -30.85%; top: 152px; height: 309px; mix-blend-mode: multiply; }
+.d-e140 img, .d-e142 img { transform: rotate(180deg); width: 100%; height: 100%; }
+.d-e139 { left: -21.64%; right: -28.11%; top: 150px; height: 311px; }
+.d-e139 img { width: 100%; height: 100%; object-fit: fill; }
+
+.hero-foto { position: absolute; left: 0.17px; top: 25px; width: 404px; height: 430px; z-index: 1; margin: 0; }
+.hero-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.hero .card-fade { z-index: 2; height: 174px; mix-blend-mode: multiply;
+  background: linear-gradient(to bottom, transparent 0%, rgba(20,19,19,.9) 70.673%); }
+.hero .card-tag { left: 24px; top: 352px; }
+.hero-title {
+  left: 23px; top: 377px; width: 315px;
+  font-size: 18px; font-weight: 700; line-height: normal;
+  text-shadow: 0 0 13px rgba(0,0,0,.25);
+}
+
+/* =========================================================
+   LINHAS 2 colunas
+   ========================================================= */
+.grid { display: flex; margin-top: 7px; }
+.grid--2 .card { height: 233px; flex: none; }
+
+.grid--2:nth-of-type(1) { gap: 9px; margin-left: -6px; }
+.grid--2:nth-of-type(1) .card { width: 204px; }
+
+.grid--2:nth-of-type(2) { gap: 8px; margin-left: -1px; margin-top: 8px; }
+
+/* banner de publicidade entre as linhas de cards */
+.banner { width: 402px; margin: 9px 0 0; }
+.banner img { max-width: 100%; height: auto; }
+
+.grid--2:nth-of-type(2) .card:nth-child(1) { width: 199px; }
+.grid--2:nth-of-type(2) .card:nth-child(2) { width: 205px; }
+
+.grid--2:nth-of-type(3) { gap: 8px; margin-left: -2px; margin-top: 9px; position: relative; z-index: 6; }
+.grid--2:nth-of-type(3) .card:nth-child(1) { width: 200px; height: 236px; }
+.grid--2:nth-of-type(3) .card:nth-child(2) { width: 214px; height: 236px; }
+
+/* PRODUTO — texto no topo */
+.grid--2:nth-of-type(1) .card:nth-child(1) .card-tag { left: 29px; top: 16px; }
+.grid--2:nth-of-type(1) .card:nth-child(1) .card-title { left: 29px; top: 43px; width: 153px; }
+
+/* GESTÃO — texto embaixo */
+.grid--2:nth-of-type(1) .card:nth-child(2) .card-tag { left: 10px; top: 130px; }
+.grid--2:nth-of-type(1) .card:nth-child(2) .card-title { left: 10px; top: 157px; width: 153px; }
+
+/* ACADEMIA — texto embaixo */
+.grid--2:nth-of-type(2) .card:nth-child(1) .card-bg { inset: auto; left: 0; top: -1.86%; width: 101%; height: 103.72%; object-fit: cover; max-width: none; }
+.grid--2:nth-of-type(2) .card:nth-child(1) .card-tag { left: 24px; top: 146px; }
+.grid--2:nth-of-type(2) .card:nth-child(1) .card-title { left: 24px; top: 173px; width: 150px; }
+
+/* NOVO NEGÓCIO — texto embaixo */
+.grid--2:nth-of-type(2) .card:nth-child(2) .card-bg { inset: auto; left: -1.98%; top: -6.18%; width: 101.98%; height: 118.21%; object-fit: cover; max-width: none; }
+.grid--2:nth-of-type(2) .card:nth-child(2) .card-tag { left: 11px; top: 130px; }
+.grid--2:nth-of-type(2) .card:nth-child(2) .card-title { left: 11px; top: 158px; width: 153px; }
+
+/* NOTÍCIAS — texto embaixo */
+.grid--2:nth-of-type(3) .card:nth-child(1) .card-bg { inset: auto; left: -3.42%; top: 0; width: 158.25%; height: 100%; object-fit: cover; max-width: none; }
+.grid--2:nth-of-type(3) .card:nth-child(1) .card-tag { left: 26px; top: 141px; }
+.grid--2:nth-of-type(3) .card:nth-child(1) .card-title { left: 26px; top: 169px; width: 140px; }
+
+/* DELIVERY — texto embaixo */
+.grid--2:nth-of-type(3) .card:nth-child(2) .card-bg { inset: auto; left: 0; top: -13.56%; width: 109.81%; height: 113.52%; object-fit: cover; max-width: none; }
+.grid--2:nth-of-type(3) .card:nth-child(2) .card-tag { left: 13px; top: 125px; }
+.grid--2:nth-of-type(3) .card:nth-child(2) .card-title { left: 13px; top: 152px; width: 168px; }
+
+/* =========================================================
+   CARDS EM LARGURA TOTAL
+   ========================================================= */
+.card--full { width: 402px; margin-top: 8px; }
+
+/* MKT DIGITAL */
+.card--mkt { width: 405px; margin-left: -3px; height: 233px; }
+.card--mkt .card-bg { inset: auto; left: .03%; top: -16.33%; width: 99.96%; height: 126.28%; object-fit: cover; }
+.card--mkt .card-fade {
+  height: 233px; mix-blend-mode: multiply;
+  background: linear-gradient(209.1deg, rgba(0,0,0,0) 41.4%, rgba(61,38,38,.9) 72.7%);
+}
+.card--mkt .card-title { left: 236px; top: 73px; width: 165px; text-align: left; }
+.card--mkt .card-tag { left: 235.86px; top: 130px; }
+
+/* CONSUMIDOR */
+.card--consumidor { width: 414px; margin-left: -12px; margin-top: 10px; height: 225px; }
+.card--consumidor .card-bg { inset: auto; left: 2.52%; top: -3.55%; width: 99.43%; height: 103.55%; object-fit: cover; }
+.card--consumidor .card-tag { left: 282px; top: 40px; }
+.card--consumidor .card-title { left: 282px; top: 67px; width: 114px; text-align: left; }
+
+/* GESTÃO 2 — clube de descontos */
+.card--inset { width: 415px; margin-left: -13px; margin-top: 8px; height: 233px; }
+.card--inset .card-tag { left: 37px; top: 158px; }
+.card--inset .card-title { left: 39px; top: 185px; width: 262px; }
+
+/* o rodape do Figma cobre os 38 px finais dos cards da ultima linha:
+   os cards ficam acima da faixa branca, a barra preta por cima */
+/* o z-index vai no rodape inteiro: na barra, ela cobria os icones (irmaos com
+   z-index auto) e o rodape aparecia como um bloco preto vazio */
+.capa .foot { margin-top: -38px; z-index: 7; }
