@@ -32,9 +32,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-64">
-<link rel="stylesheet" href="css/mkt.css?v=74-64">
-<link rel="stylesheet" href="../css/shell.css?v=74-64">
+<link rel="stylesheet" href="../css/base.css?v=74-65">
+<link rel="stylesheet" href="css/mkt.css?v=74-65">
+<link rel="stylesheet" href="../css/shell.css?v=74-65">
 </head>
 <body>
 
@@ -140,8 +140,8 @@
         <p>Casos como esse ajudam a explicar por que boas imagens têm um papel tão importante na construção da expectativa do cliente, e porque o uso da inteligência artificial merece atenção.</p>
       </div>
 
-      <div class="gallery">
-        <div class="gallery-view" data-gallery>
+      <div class="gallery" data-fx="pin-horizontal">
+        <div class="gallery-view" data-fx-item data-gallery>
           <img src="assets/mkt/galeria-roll.jpg?v2" alt="Pratos variados: hambúrguer, pizza, ramen, sobremesas, salada e camarão">
         </div>
         <button class="gallery-arrow gallery-arrow--l" type="button" data-gprev aria-label="Puxar a imagem para a esquerda"><img src="assets/mkt/imgArrowLeft.svg" alt=""></button>
@@ -187,9 +187,9 @@
     <!-- ====== BANNER ROTATIVO — um dos dois, sorteado a cada carregamento ====== -->
     <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/mkt.js sorteia outro -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/maturata.jpg?v=74-64","alt":"Publicidade Maturatta"},
-      {"src":"assets/banners/seda.jpg?v=74-64","alt":"Publicidade Seda"}]'>
-      <img src="assets/banners/maturata.jpg?v=74-64" alt="Publicidade Maturatta" width="402" height="384">
+      {"src":"assets/banners/maturata.jpg?v=74-65","alt":"Publicidade Maturatta"},
+      {"src":"assets/banners/seda.jpg?v=74-65","alt":"Publicidade Seda"}]'>
+      <img src="assets/banners/maturata.jpg?v=74-65" alt="Publicidade Maturatta" width="402" height="384">
     </figure>
 
     <!-- ====== BLOCO 5 — passo a passo ====== -->
@@ -262,7 +262,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-64"></script>
-<script src="js/mkt.js?v=74-64"></script>
+<script src="../js/shell.js?v=74-65"></script>
+<script src="js/mkt.js?v=74-65"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-65"></script>
 </body>
 </html>

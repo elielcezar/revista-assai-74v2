@@ -13,9 +13,10 @@
   var nav = document.querySelector(".head-nav");
   if (nav) nav.scrollLeft = 19;
 
-  /* ---------- galeria: rola com as setas e arrastando ---------- */
-  // e uma imagem unica: o dedo usa o scroll nativo do container,
-  // aqui tratamos so as setas e o arrasto com mouse
+  /* ---------- galeria: setas e arrasto, alem do pin-horizontal ---------- */
+  // e uma imagem unica: o dedo usa o scroll nativo do container, aqui tratamos
+  // so as setas e o arrasto com mouse. O pin-horizontal (js/scroll-fx.js) tambem
+  // mexe no scrollLeft com o scroll da pagina, e absorve o que for feito aqui.
   var gal = document.querySelector("[data-gallery]");
   if (gal) {
     var gprev = document.querySelector("[data-gprev]");

@@ -147,18 +147,18 @@
 
 .gallery { position: relative; width: 359px; height: 441px; margin: 101px 0 0 43px; }
 
-/* galeria: uma imagem so (galeria-roll.jpg, 2688x420) que rola na horizontal.
-   O dedo usa o scroll nativo; o mouse arrasta via js/mkt.js. */
+/* galeria: uma imagem so (galeria-roll.jpg, 2688x420) que corre na horizontal com
+   o scroll da pagina (pin-horizontal, js/scroll-fx.js) e tambem pelas setas, pelo
+   arrasto do mouse e pelo dedo. Sem scroll-behavior: smooth — brigaria com o
+   scrollLeft escrito a cada frame; as setas pedem o suave no proprio clique. */
 .gallery-view {
   width: 100%; height: 100%;
   overflow-x: auto; overflow-y: hidden;
-  scrollbar-width: none; scroll-behavior: smooth;
+  scrollbar-width: none;
   cursor: grab;
 }
 .gallery-view::-webkit-scrollbar { display: none; }
-/* durante o arrasto o scroll precisa ser imediato, senao briga com o smooth */
-.gallery-view.is-dragging { cursor: grabbing; user-select: none; scroll-behavior: auto; }
-.gallery-view img { width: auto; height: 100%; max-width: none; }
+.gallery-view.is-dragging { cursor: grabbing; user-select: none; }
 
 .gallery-arrow {
   position: absolute; top: 208px; width: 25px; height: 25px; z-index: 2;
@@ -167,6 +167,8 @@
 .gallery-arrow--l { left: -33px; }
 .gallery-arrow--r { left: 319px; }
 .gallery-arrow img { width: 100%; height: 100%; pointer-events: none; }
+.gallery-view img { width: auto; height: 100%; max-width: none; }
+
 
 .t-caso2 { width: 365px; margin: 53px 0 0 19px; position: relative; z-index: 1; }
 .t-caso2 p { font-size: 18px; line-height: normal; color: #000; }

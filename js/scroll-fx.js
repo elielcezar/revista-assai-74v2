@@ -164,6 +164,11 @@
      Opção no contêiner:
        data-fx-inicio="50%"  ponto da tela onde o centro do trilho trava
 
+     Convive com controles próprios que mexam no scrollLeft (setas, arrasto, o
+     gesto do dedo): o que for mexido por fora é absorvido e somado à posição do
+     scroll, então o leitor pode adiantar/voltar o trilho e seguir rolando dali.
+     O que não pode é um controle que mova o conteúdo por transform.
+
      Como congela: a coluna vai para dentro de dois invólucros — o de fora ganha
      um espaçador com altura igual ao percurso do texto; o de dentro é position: sticky com
      top negativo, então a coluna inteira "gruda" no ponto da trava enquanto o
@@ -197,6 +202,9 @@
     // espaçador, não padding: o sticky só anda dentro da área de conteúdo do pai
 
     var dist = 0, percurso = 0, trava = 0;
+    // ajuste manual: o que setas, arrasto ou o dedo mexerem no trilho é absorvido
+    // e somado à posição do scroll, em vez de ser sobrescrito no frame seguinte
+    var manual = 0, ultimo = null;
     function medir() {
       var z = zoom();
       dist = Math.max(0, trilho.scrollWidth - trilho.clientWidth); // px de CSS
@@ -215,7 +223,12 @@
       trava = topoFora + centro - alvo;
       var top = Math.round(alvo - centro) + "px";            // sticky: medido do topo da tela
       if (dentro.style.top !== top) dentro.style.top = top;
-      if (dist) trilho.scrollLeft = gsap.utils.clamp(0, 1, (window.scrollY - trava) / percurso) * dist;
+      if (!dist) return;
+      if (ultimo !== null) manual += trilho.scrollLeft - ultimo;   // mexeram por fora
+      var alvo = gsap.utils.clamp(0, 1, (window.scrollY - trava) / percurso) * dist;
+      manual = gsap.utils.clamp(-alvo, dist - alvo, manual);
+      ultimo = Math.round(alvo + manual);
+      trilho.scrollLeft = ultimo;
     }
 
     var pedido = 0;
@@ -248,6 +261,7 @@
       fora.parentNode.insertBefore(alvo, fora);
       fora.remove();
       trilho.scrollLeft = 0;
+      manual = 0; ultimo = null;
     };
   }
 
