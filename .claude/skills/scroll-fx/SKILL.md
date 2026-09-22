@@ -17,7 +17,9 @@ description: >-
   (ou surgem subindo com fade) — na abertura ou quando o bloco chega à tela — e
   depois ficam balançando/flutuando ("pop-in na bisnaga e nas gotas", "pop-in
   nos sachês", "fade-up com 0,5s entre os sachês pequenos"), ou um título cujas
-  letras se juntam vindas de todo lado ao carregar ("magnetic-pull no h1").
+  letras se juntam vindas de todo lado ao carregar ("magnetic-pull no h1"), ou
+  um elemento que percorre uma curva do layout crescendo e girando conforme o
+  scroll ("orbit-in no celular").
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
   depois acrescente o efeito aqui.
 ---
@@ -142,6 +144,47 @@ percurso) e carrossel da matéria (`.bl-carousel` / `.carousel-viewport`, 1703px
 os dois na mesma página; `74/gestao.html` — carrossel "quando a cortesia faz
 sentido" (`.s-carrossel` / `.carousel-viewport`, 1358px), numa página de
 decoração global (setas, arrasto e `transition` removidos, probe sem as setas).
+
+### `orbit-in` — scroll contínuo
+
+O elemento **percorre um arco** — a curvatura de uma elipse do próprio layout —
+enquanto **cresce e gira**, tudo amarrado ao scroll (1:1, vai e volta). Começa
+pequeno, "em pé" e num ponto da curva; termina exatamente na posição, tamanho e
+inclinação do CSS.
+
+```html
+<span class="d-img28" data-fx="orbit-in" data-fx-curva=".d-sub1"
+      data-fx-de-angulo="30" data-fx-escala="0.05" data-fx-rotacao="52.64"
+      data-fx-inicio="100%" data-fx-fim="50%">…</span>
+```
+
+| atributo | padrão | efeito |
+|---|---|---|
+| `data-fx-curva` | — | seletor do elemento cuja **caixa define a elipse** do trajeto (centro da caixa, raios = metade). Use o arco/círculo do layout que o movimento deve acompanhar |
+| `data-fx-de-angulo` | `30` | ângulo de partida na elipse (0 = direita, 90 = topo, 180 = esquerda) |
+| `data-fx-escala` | `0.05` | tamanho no começo (1 = tamanho final) |
+| `data-fx-rotacao` | `0` | graus a mais no começo; para deixar "em pé" um elemento inclinado no CSS, use o valor oposto ao dele (CSS −52.64 → `52.64`) |
+| `data-fx-inicio` | `100%` | ponto da tela (do centro final do elemento) em que o movimento começa |
+| `data-fx-fim` | `50%` | ponto da tela em que termina |
+
+**O fim não é chutado:** o componente mede onde o centro do elemento cai em
+relação à elipse (ângulo e distância) e termina ali — se o layout mudar, o
+trajeto acompanha. Medições ao vivo a cada frame, como no `pin-horizontal`.
+
+Como achar os valores: meça a caixa do elemento e a da curva (`offsetLeft/Top`,
+largura/altura). O ângulo de partida é o ponto da elipse onde o arco encontra a
+borda da tela — `cos θ = (x − centroX) / raioX`. Na GESTÃO 02: celular com centro
+em (250, 2956), arco branco com centro (183, 3109) e raios 245×116 → partida a
+30° = (395, 3050), na borda direita.
+
+Checklist:
+- Anime o invólucro, não a imagem: a rotação do CSS (se houver) fica no elemento
+  de dentro e as duas se somam.
+- O elemento pode estar na camada de decoração (`.art-bg`): o efeito só usa
+  `transform`, então não mexe no layout — vale em página de decoração global.
+
+Em uso: `74/gestao2.html`, celular do bloco "quando essa estratégia funciona"
+(`.d-img28`, sobre o arco `.d-sub1`).
 
 ### `slide-in-up` — scroll disparado
 

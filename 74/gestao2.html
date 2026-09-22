@@ -30,15 +30,15 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="magnetic-pull"]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="magnetic-pull"],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Clube de descontos, vale a pena? — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Mais clientes nem sempre significam mais lucro. Entenda o que avaliar antes de entrar em um clube de desconto.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-62">
-<link rel="stylesheet" href="css/gestao2.css?v=74-62">
-<link rel="stylesheet" href="../css/shell.css?v=74-62">
+<link rel="stylesheet" href="../css/base.css?v=74-63">
+<link rel="stylesheet" href="css/gestao2.css?v=74-63">
+<link rel="stylesheet" href="../css/shell.css?v=74-63">
 </head>
 <body>
 
@@ -110,7 +110,9 @@
       <span class="d-sub2"><img src="assets/gestao2/imgSubtract2.svg" alt=""></span>
       <!-- Rectangle 1510 (branco) cobre um "Por: Carol Belisse" antigo do Figma:
            os dois juntos nao pintam nada, entao nenhum dos dois entra aqui. -->
-      <span class="d-img28"><span><span><img src="assets/gestao2/imgImage28.png" alt=""></span></span></span>
+      <span class="d-img28" data-fx="orbit-in" data-fx-curva=".d-sub1"
+            data-fx-de-angulo="30" data-fx-escala="0.05" data-fx-rotacao="52.64"
+            data-fx-inicio="100%" data-fx-fim="50%"><span><span><img src="assets/gestao2/imgImage28.png" alt=""></span></span></span>
       <span class="d-blue1507"></span>
       <span class="d-r53"><img src="assets/gestao2/imgRectangle53.svg" alt=""></span>
       <span class="d-r1477"><img src="assets/gestao2/imgRectangle1477.svg" alt=""></span>
@@ -144,9 +146,9 @@
     </section>
 
     <!-- ====== BLOCO 2 — os dois pratos ====== -->
-    <section class="s s-pratos">
-      <figure class="pratos-a"><img src="assets/gestao2/imgChatGptImage24DeJulDe20261632421.png" alt="Prato de comida servido em restaurante"></figure>
-      <figure class="pratos-b"><img src="assets/gestao2/imgChatGptImage24DeJulDe20261632421.png" alt=""></figure>
+    <section class="s s-pratos" data-fx="pop-in">
+      <figure class="pratos-a" data-fx-item data-fx-grupo="pratos" data-fx-intervalo="0.5"><img src="assets/gestao2/imgChatGptImage24DeJulDe20261632421.png" alt="Prato de comida servido em restaurante"></figure>
+      <figure class="pratos-b" data-fx-item data-fx-grupo="pratos"><img src="assets/gestao2/imgChatGptImage24DeJulDe20261632421.png" alt=""></figure>
     </section>
 
     <!-- ====== BLOCO 3 — novos clientes ou fidelização ====== -->
@@ -323,12 +325,12 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-62"></script>
-<script src="js/gestao2.js?v=74-62"></script>
+<script src="../js/shell.js?v=74-63"></script>
+<script src="js/gestao2.js?v=74-63"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-62"></script>
+<script src="../js/scroll-fx.js?v=74-63"></script>
 </body>
 </html>

@@ -12,6 +12,7 @@
      <img data-fx="slide-in-left" …>             ← entrada: roda ao carregar
      <div data-fx="scale-up"><span data-fx-item> ← entrada: crescem da base, em cascata
      <div data-fx="pop-in"><span data-fx-item>   ← entrada: surgem com "pop", um de cada vez
+     <span data-fx="orbit-in">                   ← scroll: percorre uma curva crescendo e girando
      <h1 data-fx="magnetic-pull">                ← entrada: letras se juntam vindas de todo lado
                                                    (precisa do SplitText.min.js)
 
@@ -247,6 +248,86 @@
       fora.parentNode.insertBefore(alvo, fora);
       fora.remove();
       trilho.scrollLeft = 0;
+    };
+  }
+
+  /* =========================================================
+     orbit-in  (scroll contínuo, 1:1)
+     O elemento percorre um arco — a curvatura de uma elipse do próprio layout —
+     enquanto cresce e gira, tudo amarrado ao scroll: começa pequeno, "em pé" e
+     num ponto da curva; termina na posição, tamanho e inclinação do CSS.
+     Rolando para cima, desfaz.
+
+       <span class="d-img28" data-fx="orbit-in" data-fx-curva=".d-sub1"
+             data-fx-de-angulo="30" data-fx-escala="0.05" data-fx-rotacao="52.64">
+
+     Opções:
+       data-fx-curva=".x"        elemento cuja caixa define a elipse do trajeto
+                                 (centro da caixa, raios = metade dela)
+       data-fx-de-angulo="30"    ângulo de partida na elipse, em graus
+                                 (0 = direita, 90 = topo, 180 = esquerda)
+       data-fx-escala="0.05"     tamanho no começo (1 = tamanho final)
+       data-fx-rotacao="0"       graus a mais no começo (ex.: 52.64 deixa em pé
+                                 um elemento que no CSS está inclinado -52.64)
+       data-fx-inicio="100%"     ponto da tela (do centro final) em que começa
+       data-fx-fim="50%"         ponto da tela em que termina
+
+     O raio do fim sai do próprio elemento: o componente mede onde o centro dele
+     cai em relação à elipse, então o trajeto termina exatamente na posição do
+     CSS. Medições ao vivo a cada frame (não depende de recálculo).
+     ========================================================= */
+  function orbitIn(el) {
+    var curva = document.querySelector(el.getAttribute("data-fx-curva") || "");
+    if (!curva) return;
+    var ang0 = pct(el.getAttribute("data-fx-de-angulo"), 30) * Math.PI / 180;
+    var esc0 = pct(el.getAttribute("data-fx-escala"), 0.05);
+    var rot0 = pct(el.getAttribute("data-fx-rotacao"), 0);
+    var inicio = pct(el.getAttribute("data-fx-inicio"), 100) / 100;
+    var fim = pct(el.getAttribute("data-fx-fim"), 50) / 100;
+
+    gsap.set(el, { transformOrigin: "50% 50%" });
+
+    // tudo em px de CSS, sem transform: offsetLeft/Top não sofrem com a animação
+    function caixa(e) {
+      return { cx: e.offsetLeft + e.offsetWidth / 2, cy: e.offsetTop + e.offsetHeight / 2,
+               rx: e.offsetWidth / 2, ry: e.offsetHeight / 2 };
+    }
+
+    function atualizar() {
+      var z = zoom();
+      var c = caixa(curva), m = caixa(el);
+      // onde o centro final cai na elipse: ângulo e quanto além do raio
+      var dx = (m.cx - c.cx) / c.rx, dy = (c.cy - m.cy) / c.ry;
+      var angF = Math.atan2(dy, dx), kF = Math.hypot(dx, dy);
+      // progresso pelo ponto da tela em que está o centro final (sem transform)
+      var topoArt = el.offsetParent ? el.offsetParent.getBoundingClientRect().top : 0;
+      var yTela = topoArt + m.cy * z;
+      var de = window.innerHeight * inicio, ate = window.innerHeight * fim;
+      var p = gsap.utils.clamp(0, 1, (de - yTela) / (de - ate));
+      var ang = ang0 + (angF - ang0) * p, k = 1 + (kF - 1) * p;
+      gsap.set(el, {
+        x: c.cx + k * c.rx * Math.cos(ang) - m.cx,
+        y: c.cy - k * c.ry * Math.sin(ang) - m.cy,
+        scale: esc0 + (1 - esc0) * p,
+        rotation: rot0 * (1 - p)
+      });
+    }
+
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; atualizar(); });
+    }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", noScroll);
+    window.addEventListener("load", noScroll);
+    atualizar();
+
+    return function () {
+      window.removeEventListener("scroll", noScroll);
+      window.removeEventListener("resize", noScroll);
+      window.removeEventListener("load", noScroll);
+      if (pedido) cancelAnimationFrame(pedido);
+      gsap.set(el, { clearProps: "transform,transformOrigin" });
     };
   }
 
@@ -622,7 +703,7 @@
   }
 
   /* ---------- inicialização ---------- */
-  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp };
+  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn };
   var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
