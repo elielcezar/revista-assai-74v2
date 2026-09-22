@@ -198,11 +198,11 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-65**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-66**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-65/?v=74-66/g' *.html 74/*.html
+sed -i 's/?v=74-66/?v=74-67/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache

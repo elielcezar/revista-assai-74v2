@@ -278,6 +278,9 @@
      Opções:
        data-fx-curva=".x"        elemento cuja caixa define a elipse do trajeto
                                  (centro da caixa, raios = metade dela)
+       data-fx-curva-metade="topo"  quando esse elemento é só a METADE DE CIMA da
+                                 elipse (arco/cúpula): centro = base da caixa,
+                                 raio vertical = altura inteira
        data-fx-de-angulo="30"    ângulo de partida na elipse, em graus
                                  (0 = direita, 90 = topo, 180 = esquerda)
        data-fx-escala="0.05"     tamanho no começo (1 = tamanho final)
@@ -302,14 +305,18 @@
     gsap.set(el, { transformOrigin: "50% 50%" });
 
     // tudo em px de CSS, sem transform: offsetLeft/Top não sofrem com a animação
-    function caixa(e) {
-      return { cx: e.offsetLeft + e.offsetWidth / 2, cy: e.offsetTop + e.offsetHeight / 2,
+    function caixa(e, metadeTopo) {
+      var cx = e.offsetLeft + e.offsetWidth / 2;
+      if (metadeTopo) {
+        return { cx: cx, cy: e.offsetTop + e.offsetHeight, rx: e.offsetWidth / 2, ry: e.offsetHeight };
+      }
+      return { cx: cx, cy: e.offsetTop + e.offsetHeight / 2,
                rx: e.offsetWidth / 2, ry: e.offsetHeight / 2 };
     }
 
     function atualizar() {
       var z = zoom();
-      var c = caixa(curva), m = caixa(el);
+      var c = caixa(curva, el.getAttribute("data-fx-curva-metade") === "topo"), m = caixa(el);
       // onde o centro final cai na elipse: ângulo e quanto além do raio
       var dx = (m.cx - c.cx) / c.rx, dy = (c.cy - m.cy) / c.ry;
       var angF = Math.atan2(dy, dx), kF = Math.hypot(dx, dy);

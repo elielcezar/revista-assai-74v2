@@ -46,7 +46,9 @@ EXPECT = [
 
     (".passo-badge-txt",        103, 5043),
     (".d-e124",                 48, 4981),
-    (".d-phone",              81.6, 4904),
+    # a rotacao do celular passou para um <span> interno (o orbit-in anima a caixa):
+    # a caixa medida agora e a do elemento sem giro; o visual nao mudou
+    (".d-phone",             136.5, 4870),
     (".t-melhor-foto",           20, 5151),
     (".steps",                   33, 5217),
     (".t-agora",                 20, 5732),
@@ -78,7 +80,7 @@ def main():
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 402, "height": 900}, device_scale_factor=1)
         # QA nao dispara pageview no Analytics (tag GTM das paginas)
-        pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick"), lambda r: r.abort())
+        pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick|scroll-fx\.js"), lambda r: r.abort())
         pg.goto(url, wait_until="networkidle")
         # mede so o frame do Figma: esconde o invólucro (css/shell.css)
         pg.add_style_tag(content=".dt-sidebar { display: none !important; }")

@@ -101,7 +101,11 @@
 .d-choc img { object-fit: cover; }
 
 /* celular: relativeTransform do Figma (rotacao de +81 graus) */
-.d-phone { left: 0; top: 0; width: 111px; height: 206px; transform-origin: 0 0; transform: matrix(0.157053, 0.98759, -0.98759, 0.157053, 285, 4720); }
+/* a caixa fica sem transform (o orbit-in do js/scroll-fx.js anima ela); a rotação
+   do Figma passou para dentro, com o mesmo resultado visual de antes
+   (matrix original: rotate(80.96deg) com origem 0 0 e translate 285,4720) */
+.d-phone { left: 136.5px; top: 4688px; width: 111px; height: 206px; }
+.d-phone > span { display: block; width: 100%; height: 100%; transform: rotate(80.96deg); }
 .d-phone img { object-fit: cover; }
 
 /* =========================================================
