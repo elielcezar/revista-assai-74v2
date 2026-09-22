@@ -554,9 +554,10 @@
        - item com data-fx-grupo="x": forma uma sequência própria, que começa
          quando esse grupo chega à tela (vários grupos no mesmo contêiner);
        - o resto: ao carregar a página.
-     Nada anima se o bloco já estiver na tela (ou acima) no primeiro exame — é o
-     caso de recarregar a página parado nele: os itens aparecem prontos, em vez
-     de a sequência acontecer sem ninguém ver.
+     O que espera a tela RECOMEÇA a cada entrada: o grupo que sai inteiro da tela
+     volta ao estado inicial e anima de novo quando o leitor voltar (e no Ctrl+R,
+     que devolve o leitor onde ele estava). Só a sequência de abertura
+     ("carregar") roda uma vez por carregamento.
 
        <ul data-fx="pop-in" data-fx-quando="scroll"
            data-fx-entrada="fade-right" data-fx-intervalo="0.5">
@@ -596,13 +597,22 @@
     }
     function desloc(el) { return pct(attr(el, "data-fx-deslocamento", "30"), 30); }
 
-    // estado inicial de cada item
-    itens.forEach(function (el) {
-      var t = tipo(el), d = desloc(el);
-      if (t === "fade-up") gsap.set(el, { autoAlpha: 0, y: d });
-      else if (t === "fade-right") gsap.set(el, { autoAlpha: 0, x: -d });
-      else gsap.set(el, { scale: 0, transformOrigin: el.getAttribute("data-fx-origem") || "50% 50%" });
-    });
+    // Estado inicial de um item. Também rearma o grupo que saiu da tela, então
+    // desfaz o que a entrada (e o balanço/flutuação que vêm depois) deixou.
+    function estadoInicial(el) {
+      gsap.killTweensOf(el);
+      var t = tipo(el), d = desloc(el), base = { x: 0, y: 0, rotation: 0 };
+      if (t === "fade-up") base.y = d;
+      else if (t === "fade-right") base.x = -d;
+      if (t === "pop") {
+        base.scale = 0;
+        base.transformOrigin = el.getAttribute("data-fx-origem") || "50% 50%";
+      } else {
+        base.scale = 1; base.autoAlpha = 0;
+      }
+      gsap.set(el, base);
+    }
+    itens.forEach(estadoInicial);
 
     // depois de surgir: balanço (gira) e/ou flutuação (sobe e desce), sem parar
     function continuar(el) {
@@ -620,12 +630,6 @@
         gsap.to(el, { y: -altura, duration: gsap.utils.random(1.4, 2), ease: "sine.inOut",
           repeat: -1, yoyo: true, delay: gsap.utils.random(0, 0.6) });
       }
-    }
-
-    function estadoFinal(el) {
-      if (tipo(el) === "pop") gsap.set(el, { scale: 1 });
-      else gsap.set(el, { autoAlpha: 1, x: 0, y: 0 });
-      continuar(el);
     }
 
     // a sequência de um grupo, depois de as imagens dele carregarem (limite 3s)
@@ -669,24 +673,23 @@
       return { itens: grupos[g],
                intervalo: pct(attr(primeiro, "data-fx-intervalo", "0.2"), 0.2),
                margem: pct(attr(primeiro, "data-fx-margem", "100"), 100),
-               esperou: false };   // já esteve abaixo da linha?
+               dentro: false };   // a sequência está rodando/terminada na tela?
     });
     if (!pendentes.length) return;
 
+    // A sequência RECOMEÇA a cada entrada na tela: quando o grupo sai inteiro,
+    // volta ao estado inicial e espera a próxima. É o que faz a entrada
+    // aparecer de novo no Ctrl+R (que devolve o leitor onde ele estava) e a
+    // cada vez que o leitor sobe e desce a página.
     function checar() {
-      pendentes = pendentes.filter(function (g) {
-        var abaixo = g.itens[0].getBoundingClientRect().top > window.innerHeight - g.margem;
-        if (abaixo) { g.esperou = true; return true; }      // ainda não chegou
-        // só anima o que se viu chegar: recarregar a página parado no bloco (ou
-        // já abaixo dele) mostra os itens prontos, sem sequência escondida
-        if (g.esperou) surgir(g.itens, g.intervalo, 0);
-        else g.itens.forEach(estadoFinal);
-        return false;
+      pendentes.forEach(function (g) {
+        var primeiro = g.itens[0].getBoundingClientRect();
+        var ultimo = g.itens[g.itens.length - 1].getBoundingClientRect();
+        var chegou = primeiro.top <= window.innerHeight - g.margem && ultimo.bottom > 0;
+        var saiu = ultimo.bottom <= 0 || primeiro.top > window.innerHeight;
+        if (!g.dentro && chegou) { g.dentro = true; surgir(g.itens, g.intervalo, 0); }
+        else if (g.dentro && saiu) { g.dentro = false; g.itens.forEach(estadoInicial); }
       });
-      if (!pendentes.length) {
-        window.removeEventListener("scroll", noScroll);
-        window.removeEventListener("resize", noScroll);
-      }
     }
     var pedido = 0;
     function noScroll() {

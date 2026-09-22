@@ -257,30 +257,32 @@
   font-size: 18px; font-weight: 700; color: var(--vermelho); line-height: normal;
 }
 
-/* ferramentas: posicoes do Figma relativas ao topo do primeiro quadrado (y 5899) */
-.tools { position: relative; width: 402px; height: 374px; margin: 87px 0 0 0; }
-/* cada item cobre a lista: as pecas dele ja sao posicionadas nessas coordenadas,
-   e assim o transform da animacao move o item inteiro sem mexer no layout */
-.tool { position: absolute; inset: 0; }
-.tool-bg { position: absolute; width: 100px; height: 100px; border-radius: 21px; background: #fff; }
+/* ferramentas: cada item e uma linha da lista, no fluxo normal — o quadrado
+   branco, o logo (recortado dentro dele) e o texto ao lado. Nada e posicionado
+   em relacao a lista, entao o transform de um efeito move o item inteiro sem
+   mexer no layout. As medidas do Figma que mudam de um item para outro ficam
+   nas variaveis do .tool. */
+.tools { width: 402px; margin: 87px 0 0 0; padding: 0; list-style: none;
+         display: flex; flex-direction: column; gap: 37px; }
+.tool { --card-x: 90px; --txt-x: 15px; --txt-y: 40px; display: flex; align-items: flex-start; }
+.tool-card { position: relative; flex: none; width: 100px; height: 100px;
+             margin-left: var(--card-x); border-radius: 21px; background: #fff; }
 .tool-logo { position: absolute; overflow: hidden; }
 .tool-logo img { position: absolute; }
-.tool-txt { position: absolute; font-size: 20px; font-weight: 700; color: #fff; line-height: 22.18px; white-space: nowrap; }
+.tool-txt { margin: var(--txt-y) 0 0 var(--txt-x); font-size: 20px; font-weight: 700;
+            color: #fff; line-height: 22.18px; white-space: nowrap; }
 
-.tool--gemini .tool-bg { left: 90px; top: 0; }
-.tool--gemini .tool-logo { left: 104px; top: 15px; width: 72px; height: 72px; }
+/* logo dentro do quadrado (coordenadas do Figma, relativas ao quadrado) */
+.tool--gemini .tool-logo { left: 14px; top: 15px; width: 72px; height: 72px; }
 .tool--gemini .tool-logo img { left: 0; top: 0; width: 72px; height: 72px; object-fit: cover; }
-.tool--gemini .tool-txt { left: 205px; top: 40px; }
 
-.tool--chatgpt .tool-bg { left: 89px; top: 137px; }
-.tool--chatgpt .tool-logo { left: 102px; top: 144px; width: 76px; height: 90px; }
+.tool--chatgpt { --card-x: 89px; --txt-x: 12px; --txt-y: 41px; }
+.tool--chatgpt .tool-logo { left: 13px; top: 7px; width: 76px; height: 90px; }
 .tool--chatgpt .tool-logo img { left: -43px; top: 0; width: 160px; height: 90px; }
-.tool--chatgpt .tool-txt { left: 201px; top: 178px; }
 
-.tool--claude .tool-bg { left: 90px; top: 274px; }
-.tool--claude .tool-logo { left: 87px; top: 285px; width: 105px; height: 79px; }
+/* o logo do claude e mais largo que o quadrado: transborda 3px a esquerda */
+.tool--claude .tool-logo { left: -3px; top: 11px; width: 105px; height: 79px; }
 .tool--claude .tool-logo img { left: 0; top: 0; width: 105px; height: 79px; object-fit: contain; }
-.tool--claude .tool-txt { left: 205px; top: 314px; }
 
 /* =========================================================
    BLOCO 7 — o prompt

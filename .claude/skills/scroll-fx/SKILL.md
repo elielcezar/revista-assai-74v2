@@ -347,10 +347,12 @@ subindo alguns px com fade (`fade-up`) ou **vindo da esquerda** com fade
 (limite de 3s) para não surgirem vazios. **Quando:** itens sem grupo surgem ao
 abrir a página; `data-fx-quando="scroll"` no contêiner faz a lista inteira
 esperar **chegar à tela**; e itens com `data-fx-grupo` formam sequências
-próprias, cada uma disparando na chegada do seu grupo (uma vez por visita) —
-use um dos dois para peças abaixo da dobra, senão a entrada acontece sem
-ninguém ver. Recarregar a página já parado no bloco (ou abaixo dele) mostra os
-itens **prontos**, sem sequência escondida. Depois de surgir,
+próprias, cada uma disparando na chegada do seu grupo — use um dos dois para
+peças abaixo da dobra, senão a entrada acontece sem ninguém ver. O que espera a
+tela **recomeça a cada entrada**: o grupo que sai inteiro da tela volta ao
+estado inicial e anima de novo quando o leitor volta — e no Ctrl+R, que devolve
+o leitor onde ele estava. Só a sequência de abertura (`carregar`) roda uma vez
+por carregamento. Depois de surgir,
 cada item pode **continuar se mexendo**: balançar (girar em volta do centro, ida
 e volta) e/ou flutuar (subir e descer), sem parar. O contêiner pode ser a camada
 de decoração inteira (`.art-bg`): só os `data-fx-item` animam, e um mesmo
@@ -389,7 +391,7 @@ itens; o do item vence o do contêiner.
 | `data-fx-entrada` | contêiner ou item | `pop` | como o item entra: `pop` (cresce do centro com quique), `fade-up` (surge subindo, com fade; mínimo 0,6s) ou `fade-right` (surge vindo da esquerda, com fade; mínimo 0,6s) |
 | `data-fx-deslocamento` | contêiner ou item | `30` | (`fade-up`/`fade-right`) px que o item percorre ao entrar |
 | `data-fx-origem` | item | `50% 50%` | ponto de onde o item cresce (`transform-origin`); use quando o desenho é maior que a caixa do item (ex.: o centro do balão) |
-| `data-fx-grupo` | item | — | nome do grupo: sequência própria, que começa quando o 1º item do grupo chega à tela (uma vez) |
+| `data-fx-grupo` | item | — | nome do grupo: sequência própria, que recomeça a cada vez que o grupo entra na tela |
 | `data-fx-margem` | contêiner ou item | `100` | px acima do fundo da tela em que a sequência dispara (maior = mais cedo) |
 | `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro (só ao carregar) |
 | `data-fx-balanco` | item | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
@@ -427,6 +429,13 @@ Checklist:
   6. `data-fx-origem` no invólucro = centro do desenho em relação à caixa.
   Feito no balão "É só um sachê de R$ 0,15." da GESTÃO (`.balao`, antes
   `.d-union` na `.art-bg` + `.q-sache` solto).
+- **O item precisa ser uma caixa no fluxo**, não uma camada sobre a lista. Se
+  as peças vieram do Figma em coordenadas absolutas relativas à lista inteira,
+  refatore antes de animar: cada item vira uma linha (`display: flex`), com as
+  peças posicionadas **dentro dele**, e as medidas que variam de um item para
+  outro em variáveis CSS. Senão o `x`/`y` do efeito move uma camada que cobre a
+  lista toda, e o que é "um item" para o efeito não é o que se vê na tela. Foi o
+  caso da `ul.tools` da MKT (print antes/depois: 0 pixel diferente).
 - **Anti-piscada** no `<head>` (com o seletor dos itens) só é preciso quando os
   itens estão **acima da dobra** — é a entrada ao carregar que pisca. Lista que
   espera o scroll (`data-fx-quando="scroll"`) ou grupo abaixo da dobra dispensa:
@@ -441,10 +450,7 @@ mesma `.art-bg`; os 3 sachês pequenos lado a lado em grupo com `fade-up`
 (`.s-sache`), grupo `balao`, crescendo do centro do desenho
 (`data-fx-origem="105.5px 43px"`).
 `74/mkt.html` — as 3 ferramentas de IA (`ul.tools`) com `data-fx-quando="scroll"`
-e `fade-right`, 0,5s entre elas. Ali cada `li` é `position: absolute; inset: 0`
-(cobre a lista inteira, com as peças já posicionadas dentro), então o `x` da
-animação move o item inteiro sem mexer no layout — é o padrão a seguir quando as
-peças do item vêm do Figma em coordenadas absolutas.
+e `fade-right`, 0,5s entre elas.
 
 ## Antes de aplicar um efeito de scroll (checklist)
 
