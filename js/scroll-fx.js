@@ -12,6 +12,8 @@
      <img data-fx="slide-in-left" …>             ← entrada: roda ao carregar
      <div data-fx="scale-up"><span data-fx-item> ← entrada: crescem da base, em cascata
      <div data-fx="pop-in"><span data-fx-item>   ← entrada: surgem com "pop", um de cada vez
+     <h1 data-fx="magnetic-pull">                ← entrada: letras se juntam vindas de todo lado
+                                                   (precisa do SplitText.min.js)
 
    Efeitos de entrada precisam do trecho anti-piscada no <head> (ver a skill).
 
@@ -574,9 +576,54 @@
     checar();
   }
 
+  /* =========================================================
+     magnetic-pull  (efeito de ENTRADA: roda ao carregar, não depende do scroll)
+     O texto é quebrado em letras (SplitText) e cada letra vem de uma posição e
+     rotação aleatórias, surgindo, até o lugar — como se fossem puxadas por um
+     ímã. No fim o texto volta a ser o HTML original (split.revert()).
+
+       <h1 data-fx="magnetic-pull">…</h1>
+
+     Opções no elemento:
+       data-fx-distancia="200"  px máximos de onde cada letra vem (x e y)
+       data-fx-rotacao="90"     graus máximos de rotação inicial
+       data-fx-intervalo="0.02" segundos entre uma letra e a seguinte
+       data-fx-duracao="1"      segundos de cada letra
+       data-fx-atraso="0"       segundos antes da primeira
+
+     Precisa: SplitText.min.js (gsap 3.15, jsDelivr) antes deste arquivo e o
+     trecho anti-piscada no <head>. Sem o SplitText, o texto fica parado.
+     ========================================================= */
+  function magneticPull(el) {
+    if (!window.SplitText) return;
+    gsap.registerPlugin(SplitText);
+    var dist = pct(el.getAttribute("data-fx-distancia"), 200);
+    var rot = pct(el.getAttribute("data-fx-rotacao"), 90);
+    // escondido até as fontes: as letras são medidas na quebra, e com a fonte
+    // substituta sairiam do tamanho errado
+    gsap.set(el, { visibility: "hidden" });
+    function vai() {
+      // chars sem words quebraria linhas no meio da palavra: smartWrap segura a palavra
+      var split = SplitText.create(el, { type: "chars", smartWrap: true });
+      gsap.set(el, { visibility: "visible" });
+      gsap.from(split.chars, {
+        x: function () { return gsap.utils.random(-dist, dist); },
+        y: function () { return gsap.utils.random(-dist, dist); },
+        rotation: function () { return gsap.utils.random(-rot, rot); },
+        opacity: 0,
+        stagger: pct(el.getAttribute("data-fx-intervalo"), 0.02),
+        duration: pct(el.getAttribute("data-fx-duracao"), 1),
+        delay: pct(el.getAttribute("data-fx-atraso"), 0),
+        ease: "power3.out",
+        onComplete: function () { split.revert(); } // volta ao HTML original
+      });
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(vai); else vai();
+  }
+
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp };
-  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn };
+  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.

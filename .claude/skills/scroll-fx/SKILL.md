@@ -16,7 +16,8 @@ description: >-
   ("scale-up nas cúpulas do hero"), ou peças que surgem com "pop" uma de cada vez
   (ou surgem subindo com fade) — na abertura ou quando o bloco chega à tela — e
   depois ficam balançando/flutuando ("pop-in na bisnaga e nas gotas", "pop-in
-  nos sachês", "fade-up com 0,5s entre os sachês pequenos").
+  nos sachês", "fade-up com 0,5s entre os sachês pequenos"), ou um título cujas
+  letras se juntam vindas de todo lado ao carregar ("magnetic-pull no h1").
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
   depois acrescente o efeito aqui.
 ---
@@ -34,6 +35,8 @@ ajuste vale para todas.
    <!-- animações de scroll (camada separada; sem elas a página fica como no CSS) -->
    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+   <!-- só se a página usar magnetic-pull (quebra o texto em letras): -->
+   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
    <script src="../js/scroll-fx.js?v=74-NN"></script>
    ```
    (caminho relativo à pasta da edição; `?v=` = versão de cache atual do README)
@@ -191,6 +194,37 @@ Em uso: `74/principal.html`, lista dos 5 acordos (`.pacts`), margem 200;
 sobreposta, `data-fx-margem="200" data-fx-passo="200"` (testados 300/150 por
 linha, 400/400 e 200/100 por passo — 200/200 foi o aprovado para dar tempo de
 ver a pilha se montando).
+
+### `magnetic-pull` — entrada
+
+Ao carregar, o texto é quebrado em **letras** (SplitText) e cada uma vem de uma
+posição e rotação aleatórias, surgindo, até o lugar — como se um ímã as
+juntasse. No fim, o texto **volta a ser o HTML original** (`split.revert()`):
+nada muda de layout nem de acessibilidade depois da animação.
+
+```html
+<h1 data-fx="magnetic-pull">Clube de descontos, <span>VALE A PENA?</span></h1>
+```
+
+| atributo (no elemento) | padrão | efeito |
+|---|---|---|
+| `data-fx-distancia` | `200` | px máximos de onde cada letra vem (x e y) |
+| `data-fx-rotacao` | `90` | graus máximos de rotação inicial |
+| `data-fx-intervalo` | `0.02` | segundos entre uma letra e a seguinte |
+| `data-fx-duracao` | `1` | segundos de cada letra |
+| `data-fx-atraso` | `0` | segundos antes da primeira |
+
+Checklist:
+- Carregue o **`SplitText.min.js`** (gratuito desde a 3.13) antes do
+  `scroll-fx.js`. Sem ele, o texto fica parado — nada quebra.
+- **Espera as fontes**: as letras são medidas na quebra, e com a fonte
+  substituta sairiam do tamanho errado. Até lá o texto fica escondido (precisa
+  do trecho anti-piscada no `<head>`, com `[data-fx="magnetic-pull"]`).
+- Quebra por letra **com `smartWrap`**, senão a linha pode quebrar no meio da
+  palavra.
+- Serve para título curto. Em texto longo são centenas de letras animando.
+
+Em uso: `74/gestao2.html`, título da abertura (`.s-hero h1`).
 
 ### `slide-in-left` — entrada
 

@@ -63,7 +63,7 @@ def main():
         b = p.chromium.launch()
         pg = b.new_page(viewport={"width": 402, "height": 900}, device_scale_factor=1)
         # QA nao dispara pageview no Analytics (tag GTM das paginas)
-        pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick"), lambda r: r.abort())
+        pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick|scroll-fx\.js"), lambda r: r.abort())
         pg.goto(url, wait_until="networkidle")
         # mede so o frame do Figma: esconde o invólucro (css/shell.css)
         pg.add_style_tag(content=".dt-sidebar { display: none !important; }")

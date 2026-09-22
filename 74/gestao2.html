@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="magnetic-pull"]{visibility:hidden}</style>
 <title>Clube de descontos, vale a pena? — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Mais clientes nem sempre significam mais lucro. Entenda o que avaliar antes de entrar em um clube de desconto.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-61">
-<link rel="stylesheet" href="css/gestao2.css?v=74-61">
-<link rel="stylesheet" href="../css/shell.css?v=74-61">
+<link rel="stylesheet" href="../css/base.css?v=74-62">
+<link rel="stylesheet" href="css/gestao2.css?v=74-62">
+<link rel="stylesheet" href="../css/shell.css?v=74-62">
 </head>
 <body>
 
@@ -114,13 +118,13 @@
 
     <!-- ====== BLOCO 1 — abertura ====== -->
     <section class="s s-hero">
-      <h1>
+      <h1 data-fx="magnetic-pull">
         <span class="h1-kicker">Clube de descontos,</span>
         <span class="h1-main">VALE A PENA?</span>
       </h1>
 
       <figure class="hero-foto">
-        <img src="assets/gestao2/imgGeminiGeneratedImageQlbkloqlbkloqlbk1.png" alt="Grupo de amigos à mesa em um restaurante, um deles mostrando o celular">
+        <img src="assets/gestao2/imgGeminiGeneratedImageQlbkloqlbkloqlbk1.jpg" alt="Grupo de amigos à mesa em um restaurante, um deles mostrando o celular">
       </figure>
 
       <p class="hero-lead">Mais clientes nem sempre significam mais lucro. Entenda o que avaliar antes de entrar em um clube de desconto.</p>
@@ -319,7 +323,12 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-61"></script>
-<script src="js/gestao2.js?v=74-61"></script>
+<script src="../js/shell.js?v=74-62"></script>
+<script src="js/gestao2.js?v=74-62"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-62"></script>
 </body>
 </html>
