@@ -543,38 +543,40 @@
   }
 
   /* =========================================================
-     pop-in  (efeito de ENTRADA: roda ao carregar, não depende do scroll)
-     Os itens surgem um de cada vez, na ordem do HTML, crescendo do centro com
-     um pequeno quique no fim ("pop"). Espera as imagens dos itens carregarem
-     (limite de 3s), para não surgirem vazios. Itens sem grupo surgem ao abrir a
-     página; itens com data-fx-grupo surgem quando o grupo chega à tela.
+     pop-in  (entrada, ao carregar ou ao chegar à tela)
+     Os itens surgem um de cada vez, na ordem do HTML: crescendo do centro com um
+     quique ("pop"), subindo com fade ("fade-up") ou vindo da esquerda com fade
+     ("fade-right"). Espera as imagens dos itens carregarem (limite de 3s).
 
-       <div data-fx="pop-in">                      ← pode ser a camada de decoração
-         <span data-fx-item data-fx-balanco="30">…</span>  ← depois fica balançando
-         <span data-fx-item data-fx-flutuacao="20">…</span>   ← depois fica flutuando
-       </div>
+     QUANDO cada item surge:
+       - contêiner com data-fx-quando="scroll": a sequência do contêiner começa
+         quando ele chega à tela;
+       - item com data-fx-grupo="x": forma uma sequência própria, que começa
+         quando esse grupo chega à tela (vários grupos no mesmo contêiner);
+       - o resto: ao carregar a página.
+     Nada anima se o bloco já estiver na tela (ou acima) no primeiro exame — é o
+     caso de recarregar a página parado nele: os itens aparecem prontos, em vez
+     de a sequência acontecer sem ninguém ver.
+
+       <ul data-fx="pop-in" data-fx-quando="scroll"
+           data-fx-entrada="fade-right" data-fx-intervalo="0.5">
+         <li data-fx-item>…</li>
+       </ul>
 
      Opções no contêiner:
-       data-fx-duracao="0.5"     segundos de cada item
-       data-fx-intervalo="0.2"   segundos entre um item e o seguinte
-       data-fx-atraso="0"        segundos antes do primeiro
-     Opção no item:
-       data-fx-balanco="30"      depois de surgir, gira ±N graus em volta do
-                                 centro, ida e volta, sem parar
-       data-fx-balanco-duracao="1.6"  segundos de cada ida (ou volta)
-       data-fx-entrada="pop"     como o item entra: "pop" (cresce do centro com
-                                 quique) ou "fade-up" (surge subindo, com fade)
-       data-fx-deslocamento="30" (fade-up) px que o item sobe ao entrar
-       data-fx-origem="50% 50%"  ponto de onde o item cresce (transform-origin);
-                                 ex.: o centro do desenho quando o item é maior
-                                 que a sua caixa
-       data-fx-grupo="saches"    forma uma sequência própria, que só começa quando
-                                 o 1º item do grupo chega à tela (uma vez só)
-       data-fx-intervalo="2"     (no 1º item do grupo) segundos entre os itens dele
-       data-fx-margem="100"      (no 1º item do grupo) px acima do fundo da tela
-       data-fx-flutuacao="20"    depois de surgir, sobe N px e volta, sem parar;
-                                 cada item com ritmo e fase um pouco diferentes
-                                 (para não flutuarem sincronizados)
+       data-fx-quando="carregar"  "carregar" (padrão) ou "scroll"
+       data-fx-entrada="pop"      padrão dos itens: "pop", "fade-up" ou "fade-right"
+       data-fx-duracao="0.5"      segundos de cada item
+       data-fx-intervalo="0.2"    segundos entre um item e o seguinte
+       data-fx-atraso="0"         segundos antes do primeiro (só ao carregar)
+       data-fx-margem="100"       px acima do fundo da tela que disparam a sequência
+       data-fx-deslocamento="30"  px percorridos no fade-up/fade-right
+     Opções no item (sobrepõem as do contêiner):
+       data-fx-entrada, data-fx-deslocamento, data-fx-origem="50% 50%",
+       data-fx-grupo="x", data-fx-intervalo, data-fx-margem,
+       data-fx-balanco="7"        depois de surgir, gira ±N graus, sem parar
+       data-fx-balanco-duracao="1.6"
+       data-fx-flutuacao="10"     depois de surgir, sobe N px e volta, sem parar
 
      Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
      ========================================================= */
@@ -582,16 +584,24 @@
     var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
     if (!itens.length) return;
     var duracao = pct(sec.getAttribute("data-fx-duracao"), 0.5);
-    var intervaloPadrao = pct(sec.getAttribute("data-fx-intervalo"), 0.2);
     var atraso = pct(sec.getAttribute("data-fx-atraso"), 0);
 
-    function tipo(el) { return el.getAttribute("data-fx-entrada") === "fade-up" ? "fade-up" : "pop"; }
+    function attr(el, nome, padrao) {
+      var v = el.getAttribute(nome);
+      return v !== null ? v : sec.getAttribute(nome) !== null ? sec.getAttribute(nome) : padrao;
+    }
+    function tipo(el) {
+      var t = attr(el, "data-fx-entrada", "pop");
+      return (t === "fade-up" || t === "fade-right") ? t : "pop";
+    }
+    function desloc(el) { return pct(attr(el, "data-fx-deslocamento", "30"), 30); }
+
+    // estado inicial de cada item
     itens.forEach(function (el) {
-      if (tipo(el) === "fade-up") {
-        gsap.set(el, { autoAlpha: 0, y: pct(el.getAttribute("data-fx-deslocamento"), 30) });
-      } else {
-        gsap.set(el, { scale: 0, transformOrigin: el.getAttribute("data-fx-origem") || "50% 50%" });
-      }
+      var t = tipo(el), d = desloc(el);
+      if (t === "fade-up") gsap.set(el, { autoAlpha: 0, y: d });
+      else if (t === "fade-right") gsap.set(el, { autoAlpha: 0, x: -d });
+      else gsap.set(el, { scale: 0, transformOrigin: el.getAttribute("data-fx-origem") || "50% 50%" });
     });
 
     // depois de surgir: balanço (gira) e/ou flutuação (sobe e desce), sem parar
@@ -612,19 +622,24 @@
       }
     }
 
-    // um grupo surge em sequência, depois de as imagens dele carregarem (limite 3s)
+    function estadoFinal(el) {
+      if (tipo(el) === "pop") gsap.set(el, { scale: 1 });
+      else gsap.set(el, { autoAlpha: 1, x: 0, y: 0 });
+      continuar(el);
+    }
+
+    // a sequência de um grupo, depois de as imagens dele carregarem (limite 3s)
     function surgir(grupo, intervalo, espera) {
       var foi = false;
       function vai() {
         if (foi) return; foi = true;
         grupo.forEach(function (el, i) {
-          var fim = function () { continuar(el); };
-          var quando = espera + i * intervalo;
-          if (tipo(el) === "fade-up") {
-            gsap.to(el, { autoAlpha: 1, y: 0, duration: Math.max(duracao, 0.6), delay: quando,
-              ease: "power2.out", onComplete: fim });
+          var quando = espera + i * intervalo, acabou = function () { continuar(el); };
+          if (tipo(el) === "pop") {
+            gsap.to(el, { scale: 1, duration: duracao, delay: quando, ease: "back.out(1.7)", onComplete: acabou });
           } else {
-            gsap.to(el, { scale: 1, duration: duracao, delay: quando, ease: "back.out(1.7)", onComplete: fim });
+            gsap.to(el, { autoAlpha: 1, x: 0, y: 0, duration: Math.max(duracao, 0.6), delay: quando,
+              ease: "power2.out", onComplete: acabou });
           }
         });
       }
@@ -640,28 +655,32 @@
       setTimeout(vai, 3000); // imagem lenta demais: entra assim mesmo
     }
 
-    // sem grupo: surgem ao abrir a página; com data-fx-grupo: quando o grupo
-    // chega à tela (topo do 1º item a data-fx-margem px do fundo), uma vez só
-    var grupos = {}, abertura = [];
+    // monta os lotes: ao carregar, ou por chegada à tela (contêiner ou grupos)
+    var porScroll = sec.getAttribute("data-fx-quando") === "scroll";
+    var grupos = {}, aoCarregar = [];
     itens.forEach(function (el) {
-      var g = el.getAttribute("data-fx-grupo");
-      if (g) (grupos[g] = grupos[g] || []).push(el); else abertura.push(el);
+      var g = el.getAttribute("data-fx-grupo") || (porScroll ? "__sec" : null);
+      if (g) (grupos[g] = grupos[g] || []).push(el); else aoCarregar.push(el);
     });
-    if (abertura.length) surgir(abertura, intervaloPadrao, atraso);
+    if (aoCarregar.length) surgir(aoCarregar, pct(sec.getAttribute("data-fx-intervalo"), 0.2), atraso);
 
     var pendentes = Object.keys(grupos).map(function (g) {
       var primeiro = grupos[g][0];
       return { itens: grupos[g],
-               intervalo: pct(primeiro.getAttribute("data-fx-intervalo"), intervaloPadrao),
-               margem: pct(primeiro.getAttribute("data-fx-margem"), 100) };
+               intervalo: pct(attr(primeiro, "data-fx-intervalo", "0.2"), 0.2),
+               margem: pct(attr(primeiro, "data-fx-margem", "100"), 100),
+               esperou: false };   // já esteve abaixo da linha?
     });
     if (!pendentes.length) return;
 
     function checar() {
       pendentes = pendentes.filter(function (g) {
-        var topo = g.itens[0].getBoundingClientRect().top;
-        if (topo > window.innerHeight - g.margem) return true;   // ainda não chegou
-        surgir(g.itens, g.intervalo, 0);
+        var abaixo = g.itens[0].getBoundingClientRect().top > window.innerHeight - g.margem;
+        if (abaixo) { g.esperou = true; return true; }      // ainda não chegou
+        // só anima o que se viu chegar: recarregar a página parado no bloco (ou
+        // já abaixo dele) mostra os itens prontos, sem sequência escondida
+        if (g.esperou) surgir(g.itens, g.intervalo, 0);
+        else g.itens.forEach(estadoFinal);
         return false;
       });
       if (!pendentes.length) {

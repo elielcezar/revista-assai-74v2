@@ -259,6 +259,9 @@
 
 /* ferramentas: posicoes do Figma relativas ao topo do primeiro quadrado (y 5899) */
 .tools { position: relative; width: 402px; height: 374px; margin: 87px 0 0 0; }
+/* cada item cobre a lista: as pecas dele ja sao posicionadas nessas coordenadas,
+   e assim o transform da animacao move o item inteiro sem mexer no layout */
+.tool { position: absolute; inset: 0; }
 .tool-bg { position: absolute; width: 100px; height: 100px; border-radius: 21px; background: #fff; }
 .tool-logo { position: absolute; overflow: hidden; }
 .tool-logo img { position: absolute; }

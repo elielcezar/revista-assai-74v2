@@ -13,10 +13,12 @@ description: >-
   de imagens), itens de lista que entram
   subindo em cascata conforme chegam à tela, um elemento que entra deslizando
   ao carregar a página, formas de fundo que crescem em cascata na abertura
-  ("scale-up nas cúpulas do hero"), ou peças que surgem com "pop" uma de cada vez
-  (ou surgem subindo com fade) — na abertura ou quando o bloco chega à tela — e
+  ("scale-up nas cúpulas do hero"), ou peças/itens de lista que surgem um de cada
+  vez com "pop", subindo com fade, ou entrando pela esquerda com fade
+  ("fade-right"/"fade-in-right") — na abertura ou quando o bloco chega à tela — e
   depois ficam balançando/flutuando ("pop-in na bisnaga e nas gotas", "pop-in
-  nos sachês", "fade-up com 0,5s entre os sachês pequenos"), ou um título cujas
+  nos sachês", "fade-up com 0,5s entre os sachês pequenos", "os 3 itens entram
+  com fadein-right"), ou um título cujas
   letras se juntam vindas de todo lado ao carregar ("magnetic-pull no h1"), ou
   um elemento que percorre uma curva do layout crescendo e girando conforme o
   scroll ("orbit-in no celular").
@@ -339,12 +341,16 @@ Em uso: `74/principal.html`, cúpulas do hero (`.bl-hero .backdrop`).
 ### `pop-in` — entrada
 
 Os itens **surgem um de cada vez**, na ordem do HTML, crescendo do centro com um
-pequeno quique no fim (`back.out`) — ou, com `data-fx-entrada="fade-up"`, surgindo
-e subindo alguns px com fade. Espera as imagens dos itens carregarem
+pequeno quique no fim (`back.out`) — ou, com `data-fx-entrada`, surgindo e
+subindo alguns px com fade (`fade-up`) ou **vindo da esquerda** com fade
+(`fade-right`). Espera as imagens dos itens carregarem
 (limite de 3s) para não surgirem vazios. **Quando:** itens sem grupo surgem ao
-abrir a página; itens com `data-fx-grupo` formam uma sequência própria, que só
-começa quando o grupo **chega à tela** (uma vez por visita) — use grupo para
-peças abaixo da dobra, senão o "pop" acontece sem ninguém ver. Depois de surgir,
+abrir a página; `data-fx-quando="scroll"` no contêiner faz a lista inteira
+esperar **chegar à tela**; e itens com `data-fx-grupo` formam sequências
+próprias, cada uma disparando na chegada do seu grupo (uma vez por visita) —
+use um dos dois para peças abaixo da dobra, senão a entrada acontece sem
+ninguém ver. Recarregar a página já parado no bloco (ou abaixo dele) mostra os
+itens **prontos**, sem sequência escondida. Depois de surgir,
 cada item pode **continuar se mexendo**: balançar (girar em volta do centro, ida
 e volta) e/ou flutuar (subir e descer), sem parar. O contêiner pode ser a camada
 de decoração inteira (`.art-bg`): só os `data-fx-item` animam, e um mesmo
@@ -361,17 +367,31 @@ contêiner pode ter a abertura e vários grupos.
 </div>
 ```
 
+Lista inteira que entra quando chega à tela, um item a cada 0,5s, vindo da
+esquerda com fade (os atributos do contêiner valem para todos os itens):
+
+```html
+<ul class="tools" data-fx="pop-in" data-fx-quando="scroll"
+    data-fx-entrada="fade-right" data-fx-intervalo="0.5">
+  <li data-fx-item>…</li>
+  <li data-fx-item>…</li>
+</ul>
+```
+
+Os atributos marcados **item** podem ir no contêiner, valendo para todos os
+itens; o do item vence o do contêiner.
+
 | atributo | onde | padrão | efeito |
 |---|---|---|---|
+| `data-fx-quando` | contêiner | `carregar` | `carregar` (na abertura) ou `scroll` (a lista inteira espera chegar à tela) |
 | `data-fx-duracao` | contêiner | `0.5` | segundos do "pop" de cada item |
-| `data-fx-intervalo` | contêiner | `0.2` | segundos entre um item e o seguinte (na abertura) |
-| `data-fx-entrada` | item | `pop` | como o item entra: `pop` (cresce do centro com quique) ou `fade-up` (surge subindo, com fade; mínimo 0,6s) |
-| `data-fx-deslocamento` | item | `30` | (`fade-up`) px que o item sobe ao entrar |
+| `data-fx-intervalo` | contêiner ou item | `0.2` | segundos entre um item e o seguinte |
+| `data-fx-entrada` | contêiner ou item | `pop` | como o item entra: `pop` (cresce do centro com quique), `fade-up` (surge subindo, com fade; mínimo 0,6s) ou `fade-right` (surge vindo da esquerda, com fade; mínimo 0,6s) |
+| `data-fx-deslocamento` | contêiner ou item | `30` | (`fade-up`/`fade-right`) px que o item percorre ao entrar |
 | `data-fx-origem` | item | `50% 50%` | ponto de onde o item cresce (`transform-origin`); use quando o desenho é maior que a caixa do item (ex.: o centro do balão) |
 | `data-fx-grupo` | item | — | nome do grupo: sequência própria, que começa quando o 1º item do grupo chega à tela (uma vez) |
-| `data-fx-intervalo` | 1º item do grupo | o do contêiner | segundos entre os itens do grupo |
-| `data-fx-margem` | 1º item do grupo | `100` | px acima do fundo da tela em que o grupo dispara (maior = mais cedo) |
-| `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro |
+| `data-fx-margem` | contêiner ou item | `100` | px acima do fundo da tela em que a sequência dispara (maior = mais cedo) |
+| `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro (só ao carregar) |
 | `data-fx-balanco` | item | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
 | `data-fx-balanco-duracao` | item | `1.6` | segundos de cada ida (ou volta) do balanço |
 | `data-fx-flutuacao` | item | — | depois de surgir, sobe N px e volta, sem parar; cada item com ritmo (1,4–2s) e fase próprios, para não flutuarem juntos |
@@ -381,11 +401,11 @@ gotas (30° e 20px ficaram exagerados — prefira movimentos contínuos pequenos
 intervalo de **0,5s** entre os sachês (2s e 1s ficaram lentos demais), também
 usado nos 3 sachês pequenos com `fade-up`.
 
-**`fade-up` aqui × `slide-in-up`:** use o `fade-up` do `pop-in` quando os itens
-entram **juntos, em sequência de tempo** (um a cada X s, assim que o grupo chega
-à tela — ex.: 3 peças lado a lado). Use o `slide-in-up` quando cada item deve
-entrar **pela própria posição** conforme o leitor rola (itens empilhados, como
-uma lista), e sem fade.
+**`fade-up`/`fade-right` aqui × `slide-in-up`:** use os fades do `pop-in` quando
+os itens entram **juntos, em sequência de tempo** (um a cada X s, assim que o
+bloco chega à tela — ex.: 3 peças lado a lado, ou uma lista curta). Use o
+`slide-in-up` quando cada item deve entrar **pela própria posição** conforme o
+leitor rola (itens empilhados, cada um com a sua linha), e sem fade.
 
 Checklist:
 - As peças precisam ser **elementos separados** (uma imagem por peça). Se o
@@ -407,7 +427,10 @@ Checklist:
   6. `data-fx-origem` no invólucro = centro do desenho em relação à caixa.
   Feito no balão "É só um sachê de R$ 0,15." da GESTÃO (`.balao`, antes
   `.d-union` na `.art-bg` + `.q-sache` solto).
-- Precisa do trecho anti-piscada no `<head>`, com o seletor dos itens.
+- **Anti-piscada** no `<head>` (com o seletor dos itens) só é preciso quando os
+  itens estão **acima da dobra** — é a entrada ao carregar que pisca. Lista que
+  espera o scroll (`data-fx-quando="scroll"`) ou grupo abaixo da dobra dispensa:
+  o componente já pôs o estado inicial muito antes de o leitor chegar lá.
 - Probes: bloqueie o `js/scroll-fx.js` no probe da página — senão ele mede os
   itens ainda em escala 0 (esperando chegar à tela) e acusa 0×0.
 
@@ -417,6 +440,11 @@ mesma `.art-bg`; os 3 sachês pequenos lado a lado em grupo com `fade-up`
 (`data-fx-grupo="saches-mini"`, 0,5s); balão com a frase em outro contêiner
 (`.s-sache`), grupo `balao`, crescendo do centro do desenho
 (`data-fx-origem="105.5px 43px"`).
+`74/mkt.html` — as 3 ferramentas de IA (`ul.tools`) com `data-fx-quando="scroll"`
+e `fade-right`, 0,5s entre elas. Ali cada `li` é `position: absolute; inset: 0`
+(cobre a lista inteira, com as peças já posicionadas dentro), então o `x` da
+animação move o item inteiro sem mexer no layout — é o padrão a seguir quando as
+peças do item vêm do Figma em coordenadas absolutas.
 
 ## Antes de aplicar um efeito de scroll (checklist)
 
