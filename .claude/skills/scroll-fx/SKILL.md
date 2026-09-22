@@ -273,6 +273,7 @@ contêiner pode ter a abertura e vários grupos.
 |---|---|---|---|
 | `data-fx-duracao` | contêiner | `0.5` | segundos do "pop" de cada item |
 | `data-fx-intervalo` | contêiner | `0.2` | segundos entre um item e o seguinte (na abertura) |
+| `data-fx-origem` | item | `50% 50%` | ponto de onde o item cresce (`transform-origin`); use quando o desenho é maior que a caixa do item (ex.: o centro do balão) |
 | `data-fx-grupo` | item | — | nome do grupo: sequência própria, que começa quando o 1º item do grupo chega à tela (uma vez) |
 | `data-fx-intervalo` | 1º item do grupo | o do contêiner | segundos entre os itens do grupo |
 | `data-fx-margem` | 1º item do grupo | `100` | px acima do fundo da tela em que o grupo dispara (maior = mais cedo) |
@@ -291,11 +292,28 @@ Checklist:
   armadilha 3) — foi o que permitiu animar a bisnaga e as gotas da GESTÃO.
 - Anime o invólucro (`<span>`): o efeito usa `scale`, `rotation` e `y`, e
   sobrescreveria um `transform` do CSS na imagem.
+- **Texto + desenho que formam uma peça** (balão com frase, selo com número…)
+  precisam estar **no mesmo elemento** — se o desenho estiver na camada de
+  decoração e o texto no fluxo, cada um cresce de um centro e o texto escorrega
+  para fora do desenho. Refatore assim, sem mexer no layout:
+  1. um invólucro (`.balao`, `position: relative`) com **as margens e a largura
+     que o texto tinha** — ocupa no fluxo o mesmo lugar, nada abaixo se move;
+  2. o desenho dentro dele, `position: absolute`, com o **deslocamento medido**
+     em relação à caixa do texto (topo/esquerda do desenho − do texto);
+  3. o texto depois do desenho, `position: relative` (fica por cima), sem margens;
+  4. remova o desenho da camada de decoração;
+  5. confira com print antes/depois (0 pixel diferente) e o probe da página;
+  6. `data-fx-origem` no invólucro = centro do desenho em relação à caixa.
+  Feito no balão "É só um sachê de R$ 0,15." da GESTÃO (`.balao`, antes
+  `.d-union` na `.art-bg` + `.q-sache` solto).
 - Precisa do trecho anti-piscada no `<head>`, com o seletor dos itens.
+- Probes: bloqueie o `js/scroll-fx.js` no probe da página — senão ele mede os
+  itens ainda em escala 0 (esperando chegar à tela) e acusa 0×0.
 
 Em uso: `74/gestao.html` — bisnaga e 5 gotas na abertura; sachês 1 e 2 do bloco
 "O problema nunca é um sachê!" em grupo (`data-fx-grupo="saches"`), todos na
-mesma `.art-bg`.
+mesma `.art-bg`; balão com a frase em outro contêiner (`.s-sache`), grupo
+`balao`, crescendo do centro do desenho (`data-fx-origem="105.5px 43px"`).
 
 ## Antes de aplicar um efeito de scroll (checklist)
 

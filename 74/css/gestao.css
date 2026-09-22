@@ -60,8 +60,6 @@
 .d-yellow1467 { left: 39px; top: 4811px; width: 105px; height: 23px; background: var(--amarelo); }
 .d-yellow1468 { left: 50px; top: 4889px; width: 140px; height: 23px; background: var(--amarelo); }
 
-/* -- balao de fala -- */
-.d-union { left: 68px; top: 2115px; width: 265px; height: 147.835px; }
 
 /* -- arcos (metade de baixo de um circulo de 747px) -- */
 .d-e118b, .d-e120, .d-e118a, .d-e119, .d-e116 { width: 747px; height: 373.5px; }
@@ -208,8 +206,12 @@
 .h-sache { width: 213px; margin-left: 20px; font-size: 39px; font-weight: 700; color: var(--amarelo); line-height: normal; }
 .p-bianca { width: 361px; margin: 198px 0 0 21px; font-size: 18px; line-height: normal; color: #000; }
 .p-bianca strong { font-weight: 700; }
+/* balao de fala: o .balao ocupa no fluxo exatamente o lugar da frase; o desenho
+   fica atras dela, na posicao de antes (antes era .d-union na .art-bg, solto do texto) */
+.balao { position: relative; width: 203px; margin: 56px 0 0 95px; }
+.balao-fundo { position: absolute; left: -27px; top: -31px; width: 265px; height: 147.835px; max-width: none; }
 .q-sache {
-  width: 203px; margin: 56px 0 0 95px;
+  position: relative; width: 203px;
   font-size: 26px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
 }
 .p-multiplique { width: 362px; margin: 83px 0 0 20px; font-size: 18px; line-height: normal; color: #000; }

@@ -444,6 +444,9 @@
        data-fx-balanco="30"      depois de surgir, gira ±N graus em volta do
                                  centro, ida e volta, sem parar
        data-fx-balanco-duracao="1.6"  segundos de cada ida (ou volta)
+       data-fx-origem="50% 50%"  ponto de onde o item cresce (transform-origin);
+                                 ex.: o centro do desenho quando o item é maior
+                                 que a sua caixa
        data-fx-grupo="saches"    forma uma sequência própria, que só começa quando
                                  o 1º item do grupo chega à tela (uma vez só)
        data-fx-intervalo="2"     (no 1º item do grupo) segundos entre os itens dele
@@ -461,7 +464,9 @@
     var intervaloPadrao = pct(sec.getAttribute("data-fx-intervalo"), 0.2);
     var atraso = pct(sec.getAttribute("data-fx-atraso"), 0);
 
-    gsap.set(itens, { scale: 0, transformOrigin: "50% 50%" });
+    itens.forEach(function (el) {
+      gsap.set(el, { scale: 0, transformOrigin: el.getAttribute("data-fx-origem") || "50% 50%" });
+    });
 
     // depois de surgir: balanço (gira) e/ou flutuação (sobe e desce), sem parar
     function continuar(el) {
