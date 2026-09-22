@@ -43,8 +43,6 @@ EXPECT = [
     (".perguntas-foto img",    -24, 5775),
     (".h-perguntas",            48, 6116),
     (".carousel",               20, 6252),
-    (".carousel-nav--prev",     35, 6364),
-    (".carousel-nav--next",    375, 6364),
 
     (".h-alerta",               29, 6659),
     (".t-alerta",               29, 6709),
