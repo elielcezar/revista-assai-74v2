@@ -14,8 +14,9 @@ description: >-
   subindo em cascata conforme chegam à tela, um elemento que entra deslizando
   ao carregar a página, formas de fundo que crescem em cascata na abertura
   ("scale-up nas cúpulas do hero"), ou peças que surgem com "pop" uma de cada vez
-  — na abertura ou quando o bloco chega à tela — e depois ficam
-  balançando/flutuando ("pop-in na bisnaga e nas gotas", "pop-in nos sachês").
+  (ou surgem subindo com fade) — na abertura ou quando o bloco chega à tela — e
+  depois ficam balançando/flutuando ("pop-in na bisnaga e nas gotas", "pop-in
+  nos sachês", "fade-up com 0,5s entre os sachês pequenos").
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
   depois acrescente o efeito aqui.
 ---
@@ -248,7 +249,8 @@ Em uso: `74/principal.html`, cúpulas do hero (`.bl-hero .backdrop`).
 ### `pop-in` — entrada
 
 Os itens **surgem um de cada vez**, na ordem do HTML, crescendo do centro com um
-pequeno quique no fim (`back.out`). Espera as imagens dos itens carregarem
+pequeno quique no fim (`back.out`) — ou, com `data-fx-entrada="fade-up"`, surgindo
+e subindo alguns px com fade. Espera as imagens dos itens carregarem
 (limite de 3s) para não surgirem vazios. **Quando:** itens sem grupo surgem ao
 abrir a página; itens com `data-fx-grupo` formam uma sequência própria, que só
 começa quando o grupo **chega à tela** (uma vez por visita) — use grupo para
@@ -273,6 +275,8 @@ contêiner pode ter a abertura e vários grupos.
 |---|---|---|---|
 | `data-fx-duracao` | contêiner | `0.5` | segundos do "pop" de cada item |
 | `data-fx-intervalo` | contêiner | `0.2` | segundos entre um item e o seguinte (na abertura) |
+| `data-fx-entrada` | item | `pop` | como o item entra: `pop` (cresce do centro com quique) ou `fade-up` (surge subindo, com fade; mínimo 0,6s) |
+| `data-fx-deslocamento` | item | `30` | (`fade-up`) px que o item sobe ao entrar |
 | `data-fx-origem` | item | `50% 50%` | ponto de onde o item cresce (`transform-origin`); use quando o desenho é maior que a caixa do item (ex.: o centro do balão) |
 | `data-fx-grupo` | item | — | nome do grupo: sequência própria, que começa quando o 1º item do grupo chega à tela (uma vez) |
 | `data-fx-intervalo` | 1º item do grupo | o do contêiner | segundos entre os itens do grupo |
@@ -284,7 +288,14 @@ contêiner pode ter a abertura e vários grupos.
 
 Valores aprovados na GESTÃO: balanço **7°** na bisnaga, flutuação **10px** nas
 gotas (30° e 20px ficaram exagerados — prefira movimentos contínuos pequenos);
-intervalo de **0,5s** entre os sachês (2s e 1s ficaram lentos demais).
+intervalo de **0,5s** entre os sachês (2s e 1s ficaram lentos demais), também
+usado nos 3 sachês pequenos com `fade-up`.
+
+**`fade-up` aqui × `slide-in-up`:** use o `fade-up` do `pop-in` quando os itens
+entram **juntos, em sequência de tempo** (um a cada X s, assim que o grupo chega
+à tela — ex.: 3 peças lado a lado). Use o `slide-in-up` quando cada item deve
+entrar **pela própria posição** conforme o leitor rola (itens empilhados, como
+uma lista), e sem fade.
 
 Checklist:
 - As peças precisam ser **elementos separados** (uma imagem por peça). Se o
@@ -312,8 +323,10 @@ Checklist:
 
 Em uso: `74/gestao.html` — bisnaga e 5 gotas na abertura; sachês 1 e 2 do bloco
 "O problema nunca é um sachê!" em grupo (`data-fx-grupo="saches"`), todos na
-mesma `.art-bg`; balão com a frase em outro contêiner (`.s-sache`), grupo
-`balao`, crescendo do centro do desenho (`data-fx-origem="105.5px 43px"`).
+mesma `.art-bg`; os 3 sachês pequenos lado a lado em grupo com `fade-up`
+(`data-fx-grupo="saches-mini"`, 0,5s); balão com a frase em outro contêiner
+(`.s-sache`), grupo `balao`, crescendo do centro do desenho
+(`data-fx-origem="105.5px 43px"`).
 
 ## Antes de aplicar um efeito de scroll (checklist)
 

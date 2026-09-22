@@ -444,6 +444,9 @@
        data-fx-balanco="30"      depois de surgir, gira ±N graus em volta do
                                  centro, ida e volta, sem parar
        data-fx-balanco-duracao="1.6"  segundos de cada ida (ou volta)
+       data-fx-entrada="pop"     como o item entra: "pop" (cresce do centro com
+                                 quique) ou "fade-up" (surge subindo, com fade)
+       data-fx-deslocamento="30" (fade-up) px que o item sobe ao entrar
        data-fx-origem="50% 50%"  ponto de onde o item cresce (transform-origin);
                                  ex.: o centro do desenho quando o item é maior
                                  que a sua caixa
@@ -464,15 +467,20 @@
     var intervaloPadrao = pct(sec.getAttribute("data-fx-intervalo"), 0.2);
     var atraso = pct(sec.getAttribute("data-fx-atraso"), 0);
 
+    function tipo(el) { return el.getAttribute("data-fx-entrada") === "fade-up" ? "fade-up" : "pop"; }
     itens.forEach(function (el) {
-      gsap.set(el, { scale: 0, transformOrigin: el.getAttribute("data-fx-origem") || "50% 50%" });
+      if (tipo(el) === "fade-up") {
+        gsap.set(el, { autoAlpha: 0, y: pct(el.getAttribute("data-fx-deslocamento"), 30) });
+      } else {
+        gsap.set(el, { scale: 0, transformOrigin: el.getAttribute("data-fx-origem") || "50% 50%" });
+      }
     });
 
     // depois de surgir: balanço (gira) e/ou flutuação (sobe e desce), sem parar
     function continuar(el) {
       var graus = pct(el.getAttribute("data-fx-balanco"), 0);
       var altura = pct(el.getAttribute("data-fx-flutuacao"), 0);
-      if (!graus && !altura) { gsap.set(el, { clearProps: "transform,transformOrigin" }); return; }
+      if (!graus && !altura) { gsap.set(el, { clearProps: "transform,transformOrigin,opacity,visibility" }); return; }
       if (graus) {
         var ida = pct(el.getAttribute("data-fx-balanco-duracao"), 1.6);
         // do repouso até um lado, depois de um lado ao outro
@@ -491,9 +499,15 @@
       var foi = false;
       function vai() {
         if (foi) return; foi = true;
-        gsap.to(grupo, {
-          scale: 1, duration: duracao, delay: espera, ease: "back.out(1.7)",
-          stagger: { each: intervalo, onComplete: function () { continuar(this.targets()[0]); } }
+        grupo.forEach(function (el, i) {
+          var fim = function () { continuar(el); };
+          var quando = espera + i * intervalo;
+          if (tipo(el) === "fade-up") {
+            gsap.to(el, { autoAlpha: 1, y: 0, duration: Math.max(duracao, 0.6), delay: quando,
+              ease: "power2.out", onComplete: fim });
+          } else {
+            gsap.to(el, { scale: 1, duration: duracao, delay: quando, ease: "back.out(1.7)", onComplete: fim });
+          }
         });
       }
       var imgs = grupo.map(function (el) { return el.tagName === "IMG" ? el : el.querySelector("img"); })
