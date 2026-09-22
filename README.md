@@ -144,7 +144,7 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | efeito | o que faz | em uso |
 | --- | --- | --- |
 | `card-accordeon` (scroll) | itens começam fechados e crescem com o scroll, empurrando o que vem abaixo; fecham ao subir | `74/principal.html` (cards bege de `.bl-gen`) |
-| `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o trilho (texto ou galeria) para o lado (1:1); no fim, a página volta a rolar. Vários por página | `74/principal.html` (citação `.bl-quote` e carrossel `.bl-carousel`) |
+| `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o trilho (texto ou galeria) para o lado (1:1); no fim, a página volta a rolar. Vários por página | `74/principal.html` (citação `.bl-quote` e carrossel `.bl-carousel`); `74/gestao.html` (carrossel `.s-carrossel`) |
 | `slide-in-up` (scroll disparado) | ao passar da sua linha perto do fundo da tela, cada item aparece sem fade na borda de baixo e sobe o caminho inteiro até o lugar, em cascata e em ordem estrita; desce e se esconde ao voltar. Com `data-fx-passo`, as entradas ficam a N px de scroll uma da outra | `74/principal.html` (lista `.pacts`, margem 200); `74/gestao.html` (cards de "a conta", margem 200, passo 200) |
 | `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
 | `pop-in` (entrada) | os itens surgem com "pop" (ou `fade-up`: subindo com fade), um de cada vez — na abertura, ou em grupos que disparam quando chegam à tela; depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase) |
@@ -196,11 +196,11 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-60**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-61**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-60/?v=74-61/g' *.html 74/*.html
+sed -i 's/?v=74-61/?v=74-62/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache

@@ -39,8 +39,6 @@ EXPECT = [
     (".p-quando",               22, 3534),
 
     (".carousel",                0, 3609),
-    (".carousel-nav--prev",     16, 3730),
-    (".carousel-nav--next",    363, 3730),
 
     (".h-teste",                20, 3966),
     (".t-teste",                22, 4021),

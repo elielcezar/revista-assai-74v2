@@ -246,10 +246,9 @@
    ========================================================= */
 .s-carrossel { min-height: 321px; }
 .carousel { position: relative; width: 402px; height: 266px; }
-/* arrastavel com mouse e dedo (js/gestao.js); pan-y mantem a rolagem vertical da pagina */
-.carousel-viewport { width: 402px; height: 266px; overflow: hidden; cursor: grab; touch-action: pan-y; }
-.carousel-viewport.is-dragging { cursor: grabbing; user-select: none; }
-.carousel-track { display: flex; gap: 22px; align-items: center; width: max-content; transition: transform .45s ease; }
+/* corre para o lado com o scroll (pin-horizontal, js/scroll-fx.js), sem setas nem arrasto */
+.carousel-viewport { width: 402px; height: 266px; overflow: hidden; }
+.carousel-track { display: flex; gap: 22px; align-items: center; width: max-content; }
 
 .cslide { position: relative; flex: none; width: 275px; height: 266px; }
 .cslide-bg { position: absolute; inset: 0; display: block; background-image: var(--grad-card); }
@@ -261,11 +260,6 @@
 }
 .cslide-cap--wide { left: 35px; width: 206px; }
 
-.carousel-nav { position: absolute; top: 121px; width: 25px; height: 25px; z-index: 2; }
-.carousel-nav img { width: 25px; height: 25px; }
-.carousel-nav--prev { left: 16px; }
-.carousel-nav--next { left: 363px; }
-.carousel-nav--next img { transform: rotate(180deg); }
 
 /* =========================================================
    BLOCO 8 — teste de demanda real   (3748 .. 4264)

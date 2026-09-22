@@ -136,7 +136,9 @@ Checklist:
 
 Em uso: `74/principal.html` — citação (`.bl-quote` / `.quote-marquee`, 2296px de
 percurso) e carrossel da matéria (`.bl-carousel` / `.carousel-viewport`, 1703px),
-os dois na mesma página.
+os dois na mesma página; `74/gestao.html` — carrossel "quando a cortesia faz
+sentido" (`.s-carrossel` / `.carousel-viewport`, 1358px), numa página de
+decoração global (setas, arrasto e `transition` removidos, probe sem as setas).
 
 ### `slide-in-up` — scroll disparado
 
