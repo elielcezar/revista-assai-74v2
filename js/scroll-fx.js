@@ -428,7 +428,8 @@
      pop-in  (efeito de ENTRADA: roda ao carregar, não depende do scroll)
      Os itens surgem um de cada vez, na ordem do HTML, crescendo do centro com
      um pequeno quique no fim ("pop"). Espera as imagens dos itens carregarem
-     (limite de 3s), para não surgirem vazios.
+     (limite de 3s), para não surgirem vazios. Itens sem grupo surgem ao abrir a
+     página; itens com data-fx-grupo surgem quando o grupo chega à tela.
 
        <div data-fx="pop-in">                      ← pode ser a camada de decoração
          <span data-fx-item data-fx-balanco="30">…</span>  ← depois fica balançando
@@ -443,6 +444,10 @@
        data-fx-balanco="30"      depois de surgir, gira ±N graus em volta do
                                  centro, ida e volta, sem parar
        data-fx-balanco-duracao="1.6"  segundos de cada ida (ou volta)
+       data-fx-grupo="saches"    forma uma sequência própria, que só começa quando
+                                 o 1º item do grupo chega à tela (uma vez só)
+       data-fx-intervalo="2"     (no 1º item do grupo) segundos entre os itens dele
+       data-fx-margem="100"      (no 1º item do grupo) px acima do fundo da tela
        data-fx-flutuacao="20"    depois de surgir, sobe N px e volta, sem parar;
                                  cada item com ritmo e fase um pouco diferentes
                                  (para não flutuarem sincronizados)
@@ -453,7 +458,7 @@
     var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
     if (!itens.length) return;
     var duracao = pct(sec.getAttribute("data-fx-duracao"), 0.5);
-    var intervalo = pct(sec.getAttribute("data-fx-intervalo"), 0.2);
+    var intervaloPadrao = pct(sec.getAttribute("data-fx-intervalo"), 0.2);
     var atraso = pct(sec.getAttribute("data-fx-atraso"), 0);
 
     gsap.set(itens, { scale: 0, transformOrigin: "50% 50%" });
@@ -476,25 +481,64 @@
       }
     }
 
-    function comecar() {
-      gsap.to(itens, {
-        scale: 1, duration: duracao, delay: atraso, ease: "back.out(1.7)",
-        stagger: { each: intervalo, onComplete: function () { continuar(this.targets()[0]); } }
+    // um grupo surge em sequência, depois de as imagens dele carregarem (limite 3s)
+    function surgir(grupo, intervalo, espera) {
+      var foi = false;
+      function vai() {
+        if (foi) return; foi = true;
+        gsap.to(grupo, {
+          scale: 1, duration: duracao, delay: espera, ease: "back.out(1.7)",
+          stagger: { each: intervalo, onComplete: function () { continuar(this.targets()[0]); } }
+        });
+      }
+      var imgs = grupo.map(function (el) { return el.tagName === "IMG" ? el : el.querySelector("img"); })
+        .filter(function (im) { return im && !im.complete; });
+      if (!imgs.length) return vai();
+      var faltam = imgs.length;
+      imgs.forEach(function (im) {
+        function pronto() { if (--faltam <= 0) vai(); }
+        im.addEventListener("load", pronto);
+        im.addEventListener("error", pronto);
       });
+      setTimeout(vai, 3000); // imagem lenta demais: entra assim mesmo
     }
 
-    var imgs = itens.map(function (el) { return el.tagName === "IMG" ? el : el.querySelector("img"); })
-      .filter(function (im) { return im && !im.complete; });
-    var foi = false;
-    function vai() { if (!foi) { foi = true; comecar(); } }
-    if (!imgs.length) return vai();
-    var faltam = imgs.length;
-    imgs.forEach(function (im) {
-      function pronto() { if (--faltam <= 0) vai(); }
-      im.addEventListener("load", pronto);
-      im.addEventListener("error", pronto);
+    // sem grupo: surgem ao abrir a página; com data-fx-grupo: quando o grupo
+    // chega à tela (topo do 1º item a data-fx-margem px do fundo), uma vez só
+    var grupos = {}, abertura = [];
+    itens.forEach(function (el) {
+      var g = el.getAttribute("data-fx-grupo");
+      if (g) (grupos[g] = grupos[g] || []).push(el); else abertura.push(el);
     });
-    setTimeout(vai, 3000); // imagem lenta demais: entra assim mesmo
+    if (abertura.length) surgir(abertura, intervaloPadrao, atraso);
+
+    var pendentes = Object.keys(grupos).map(function (g) {
+      var primeiro = grupos[g][0];
+      return { itens: grupos[g],
+               intervalo: pct(primeiro.getAttribute("data-fx-intervalo"), intervaloPadrao),
+               margem: pct(primeiro.getAttribute("data-fx-margem"), 100) };
+    });
+    if (!pendentes.length) return;
+
+    function checar() {
+      pendentes = pendentes.filter(function (g) {
+        var topo = g.itens[0].getBoundingClientRect().top;
+        if (topo > window.innerHeight - g.margem) return true;   // ainda não chegou
+        surgir(g.itens, g.intervalo, 0);
+        return false;
+      });
+      if (!pendentes.length) {
+        window.removeEventListener("scroll", noScroll);
+        window.removeEventListener("resize", noScroll);
+      }
+    }
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", noScroll);
+    checar();
   }
 
   /* ---------- inicialização ---------- */

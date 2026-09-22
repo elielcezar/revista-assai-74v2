@@ -14,7 +14,8 @@ description: >-
   subindo em cascata conforme chegam à tela, um elemento que entra deslizando
   ao carregar a página, formas de fundo que crescem em cascata na abertura
   ("scale-up nas cúpulas do hero"), ou peças que surgem com "pop" uma de cada vez
-  e depois ficam balançando/flutuando ("pop-in na bisnaga e nas gotas").
+  — na abertura ou quando o bloco chega à tela — e depois ficam
+  balançando/flutuando ("pop-in na bisnaga e nas gotas", "pop-in nos sachês").
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
   depois acrescente o efeito aqui.
 ---
@@ -246,32 +247,43 @@ Em uso: `74/principal.html`, cúpulas do hero (`.bl-hero .backdrop`).
 
 ### `pop-in` — entrada
 
-Ao carregar, os itens **surgem um de cada vez**, na ordem do HTML, crescendo do
-centro com um pequeno quique no fim (`back.out`). Espera as imagens dos itens
-carregarem (limite de 3s) para não surgirem vazios. Depois de surgir, cada item
-pode **continuar se mexendo**: balançar (girar em volta do centro, ida e volta) e/ou
-flutuar (subir e descer), sem parar. O contêiner pode ser a camada de decoração
-inteira (`.art-bg`): só os `data-fx-item` animam.
+Os itens **surgem um de cada vez**, na ordem do HTML, crescendo do centro com um
+pequeno quique no fim (`back.out`). Espera as imagens dos itens carregarem
+(limite de 3s) para não surgirem vazios. **Quando:** itens sem grupo surgem ao
+abrir a página; itens com `data-fx-grupo` formam uma sequência própria, que só
+começa quando o grupo **chega à tela** (uma vez por visita) — use grupo para
+peças abaixo da dobra, senão o "pop" acontece sem ninguém ver. Depois de surgir,
+cada item pode **continuar se mexendo**: balançar (girar em volta do centro, ida
+e volta) e/ou flutuar (subir e descer), sem parar. O contêiner pode ser a camada
+de decoração inteira (`.art-bg`): só os `data-fx-item` animam, e um mesmo
+contêiner pode ter a abertura e vários grupos.
 
 ```html
 <div class="art-bg" data-fx="pop-in">
+  <!-- abertura: surgem ao carregar -->
   <span class="d-hero-saco"  data-fx-item data-fx-balanco="7">…</span>
   <span class="d-hero-gota1" data-fx-item data-fx-flutuacao="10">…</span>
-  …
+  <!-- grupo: surge quando chega à tela; intervalo e margem no 1º item do grupo -->
+  <span class="d-sache1" data-fx-item data-fx-grupo="saches" data-fx-intervalo="0.5">…</span>
+  <span class="d-sache2" data-fx-item data-fx-grupo="saches">…</span>
 </div>
 ```
 
 | atributo | onde | padrão | efeito |
 |---|---|---|---|
 | `data-fx-duracao` | contêiner | `0.5` | segundos do "pop" de cada item |
-| `data-fx-intervalo` | contêiner | `0.2` | segundos entre um item e o seguinte |
+| `data-fx-intervalo` | contêiner | `0.2` | segundos entre um item e o seguinte (na abertura) |
+| `data-fx-grupo` | item | — | nome do grupo: sequência própria, que começa quando o 1º item do grupo chega à tela (uma vez) |
+| `data-fx-intervalo` | 1º item do grupo | o do contêiner | segundos entre os itens do grupo |
+| `data-fx-margem` | 1º item do grupo | `100` | px acima do fundo da tela em que o grupo dispara (maior = mais cedo) |
 | `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro |
 | `data-fx-balanco` | item | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
 | `data-fx-balanco-duracao` | item | `1.6` | segundos de cada ida (ou volta) do balanço |
 | `data-fx-flutuacao` | item | — | depois de surgir, sobe N px e volta, sem parar; cada item com ritmo (1,4–2s) e fase próprios, para não flutuarem juntos |
 
 Valores aprovados na GESTÃO: balanço **7°** na bisnaga, flutuação **10px** nas
-gotas (30° e 20px ficaram exagerados — prefira movimentos contínuos pequenos).
+gotas (30° e 20px ficaram exagerados — prefira movimentos contínuos pequenos);
+intervalo de **0,5s** entre os sachês (2s e 1s ficaram lentos demais).
 
 Checklist:
 - As peças precisam ser **elementos separados** (uma imagem por peça). Se o
@@ -281,7 +293,9 @@ Checklist:
   sobrescreveria um `transform` do CSS na imagem.
 - Precisa do trecho anti-piscada no `<head>`, com o seletor dos itens.
 
-Em uso: `74/gestao.html`, bisnaga e 5 gotas da abertura (`.art-bg`).
+Em uso: `74/gestao.html` — bisnaga e 5 gotas na abertura; sachês 1 e 2 do bloco
+"O problema nunca é um sachê!" em grupo (`data-fx-grupo="saches"`), todos na
+mesma `.art-bg`.
 
 ## Antes de aplicar um efeito de scroll (checklist)
 

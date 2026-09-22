@@ -147,7 +147,7 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o trilho (texto ou galeria) para o lado (1:1); no fim, a página volta a rolar. Vários por página | `74/principal.html` (citação `.bl-quote` e carrossel `.bl-carousel`) |
 | `slide-in-up` (scroll disparado) | ao passar da sua linha perto do fundo da tela, cada item aparece sem fade na borda de baixo e sobe o caminho inteiro até o lugar, em cascata; desce e se esconde ao voltar | `74/principal.html` (lista `.pacts`, margem 200) |
 | `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
-| `pop-in` (entrada) | na abertura, os itens surgem com "pop", um de cada vez; depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (bisnaga, balanço 7°; gotas, flutuação 10px) |
+| `pop-in` (entrada) | os itens surgem com "pop", um de cada vez — na abertura, ou em grupos que disparam quando chegam à tela; depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupo: sachês com 0,5s entre eles) |
 | `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
 
 Efeito de entrada exige um trecho anti-piscada no `<head>` da página (está na
@@ -188,11 +188,11 @@ sem as animações (cards abertos, nada congelado).
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-54**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-55**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-54/?v=74-55/g' *.html 74/*.html
+sed -i 's/?v=74-55/?v=74-56/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache
