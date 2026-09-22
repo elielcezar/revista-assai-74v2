@@ -38,7 +38,8 @@
 
 /* -- textura atras dos cards da conta -- */
 .d-rect1488 { left: 0; top: 2635px; width: 402px; height: 322px; border-radius: 50px; overflow: hidden; }
-.d-rect1488 img { object-fit: cover; }
+/* textura em movimento (oleo fritando): video sem audio, autoplay mudo e em loop */
+.d-rect1488 video { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* -- blocos de fundo arredondados no topo -- */
 .d-grad1487 { left: -60px; top: 8833px; width: 567px; height: 340px;

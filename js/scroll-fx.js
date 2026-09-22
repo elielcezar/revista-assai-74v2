@@ -263,6 +263,9 @@
        data-fx-margem="60"           px de tela acima do fundo em que o 1º item entra
        data-fx-escalonamento="0.1"   cada item seguinte espera +10% dessa margem
                                      (60, 66, 72, 78, 84…) — cascata
+       data-fx-passo="400"           em vez da linha de cada item: px de scroll entre
+                                     uma entrada e a seguinte, contados pelo 1º item
+                                     (1º entra na margem, 2º 400px de scroll depois…)
        data-fx-deslocamento="base"   de onde o item sobe: "base" = da borda de
                                      baixo da tela; ou um número de px (ex. 40)
        data-fx-duracao="0.6"         segundos
@@ -277,6 +280,7 @@
     if (!itens.length) return;
     var margem = pct(sec.getAttribute("data-fx-margem"), 60);
     var escala = pct(sec.getAttribute("data-fx-escalonamento"), 0.1);
+    var passo = pct(sec.getAttribute("data-fx-passo"), 0);
     var attrDesloc = sec.getAttribute("data-fx-deslocamento");
     var fixo = (attrDesloc && attrDesloc !== "base") ? pct(attrDesloc, 40) : null;
     var duracao = pct(sec.getAttribute("data-fx-duracao"), 0.6);
@@ -287,16 +291,26 @@
     }
 
     var visivel = itens.map(function () { return false; });
-    // acima do que vem depois (ex.: banner logo abaixo), senão o item passaria por trás
-    gsap.set(itens, { visibility: "hidden", position: "relative", zIndex: 2 });
+    // acima do que vem depois (ex.: banner logo abaixo), senão o item passaria por
+    // trás; e cada item uma camada acima do anterior, para o que sobe da base nunca
+    // passar por trás de um item de antes (pilhas com sobreposição, ex.: as contas)
+    itens.forEach(function (el, i) {
+      gsap.set(el, { visibility: "hidden", position: "relative", zIndex: 2 + i });
+    });
 
     function checar() {
       var z = zoom();
+      // na ordem: um item só entra se o anterior já entrou, e só sai depois do
+      // seguinte (garante a pilha se montando/desmontando em sequência)
+      // topo do item sem o deslocamento da própria animação, em px de tela
+      function topoDe(el) { return el.getBoundingClientRect().top - gsap.getProperty(el, "y") * z; }
+      var topoPrimeiro = topoDe(itens[0]);
       itens.forEach(function (el, i) {
-        var linha = window.innerHeight - margem * (1 + escala * i);
-        // topo do item sem o deslocamento da própria animação, em px de tela
-        var topo = el.getBoundingClientRect().top - gsap.getProperty(el, "y") * z;
-        var dentro = topo <= linha;
+        var topo = topoDe(el);
+        var dentro = passo
+          ? topoPrimeiro <= window.innerHeight - margem - passo * i      // por scroll, a partir do 1º
+          : topo <= window.innerHeight - margem * (1 + escala * i);      // linha de cada item
+        dentro = dentro && (i === 0 || visivel[i - 1]);
         if (dentro === visivel[i]) return;
         visivel[i] = dentro;
         if (dentro) {
@@ -583,6 +597,17 @@
   // o scroll anda, o item cresce mais) e os itens abririam sozinhos.
   document.documentElement.style.overflowAnchor = "none";
   document.body.style.overflowAnchor = "none";
+
+  // Itens do slide-in-up já nascem escondidos, antes de esperar as fontes: senão,
+  // quem abre a página com o bloco na tela vê a pilha inteira por um instante.
+  var semMov = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!semMov) {
+    alvos.forEach(function (el) {
+      if (el.getAttribute("data-fx") === "slide-in-up") {
+        gsap.set(el.querySelectorAll("[data-fx-item]"), { visibility: "hidden" });
+      }
+    });
+  }
 
   // Só começa depois das fontes: os efeitos medem alturas de texto, e com a fonte
   // substituta as medidas saem erradas. Até lá a página fica como no CSS.

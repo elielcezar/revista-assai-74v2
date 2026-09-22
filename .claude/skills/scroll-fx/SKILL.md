@@ -158,6 +158,7 @@ a borda de baixo e se esconde** ao cruzar a mesma linha. Não acompanha o scroll
 |---|---|---|
 | `data-fx-margem` | `60` | px de tela acima do fundo em que o **1º** item entra (maior = entra mais tarde) |
 | `data-fx-escalonamento` | `0.1` | cada item seguinte espera +10% dessa margem (margem 200 → 200, 220, 240…) |
+| `data-fx-passo` | — | em vez da linha de cada item: **px de scroll entre uma entrada e a seguinte**, contados pelo 1º item (1º entra na margem, 2º `passo` px de scroll depois, …). Use em pilhas em que os itens ficam colados/sobrepostos — a linha de cada item faria vários entrarem quase juntos |
 | `data-fx-deslocamento` | `base` | de onde sobe: `base` = da borda de baixo da tela (caminho inteiro visível); ou px fixos (ex.: `40`) |
 | `data-fx-duracao` | `0.6` | segundos |
 
@@ -172,12 +173,22 @@ Checklist:
 - Os itens não podem ter `transform` nem `transition` de `transform`/`visibility`
   no CSS (o efeito anima `y` e troca `visibility`).
 - Enquanto sobem, os itens passam por cima do que vem logo abaixo: o componente
-  põe `position: relative; z-index: 2` inline neles (sem isso, um banner/imagem
-  seguinte, pintado depois no HTML, os esconderia no meio do caminho). Confira
-  que nada abaixo tem `z-index` maior.
+  põe `position: relative` e `z-index` inline neles, **crescendo com a ordem**
+  (2, 3, 4…) — sem isso, um banner/imagem seguinte, pintado depois no HTML, os
+  esconderia no meio do caminho, e numa pilha sobreposta o item que sobe da base
+  passaria por trás do anterior. Confira que nada abaixo tem `z-index` maior.
+- **Ordem estrita:** um item só entra se o anterior já entrou, e sai junto/depois
+  do seguinte. Nunca aparece o 3º antes do 2º.
+- Os itens nascem escondidos **assim que o script roda**, antes de esperar as
+  fontes — senão, quem abre a página com o bloco na tela vê a pilha inteira por
+  um instante.
 - Sem JS ou com "reduzir movimento", os itens ficam visíveis no lugar.
 
-Em uso: `74/principal.html`, lista dos 5 acordos (`.pacts`), margem 200.
+Em uso: `74/principal.html`, lista dos 5 acordos (`.pacts`), margem 200;
+`74/gestao.html`, os 3 cards coloridos de "a conta" (`.s-contas`), pilha
+sobreposta, `data-fx-margem="200" data-fx-passo="200"` (testados 300/150 por
+linha, 400/400 e 200/100 por passo — 200/200 foi o aprovado para dar tempo de
+ver a pilha se montando).
 
 ### `slide-in-left` — entrada
 
