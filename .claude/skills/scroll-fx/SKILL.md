@@ -11,8 +11,10 @@ description: >-
   abaixo, uma frase/faixa larga que corre para o lado enquanto a tela fica
   congelada (scroll horizontal com a página travada — texto ou galeria/carrossel
   de imagens), itens de lista que entram
-  subindo em cascata conforme chegam à tela, ou um elemento que entra deslizando
-  ao carregar a página.
+  subindo em cascata conforme chegam à tela, um elemento que entra deslizando
+  ao carregar a página, formas de fundo que crescem em cascata na abertura
+  ("scale-up nas cúpulas do hero"), ou peças que surgem com "pop" uma de cada vez
+  e depois ficam balançando/flutuando ("pop-in na bisnaga e nas gotas").
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
   depois acrescente o efeito aqui.
 ---
@@ -43,10 +45,14 @@ ajuste vale para todas.
    <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
         js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
    <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-   <style>.fx-espera [data-fx="slide-in-left"]{visibility:hidden}</style>
+   <style>.fx-espera [data-fx="slide-in-left"],.fx-espera [data-fx="scale-up"] [data-fx-item]{visibility:hidden}</style>
    ```
    No `<style>`, liste **cada efeito de entrada usado na página** (seletores
-   separados por vírgula).
+   separados por vírgula). Efeito aplicado no próprio elemento
+   (`slide-in-left`) usa `[data-fx="…"]`; efeito de contêiner com itens
+   (`scale-up`, `pop-in`) esconde os itens: `[data-fx="…"] [data-fx-item]` —
+   esconder o contêiner inteiro sumiria também o que não anima (ex.: o
+   `hero-wash`, ou o resto da `.art-bg` da GESTÃO).
 
 ## Catálogo
 
@@ -195,6 +201,88 @@ tela. Não use num elemento que já tem `transform` no CSS (o efeito anima `x`).
 
 Em uso: `74/principal.html`, foto do hero (`.hero-figure > img`).
 
+### `scale-up` — entrada
+
+Os itens **crescem a partir da base** (de 0 ao tamanho final, ancorados no
+centro de baixo), **um depois do outro** na ordem do HTML, logo na abertura da
+página. Pensado para formas de fundo — na PRINCIPAL, as cúpulas atrás da foto
+do hero (vermelha, branca, laranja e a textura), que continuam atrás da foto
+porque o `.backdrop` vem antes dela no HTML. Não espera a foto: as cúpulas sobem
+e a foto (`slide-in-left`) desliza por cima quando carrega.
+
+```html
+<div class="backdrop" data-fx="scale-up"
+     data-fx-fundo="#ffe3cc" data-fx-fundo-abaixo=".hero-wash">
+  <span class="hero-wash"></span>                 ← não anima (sem data-fx-item)
+  <span class="hero-e140" data-fx-item><img …></span>
+  <span class="hero-e141" data-fx-item><img …></span>
+</div>
+```
+
+| atributo (no contêiner) | padrão | efeito |
+|---|---|---|
+| `data-fx-duracao` | `0.9` | segundos de cada item |
+| `data-fx-intervalo` | `0.15` | segundos entre um item e o seguinte |
+| `data-fx-atraso` | `0` | segundos antes do primeiro |
+| `data-fx-origem` | `50% 100%` | ponto de onde cresce (`transform-origin`) |
+| `data-fx-fundo` | — | cor de fundo do contêiner **só durante a entrada** (não fica branco atrás dos itens); sai quando o último termina |
+| `data-fx-fundo-abaixo` | — | seletor: o fundo só começa onde esse elemento termina |
+
+**Fundo durante a entrada (lição aprendida):** se houver uma camada
+**translúcida** por cima (o `hero-wash` é laranja a 20%), um fundo no contêiner
+inteiro soma com ela e o topo escurece — os dois blocos ficam de cores
+diferentes, com qualquer cor. Use `data-fx-fundo-abaixo` apontando para essa
+camada e, como cor, **a que ela dá sobre branco** (laranja 20% sobre branco =
+`#ffe3cc`): assim embaixo fica igual a em cima, e nada muda de cor quando o
+fundo sai no fim. O fundo sai no fim porque imagens com transparência (a foto
+do hero é PNG) mostrariam a cor onde o design mostra branco.
+
+Checklist:
+- Anime o invólucro (`<span>`), não a imagem: a imagem pode ter `transform` no
+  CSS (as cúpulas têm `rotate(180deg)`), e o efeito sobrescreveria.
+- Precisa do trecho anti-piscada no `<head>`, com o seletor dos itens.
+
+Em uso: `74/principal.html`, cúpulas do hero (`.bl-hero .backdrop`).
+
+### `pop-in` — entrada
+
+Ao carregar, os itens **surgem um de cada vez**, na ordem do HTML, crescendo do
+centro com um pequeno quique no fim (`back.out`). Espera as imagens dos itens
+carregarem (limite de 3s) para não surgirem vazios. Depois de surgir, cada item
+pode **continuar se mexendo**: balançar (girar em volta do centro, ida e volta) e/ou
+flutuar (subir e descer), sem parar. O contêiner pode ser a camada de decoração
+inteira (`.art-bg`): só os `data-fx-item` animam.
+
+```html
+<div class="art-bg" data-fx="pop-in">
+  <span class="d-hero-saco"  data-fx-item data-fx-balanco="7">…</span>
+  <span class="d-hero-gota1" data-fx-item data-fx-flutuacao="10">…</span>
+  …
+</div>
+```
+
+| atributo | onde | padrão | efeito |
+|---|---|---|---|
+| `data-fx-duracao` | contêiner | `0.5` | segundos do "pop" de cada item |
+| `data-fx-intervalo` | contêiner | `0.2` | segundos entre um item e o seguinte |
+| `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro |
+| `data-fx-balanco` | item | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
+| `data-fx-balanco-duracao` | item | `1.6` | segundos de cada ida (ou volta) do balanço |
+| `data-fx-flutuacao` | item | — | depois de surgir, sobe N px e volta, sem parar; cada item com ritmo (1,4–2s) e fase próprios, para não flutuarem juntos |
+
+Valores aprovados na GESTÃO: balanço **7°** na bisnaga, flutuação **10px** nas
+gotas (30° e 20px ficaram exagerados — prefira movimentos contínuos pequenos).
+
+Checklist:
+- As peças precisam ser **elementos separados** (uma imagem por peça). Se o
+  Figma entregar uma arte composta, extraia peça por peça primeiro (README,
+  armadilha 3) — foi o que permitiu animar a bisnaga e as gotas da GESTÃO.
+- Anime o invólucro (`<span>`): o efeito usa `scale`, `rotation` e `y`, e
+  sobrescreveria um `transform` do CSS na imagem.
+- Precisa do trecho anti-piscada no `<head>`, com o seletor dos itens.
+
+Em uso: `74/gestao.html`, bisnaga e 5 gotas da abertura (`.art-bg`).
+
 ## Antes de aplicar um efeito de scroll (checklist)
 
 1. **Tipo de decoração da página** (README, seção Arquitetura). O
@@ -242,7 +330,9 @@ Em uso: `74/principal.html`, foto do hero (`.hero-figure > img`).
 
 **Entrada:** com a imagem atrasada de propósito (~1,5s), o elemento não pode
 aparecer no lugar antes de o efeito começar; ao final, sem `style` inline e na
-posição do CSS (o `probe` da página confere).
+posição do CSS (o `probe` da página confere). No `scale-up` com fundo, confira
+no meio da entrada que os blocos de cima e de baixo têm a mesma cor (amostre
+um pixel de cada).
 
 **`pin-horizontal`:** role por posições da faixa congelada (início, 25%, 50%,
 fim, depois) e meça: topo do `.page`, fundo do bloco de cima e topo do de baixo

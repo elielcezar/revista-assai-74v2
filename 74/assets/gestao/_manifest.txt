@@ -65,3 +65,9 @@ imgVector37	assets/gestao/imgVector37.svg	svg	266
 imgGroup8651	assets/gestao/imgGroup8651.svg	svg	698
 imgGroup1	assets/gestao/imgGroup1.svg	svg	250
 imgGroup2	assets/gestao/imgGroup2.svg	svg	7978
+hero-saco	assets/gestao/hero-saco.png	png	278294	(Figma 4424:20320, recorte de Rectangle 1457, 2x)
+hero-gota1	assets/gestao/hero-gota1.png	png	9155	(Figma 4424:20321, recorte de Rectangle 1457, 2x)
+hero-gota2	assets/gestao/hero-gota2.png	png	3447	(Figma 4424:20322, recorte de Rectangle 1457, 2x)
+hero-gota3	assets/gestao/hero-gota3.png	png	19468	(Figma 4424:20323, recorte de Rectangle 1457, 2x)
+hero-gota4	assets/gestao/hero-gota4.png	png	9209	(Figma 4424:20324, recorte de Rectangle 1457, 2x)
+hero-gota5	assets/gestao/hero-gota5.png	png	6145	(Figma 4424:20325, recorte de Rectangle 1457, 2x)

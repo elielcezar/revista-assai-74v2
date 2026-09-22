@@ -84,9 +84,16 @@
 .d-blue1360 { left: 0;     top: -9px;   width: 402px; height: 379px; background: var(--azul-medio); }
 .d-blue2    { left: -1px;  top: 3748px; width: 410px; height: 412px; background: var(--azul-medio); }
 
-/* -- arte da abertura (sache + gotas), extraida da composicao do Figma:
-   o codegen exportou os recortes de Rectangle 1457 com percentuais invalidos -- */
-.d-heroart { left: 0; top: 203px; width: 402px; height: 458px; }
+/* -- abertura: sache e 5 gotas, cada um uma peca (Figma 4424:20320..20325).
+   Extraidos do original de Rectangle 1457 em 2x, fundo transparente: o sache e as
+   gotas 1-2 por ajuste contra o screenshot do Figma (o codegen traz a rotacao do
+   preenchimento errada), as gotas 3-5 pelo recorte do proprio Figma -- */
+.d-hero-saco { left: 85.18px; top: 288.0px; width: 269px; height: 337px; }
+.d-hero-gota1 { left: 78.18px; top: 593.0px; width: 37px; height: 35px; }
+.d-hero-gota2 { left: 58.18px; top: 581.0px; width: 19px; height: 20px; }
+.d-hero-gota3 { left: 320.76px; top: 504.0px; width: 51px; height: 57px; }
+.d-hero-gota4 { left: 257.83px; top: 575.0px; width: 34px; height: 39px; }
+.d-hero-gota5 { left: 298.0px; top: 616.57px; width: 30px; height: 28px; }
 
 /* -- arco do bloco do casal -- */
 .d-e121 { left: -102px; top: 4149.5px; width: 609px; height: 304.5px; }

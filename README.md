@@ -146,6 +146,8 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | `card-accordeon` (scroll) | itens começam fechados e crescem com o scroll, empurrando o que vem abaixo; fecham ao subir | `74/principal.html` (cards bege de `.bl-gen`) |
 | `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o trilho (texto ou galeria) para o lado (1:1); no fim, a página volta a rolar. Vários por página | `74/principal.html` (citação `.bl-quote` e carrossel `.bl-carousel`) |
 | `slide-in-up` (scroll disparado) | ao passar da sua linha perto do fundo da tela, cada item aparece sem fade na borda de baixo e sobe o caminho inteiro até o lugar, em cascata; desce e se esconde ao voltar | `74/principal.html` (lista `.pacts`, margem 200) |
+| `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
+| `pop-in` (entrada) | na abertura, os itens surgem com "pop", um de cada vez; depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (bisnaga, balanço 7°; gotas, flutuação 10px) |
 | `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
 
 Efeito de entrada exige um trecho anti-piscada no `<head>` da página (está na
@@ -186,11 +188,11 @@ sem as animações (cards abertos, nada congelado).
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-48**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-54**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-48/?v=74-49/g' *.html 74/*.html
+sed -i 's/?v=74-54/?v=74-55/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache
@@ -247,9 +249,16 @@ posições novas forem as desejadas, basta atualizar o valor esperado no probe.
    forma obsoleta `seac`; o Chrome lê largura 229 em vez de 562 e o "ó" cola no
    "c". Use `fonts/RaspoutineMedium-fix.otf`.
 
-3. **Recortes de imagem inválidos no codegen.** Na GESTÃO, os seis recortes de
-   `Rectangle 1457` vieram com percentuais que mostram só um canto vazio. A
-   arte foi extraída composta em `74/assets/gestao/heroArte.png`.
+3. **Recortes de imagem com a rotação do preenchimento errada no codegen.** Na
+   GESTÃO, o saco e as gotas da abertura são recortes de `Rectangle 1457` com
+   rotação/espelho *dentro* do preenchimento, que o código exportado não traz:
+   aplicar os percentuais ao pé da letra mostra só um canto. Não use arte
+   composta (a antiga `heroArte.png` juntava tudo e impedia animar as peças).
+   Solução: baixe o original do preenchimento (vem com fundo transparente) e
+   ajuste cada peça contra o `get_screenshot` do nó — casamento de pontos
+   (SIFT, OpenCV) para peças com textura, silhueta + cor para as pequenas —, e
+   gere PNG 2x por peça. Assim saíram `hero-saco.png` e `hero-gota1..5.png`
+   (as gotas 3–5 conferiram com o recorte literal; saco e gotas 1–2, não).
 
 4. **Coordenadas de nós girados.** O `get_metadata` devolve a geometria sem a
    rotação; para nós girados vale o `top`/`left` do código gerado.
@@ -276,9 +285,9 @@ posições novas forem as desejadas, basta atualizar o valor esperado no probe.
     listras da tabela de CMV saíam do passo das linhas. Resolvido com
     `.art-bg > .d-stripes`.
 
-11. **Texto rasterizado dentro de arte do Figma.** O `heroArte.png` da GESTÃO
-    trazia o título e o olho já desenhados, e apareciam borrados atrás do texto
-    real da página.
+11. **Texto rasterizado dentro de arte do Figma.** A antiga `heroArte.png` da
+    GESTÃO trazia o título e o olho já desenhados, e apareciam borrados atrás do
+    texto real da página. Motivo a mais para exportar peça por peça.
 
 12. **z-index em componente compartilhado.** Na capa, o `z-index` estava na
     barra preta do rodapé e escondia os ícones, irmãos dela. Ele pertence ao

@@ -10,6 +10,8 @@
      </section>
      <ol data-fx="slide-in-up"><li data-fx-item> ← scroll (disparado): itens entram subindo
      <img data-fx="slide-in-left" …>             ← entrada: roda ao carregar
+     <div data-fx="scale-up"><span data-fx-item> ← entrada: crescem da base, em cascata
+     <div data-fx="pop-in"><span data-fx-item>   ← entrada: surgem com "pop", um de cada vez
 
    Efeitos de entrada precisam do trecho anti-piscada no <head> (ver a skill).
 
@@ -369,9 +371,135 @@
     }
   }
 
+  /* =========================================================
+     scale-up  (efeito de ENTRADA: roda ao carregar, não depende do scroll)
+     Os itens crescem a partir da base (centro de baixo), de 0 ao tamanho
+     final, um depois do outro na ordem do HTML. Pensado para formas de fundo
+     (ex.: as cúpulas atrás da foto do hero).
+
+       <div data-fx="scale-up">
+         <span data-fx-item>…</span>               ← anima o invólucro, não a
+       </div>                                        imagem (que pode ter rotate)
+
+     Opções no contêiner:
+       data-fx-duracao="0.9"    segundos de cada item
+       data-fx-intervalo="0.15" segundos entre um item e o seguinte
+       data-fx-atraso="0"       segundos antes do primeiro
+       data-fx-origem="50% 100%" ponto de onde cresce (transform-origin)
+       data-fx-fundo="#ffe3cc"  cor de fundo do contêiner só enquanto os itens
+                                entram (não fica branco atrás deles); sai no fim
+       data-fx-fundo-abaixo=".x" o fundo só começa onde termina esse elemento —
+                                use quando houver uma camada translúcida por
+                                cima (senão as cores somam e o topo escurece).
+                                A cor deve ser a que essa camada dá sobre branco.
+
+     Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
+     ========================================================= */
+  function scaleUp(sec) {
+    var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
+    if (!itens.length) return;
+    var fundo = sec.getAttribute("data-fx-fundo");
+    if (fundo) {
+      var acima = sec.getAttribute("data-fx-fundo-abaixo");
+      var ref = acima && sec.querySelector(acima);
+      if (ref) {
+        // px de CSS do topo do contêiner até o fim da camada de cima
+        var corte = (ref.getBoundingClientRect().bottom - sec.getBoundingClientRect().top) / zoom();
+        sec.style.backgroundImage = "linear-gradient(to bottom, transparent " + corte + "px, " + fundo + " " + corte + "px)";
+      } else {
+        sec.style.backgroundColor = fundo;
+      }
+    }
+    gsap.set(itens, { scale: 0, transformOrigin: sec.getAttribute("data-fx-origem") || "50% 100%" });
+    gsap.to(itens, {
+      scale: 1,
+      duration: pct(sec.getAttribute("data-fx-duracao"), 0.9),
+      stagger: pct(sec.getAttribute("data-fx-intervalo"), 0.15),
+      delay: pct(sec.getAttribute("data-fx-atraso"), 0),
+      ease: "power3.out",
+      clearProps: "transform,transformOrigin", // no fim, devolve os itens ao CSS
+      onComplete: function () {
+        if (fundo) sec.style.backgroundColor = sec.style.backgroundImage = "";
+      }
+    });
+  }
+
+  /* =========================================================
+     pop-in  (efeito de ENTRADA: roda ao carregar, não depende do scroll)
+     Os itens surgem um de cada vez, na ordem do HTML, crescendo do centro com
+     um pequeno quique no fim ("pop"). Espera as imagens dos itens carregarem
+     (limite de 3s), para não surgirem vazios.
+
+       <div data-fx="pop-in">                      ← pode ser a camada de decoração
+         <span data-fx-item data-fx-balanco="30">…</span>  ← depois fica balançando
+         <span data-fx-item data-fx-flutuacao="20">…</span>   ← depois fica flutuando
+       </div>
+
+     Opções no contêiner:
+       data-fx-duracao="0.5"     segundos de cada item
+       data-fx-intervalo="0.2"   segundos entre um item e o seguinte
+       data-fx-atraso="0"        segundos antes do primeiro
+     Opção no item:
+       data-fx-balanco="30"      depois de surgir, gira ±N graus em volta do
+                                 centro, ida e volta, sem parar
+       data-fx-balanco-duracao="1.6"  segundos de cada ida (ou volta)
+       data-fx-flutuacao="20"    depois de surgir, sobe N px e volta, sem parar;
+                                 cada item com ritmo e fase um pouco diferentes
+                                 (para não flutuarem sincronizados)
+
+     Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
+     ========================================================= */
+  function popIn(sec) {
+    var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
+    if (!itens.length) return;
+    var duracao = pct(sec.getAttribute("data-fx-duracao"), 0.5);
+    var intervalo = pct(sec.getAttribute("data-fx-intervalo"), 0.2);
+    var atraso = pct(sec.getAttribute("data-fx-atraso"), 0);
+
+    gsap.set(itens, { scale: 0, transformOrigin: "50% 50%" });
+
+    // depois de surgir: balanço (gira) e/ou flutuação (sobe e desce), sem parar
+    function continuar(el) {
+      var graus = pct(el.getAttribute("data-fx-balanco"), 0);
+      var altura = pct(el.getAttribute("data-fx-flutuacao"), 0);
+      if (!graus && !altura) { gsap.set(el, { clearProps: "transform,transformOrigin" }); return; }
+      if (graus) {
+        var ida = pct(el.getAttribute("data-fx-balanco-duracao"), 1.6);
+        // do repouso até um lado, depois de um lado ao outro
+        gsap.timeline()
+          .to(el, { rotation: -graus, duration: ida / 2, ease: "sine.out" })
+          .to(el, { rotation: graus, duration: ida, ease: "sine.inOut", repeat: -1, yoyo: true });
+      }
+      if (altura) {
+        gsap.to(el, { y: -altura, duration: gsap.utils.random(1.4, 2), ease: "sine.inOut",
+          repeat: -1, yoyo: true, delay: gsap.utils.random(0, 0.6) });
+      }
+    }
+
+    function comecar() {
+      gsap.to(itens, {
+        scale: 1, duration: duracao, delay: atraso, ease: "back.out(1.7)",
+        stagger: { each: intervalo, onComplete: function () { continuar(this.targets()[0]); } }
+      });
+    }
+
+    var imgs = itens.map(function (el) { return el.tagName === "IMG" ? el : el.querySelector("img"); })
+      .filter(function (im) { return im && !im.complete; });
+    var foi = false;
+    function vai() { if (!foi) { foi = true; comecar(); } }
+    if (!imgs.length) return vai();
+    var faltam = imgs.length;
+    imgs.forEach(function (im) {
+      function pronto() { if (--faltam <= 0) vai(); }
+      im.addEventListener("load", pronto);
+      im.addEventListener("error", pronto);
+    });
+    setTimeout(vai, 3000); // imagem lenta demais: entra assim mesmo
+  }
+
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp };
-  var entradas = { "slide-in-left": slideInLeft };
+  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.

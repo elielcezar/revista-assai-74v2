@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Quanto custa o que você dá de graça? — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Identificar o valor e o custo do que é dado de brinde pode salvar seu lucro no final do mês.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-48">
-<link rel="stylesheet" href="css/gestao.css?v=74-48">
-<link rel="stylesheet" href="../css/shell.css?v=74-48">
+<link rel="stylesheet" href="../css/base.css?v=74-54">
+<link rel="stylesheet" href="css/gestao.css?v=74-54">
+<link rel="stylesheet" href="../css/shell.css?v=74-54">
 </head>
 <body>
 
@@ -93,7 +97,7 @@
   <article class="art">
 
     <!-- ====== camada de decoração (sangra / gira / sobrepõe) ====== -->
-    <div class="art-bg" aria-hidden="true">
+    <div class="art-bg" aria-hidden="true" data-fx="pop-in">
       <span class="d-rect1488"><img src="assets/gestao/imgRectangle1488.png" alt=""></span>
       <span class="d-grad1487"></span>
       <span class="d-blue1485"></span>
@@ -117,9 +121,14 @@
       <span class="d-e118a"><img src="assets/gestao/imgEllipse118.svg" alt=""></span>
       <span class="d-e119"><img src="assets/gestao/imgEllipse119.svg" alt=""></span>
       <span class="d-e116"><img src="assets/gestao/imgEllipse116.svg" alt=""></span>
-      <!-- arte da abertura: o Figma exportou os 6 recortes de Rectangle 1457 com
-           percentuais invalidos, entao usamos a arte ja composta -->
-      <span class="d-heroart"><img src="assets/gestao/heroArte.png?v2" alt=""></span>
+      <!-- abertura: sache e 5 gotas como pecas separadas (Figma 4424:20320..20325,
+           recortes de Rectangle 1457), prontas para animar uma a uma -->
+      <span class="d-hero-saco" data-fx-item data-fx-balanco="7"><img src="assets/gestao/hero-saco.png" alt=""></span>
+      <span class="d-hero-gota1" data-fx-item data-fx-flutuacao="10"><img src="assets/gestao/hero-gota1.png" alt=""></span>
+      <span class="d-hero-gota2" data-fx-item data-fx-flutuacao="10"><img src="assets/gestao/hero-gota2.png" alt=""></span>
+      <span class="d-hero-gota3" data-fx-item data-fx-flutuacao="10"><img src="assets/gestao/hero-gota3.png" alt=""></span>
+      <span class="d-hero-gota4" data-fx-item data-fx-flutuacao="10"><img src="assets/gestao/hero-gota4.png" alt=""></span>
+      <span class="d-hero-gota5" data-fx-item data-fx-flutuacao="10"><img src="assets/gestao/hero-gota5.png" alt=""></span>
       <span class="d-e121"><img src="assets/gestao/imgEllipse121.svg" alt=""></span>
       <span class="d-blue2"></span>
       <span class="d-img1473"><span><img src="assets/gestao/imgRectangle1473.png" alt=""></span></span>
@@ -465,7 +474,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-48"></script>
-<script src="js/gestao.js?v=74-48"></script>
+<script src="../js/shell.js?v=74-54"></script>
+<script src="js/gestao.js?v=74-54"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-54"></script>
 </body>
 </html>

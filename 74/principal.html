@@ -30,15 +30,15 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="slide-in-left"]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="slide-in-left"],.fx-espera [data-fx="scale-up"] [data-fx-item]{visibility:hidden}</style>
 <title>Negócios entre Gerações — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Parceria entre gerações traz escala para negócios familiares e alcança comunidade digital.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-48">
-<link rel="stylesheet" href="css/principal.css?v=74-48">
-<link rel="stylesheet" href="../css/shell.css?v=74-48">
+<link rel="stylesheet" href="../css/base.css?v=74-54">
+<link rel="stylesheet" href="css/principal.css?v=74-54">
+<link rel="stylesheet" href="../css/shell.css?v=74-54">
 </head>
 <body>
 
@@ -98,12 +98,12 @@
 
   <!-- ============ BLOCO 1 — HERO ============ -->
   <section class="bl bl-hero">
-    <div class="backdrop" aria-hidden="true">
+    <div class="backdrop" aria-hidden="true" data-fx="scale-up" data-fx-fundo="#ffe3cc" data-fx-fundo-abaixo=".hero-wash">
       <span class="hero-wash"></span>
-      <span class="hero-e140"><img src="assets/imgEllipse140.svg" alt=""></span>
-      <span class="hero-e141"><img src="assets/imgEllipse141.svg" alt=""></span>
-      <span class="hero-e142"><img src="assets/imgEllipse142.svg" alt=""></span>
-      <span class="hero-e139"><img src="assets/imgEllipse139.png" alt=""></span>
+      <span class="hero-e140" data-fx-item><img src="assets/imgEllipse140.svg" alt=""></span>
+      <span class="hero-e141" data-fx-item><img src="assets/imgEllipse141.svg" alt=""></span>
+      <span class="hero-e142" data-fx-item><img src="assets/imgEllipse142.svg" alt=""></span>
+      <span class="hero-e139" data-fx-item><img src="assets/imgEllipse139.png" alt=""></span>
     </div>
 
     <div class="hero-head">
@@ -250,11 +250,11 @@
     <div class="bcar" data-bcar>
       <div class="bcar-view">
         <div class="bcar-track" data-btrack>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-48" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-48" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-48" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-48" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-48" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-54" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-54" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-54" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-54" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-54" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
         </div>
       </div>
       <div class="bcar-dots">
@@ -351,11 +351,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-48"></script>
-<script src="js/principal.js?v=74-48"></script>
+<script src="../js/shell.js?v=74-54"></script>
+<script src="js/principal.js?v=74-54"></script>
 <!-- animações de scroll (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-48"></script>
+<script src="../js/scroll-fx.js?v=74-54"></script>
 </body>
 </html>
