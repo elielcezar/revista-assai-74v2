@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="popcorn-pop"]{visibility:hidden}</style>
 <title>Descontos fantasmas — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Plataformas de entrega aplicam descontos agressivos e transformam venda em prejuízo para muitos empreendedores. Venha entender os impactos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-73">
-<link rel="stylesheet" href="css/delivery.css?v=74-73">
-<link rel="stylesheet" href="../css/shell.css?v=74-73">
+<link rel="stylesheet" href="../css/base.css?v=74-74">
+<link rel="stylesheet" href="css/delivery.css?v=74-74">
+<link rel="stylesheet" href="../css/shell.css?v=74-74">
 </head>
 <body>
 
@@ -122,7 +126,7 @@
 
     <!-- ====== BLOCO 1 — abertura ====== -->
     <section class="s s-hero">
-      <h1 class="hero-title">Descontos<br><span class="am">fantasmas</span></h1>
+      <h1 class="hero-title" data-fx="popcorn-pop">Descontos<br><span class="am">fantasmas</span></h1>
       <p class="hero-lead">Plataformas de entrega aplicam descontos agressivos e transformam venda em prejuízo para muitos empreendedores. Venha entender os impactos.</p>
 
       <div class="hero-badge">
@@ -175,10 +179,10 @@
     <!-- ====== BANNER ROTATIVO — um dos três, sorteado a cada carregamento ====== -->
     <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/delivery.js sorteia outro -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/celeste.jpg?v=74-73","alt":"Publicidade Celeste"},
-      {"src":"assets/banners/3coracoes.jpg?v=74-73","alt":"Publicidade 3 Corações"},
-      {"src":"assets/banners/melita.jpg?v=74-73","alt":"Publicidade Melitta"}]'>
-      <img src="assets/banners/celeste.jpg?v=74-73" alt="Publicidade Celeste" width="402" height="419">
+      {"src":"assets/banners/celeste.jpg?v=74-74","alt":"Publicidade Celeste"},
+      {"src":"assets/banners/3coracoes.jpg?v=74-74","alt":"Publicidade 3 Corações"},
+      {"src":"assets/banners/melita.jpg?v=74-74","alt":"Publicidade Melitta"}]'>
+      <img src="assets/banners/celeste.jpg?v=74-74" alt="Publicidade Celeste" width="402" height="419">
     </figure>
 
     <!-- ====== BLOCO 5 — bloqueio e ranqueamento (laranja) ====== -->
@@ -246,11 +250,13 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-73"></script>
-<script src="js/delivery.js?v=74-73"></script>
+<script src="../js/shell.js?v=74-74"></script>
+<script src="js/delivery.js?v=74-74"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-73"></script>
+<!-- SplitText: o popcorn-pop quebra o titulo em letras -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-74"></script>
 </body>
 </html>

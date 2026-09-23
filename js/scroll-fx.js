@@ -772,6 +772,85 @@
   }
 
   /* =========================================================
+     popcorn-pop  (entrada: ao carregar e a cada vez que o texto chega à tela)
+     As letras PIPOCAM: cada uma surge do nada, subindo e girando um pouco, em
+     ordem ALEATÓRIA, com um quique no fim (back.out). Precisa do SplitText.
+
+       <h1 data-fx="popcorn-pop">Descontos<br><span class="am">fantasmas</span></h1>
+
+     Opções no elemento:
+       data-fx-intervalo="0.04"   segundos entre uma letra e a seguinte
+       data-fx-duracao="0.4"      segundos de cada letra
+       data-fx-deslocamento="30"  px de onde a letra sobe
+       data-fx-rotacao="20"       graus máximos (sorteados) de onde ela vem
+       data-fx-atraso="0"         segundos antes da primeira
+       data-fx-margem="100"       px acima do fundo da tela que disparam
+
+     Roda ao carregar (se o texto já estiver à vista) e REFAZ a cada vez que o
+     texto volta à tela, como o pop-in. Entre uma vez e outra o HTML volta ao
+     original (split.revert()), então nada fica quebrado em letras.
+
+     Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
+     ========================================================= */
+  function popcornPop(el) {
+    if (!window.SplitText) return;
+    gsap.registerPlugin(SplitText);
+    var inter = pct(el.getAttribute("data-fx-intervalo"), 0.04);
+    var dur = pct(el.getAttribute("data-fx-duracao"), 0.4);
+    var desl = pct(el.getAttribute("data-fx-deslocamento"), 30);
+    var rot = pct(el.getAttribute("data-fx-rotacao"), 20);
+    var atraso = pct(el.getAttribute("data-fx-atraso"), 0);
+    var margem = pct(el.getAttribute("data-fx-margem"), 100);
+
+    // escondido até as fontes: as letras são medidas na quebra, e com a fonte
+    // substituta sairiam do tamanho errado
+    gsap.set(el, { visibility: "hidden" });
+    var pronto = false, dentro = false, split = null, tw = null;
+
+    function pipocar(primeiraVez) {
+      if (split) { split.revert(); split = null; }
+      if (tw) tw.kill();
+      // chars sem words quebraria linhas no meio da palavra: smartWrap segura a palavra
+      split = SplitText.create(el, { type: "chars", smartWrap: true });
+      gsap.set(el, { visibility: "visible" });
+      tw = gsap.from(split.chars, {
+        scale: 0, y: desl,
+        rotation: function () { return gsap.utils.random(-rot, rot); },
+        stagger: { each: inter, from: "random" },
+        duration: dur, delay: primeiraVez ? atraso : 0, ease: "back.out(2)",
+        onComplete: function () { if (split) { split.revert(); split = null; } }
+      });
+    }
+
+    function naTela() {
+      var r = el.getBoundingClientRect();
+      return r.top < window.innerHeight - margem && r.bottom > 0;
+    }
+    function checar() {
+      if (!pronto) return;
+      if (!dentro && naTela()) { dentro = true; pipocar(false); }
+      else if (dentro && !naTela()) {           // saiu: rearma para a próxima vez
+        dentro = false;
+        if (tw) tw.kill();
+        if (split) { split.revert(); split = null; }
+        gsap.set(el, { visibility: "hidden" });
+      }
+    }
+
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    function comecar() {
+      pronto = true;
+      if (naTela()) { dentro = true; pipocar(true); }   // já estava à vista ao carregar
+      window.addEventListener("scroll", noScroll, { passive: true });
+      window.addEventListener("resize", noScroll);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(comecar); else comecar();
+  }
+
+  /* =========================================================
      magnetic-pull  (efeito de ENTRADA: roda ao carregar, não depende do scroll)
      O texto é quebrado em letras (SplitText) e cada letra vem de uma posição e
      rotação aleatórias, surgindo, até o lugar — como se fossem puxadas por um
@@ -902,7 +981,7 @@
 
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack };
-  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter };
+  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.

@@ -325,6 +325,38 @@ Checklist:
 Em uso: `74/mkt.html`, o hero (`.s-hero`): "Não engane seu cliente com IA" dá
 lugar a "mas aprenda com ela", em loop (`data-fx-repetir="0.5"`).
 
+### `popcorn-pop` — entrada
+
+As letras **pipocam**: cada uma surge do nada (escala 0), subindo alguns px e
+girando um pouco, em **ordem aleatória** e com um quique no fim
+(`back.out(2)`). Roda ao carregar e **refaz toda vez que o texto volta à tela** —
+ao sair, rearma.
+
+```html
+<h1 data-fx="popcorn-pop">Descontos<br><span class="am">fantasmas</span></h1>
+```
+
+| atributo (no elemento) | padrão | efeito |
+|---|---|---|
+| `data-fx-intervalo` | `0.04` | segundos entre uma letra e a seguinte |
+| `data-fx-duracao` | `0.4` | segundos de cada letra |
+| `data-fx-deslocamento` | `30` | px de onde a letra sobe |
+| `data-fx-rotacao` | `20` | graus máximos (sorteados) de onde ela vem |
+| `data-fx-atraso` | `0` | segundos antes da primeira (só ao carregar) |
+| `data-fx-margem` | `100` | px acima do fundo da tela que disparam |
+
+- Carregue o **`SplitText.min.js`** (gratuito desde a 3.13) antes do
+  `scroll-fx.js`. Sem ele o texto fica parado — nada quebra.
+- **Espera as fontes**: as letras são medidas na quebra. Até lá fica escondido
+  (precisa do trecho anti-piscada no `<head>`, com `[data-fx="popcorn-pop"]`).
+- Quebra por letra **com `smartWrap`**, senão a linha pode quebrar no meio da
+  palavra. Entre uma vez e outra o HTML **volta ao original** (`split.revert()`).
+- A caixa do texto não muda de altura, então serve em página de decoração
+  global.
+- Serve para título curto. Em texto longo são centenas de letras animando.
+
+Em uso: `74/delivery.html`, título da abertura (`.hero-title`).
+
 ### `magnetic-pull` — entrada
 
 Ao carregar, o texto é quebrado em **letras** (SplitText) e cada uma vem de uma
