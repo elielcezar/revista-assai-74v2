@@ -112,21 +112,30 @@
    BLOCO 1 — hero
    ========================================================= */
 
+/* altura fixa (3 linhas x 55): o efeito typewriter esvazia e repoe o texto, e
+   sem isso a caixa encolhe para 2 linhas enquanto digita — o que empurraria o
+   lead, o selo e todo o texto abaixo 55px, enquanto as decoracoes da .art-bg,
+   que sao absolutas, ficariam onde estao */
 .hero-title {
-  width: 361px; margin: 629px 0 0 19px; line-height: 55px;
+  width: 361px; height: 165px; margin: 629px 0 0 19px; line-height: 55px;
   font-size: 55px; font-weight: 700; color: #fff;
 }
 .hero-title .am { color: var(--amarelo); }
 
+/* O segundo titulo aparece POR CIMA do primeiro: os dois se revezam, e quem
+   troca um pelo outro e o efeito typewriter. Fica FORA DO FLUXO (absolute) de
+   proposito — esta e pagina de decoracao global, e se ele ocupasse espaco todo
+   o texto abaixo subiria 28px enquanto as decoracoes, que sao absolutas,
+   ficariam onde estao. Comeca escondido: sem JS fica so o primeiro titulo, que
+   e o estado legivel. */
 .hero-title2 {
-  width: 360px; margin: -138px 0 0 19px; line-height: 55px;
-  font-size: 55px; font-weight: 700; color: var(--amarelo);
-  position: relative; z-index: 1;
-  display: none;
+  position: absolute; left: 19px; top: 656px; width: 360px;
+  line-height: 55px; font-size: 55px; font-weight: 700; color: var(--amarelo);
+  z-index: 1; visibility: hidden;
 }
 
 .hero-lead {
-  width: 362px; margin: 42px 0 0 20px;
+  width: 362px; margin: 20px 0 0 20px;
   font-size: 20px; font-style: italic; color: #fff; line-height: normal;
 }
 

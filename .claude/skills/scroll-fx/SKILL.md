@@ -282,6 +282,48 @@ sobreposta, `data-fx-margem="200" data-fx-passo="200"` (testados 300/150 por
 linha, 400/400 e 200/100 por passo — 200/200 foi o aprovado para dar tempo de
 ver a pilha se montando).
 
+### `typewriter` — entrada
+
+Os textos são **digitados letra a letra**, um de cada vez: o primeiro aparece,
+fica um instante na tela, é **apagado de trás para frente**, e o seguinte é
+digitado no lugar. O último fica. Com um item só, é só a digitação.
+
+```html
+<section data-fx="typewriter">
+  <h1 data-fx-item>Não engane<br><span class="am">SEU CLIENTE</span><br>com IA</h1>
+  <p  data-fx-item>mas aprenda<br>com ela</p>
+</section>
+```
+
+| atributo (no contêiner) | padrão | efeito |
+|---|---|---|
+| `data-fx-velocidade` | `0.06` | segundos por letra ao escrever |
+| `data-fx-apagar` | `0.03` | segundos por letra ao apagar |
+| `data-fx-pausa` | `1.2` | segundos que o texto fica inteiro na tela |
+| `data-fx-atraso` | `0.3` | segundos antes de começar |
+
+O markup de cada item é preservado (`<br>`, `<span>` de cor): o efeito esvazia e
+repõe só os **nós de texto**, na ordem. Como as quebras continuam no lugar, a
+caixa não muda de altura enquanto digita.
+
+Checklist:
+- **O item digitado precisa de altura fixa** (`height`, as linhas que ele tem
+  cheio). Enquanto o texto está vazio ou pela metade a caixa encolhe — na MKT,
+  de 165px para 110px, porque as 3 linhas viram 2 —, e tudo abaixo sobe junto.
+  Foi o que descolava o selo `#74` e o resto do texto das decorações.
+- Os textos que se revezam ocupam **o mesmo lugar na tela**. Em página de
+  decoração global, o segundo (e os seguintes) precisam ficar **fora do fluxo**
+  (`position: absolute`, com as coordenadas do primeiro): se ocupassem espaço, o
+  texto abaixo andaria e as decorações, que são absolutas, ficariam para trás.
+  Na MKT isso deslocava 28px tudo a partir do hero.
+- No CSS, deixe visível só o primeiro: **sem JS é ele que fica**, e é o estado
+  legível. Os demais começam com `visibility: hidden`.
+- Precisa do trecho anti-piscada no `<head>`, com o seletor dos itens — senão os
+  textos aparecem todos, sobrepostos, antes de o efeito começar.
+
+Em uso: `74/mkt.html`, o hero (`.s-hero`): "Não engane seu cliente com IA" dá
+lugar a "mas aprenda com ela".
+
 ### `magnetic-pull` — entrada
 
 Ao carregar, o texto é quebrado em **letras** (SplitText) e cada uma vem de uma

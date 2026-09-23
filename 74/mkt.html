@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="typewriter"] [data-fx-item]{visibility:hidden}</style>
 <title>Não engane seu cliente com IA, mas aprenda com ela — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="É possível usar a inteligência artificial para aprender a fotografar melhor os próprios produtos, em vez de usá-la só para gerar imagens que não correspondem ao que o cliente recebe.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-71">
-<link rel="stylesheet" href="css/mkt.css?v=74-71">
-<link rel="stylesheet" href="../css/shell.css?v=74-71">
+<link rel="stylesheet" href="../css/base.css?v=74-72">
+<link rel="stylesheet" href="css/mkt.css?v=74-72">
+<link rel="stylesheet" href="../css/shell.css?v=74-72">
 </head>
 <body>
 
@@ -123,9 +127,9 @@
     </div>
 
     <!-- ====== BLOCO 1 — hero ====== -->
-    <section class="s s-hero">
-      <h1 class="hero-title">Não engane<br><span class="am">SEU CLIENTE</span><br>com IA</h1>
-      <p class="hero-title2">mas aprenda<br>com ela</p>
+    <section class="s s-hero" data-fx="typewriter">
+      <h1 class="hero-title" data-fx-item>Não engane<br><span class="am">SEU CLIENTE</span><br>com IA</h1>
+      <p class="hero-title2" data-fx-item>mas aprenda<br>com ela</p>
       <p class="hero-lead">É possível usar a inteligência artificial para aprender a fotografar melhor os próprios produtos, em vez de usá-la só para gerar imagens que não correspondem ao que o cliente recebe</p>
     </section>
 
@@ -189,9 +193,9 @@
     <!-- ====== BANNER ROTATIVO — um dos dois, sorteado a cada carregamento ====== -->
     <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/mkt.js sorteia outro -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/maturata.jpg?v=74-71","alt":"Publicidade Maturatta"},
-      {"src":"assets/banners/seda.jpg?v=74-71","alt":"Publicidade Seda"}]'>
-      <img src="assets/banners/maturata.jpg?v=74-71" alt="Publicidade Maturatta" width="402" height="384">
+      {"src":"assets/banners/maturata.jpg?v=74-72","alt":"Publicidade Maturatta"},
+      {"src":"assets/banners/seda.jpg?v=74-72","alt":"Publicidade Seda"}]'>
+      <img src="assets/banners/maturata.jpg?v=74-72" alt="Publicidade Maturatta" width="402" height="384">
     </figure>
 
     <!-- ====== BLOCO 5 — passo a passo ====== -->
@@ -273,11 +277,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-71"></script>
-<script src="js/mkt.js?v=74-71"></script>
+<script src="../js/shell.js?v=74-72"></script>
+<script src="js/mkt.js?v=74-72"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-71"></script>
+<script src="../js/scroll-fx.js?v=74-72"></script>
 </body>
 </html>

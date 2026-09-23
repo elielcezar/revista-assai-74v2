@@ -816,9 +816,89 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(vai); else vai();
   }
 
+  /* =========================================================
+     typewriter  (entrada: roda ao carregar)
+     Os textos são DIGITADOS letra a letra, um de cada vez: o primeiro aparece,
+     fica um instante, é apagado de trás para frente, e o seguinte é digitado no
+     lugar. O último fica.
+
+       <section data-fx="typewriter">
+         <h1 data-fx-item>Não engane<br><span class="am">SEU CLIENTE</span></h1>
+         <p  data-fx-item>mas aprenda<br>com ela</p>
+       </section>
+
+     Opções no contêiner:
+       data-fx-velocidade="0.06"  segundos por letra ao escrever
+       data-fx-apagar="0.03"      segundos por letra ao apagar
+       data-fx-pausa="1.2"        segundos que o texto fica inteiro na tela
+       data-fx-atraso="0.3"       segundos antes de começar
+
+     O markup de cada item é preservado (<br>, <span> de cor): o efeito esvazia
+     e repõe só os NÓS DE TEXTO, na ordem. Como as quebras continuam no lugar, a
+     caixa do texto não muda de altura enquanto digita — o que importa nas
+     páginas de decoração global, em que as decorações são absolutas.
+
+     Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
+     ========================================================= */
+  function typewriter(sec) {
+    var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
+    if (!itens.length) return;
+    var vel = pct(sec.getAttribute("data-fx-velocidade"), 0.06);
+    var velApagar = pct(sec.getAttribute("data-fx-apagar"), 0.03);
+    var pausa = pct(sec.getAttribute("data-fx-pausa"), 1.2);
+    var atraso = pct(sec.getAttribute("data-fx-atraso"), 0.3);
+
+    // guarda os nós de texto de cada item, na ordem em que aparecem
+    var dados = itens.map(function (el) {
+      var nos = [];
+      (function anda(n) {
+        for (var f = n.firstChild; f; f = f.nextSibling) {
+          if (f.nodeType === 3) { if (f.nodeValue.length) nos.push({ no: f, txt: f.nodeValue }); }
+          else if (f.nodeType === 1) anda(f);
+        }
+      })(el);
+      var total = 0;
+      nos.forEach(function (x) { total += x.txt.length; });
+      return { el: el, nos: nos, total: total };
+    });
+
+    function escrever(d, n) {
+      var resta = Math.round(n);
+      d.nos.forEach(function (x) {
+        var k = resta <= 0 ? 0 : Math.min(x.txt.length, resta);
+        if (x.no.nodeValue.length !== k) x.no.nodeValue = x.txt.slice(0, k);
+        resta -= k;
+      });
+    }
+
+    dados.forEach(function (d) { escrever(d, 0); gsap.set(d.el, { visibility: "hidden" }); });
+
+    var tl = gsap.timeline({ delay: atraso });
+    dados.forEach(function (d, i) {
+      var conta = { n: 0 };
+      tl.set(d.el, { visibility: "visible" })
+        .to(conta, { n: d.total, duration: d.total * vel, ease: "none",
+                     onUpdate: function () { escrever(d, conta.n); } });
+      if (i < dados.length - 1) {                  // o último fica
+        tl.to({}, { duration: pausa })
+          .to(conta, { n: 0, duration: d.total * velApagar, ease: "none",
+                       onUpdate: function () { escrever(d, conta.n); } })
+          .set(d.el, { visibility: "hidden" });
+      }
+    });
+
+    return function () {
+      tl.kill();
+      dados.forEach(function (d) {
+        escrever(d, d.total);
+        gsap.set(d.el, { clearProps: "visibility" });
+      });
+    };
+  }
+
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack };
-  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull };
+  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.
