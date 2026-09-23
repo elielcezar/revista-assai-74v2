@@ -582,6 +582,7 @@ itens; o do item vence o do contêiner.
 | `data-fx-origem` | item | `50% 50%` | ponto de onde o item cresce (`transform-origin`); use quando o desenho é maior que a caixa do item (ex.: o centro do balão) |
 | `data-fx-grupo` | item | — | nome do grupo: sequência própria, que recomeça a cada vez que o grupo entra na tela |
 | `data-fx-margem` | contêiner ou item | `100` | px acima do fundo da tela em que a sequência dispara (maior = mais tarde, com o bloco mais dentro da tela) |
+| `data-fx-linha` | contêiner ou item | — | em vez da margem: a linha de disparo nessa fração da altura da tela, contada **do topo** (`"80%"` = quando o item chega aos 80% da tela). Não depende do tamanho do aparelho |
 | `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro (só ao carregar) |
 | `data-fx-balanco` | item | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
 | `data-fx-balanco-duracao` | item | `1.6` | segundos de cada ida (ou volta) do balanço |
@@ -647,6 +648,8 @@ mesma `.art-bg`; os 3 sachês pequenos lado a lado em grupo com `fade-up`
 (`data-fx-origem="105.5px 43px"`).
 `74/mkt.html` — as 3 ferramentas de IA (`ul.tools`) com `data-fx-quando="scroll"`
 e `fade-right`, 0,5s entre elas.
+`74/negocio.html` — os 7 itens da `ul.checklist` em `pop`, disparando quando o
+primeiro chega aos 80% da tela (`data-fx-linha`), com 1s entre eles.
 `74/delivery.html` — o ícone do fantasma (`pop`, na camada de decoração) e, na
 `.s-pausar`, a citação e o parágrafo seguinte em `fade` de 1s, cada um no seu
 grupo para entrar na própria linha.

@@ -372,6 +372,10 @@
     var palco = document.createElement("div");
     palco.className = "fx-palco";
     palco.style.cssText = "position:relative;overflow:hidden;width:100%;margin:0";
+    // o bloco tem a altura do Figma (min-height) para as fotos e os balões em
+    // fluxo; com o palco no lugar deles sobraria um vão em branco no fim
+    var minAntes = sec.style.minHeight;
+    sec.style.minHeight = "0";
     fotos[0].parentNode.insertBefore(palco, fotos[0]);
     fotos.concat(baloes).forEach(function (el) { palco.appendChild(el); });
     fotos.forEach(function (el) {
@@ -464,6 +468,7 @@
       window.removeEventListener("load", medir);
       if (pedido) cancelAnimationFrame(pedido);
       fora.parentNode.insertBefore(alvo, fora); fora.remove();
+      sec.style.minHeight = minAntes;
     };
   }
 
@@ -774,6 +779,8 @@
        data-fx-intervalo="0.2"    segundos entre um item e o seguinte
        data-fx-atraso="0"         segundos antes do primeiro (só ao carregar)
        data-fx-margem="100"       px acima do fundo da tela que disparam a sequência
+       data-fx-linha="40%"        em vez da margem: a linha de disparo nessa
+                                  fração da altura da tela, contada do topo
        data-fx-deslocamento="30"  px percorridos no fade-up/fade-right
      Opções no item (sobrepõem as do contêiner):
        data-fx-entrada, data-fx-deslocamento, data-fx-origem="50% 50%",
@@ -876,6 +883,7 @@
       return { itens: grupos[g],
                intervalo: pct(attr(primeiro, "data-fx-intervalo", "0.2"), 0.2),
                margem: pct(attr(primeiro, "data-fx-margem", "100"), 100),
+               linha: attr(primeiro, "data-fx-linha", null),   // "40%" do topo
                dentro: false };   // a sequência está rodando/terminada na tela?
     });
     if (!pendentes.length) return;
@@ -888,7 +896,11 @@
       pendentes.forEach(function (g) {
         var primeiro = g.itens[0].getBoundingClientRect();
         var ultimo = g.itens[g.itens.length - 1].getBoundingClientRect();
-        var chegou = primeiro.top <= window.innerHeight - g.margem && ultimo.bottom > 0;
+        // a linha de disparo: por padrão a `margem` px acima do fundo da tela;
+        // com data-fx-linha="40%", essa fração da altura contada do topo
+        var linha = g.linha ? window.innerHeight * pct(g.linha, 40) / 100
+                            : window.innerHeight - g.margem;
+        var chegou = primeiro.top <= linha && ultimo.bottom > 0;
         var saiu = ultimo.bottom <= 0 || primeiro.top > window.innerHeight;
         if (!g.dentro && chegou) { g.dentro = true; surgir(g.itens, g.intervalo, 0); }
         else if (g.dentro && saiu) { g.dentro = false; g.itens.forEach(estadoInicial); }
