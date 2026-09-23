@@ -32,9 +32,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-70">
-<link rel="stylesheet" href="css/consumidor.css?v=74-70">
-<link rel="stylesheet" href="../css/shell.css?v=74-70">
+<link rel="stylesheet" href="../css/base.css?v=74-71">
+<link rel="stylesheet" href="css/consumidor.css?v=74-71">
+<link rel="stylesheet" href="../css/shell.css?v=74-71">
 </head>
 <body>
 
@@ -101,12 +101,6 @@
       <span class="d-laranja1"></span>
       <span class="d-marmita"><img src="assets/consumidor/elipse-1117.png" alt=""></span>
       <span class="d-grad-laranja"></span>
-      <span class="d-rosa" role="presentation"></span>
-      <span class="d-num d-num--1">1</span>
-      <span class="d-azul" role="presentation"></span>
-      <span class="d-num d-num--2">2</span>
-      <span class="d-roxo2" role="presentation"></span>
-      <span class="d-num d-num--3">3</span>
       <span class="d-faixa d-faixa--1"><img src="assets/consumidor/imgFaixa1.svg" alt=""></span>
       <span class="d-faixa d-faixa--2"><img src="assets/consumidor/imgFaixa2.svg" alt=""></span>
       <span class="d-faixa d-faixa--3"><img src="assets/consumidor/imgFaixa3.svg" alt=""></span>
@@ -176,11 +170,11 @@
     <!-- ====== BANNER ROTATIVO — um dos quatro, sorteado a cada carregamento ====== -->
     <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/consumidor.js sorteia outro -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/cepera.jpg?v=74-70","alt":"Publicidade Cepêra"},
-      {"src":"assets/banners/dover.jpg?v=74-70","alt":"Publicidade Dover"},
-      {"src":"assets/banners/kim.jpg?v=74-70","alt":"Publicidade Kim"},
-      {"src":"assets/banners/pato.jpg?v=74-70","alt":"Publicidade Pato"}]'>
-      <img src="assets/banners/cepera.jpg?v=74-70" alt="Publicidade Cepêra" width="402" height="419">
+      {"src":"assets/banners/cepera.jpg?v=74-71","alt":"Publicidade Cepêra"},
+      {"src":"assets/banners/dover.jpg?v=74-71","alt":"Publicidade Dover"},
+      {"src":"assets/banners/kim.jpg?v=74-71","alt":"Publicidade Kim"},
+      {"src":"assets/banners/pato.jpg?v=74-71","alt":"Publicidade Pato"}]'>
+      <img src="assets/banners/cepera.jpg?v=74-71" alt="Publicidade Cepêra" width="402" height="419">
     </figure>
 
     <!-- ====== BLOCO 5 — os sinais que o consumidor recebe (gradiente laranja) ====== -->
@@ -197,39 +191,45 @@
       </div>
     </section>
 
-    <!-- ====== BLOCO 6 — nome e descritivo (rosa) ====== -->
-    <section class="s s-nome">
-      <h2 class="h-nome">Nome e descritivo</h2>
-      <div class="t-nome">
-        <p><strong>O nome de um produto faz mais do que identificá-lo.</strong></p>
-        <p>Pesquisadores de Stanford testaram essa ideia em restaurantes universitários. Os mesmos vegetais receberam descrições básicas, voltadas à saúde ou concentradas no sabor.</p>
-        <p>Em um estudo posterior, realizado em cinco universidades norte-americanas e com mais de 137 mil decisões de consumo registradas, descrições voltadas ao sabor aumentaram em 29% a escolha dos vegetais em comparação com descrições ligadas à saúde.</p>
-        <p>Nomes como "cenoura cítrica glaceada" e "milho assado na manteiga" destacavam características que a receita realmente entregava. O efeito foi maior nos locais que serviam preparos considerados mais saborosos: a descrição ajudava quando havia uma boa experiência para sustentar as palavras.</p>
-      </div>
-    </section>
+    <!-- ====== BLOCOS 6, 7 e 8 — os 3 cards que se empilham ====== -->
+    <div class="cards" data-fx="card-stack" data-fx-faixa="10" data-fx-topo="20">
+      <!-- ====== BLOCO 6 — nome e descritivo (rosa) ====== -->
+      <section class="s card s-nome" data-fx-item>
+        <span class="card-num">1</span>
+        <h2 class="h-nome">Nome e descritivo</h2>
+        <div class="t-nome">
+          <p><strong>O nome de um produto faz mais do que identificá-lo.</strong></p>
+          <p>Pesquisadores de Stanford testaram essa ideia em restaurantes universitários. Os mesmos vegetais receberam descrições básicas, voltadas à saúde ou concentradas no sabor.</p>
+          <p>Em um estudo posterior, realizado em cinco universidades norte-americanas e com mais de 137 mil decisões de consumo registradas, descrições voltadas ao sabor aumentaram em 29% a escolha dos vegetais em comparação com descrições ligadas à saúde.</p>
+          <p>Nomes como "cenoura cítrica glaceada" e "milho assado na manteiga" destacavam características que a receita realmente entregava. O efeito foi maior nos locais que serviam preparos considerados mais saborosos: a descrição ajudava quando havia uma boa experiência para sustentar as palavras.</p>
+        </div>
+      </section>
 
-    <!-- ====== BLOCO 7 — foto (azul) ====== -->
-    <section class="s s-foto">
-      <h2 class="h-foto">Foto</h2>
-      <div class="t-foto">
-        <p><strong>Uma fotografia bem feita aumenta a vontade de experimentar. Também estabelece um padrão para a comparação que vem depois.</strong></p>
-        <p>Se a imagem mostra oito salgados, o cliente espera oito salgados. Se o hambúrguer aparece com duas camadas de queijo, o pedido precisa chegar assim.</p>
-        <p>O cuidado vale para o enquadramento. Uma foto muito aproximada pode fazer uma porção parecer maior. Um ângulo escolhido para esconder pouco recheio resolve a venda na tela, mas pode criar um problema quando a embalagem é aberta.</p>
-        <p><strong>ATENÇÃO ESPECIAL</strong> para o uso de IA nas suas fotos. Veja aqui uma matéria especial sobe boas práticas!</p>
-      </div>
-    </section>
+      <!-- ====== BLOCO 7 — foto (azul) ====== -->
+      <section class="s card s-foto" data-fx-item>
+        <span class="card-num">2</span>
+        <h2 class="h-foto">Foto</h2>
+        <div class="t-foto">
+          <p><strong>Uma fotografia bem feita aumenta a vontade de experimentar. Também estabelece um padrão para a comparação que vem depois.</strong></p>
+          <p>Se a imagem mostra oito salgados, o cliente espera oito salgados. Se o hambúrguer aparece com duas camadas de queijo, o pedido precisa chegar assim.</p>
+          <p>O cuidado vale para o enquadramento. Uma foto muito aproximada pode fazer uma porção parecer maior. Um ângulo escolhido para esconder pouco recheio resolve a venda na tela, mas pode criar um problema quando a embalagem é aberta.</p>
+          <p><strong>ATENÇÃO ESPECIAL</strong> para o uso de IA nas suas fotos. Veja aqui uma matéria especial sobe boas práticas!</p>
+        </div>
+      </section>
 
-    <!-- ====== BLOCO 8 — embalagem (roxo) ====== -->
-    <section class="s s-embalagem">
-      <h2 class="h-embalagem">Embalagem</h2>
-      <div class="t-embalagem">
-        <p><strong>Embalagem tem muitas funções e, consequentemente, comunica muitas coisas.</strong></p>
-        <p>Uma caixa bem fechada, sem manchas de gordura, com a marca visível, já sugere cuidado. O mesmo vale para o saquinho de papel do salgado, o pote da marmita ou o plástico do doce na prateleira do minimercado.</p>
-        <p>Essa mensagem muda conforme o cuidado com a apresentação por quem entrega ou revende. Uma bandeja organizada, com etiqueta legível e proteção contra poeira, sustenta o preço cobrado. Uma embalagem amassada, exposta ao sol ou empilhada sem cuidado, derruba a expectativa antes da venda.</p>
-        <p>A embalagem também participa do consumo, não só da entrega. Um pote que vaza, um saco que rasga, uma tampa difícil de abrir quando deveria ser simples: tudo isso entra na conta da experiência, mesmo quando a comida está perfeita.</p>
-        <p>Antes de aprovar uma embalagem nova, vale testar três momentos: como ela aparece na vitrine ou na prateleira, como resiste ao transporte até o cliente e como se comporta na mão de quem vai comer.</p>
-      </div>
-    </section>
+      <!-- ====== BLOCO 8 — embalagem (roxo) ====== -->
+      <section class="s card s-embalagem" data-fx-item>
+        <span class="card-num">3</span>
+        <h2 class="h-embalagem">Embalagem</h2>
+        <div class="t-embalagem">
+          <p><strong>Embalagem tem muitas funções e, consequentemente, comunica muitas coisas.</strong></p>
+          <p>Uma caixa bem fechada, sem manchas de gordura, com a marca visível, já sugere cuidado. O mesmo vale para o saquinho de papel do salgado, o pote da marmita ou o plástico do doce na prateleira do minimercado.</p>
+          <p>Essa mensagem muda conforme o cuidado com a apresentação por quem entrega ou revende. Uma bandeja organizada, com etiqueta legível e proteção contra poeira, sustenta o preço cobrado. Uma embalagem amassada, exposta ao sol ou empilhada sem cuidado, derruba a expectativa antes da venda.</p>
+          <p>A embalagem também participa do consumo, não só da entrega. Um pote que vaza, um saco que rasga, uma tampa difícil de abrir quando deveria ser simples: tudo isso entra na conta da experiência, mesmo quando a comida está perfeita.</p>
+          <p>Antes de aprovar uma embalagem nova, vale testar três momentos: como ela aparece na vitrine ou na prateleira, como resiste ao transporte até o cliente e como se comporta na mão de quem vai comer.</p>
+        </div>
+      </section>
+    </div>
 
     <!-- ====== BLOCO 9 — o teste da promessa ====== -->
     <section class="s s-teste">
@@ -265,7 +265,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-70"></script>
-<script src="js/consumidor.js?v=74-70"></script>
+<script src="../js/shell.js?v=74-71"></script>
+<script src="js/consumidor.js?v=74-71"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-71"></script>
 </body>
 </html>

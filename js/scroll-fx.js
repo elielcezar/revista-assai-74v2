@@ -269,6 +269,74 @@
   }
 
   /* =========================================================
+     card-stack  (scroll)
+     Os cards se EMPILHAM: cada um para no alto da tela e o seguinte sobe por
+     cima até cobri-lo, deixando uma faixa do anterior à mostra (é ela que diz
+     que existe card embaixo). O último não trava — leva a página junto.
+
+       <div class="cards" data-fx="card-stack" data-fx-faixa="10">
+         <section data-fx-item>…</section>
+         <section data-fx-item>…</section>
+       </div>
+
+     Opções no contêiner:
+       data-fx-faixa="10"   px do card anterior que continuam aparecendo
+       data-fx-topo="0"     px do alto da tela em que o primeiro card para
+
+     É o mesmo que position: sticky faria, mas em JS — e por um motivo: abaixo
+     de 402px o js/shell.js reduz o .page com transform, e sticky dentro de um
+     elemento transformado passa a grudar no referencial dele, não na janela
+     (os cards travavam fora da tela). Aqui a posição é medida ao vivo e
+     convertida pela escala, como no pin-horizontal.
+
+     A altura do documento não muda: os cards só recebem translateY, e o espaço
+     deles no fluxo continua igual. Isso importa nas páginas de decoração
+     global, em que as decorações são absolutas e não acompanhariam o fluxo.
+     ========================================================= */
+  function cardStack(sec) {
+    var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
+    if (itens.length < 2) return;
+    var faixa = pct(sec.getAttribute("data-fx-faixa"), 10);
+    var topo = pct(sec.getAttribute("data-fx-topo"), 0);
+
+    // De baixo para cima: a posição de cada card depende da do card seguinte.
+    // A página não congela e a altura do documento não muda — os cards só
+    // recebem translateY, e o espaço deles no fluxo continua igual. Isso
+    // importa nas páginas de decoração global, em que as decorações são
+    // absolutas e não acompanhariam o fluxo.
+    function medir() {
+      var z = zoom(), pos = [], ultimo = itens.length - 1;
+      for (var i = ultimo; i >= 0; i--) {
+        var el = itens[i];
+        var deslocado = gsap.getProperty(el, "y") || 0;
+        var natural = el.getBoundingClientRect().top / z - deslocado;  // sem o efeito
+        var p;
+        if (i === ultimo) {
+          p = natural;                               // o último nunca trava: leva a página
+        } else {
+          p = Math.max(natural, topo + faixa * i);   // trava no alto da tela
+          // e nunca fica a menos de uma faixa do card de baixo: quando este
+          // sobe, EMPURRA a pilha em vez de cobri-la (é o que mantém as
+          // listrinhas de todos os cards à vista)
+          p = Math.min(p, pos[i + 1] - faixa);
+        }
+        pos[i] = p;
+        gsap.set(el, { y: p - natural });
+      }
+    }
+
+    var st = ScrollTrigger.create({
+      trigger: sec, start: "top bottom", end: "bottom top",
+      onUpdate: medir, onRefresh: medir
+    });
+    medir();
+    return function () {
+      st.kill();
+      itens.forEach(function (el) { gsap.set(el, { clearProps: "transform" }); });
+    };
+  }
+
+  /* =========================================================
      orbit-in  (scroll contínuo, 1:1)
      O elemento percorre um arco — a curvatura de uma elipse do próprio layout —
      enquanto cresce e gira, tudo amarrado ao scroll: começa pequeno, "em pé" e
@@ -749,7 +817,7 @@
   }
 
   /* ---------- inicialização ---------- */
-  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn };
+  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack };
   var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>

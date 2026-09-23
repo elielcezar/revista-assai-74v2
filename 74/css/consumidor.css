@@ -32,11 +32,58 @@
 .adbox img { max-width: 100%; height: auto; }
 
 .art-bg > span { position: absolute; display: block; }
-.art-bg > .d-num { display: flex; }
 .art-bg img { width: 100%; height: 100%; }
 
 /* display:flow-root impede que a margem do primeiro filho escape da secao */
 .s { position: relative; z-index: 1; display: flow-root; }
+
+/* =========================================================
+   CARDS (blocos 6, 7 e 8)
+   O fundo colorido, o circulo numerado e o texto sao UMA peca so: ficam na
+   mesma secao, para andarem juntos quando o efeito de empilhamento move o
+   card. Antes o fundo e o numero eram decoracoes absolutas na .art-bg, com
+   as coordenadas do Figma, e so o texto ficava no fluxo.
+   O fundo e mais alto que a secao de proposito: o rabo dele passa por baixo
+   do card seguinte, que e opaco e vem depois no HTML (mesmo z-index, ordem
+   do DOM decide). Por isso o ::before fica em z-index -1, atras do conteudo
+   da propria secao mas na frente de tudo o que veio antes.
+   ========================================================= */
+.card { --num-y: 20px; }
+.card::before {
+  content: ""; position: absolute; top: 0; z-index: -1;
+  border-radius: 60px 60px 0 0;
+}
+.card-num {
+  position: absolute; left: 177px; top: var(--num-y);
+  width: 53px; height: 53px; border-radius: 26px; background: var(--vermelho);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; font-weight: 700; color: var(--amarelo); line-height: normal;
+}
+.s-nome::before      { left: 0;    width: 402px; height: 825px; background: var(--rosa); }
+.s-foto::before      { left: -1px; width: 404px; height: 825px; background: var(--azul-claro); }
+.s-embalagem::before { left: -1px; width: 404px; height: 805px; background: var(--roxo); }
+.s-foto { --num-y: 21px; }
+
+/* -- empilhamento --
+   Cada card gruda no topo da tela e o seguinte sobe por cima ate cobri-lo,
+   parando a --card-top px: e essa faixa do card de baixo que continua a
+   aparecer (10px por card, mostrando que tem card embaixo).
+   O .cards delimita ate onde eles grudam. O ultimo card nao chega a ficar
+   preso: o espaco do .cards acaba junto com ele, entao ele solta e leva a
+   pagina junto, como o resto do conteudo.
+   A altura do documento nao muda (sticky nao ocupa espaco extra), o que
+   importa nesta pagina: as outras decoracoes da .art-bg sao absolutas e
+   ficariam fora do lugar se o fluxo crescesse. */
+/* O fundo de cada card e mais alto que a secao: o rabo preenche o que se veria
+   atras dos cantos arredondados do card seguinte. Com os cards presos, esse
+   rabo desceria junto e invadiria os blocos de baixo, que sao transparentes —
+   o .cards corta no fim do ultimo card. clip, de novo, para nao virar contentor
+   de rolagem; so no eixo Y, que o azul e o roxo sangram 1px para os lados. */
+.cards { overflow-x: visible; overflow-y: clip; }
+.card { position: sticky; top: var(--card-top, 0); }
+.s-nome      { --card-top: 0px; }
+.s-foto      { --card-top: 10px; }
+.s-embalagem { --card-top: 20px; }
 
 /* =========================================================
    CAMADA DE DECORAÇÃO  (ordem de pintura do Figma)
@@ -66,19 +113,9 @@
 }
 
 /* -- fundos coloridos com topo arredondado das 3 secoes NOME/FOTO/EMBALAGEM -- */
-.d-rosa  { left: 0;   top: 4727px; width: 402px; height: 825px; background: var(--rosa); border-radius: 60px 60px 0 0; }
-.d-azul  { left: -1px; top: 5376px; width: 404px; height: 825px; background: var(--azul-claro); border-radius: 60px 60px 0 0; }
-.d-roxo2 { left: -1px; top: 5977px; width: 404px; height: 805px; background: var(--roxo); border-radius: 60px 60px 0 0; }
+/* os 3 cards coloridos sao o fundo das proprias secoes (ver "CARDS" abaixo) */
 
-/* -- circulos numerados sobre essas 3 secoes -- */
-.d-num {
-  width: 53px; height: 53px; border-radius: 26px; background: var(--vermelho);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 24px; font-weight: 700; color: var(--amarelo); line-height: normal;
-}
-.d-num--1 { left: 177px; top: 4747px; }
-.d-num--2 { left: 177px; top: 5397px; }
-.d-num--3 { left: 177px; top: 5997px; }
+
 
 /* -- faixas rosa translucidas atras de "O cliente ve/imagina/recebe/compara/decide" -- */
 .d-faixa--1 { left: 130px; top: 6901px; width: 139px; height: 28px; }

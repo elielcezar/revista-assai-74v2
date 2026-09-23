@@ -147,6 +147,48 @@ os dois na mesma página; `74/gestao.html` — carrossel "quando a cortesia faz
 sentido" (`.s-carrossel` / `.carousel-viewport`, 1358px), numa página de
 decoração global (setas, arrasto e `transition` removidos, probe sem as setas).
 
+### `card-stack` — scroll
+
+Os cards **se empilham** conforme o leitor rola. Cada card para no alto da tela
+e o seguinte sobe até encostar nele, deixando uma **faixa** do anterior à mostra
+— é ela que diz que existe card embaixo. O último não trava: ao subir, ele
+**empurra** a pilha inteira, que sai da tela mantendo as faixas à vista.
+A página **não congela** e a altura do documento não muda.
+
+```html
+<div class="cards" data-fx="card-stack" data-fx-faixa="10" data-fx-topo="20">
+  <section data-fx-item>…</section>
+  <section data-fx-item>…</section>
+  <section data-fx-item>…</section>
+</div>
+```
+
+| atributo (no contêiner) | padrão | efeito |
+|---|---|---|
+| `data-fx-faixa` | `10` | px de cada card que continuam aparecendo acima do seguinte |
+| `data-fx-topo` | `0` | px do alto da tela em que o primeiro card para |
+
+**Não use `position: sticky` para isto.** Abaixo de 402px o `js/shell.js` reduz
+o `.page` com `transform`, e sticky dentro de um elemento transformado gruda no
+referencial dele, não na janela — os cards travam fora da tela. O componente
+mede ao vivo e converte pela escala, como o `pin-horizontal`.
+
+Checklist:
+- **Fundo, texto e enfeites de cada card precisam estar no mesmo elemento.** Se
+  o fundo colorido for uma decoração absoluta da `.art-bg` e só o texto estiver
+  no fluxo, cada um anda por conta. Refatore antes (o fundo vira `::before` da
+  seção, com as coordenadas do Figma passadas para dentro dela) e confirme com
+  print antes/depois. Foi o caso da CONSUMIDOR.
+- Se o fundo for mais alto que a seção (o rabo que preenche atrás dos cantos
+  arredondados do card seguinte), **recorte no contêiner** — `overflow-y: clip`
+  no `.cards` —, senão o rabo desce junto com o card e invade o bloco de baixo.
+- A altura do documento **não muda** (os cards só recebem `translateY`), então
+  serve nas páginas de decoração global, em que as decorações são absolutas e
+  não acompanhariam um fluxo que crescesse.
+- No probe da página, bloqueie o `js/scroll-fx.js`.
+
+Em uso: `74/consumidor.html`, os 3 cards coloridos (`.cards`, faixa 10, topo 20).
+
 ### `orbit-in` — scroll contínuo
 
 O elemento **percorre um arco** — a curvatura de uma elipse do próprio layout —
