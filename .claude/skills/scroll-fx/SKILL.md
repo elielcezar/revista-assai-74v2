@@ -577,7 +577,7 @@ itens; o do item vence o do contêiner.
 | `data-fx-quando` | contêiner | `carregar` | `carregar` (na abertura) ou `scroll` (a lista inteira espera chegar à tela) |
 | `data-fx-duracao` | contêiner | `0.5` | segundos do "pop" de cada item |
 | `data-fx-intervalo` | contêiner ou item | `0.2` | segundos entre um item e o seguinte |
-| `data-fx-entrada` | contêiner ou item | `pop` | como o item entra: `pop` (cresce do centro com quique), `fade` (só aparece, sem sair do lugar), `fade-up` (surge subindo, com fade; mínimo 0,6s) ou `fade-right` (surge vindo da esquerda, com fade; mínimo 0,6s) |
+| `data-fx-entrada` | contêiner ou item | `pop` | como o item entra: `pop` (cresce do centro com quique), `fade` (só aparece, sem sair do lugar), `fade-left` (vem da direita), `fade-up` (surge subindo, com fade; mínimo 0,6s) ou `fade-right` (surge vindo da esquerda, com fade; mínimo 0,6s) |
 | `data-fx-deslocamento` | contêiner ou item | `30` | (`fade-up`/`fade-right`) px que o item percorre ao entrar |
 | `data-fx-origem` | item | `50% 50%` | ponto de onde o item cresce (`transform-origin`); use quando o desenho é maior que a caixa do item (ex.: o centro do balão) |
 | `data-fx-grupo` | item | — | nome do grupo: sequência própria, que recomeça a cada vez que o grupo entra na tela |
@@ -648,8 +648,9 @@ mesma `.art-bg`; os 3 sachês pequenos lado a lado em grupo com `fade-up`
 (`data-fx-origem="105.5px 43px"`).
 `74/mkt.html` — as 3 ferramentas de IA (`ul.tools`) com `data-fx-quando="scroll"`
 e `fade-right`, 0,5s entre elas.
-`74/negocio.html` — os 7 itens da `ul.checklist` em `pop`, disparando quando o
-primeiro chega aos 80% da tela (`data-fx-linha`), com 1s entre eles.
+`74/negocio.html` — os 7 itens da `ul.checklist` em `pop` (1s entre eles), os 5
+da `ol.passos` em `fade-left` e as 4 pills da `.foto-faturamento` em `pop`
+(0,5s), todos disparando aos 80% da tela (`data-fx-linha`).
 `74/delivery.html` — o ícone do fantasma (`pop`, na camada de decoração) e, na
 `.s-pausar`, a citação e o parágrafo seguinte em `fade` de 1s, cada um no seu
 grupo para entrar na própria linha.

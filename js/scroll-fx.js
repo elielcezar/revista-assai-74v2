@@ -752,8 +752,8 @@
   /* =========================================================
      pop-in  (entrada, ao carregar ou ao chegar à tela)
      Os itens surgem um de cada vez, na ordem do HTML: crescendo do centro com um
-     quique ("pop"), só aparecendo ("fade"), subindo com fade ("fade-up") ou
-     vindo da esquerda com fade ("fade-right"). Espera as imagens dos itens carregarem (limite de 3s).
+     quique ("pop"), só aparecendo ("fade"), subindo com fade ("fade-up"), vindo
+     da esquerda ("fade-right") ou da direita ("fade-left"). Espera as imagens dos itens carregarem (limite de 3s).
 
      QUANDO cada item surge:
        - contêiner com data-fx-quando="scroll": a sequência do contêiner começa
@@ -774,7 +774,8 @@
      Opções no contêiner:
        data-fx-quando="carregar"  "carregar" (padrão) ou "scroll"
        data-fx-entrada="pop"      padrão dos itens: "pop", "fade" (só opacidade),
-                                  "fade-up" ou "fade-right"
+                                  "fade-up", "fade-right" (vem da esquerda) ou
+                                  "fade-left" (vem da direita)
        data-fx-duracao="0.5"      segundos de cada item
        data-fx-intervalo="0.2"    segundos entre um item e o seguinte
        data-fx-atraso="0"         segundos antes do primeiro (só ao carregar)
@@ -803,7 +804,7 @@
     }
     function tipo(el) {
       var t = attr(el, "data-fx-entrada", "pop");
-      return (t === "fade" || t === "fade-up" || t === "fade-right") ? t : "pop";
+      return (t === "fade" || t === "fade-up" || t === "fade-right" || t === "fade-left") ? t : "pop";
     }
     function desloc(el) { return pct(attr(el, "data-fx-deslocamento", "30"), 30); }
 
@@ -813,7 +814,8 @@
       gsap.killTweensOf(el);
       var t = tipo(el), d = desloc(el), base = { x: 0, y: 0, rotation: 0 };
       if (t === "fade-up") base.y = d;
-      else if (t === "fade-right") base.x = -d;
+      else if (t === "fade-right") base.x = -d;      // vem da esquerda
+      else if (t === "fade-left") base.x = d;        // vem da direita
       if (t === "pop") {
         base.scale = 0;
         base.transformOrigin = el.getAttribute("data-fx-origem") || "50% 50%";
