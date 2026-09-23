@@ -847,6 +847,9 @@
     var velApagar = pct(sec.getAttribute("data-fx-apagar"), 0.03);
     var pausa = pct(sec.getAttribute("data-fx-pausa"), 1.2);
     var atraso = pct(sec.getAttribute("data-fx-atraso"), 0.3);
+    // data-fx-repetir="1.5": recomeça sem parar, esperando N s entre uma volta
+    // e outra (no loop o último texto também é apagado, para o ciclo fechar)
+    var repetir = sec.getAttribute("data-fx-repetir");
 
     // guarda os nós de texto de cada item, na ordem em que aparecem
     var dados = itens.map(function (el) {
@@ -873,13 +876,14 @@
 
     dados.forEach(function (d) { escrever(d, 0); gsap.set(d.el, { visibility: "hidden" }); });
 
-    var tl = gsap.timeline({ delay: atraso });
+    var tl = gsap.timeline({ delay: atraso, repeat: repetir !== null ? -1 : 0,
+                             repeatDelay: pct(repetir, 1) });
     dados.forEach(function (d, i) {
       var conta = { n: 0 };
       tl.set(d.el, { visibility: "visible" })
         .to(conta, { n: d.total, duration: d.total * vel, ease: "none",
                      onUpdate: function () { escrever(d, conta.n); } });
-      if (i < dados.length - 1) {                  // o último fica
+      if (i < dados.length - 1 || repetir !== null) {   // o último fica, salvo no loop
         tl.to({}, { duration: pausa })
           .to(conta, { n: 0, duration: d.total * velApagar, ease: "none",
                        onUpdate: function () { escrever(d, conta.n); } })

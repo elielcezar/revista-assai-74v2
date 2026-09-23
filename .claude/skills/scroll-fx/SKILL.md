@@ -301,6 +301,7 @@ digitado no lugar. O último fica. Com um item só, é só a digitação.
 | `data-fx-apagar` | `0.03` | segundos por letra ao apagar |
 | `data-fx-pausa` | `1.2` | segundos que o texto fica inteiro na tela |
 | `data-fx-atraso` | `0.3` | segundos antes de começar |
+| `data-fx-repetir` | — | recomeça sem parar; o valor são os segundos entre uma volta e a seguinte. No loop o último texto também é apagado, para o ciclo fechar |
 
 O markup de cada item é preservado (`<br>`, `<span>` de cor): o efeito esvazia e
 repõe só os **nós de texto**, na ordem. Como as quebras continuam no lugar, a
@@ -322,7 +323,7 @@ Checklist:
   textos aparecem todos, sobrepostos, antes de o efeito começar.
 
 Em uso: `74/mkt.html`, o hero (`.s-hero`): "Não engane seu cliente com IA" dá
-lugar a "mas aprenda com ela".
+lugar a "mas aprenda com ela", em loop (`data-fx-repetir="0.5"`).
 
 ### `magnetic-pull` — entrada
 
