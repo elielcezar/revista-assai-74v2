@@ -27,6 +27,10 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="popcorn-pop"]{visibility:hidden}</style>
 <title>É possível começar uma empresa com R$50? — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Com organização, paciência e R$50 em ingredientes, receita de pudim se transformou em uma empresa formalizada, com faturamento mensal de dez a doze mil reais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,7 +102,7 @@
         <span class="hero-foto"><img src="assets/negocio/imgHeroPudim.png" alt=""></span>
       </div>
 
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-fx="popcorn-pop">
         <span class="azul">É possível começar<br>uma empresa com</span>
         <span class="pink">R$50?</span>
       </h1>
@@ -288,5 +292,11 @@
 
 <script src="../js/shell.js?v=74-76"></script>
 <script src="js/negocio.js?v=74-76"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<!-- SplitText: o popcorn-pop quebra o titulo em letras -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-76"></script>
 </body>
 </html>
