@@ -134,8 +134,12 @@
   z-index: 1; visibility: hidden;
 }
 
+/* a margem de cima foi de 42 para 20px (o lead subiu 22px, junto do titulo).
+   Os mesmos 22px voltam embaixo: esta e pagina de decoracao global, e sem isso
+   o texto de toda a pagina subiria junto enquanto as decoracoes da .art-bg,
+   absolutas, ficariam onde estao */
 .hero-lead {
-  width: 362px; margin: 20px 0 0 20px;
+  width: 362px; margin: 20px 0 22px 20px;
   font-size: 20px; font-style: italic; color: #fff; line-height: normal;
 }
 
