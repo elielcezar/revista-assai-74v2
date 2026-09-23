@@ -11,7 +11,9 @@
 /* =========================================================
    MOBILE (< 402px)
    a coluna do Figma tem 402px fixos; em telas mais estreitas o js/shell.js
-   aplica zoom = largura da tela / 402 no .page (mesma ideia do scale da #73).
+   reduz o .page com transform: scale = largura da tela / 402 (e NAO zoom: o
+   zoom refaz o layout na escala e arredonda cada linha de texto, o que
+   encolhia as secoes e desalinhava as decoracoes absolutas).
    clip (e nao hidden) corta a sobra horizontal sem criar rolagem nem mudar
    o overflow-y da pagina.
    ========================================================= */

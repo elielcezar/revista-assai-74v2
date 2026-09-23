@@ -91,11 +91,22 @@ página. O markup fica entre os comentários `INVÓLUCRO` … `/INVÓLUCRO`, log
 depois do `<body>`, e é igual em todas as páginas; só muda o `is-active`.
 
 - **Mobile**: menu horizontal no HEAD. Em telas com menos de 402px (quase todo
-  celular real), o `js/shell.js` aplica `zoom = largura / 402` no `.page` e o
-  `css/shell.css` corta a sobra com `overflow-x: clip` — sem isso a coluna de
-  402px estourava a tela e dava rolagem lateral (a simulação do Chrome não
-  mostra). Os carrosséis dividem o movimento do dedo pelo zoom (`px(e)`) para o
-  arrasto acompanhar o dedo.
+  celular real), o `js/shell.js` reduz o `.page` com
+  `transform: scale(largura / 402)` e o `css/shell.css` corta a sobra com
+  `overflow-x: clip` — sem isso a coluna de 402px estourava a tela e dava
+  rolagem lateral (a simulação do Chrome não mostra). Quem precisa converter px
+  de tela em px de CSS (o `scroll-fx` e o arrasto dos carrosséis, `px(e)`) lê a
+  escala de `window.ShellFit.escala()`.
+  **Foi `zoom` até a 74-69, e não pode voltar a ser:** o `zoom` refaz o layout
+  já na escala reduzida, e cada linha de texto arredonda para o pixel do
+  aparelho. As seções encolhem alguns décimos cada, isso **acumula** página
+  abaixo (na MKT em 390px, −46px no fim) e o texto sai do lugar das decorações,
+  que são absolutas e não encolhem — o sintoma era o título "VAMOS AO PASSO A
+  PASSO?" subindo para cima do celular. Com `transform` o layout é calculado nos
+  402px do Figma e só depois reduzido, então tudo escala junto (desvio medido:
+  0,0px). Em troca, a caixa no fluxo mantém a altura de 402px, e o `shell.js`
+  dá ao `body` a altura reduzida (remedida por `ResizeObserver`, porque
+  acordeões e congelamentos mudam a altura).
 - **Desktop (≥ 1024px)**: sidebar fixa de 313px (logo + navegação) com fundo
   `assets/shell/dt-bg-pattern.png`. A faixa cinza do HEAD some e o HEAD fica
   com 141px. A coluna de 402px fica em x:733 a partir de 1920px; abaixo disso
@@ -198,11 +209,11 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-69**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-70**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-69/?v=74-70/g' *.html 74/*.html
+sed -i 's/?v=74-70/?v=74-71/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache

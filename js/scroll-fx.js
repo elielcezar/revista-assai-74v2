@@ -29,11 +29,14 @@
   if (!window.gsap || !window.ScrollTrigger) return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // abaixo de 402px o js/shell.js aplica zoom no .page: medidas de layout
-  // (px de CSS) viram px de scroll multiplicadas por esse zoom
+  // abaixo de 402px o js/shell.js reduz o .page (transform: scale): medidas de
+  // layout (px de CSS) viram px de tela multiplicadas por essa escala
   function zoom() {
+    if (window.ShellFit && window.ShellFit.escala) return window.ShellFit.escala() || 1;
     var page = document.querySelector(".page");
-    return (page && parseFloat(page.style.zoom)) || 1;
+    if (!page) return 1;
+    var m = /scale\(([\d.]+)\)/.exec(page.style.transform || "");
+    return m ? parseFloat(m[1]) : (parseFloat(page.style.zoom) || 1);
   }
 
   // "80%" -> 80

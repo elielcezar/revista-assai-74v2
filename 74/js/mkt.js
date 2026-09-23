@@ -3,10 +3,11 @@
   "use strict";
 
   // posicao horizontal do ponteiro nas coordenadas da coluna: no mobile o
-  // js/shell.js aplica zoom no .page, e o arrasto tem que acompanhar o dedo
+  // js/shell.js reduz o .page (transform: scale), e o arrasto tem que acompanhar
+  // o dedo — a escala vem do proprio shell
   function px(e) {
-    var page = document.querySelector(".page");
-    return e.clientX / ((page && parseFloat(page.style.zoom)) || 1);
+    var esc = (window.ShellFit && window.ShellFit.escala()) || 1;
+    return e.clientX / esc;
   }
 
   /* ---------- menu: no Figma a faixa aparece rolada ate o item ativo ---------- */
