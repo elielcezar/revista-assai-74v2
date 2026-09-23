@@ -131,11 +131,11 @@
       </figure>
 
       <h2 class="h-pergunte">Antes de seguir uma tendência, pergunte-se:</h2>
-      <ul class="perguntas">
-        <li>Tenho capacidade para produzir<br>esse volume?</li>
-        <li>Consigo vender tudo como planejado?</li>
-        <li>Meu lucro continuará saudável?</li>
-        <li>Vou conseguir manter a qualidade se as vendas dobrarem?</li>
+      <ul class="perguntas" data-fx="slide-in-up" data-fx-margem="150" data-fx-passo="100">
+        <li data-fx-item>Tenho capacidade para produzir<br>esse volume?</li>
+        <li data-fx-item>Consigo vender tudo como planejado?</li>
+        <li data-fx-item>Meu lucro continuará saudável?</li>
+        <li data-fx-item>Vou conseguir manter a qualidade se as vendas dobrarem?</li>
       </ul>
     </section>
 
@@ -247,5 +247,9 @@
 
 <script src="../js/shell.js?v=74-70"></script>
 <script src="js/produto.js?v=74-70"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-70"></script>
 </body>
 </html>
