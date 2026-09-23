@@ -77,9 +77,11 @@
 .foto-40 { position: relative; height: 245px; width: 418px; margin: -67px 0 0 0; }
 .foto-40 img { width: 418px; height: 245px; object-fit: cover; }
 
-.rabisco-8717 { position: absolute; left: 82px; top: 551px; width: 102px; height: 25px; z-index: 2; }
-.rabisco-8717-a { position: absolute; left: 0; top: 1px; width: 102px; height: 24px; }
-.rabisco-8717-b { position: absolute; left: 73px; top: 0; width: 29px; height: 25px; }
+/* dentro da .foto-40: o enfeite viaja junto da foto (551-441 = 110 do topo dela) */
+.rabisco-8717 { position: absolute; left: 82px; top: 110px; width: 102px; height: 25px; z-index: 2; }
+/* dentro da figure, a regra generica ".foto-40 img" esticaria estas duas */
+.foto-40 .rabisco-8717-a { position: absolute; left: 0; top: 1px; width: 102px; height: 24px; }
+.foto-40 .rabisco-8717-b { position: absolute; left: 73px; top: 0; width: 29px; height: 25px; }
 
 .q-azul--2 { min-height: 140px; margin: -70px 0 0 16px; position: relative; z-index: 1; }
 
@@ -87,7 +89,8 @@
 .foto-41 img { display: block; width: 459px; height: 305px; object-fit: fill; }
 
 /* SVG exportado ja inclinado: posicionado pelo absoluteRenderBounds */
-.callout-pudim { position: absolute; left: 201px; top: 891.78px; width: 145.63px; height: 84.57px; z-index: 2; }
+/* dentro da .foto-41 (891.78-684 = 207.78 do topo dela; 201-(-32) = 233 da esquerda) */
+.foto-41 .callout-pudim { position: absolute; left: 233px; top: 207.78px; width: 145.63px; height: 84.57px; z-index: 2; }
 
 .q-azul--3 { min-height: 120px; margin: 43px 0 0 19px; position: relative; z-index: 1; }
 

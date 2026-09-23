@@ -189,6 +189,49 @@ Checklist:
 
 Em uso: `74/consumidor.html`, os 3 cards coloridos (`.cards`, faixa 10, topo 20).
 
+### `pin-sequencia` — scroll
+
+**A tela congela** e, dentro dela, passa uma sequência: a foto ocupa a tela
+inteira e os balões de texto **atravessam de baixo para cima**, um de cada vez.
+No instante em que um balão sai pelo topo, o seguinte entra por baixo e a foto
+**troca em fade cruzado** — cada texto anda com a sua imagem. Quando o último
+balão sai, a página volta a rolar.
+
+```html
+<section class="bl" data-fx="pin-sequencia">
+  <figure data-fx-foto>…</figure>
+  <blockquote data-fx-balao>…</blockquote>
+  <figure data-fx-foto>…</figure>
+  <blockquote data-fx-balao>…</blockquote>
+  <p>texto que fica fora da sequência</p>
+</section>
+```
+
+| atributo (no contêiner) | padrão | efeito |
+|---|---|---|
+| `data-fx-troca` | `0.3` | fração do percurso de cada balão gasta no fade cruzado (maior = troca mais lenta, acompanhando a subida e a saída do balão) |
+
+**O JS monta o palco**: tira as fotos e os balões do fluxo, põe um palco de
+100vh no lugar e escala cada foto para cobri-lo sem deformar. Sem JS a página
+fica exatamente como o CSS manda — fotos e balões um abaixo do outro.
+
+Checklist:
+- **Enfeites presos à foto** (um rabisco, um selo) precisam estar **dentro da
+  `<figure>`** dela, com as coordenadas relativas à foto: no palco a foto é
+  escalada, e só assim eles acompanham. Na NOVO NEGÓCIO isso exigiu dar
+  especificidade às regras deles (`.foto-41 .callout-pudim`), senão a regra
+  genérica `.foto-41 img` esticava o enfeite ao tamanho da foto.
+- **Nenhum balão pode aparecer antes de a tela travar**: eles ficam invisíveis
+  até a vez de cada um, e recebem `top: 0` para que "y = altura da tela" os
+  ponha na borda de baixo do palco — senão o primeiro assoma na base enquanto o
+  palco ainda desce.
+- O efeito **aumenta a altura do documento** (o espaçador do congelamento) e
+  troca a altura do bloco pela do palco. Como a coluna inteira congela junto,
+  serve também nas páginas de decoração global.
+- No probe da página, bloqueie o `js/scroll-fx.js`.
+
+Em uso: `74/negocio.html`, a história do primeiro pudim (`.bl-historia`).
+
 ### `orbit-in` — scroll contínuo
 
 O elemento **percorre um arco** — a curvatura de uma elipse do próprio layout —

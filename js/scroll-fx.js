@@ -337,6 +337,137 @@
   }
 
   /* =========================================================
+     pin-sequencia  (scroll)
+     A tela CONGELA e, dentro dela, passa uma sequência: a foto ocupa a tela
+     inteira e os balões de texto atravessam de baixo para cima, um de cada vez.
+     No instante em que um balão sai pelo topo, o seguinte entra por baixo e a
+     foto troca (fade cruzado) — cada texto anda com a sua imagem. Quando o
+     último balão sai, a página volta a rolar.
+
+       <section class="bl" data-fx="pin-sequencia">
+         <figure data-fx-foto>…</figure>
+         <blockquote data-fx-balao>…</blockquote>
+         <figure data-fx-foto>…</figure>
+         <blockquote data-fx-balao>…</blockquote>
+         …
+         <p>texto que fica fora da sequência</p>
+       </section>
+
+     Opções no contêiner:
+       data-fx-troca="0.3"    fração do percurso de cada balão gasta no fade
+                              cruzado entre uma foto e a seguinte (maior = troca
+                              mais lenta, acompanhando a subida e a saída dele)
+
+     O JS monta o palco: sem ele a página fica exatamente como o CSS manda
+     (as fotos e os balões um abaixo do outro, no fluxo).
+     ========================================================= */
+  function pinSequencia(sec) {
+    var fotos = gsap.utils.toArray(sec.querySelectorAll("[data-fx-foto]"));
+    var baloes = gsap.utils.toArray(sec.querySelectorAll("[data-fx-balao]"));
+    var page = document.querySelector(".page");
+    if (!fotos.length || !baloes.length || !page) return;
+    var troca = pct(sec.getAttribute("data-fx-troca"), 0.3);
+
+    // ---- palco: as fotos e os balões saem do fluxo e passam a viver nele
+    var palco = document.createElement("div");
+    palco.className = "fx-palco";
+    palco.style.cssText = "position:relative;overflow:hidden;width:100%;margin:0";
+    fotos[0].parentNode.insertBefore(palco, fotos[0]);
+    fotos.concat(baloes).forEach(function (el) { palco.appendChild(el); });
+    fotos.forEach(function (el) {
+      el.style.cssText += ";position:absolute;left:50%;top:50%;margin:0";
+      gsap.set(el, { xPercent: -50, yPercent: -50, autoAlpha: 0 });
+    });
+    // top:0 para todos: assim "y = altura da tela" põe o balão exatamente na
+    // borda de baixo do palco, fora da vista, em vez de na posição que ele
+    // tinha no fluxo (que era diferente para cada um)
+    baloes.forEach(function (el) {
+      el.style.cssText += ";position:absolute;top:0;left:0;right:0;margin-left:auto;margin-right:auto";
+    });
+
+    // ---- congelamento (mesma mecânica do pin-horizontal)
+    var alvo = page;
+    while (alvo.parentElement && alvo.parentElement !== document.body) alvo = alvo.parentElement;
+    var fora = document.createElement("div");
+    var dentro = document.createElement("div");
+    var espaco = document.createElement("div");
+    fora.className = "fx-congela-fora";
+    dentro.className = "fx-congela";
+    alvo.parentNode.insertBefore(fora, alvo);
+    fora.appendChild(dentro); fora.appendChild(espaco); dentro.appendChild(alvo);
+    dentro.style.position = "sticky";
+
+    var alturaTela = 0, percursos = [], total = 0;
+    function medir() {
+      var z = zoom();
+      alturaTela = window.innerHeight / z;          // px de CSS
+      palco.style.height = alturaTela + "px";
+      // cada foto cobre o palco inteiro, sem deformar: escala pela maior razão
+      fotos.forEach(function (f) {
+        gsap.set(f, { scale: 1 });
+        var w = f.offsetWidth, h = f.offsetHeight;
+        if (w && h) gsap.set(f, { scale: Math.max(palco.offsetWidth / w, alturaTela / h) });
+      });
+      // percurso de um balão: entra pela base e sai pelo topo
+      percursos = baloes.map(function (b) { return alturaTela + b.offsetHeight; });
+      total = percursos.reduce(function (a, b) { return a + b; }, 0);
+      espaco.style.height = total * z + "px";
+      atualizar();
+    }
+    function atualizar() {
+      var z = zoom();
+      // ponto da trava: o palco encostando no alto da tela
+      var rp = dentro.getBoundingClientRect();
+      var desdeOTopo = palco.getBoundingClientRect().top - rp.top;
+      var trava = fora.getBoundingClientRect().top + window.scrollY + desdeOTopo;
+      var top = Math.round(-desdeOTopo) + "px";
+      if (dentro.style.top !== top) dentro.style.top = top;
+      if (!total) return;
+      var andado = gsap.utils.clamp(0, 1, (window.scrollY - trava) / (total * z)) * total;
+
+      // em que balão estamos e quanto dele já correu
+      var i = 0, resto = andado;
+      while (i < percursos.length - 1 && resto >= percursos[i]) { resto -= percursos[i]; i++; }
+      var p = percursos[i] ? resto / percursos[i] : 0;
+
+      baloes.forEach(function (b, k) {
+        var y = k < i ? -b.offsetHeight            // já saiu
+              : k > i ? alturaTela                 // ainda não entrou
+              : alturaTela - p * (alturaTela + b.offsetHeight);
+        // só o balão da vez fica visível, e só depois que a tela trava: antes
+        // disso o palco ainda desce, e nenhum balão pode assomar na base
+        gsap.set(b, { y: y, autoAlpha: (k === i && andado > 0) ? 1 : 0 });
+      });
+      // a foto troca no fim do percurso do balão, junto com a saída dele.
+      // Na última não há para onde trocar: ela fica até o palco sair da tela.
+      var corte = 1 - troca;
+      var mistura = (i < fotos.length - 1 && p > corte) ? (p - corte) / troca : 0;
+      fotos.forEach(function (f, k) {
+        var o = k === i ? 1 - mistura : (k === i + 1 ? mistura : 0);
+        gsap.set(f, { autoAlpha: o });
+      });
+    }
+
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; atualizar(); });
+    }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", medir);
+    window.addEventListener("load", medir);
+    medir();
+    ScrollTrigger.refresh();
+
+    return function () {
+      window.removeEventListener("scroll", noScroll);
+      window.removeEventListener("resize", medir);
+      window.removeEventListener("load", medir);
+      if (pedido) cancelAnimationFrame(pedido);
+      fora.parentNode.insertBefore(alvo, fora); fora.remove();
+    };
+  }
+
+  /* =========================================================
      orbit-in  (scroll contínuo, 1:1)
      O elemento percorre um arco — a curvatura de uma elipse do próprio layout —
      enquanto cresce e gira, tudo amarrado ao scroll: começa pequeno, "em pé" e
@@ -1040,7 +1171,7 @@
   }
 
   /* ---------- inicialização ---------- */
-  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack };
+  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack, "pin-sequencia": pinSequencia };
   var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
