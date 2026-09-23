@@ -36,9 +36,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-74">
-<link rel="stylesheet" href="css/delivery.css?v=74-74">
-<link rel="stylesheet" href="../css/shell.css?v=74-74">
+<link rel="stylesheet" href="../css/base.css?v=74-75">
+<link rel="stylesheet" href="css/delivery.css?v=74-75">
+<link rel="stylesheet" href="../css/shell.css?v=74-75">
 </head>
 <body>
 
@@ -179,10 +179,10 @@
     <!-- ====== BANNER ROTATIVO — um dos três, sorteado a cada carregamento ====== -->
     <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/delivery.js sorteia outro -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/celeste.jpg?v=74-74","alt":"Publicidade Celeste"},
-      {"src":"assets/banners/3coracoes.jpg?v=74-74","alt":"Publicidade 3 Corações"},
-      {"src":"assets/banners/melita.jpg?v=74-74","alt":"Publicidade Melitta"}]'>
-      <img src="assets/banners/celeste.jpg?v=74-74" alt="Publicidade Celeste" width="402" height="419">
+      {"src":"assets/banners/celeste.jpg?v=74-75","alt":"Publicidade Celeste"},
+      {"src":"assets/banners/3coracoes.jpg?v=74-75","alt":"Publicidade 3 Corações"},
+      {"src":"assets/banners/melita.jpg?v=74-75","alt":"Publicidade Melitta"}]'>
+      <img src="assets/banners/celeste.jpg?v=74-75" alt="Publicidade Celeste" width="402" height="419">
     </figure>
 
     <!-- ====== BLOCO 5 — bloqueio e ranqueamento (laranja) ====== -->
@@ -200,13 +200,13 @@
     </section>
 
     <!-- ====== BLOCO 6 — pausar / fiscalização (gradiente + rosa) ====== -->
-    <section class="s s-pausar">
-      <blockquote class="q-pausar">
+    <section class="s s-pausar" data-fx="pop-in" data-fx-entrada="fade" data-fx-duracao="1" data-fx-margem="150">
+      <blockquote class="q-pausar" data-fx-item data-fx-grupo="pausar" data-fx-margem="320">
         <p>“Pausar ou alterar não é possível. Foi necessário excluir todos os produtos da promoção para cadastrá-los novamente com os valores corretos.”</p>
       </blockquote>
 
       <h2 class="h-fiscalizacao">Fiscalização do governo</h2>
-      <p class="t-discussao">A discussão sobre COMO o valor pago pelo cliente é dividido entre plataforma, entregador e estabelecimento também chegou aos órgãos públicos.</p>
+      <p class="t-discussao" data-fx-item data-fx-grupo="discussao">A discussão sobre COMO o valor pago pelo cliente é dividido entre plataforma, entregador e estabelecimento também chegou aos órgãos públicos.</p>
 
       <div class="t-senacon">
         <p>Entre abril e maio de 2026, a Secretaria Nacional do Consumidor (Senacon), vinculada ao Ministério da Justiça e Segurança Pública, iniciou uma fiscalização para verificar se as plataformas cumpriam as normas de transparência do repasse.</p>
@@ -250,13 +250,13 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-74"></script>
-<script src="js/delivery.js?v=74-74"></script>
+<script src="../js/shell.js?v=74-75"></script>
+<script src="js/delivery.js?v=74-75"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <!-- SplitText: o popcorn-pop quebra o titulo em letras -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-74"></script>
+<script src="../js/scroll-fx.js?v=74-75"></script>
 </body>
 </html>

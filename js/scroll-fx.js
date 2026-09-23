@@ -616,8 +616,8 @@
   /* =========================================================
      pop-in  (entrada, ao carregar ou ao chegar à tela)
      Os itens surgem um de cada vez, na ordem do HTML: crescendo do centro com um
-     quique ("pop"), subindo com fade ("fade-up") ou vindo da esquerda com fade
-     ("fade-right"). Espera as imagens dos itens carregarem (limite de 3s).
+     quique ("pop"), só aparecendo ("fade"), subindo com fade ("fade-up") ou
+     vindo da esquerda com fade ("fade-right"). Espera as imagens dos itens carregarem (limite de 3s).
 
      QUANDO cada item surge:
        - contêiner com data-fx-quando="scroll": a sequência do contêiner começa
@@ -637,7 +637,8 @@
 
      Opções no contêiner:
        data-fx-quando="carregar"  "carregar" (padrão) ou "scroll"
-       data-fx-entrada="pop"      padrão dos itens: "pop", "fade-up" ou "fade-right"
+       data-fx-entrada="pop"      padrão dos itens: "pop", "fade" (só opacidade),
+                                  "fade-up" ou "fade-right"
        data-fx-duracao="0.5"      segundos de cada item
        data-fx-intervalo="0.2"    segundos entre um item e o seguinte
        data-fx-atraso="0"         segundos antes do primeiro (só ao carregar)
@@ -664,7 +665,7 @@
     }
     function tipo(el) {
       var t = attr(el, "data-fx-entrada", "pop");
-      return (t === "fade-up" || t === "fade-right") ? t : "pop";
+      return (t === "fade" || t === "fade-up" || t === "fade-right") ? t : "pop";
     }
     function desloc(el) { return pct(attr(el, "data-fx-deslocamento", "30"), 30); }
 

@@ -505,11 +505,11 @@ itens; o do item vence o do contêiner.
 | `data-fx-quando` | contêiner | `carregar` | `carregar` (na abertura) ou `scroll` (a lista inteira espera chegar à tela) |
 | `data-fx-duracao` | contêiner | `0.5` | segundos do "pop" de cada item |
 | `data-fx-intervalo` | contêiner ou item | `0.2` | segundos entre um item e o seguinte |
-| `data-fx-entrada` | contêiner ou item | `pop` | como o item entra: `pop` (cresce do centro com quique), `fade-up` (surge subindo, com fade; mínimo 0,6s) ou `fade-right` (surge vindo da esquerda, com fade; mínimo 0,6s) |
+| `data-fx-entrada` | contêiner ou item | `pop` | como o item entra: `pop` (cresce do centro com quique), `fade` (só aparece, sem sair do lugar), `fade-up` (surge subindo, com fade; mínimo 0,6s) ou `fade-right` (surge vindo da esquerda, com fade; mínimo 0,6s) |
 | `data-fx-deslocamento` | contêiner ou item | `30` | (`fade-up`/`fade-right`) px que o item percorre ao entrar |
 | `data-fx-origem` | item | `50% 50%` | ponto de onde o item cresce (`transform-origin`); use quando o desenho é maior que a caixa do item (ex.: o centro do balão) |
 | `data-fx-grupo` | item | — | nome do grupo: sequência própria, que recomeça a cada vez que o grupo entra na tela |
-| `data-fx-margem` | contêiner ou item | `100` | px acima do fundo da tela em que a sequência dispara (maior = mais cedo) |
+| `data-fx-margem` | contêiner ou item | `100` | px acima do fundo da tela em que a sequência dispara (maior = mais tarde, com o bloco mais dentro da tela) |
 | `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro (só ao carregar) |
 | `data-fx-balanco` | item | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
 | `data-fx-balanco-duracao` | item | `1.6` | segundos de cada ida (ou volta) do balanço |
@@ -519,6 +519,13 @@ Valores aprovados na GESTÃO: balanço **7°** na bisnaga, flutuação **10px** 
 gotas (30° e 20px ficaram exagerados — prefira movimentos contínuos pequenos);
 intervalo de **0,5s** entre os sachês (2s e 1s ficaram lentos demais), também
 usado nos 3 sachês pequenos com `fade-up`.
+
+**Itens independentes:** sem grupo (ou com `data-fx-quando="scroll"`), os itens
+entram *em sequência*, disparados pelo primeiro. Para cada um entrar **na sua
+própria linha**, dê a cada um o **seu** `data-fx-grupo` — aí cada grupo mede a
+posição dele. E como o `data-fx-margem` também vale por item, dá para segurar um
+deles: na DELIVERY a citação é alta e cruzava a linha cedo demais, então ela ficou
+com margem 320 enquanto o parágrafo seguinte usa os 150 do contêiner.
 
 **`fade-up`/`fade-right` aqui × `slide-in-up`:** use os fades do `pop-in` quando
 os itens entram **juntos, em sequência de tempo** (um a cada X s, assim que o
@@ -568,6 +575,9 @@ mesma `.art-bg`; os 3 sachês pequenos lado a lado em grupo com `fade-up`
 (`data-fx-origem="105.5px 43px"`).
 `74/mkt.html` — as 3 ferramentas de IA (`ul.tools`) com `data-fx-quando="scroll"`
 e `fade-right`, 0,5s entre elas.
+`74/delivery.html` — o ícone do fantasma (`pop`, na camada de decoração) e, na
+`.s-pausar`, a citação e o parágrafo seguinte em `fade` de 1s, cada um no seu
+grupo para entrar na própria linha.
 
 ## Antes de aplicar um efeito de scroll (checklist)
 

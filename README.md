@@ -163,7 +163,7 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | `popcorn-pop` (entrada) | as letras pipocam: cada uma surge do nada, subindo e girando um pouco, em ordem aleatória e com quique; refaz toda vez que o texto volta à tela (precisa do SplitText) | `74/delivery.html` (título "Descontos fantasmas") |
 | `magnetic-pull` (entrada) | ao carregar, as letras do texto vêm de posições e rotações aleatórias e se juntam no lugar; no fim, o HTML volta ao original (precisa do SplitText) | `74/gestao2.html` (título da abertura) |
 | `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
-| `pop-in` (entrada) | os itens surgem um de cada vez — com "pop", com `fade-up` (subindo com fade) ou com `fade-right` (vindo da esquerda com fade) — na abertura, ou a cada vez que o bloco/grupo entra na tela (recomeça ao voltar); depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase); `74/mkt.html` (as 3 ferramentas de IA em `fade-right`, 0,5s, ao chegar à tela) |
+| `pop-in` (entrada) | os itens surgem um de cada vez — com "pop", com `fade` (só aparecendo), com `fade-up` (subindo com fade) ou com `fade-right` (vindo da esquerda com fade) — na abertura, ou a cada vez que o bloco/grupo entra na tela (recomeça ao voltar); depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase); `74/mkt.html` (as 3 ferramentas de IA em `fade-right`, 0,5s, ao chegar à tela) |
 | `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
 
 Efeito de entrada exige um trecho anti-piscada no `<head>` da página (está na
@@ -212,11 +212,11 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-74**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-75**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-74/?v=74-75/g' *.html 74/*.html
+sed -i 's/?v=74-75/?v=74-76/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache
