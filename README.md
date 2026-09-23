@@ -314,6 +314,19 @@ posições novas forem as desejadas, basta atualizar o valor esperado no probe.
     barra preta do rodapé e escondia os ícones, irmãos dela. Ele pertence ao
     `.foot` inteiro.
 
+13. **`zoom` desalinha a decoração no mobile.** O `zoom` refaz o layout já na
+    escala reduzida, e cada linha de texto arredonda para o pixel do aparelho.
+    Cada seção encolhe alguns décimos, o erro **acumula** página abaixo (na MKT
+    em 390px: −1,8px na segunda seção, −45,9px na última) e o texto sai do lugar
+    das decorações, que são absolutas na `.art` e não encolhem — o título "VAMOS
+    AO PASSO A PASSO?" subia para cima do celular, a frase seguinte colava na
+    elipse, e o mesmo em outros blocos de toda página de decoração global. O
+    layout em 402px estava certo, e no desktop nada aparecia: só reproduz abaixo
+    de 402px. Por isso o `.page` é reduzido com `transform: scale`, que calcula o
+    layout nos 402px do Figma e só depois reduz (desvio medido: 0,0px). Ver
+    Invólucro. **Não volte a usar `zoom` aqui**, nem em `css/categoria-shell.css`,
+    que ainda o usa e tem o mesmo defeito latente.
+
 ## Assets
 
 `assets/_manifest.txt` e `74/assets/<pagina>/_manifest.txt` ligam cada arquivo
