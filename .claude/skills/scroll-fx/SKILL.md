@@ -325,6 +325,35 @@ Checklist:
 Em uso: `74/mkt.html`, o hero (`.s-hero`): "Não engane seu cliente com IA" dá
 lugar a "mas aprenda com ela", em loop (`data-fx-repetir="0.5"`).
 
+### `reveal-wipe` — entrada
+
+O elemento é **descoberto de um lado ao outro**, como uma cortina que abre: nada
+se move nem muda de opacidade — o que muda é o recorte (`clip-path`). Roda ao
+carregar (se já estiver à vista) e **refaz toda vez que volta à tela**.
+
+```html
+<p data-fx="reveal-wipe">…</p>
+```
+
+| atributo (no elemento) | padrão | efeito |
+|---|---|---|
+| `data-fx-duracao` | `1.2` | segundos |
+| `data-fx-de` | `esquerda` | de onde a cortina abre: `esquerda`, `direita`, `cima` ou `baixo` |
+| `data-fx-margem` | `100` | px acima do fundo da tela que disparam |
+
+Checklist:
+- **Marque o texto, não a caixa.** No `<blockquote>`/`<section>` o recorte come
+  o bloco inteiro (fundo, padding, o que mais houver dentro); no `<p>` ele
+  descobre só o texto. Foi o ajuste que a citação da DELIVERY pediu.
+- Num parágrafo de várias linhas a cortina abre em **todas ao mesmo tempo**
+  (uma faixa vertical atravessando o bloco). Revelar linha a linha seria outro
+  efeito.
+- Não mexe no fluxo (só recorta), então serve em página de decoração global.
+- Se o elemento estiver acima da dobra, precisa do trecho anti-piscada no
+  `<head>`, com `[data-fx="reveal-wipe"]`.
+
+Em uso: `74/delivery.html`, a citação da `.s-oriento` (o `<p>` de dentro).
+
 ### `popcorn-pop` — entrada
 
 As letras **pipocam**: cada uma surge do nada (escala 0), subindo alguns px e

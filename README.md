@@ -160,6 +160,7 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | `orbit-in` (scroll contínuo) | o elemento percorre a curva de uma elipse do layout enquanto cresce e gira, preso ao scroll; termina na posição do CSS | `74/gestao2.html` (celular sobre o arco branco) |
 | `slide-in-up` (scroll disparado) | ao passar da sua linha perto do fundo da tela, cada item aparece sem fade na borda de baixo e sobe o caminho inteiro até o lugar, em cascata e em ordem estrita; desce e se esconde ao voltar. Com `data-fx-passo`, as entradas ficam a N px de scroll uma da outra | `74/principal.html` (lista `.pacts`, margem 200); `74/gestao.html` (cards de "a conta", margem 200, passo 200) |
 | `typewriter` (entrada) | os textos são digitados letra a letra, um de cada vez: o primeiro aparece, é apagado de trás para frente e o seguinte é digitado no lugar; com `data-fx-repetir`, em loop | `74/mkt.html` (o hero: "Não engane seu cliente com IA" dá lugar a "mas aprenda com ela") |
+| `reveal-wipe` (entrada) | o texto é descoberto de um lado ao outro, como uma cortina que abre (`clip-path`); nada se move nem muda de opacidade. Refaz toda vez que volta à tela | `74/delivery.html` (citação "O que oriento é que…") |
 | `popcorn-pop` (entrada) | as letras pipocam: cada uma surge do nada, subindo e girando um pouco, em ordem aleatória e com quique; refaz toda vez que o texto volta à tela (precisa do SplitText) | `74/delivery.html` (título "Descontos fantasmas") |
 | `magnetic-pull` (entrada) | ao carregar, as letras do texto vêm de posições e rotações aleatórias e se juntam no lugar; no fim, o HTML volta ao original (precisa do SplitText) | `74/gestao2.html` (título da abertura) |
 | `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
@@ -212,11 +213,11 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-75**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-76**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez:
 
 ```bash
-sed -i 's/?v=74-75/?v=74-76/g' *.html 74/*.html
+sed -i 's/?v=74-76/?v=74-77/g' *.html 74/*.html
 ```
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache

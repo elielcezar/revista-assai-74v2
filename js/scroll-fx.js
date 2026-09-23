@@ -773,6 +773,65 @@
   }
 
   /* =========================================================
+     reveal-wipe  (entrada: ao carregar e a cada vez que chega à tela)
+     O elemento é DESCOBERTO de um lado ao outro, como uma cortina que abre:
+     nada se move nem muda de opacidade — o que muda é o recorte (clip-path).
+
+       <blockquote data-fx="reveal-wipe">…</blockquote>
+
+     Opções no elemento:
+       data-fx-duracao="1.2"   segundos
+       data-fx-de="esquerda"   de onde descobre: "esquerda", "direita",
+                               "cima" ou "baixo"
+       data-fx-margem="100"    px acima do fundo da tela que disparam
+
+     Refaz a cada vez que o elemento volta à tela; ao sair, rearma. Não mexe no
+     fluxo (só recorta), então serve em página de decoração global.
+
+     Precisa do trecho anti-piscada no <head> se o elemento estiver acima da
+     dobra (ver a skill scroll-fx).
+     ========================================================= */
+  function revealWipe(el) {
+    var dur = pct(el.getAttribute("data-fx-duracao"), 1.2);
+    var margem = pct(el.getAttribute("data-fx-margem"), 100);
+    var de = el.getAttribute("data-fx-de") || "esquerda";
+    // inset(cima direita baixo esquerda): o lado que começa 100% é o que
+    // esconde, e é dele que a cortina abre
+    var fechado = { esquerda: "inset(0 100% 0 0)", direita: "inset(0 0 0 100%)",
+                    cima: "inset(0 0 100% 0)", baixo: "inset(100% 0 0 0)" }[de]
+                  || "inset(0 100% 0 0)";
+    var aberto = "inset(0% 0% 0% 0%)";
+    var dentro = false, tw = null;
+
+    gsap.set(el, { clipPath: fechado });
+    function naTela() {
+      var r = el.getBoundingClientRect();
+      return r.top < window.innerHeight - margem && r.bottom > 0;
+    }
+    function checar() {
+      if (!dentro && naTela()) {
+        dentro = true;
+        if (tw) tw.kill();
+        tw = gsap.fromTo(el, { clipPath: fechado },
+          { clipPath: aberto, duration: dur, ease: "power3.inOut",
+            onComplete: function () { gsap.set(el, { clearProps: "clipPath" }); } });
+      } else if (dentro && !naTela()) {      // saiu: rearma para a próxima vez
+        dentro = false;
+        if (tw) tw.kill();
+        gsap.set(el, { clipPath: fechado });
+      }
+    }
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", noScroll);
+    window.addEventListener("load", noScroll);
+    checar();
+  }
+
+  /* =========================================================
      popcorn-pop  (entrada: ao carregar e a cada vez que o texto chega à tela)
      As letras PIPOCAM: cada uma surge do nada, subindo e girando um pouco, em
      ordem ALEATÓRIA, com um quique no fim (back.out). Precisa do SplitText.
@@ -982,7 +1041,7 @@
 
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack };
-  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop };
+  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.
