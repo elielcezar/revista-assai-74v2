@@ -36,17 +36,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/animista.css">
-  <link rel="stylesheet" href="css/novo-negocio.css?v=73-nn-12">
+  <link rel="stylesheet" href="css/animista.css?v=73-32">
+  <link rel="stylesheet" href="css/novo-negocio.css?v=73-32">
 
-  <link rel="stylesheet" href="css/revista-73-shell.css?v=73-19">
+  <link rel="stylesheet" href="css/revista-73-shell.css?v=73-32">
 </head>
 <body>
 <aside class="dt-sidebar" aria-label="Navegação da revista">
     <div class="dt-logo-wrap">
   <a href="https://www.assai.com.br" target="_blank">
     <img
-      src="assets/home73/dt-logo-assai.png"
+      src="assets/home73/dt-logo-assai.png?v=73-32"
       alt="Assaí Atacadista"
       class="dt-logo-img"
       width="124"
@@ -74,10 +74,10 @@
   <main class="page-novo-negocio" aria-label="Novo negócio — Figma 438:2974">
 
     <div class="abs nn-dash-frame" aria-hidden="true">
-      <img src="assets/novo-negocio-73/rect-dashed.svg" alt="" width="355" height="647" />
+      <img src="assets/novo-negocio-73/rect-dashed.svg?v=73-32" alt="" width="355" height="647" />
     </div>
 
-    <img class="abs nn-hero" src="assets/novo-negocio-73/hero-abacaxi.png?v=2" alt="" width="407" height="403" />
+    <img class="abs nn-hero" src="assets/novo-negocio-73/hero-abacaxi.png?v=73-32" alt="" width="407" height="403" />
 
     <p class="abs nn-lead">
       Com baixo investimento inicial, preparo rápido e forte apelo visual, o abacaxi temperado tem se mostrado uma alternativa acessível para empreender no setor de alimentação. Isso foi o que Carlos Henrique Nascimento Souza, de 34 anos, provou levando a proposta para Juazeiro do Norte (CE) após experimentar a iguaria em Petrolina (PE).
@@ -96,7 +96,7 @@
 
     <p class="abs nn-author">Por: Bruna Cruz</p>
 
-    <video class="abs nn-ellipse-photo" src="assets/novo-negocio-73/video-novo-negocio.mp4" autoplay muted loop playsinline></video>
+    <video class="abs nn-ellipse-photo" src="assets/novo-negocio-73/video-novo-negocio.mp4?v=73-32" autoplay muted loop playsinline></video>
 
     <p class="abs nn-col2">
       O preparo é simples: o abacaxi é cortado ao meio e servido em pedaços, com combinações de temperos que vão do salgado ao doce, incluindo opções com apelo saudável. A variedade de combinações é o que diferencia o produto ao da concorrência.<br><br>
@@ -120,14 +120,19 @@ Apelo mais doce, incluindo confeitos.
 O cardápio conta ainda com manga temperada, água de coco e água mineral, mantendo a linha de produtos naturais.</p>
 
     <div class="abs nn-cardapio-line" aria-hidden="true">
-      <img src="assets/novo-negocio-73/line-pink.svg" alt="" width="302" height="6" data-animista="scale-in-hor-center" />
+      <img src="assets/novo-negocio-73/line-pink.svg?v=73-32" alt="" width="302" height="6" data-animista="scale-in-hor-center" />
     </div>
 
-    <img class="abs nn-cardapio-photo" src="assets/novo-negocio-73/cardapio-foto-25b845.png?v=2" alt="" width="263" height="153" />
+    <img class="abs nn-cardapio-photo" src="assets/novo-negocio-73/cardapio-foto-25b845.png?v=73-32" alt="" width="263" height="153" />
 
     <p class="abs nn-cardapio-label">CARDÁPIO ATUAL</p>
 
-    <div class="abs nn-ad nn-ad--unilever" aria-label="Publicidade">
+    <!-- Publicidade: video rotativo. O HTML traz o primeiro (toca sem JS); o
+         script logo abaixo sorteia um da lista em data-ad-random antes de carregar. -->
+    <div class="abs nn-ad nn-ad--unilever" aria-label="Publicidade" data-ad-random='[
+      "assets/banners/story-jbs-web.mp4?v=73-32",
+      "assets/banners/story-seda-web.mp4?v=73-32"
+    ]'>
       <video
         class="nn-ad__video"
         autoplay
@@ -138,9 +143,26 @@ O cardápio conta ainda com manga temperada, água de coco e água mineral, mant
         disablePictureInPicture
         aria-hidden="true"
       >
-        <source src="assets/ads/novo-negocio-ads-unilever.mp4" type="video/mp4" />
+        <source src="assets/banners/story-jbs-web.mp4?v=73-32" type="video/mp4" />
       </video>
     </div>
+    <script>
+      /* Video rotativo: sorteia um da lista a cada carregamento */
+      (function () {
+        var box = document.querySelector(".nn-ad--unilever[data-ad-random]");
+        var video = box && box.querySelector("video");
+        var source = video && video.querySelector("source");
+        if (!source) return;
+        var lista = [];
+        try { lista = JSON.parse(box.getAttribute("data-ad-random")) || []; } catch (e) {}
+        if (lista.length < 2) return;
+        var src = lista[Math.floor(Math.random() * lista.length)];
+        if (src && src !== source.getAttribute("src")) {
+          source.setAttribute("src", src);
+          video.load();
+        }
+      })();
+    </script>
 
     <h2 class="abs nn-heading nn-heading--como">COMO TRANSFORMAR UMA IDEIA SIMPLES EM RENDA</h2>
     <h2 class="abs nn-heading nn-heading--estrutura">ESTRUTURA ENXUTA E OPERAÇÃO FAMILIAR</h2>
@@ -172,14 +194,14 @@ O cardápio conta ainda com manga temperada, água de coco e água mineral, mant
       <div class="abs nn-deco-white"></div>
       <div class="abs nn-deco-yellow"></div>
       <div class="abs nn-deco-subtract">
-        <img src="assets/novo-negocio-73/subtract-deco.svg" alt="" width="424" height="212" />
+        <img src="assets/novo-negocio-73/subtract-deco.svg?v=73-32" alt="" width="424" height="212" />
       </div>
-      <img class="abs nn-deco-wave" src="assets/novo-negocio-73/ellipse-wave.png?v=2" alt="" width="429" height="226" />
+      <img class="abs nn-deco-wave" src="assets/novo-negocio-73/ellipse-wave.png?v=73-32" alt="" width="429" height="226" />
     </div>
 
-    <img class="abs nn-bg-family" src="assets/novo-negocio-73/bg-familia-63a458.png?v=2" alt="" width="403" height="277" />
+    <img class="abs nn-bg-family" src="assets/novo-negocio-73/bg-familia-63a458.png?v=73-32" alt="" width="403" height="277" />
 
-    <img class="abs nn-portrait" src="assets/novo-negocio-73/gemini-portrait.png?v=2" alt="" width="286" height="255" />
+    <img class="abs nn-portrait" src="assets/novo-negocio-73/gemini-portrait.png?v=73-32" alt="" width="286" height="255" />
 
     <div class="abs nn-ad nn-ad--bimbo" aria-label="Publicidade">
       <video
@@ -192,13 +214,13 @@ O cardápio conta ainda com manga temperada, água de coco e água mineral, mant
         disablePictureInPicture
         aria-hidden="true"
       >
-        <source src="assets/ads/novo-negocio-ads-bimbo.mp4" type="video/mp4" />
+        <source src="assets/ads/novo-negocio-ads-bimbo.mp4?v=73-32" type="video/mp4" />
       </video>
     </div>
 
     <section class="sec-foot" aria-label="Rodapé">
       <footer class="foot-wrap">
-        <img class="abs exp-lay--foot-bg" src="assets/home73/footer-bg.svg" alt="" />
+        <img class="abs exp-lay--foot-bg" src="assets/home73/footer-bg.svg?v=73-32" alt="" />
         <a href="https://www.assai.com.br/nossas-lojas" target="_blank" rel="noopener noreferrer" class="abs foot-lojas">NOSSAS LOJAS</a>
         <a href="novo-negocio.html#" class="abs exp-lay--foot-inst" aria-label="Topo da página">
           <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9.87822 1.29971L9.87821 18.9999" stroke="#E4E4E4"/><path d="M19.4025 10.0156L9.87839 0.709835L0.354593 10.0156" stroke="#E4E4E4"/></svg>
@@ -210,7 +232,7 @@ O cardápio conta ainda com manga temperada, água de coco e água mineral, mant
           <svg width="22" height="19" viewBox="0 0 22 19" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M10.7392 2.94724C7.97313 3.25316 8.29179 7.52331 11.1599 7.31936C14.0152 7.11541 13.6711 2.62856 10.7392 2.94724ZM10.3441 13.7056C9.94893 13.3487 8.71246 11.2838 8.34279 10.6847C6.48172 7.67645 4.19999 3.97982 7.76916 1.11174C11.2619 -1.67984 16.5519 1.14997 16.0547 5.56043C15.8763 7.12831 12.9445 12.0105 11.861 13.3235C11.4403 13.8206 10.9559 14.2665 10.3313 13.7056" fill="#E4E4E4"/><path d="M4.41666 10.8479L0.796507 18.496H21.1918L17.5844 10.8479" stroke="#E4E4E4"/></svg>
         </a>
         <a href="https://www.assai.com.br" target="_blank" rel="noopener noreferrer" class="abs exp-lay--foot-brand" aria-label="Marca Assaí">
-          <img class="exp-lay--foot-brand-img" src="assets/home73/footer-brand.svg" alt="" width="50" height="37" />
+          <img class="exp-lay--foot-brand-img" src="assets/home73/footer-brand.svg?v=73-32" alt="" width="50" height="37" />
         </a>
       </footer>
     </section>
@@ -220,7 +242,7 @@ O cardápio conta ainda com manga temperada, água de coco e água mineral, mant
       <div class="head-inner">
         <a href="https://www.assai.com.br/revistadigital/" class="abs nn-head-band" aria-label="Capa"></a>
         <div class="abs nn-head-cinza" aria-hidden="true"></div>
-        <a href="https://www.assai.com.br/revistadigital/" class="abs nn-head-logo" aria-label="Capa"><img src="assets/home73/logo-head.svg" alt="" width="283" height="31" /></a>
+        <a href="https://www.assai.com.br/revistadigital/" class="abs nn-head-logo" aria-label="Capa"><img src="assets/home73/logo-head.svg?v=73-32" alt="" width="283" height="31" /></a>
         <nav class="head-menu" id="menu-principal" aria-label="Menu">
           <div class="head-menu-inner">
             <a class="stroke-cap" href="../index.html" data-menu-item>CAPA</a>
@@ -242,7 +264,7 @@ O cardápio conta ainda com manga temperada, água de coco e água mineral, mant
       </div>
     </header>
   </main>
-  <script src="js/revista-73-menu.js?v=73-share" defer></script>
-  <script src="js/animista-scroll.js" defer></script>
+  <script src="js/revista-73-menu.js?v=73-32" defer></script>
+  <script src="js/animista-scroll.js?v=73-32" defer></script>
 </body>
 </html>

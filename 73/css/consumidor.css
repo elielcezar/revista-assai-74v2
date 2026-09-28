@@ -57,7 +57,7 @@
     .page {
       position: relative;
       width: 402px;
-      height: 6792px;
+      height: 6926px;
       background: #ffffff;
       overflow: hidden;
       flex-shrink: 0;
@@ -69,14 +69,17 @@
 
     /* ===== BG bands (lowest z) ===== */
     /* Shifts applied: image-7 down +20; band-yellow-2 down +20 more (cumulative +40); subtract-image-wrap +20 more (cumulative +60). */
-    .consumidor-ad { left: 0; top: 3560px; width: 402px; overflow: hidden; z-index: 30; }
-    .consumidor-ad img { display: block; width: 100%; height: auto; }
-    .band-yellow-2 { left: -3.77px; top: 3965px; width: 406px; height: 643px; background: #ffdc00; z-index: 1; }
+    /* banner rotativo: as 3 artes tem alturas diferentes (502 a 538px em 402px),
+       entao o quadro e fixo e a arte cobre. Era 385,5px (arte 391x375): o que
+       vem abaixo desceu 134px */
+    .consumidor-ad { left: 0; top: 3560px; width: 402px; height: 520px; overflow: hidden; z-index: 30; }
+    .consumidor-ad img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .band-yellow-2 { left: -3.77px; top: 4099px; width: 406px; height: 643px; background: #ffdc00; z-index: 1; }
     .band-amarelo-1 { left: 0; top: 182px; width: 402px; height: 330px; background: #ffaa00; z-index: 1; }
     .band-yellow-3 { left: 0.23px; top: 1608px; width: 402px; height: 789px; background: #ffdc00; z-index: 1; }
-    .band-purple { left: -1px; top: 5954px; width: 403px; height: 791px; background: #532f82; z-index: 1; }
+    .band-purple { left: -1px; top: 6088px; width: 403px; height: 791px; background: #532f82; z-index: 1; }
     .band-amarelo-rounded {
-      left: -53px; top: 6655px; width: 508px; height: 254px;
+      left: -53px; top: 6789px; width: 508px; height: 254px;
       background: #ffaa00;
       border-radius: 400px 400px 0 0;
       z-index: 2;
@@ -214,20 +217,20 @@
 
     /* ===== Empresária identifica (pink italic highlight) ===== */
     .empresaria {
-      left: 32px; top: 4013px; width: 342px;
+      left: 32px; top: 4147px; width: 342px;
       font-family: "FS Lola", serif; font-size: 27px; font-weight: 700; font-style: italic; line-height: 1.2; text-align: center; color: #b40082;
       z-index: 7;
     }
 
     /* ===== Image 8 ===== */
     .image-8 {
-      left: 0; top: 4217px; width: 402px; height: 382px;
+      left: 0; top: 4351px; width: 402px; height: 382px;
       z-index: 5; overflow: hidden;
     }
 
     /* ===== Frame 44 (IMPACTOS NA OPERAÇÃO) ===== */
     .frame-44 {
-      left: 22.23px; top: 4644px; width: 352px;
+      left: 22.23px; top: 4778px; width: 352px;
       z-index: 7;
       display: flex; flex-direction: column; gap: 16px;
     }
@@ -235,7 +238,7 @@
 
     /* ===== Subtract food image (wave cutout on top edge of image) ===== */
     .subtract-image-wrap {
-      left: -19px; top: 5538px; width: 432px; height: 421px;
+      left: -19px; top: 5672px; width: 432px; height: 421px;
       overflow: hidden;
       z-index: 3;
     }
@@ -248,14 +251,14 @@
 
     /* ===== Subtract purple wave (bottom) ===== */
     .subtract-purple {
-      left: -67.81px; top: 5732px; width: 549.05px; height: 227.2px;
+      left: -67.81px; top: 5866px; width: 549.05px; height: 227.2px;
       z-index: 4;
     }
     .subtract-purple svg { display: block; width: 100%; height: 100%; }
 
     /* ===== Bottom strip (Rect 1366) ===== */
     .bottom-strip {
-      left: 0.23px; top: 5774px; width: 375px; height: 123px;
+      left: 0.23px; top: 5908px; width: 375px; height: 123px;
       overflow: hidden;
       z-index: 5;
     }
@@ -263,19 +266,19 @@
 
     /* ===== Adaptação na prática ===== */
     .h-adaptacao {
-      left: 24px; top: 5930px; width: 354px;
+      left: 24px; top: 6064px; width: 354px;
       font-family: "FS Lola", serif; font-size: 36px; font-weight: 700; font-style: italic; line-height: 1.2; text-align: center; color: #ffdc00;
       z-index: 7;
     }
     .principais {
-      left: 22px; top: 5995px; width: 352px;
+      left: 22px; top: 6129px; width: 352px;
       font-family: "FS Lola", serif; font-size: 18px; font-weight: 700; line-height: 1.2; text-align: center; color: #ffffff;
       z-index: 7;
     }
 
     /* ===== List (Frame 43) ===== */
     .lista {
-      left: 25.23px; top: 6090px; width: 352px;
+      left: 25.23px; top: 6224px; width: 352px;
       display: flex; flex-direction: column; gap: 23px;
       z-index: 7;
       list-style: none; padding: 0; margin: 0;
@@ -303,7 +306,7 @@
     }
 
     /* ===== Footer ===== */
-    .footer { left: -1px; top: 6679px; width: 403.33px; height: 114px; z-index: 20; }
+    .footer { left: -1px; top: 6813px; width: 403.33px; height: 114px; z-index: 20; }
     .footer-bg-top { left: 0; top: 40px; width: 403.33px; height: 56.9px; }
     .footer-bg-bottom { left: 1px; top: 67px; width: 402px; height: 69px; }
     .foot-icon {

@@ -176,6 +176,13 @@
 .t-regularidade p + p { margin-top: 20px; }
 
 /* =========================================================
+   BANNER — entre a regularidade e as marcas proprias (arte 1080x1440 = 402x536).
+   So margem em cima: o titulo das marcas ja traz os 58px de respiro dele
+   ========================================================= */
+.adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0 0; }
+.adbox img { display: block; max-width: 100%; height: auto; }
+
+/* =========================================================
    BLOCO 10 — marcas próprias   (4405 .. 5079)
    ========================================================= */
 .h-marcas {

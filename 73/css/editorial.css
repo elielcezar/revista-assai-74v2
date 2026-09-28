@@ -193,12 +193,14 @@ body {
   font-weight: 700;
 }
 
-/* Hero vídeo — mesmo miolo de noticias.html (sacola Assaí) */
+/* Hero vídeo — publicidade Aurora (9:16). Era 544px de altura (video da
+   sacola); com 715px o video aparece inteiro, e o botao de som e o texto
+   desceram 171px */
 .page-editorial .ed-video-wrap {
   left: 0;
   top: 182px;
   width: 402px;
-  height: 544px;
+  height: 715px;
   overflow: hidden;
   z-index: 3;
 }
@@ -219,7 +221,7 @@ body {
 
 .page-editorial .ed-sound-btn {
   left: 330px;
-  top: 705px;
+  top: 876px;
   width: 45px;
   height: 45px;
   border: 0;
@@ -259,7 +261,7 @@ body {
 .page-editorial .editorial-miolo {
   width: 100%;
   min-height: 0;
-  padding: 750px 24px 48px 28px;
+  padding: 921px 24px 48px 28px;
   margin: 0;
   box-sizing: border-box;
   flex: 1 0 auto;
@@ -370,6 +372,6 @@ body {
 @media (min-width: 1024px) {
   .page-editorial .head-wrap.exp-lay--head { height: 141px; overflow: hidden; }
   .page-editorial .ed-video-wrap { top: 141px; }
-  .page-editorial .ed-sound-btn { top: 664px; }
-  .page-editorial .editorial-miolo { padding-top: 636px; }
+  .page-editorial .ed-sound-btn { top: 835px; }
+  .page-editorial .editorial-miolo { padding-top: 807px; }
 }

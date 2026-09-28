@@ -5,3 +5,14 @@ __pycache__/
 
 .DS_Store
 Thumbs.db
+
+# originais pesados dos videos de publicidade: as paginas usam as versoes
+# comprimidas com ffmpeg (*-web.mp4, 720x1280, 30fps, sem audio)
+/73/assets/banners/story-*.mp4
+!/73/assets/banners/story-*-web.mp4
+/74/assets/principal/IMG_4255.mp4
+
+# material de trabalho (textos de publieditorial, copias de artes)
+/74/_temp/
+/publieditoroial-heinz.md
+/74/assets/banners/C*pia de *

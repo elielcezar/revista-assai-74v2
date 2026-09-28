@@ -32,22 +32,18 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/animista.css">
-  <link rel="stylesheet" href="css/consumidor.css?v=9">
-  <style>
-    .consumidor-ad { left:0; top:3560px; width:402px; overflow:hidden; z-index:30; }
-    .consumidor-ad img { display:block; width:100%; height:auto; }
-  </style>
+  <link rel="stylesheet" href="css/animista.css?v=73-32">
+  <link rel="stylesheet" href="css/consumidor.css?v=73-32">
 
 
-  <link rel="stylesheet" href="css/revista-73-shell.css?v=73-19">
+  <link rel="stylesheet" href="css/revista-73-shell.css?v=73-32">
 </head>
 <body>
 <aside class="dt-sidebar" aria-label="Navegação da revista">
     <div class="dt-logo-wrap">
   <a href="https://www.assai.com.br" target="_blank">
     <img
-      src="assets/home73/dt-logo-assai.png"
+      src="assets/home73/dt-logo-assai.png?v=73-32"
       alt="Assaí Atacadista"
       class="dt-logo-img"
       width="124"
@@ -74,8 +70,14 @@
   </aside>
   <main class="page main-consumidor">
     <!-- Publicidade -->
-    <div class="abs consumidor-ad" aria-label="Publicidade">
-      <img src="assets/ads/consumidor-ads.jpg" alt="Publicidade" width="391" height="375" />
+    <!-- Publicidade: banner rotativo. O HTML traz a primeira arte (aparece sem JS);
+         o script no fim da pagina sorteia uma da lista em data-ad-random. -->
+    <div class="abs consumidor-ad" aria-label="Publicidade" data-ad-random='[
+      {"src": "assets/banners/embalixo.jpg?v=73-32", "alt": "Embalixo — ultra resistente, o mais resistente do Brasil"},
+      {"src": "assets/banners/nivea.jpg?v=73-32", "alt": "Nivea — sinta na pele o cuidado de Nivea, temporada de hidratação"},
+      {"src": "assets/banners/polenghi.jpg?v=73-32", "alt": "Polenguinho — o queijinho que toda fominha adora"}
+    ]'>
+      <img src="assets/banners/embalixo.jpg?v=73-32" alt="Embalixo — ultra resistente, o mais resistente do Brasil" width="402" height="520" />
     </div>
 
     <!-- BG bands (lowest layer) -->
@@ -103,7 +105,7 @@
 
     <!-- Side pen image (decorative on left of hero) -->
     <div class="abs side-pen pen-enter">
-      <img src="assets/consumidor73/consumidor-rect1365-3bce54.png" alt="" />
+      <img src="assets/consumidor73/consumidor-rect1365-3bce54.png?v=73-32" alt="" />
     </div>
 
     <!-- Body 1 -->
@@ -115,7 +117,7 @@
 
     <!-- Image 7 (hero food image) -->
     <div class="abs image-7">
-      <img class="img-cover" src="assets/consumidor73/consumidor-image7.png" alt="" />
+      <img class="img-cover" src="assets/consumidor73/consumidor-image7.png?v=73-32" alt="" />
     </div>
 
     <!-- Section: QUAIS SÃO OS EFEITOS -->
@@ -136,16 +138,16 @@
         loop
         playsinline
         preload="metadata"
-        poster="assets/consumidor73/consumidor-video-rause.png"
+        poster="assets/consumidor73/consumidor-video-rause.png?v=73-32"
         aria-label="Vídeo da cafeteria Rause"
       >
-        <source src="assets/consumidor73/consumidor-video-rause.mp4" type="video/mp4">
+        <source src="assets/consumidor73/consumidor-video-rause.mp4?v=73-32" type="video/mp4">
       </video>
     </div>
 
     <!-- Sound button (on video, lower-right) -->
     <button class="abs sound-btn is-muted" aria-label="Ativar som do vídeo" aria-pressed="false" type="button">
-      <img src="assets/consumidor73/consumidor-sound.gif" alt="" />
+      <img src="assets/consumidor73/consumidor-sound.gif?v=73-32" alt="" />
     </button>
 
     <!-- Section: SINAIS DE MUDANÇA -->
@@ -163,7 +165,7 @@
 
     <!-- Image 8 -->
     <div class="abs image-8">
-      <img class="img-cover" src="assets/consumidor73/consumidor-image8-58dfd5.png" alt="" />
+      <img class="img-cover" src="assets/consumidor73/consumidor-image8-58dfd5.png?v=73-32" alt="" />
     </div>
 
     <!-- Section: IMPACTOS NA OPERAÇÃO -->
@@ -178,7 +180,7 @@
 
     <!-- Subtract food image (wave cutout at top) -->
     <div class="abs subtract-image-wrap">
-      <img src="assets/consumidor73/consumidor-image10.png" alt="" />
+      <img src="assets/consumidor73/consumidor-image10.png?v=73-32" alt="" />
       <div class="wave-cut">
         <svg viewBox="0 0 414 94" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
           <path d="M414 94C232.589 -30.8002 62.4121 41.9999 0 94V0H414V94Z" fill="white"/>
@@ -195,7 +197,7 @@
 
     <!-- Bottom strip image (Rect 1366 - decorative) -->
     <div class="abs bottom-strip">
-      <img src="assets/consumidor73/consumidor-rect1366-38b40c.png" alt="" />
+      <img src="assets/consumidor73/consumidor-rect1366-38b40c.png?v=73-32" alt="" />
     </div>
 
     <!-- Adaptação na prática -->
@@ -204,15 +206,15 @@
 
     <!-- List (Frame 43) -->
     <ul class="abs lista">
-      <li><img class="line" src="assets/consumidor73/consumidor-line.svg" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0s" /></li>
+      <li><img class="line" src="assets/consumidor73/consumidor-line.svg?v=73-32" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0s" /></li>
       <li class="item">Pesquisa local e escuta atenta às demandas dos clientes usuários das canetas e consulta a nutricionistas antes de tomar decisões</li>
-      <li><img class="line" src="assets/consumidor73/consumidor-line.svg" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.2s" /></li>
+      <li><img class="line" src="assets/consumidor73/consumidor-line.svg?v=73-32" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.2s" /></li>
       <li class="item">Redução das porções dos pratos mais vendidos para adequação ao novo padrão de consumo</li>
-      <li><img class="line" src="assets/consumidor73/consumidor-line.svg" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.4s" /></li>
+      <li><img class="line" src="assets/consumidor73/consumidor-line.svg?v=73-32" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.4s" /></li>
       <li class="item">Reformulação do cardápio com maior ênfase em proteínas e combinações mais leves</li>
-      <li><img class="line" src="assets/consumidor73/consumidor-line.svg" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.6s" /></li>
+      <li><img class="line" src="assets/consumidor73/consumidor-line.svg?v=73-32" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.6s" /></li>
       <li class="item">Criação de uma linha funcional com novos produtos, como cafés proteicos, sucos termogênicos e saladas</li>
-      <li><img class="line" src="assets/consumidor73/consumidor-line.svg" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.8s" /></li>
+      <li><img class="line" src="assets/consumidor73/consumidor-line.svg?v=73-32" alt="" aria-hidden="true" data-animista="scale-in-hor-center" data-animista-delay="0.8s" /></li>
       <li class="item">Revisão de preços para equilibrar a viabilidade do negócio com a expectativa do cliente de pagar menos por porções menores</li>
     </ul>
 
@@ -221,7 +223,7 @@
       <div class="head-inner">
         <a href="https://www.assai.com.br/revistadigital/" aria-label="Capa" class="abs head-yellow"></a>
         <div class="abs head-gray"></div>
-        <a href="https://www.assai.com.br/revistadigital/" aria-label="Capa" class="abs head-logo"><img src="assets/consumidor73/consumidor-logo-head.svg" alt="" /></a>
+        <a href="https://www.assai.com.br/revistadigital/" aria-label="Capa" class="abs head-logo"><img src="assets/consumidor73/consumidor-logo-head.svg?v=73-32" alt="" /></a>
         <nav class="head-menu" id="menu-principal" aria-label="Menu">
           <div class="head-menu-inner">
             <a class="stroke-cap" href="../index.html" data-menu-item>CAPA</a>
@@ -274,15 +276,30 @@
         </svg>
       </a>
       <a href="https://www.assai.com.br" target="_blank" rel="noopener noreferrer" class="foot-icon foot-brand" aria-label="Marca Assaí">
-        <img src="assets/home73/footer-brand.svg" width="50" height="37" alt="Assaí Atacadista" />
+        <img src="assets/home73/footer-brand.svg?v=73-32" width="50" height="37" alt="Assaí Atacadista" />
       </a>
       <a href="https://www.assai.com.br/nossas-lojas" target="_blank" rel="noopener noreferrer" class="abs foot-lojas">NOSSAS LOJAS</a>
     </footer>
   </main>
 
-  <script src="js/revista-73-menu.js?v=73-share" defer></script>
-  <script src="js/animista-scroll.js" defer></script>
+  <script src="js/revista-73-menu.js?v=73-32" defer></script>
+  <script src="js/animista-scroll.js?v=73-32" defer></script>
   <script>
+    /* Banner rotativo: sorteia uma arte da lista a cada carregamento */
+    (function () {
+      var box = document.querySelector("[data-ad-random]");
+      var img = box && box.querySelector("img");
+      if (!img) return;
+      var lista = [];
+      try { lista = JSON.parse(box.getAttribute("data-ad-random")) || []; } catch (e) {}
+      if (lista.length < 2) return;
+      var item = lista[Math.floor(Math.random() * lista.length)];
+      if (item && item.src !== img.getAttribute("src")) {
+        img.src = item.src;
+        img.alt = item.alt || "";
+      }
+    })();
+
     /* Video Rause: autoplay quando entrar na viewport, pausa quando sair.
        Som controlado pelo .sound-btn (mudo por padrão p/ políticas de autoplay). */
     (function () {

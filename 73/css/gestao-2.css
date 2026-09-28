@@ -121,7 +121,7 @@ body {
 .page-gestao-2 {
   position: relative;
   width: 402px;
-  height: 7356px;
+  height: 8110px;
   background: #ffffff;
   overflow-x: hidden;
   overflow-y: visible;
@@ -470,7 +470,7 @@ body {
 .gx2-lay--inter-transicao {
   /* layout_LC6CFE — x=24 y=5587 W=350 H=63 */
   left: 24px;
-  top: 5587px;
+  top: 6341px;
   width: 350px;
   height: 63px;
   z-index: 12;
@@ -636,7 +636,7 @@ body {
 .gx2-lay--cta-podcast {
   /* layout_9P9EPY — x=26 y=7072 W=347 H=42 */
   left: 26px;
-  top: 7072px;
+  top: 7826px;
   width: 347px;
   z-index: 480;
 }
@@ -942,7 +942,7 @@ body {
 .gx2-lay--body-1313 {
   /* layout_MJ3KSE — x=23 y=5670 W=350 H=417 */
   left: 23px;
-  top: 5670px;
+  top: 6424px;
   width: 350px;
   height: 417px;
   z-index: 50;
@@ -1212,7 +1212,7 @@ body {
 }
 .gx2-lay--bg-rect42 {
   left: 0;
-  top: 6118px;
+  top: 6872px;
   width: 402px;
   height: 502px;
   z-index: 100;
@@ -1230,7 +1230,7 @@ body {
 .gx2-lay--titulo-planejar {
   /* layout_I1OP78 — x=30 y=6150 W=341.82 H=32 */
   left: 30px;
-  top: 6150px;
+  top: 6904px;
   width: 341.82px;
   height: 32px;
   z-index: 110;
@@ -1248,7 +1248,7 @@ body {
 }
 .gx2-lay--bullet-list {
   left: 23px;
-  top: 6198px;
+  top: 6952px;
   width: 350px;
   z-index: 110;
 }
@@ -1291,7 +1291,7 @@ body {
 }
 .gx2-lay--bg-subtract-azul {
   left: -278px;
-  top: 6651px;
+  top: 7405px;
   width: 957.51px;
   height: 396.22px;
   background: #673AB7;
@@ -1299,7 +1299,7 @@ body {
 }
 .gx2-lay--bg-subtract-laranja {
   left: -278px;
-  top: 6864px;
+  top: 7618px;
   width: 957.51px;
   height: 396.22px;
   background: #ff7300;
@@ -1312,7 +1312,7 @@ body {
 }
 .gx2-lay--bg-grad-pink {
   left: 0;
-  top: 6620px;
+  top: 7374px;
   width: 402px;
   height: 291px;
   z-index: 191;
@@ -1324,7 +1324,7 @@ body {
 }
 .gx2-lay--bg-laranja {
   left: 0;
-  top: 6967px;
+  top: 7721px;
   width: 402px;
   height: 323px;
   z-index: 193;
@@ -1341,7 +1341,7 @@ body {
 }
 .gx2-lay--thumbs {
   left: 134.95px;
-  top: 6687px;
+  top: 7441px;
   width: 126.1px;
   height: 68.93px;
   z-index: 220;
@@ -1359,7 +1359,7 @@ body {
 .gx2-lay--podcast-titulo {
   /* layout_IOPK2Q — x=25.05 y=6766 W=346.64 H=87 */
   left: 25.05px;
-  top: 6766px;
+  top: 7520px;
   width: 346.64px;
   height: 87px;
   z-index: 230;
@@ -1377,7 +1377,7 @@ body {
 }
 .gx2-lay--podcast-cover {
   left: 29px;
-  top: 6847px;
+  top: 7601px;
   width: 344px;
   height: 192.44px;
   z-index: 240;
@@ -1396,7 +1396,7 @@ body {
 .gx2-lay--podcast-desc {
   /* layout_04OMO3 — x=24 y=7147 W=349 H=89 */
   left: 24px;
-  top: 7147px;
+  top: 7901px;
   width: 349px;
   height: 89px;
   z-index: 470;
@@ -1413,7 +1413,7 @@ body {
 }
 .gx2-lay--foot {
   left: -1px;
-  top: 7242px;
+  top: 7996px;
 }
 .gx2-lay--foot-bg {
   position: absolute;
@@ -1478,6 +1478,28 @@ body {
   height: auto;
   object-fit: contain;
   display: block;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PUBLICIDADE — video Seda entre o comparativo e "COMO FAZER A TRANSIÇÃO".
+   Entrou em 5587px (39px abaixo do comparativo, o mesmo vao de antes); tudo
+   o que vinha a partir dali desceu 754px (715 do video + 39 de vao).
+   ─────────────────────────────────────────────────────────────────────────── */
+.gx2-ad {
+  left: 0;
+  top: 5587px;
+  width: 402px;
+  height: 715px;
+  overflow: hidden;
+  background: #000000;
+  z-index: 40;
+}
+.gx2-ad__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
 }
 
 @media (min-width: 1024px) {

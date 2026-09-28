@@ -32,15 +32,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/animista.css">
-  <link rel="stylesheet" href="css/mkt-digital.css?v=4">
+  <link rel="stylesheet" href="css/animista.css?v=73-32">
+  <link rel="stylesheet" href="css/mkt-digital.css?v=73-32">
 
 
-  <link rel="stylesheet" href="css/revista-73-shell.css?v=73-19">
+  <link rel="stylesheet" href="css/revista-73-shell.css?v=73-32">
   <style>
     /* Carrossel + deslocamento do bloco de baixo: no HTML para não depender de CSS em cache. */
-    .page { height: 4656px; }
+    .page { height: 5107px; }
     .mkt-ad-slot { left:0; top:1932px; width:402px; height:451px; overflow:hidden; z-index:8; }
+    /* 2o carrossel, antes do rodape: entra onde comecava a faixa preta do rodape
+       (4707px), por cima do fim do degrade (z 2); rodape e pagina desceram 451px.
+       z 21: o topo transparente do rodape (z 20) cobria as bolinhas e bloqueava o clique */
+    .mkt-ad-slot--rodape { top:4707px; z-index:21; }
     .mkt-ad-carousel { display:flex; flex-direction:column; width:100%; height:100%; }
     .mkt-ad-carousel__track {
       display:flex; flex:0 0 419px; width:100%; height:419px;
@@ -71,7 +75,7 @@
     .mkt-ad-carousel__dots button.is-active { background:#ff5564; }
     .bg-anil { top:2391px; }
     .sec-how { top:2406px; }
-    .footer { top:4662px; }
+    .footer { top:5113px; }
   </style>
 </head>
 <body>
@@ -79,7 +83,7 @@
     <div class="dt-logo-wrap">
   <a href="https://www.assai.com.br" target="_blank">
     <img
-      src="assets/home73/dt-logo-assai.png"
+      src="assets/home73/dt-logo-assai.png?v=73-32"
       alt="Assaí Atacadista"
       class="dt-logo-img"
       width="124"
@@ -105,7 +109,7 @@
     </nav>
   </aside>
   <main class="page">
-    <div class="abs hero-photo"><img class="img-cover" src="assets/mkt-digital73/mkt-hero-photo.png?v=2" alt="" /></div>
+    <div class="abs hero-photo"><img class="img-cover" src="assets/mkt-digital73/mkt-hero-photo.png?v=73-32" alt="" /></div>
     <div class="abs hero-circle-pink"></div>
     <div class="abs hero-circle-anil"></div>
 
@@ -138,23 +142,19 @@
       <div class="mkt-ad-carousel" id="carrossel-mkt-ad" data-ad-carousel>
         <div class="mkt-ad-carousel__track" id="carrossel-mkt-track" data-ad-track tabindex="0">
           <div class="mkt-ad-carousel__slide" data-ad-slide>
-            <img src="assets/ads/mkt-ad-01-cepera.jpg" alt="Cepêra — turbine o sabor do dia a dia" width="402" height="419" />
+            <img src="assets/ads/mkt-ad-01-cepera.jpg?v=73-32" alt="Cepêra — turbine o sabor do dia a dia" width="402" height="419" />
           </div>
           <div class="mkt-ad-carousel__slide" data-ad-slide>
-            <img src="assets/ads/mkt-ad-02-salsaretti.jpg" alt="Salsaretti — o melhor ketchup do Brasil" width="402" height="419" />
+            <img src="assets/ads/mkt-ad-02-salsaretti.jpg?v=73-32" alt="Salsaretti — o melhor ketchup do Brasil" width="402" height="419" />
           </div>
           <div class="mkt-ad-carousel__slide" data-ad-slide>
-            <img src="assets/ads/mkt-ad-03-momento.jpg" alt="Assaí — promoção momento extraordinário" width="402" height="419" />
-          </div>
-          <div class="mkt-ad-carousel__slide" data-ad-slide>
-            <img src="assets/ads/mkt-ad-04-assim.jpg" alt="Assim — produtos práticos de limpeza" width="402" height="419" />
+            <img src="assets/ads/mkt-ad-03-momento.jpg?v=73-32" alt="Assaí — promoção momento extraordinário" width="402" height="419" />
           </div>
         </div>
         <div class="mkt-ad-carousel__dots" role="tablist" aria-label="Slides da publicidade">
           <button type="button" class="is-active" data-ad-dot="0" aria-label="Slide 1" aria-current="true"></button>
           <button type="button" data-ad-dot="1" aria-label="Slide 2"></button>
           <button type="button" data-ad-dot="2" aria-label="Slide 3"></button>
-          <button type="button" data-ad-dot="3" aria-label="Slide 4"></button>
         </div>
       </div>
     </div>
@@ -203,7 +203,7 @@
         disablePictureInPicture
         aria-label="Vídeo marketing digital"
       >
-        <source src="assets/mkt-digital73/video-mkg.mp4?v=2" type="video/mp4">
+        <source src="assets/mkt-digital73/video-mkg.mp4?v=73-32" type="video/mp4">
       </video>
     </div>
     <div class="abs bottom-gradient"></div>
@@ -211,21 +211,21 @@
     <p class="abs cta-title">Quer aprender a vender pelo digital com mais estratégia?</p>
     <a class="abs cta-btn" href="https://academiaassai.learningflix.net/course/view.php?id=483&entryname=local_catalog&entryurl=httpsacademiaassai.learningflix.netlocalcatalogindex.phpcategoryid16">
       <span>Acessar Curso Gratuito</span>
-      <img src="assets/mkt-digital73/mkt-arrow.svg" width="10" height="10" alt="" />
+      <img src="assets/mkt-digital73/mkt-arrow.svg?v=73-32" width="10" height="10" alt="" />
     </a>
     <p class="abs cta-copy">Faça o curso gratuito Marketing e Vendas da Academia Assaí</p>
 
-    <div class="abs deco-mid-coin"><img class="img-fill" src="assets/mkt-digital73/mkt-coin.png?v=2" alt="" /></div>
-    <div class="abs deco-mid-g3"><img class="img-fill" src="assets/mkt-digital73/mkt-g3-mid.png?v=2" alt="" /></div>
-    <div class="abs deco-question"><img class="img-fill" src="assets/mkt-digital73/mkt-question2.png?v=2" alt="" /></div>
-    <div class="abs deco-clicker"><img class="img-fill" src="assets/mkt-digital73/mkt-clicker.png?v=2" alt="" /></div>
-    <div class="abs deco-bottom-g3"><img class="img-fill" src="assets/mkt-digital73/mkt-g3-bottom.png?v=2" alt="" /></div>
+    <div class="abs deco-mid-coin"><img class="img-fill" src="assets/mkt-digital73/mkt-coin.png?v=73-32" alt="" /></div>
+    <div class="abs deco-mid-g3"><img class="img-fill" src="assets/mkt-digital73/mkt-g3-mid.png?v=73-32" alt="" /></div>
+    <div class="abs deco-question"><img class="img-fill" src="assets/mkt-digital73/mkt-question2.png?v=73-32" alt="" /></div>
+    <div class="abs deco-clicker"><img class="img-fill" src="assets/mkt-digital73/mkt-clicker.png?v=73-32" alt="" /></div>
+    <div class="abs deco-bottom-g3"><img class="img-fill" src="assets/mkt-digital73/mkt-g3-bottom.png?v=73-32" alt="" /></div>
 
     <header class="abs head-wrap">
       <div class="head-inner">
         <a href="https://www.assai.com.br/revistadigital/" aria-label="Capa" class="abs head-blue"></a>
         <div class="abs head-gray" aria-hidden="true"></div>
-        <a href="https://www.assai.com.br/revistadigital/" aria-label="Capa" class="abs head-logo"><img src="assets/mkt-digital73/mkt-logo-head.svg" alt="" /></a>
+        <a href="https://www.assai.com.br/revistadigital/" aria-label="Capa" class="abs head-logo"><img src="assets/mkt-digital73/mkt-logo-head.svg?v=73-32" alt="" /></a>
         <nav class="head-menu" id="menu-principal" aria-label="Menu">
           <div class="head-menu-inner">
             <a class="stroke-cap" href="../index.html" data-menu-item>CAPA</a>
@@ -246,6 +246,28 @@
         </nav>
       </div>
     </header>
+
+    <!-- Publicidade — carrossel Extrusa-Pack -->
+    <div class="abs mkt-ad-slot mkt-ad-slot--rodape" aria-label="Publicidade">
+      <div class="mkt-ad-carousel" id="carrossel-mkt-ad-rodape" data-ad-carousel>
+        <div class="mkt-ad-carousel__track" id="carrossel-mkt-rodape-track" data-ad-track tabindex="0">
+          <div class="mkt-ad-carousel__slide" data-ad-slide>
+            <img src="assets/banners/extrusa1.png?v=73-32" alt="Extrusa-Pack — Pack Lixo Reforçado, com Sandra Sá" width="375" height="391" />
+          </div>
+          <div class="mkt-ad-carousel__slide" data-ad-slide>
+            <img src="assets/banners/extrusa2.png?v=73-32" alt="Extrusa-Pack — sacos para lixo e sacos plásticos picotados para alimentos" width="375" height="391" />
+          </div>
+          <div class="mkt-ad-carousel__slide" data-ad-slide>
+            <img src="assets/banners/extrusa3.png?v=73-32" alt="Extrusa-Pack — sacos plásticos picotados para alimentos, linha completa" width="375" height="391" />
+          </div>
+        </div>
+        <div class="mkt-ad-carousel__dots" role="tablist" aria-label="Slides da publicidade">
+          <button type="button" class="is-active" data-ad-dot="0" aria-label="Slide 1" aria-current="true"></button>
+          <button type="button" data-ad-dot="1" aria-label="Slide 2"></button>
+          <button type="button" data-ad-dot="2" aria-label="Slide 3"></button>
+        </div>
+      </div>
+    </div>
 
     <footer class="abs footer">
       <svg class="abs footer-bg-top" viewBox="0 0 403.33 56.9" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -277,13 +299,13 @@
         </svg>
       </a>
       <a href="https://www.assai.com.br" target="_blank" rel="noopener noreferrer" class="foot-icon foot-brand" aria-label="Marca Assaí">
-        <img src="assets/home73/footer-brand.svg" width="50" height="37" alt="Assaí Atacadista" />
+        <img src="assets/home73/footer-brand.svg?v=73-32" width="50" height="37" alt="Assaí Atacadista" />
       </a>
       <a href="https://www.assai.com.br/nossas-lojas" target="_blank" rel="noopener noreferrer" class="abs foot-lojas">NOSSAS LOJAS</a>
     </footer>
   </main>
-  <script src="js/animista-scroll.js" defer></script>
-  <script src="js/revista-73-menu.js?v=73-share" defer></script>
-  <script src="js/ad-carousel.js?v=1" defer></script>
+  <script src="js/animista-scroll.js?v=73-32" defer></script>
+  <script src="js/revista-73-menu.js?v=73-32" defer></script>
+  <script src="js/ad-carousel.js?v=73-32" defer></script>
 </body>
 </html>

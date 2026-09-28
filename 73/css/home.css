@@ -41,7 +41,7 @@
     .page {
       position: relative;
       width: 402px;
-      height: 2739px;
+      height: 2878px;
       background: #ffffff;
       overflow-x: hidden;
       overflow-y: visible;
@@ -564,7 +564,9 @@
   left: 0;
   top: 889px;
   width: 402px;
-  height: 87px;
+  /* 226px = altura da arte unilever2.jpg (900x506) em 402px de largura. O
+     quadro antigo tinha 384px: o conteudo abaixo subiu os 158px de diferenca */
+  height: 226px;
   overflow: hidden;
   background: transparent;
   z-index: 2;
@@ -586,32 +588,32 @@
   background: transparent;
 }
 
-.home-lay--019 { left:0; top:984px; width:402px; height:233px; overflow: visible; }
+.home-lay--019 { left:0; top:1123px; width:402px; height:233px; overflow: visible; }
 .home-lay--020 { top:0; height:146px; z-index:2; }
 .home-lay--021 { left:24px; top:13px; width:101px; background:#ffdc00; z-index:4; }
 .home-lay--022 { left:120px; top:0; width:266px; height:40px; z-index:5; }
 .home-lay--023 { left:24px; top:40px; width:177px; margin:0; z-index:6; }
-.home-lay--024 { left:0; top:1225px; width:198px; height:233px; }
+.home-lay--024 { left:0; top:1364px; width:198px; height:233px; }
 .home-lay--025 { top:84px; height:149px; }
 .home-lay--026 { left:23px; top:153px; width:97px; background:#ff7300; z-index:3; }
 .home-lay--027 { left:23px; top:180px; width:153px; margin:0; z-index:3; }
-.home-lay--028 { left:206px; top:1225px; width:198px; height:233px; }
+.home-lay--028 { left:206px; top:1364px; width:198px; height:233px; }
 .home-lay--029 { top:0; height:101px; }
 .home-lay--030 { left:23px; top:13px; width:74px; background:#532f82; z-index:3; }
 .home-lay--031 { left:23px; top:38.47px; width:153px; margin:0; z-index:3; }
-.home-lay--032 { left:0; top:1466px; width:402px; height:233px; }
+.home-lay--032 { left:0; top:1605px; width:402px; height:233px; }
 .home-lay--033 { top:124px; height:109px; }
 .home-lay--034 { left:24px; top:151px; width:67px; background:#f0051e; z-index:3; }
 .home-lay--035 { left:24px; top:178px; width:177px; margin:0; z-index:3; }
-.home-lay--036 { left:0; top:1707px; width:198px; height:233px; }
+.home-lay--036 { left:0; top:1846px; width:198px; height:233px; }
 .home-lay--037 { top:0; height:101px; }
 .home-lay--038 { left:23px; top:12.5px; width:80px; background:#ffaa00; z-index:3; }
 .home-lay--039 { left:23px; top:38.47px; width:153px; margin:0; z-index:3; }
-.home-lay--040 { left:206px; top:1707px; width:196px; height:233px; }
+.home-lay--040 { left:206px; top:1846px; width:196px; height:233px; }
 .home-lay--041 { top:135px; height:97px; }
 .home-lay--042 { left:23px; top:152px; width:125px; background:#00bebe; z-index:3; }
 .home-lay--043 { left:23px; top:179px; width:153px; margin:0; z-index:3; }
-.home-lay--044 { left:0; top:1947px; width:402px; height:233px; }
+.home-lay--044 { left:0; top:2086px; width:402px; height:233px; }
 .home-lay--045 { top:138px; height:95px; }
 .home-lay--046 { left:225px; top:153px; width:125px; background:#ff5564; z-index:3; }
 .home-lay--047 { left:225px; top:180px; width:153px; margin:0; z-index:3; }
@@ -621,9 +623,9 @@
   z-index: 2;
   cursor: default;
 }
-.home-ad-slot--destaque { left:0; top:2188px; width:402px; height:233px; }
-.home-ad-slot--a { left:0; top:2429px; width:198px; height:233px; }
-.home-ad-slot--b { left:206px; top:2429px; width:196px; height:233px; }
+.home-ad-slot--destaque { left:0; top:2327px; width:402px; height:233px; }
+.home-ad-slot--a { left:0; top:2568px; width:198px; height:233px; }
+.home-ad-slot--b { left:206px; top:2568px; width:196px; height:233px; }
 .home-ad-slot__media:empty { display: none; }
 .home-ad-slot__media:not(:empty) {
   position: absolute;
@@ -671,7 +673,7 @@
   line-height: 1.25;
 }
 
-.home-lay--048 { left:0; top:2625px; width:402px; height:114px; z-index:10; }
+.home-lay--048 { left:0; top:2764px; width:402px; height:114px; z-index:10; }
 .home-lay--049 { left:0; top:45px; width:402px; height:69px; }
 .home-lay--050 { left:291px; top:76px; z-index:2; }
 .home-lay--051 { left:25.63px; top:71.37px; width:18.76px; height:18.02px; z-index:2; display:flex; align-items:center; justify-content:center; }
