@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/animista.css?v=73-32">
-  <link rel="stylesheet" href="css/consumidor.css?v=73-32">
+  <link rel="stylesheet" href="css/consumidor.css?v=73-35">
 
 
   <link rel="stylesheet" href="css/revista-73-shell.css?v=73-32">
@@ -73,9 +73,10 @@
     <!-- Publicidade: banner rotativo. O HTML traz a primeira arte (aparece sem JS);
          o script no fim da pagina sorteia uma da lista em data-ad-random. -->
     <div class="abs consumidor-ad" aria-label="Publicidade" data-ad-random='[
-      {"src": "assets/banners/embalixo.jpg?v=73-32", "alt": "Embalixo — ultra resistente, o mais resistente do Brasil"},
-      {"src": "assets/banners/nivea.jpg?v=73-32", "alt": "Nivea — sinta na pele o cuidado de Nivea, temporada de hidratação"},
-      {"src": "assets/banners/polenghi.jpg?v=73-32", "alt": "Polenguinho — o queijinho que toda fominha adora"}
+      {"src": "assets/banners/embalixo.jpg?v=73-32", "w": 629, "h": 816, "alt": "Embalixo — ultra resistente, o mais resistente do Brasil"},
+      {"src": "assets/banners/nivea.jpg?v=73-32", "w": 900, "h": 1205, "alt": "Nivea — sinta na pele o cuidado de Nivea, temporada de hidratação"},
+      {"src": "assets/banners/polenghi.jpg?v=73-32", "w": 900, "h": 1125, "alt": "Polenguinho — o queijinho que toda fominha adora"},
+      {"src": "assets/banners/51.jpg?v=73-32", "w": 375, "h": 391, "alt": "51 — a boa ideia do Brasil, novo rótulo, sabor de sempre. Beba com moderação"}
     ]'>
       <img src="assets/banners/embalixo.jpg?v=73-32" alt="Embalixo — ultra resistente, o mais resistente do Brasil" width="402" height="520" />
     </div>
@@ -294,9 +295,17 @@
       try { lista = JSON.parse(box.getAttribute("data-ad-random")) || []; } catch (e) {}
       if (lista.length < 2) return;
       var item = lista[Math.floor(Math.random() * lista.length)];
-      if (item && item.src !== img.getAttribute("src")) {
+      if (!item) return;
+      if (item.src !== img.getAttribute("src")) {
         img.src = item.src;
         img.alt = item.alt || "";
+      }
+      /* altura variavel: a arte ocupa 402px de largura; a diferenca para os
+         520px da base vai para --ad-extra (ver css/consumidor.css) */
+      if (item.w && item.h) {
+        var altura = Math.round(402 * item.h / item.w);
+        img.width = 402; img.height = altura;
+        document.querySelector(".main-consumidor").style.setProperty("--ad-extra", (altura - 520) + "px");
       }
     })();
 
