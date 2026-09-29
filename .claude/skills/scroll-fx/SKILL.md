@@ -21,7 +21,9 @@ description: >-
   com fadein-right"), ou um título cujas
   letras se juntam vindas de todo lado ao carregar ("magnetic-pull no h1"), ou
   um elemento que percorre uma curva do layout crescendo e girando conforme o
-  scroll ("orbit-in no celular").
+  scroll ("orbit-in no celular"), ou peças que caem do topo do bloco até o
+  lugar, uma de cada vez, e depois flutuam ("drop-in nos cifrões", "os $ caem
+  do topo quando o bloco entra na tela").
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
   depois acrescente o efeito aqui.
 ---
@@ -59,7 +61,7 @@ ajuste vale para todas.
    No `<style>`, liste **cada efeito de entrada usado na página** (seletores
    separados por vírgula). Efeito aplicado no próprio elemento
    (`slide-in-left`) usa `[data-fx="…"]`; efeito de contêiner com itens
-   (`scale-up`, `pop-in`) esconde os itens: `[data-fx="…"] [data-fx-item]` —
+   (`scale-up`, `pop-in`, `drop-in`) esconde os itens: `[data-fx="…"] [data-fx-item]` —
    esconder o contêiner inteiro sumiria também o que não anima (ex.: o
    `hero-wash`, ou o resto da `.art-bg` da GESTÃO).
 
@@ -584,9 +586,15 @@ itens; o do item vence o do contêiner.
 | `data-fx-margem` | contêiner ou item | `100` | px acima do fundo da tela em que a sequência dispara (maior = mais tarde, com o bloco mais dentro da tela) |
 | `data-fx-linha` | contêiner ou item | — | em vez da margem: a linha de disparo nessa fração da altura da tela, contada **do topo** (`"80%"` = quando o item chega aos 80% da tela). Não depende do tamanho do aparelho |
 | `data-fx-atraso` | contêiner | `0` | segundos antes do primeiro (só ao carregar) |
-| `data-fx-balanco` | item | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
-| `data-fx-balanco-duracao` | item | `1.6` | segundos de cada ida (ou volta) do balanço |
-| `data-fx-flutuacao` | item | — | depois de surgir, sobe N px e volta, sem parar; cada item com ritmo (1,4–2s) e fase próprios, para não flutuarem juntos |
+| `data-fx-balanco` | item ou contêiner | — | depois de surgir, gira ±N graus em volta do centro, sem parar |
+| `data-fx-balanco-duracao` | item ou contêiner | `1.6` | segundos de cada ida (ou volta) do balanço |
+| `data-fx-flutuacao` | item ou contêiner | — | depois de surgir, sobe N px e volta, sem parar; cada item com ritmo (1,4–2s) e fase próprios, para não flutuarem juntos |
+| `data-fx-flutuacao-velocidade` | item ou contêiner | `1` | multiplica a velocidade da flutuação (`1.3` = 30% mais rápida, ritmo 1,08–1,54s); em uso nos cifrões da `74/noticias2.html` |
+
+**Movimento contínuo sem degraus:** quem flutua ou balança ganha
+`will-change: transform` (o componente põe e tira sozinho). Sem isso o Chrome
+redesenha o item a cada quadro e o arredonda para o pixel inteiro — num
+movimento lento e curto (6px em ~1,5s) o item anda "um passo de cada vez".
 
 Valores aprovados na GESTÃO: balanço **7°** na bisnaga, flutuação **10px** nas
 gotas (30° e 20px ficaram exagerados — prefira movimentos contínuos pequenos);
@@ -654,6 +662,50 @@ da `ol.passos` em `fade-left` e as 4 pills da `.foto-faturamento` em `pop`
 `74/delivery.html` — o ícone do fantasma (`pop`, na camada de decoração) e, na
 `.s-pausar`, a citação e o parágrafo seguinte em `fade` de 1s, cada um no seu
 grupo para entrar na própria linha.
+`74/academia.html` — a foto do hero em `fade-up` (40px, 0,9s) ao carregar; os 5
+números do mapa (`.mapa-badges`) em `pop`, 0,7s entre eles, ao chegar à tela.
+
+### `drop-in` — entrada
+
+Os itens **caem**: cada um sai da **borda de cima do contêiner**, invisível, e
+desce até a posição do CSS aparecendo com fade, um de cada vez. Depois pode
+flutuar. Dispara quando o bloco chega à tela e **recomeça a cada entrada** (ao
+sair, rearma). Cada item mede a própria distância até o topo do contêiner — não
+é preciso calcular nada. É o `pop-in` com `fade-up` e deslocamento negativo:
+herda a espera pelas imagens, o rearme, a flutuação e o balanço.
+
+```html
+<section class="bl bl-arroz" data-fx="drop-in"
+         data-fx-flutuacao="10" data-fx-flutuacao-velocidade="1.3">
+  <span class="cifrao cifrao--1" data-fx-item>$</span>
+  <span class="cifrao cifrao--2" data-fx-item>$</span>
+  <span class="cifrao cifrao--3" data-fx-item>$</span>
+</section>
+```
+
+| atributo | onde | padrão | efeito |
+|---|---|---|---|
+| `data-fx-intervalo` | contêiner | `0.7` | segundos entre um item e o seguinte |
+| `data-fx-duracao` | contêiner | `0.9` | segundos da queda |
+| `data-fx-queda` | contêiner ou item | `topo` | de onde cai: `topo` = da borda de cima do contêiner (distância medida por item); ou um número de px, igual para todos |
+| `data-fx-quando` | contêiner | `scroll` | `scroll` (ao chegar à tela) ou `carregar` (na abertura) |
+| `data-fx-margem`, `data-fx-linha` | contêiner | `100`, — | linha de disparo, como no `pop-in` |
+| `data-fx-flutuacao`, `data-fx-flutuacao-velocidade`, `data-fx-balanco` | contêiner ou item | — | movimento depois de pousar, como no `pop-in` |
+
+Os padrões são os aprovados nos cifrões da NOTÍCIAS: 0,7s entre eles, queda de
+0,9s, flutuação de 10px 30% mais rápida (6px lentos pareciam travados — ver
+"movimento contínuo sem degraus" no `pop-in`).
+
+Checklist:
+- Os itens podem ser absolutos (como os cifrões) ou estar no fluxo: a distância
+  é medida na tela, antes de qualquer transform, e convertida pela escala do
+  mobile.
+- Se o contêiner não recorta (`overflow: visible`), a queda começa na borda de
+  cima dele — com fade, então nada aparece sobre o bloco de cima.
+- Anime o invólucro: o efeito usa `y`, e sobrescreveria um `transform` do CSS.
+- Anti-piscada no `<head>` com `[data-fx="drop-in"] [data-fx-item]`.
+
+Em uso: `74/noticias2.html` — os 3 cifrões do bloco do arroz (`.bl-arroz`).
 
 ## Antes de aplicar um efeito de scroll (checklist)
 

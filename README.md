@@ -166,6 +166,7 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | `magnetic-pull` (entrada) | ao carregar, as letras do texto vêm de posições e rotações aleatórias e se juntam no lugar; no fim, o HTML volta ao original (precisa do SplitText) | `74/gestao2.html` (título da abertura) |
 | `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
 | `pop-in` (entrada) | os itens surgem um de cada vez — com "pop", com `fade` (só aparecendo), com `fade-up` (subindo com fade) ou com `fade-right` (vindo da esquerda) ou `fade-left` (vindo da direita) — na abertura, ou a cada vez que o bloco/grupo entra na tela (recomeça ao voltar); depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase); `74/mkt.html` (as 3 ferramentas de IA em `fade-right`, 0,5s, ao chegar à tela); `74/academia.html` (foto do hero em `fade-up`, 40px, 0,9s, ao carregar; os 5 números do mapa com "pop", 0,7s entre eles, ao chegar à tela) |
+| `drop-in` (entrada) | os itens caem da borda de cima do bloco até o lugar, com fade, um de cada vez (0,7s), quando o bloco chega à tela; depois podem flutuar. Recomeça ao voltar à tela | `74/noticias2.html` (os 3 cifrões do bloco do arroz, flutuando 10px, 30% mais rápido) |
 | `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
 
 Efeito de entrada exige um trecho anti-piscada no `<head>` da página (está na
@@ -205,6 +206,11 @@ Os probes da PRINCIPAL (`probe.py`) e da GESTÃO (`probe_gestao.py`) bloqueiam o
 `js/scroll-fx.js` e medem o layout do CSS, sem as animações (cards abertos,
 nada congelado, nada em escala 0). Página nova com efeitos: faça o mesmo no
 probe dela.
+
+**Flutuação e balanço sem "degraus":** o `pop-in` (e o `drop-in`) põe
+`will-change: transform` em quem flutua ou balança. Sem isso o Chrome arredonda o
+item para o pixel inteiro a cada quadro, e um movimento lento e curto parece
+andar um passo de cada vez.
 
 **Texto + desenho animados juntos** (balão com frase, selo…): os dois precisam
 estar no mesmo elemento. Na GESTÃO, o balão "É só um sachê de R$ 0,15." era o

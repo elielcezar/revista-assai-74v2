@@ -12,6 +12,7 @@
      <img data-fx="slide-in-left" …>             ← entrada: roda ao carregar
      <div data-fx="scale-up"><span data-fx-item> ← entrada: crescem da base, em cascata
      <div data-fx="pop-in"><span data-fx-item>   ← entrada: surgem com "pop", um de cada vez
+     <div data-fx="drop-in"><span data-fx-item>  ← entrada: caem do topo do bloco, um de cada vez
      <span data-fx="orbit-in">                   ← scroll: percorre uma curva crescendo e girando
      <h1 data-fx="magnetic-pull">                ← entrada: letras se juntam vindas de todo lado
                                                    (precisa do SplitText.min.js)
@@ -786,9 +787,15 @@
      Opções no item (sobrepõem as do contêiner):
        data-fx-entrada, data-fx-deslocamento, data-fx-origem="50% 50%",
        data-fx-grupo="x", data-fx-intervalo, data-fx-margem,
+     Opções no item ou no contêiner (valem para todos os itens):
        data-fx-balanco="7"        depois de surgir, gira ±N graus, sem parar
        data-fx-balanco-duracao="1.6"
        data-fx-flutuacao="10"     depois de surgir, sobe N px e volta, sem parar
+       data-fx-flutuacao-velocidade="1"  multiplica a velocidade da flutuação
+                                  (1.3 = 30% mais rápida)
+     Quem flutua ou balança ganha will-change: transform (camada própria): sem
+     ela o navegador arredonda o item para o pixel inteiro a cada quadro, e o
+     movimento lento sai "em degraus".
 
      Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
      ========================================================= */
@@ -812,6 +819,7 @@
     // desfaz o que a entrada (e o balanço/flutuação que vêm depois) deixou.
     function estadoInicial(el) {
       gsap.killTweensOf(el);
+      el.style.willChange = "";
       var t = tipo(el), d = desloc(el), base = { x: 0, y: 0, rotation: 0 };
       if (t === "fade-up") base.y = d;
       else if (t === "fade-right") base.x = -d;      // vem da esquerda
@@ -828,19 +836,23 @@
 
     // depois de surgir: balanço (gira) e/ou flutuação (sobe e desce), sem parar
     function continuar(el) {
-      var graus = pct(el.getAttribute("data-fx-balanco"), 0);
-      var altura = pct(el.getAttribute("data-fx-flutuacao"), 0);
+      var graus = pct(attr(el, "data-fx-balanco", "0"), 0);
+      var altura = pct(attr(el, "data-fx-flutuacao", "0"), 0);
       if (!graus && !altura) { gsap.set(el, { clearProps: "transform,transformOrigin,opacity,visibility" }); return; }
+      // camada própria: sem ela o navegador redesenha o item a cada quadro e
+      // arredonda para o pixel inteiro, e o movimento lento sai "em degraus"
+      gsap.set(el, { willChange: "transform" });
       if (graus) {
-        var ida = pct(el.getAttribute("data-fx-balanco-duracao"), 1.6);
+        var ida = pct(attr(el, "data-fx-balanco-duracao", "1.6"), 1.6);
         // do repouso até um lado, depois de um lado ao outro
         gsap.timeline()
           .to(el, { rotation: -graus, duration: ida / 2, ease: "sine.out" })
           .to(el, { rotation: graus, duration: ida, ease: "sine.inOut", repeat: -1, yoyo: true });
       }
       if (altura) {
-        gsap.to(el, { y: -altura, duration: gsap.utils.random(1.4, 2), ease: "sine.inOut",
-          repeat: -1, yoyo: true, delay: gsap.utils.random(0, 0.6) });
+        var vel = pct(attr(el, "data-fx-flutuacao-velocidade", "1"), 1) || 1;
+        gsap.to(el, { y: -altura, duration: gsap.utils.random(1.4, 2) / vel, ease: "sine.inOut",
+          repeat: -1, yoyo: true, delay: gsap.utils.random(0, 0.6) / vel });
       }
     }
 
@@ -915,6 +927,50 @@
     window.addEventListener("scroll", noScroll, { passive: true });
     window.addEventListener("resize", noScroll);
     checar();
+  }
+
+  /* =========================================================
+     drop-in  (entrada: quando o bloco chega à tela)
+     Os itens CAEM: cada um sai da borda de cima do contêiner, invisível, e
+     desce até a posição do CSS aparecendo com fade, um de cada vez. Depois
+     pode flutuar. Rearma ao sair da tela e cai de novo quando o leitor volta.
+
+       <section data-fx="drop-in" data-fx-flutuacao="10">
+         <span class="cifrao" data-fx-item>$</span>   ← itens absolutos ou no fluxo
+       </section>
+
+     Opções no contêiner (padrões = os aprovados nos cifrões da NOTÍCIAS):
+       data-fx-intervalo="0.7"    segundos entre um item e o seguinte
+       data-fx-duracao="0.9"      segundos da queda
+       data-fx-queda="topo"       de onde cai: "topo" = da borda de cima do
+                                  contêiner (cada item mede a própria distância);
+                                  ou um número de px, igual para todos
+       data-fx-quando="scroll"    "scroll" (padrão) ou "carregar"
+       data-fx-margem, data-fx-linha, data-fx-flutuacao,
+       data-fx-flutuacao-velocidade, data-fx-balanco…  como no pop-in
+     No item, data-fx-queda sobrepõe a do contêiner.
+
+     É o pop-in com entrada "fade-up" e deslocamento negativo, medido aqui:
+     herda dele a espera pelas imagens, o rearme e a flutuação.
+     Precisa do trecho anti-piscada no <head> com [data-fx="drop-in"] [data-fx-item].
+     ========================================================= */
+  function dropIn(sec) {
+    var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
+    if (!itens.length) return;
+    function padrao(nome, valor) { if (!sec.hasAttribute(nome)) sec.setAttribute(nome, valor); }
+    padrao("data-fx-quando", "scroll");
+    padrao("data-fx-intervalo", "0.7");
+    padrao("data-fx-duracao", "0.9");
+    sec.setAttribute("data-fx-entrada", "fade-up");
+    // distância de cada item até a borda de cima do contêiner, em px de CSS,
+    // medida antes de qualquer transform
+    var z = zoom(), topo = sec.getBoundingClientRect().top;
+    itens.forEach(function (el) {
+      var q = el.getAttribute("data-fx-queda") || sec.getAttribute("data-fx-queda") || "topo";
+      var d = q === "topo" ? (el.getBoundingClientRect().top - topo) / z : pct(q, 200);
+      el.setAttribute("data-fx-deslocamento", String(-Math.max(0, Math.round(d))));
+    });
+    popIn(sec);
   }
 
   /* =========================================================
@@ -1186,7 +1242,7 @@
 
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack, "pin-sequencia": pinSequencia };
-  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe };
+  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.
