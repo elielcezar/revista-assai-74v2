@@ -76,7 +76,9 @@
 .d-e122b { left: 48px; top: 3373px; width: 302px; height: 138px; background: var(--amarelo-escuro); }
 .d-e124 { left: 48px; top: 4797px; width: 302px; height: 138px; background: var(--vermelho); }
 
-.d-tomato { left: 191px; top: 3373px; width: 60px; height: 64px; transform: rotate(180deg); }
+/* a rotacao fica num span interno: o pop-in anima o transform do invólucro */
+.d-tomato { left: 191px; top: 3373px; width: 60px; height: 64px; }
+.d-tomato > span { position: absolute; inset: 0; transform: rotate(180deg); }
 .art-bg .d-tomato img { left: -13.74px; top: -42.06px; width: 147.35px; height: 147.29px; filter: brightness(.94) contrast(1.16); }
 
 /* manjericao: imageTransform com rotacao/cisalhamento -> matriz inversa */

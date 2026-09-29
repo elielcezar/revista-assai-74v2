@@ -21,7 +21,7 @@
 /* =========================================================
    BLOCO 1 — HERO  (402 x 870)
    ========================================================= */
-.bl-hero { min-height: 870px; }
+.bl-hero { min-height: 721px; } /* a faixa vermelha (.hero-band, 149px) foi para a .bl-bands */
 
 .hero-wash { left: -65px; top: 0; width: 554px; height: 487px; background: var(--laranja); opacity: .2; }
 .hero-e140 { left: -23.63%; right: -33.33%; top: 379px; height: 309px; }
@@ -57,7 +57,7 @@
 /* =========================================================
    BLOCO 2 — BANDAS  (402 x 866)
    ========================================================= */
-.bl-bands { min-height: 866px; }
+.bl-bands { min-height: 1015px; } /* +149 da .hero-band, que abre o bloco */
 
 .band { position: relative; }
 .band p { width: 349px; font-size: 18px; line-height: normal; color: #fff; }
@@ -66,7 +66,7 @@
 .band--darkred p + p { margin-top: 20px; }
 .band--darkred strong { font-weight: 700; }
 
-.bands-figure { position: absolute; left: -155px; top: 417px; width: 703px; height: 448px; }
+.bands-figure { position: absolute; left: -155px; top: 566px; width: 703px; height: 448px; }
 .bands-figure img { width: 703px; height: 448px; object-fit: cover; transform: scaleX(-1); }
 
 /* =========================================================

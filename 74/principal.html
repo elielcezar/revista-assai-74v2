@@ -30,15 +30,15 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="slide-in-left"],.fx-espera [data-fx="scale-up"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="slide-in-left"],.fx-espera [data-fx="scale-up"] [data-fx-item],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Negócios entre Gerações — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Parceria entre gerações traz escala para negócios familiares e alcança comunidade digital.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-87">
-<link rel="stylesheet" href="css/principal.css?v=74-87">
-<link rel="stylesheet" href="../css/shell.css?v=74-87">
+<link rel="stylesheet" href="../css/base.css?v=74-91">
+<link rel="stylesheet" href="css/principal.css?v=74-91">
+<link rel="stylesheet" href="../css/shell.css?v=74-91">
 </head>
 <body>
 
@@ -122,19 +122,21 @@
       </figcaption>
     </figure>
 
-    <div class="hero-band">
-      <p>Pequenos negócios enfrentam um desafio recorrente: o conhecimento e a experiência nem sempre acompanham as mudanças no comportamento do consumidor.</p>
-    </div>
   </section>
 
   <!-- ============ BLOCO 2 — BANDAS VERMELHAS ============ -->
-  <section class="bl bl-bands">
+  <!-- os 4 paragrafos entram vindo da esquerda, 0,7s entre eles, quando o bloco chega a tela -->
+  <section class="bl bl-bands" data-fx="pop-in" data-fx-quando="scroll" data-fx-entrada="fade-right" data-fx-intervalo="0.7">
+    <!-- era o fim do hero: veio para ca para os 4 paragrafos ficarem num so pop-in -->
+    <div class="hero-band">
+      <p data-fx-item>Pequenos negócios enfrentam um desafio recorrente: o conhecimento e a experiência nem sempre acompanham as mudanças no comportamento do consumidor.</p>
+    </div>
     <div class="band band--red">
-      <p>Receitas consolidadas e clientela fiel garantem a qualidade do produto. Mas as redes sociais e a produção de conteúdo ampliam o alcance do negócio.</p>
+      <p data-fx-item>Receitas consolidadas e clientela fiel garantem a qualidade do produto. Mas as redes sociais e a produção de conteúdo ampliam o alcance do negócio.</p>
     </div>
     <div class="band band--darkred">
-      <p>Segundo Igor Chohfi, <strong>especialista em desenvolvimento organizacional</strong> e cofundador da Rede Pavim, o principal benefício de reunir diferentes gerações está na diversidade de perspectivas.</p>
-      <p>"Essa diversidade de pensamento traz muitos pontos positivos para qualquer negócio. O desafio é conciliar novas ideias com aquilo que já funciona", explica Chohfi.</p>
+      <p data-fx-item>Segundo Igor Chohfi, <strong>especialista em desenvolvimento organizacional</strong> e cofundador da Rede Pavim, o principal benefício de reunir diferentes gerações está na diversidade de perspectivas.</p>
+      <p data-fx-item>"Essa diversidade de pensamento traz muitos pontos positivos para qualquer negócio. O desafio é conciliar novas ideias com aquilo que já funciona", explica Chohfi.</p>
     </div>
     <figure class="bands-figure">
       <img src="assets/imgImg4002Copiar1.png" alt="Madalena segurando uma bandeja de pães recém-assados">
@@ -250,11 +252,11 @@
     <div class="bcar" data-bcar>
       <div class="bcar-view">
         <div class="bcar-track" data-btrack>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-87" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-87" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-87" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-87" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
-          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-87" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes01.jpg?v=74-91" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes02.jpg?v=74-91" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes03.jpg?v=74-91" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes04.jpg?v=74-91" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
+          <figure class="bslide" data-bslide><img src="assets/banners/gomes05.jpg?v=74-91" alt="Publicidade Gomes da Costa" width="402" height="384"></figure>
         </div>
       </div>
       <div class="bcar-dots">
@@ -351,11 +353,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-87"></script>
-<script src="js/principal.js?v=74-87"></script>
+<script src="../js/shell.js?v=74-91"></script>
+<script src="js/principal.js?v=74-91"></script>
 <!-- animações de scroll (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-87"></script>
+<script src="../js/scroll-fx.js?v=74-91"></script>
 </body>
 </html>
