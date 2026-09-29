@@ -842,6 +842,8 @@
      Opções no item (sobrepõem as do contêiner):
        data-fx-entrada, data-fx-deslocamento, data-fx-origem="50% 50%",
        data-fx-grupo="x", data-fx-intervalo, data-fx-margem,
+       data-fx-atraso="1"         (no 1º item de um grupo) segundos antes da sequência
+                                  do grupo, a cada entrada na tela
      Opções no item ou no contêiner (valem para todos os itens):
        data-fx-balanco="7"        depois de surgir, gira ±N graus, sem parar
        data-fx-balanco-duracao="1.6"
@@ -968,6 +970,8 @@
                intervalo: pct(attr(primeiro, "data-fx-intervalo", "0.2"), 0.2),
                margem: pct(attr(primeiro, "data-fx-margem", "100"), 100),
                linha: attr(primeiro, "data-fx-linha", null),   // "40%" do topo
+               // atraso só do item (não herda do contêiner, que é o da abertura)
+               atraso: pct(primeiro.getAttribute("data-fx-atraso"), 0),
                dentro: false };   // a sequência está rodando/terminada na tela?
     });
     if (!pendentes.length) return;
@@ -986,7 +990,7 @@
                             : window.innerHeight - g.margem;
         var chegou = primeiro.top <= linha && ultimo.bottom > 0;
         var saiu = ultimo.bottom <= 0 || primeiro.top > window.innerHeight;
-        if (!g.dentro && chegou) { g.dentro = true; surgir(g.itens, g.intervalo, 0); }
+        if (!g.dentro && chegou) { g.dentro = true; surgir(g.itens, g.intervalo, g.atraso); }
         else if (g.dentro && saiu) { g.dentro = false; g.itens.forEach(estadoInicial); }
       });
     }
