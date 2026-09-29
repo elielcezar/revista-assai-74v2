@@ -1090,6 +1090,8 @@
        data-fx-de="esquerda"   de onde descobre: "esquerda", "direita",
                                "cima" ou "baixo"
        data-fx-margem="100"    px acima do fundo da tela que disparam
+       data-fx-atraso="0"      segundos antes de abrir (ex.: título e subtítulo
+                               em sequência)
 
      Refaz a cada vez que o elemento volta à tela; ao sair, rearma. Não mexe no
      fluxo (só recorta), então serve em página de decoração global.
@@ -1101,6 +1103,7 @@
     var dur = pct(el.getAttribute("data-fx-duracao"), 1.2);
     var margem = pct(el.getAttribute("data-fx-margem"), 100);
     var de = el.getAttribute("data-fx-de") || "esquerda";
+    var atraso = pct(el.getAttribute("data-fx-atraso"), 0);
     // inset(cima direita baixo esquerda): o lado que começa 100% é o que
     // esconde, e é dele que a cortina abre
     var fechado = { esquerda: "inset(0 100% 0 0)", direita: "inset(0 0 0 100%)",
@@ -1119,7 +1122,7 @@
         dentro = true;
         if (tw) tw.kill();
         tw = gsap.fromTo(el, { clipPath: fechado },
-          { clipPath: aberto, duration: dur, ease: "power3.inOut",
+          { clipPath: aberto, duration: dur, delay: atraso, ease: "power3.inOut",
             onComplete: function () { gsap.set(el, { clearProps: "clipPath" }); } });
       } else if (dentro && !naTela()) {      // saiu: rearma para a próxima vez
         dentro = false;

@@ -30,15 +30,15 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="drop-in"] [data-fx-item],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="drop-in"] [data-fx-item],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Escolha dos insumos: como economizar sem mudar o padrão do seu prato — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Comparar preço por quilo é só o começo. Rendimento, qualidade no preparo, armazenamento e custo por porção mostram se a troca realmente protege a margem do negócio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-86">
-<link rel="stylesheet" href="css/noticias2.css?v=74-86">
-<link rel="stylesheet" href="../css/shell.css?v=74-86">
+<link rel="stylesheet" href="../css/base.css?v=74-106">
+<link rel="stylesheet" href="css/noticias2.css?v=74-106">
+<link rel="stylesheet" href="../css/shell.css?v=74-106">
 </head>
 <body>
 
@@ -99,8 +99,8 @@
     <!-- ====== BLOCO 1 — hero ====== -->
     <section class="bl bl-hero">
       <figure class="hero-foto"><img src="assets/noticias2/imgHeroFoto.png" alt="Embalagens da linha Assaí Chef sobre bancada de cozinha"></figure>
-      <h1 class="hero-title">Escolha dos insumos:</h1>
-      <p class="hero-sub">como economizar sem mudar o padrão do seu prato</p>
+      <h1 class="hero-title" data-fx="reveal-wipe">Escolha dos insumos:</h1>
+      <p class="hero-sub" data-fx="reveal-wipe" data-fx-atraso="1">como economizar sem mudar o padrão do seu prato</p>
       <p class="hero-lead">Comparar preço por quilo é só o começo. Rendimento, qualidade no preparo, armazenamento e custo por porção mostram se a troca realmente protege a margem do negócio.</p>
       <div class="badge74">
         <span class="badge74-ed">#74 set. 26</span>
@@ -197,7 +197,7 @@
 
     <!-- ====== BANNER ====== -->
     <figure class="adbox">
-      <img src="assets/banners/assai2.jpg?v=74-86" alt="Assaí — novos produtos para aproveitar: lançamentos das Marcas Próprias Assaí, Assaí Chef e Assaí Bloom" width="1080" height="1440">
+      <img src="assets/banners/assai2.jpg?v=74-106" alt="Assaí — novos produtos para aproveitar: lançamentos das Marcas Próprias Assaí, Assaí Chef e Assaí Bloom" width="1080" height="1440">
     </figure>
 
     <!-- ====== BLOCO 10 — marcas próprias ====== -->
@@ -236,10 +236,10 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-86"></script>
-<script src="js/noticias2.js?v=74-86"></script>
+<script src="../js/shell.js?v=74-106"></script>
+<script src="js/noticias2.js?v=74-106"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-86"></script>
+<script src="../js/scroll-fx.js?v=74-106"></script>
 </body>
 </html>
