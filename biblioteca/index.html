@@ -171,6 +171,9 @@
   .uso { margin-top: 10px !important; font-size: 14px !important; font-weight: 700; color: var(--tinta) !important; }
   .uso a { color: #7a5cff; text-decoration: none; border-bottom: 2px solid var(--lilas); }
   .uso a:hover { border-bottom-color: #7a5cff; }
+  .trilho--texto { padding: 34px 0; }
+  .frase-larga { margin: 0; padding: 0 26px; width: max-content; white-space: nowrap;
+                 font-size: clamp(44px, 9vw, 72px); font-weight: 900; line-height: 1.1; color: #7a5cff; }
   .fim { text-align: center; padding: 520px 0 0; font-size: 15px; color: var(--suave); }
 </style>
 </head>
@@ -465,12 +468,12 @@
     </div>
   </section>
 
-  <!-- ================= 19. PIN-HORIZONTAL ================= -->
+  <!-- ================= 19. PIN-HORIZONTAL · CARDS ================= -->
   <section class="demo" data-fx="pin-horizontal">
     <div class="demo-head">
       <span class="demo-num">19</span>
-      <h2>pin-horizontal <span class="tipo tipo--scroll">scroll</span></h2>
-      <p>Quando o trilho chega ao meio da tela, <b>a tela inteira congela</b> e o scroll vertical passa a correr só o trilho para o lado, 1:1. No fim do trilho, a página volta a rolar. O leitor também pode arrastar ou usar setas, e o scroll continua de onde ele parou.</p>
+      <h2>pin-horizontal · cards <span class="tipo tipo--scroll">scroll</span></h2>
+      <p>O mesmo efeito serve para <b>cards, fotos ou uma galeria</b>. Quando o trilho chega ao meio da tela, <b>a tela inteira congela</b> e o scroll vertical passa a correr só o trilho para o lado, 1:1. No fim do trilho, a página volta a rolar. O leitor também pode arrastar ou usar setas, e o scroll continua de onde ele parou.</p>
       <p class="uso">Utilizado em: <a href="../74/principal.html">PRINCIPAL</a>, <a href="../74/gestao.html">GESTÃO</a>, <a href="../74/academia.html">ACADEMIA ASSAÍ</a>, <a href="../74/mkt.html">MKT DIGITAL</a>, <a href="../74/gestao2.html">GESTÃO 2</a></p>
     </div>
     <div class="palco trilho" data-fx-item>
@@ -491,10 +494,23 @@
     </div>
   </section>
 
-  <!-- ================= 20. ORBIT-IN ================= -->
-  <section class="demo">
+  <!-- ================= 20. PIN-HORIZONTAL · TEXTO ================= -->
+  <section class="demo" data-fx="pin-horizontal">
     <div class="demo-head">
       <span class="demo-num">20</span>
+      <h2>pin-horizontal · texto <span class="tipo tipo--scroll">scroll</span></h2>
+      <p>O mesmo efeito com <b>uma frase grande numa linha só</b>, como uma citação de destaque: a tela congela e o texto corre para o lado enquanto o leitor rola, até a última palavra. Depois, a página volta a rolar.</p>
+      <p class="uso">Utilizado em: <a href="../74/principal.html">PRINCIPAL</a>, <a href="../74/gestao.html">GESTÃO</a>, <a href="../74/academia.html">ACADEMIA ASSAÍ</a>, <a href="../74/mkt.html">MKT DIGITAL</a>, <a href="../74/gestao2.html">GESTÃO 2</a></p>
+    </div>
+    <div class="palco trilho trilho--texto" data-fx-item>
+      <p class="frase-larga">"Cada geração enxerga o mundo de uma forma diferente. O desafio é conciliar novas ideias com aquilo que já funciona."</p>
+    </div>
+  </section>
+
+  <!-- ================= 21. ORBIT-IN ================= -->
+  <section class="demo">
+    <div class="demo-head">
+      <span class="demo-num">21</span>
       <h2>orbit-in <span class="tipo tipo--scroll">scroll</span></h2>
       <p>O elemento percorre a <b>curva de uma elipse do layout</b> (aqui, o arco) enquanto cresce e gira, preso ao scroll. Termina exatamente na posição, no tamanho e na inclinação do layout. Rolando para cima, desfaz.</p>
       <p class="uso">Utilizado em: <a href="../74/gestao2.html">GESTÃO 2</a>, <a href="../74/mkt.html">MKT DIGITAL</a></p>
@@ -502,14 +518,14 @@
     <div class="palco orbita">
       <span class="arco"></span>
       <span class="satelite forma forma--redonda emoji" data-fx="orbit-in" data-fx-curva=".arco" data-fx-curva-metade="topo"
-            data-fx-de-angulo="180" data-fx-escala="0.05" data-fx-rotacao="20" data-fx-inicio="87.5%" data-fx-fim="45%">📱</span>
+            data-fx-de-angulo="180" data-fx-escala="0.05" data-fx-rotacao="20" data-fx-inicio="75%" data-fx-fim="45%">📱</span>
     </div>
   </section>
 
-  <!-- ================= 21. PIN-SEQUENCIA ================= -->
+  <!-- ================= 22. PIN-SEQUENCIA ================= -->
   <section class="demo">
     <div class="demo-head">
-      <span class="demo-num">21</span>
+      <span class="demo-num">22</span>
       <h2>pin-sequencia <span class="tipo tipo--scroll">scroll</span></h2>
       <p>A tela <b>congela</b> e passa uma sequência: a foto ocupa a tela inteira e os balões atravessam de baixo para cima, um de cada vez. Quando um sai pelo topo, o seguinte entra e a foto troca em fade cruzado.</p>
       <p class="uso">Utilizado em: <a href="../74/negocio.html">NOVO NEGÓCIO</a></p>
