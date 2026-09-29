@@ -61,6 +61,8 @@
 }
 .hero-author { height: 22px; font-size: 18px; font-weight: 500; font-style: italic; color: #000; line-height: normal; }
 
+/* altura fixa = titulo completo: o typewriter apaga e reescreve sem mexer no que vem abaixo */
+.hero-title-fx { height: 122px; }
 .hero-title { display: flex; flex-direction: column; margin: 15px 0 0 20px; line-height: normal; }
 .hero-title .laranja { font-size: 60px; font-weight: 700; color: var(--laranja); }
 .hero-title .vermelho { font-size: 58px; font-weight: 700; color: var(--vermelho); margin-top: -10px; }
@@ -141,7 +143,7 @@
    184x190 fornecida pelo Figma ja e a caixa delimitadora POS-rotacao */
 .trabalho-detalhe {
   position: absolute; left: 150.2px; top: 449px; width: 129px; height: 146px;
-  transform: rotate(29.222deg); border-radius: 12px; overflow: hidden;
+  transform: rotate(29.222deg); border-radius: 12px; overflow: visible; /* o pop-shake balança a img: nada de recorte */
 }
 .trabalho-detalhe img { width: 100%; height: 100%; object-fit: cover; }
 

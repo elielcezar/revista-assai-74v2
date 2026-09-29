@@ -30,15 +30,15 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="pop-shake"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="pop-shake"] [data-fx-item],.fx-espera [data-fx="typewriter"] [data-fx-item]{visibility:hidden}</style>
 <title>Todo hype vale a pena? — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Antes de comprar ingredientes para o próximo produto viral, responda a estas quatro perguntas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-97">
-<link rel="stylesheet" href="css/produto.css?v=74-97">
-<link rel="stylesheet" href="../css/shell.css?v=74-97">
+<link rel="stylesheet" href="../css/base.css?v=74-101">
+<link rel="stylesheet" href="css/produto.css?v=74-101">
+<link rel="stylesheet" href="../css/shell.css?v=74-101">
 </head>
 <body>
 
@@ -110,10 +110,13 @@
         <span class="hero-author">Por Bruna Cruz</span>
       </div>
 
-      <h1 class="hero-title">
-        <span class="laranja">Todo hype</span>
-        <span class="vermelho">VALE A PENA?</span>
-      </h1>
+      <!-- invólucro do typewriter (a seção já tem itens do pop-shake) -->
+      <div class="hero-title-fx" data-fx="typewriter" data-fx-repetir="2">
+        <h1 class="hero-title" data-fx-item>
+          <span class="laranja">Todo hype</span>
+          <span class="vermelho">VALE A PENA?</span>
+        </h1>
+      </div>
       <p class="hero-lead">Antes de comprar ingredientes para o próximo produto viral, responda a estas quatro perguntas</p>
 
       <div class="t-hero">
@@ -131,8 +134,8 @@
         <p>O cálculo também inclui transporte, energia, gás, taxas do evento e demais custos indiretos. Com essa visão completa, o empreendedor consegue estabelecer um preço coerente, estimar o retorno e escolher o ritmo de crescimento.</p>
       </div>
 
-      <figure class="foto-ingredientes">
-        <img src="assets/produto/imgIngredientes.png" alt="Ingredientes de confeitaria organizados sobre a bancada">
+      <figure class="foto-ingredientes" data-fx="pop-in" data-fx-quando="scroll">
+        <img data-fx-item src="assets/produto/imgIngredientes.png" alt="Ingredientes de confeitaria organizados sobre a bancada">
       </figure>
 
       <h2 class="h-pergunte">Antes de seguir uma tendência, pergunte-se:</h2>
@@ -167,18 +170,18 @@
       <figure class="trabalho-foto">
         <img src="assets/produto/imgConfeitaria.jpg" alt="Vitrine de doces e tortas prontos para o festival">
       </figure>
-      <figure class="trabalho-detalhe">
-        <img src="assets/produto/imgFesta.png" alt="">
+      <figure class="trabalho-detalhe" data-fx="pop-shake" data-fx-quando="scroll">
+        <img data-fx-item data-fx-origem="63% 16%" src="assets/produto/imgFesta.png" alt="">
       </figure>
 
       <!-- ====== BANNER ROTATIVO — um dos quatro, sorteado a cada carregamento ====== -->
       <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/produto.js sorteia outro -->
       <figure class="adbox" data-ad-random='[
-        {"src":"assets/banners/goldenplast.jpg?v=74-97","alt":"Publicidade Goldenplast"},
-        {"src":"assets/banners/sensodine.jpg?v=74-97","alt":"Publicidade Sensodyne"},
-        {"src":"assets/banners/herbissimo.jpg?v=74-97","alt":"Publicidade Herbíssimo"},
-        {"src":"assets/banners/brspices.jpg?v=74-97","alt":"Publicidade BR Spices"}]'>
-        <img src="assets/banners/goldenplast.jpg?v=74-97" alt="Publicidade Goldenplast" width="402" height="419">
+        {"src":"assets/banners/goldenplast.jpg?v=74-101","alt":"Publicidade Goldenplast"},
+        {"src":"assets/banners/sensodine.jpg?v=74-101","alt":"Publicidade Sensodyne"},
+        {"src":"assets/banners/herbissimo.jpg?v=74-101","alt":"Publicidade Herbíssimo"},
+        {"src":"assets/banners/brspices.jpg?v=74-101","alt":"Publicidade BR Spices"}]'>
+        <img src="assets/banners/goldenplast.jpg?v=74-101" alt="Publicidade Goldenplast" width="402" height="419">
       </figure>
 
       <h2 class="h-trabalho">O trabalho que sustenta a vitrine</h2>
@@ -250,11 +253,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-97"></script>
-<script src="js/produto.js?v=74-97"></script>
+<script src="../js/shell.js?v=74-101"></script>
+<script src="js/produto.js?v=74-101"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-97"></script>
+<script src="../js/scroll-fx.js?v=74-101"></script>
 </body>
 </html>
