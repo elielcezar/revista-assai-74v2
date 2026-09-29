@@ -13,6 +13,7 @@
      <div data-fx="scale-up"><span data-fx-item> ← entrada: crescem da base, em cascata
      <div data-fx="pop-in"><span data-fx-item>   ← entrada: surgem com "pop", um de cada vez
      <div data-fx="drop-in"><span data-fx-item>  ← entrada: caem do topo do bloco, um de cada vez
+     <div data-fx="pop-shake"><span data-fx-item> ← entrada: "pop" e depois chacoalha em rajadas
      <span data-fx="orbit-in">                   ← scroll: percorre uma curva crescendo e girando
      <h1 data-fx="magnetic-pull">                ← entrada: letras se juntam vindas de todo lado
                                                    (precisa do SplitText.min.js)
@@ -822,6 +823,10 @@
      Opções no item ou no contêiner (valem para todos os itens):
        data-fx-balanco="7"        depois de surgir, gira ±N graus, sem parar
        data-fx-balanco-duracao="1.6"
+       data-fx-balanco-rajada="3" em vez do balanço contínuo: N balançadas
+                                  rápidas (ida e volta), pausa e repete, sem parar
+       data-fx-balanco-pausa="2"  segundos parado entre uma rajada e a seguinte
+       data-fx-balanco-rapidez="0.12"  segundos de cada ida da rajada
        data-fx-flutuacao="10"     depois de surgir, sobe N px e volta, sem parar
        data-fx-flutuacao-velocidade="1"  multiplica a velocidade da flutuação
                                   (1.3 = 30% mais rápida)
@@ -874,7 +879,18 @@
       // camada própria: sem ela o navegador redesenha o item a cada quadro e
       // arredonda para o pixel inteiro, e o movimento lento sai "em degraus"
       gsap.set(el, { willChange: "transform" });
-      if (graus) {
+      var rajada = Math.round(pct(attr(el, "data-fx-balanco-rajada", "0"), 0));
+      if (graus && rajada > 0) {
+        // N balançadas rápidas (um lado, o outro), volta ao repouso, pausa, repete
+        var r = pct(attr(el, "data-fx-balanco-rapidez", "0.12"), 0.12);
+        var pausa = pct(attr(el, "data-fx-balanco-pausa", "2"), 2);
+        var tl = gsap.timeline({ repeat: -1, repeatDelay: pausa, delay: pausa });
+        for (var k = 0; k < rajada; k++) {
+          tl.to(el, { rotation: -graus, duration: k ? r : r / 2, ease: "sine.inOut" })
+            .to(el, { rotation: graus, duration: r, ease: "sine.inOut" });
+        }
+        tl.to(el, { rotation: 0, duration: r / 2, ease: "sine.out" });
+      } else if (graus) {
         var ida = pct(attr(el, "data-fx-balanco-duracao", "1.6"), 1.6);
         // do repouso até um lado, depois de um lado ao outro
         gsap.timeline()
@@ -959,6 +975,37 @@
     window.addEventListener("scroll", noScroll, { passive: true });
     window.addEventListener("resize", noScroll);
     checar();
+  }
+
+  /* =========================================================
+     pop-shake  (entrada: ao carregar ou ao chegar à tela)
+     A peça surge com "pop" e depois CHACOALHA em rajadas: N balançadas rápidas,
+     volta ao repouso, fica parada alguns segundos e repete, sem parar. Pensada
+     para uma peça que chama a atenção (ex.: o morango da abertura da PRODUTO).
+
+       <div class="backdrop" data-fx="pop-shake" data-fx-atraso="1">
+         <span class="peca" data-fx-item data-fx-origem="54% 8%">…</span>
+       </div>
+
+     Opções (contêiner ou item; padrões = os aprovados no morango):
+       data-fx-balanco="8"          graus de cada balançada
+       data-fx-balanco-rajada="3"   balançadas rápidas por rajada
+       data-fx-balanco-pausa="2"    segundos parado entre as rajadas
+       data-fx-balanco-rapidez="0.12"  segundos de cada ida
+       data-fx-origem="50% 50%"     eixo do pop e do balanço (ex.: o cabinho)
+       data-fx-quando, data-fx-atraso, data-fx-margem…  como no pop-in
+
+     É o pop-in com o balanço em rajada: herda espera de imagens, rearme e
+     will-change. Precisa do anti-piscada com [data-fx="pop-shake"] [data-fx-item].
+     ========================================================= */
+  function popShake(sec) {
+    function padrao(nome, valor) { if (!sec.hasAttribute(nome)) sec.setAttribute(nome, valor); }
+    padrao("data-fx-balanco", "8");
+    padrao("data-fx-balanco-rajada", "3");
+    padrao("data-fx-balanco-pausa", "2");
+    padrao("data-fx-balanco-rapidez", "0.12");
+    sec.setAttribute("data-fx-entrada", "pop");
+    popIn(sec);
   }
 
   /* =========================================================
@@ -1274,7 +1321,7 @@
 
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack, "pin-sequencia": pinSequencia };
-  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn };
+  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn, "pop-shake": popShake };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.

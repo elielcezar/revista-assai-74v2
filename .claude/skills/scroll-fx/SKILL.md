@@ -23,7 +23,9 @@ description: >-
   um elemento que percorre uma curva do layout crescendo e girando conforme o
   scroll ("orbit-in no celular"), ou peças que caem do topo do bloco até o
   lugar, uma de cada vez, e depois flutuam ("drop-in nos cifrões", "os $ caem
-  do topo quando o bloco entra na tela").
+  do topo quando o bloco entra na tela"), ou uma peça que surge com "pop" e
+  depois chacoalha em rajadas ("3 balançadas rápidas, para 2s e repete",
+  "pop-shake no morango").
   Para um efeito novo que não está no catálogo, use a skill gsap-animar-html e
   depois acrescente o efeito aqui.
 ---
@@ -61,7 +63,7 @@ ajuste vale para todas.
    No `<style>`, liste **cada efeito de entrada usado na página** (seletores
    separados por vírgula). Efeito aplicado no próprio elemento
    (`slide-in-left`) usa `[data-fx="…"]`; efeito de contêiner com itens
-   (`scale-up`, `pop-in`, `drop-in`) esconde os itens: `[data-fx="…"] [data-fx-item]` —
+   (`scale-up`, `pop-in`, `drop-in`, `pop-shake`) esconde os itens: `[data-fx="…"] [data-fx-item]` —
    esconder o contêiner inteiro sumiria também o que não anima (ex.: o
    `hero-wash`, ou o resto da `.art-bg` da GESTÃO).
 
@@ -716,6 +718,41 @@ Checklist:
 - Anti-piscada no `<head>` com `[data-fx="drop-in"] [data-fx-item]`.
 
 Em uso: `74/noticias2.html` — os 3 cifrões do bloco do arroz (`.bl-arroz`).
+
+### `pop-shake` — entrada
+
+A peça **surge com "pop"** e depois **chacoalha em rajadas**: N balançadas
+rápidas (um lado, o outro), volta ao repouso, fica **parada** alguns segundos e
+repete, sem parar. Para uma peça que precisa chamar a atenção de tempos em
+tempos sem ficar se mexendo o tempo todo. É o `pop-in` com o balanço em rajada.
+
+```html
+<div class="backdrop" aria-hidden="true" data-fx="pop-shake" data-fx-atraso="1">
+  <span class="hero-selfie" data-fx-item data-fx-origem="54% 8%">…</span>
+</div>
+```
+
+| atributo | onde | padrão | efeito |
+|---|---|---|---|
+| `data-fx-balanco` | contêiner ou item | `8` | graus de cada balançada |
+| `data-fx-balanco-rajada` | contêiner ou item | `3` | balançadas rápidas por rajada |
+| `data-fx-balanco-pausa` | contêiner ou item | `2` | segundos parado entre uma rajada e a seguinte (a primeira também espera isso depois do pop) |
+| `data-fx-balanco-rapidez` | contêiner ou item | `0.12` | segundos de cada ida da balançada |
+| `data-fx-origem` | item | `50% 50%` | eixo do pop **e** do balanço — ex.: o cabinho do morango, para ele balançar pendurado |
+| `data-fx-quando`, `data-fx-atraso`, `data-fx-margem`… | contêiner | como no `pop-in` | quando entra |
+
+Checklist:
+- **O eixo:** meça na tela onde fica o ponto de apoio da peça (o cabinho, a
+  alça, o prego) em % da caixa do invólucro. Se a imagem estiver girada no CSS
+  (ex.: `rotate(90deg)` na `img`), a conta é na imagem **já girada**.
+- Anime o invólucro: a rotação da imagem fica nela, o `pop-shake` gira o `span`.
+- Anti-piscada com `[data-fx="pop-shake"] [data-fx-item]` se estiver acima da dobra.
+
+As mesmas opções de rajada também valem direto no `pop-in`
+(`data-fx-balanco-rajada` etc.), para quem já usa o `pop-in` num contêiner.
+
+Em uso: `74/produto.html` — o morango da abertura (`.hero-selfie`), 1s de atraso
+ao carregar, eixo no cabinho (`54% 8%`).
 
 ## Antes de aplicar um efeito de scroll (checklist)
 

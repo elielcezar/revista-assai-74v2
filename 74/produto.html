@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="pop-shake"] [data-fx-item]{visibility:hidden}</style>
 <title>Todo hype vale a pena? — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Antes de comprar ingredientes para o próximo produto viral, responda a estas quatro perguntas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-79">
-<link rel="stylesheet" href="css/produto.css?v=74-79">
-<link rel="stylesheet" href="../css/shell.css?v=74-79">
+<link rel="stylesheet" href="../css/base.css?v=74-97">
+<link rel="stylesheet" href="css/produto.css?v=74-97">
+<link rel="stylesheet" href="../css/shell.css?v=74-97">
 </head>
 <body>
 
@@ -94,10 +98,11 @@
 
     <!-- ====== BLOCO 1 — abertura ====== -->
     <section class="bl bl-hero">
-      <div class="backdrop" aria-hidden="true">
+      <div class="backdrop" aria-hidden="true" data-fx="pop-shake" data-fx-atraso="1">
         <span class="hero-aneis"><img src="assets/produto/imgCamada1.svg" alt=""></span>
         <span class="hero-fatias"><img src="assets/produto/imgHeroFatias.png" alt=""></span>
-        <span class="hero-selfie"><img src="assets/produto/imgSelfie.png" alt=""></span>
+        <!-- selfie (morango): pop-shake ao carregar (1s de atraso), eixo no topo do morango (cabinho) -->
+        <span class="hero-selfie" data-fx-item data-fx-origem="54% 8%"><img src="assets/produto/imgSelfie.png" alt=""></span>
       </div>
 
       <div class="hero-badge">
@@ -169,11 +174,11 @@
       <!-- ====== BANNER ROTATIVO — um dos quatro, sorteado a cada carregamento ====== -->
       <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/produto.js sorteia outro -->
       <figure class="adbox" data-ad-random='[
-        {"src":"assets/banners/goldenplast.jpg?v=74-79","alt":"Publicidade Goldenplast"},
-        {"src":"assets/banners/sensodine.jpg?v=74-79","alt":"Publicidade Sensodyne"},
-        {"src":"assets/banners/herbissimo.jpg?v=74-79","alt":"Publicidade Herbíssimo"},
-        {"src":"assets/banners/brspices.jpg?v=74-79","alt":"Publicidade BR Spices"}]'>
-        <img src="assets/banners/goldenplast.jpg?v=74-79" alt="Publicidade Goldenplast" width="402" height="419">
+        {"src":"assets/banners/goldenplast.jpg?v=74-97","alt":"Publicidade Goldenplast"},
+        {"src":"assets/banners/sensodine.jpg?v=74-97","alt":"Publicidade Sensodyne"},
+        {"src":"assets/banners/herbissimo.jpg?v=74-97","alt":"Publicidade Herbíssimo"},
+        {"src":"assets/banners/brspices.jpg?v=74-97","alt":"Publicidade BR Spices"}]'>
+        <img src="assets/banners/goldenplast.jpg?v=74-97" alt="Publicidade Goldenplast" width="402" height="419">
       </figure>
 
       <h2 class="h-trabalho">O trabalho que sustenta a vitrine</h2>
@@ -245,11 +250,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-79"></script>
-<script src="js/produto.js?v=74-79"></script>
+<script src="../js/shell.js?v=74-97"></script>
+<script src="js/produto.js?v=74-97"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-79"></script>
+<script src="../js/scroll-fx.js?v=74-97"></script>
 </body>
 </html>
