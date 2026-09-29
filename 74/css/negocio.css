@@ -180,7 +180,7 @@
 
 .h-numeros { width: 362px; margin: 0 auto; text-align: center; }
 
-/* fotos em arco: recorte com o path exportado do Figma */
+/* fotos em arco: recorte com o path exportado do Figma; top em relacao ao .ano-grupo */
 .foto-2024, .foto-2026-fundo, .foto-2026-recorte { position: absolute; left: 82px; width: 232px; margin: 0; overflow: hidden; }
 .foto-2024 img, .foto-2026-fundo img, .foto-2026-recorte img { position: absolute; left: 0.12px; width: 231.8px; }
 
@@ -188,13 +188,13 @@
   height: 123px;
   clip-path: path("M232 123C232 90.3784 219.779 59.0928 198.024 36.0259C176.27 12.9589 146.765 0 116 0C85.2349 0 55.7298 12.9589 33.9756 36.0259C12.2214 59.0928 0 90.3784 0 123H232Z");
 }
-.foto-2024 { top: 138px; }
+.foto-2024 { top: -113px; }
 .foto-2024 img { top: -21.2px; height: 160.93px; }
-.foto-2026-fundo { top: 639px; }
+.foto-2026-fundo { top: -118px; }
 .foto-2026-fundo img { top: -111.84px; height: 251.53px; }
 
 .foto-2026-recorte {
-  top: 531px; height: 231px;
+  top: -226px; height: 231px;
   clip-path: path("M232 231C232 198.249 219.779 166.84 198.024 143.681C176.27 120.523 239.282 0 71.1869 0C40.4217 0 55.7298 120.523 33.9756 143.681C12.2214 166.84 0 198.249 0 231H232Z");
 }
 .foto-2026-recorte img { top: -4.76px; height: 252.51px; }
@@ -205,8 +205,16 @@
   border-radius: 25px 25px 0 0;
   font-size: 32px; font-weight: 700; color: var(--amarelo); text-align: center; line-height: 35.49px;
 }
-.ano--2024 { height: 75px; margin-top: 171px; background: var(--azul-claro); }
-.ano--2026 { height: 71px; margin-top: 243px; background: var(--rosa); }
+.ano--2024 { height: 75px; background: var(--azul-claro); }
+.ano--2026 { height: 71px; background: var(--rosa); }
+
+/* grupo do ano: aba + lista + fotos do arco. A margem que era da aba fica no
+   grupo, e as fotos se posicionam em relacao a ele (top negativo = acima da
+   aba): quando o card-accordeon fecha a lista de 2024, o grupo de 2026 sobe
+   inteiro, com as fotos */
+.ano-grupo { position: relative; }
+.ano-grupo--2024 { margin-top: 171px; }
+.ano-grupo--2026 { margin-top: 243px; }
 
 /* faixas de 45px separadas por 5px, conteudo centralizado */
 .stats { position: relative; width: 402px; display: flex; flex-direction: column; gap: 5px; }
@@ -214,7 +222,7 @@
   height: 45px; padding: 0 20px;
   display: flex; align-items: center; justify-content: center; gap: 8px;
 }
-.stats--2024 { margin-top: -7px; }
+.stats--2024 { margin-top: 0; }
 .stats--2024 li { background: linear-gradient(90deg, #00adee, #006388); }
 .stats--2026 { margin-top: 0; }
 .stats--2026 li { background: linear-gradient(264.35deg, rgba(205, 56, 39, .6) -13.8%, #ff5564 67.3%); }

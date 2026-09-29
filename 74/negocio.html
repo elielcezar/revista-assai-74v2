@@ -36,9 +36,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-87">
-<link rel="stylesheet" href="css/negocio.css?v=74-87">
-<link rel="stylesheet" href="../css/shell.css?v=74-87">
+<link rel="stylesheet" href="../css/base.css?v=74-89">
+<link rel="stylesheet" href="css/negocio.css?v=74-89">
+<link rel="stylesheet" href="../css/shell.css?v=74-89">
 </head>
 <body>
 
@@ -156,7 +156,7 @@
 
       <p class="t-pink t-pink--1">Mas é essa segunda parte aqui que decide se o negócio sobrevive:</p>
 
-      <ul class="checklist" data-fx="pop-in" data-fx-quando="scroll" data-fx-linha="80%" data-fx-intervalo="1">
+      <ul class="checklist" data-fx="pop-in" data-fx-quando="scroll" data-fx-linha="80%" data-fx-intervalo="0.5">
         <li data-fx-item>Identificar demanda ✅</li>
         <li data-fx-item>Aprender a produzir ✅</li>
         <li data-fx-item>Controlar custos ✅</li>
@@ -208,29 +208,33 @@
     </section>
 
     <!-- ====== BLOCO 6 — e os números comprovam ====== -->
-    <section class="bl bl-numeros">
+    <section class="bl bl-numeros" data-fx="card-accordeon">
       <h2 class="h-secao h-numeros">E os números comprovam:</h2>
 
-      <figure class="foto-2024"><img src="assets/negocio/imgEquipe1.png" alt="Pudim caseiro servido em uma travessa"></figure>
-      <figure class="foto-2026-fundo" aria-hidden="true"><img src="assets/negocio/imgEquipe2.png" alt=""></figure>
+      <!-- cada ano num grupo: as fotos do arco ficam presas a aba do ano (top em
+           relacao ao grupo) e sobem com ela quando o card-accordeon fecha a lista de cima -->
+      <div class="ano-grupo ano-grupo--2024">
+        <figure class="foto-2024"><img src="assets/negocio/imgEquipe1.png" alt="Pudim caseiro servido em uma travessa"></figure>
+        <h3 class="ano ano--2024">2024</h3>
+        <ul class="stats stats--2024" data-fx-item>
+          <li><span class="stat-n">R$ 50</span><span class="stat-t">Definir quem decide cada assunto</span></li>
+          <li><span class="stat-n">15</span><span class="stat-t">Minipudins</span></li>
+          <li><span class="stat-n">R$ 3.000</span><span class="stat-t">em vendas</span></li>
+          <li><span class="stat-n">1</span><span class="stat-t">produto</span></li>
+        </ul>
+      </div>
 
-      <h3 class="ano ano--2024">2024</h3>
-      <ul class="stats stats--2024">
-        <li><span class="stat-n">R$ 50</span><span class="stat-t">Definir quem decide cada assunto</span></li>
-        <li><span class="stat-n">15</span><span class="stat-t">Minipudins</span></li>
-        <li><span class="stat-n">R$ 3.000</span><span class="stat-t">em vendas</span></li>
-        <li><span class="stat-n">1</span><span class="stat-t">produto</span></li>
-      </ul>
-
-      <h3 class="ano ano--2026">2026</h3>
-      <ul class="stats stats--2026">
-        <li><span class="stat-n">2 mil a 2.500</span><span class="stat-t">pudins vendidos por mês</span></li>
-        <li><span class="stat-n">10 mil a 12 mil</span><span class="stat-t">/mês de faturamento</span></li>
-        <li><span class="stat-n">6</span><span class="stat-t">funcionários</span></li>
-        <li><span class="stat-n">4</span><span class="stat-t">fontes de renda</span></li>
-      </ul>
-
-      <figure class="foto-2026-recorte"><img src="assets/negocio/imgEquipe3.png" alt="Pudins de vários tamanhos empilhados"></figure>
+      <div class="ano-grupo ano-grupo--2026">
+        <figure class="foto-2026-fundo" aria-hidden="true"><img src="assets/negocio/imgEquipe2.png" alt=""></figure>
+        <h3 class="ano ano--2026">2026</h3>
+        <ul class="stats stats--2026" data-fx-item>
+          <li><span class="stat-n">2 mil a 2.500</span><span class="stat-t">pudins vendidos por mês</span></li>
+          <li><span class="stat-n">10 mil a 12 mil</span><span class="stat-t">/mês de faturamento</span></li>
+          <li><span class="stat-n">6</span><span class="stat-t">funcionários</span></li>
+          <li><span class="stat-n">4</span><span class="stat-t">fontes de renda</span></li>
+        </ul>
+        <figure class="foto-2026-recorte"><img src="assets/negocio/imgEquipe3.png" alt="Pudins de vários tamanhos empilhados"></figure>
+      </div>
     </section>
 
     <!-- ====== BLOCO 7 — um produto pode gerar várias empresas ====== -->
@@ -260,7 +264,7 @@
 
       <!-- ====== BANNER — video Bimbo ====== -->
       <figure class="adbox">
-        <video src="assets/banners/bimbo.mp4?v=74-87" width="402" height="715" autoplay muted loop playsinline preload="metadata" aria-label="Publicidade Bimbo"></video>
+        <video src="assets/banners/bimbo.mp4?v=74-89" width="402" height="715" autoplay muted loop playsinline preload="metadata" aria-label="Publicidade Bimbo"></video>
       </figure>
     </section>
 
@@ -290,13 +294,13 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-87"></script>
-<script src="js/negocio.js?v=74-87"></script>
+<script src="../js/shell.js?v=74-89"></script>
+<script src="js/negocio.js?v=74-89"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <!-- SplitText: o popcorn-pop quebra o titulo em letras -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-87"></script>
+<script src="../js/scroll-fx.js?v=74-89"></script>
 </body>
 </html>

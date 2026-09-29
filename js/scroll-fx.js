@@ -480,9 +480,22 @@
     window.addEventListener("resize", medir);
     window.addEventListener("load", medir);
     medir();
+
+    // como no pin-horizontal: o que vem depois do palco só chega depois do
+    // congelamento. Conta o que ainda falta congelar, para gatilhos mais abaixo
+    // (ex.: card-accordeon) calcularem onde estarão quando o leitor chegar lá
+    var registro = {
+      contenedor: palco,
+      encolhido: function () {
+        var andou = (dentro.getBoundingClientRect().top - fora.getBoundingClientRect().top) / zoom();
+        return Math.max(0, total - andou);
+      }
+    };
+    encolhedores.push(registro);
     ScrollTrigger.refresh();
 
     return function () {
+      encolhedores.splice(encolhedores.indexOf(registro), 1);
       window.removeEventListener("scroll", noScroll);
       window.removeEventListener("resize", medir);
       window.removeEventListener("load", medir);
