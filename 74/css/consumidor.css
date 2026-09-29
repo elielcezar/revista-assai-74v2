@@ -129,6 +129,8 @@
    ========================================================= */
 .s-hero { min-height: 884px; padding-top: 42px; }
 
+/* altura fixa = titulo completo: o typewriter digita sem mexer no que vem abaixo */
+.hero-title-fx { height: 180px; }
 .s-hero h1 {
   width: 371px; margin-left: 18px;
   font-size: 41px; font-weight: 700; color: #fff; line-height: 45px;
@@ -143,6 +145,7 @@
 .hero-foto { position: relative; height: 396px; margin: 45px 0 0 7px; width: 381px; overflow: hidden; }
 /* foto quadrada (prato inteiro) — 381x381 cabe nos 396 da caixa sem mexer no fluxo */
 .hero-foto img { width: 381px; height: 381px; object-fit: contain; }
+.hero-foto-pop { display: block; width: 381px; height: 381px; } /* invólucro do pop (o giro fica na img) */
 
 .hero-meta {
   width: 160px; margin: 0px 0 0 125px;

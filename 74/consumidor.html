@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="typewriter"] [data-fx-item],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Todo alimento cria uma expectativa — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Preço, nome, foto, embalagem e apresentação criam expectativas sobre a comida. A experiência do cliente depende se esses sinais cumprem o que prometem.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-79">
-<link rel="stylesheet" href="css/consumidor.css?v=74-79">
-<link rel="stylesheet" href="../css/shell.css?v=74-79">
+<link rel="stylesheet" href="../css/base.css?v=74-103">
+<link rel="stylesheet" href="css/consumidor.css?v=74-103">
+<link rel="stylesheet" href="../css/shell.css?v=74-103">
 </head>
 <body>
 
@@ -110,11 +114,15 @@
 
     <!-- ====== BLOCO 1 — abertura ====== -->
     <section class="s s-hero">
-      <h1><strong>Todo alimento cria uma expectativa <span class="am">antes da primeira mordida</span></strong></h1>
+      <div class="hero-title-fx" data-fx="typewriter">
+        <h1 data-fx-item><strong>Todo alimento cria uma expectativa <span class="am">antes da primeira mordida</span></strong></h1>
+      </div>
       <p class="hero-lead">Preço, nome, foto, embalagem e apresentação criam expectativas sobre a comida. A experiência do cliente depende se esses sinais cumprem o que prometem.</p>
 
-      <figure class="hero-foto">
-        <img src="assets/consumidor/imgVinhoGarrafas.png" alt="Taças e garrafas de vinho tinto em uma mesa">
+      <!-- pop ao carregar (1s de atraso) no span; o giro com o scroll fica na img
+           (centro do prato). Separados: cada um tem o seu transform -->
+      <figure class="hero-foto" data-fx="pop-in" data-fx-atraso="1" data-fx-duracao="1.125">
+        <span class="hero-foto-pop" data-fx-item><img data-fx="spin-scroll" data-fx-graus="67.5" src="assets/consumidor/imgVinhoGarrafas.png" alt="Taças e garrafas de vinho tinto em uma mesa"></span>
       </figure>
 
       <p class="hero-meta">
@@ -170,11 +178,11 @@
     <!-- ====== BANNER ROTATIVO — um dos quatro, sorteado a cada carregamento ====== -->
     <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/consumidor.js sorteia outro -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/cepera.jpg?v=74-79","alt":"Publicidade Cepêra"},
-      {"src":"assets/banners/dover.jpg?v=74-79","alt":"Publicidade Dover"},
-      {"src":"assets/banners/kim.jpg?v=74-79","alt":"Publicidade Kim"},
-      {"src":"assets/banners/pato.jpg?v=74-79","alt":"Publicidade Pato"}]'>
-      <img src="assets/banners/cepera.jpg?v=74-79" alt="Publicidade Cepêra" width="402" height="419">
+      {"src":"assets/banners/cepera.jpg?v=74-103","alt":"Publicidade Cepêra"},
+      {"src":"assets/banners/dover.jpg?v=74-103","alt":"Publicidade Dover"},
+      {"src":"assets/banners/kim.jpg?v=74-103","alt":"Publicidade Kim"},
+      {"src":"assets/banners/pato.jpg?v=74-103","alt":"Publicidade Pato"}]'>
+      <img src="assets/banners/cepera.jpg?v=74-103" alt="Publicidade Cepêra" width="402" height="419">
     </figure>
 
     <!-- ====== BLOCO 5 — os sinais que o consumidor recebe (gradiente laranja) ====== -->
@@ -265,11 +273,11 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-79"></script>
-<script src="js/consumidor.js?v=74-79"></script>
+<script src="../js/shell.js?v=74-103"></script>
+<script src="js/consumidor.js?v=74-103"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-79"></script>
+<script src="../js/scroll-fx.js?v=74-103"></script>
 </body>
 </html>

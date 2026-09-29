@@ -15,6 +15,7 @@
      <div data-fx="drop-in"><span data-fx-item>  ← entrada: caem do topo do bloco, um de cada vez
      <div data-fx="pop-shake"><span data-fx-item> ← entrada: "pop" e depois chacoalha em rajadas
      <span data-fx="orbit-in">                   ← scroll: percorre uma curva crescendo e girando
+     <img data-fx="spin-scroll">                 ← scroll: gira acompanhando o scroll
      <h1 data-fx="magnetic-pull">                ← entrada: letras se juntam vindas de todo lado
                                                    (precisa do SplitText.min.js)
 
@@ -591,6 +592,27 @@
       if (pedido) cancelAnimationFrame(pedido);
       gsap.set(el, { clearProps: "transform,transformOrigin" });
     };
+  }
+
+  /* =========================================================
+     spin-scroll  (scroll contínuo, 1:1)
+     O elemento GIRA acompanhando o scroll: do momento em que entra por baixo
+     da tela até sair por cima, faz data-fx-graus de rotação (volta ao subir).
+     Se já estiver na tela ao abrir a página, parte de 0 ali (start com clamp).
+
+       <img data-fx="spin-scroll" data-fx-graus="360" …>
+
+     Opções: data-fx-graus="360" (negativo = anti-horário). Gira em torno do
+     centro da caixa do elemento: aplique no que tem o centro certo (ex.: a img
+     do prato, não a figure que recorta).
+     ========================================================= */
+  function spinScroll(el) {
+    var graus = pct(el.getAttribute("data-fx-graus"), 360);
+    var tw = gsap.fromTo(el, { rotation: 0 }, {
+      rotation: graus, ease: "none",
+      scrollTrigger: { trigger: el, start: "clamp(top bottom)", end: "bottom top", scrub: true }
+    });
+    return function () { tw.scrollTrigger && tw.scrollTrigger.kill(); tw.kill(); gsap.set(el, { clearProps: "transform" }); };
   }
 
   /* =========================================================
@@ -1320,7 +1342,7 @@
   }
 
   /* ---------- inicialização ---------- */
-  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack, "pin-sequencia": pinSequencia };
+  var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack, "pin-sequencia": pinSequencia, "spin-scroll": spinScroll };
   var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn, "pop-shake": popShake };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
