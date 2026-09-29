@@ -103,14 +103,16 @@
 .gallery-icon {
   position: absolute; top: 66px; width: 85px; height: 85px; object-fit: cover;
 }
-.gallery-icon:nth-child(1) { left: 0; }
-.gallery-icon:nth-child(2) { left: 79px; }
-.gallery-icon:nth-child(3) { left: 158px; }
-.gallery-icon:nth-child(4) { left: 237px; }
-.gallery-icon:nth-child(5) { left: 449px; }
-.gallery-icon:nth-child(6) { left: 528px; }
-.gallery-icon:nth-child(7) { left: 607px; }
-.gallery-icon:nth-child(8) { left: 686px; }
+/* nth-of-type (conta so as imagens): a sacola fica no HTML entre o 4o e o 5o
+   icone, na ordem em que aparecem da esquerda para a direita (o pop-in segue o HTML) */
+.gallery-icon:nth-of-type(1) { left: 0; }
+.gallery-icon:nth-of-type(2) { left: 79px; }
+.gallery-icon:nth-of-type(3) { left: 158px; }
+.gallery-icon:nth-of-type(4) { left: 237px; }
+.gallery-icon:nth-of-type(5) { left: 449px; }
+.gallery-icon:nth-of-type(6) { left: 528px; }
+.gallery-icon:nth-of-type(7) { left: 607px; }
+.gallery-icon:nth-of-type(8) { left: 686px; }
 .gallery-bag {
   position: absolute; top: 0; left: 318px; width: 135px; height: 174px; overflow: hidden;
 }

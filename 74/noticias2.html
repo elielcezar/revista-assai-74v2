@@ -30,15 +30,15 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="drop-in"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="drop-in"] [data-fx-item],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Escolha dos insumos: como economizar sem mudar o padrão do seu prato — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Comparar preço por quilo é só o começo. Rendimento, qualidade no preparo, armazenamento e custo por porção mostram se a troca realmente protege a margem do negócio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-84">
-<link rel="stylesheet" href="css/noticias2.css?v=74-84">
-<link rel="stylesheet" href="../css/shell.css?v=74-84">
+<link rel="stylesheet" href="../css/base.css?v=74-86">
+<link rel="stylesheet" href="css/noticias2.css?v=74-86">
+<link rel="stylesheet" href="../css/shell.css?v=74-86">
 </head>
 <body>
 
@@ -145,16 +145,18 @@
         <p><strong>Custo do insumo por porção = valor usado na receita ÷ número de porções</strong></p>
       </div>
       <div class="gallery">
-        <div class="gallery-view">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <img class="gallery-icon" src="assets/noticias2/imgThumbProduto.png" alt="">
-          <div class="gallery-bag"><img src="assets/noticias2/imgBagFeijaoPreto.png" alt="Embalagem de feijão preto Assaí Chef"></div>
+        <!-- icones e sacola: surgem com "pop", 0,7s entre eles, a cada vez que o conjunto
+             chega a 100px da base da tela -->
+        <div class="gallery-view" data-fx="pop-in" data-fx-quando="scroll" data-fx-intervalo="0.7" data-fx-margem="100">
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
+          <div class="gallery-bag" data-fx-item><img src="assets/noticias2/imgBagFeijaoPreto.png" alt="Embalagem de feijão preto Assaí Chef"></div>
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
+          <img class="gallery-icon" data-fx-item src="assets/noticias2/imgThumbProduto.png" alt="">
         </div>
       </div>
     </section>
@@ -195,7 +197,7 @@
 
     <!-- ====== BANNER ====== -->
     <figure class="adbox">
-      <img src="assets/banners/assai2.jpg?v=74-84" alt="Assaí — novos produtos para aproveitar: lançamentos das Marcas Próprias Assaí, Assaí Chef e Assaí Bloom" width="1080" height="1440">
+      <img src="assets/banners/assai2.jpg?v=74-86" alt="Assaí — novos produtos para aproveitar: lançamentos das Marcas Próprias Assaí, Assaí Chef e Assaí Bloom" width="1080" height="1440">
     </figure>
 
     <!-- ====== BLOCO 10 — marcas próprias ====== -->
@@ -234,10 +236,10 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-84"></script>
-<script src="js/noticias2.js?v=74-84"></script>
+<script src="../js/shell.js?v=74-86"></script>
+<script src="js/noticias2.js?v=74-86"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-84"></script>
+<script src="../js/scroll-fx.js?v=74-86"></script>
 </body>
 </html>
