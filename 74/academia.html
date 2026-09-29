@@ -27,14 +27,18 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="pop-in"] [data-fx-item],.fx-espera [data-fx="popcorn-pop"]{visibility:hidden}</style>
 <title>Preparados para votação pública — Prêmio Academia Assaí 2026 — Revista Assaí Bons Negócios #74</title>
 <meta name="description" content="Conheça os 20 Vencedores Regionais do Prêmio Academia Assaí 2026, descubra como eles se prepararam para crescer e escolha quatro negócios participando da votação pública.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-79">
-<link rel="stylesheet" href="css/academia.css?v=74-79">
-<link rel="stylesheet" href="../css/shell.css?v=74-79">
+<link rel="stylesheet" href="../css/base.css?v=74-81">
+<link rel="stylesheet" href="css/academia.css?v=74-81">
+<link rel="stylesheet" href="../css/shell.css?v=74-81">
 </head>
 <body>
 
@@ -93,14 +97,14 @@
   <article>
 
     <!-- ====== BLOCO 1 — hero ====== -->
-    <section class="bl bl-hero">
+    <section class="bl bl-hero" data-fx="pop-in" data-fx-entrada="fade-up" data-fx-duracao="0.9" data-fx-deslocamento="40">
       <span class="backdrop" aria-hidden="true">
         <span class="d-hero-wash"></span>
         <span class="d-swoosh-a"><img src="assets/academia/imgEllipse140.svg" alt=""></span>
         <span class="d-swoosh-b"><img src="assets/academia/imgEllipse141.svg" alt=""></span>
         <span class="d-swoosh-c"><img src="assets/academia/imgEllipse142.svg" alt=""></span>
       </span>
-      <h1 class="hero-title">
+      <h1 class="hero-title" data-fx="popcorn-pop">
         <span class="hero-title-a">Preparados para</span>
         <span class="hero-title-b">VOTAÇÃO<br>PÚBLICA</span>
       </h1>
@@ -109,7 +113,7 @@
         <span class="badge74-ed">#74 set . 26</span>
         <span class="badge74-autor">Por: Bruna Cruz</span>
       </div>
-      <figure class="hero-foto"><img src="assets/academia/imgHeroFoto.png" alt="Empreendedora sorrindo segurando um pastel"></figure>
+      <figure class="hero-foto" data-fx-item><img src="assets/academia/imgHeroFoto.png?v=74-81" alt="Empreendedora sorrindo segurando um pastel"></figure>
     </section>
 
     <!-- ====== BLOCO 2 — um minuto ====== -->
@@ -123,18 +127,18 @@
         <p>O exercício parece simples até chegar a vez de falar. Quando a apresentação precisa caber em 60 segundos, qualquer dúvida sobre o cliente, os números ou o diferencial do negócio aparece depressa.</p>
         <p>Os critérios usados na seleção dos 20 vencedores regionais funcionam como um roteiro para observar a própria operação: está claro quem é o cliente? O diferencial cabe em uma frase? As finanças estão organizadas? Existe um plano concreto para usar um novo recurso?</p>
       </div>
-      <p class="quote-minuto">Se você tivesse um minuto, conseguiria explicar por que seu negócio merece crescer?</p>
+      <p class="quote-minuto" data-fx="popcorn-pop">Se você tivesse um minuto, conseguiria explicar por que seu negócio merece crescer?</p>
     </section>
 
     <!-- ====== BLOCO 3 — o caminho ====== -->
-    <section class="bl bl-caminho">
+    <section class="bl bl-caminho" data-fx="pin-horizontal">
       <h2 class="h-caminho">O caminho até os 20 Vencedores Regionais</h2>
       <div class="t-caminho">
         <p>A nona edição do Prêmio Academia Assaí começou com mais de 7 mil inscritos de diferentes regiões do país. Todos atuam no setor de alimentação, em negócios formais ou informais, com faturamento anual de até R$ 360 mil.</p>
         <p>A primeira etapa combinou o desempenho em um curso de finanças com critérios socioeconômicos. Ao final, 2.250 empreendedores receberam R$ 400 em crédito no aplicativo Meu Assaí e avançaram para uma formação de finanças mais aprofundada.</p>
       </div>
       <div class="gallery" data-carousel>
-        <div class="gallery-view">
+        <div class="gallery-view" data-fx-item>
           <div class="gallery-track" data-track>
             <figure class="gslide" data-slide><img src="assets/academia/vencedor1.png" alt="Prêmios em dinheiro"></figure>
             <figure class="gslide" data-slide><img src="assets/academia/vencedor2.png" alt="Vales-compra no Assaí"></figure>
@@ -155,13 +159,13 @@
         <p>O resultado formou um retrato variado de quem vende comida no Brasil: há café e bistrô, mingau, alimentos amazônicos, espetinho, sorvete, geleias, conservas, hambúrguer, confeitaria, açaí, cozinha saudável e farofa, entre outros negócios.</p>
       </div>
       <h2 class="h-20-negocios">20 negócios chegaram à etapa nacional:</h2>
-      <figure class="mapa-badges">
+      <figure class="mapa-badges" data-fx="pop-in" data-fx-quando="scroll" data-fx-intervalo="0.7">
         <img src="assets/academia/imgColagemNegocios.png" alt="Mapa do Brasil por região">
-        <span class="badge badge--norte">3</span>
-        <span class="badge badge--nordeste">7</span>
-        <span class="badge badge--centro">2</span>
-        <span class="badge badge--sudeste">7</span>
-        <span class="badge badge--sul">1</span>
+        <span class="badge badge--norte" data-fx-item>3</span>
+        <span class="badge badge--nordeste" data-fx-item>7</span>
+        <span class="badge badge--centro" data-fx-item>2</span>
+        <span class="badge badge--sudeste" data-fx-item>7</span>
+        <span class="badge badge--sul" data-fx-item>1</span>
       </figure>
     </section>
 
@@ -180,7 +184,7 @@
 
       <!-- ====== BANNER — video Academia Assaí ====== -->
       <figure class="adbox">
-        <video src="assets/banners/academia.mp4?v=74-79" width="402" height="544" autoplay muted loop playsinline preload="metadata" aria-label="Publicidade Academia Assaí"></video>
+        <video src="assets/banners/academia.mp4?v=74-81" width="402" height="544" autoplay muted loop playsinline preload="metadata" aria-label="Publicidade Academia Assaí"></video>
       </figure>
 
       <div class="foto-votacao">
@@ -232,7 +236,12 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-79"></script>
-<script src="js/academia.js?v=74-79"></script>
+<script src="../js/shell.js?v=74-81"></script>
+<script src="js/academia.js?v=74-81"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<!-- SplitText: o popcorn-pop quebra o titulo em letras -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-81"></script>
 </body>
 </html>

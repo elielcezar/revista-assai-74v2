@@ -128,7 +128,7 @@ item por item e param nas pontas.
 | --- | --- |
 | `74/principal.html` | carrossel da matéria · citação com arrasto horizontal · carrossel de 5 banners com bolinhas |
 | `74/gestao.html` | carrossel de 6 cards |
-| `74/academia.html` | galeria de 5 cards de prêmios |
+| `74/academia.html` | galeria de 5 cards de prêmios (também corre com o scroll, pelo `pin-horizontal`) |
 | `74/mkt.html` | galeria de rolagem contínua (uma imagem só) |
 | `index.html` | banner fixo depois da primeira linha de cards |
 | `74/mkt.html`, `74/produto.html`, `74/consumidor.html` | banner rotativo |
@@ -155,17 +155,17 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | efeito | o que faz | em uso |
 | --- | --- | --- |
 | `card-accordeon` (scroll) | itens começam fechados e crescem com o scroll, empurrando o que vem abaixo; fecham ao subir | `74/principal.html` (cards bege de `.bl-gen`) |
-| `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o trilho (texto ou galeria) para o lado (1:1); no fim, a página volta a rolar. Vários por página | `74/principal.html` (citação `.bl-quote` e carrossel `.bl-carousel`); `74/gestao.html` (carrossel `.s-carrossel`) |
+| `pin-horizontal` (scroll) | quando o centro do trilho chega ao meio da tela, a tela inteira congela e o scroll corre só o trilho (texto ou galeria) para o lado (1:1); no fim, a página volta a rolar. Vários por página | `74/principal.html` (citação `.bl-quote` e carrossel `.bl-carousel`); `74/gestao.html` (carrossel `.s-carrossel`); `74/academia.html` (galeria de prêmios `.gallery`, mantendo setas e arrasto: o carrossel anda pelo `scrollLeft`) |
 | `card-stack` (scroll) | os cards se empilham com o scroll: cada um para no alto da tela deixando uma faixa do anterior à mostra, e o último empurra a pilha para fora | `74/consumidor.html` (os 3 cards coloridos: nome, foto e embalagem) |
 | `pin-sequencia` (scroll) | a tela congela e passa uma sequência: a foto ocupa a tela inteira e os balões de texto atravessam de baixo para cima, um de cada vez; quando um sai pelo topo, o seguinte entra por baixo e a foto troca em fade cruzado | `74/negocio.html` (as 3 fotos e os 3 balões da história do primeiro pudim) |
 | `orbit-in` (scroll contínuo) | o elemento percorre a curva de uma elipse do layout enquanto cresce e gira, preso ao scroll; termina na posição do CSS | `74/gestao2.html` (celular sobre o arco branco) |
 | `slide-in-up` (scroll disparado) | ao passar da sua linha perto do fundo da tela, cada item aparece sem fade na borda de baixo e sobe o caminho inteiro até o lugar, em cascata e em ordem estrita; desce e se esconde ao voltar. Com `data-fx-passo`, as entradas ficam a N px de scroll uma da outra | `74/principal.html` (lista `.pacts`, margem 200); `74/gestao.html` (cards de "a conta", margem 200, passo 200) |
 | `typewriter` (entrada) | os textos são digitados letra a letra, um de cada vez: o primeiro aparece, é apagado de trás para frente e o seguinte é digitado no lugar; com `data-fx-repetir`, em loop | `74/mkt.html` (o hero: "Não engane seu cliente com IA" dá lugar a "mas aprenda com ela") |
 | `reveal-wipe` (entrada) | o texto é descoberto de um lado ao outro, como uma cortina que abre (`clip-path`); nada se move nem muda de opacidade. Refaz toda vez que volta à tela | `74/delivery.html` (citação "O que oriento é que…") |
-| `popcorn-pop` (entrada) | as letras pipocam: cada uma surge do nada, subindo e girando um pouco, em ordem aleatória e com quique; refaz toda vez que o texto volta à tela (precisa do SplitText) | `74/delivery.html` (título "Descontos fantasmas") |
+| `popcorn-pop` (entrada) | as letras pipocam: cada uma surge do nada, subindo e girando um pouco, em ordem aleatória e com quique; refaz toda vez que o texto volta à tela (precisa do SplitText) | `74/delivery.html` (título "Descontos fantasmas"); `74/academia.html` (título "Preparados para votação pública" e a citação `.quote-minuto`) |
 | `magnetic-pull` (entrada) | ao carregar, as letras do texto vêm de posições e rotações aleatórias e se juntam no lugar; no fim, o HTML volta ao original (precisa do SplitText) | `74/gestao2.html` (título da abertura) |
 | `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
-| `pop-in` (entrada) | os itens surgem um de cada vez — com "pop", com `fade` (só aparecendo), com `fade-up` (subindo com fade) ou com `fade-right` (vindo da esquerda) ou `fade-left` (vindo da direita) — na abertura, ou a cada vez que o bloco/grupo entra na tela (recomeça ao voltar); depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase); `74/mkt.html` (as 3 ferramentas de IA em `fade-right`, 0,5s, ao chegar à tela) |
+| `pop-in` (entrada) | os itens surgem um de cada vez — com "pop", com `fade` (só aparecendo), com `fade-up` (subindo com fade) ou com `fade-right` (vindo da esquerda) ou `fade-left` (vindo da direita) — na abertura, ou a cada vez que o bloco/grupo entra na tela (recomeça ao voltar); depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase); `74/mkt.html` (as 3 ferramentas de IA em `fade-right`, 0,5s, ao chegar à tela); `74/academia.html` (foto do hero em `fade-up`, 40px, 0,9s, ao carregar; os 5 números do mapa com "pop", 0,7s entre eles, ao chegar à tela) |
 | `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
 
 Efeito de entrada exige um trecho anti-piscada no `<head>` da página (está na

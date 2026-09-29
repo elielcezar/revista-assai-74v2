@@ -62,8 +62,10 @@
   position: absolute; z-index: 1;
   left: -4px; top: 478px; width: 398px; height: 435px; margin: 0; overflow: hidden;
 }
+/* imgHeroFoto.png recortada da arte de 1920x1110 para a area visivel (821x1026,
+   a partir de x959 y84): mesma escala e posicao de antes */
 .hero-foto img {
-  position: absolute; left: -111.34%; top: -8.35%; width: 226.29%; height: 119.45%; max-width: none;
+  position: absolute; left: 1.69%; top: 0.69%; width: 96.76%; height: 110.41%; max-width: none;
 }
 
 /* =========================================================
@@ -106,7 +108,7 @@
    arrasta com mouse e dedo (js/academia.js) */
 .gallery-view { position: relative; width: 375px; height: 372px; overflow: hidden; cursor: grab; touch-action: pan-y; }
 .gallery-view.is-dragging { cursor: grabbing; user-select: none; }
-.gallery-track { display: flex; align-items: center; gap: 12px; width: max-content; transition: transform .45s ease; }
+.gallery-track { display: flex; align-items: center; gap: 12px; width: max-content; }
 .gslide { flex: none; width: 204px; height: 372px; }
 .gslide img { width: 100%; height: 100%; object-fit: contain; }
 
