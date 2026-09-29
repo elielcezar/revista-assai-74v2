@@ -62,6 +62,21 @@
     return total;
   }
 
+  /* ---------- congelamentos no mobile ----------
+     Abaixo de 402px o .page é reduzido por transform: a caixa dele continua
+     ocupando no layout a altura ORIGINAL, e o navegador só ignora a sobra
+     porque o fim da página é medido pela caixa transformada. O invólucro que
+     embrulha a coluna (pin-horizontal, pin-sequencia) mede a altura sem
+     redução e a sobra virava um vão em branco depois do rodapé (~H × (1 −
+     escala): 260px em 390px, quase 1000px em 360px). Então o invólucro de
+     dentro recebe a altura já reduzida. Só o que embrulha o próprio .page. */
+  function alturaReduzida(dentro, embrulhado, page) {
+    if (embrulhado !== page) return;
+    var z = zoom();
+    var h = z < 1 ? Math.ceil(page.offsetHeight * z) + "px" : "";
+    if (dentro.style.height !== h) dentro.style.height = h;
+  }
+
   /* =========================================================
      card-accordeon
      Os itens começam fechados (altura e padding verticais em 0) e crescem de
@@ -192,6 +207,7 @@
     // embrulha o que estiver mais por fora: a coluna, ou o congelamento anterior
     var alvo = page;
     while (alvo.parentElement && alvo.parentElement !== document.body) alvo = alvo.parentElement;
+    var embrulhado = alvo; // o atualizar() tem um "alvo" local (outro) que encobriria este
 
     var fora = document.createElement("div");   // coluna + espaçador
     var dentro = document.createElement("div"); // gruda (sticky)
@@ -217,6 +233,7 @@
       atualizar();
     }
     function atualizar() {
+      alturaReduzida(dentro, embrulhado, page);   // a coluna pode mudar de altura (acordeão)
       // ponto da trava (scroll em px de tela), do layout de agora: o trilho medido
       // em relação ao próprio invólucro grudante não é afetado por este sticky
       // (e já inclui o que os congelamentos de dentro deslocaram)
@@ -393,6 +410,7 @@
     // ---- congelamento (mesma mecânica do pin-horizontal)
     var alvo = page;
     while (alvo.parentElement && alvo.parentElement !== document.body) alvo = alvo.parentElement;
+    var embrulhado = alvo; // o atualizar() tem um "alvo" local (outro) que encobriria este
     var fora = document.createElement("div");
     var dentro = document.createElement("div");
     var espaco = document.createElement("div");
@@ -421,6 +439,7 @@
     }
     function atualizar() {
       var z = zoom();
+      alturaReduzida(dentro, embrulhado, page);
       // ponto da trava: o palco encostando no alto da tela
       var rp = dentro.getBoundingClientRect();
       var desdeOTopo = palco.getBoundingClientRect().top - rp.top;

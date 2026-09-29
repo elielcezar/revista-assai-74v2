@@ -106,7 +106,8 @@ depois do `<body>`, e é igual em todas as páginas; só muda o `is-active`.
   402px do Figma e só depois reduzido, então tudo escala junto (desvio medido:
   0,0px). Em troca, a caixa no fluxo mantém a altura de 402px, e o `shell.js`
   dá ao `body` a altura reduzida (remedida por `ResizeObserver`, porque
-  acordeões e congelamentos mudam a altura).
+  acordeões e congelamentos mudam a altura). Nas páginas que congelam a tela, o
+  invólucro do congelamento também precisa da altura reduzida — ver armadilha 8.
 - **Desktop (≥ 1024px)**: sidebar fixa de 313px (logo + navegação) com fundo
   `assets/shell/dt-bg-pattern.png`. A faixa cinza do HEAD some e o HEAD fica
   com 141px. A coluna de 402px fica em x:733 a partir de 1920px; abaixo disso
@@ -165,7 +166,7 @@ A página só marca o HTML com `data-fx` — nada de JS por página. Sem JS, ou 
 | `popcorn-pop` (entrada) | as letras pipocam: cada uma surge do nada, subindo e girando um pouco, em ordem aleatória e com quique; refaz toda vez que o texto volta à tela (precisa do SplitText) | `74/delivery.html` (título "Descontos fantasmas"); `74/academia.html` (título "Preparados para votação pública" e a citação `.quote-minuto`) |
 | `magnetic-pull` (entrada) | ao carregar, as letras do texto vêm de posições e rotações aleatórias e se juntam no lugar; no fim, o HTML volta ao original (precisa do SplitText) | `74/gestao2.html` (título da abertura) |
 | `scale-up` (entrada) | na abertura, os itens crescem a partir da base, em cascata; fundo opcional só durante a entrada | `74/principal.html` (cúpulas do hero) |
-| `pop-in` (entrada) | os itens surgem um de cada vez — com "pop", com `fade` (só aparecendo), com `fade-up` (subindo com fade) ou com `fade-right` (vindo da esquerda) ou `fade-left` (vindo da direita) — na abertura, ou a cada vez que o bloco/grupo entra na tela (recomeça ao voltar); depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase); `74/mkt.html` (as 3 ferramentas de IA em `fade-right`, 0,5s, ao chegar à tela); `74/academia.html` (foto do hero em `fade-up`, 40px, 0,9s, ao carregar; os 5 números do mapa com "pop", 0,7s entre eles, ao chegar à tela) |
+| `pop-in` (entrada) | os itens surgem um de cada vez — com "pop", com `fade` (só aparecendo), com `fade-up` (subindo com fade) ou com `fade-right` (vindo da esquerda) ou `fade-left` (vindo da direita) — na abertura, ou a cada vez que o bloco/grupo entra na tela (recomeça ao voltar); depois podem balançar (girar) e/ou flutuar sem parar | `74/gestao.html` (abertura: bisnaga com balanço 7°, gotas flutuando 10px; grupos: sachês com 0,5s entre eles, os 3 sachês pequenos em `fade-up` com 0,5s, e o balão da frase); `74/mkt.html` (as 3 ferramentas de IA e os 6 itens do passo a passo em `fade-right`, 0,5s, ao chegar à tela); `74/academia.html` (foto do hero em `fade-up`, 40px, 0,9s, ao carregar; os 5 números do mapa com "pop", 0,7s entre eles, ao chegar à tela); `74/noticias2.html` (os 8 ícones e a sacola da `.gallery`, "pop", 0,7s, a cada vez que o conjunto chega a 100px da base) |
 | `drop-in` (entrada) | os itens caem da borda de cima do bloco até o lugar, com fade, um de cada vez (0,7s), quando o bloco chega à tela; depois podem flutuar. Recomeça ao voltar à tela | `74/noticias2.html` (os 3 cifrões do bloco do arroz, flutuando 10px, 30% mais rápido) |
 | `slide-in-left` (entrada) | ao carregar, o elemento desliza para a esquerda, vindo de fora do bloco pela direita (1,5s) | `74/principal.html` (foto do hero) |
 
@@ -303,6 +304,20 @@ posições novas forem as desejadas, basta atualizar o valor esperado no probe.
 
 7. **Coordenadas do rodapé** são relativas ao componente RODAPE, não à barra
    preta (que começa em `top: 45px` dentro dele).
+
+8. **Vão em branco depois do rodapé, só no mobile (< 402px), nas páginas que
+   congelam a tela** (`pin-horizontal`, `pin-sequencia`: PRINCIPAL, GESTÃO,
+   GESTÃO 2, MKT, NOVO NEGÓCIO, ACADEMIA). O `.page` reduzido por `transform`
+   continua ocupando no layout a altura original; sem congelamento o navegador
+   ignora a sobra, porque mede o fim da página pela caixa transformada. Mas o
+   congelamento embrulha a coluna em `.fx-congela-fora` / `.fx-congela`, e esses
+   invólucros mediam a altura **sem** a redução: a diferença, altura × (1 −
+   escala), virava branco depois do rodapé — ~260px em 390px e até ~1000px em
+   360px (cresce quanto mais estreita a tela; a simulação do Chrome mostra).
+   Correção no `js/scroll-fx.js` (`alturaReduzida`): o invólucro que embrulha o
+   próprio `.page` recebe a altura já reduzida, remedida a cada quadro de
+   scroll. Para conferir: role até o fim em 390 e 360px — o rodapé tem que
+   encostar na base da tela. Efeito novo que embrulhe a coluna precisa do mesmo.
 
 8. **Colapso de margem.** Na GESTÃO, a margem do primeiro filho de uma
    `<section>` escapava e empurrava a seção inteira. Resolvido com

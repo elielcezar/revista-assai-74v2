@@ -126,6 +126,13 @@ saltava 73px.
 Checklist:
 - O trilho (`data-fx-item`) tem `overflow-x` (`auto`/`hidden`) e conteúdo mais
   largo que ele — o percurso é `scrollWidth - clientWidth`. Se couber, nada trava.
+- **Mobile (< 402px): o fim da página.** Role até o fim em 390 e 360px e confira
+  que o rodapé encosta na base da tela. O congelamento embrulha a coluna, que
+  está reduzida por `transform`; o invólucro precisa da altura já reduzida (o
+  componente faz isso em `alturaReduzida`), senão sobra um vão em branco depois
+  do rodapé do tamanho de altura × (1 − escala). Vale também para o
+  `pin-sequencia` e para qualquer efeito novo que embrulhe a coluna (README,
+  armadilha 8).
   Serve texto ou galeria: no carrossel da PRINCIPAL o trilho é a
   `.carousel-viewport` (382px, `overflow: hidden`) com a trilha de 2085px dentro.
 - **Tire os controles próprios do trilho** — setas, arrasto, e qualquer
@@ -655,7 +662,8 @@ mesma `.art-bg`; os 3 sachês pequenos lado a lado em grupo com `fade-up`
 (`.s-sache`), grupo `balao`, crescendo do centro do desenho
 (`data-fx-origem="105.5px 43px"`).
 `74/mkt.html` — as 3 ferramentas de IA (`ul.tools`) com `data-fx-quando="scroll"`
-e `fade-right`, 0,5s entre elas.
+e `fade-right`, 0,5s entre elas. Os 6 itens do passo a passo (`ol.steps`) com os
+mesmos atributos.
 `74/negocio.html` — os 7 itens da `ul.checklist` em `pop` (1s entre eles), os 5
 da `ol.passos` em `fade-left` e as 4 pills da `.foto-faturamento` em `pop`
 (0,5s), todos disparando aos 80% da tela (`data-fx-linha`).
@@ -664,6 +672,8 @@ da `ol.passos` em `fade-left` e as 4 pills da `.foto-faturamento` em `pop`
 grupo para entrar na própria linha.
 `74/academia.html` — a foto do hero em `fade-up` (40px, 0,9s) ao carregar; os 5
 números do mapa (`.mapa-badges`) em `pop`, 0,7s entre eles, ao chegar à tela.
+`74/noticias2.html` — os 8 ícones e a sacola da galeria (`.gallery-view`) em
+`pop`, 0,7s entre eles, com `data-fx-quando="scroll"` e margem 100.
 
 ### `drop-in` — entrada
 
