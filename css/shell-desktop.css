@@ -23,7 +23,7 @@
 
 @media (min-width: 1024px) {
 
-  /* ---------- geometria ----------
+  /* ---------- geometria horizontal ----------
      Três faixas de largura (--casca-esq, --casca-coluna, --casca-dir = x de
      cada parte, a partir da borda esquerda do body):
      - >= 1920: exatamente o Figma (225 / 733 / 1433), centralizado.
@@ -36,11 +36,18 @@
     --casca-esq: calc((100vw - 620px) * 0.304054);             /* 225/740 */
     --casca-coluna: calc(218px + (100vw - 620px) * 0.695946);  /* 515/740 */
     --casca-dir: 0px;
-    /* altura útil da casca: fim do conteúdo + 36px (a margem de baixo do
-       Figma). Com a lateral direita, o fim é o QR (1044 -> 1080); sem ela, o
-       botão "Edições anteriores" (951 com os 13 itens do menu -> 987).
-       Mudou o número de itens do menu? Refaça a conta. */
-    --casca-altura: 987px;
+
+    /* ---------- unidade vertical da lateral esquerda ----------
+       Todas as medidas verticais da lateral esquerda (margens, vãos, logo,
+       espaçamento do menu) são N x --casca-u. Os textos não encolhem.
+       A lateral mede 274px fixos (textos: edição 2 x 22, 13 itens x 15,
+       botão 35) + 713 x u (o resto, com os 36px de margem embaixo). Então:
+       - tela com 987px de altura útil ou mais: u = 1px, medidas do Figma;
+       - mais baixa: u = (altura - 274) / 713, e a lateral cabe inteira;
+       - piso de 0,45px (telas com menos de ~595px): aí o menu rola por dentro.
+       Mudou o número de itens do menu ou um texto fixo? Refaça a conta. */
+    --casca-u: clamp(0.45px, calc((100vh - 274px) / 713), 1px);
+
     --casca-laranja: #e06437;
     --casca-cinza: rgba(217, 217, 217, 0.4);
   }
@@ -55,65 +62,57 @@
   }
 
   /* ---------- casca ----------
-     Âncora de altura 0 no topo do body: não ocupa espaço no fluxo, e as duas
-     laterais penduram nela. Sticky com topo = min(0, altura da tela - altura
-     da casca): em telas altas o bastante fica parada como um fixed; nas mais
-     baixas rola junto com a página até mostrar o fim e só então para. */
-  .casca {
-    display: block;
-    position: sticky;
-    top: min(0px, calc(100vh - var(--casca-altura)));
-    width: 0; height: 0;
-    flex: none; align-self: flex-start;  /* nas páginas da #73 o body é flex */
-    z-index: 1000;
-  }
+     As duas laterais são fixas (flutuam sobre a página enquanto ela rola).
+     O invólucro não ocupa espaço; nas páginas da #73 o body é flex. */
+  .casca { display: block; width: 0; height: 0; flex: none; }
 
   .casca-esq,
-  .casca-dir {
-    position: absolute; top: 0;
-    width: 218px; height: var(--casca-altura);
-    pointer-events: none;
-  }
-  .casca-esq > *,
-  .casca-dir > * { pointer-events: auto; }
-  .casca-esq { left: var(--casca-esq); }
-  .casca-dir { left: var(--casca-dir); display: none; }
+  .casca-dir { position: fixed; z-index: 1000; width: 218px; }
 
   .casca a { color: inherit; text-decoration: none; transition: opacity .15s ease; }
   .casca a:hover { opacity: .75; }
   .casca a:focus-visible { outline: 2px solid #004696; outline-offset: 3px; }
-  .casca p, .casca ul { margin: 0; padding: 0; list-style: none; }
+  :where(.casca) p, :where(.casca) ul { margin: 0; padding: 0; list-style: none; }
 
-  /* ---------- lateral esquerda ---------- */
-  .casca-logo {
-    position: absolute; top: 44px; left: 34px;
-    display: block; width: 124px; height: 124px;
+  /* ---------- lateral esquerda: altura da tela, medidas em --casca-u ---------- */
+  .casca-esq {
+    top: 0; left: var(--casca-esq);
+    height: 100vh; box-sizing: border-box;
+    display: flex; flex-direction: column; align-items: flex-start;
+    padding: calc(44 * var(--casca-u)) 0 calc(36 * var(--casca-u));
+    overflow-y: auto; scrollbar-width: none;
   }
-  .casca-logo img { display: block; width: 124px; height: 124px; }
+  .casca-esq::-webkit-scrollbar { display: none; }
+
+  .casca-logo {
+    flex: none; display: block; margin-left: 34px;
+    width: calc(124 * var(--casca-u)); height: calc(124 * var(--casca-u));
+  }
+  .casca-logo img { display: block; width: 100%; height: 100%; }
 
   .casca-edicao {
-    position: absolute; top: 199px; left: 37px;
-    font: 700 20px/normal "Casca Lola", "FS Lola", Arial, sans-serif;
+    flex: none; margin: calc(31 * var(--casca-u)) 0 0 37px;
+    font: 700 20px/22px "Casca Lola", "FS Lola", Arial, sans-serif;
     color: var(--casca-laranja); white-space: nowrap;
   }
 
-  /* painel do menu + botão: empilhados, a partir do topo do painel */
-  .casca-menu { position: absolute; top: 260px; left: 0; width: 218px; }
+  .casca-menu { flex: none; width: 218px; margin-top: calc(17 * var(--casca-u)); }
 
   .casca-nav {
     display: flex; flex-direction: column; align-items: flex-start;
-    gap: 8.29px;                       /* passo médio do Figma: 46,17px */
-    padding: 10px 0 31px 33px;
+    gap: calc(8.29 * var(--casca-u));           /* passo médio do Figma: 46,17px */
+    padding: calc(10 * var(--casca-u)) 0 calc(31 * var(--casca-u)) 33px;
     border-radius: 13px;
     background: var(--casca-cinza);
   }
   /* o código do Figma diz 14,39px nas seções, mas o desenho mostra todos os
-     itens em 12,58px ("PRINCIPAL" com 64px de largura), com o texto no topo */
+     itens em 12,58px ("PRINCIPAL" com 64px de largura), com o texto no topo.
+     Item = 11,44 + texto 15 + 5,72 + traço 5,72 = 37,88px (Figma) */
   .casca-nav a {
-    display: block; box-sizing: border-box;
-    height: 37.88px; padding-top: 11.44px;
-    border-bottom: 5.72px solid var(--mc);
-    font: 700 12.58px/normal "Inter", Arial, sans-serif;
+    display: block;
+    padding: calc(11.44 * var(--casca-u)) 0 calc(5.72 * var(--casca-u));
+    border-bottom: calc(5.72 * var(--casca-u)) solid var(--mc);
+    font: 700 12.58px/15px "Inter", Arial, sans-serif;
     color: #000; white-space: nowrap;
   }
   .casca-nav a.is-active { font-weight: 800; }
@@ -124,19 +123,23 @@
     font: 700 20px/35px "Casca Lola", "FS Lola", Arial, sans-serif;
     color: #fff; text-align: center; white-space: nowrap;
   }
-  .casca-menu .casca-pilula { margin-top: 23px; }
+  .casca-menu .casca-pilula { margin-top: calc(23 * var(--casca-u)); }
 
-  /* ---------- lateral direita ---------- */
+  /* ---------- lateral direita: fixa a 50px da base, medidas do Figma ---------- */
+  .casca-dir {
+    bottom: 50px; left: var(--casca-dir);
+    display: none; flex-direction: column;
+  }
+
   .casca-siga {
-    position: absolute; top: 611px; left: 0;
-    width: 218px; height: 44px; border-radius: 13px;
+    height: 44px; border-radius: 13px;
     background: var(--casca-cinza);
     font: 700 20px/44px "Casca Lola", "FS Lola", Arial, sans-serif;
     color: #090909; text-align: center;
   }
 
   .casca-redes {
-    position: absolute; top: 665px; left: 0; width: 218px;
+    margin-top: 10px;
     display: grid; grid-template-columns: repeat(3, 54px);
     justify-content: center; column-gap: 6.5px; row-gap: 15px;
   }
@@ -148,8 +151,8 @@
   .casca-redes img { display: block; }
 
   /* QR com o endereço da página: montado pelo js/shell-desktop.js; sem JS
-     (ou até ele terminar) o bloco fica escondido */
-  .casca-qr { position: absolute; top: 864px; left: 0; width: 218px; visibility: hidden; }
+     (ou até ele terminar) o bloco fica escondido, mas ocupa o lugar */
+  .casca-qr { margin-top: 76px; visibility: hidden; }
   .casca-qr.is-pronto { visibility: visible; }
   .casca-qr-img { width: 140px; height: 140px; margin: 5px auto 0; }
   .casca-qr-img svg { display: block; width: 100%; height: 100%; }
@@ -164,9 +167,14 @@
     --casca-esq: calc((100vw - 838px) * 0.207948);             /* 225/1082 */
     --casca-coluna: calc(218px + (100vw - 838px) * 0.475970);  /* 515/1082 */
     --casca-dir: calc(620px + (100vw - 838px) * 0.751386);     /* 813/1082 */
-    --casca-altura: 1080px;
   }
-  .casca-dir { display: block; }
+  .casca-dir { display: flex; }
+}
+
+/* lateral direita mede 433px + 50 da base: em janelas muito baixas ela
+   passaria do topo, então some */
+@media (min-width: 1200px) and (max-height: 540px) {
+  .casca-dir { display: none; }
 }
 
 @media (min-width: 1920px) {
