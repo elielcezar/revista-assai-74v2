@@ -1,0 +1,178 @@
+/* =========================================================
+   Revista Assaí Bons Negócios — CASCA DO DESKTOP (>= 1024px)
+   Comum a todas as páginas das edições #74 e #73 (raiz, 74/ e 73/).
+   Figma: frame "Desktop - 1" (2331:3157), 1920 x 1080.
+
+   - Markup: gerado por scripts/shell_sync.py entre os comentários
+     CASCA ... /CASCA de cada página. Não edite a casca no HTML: mude o
+     modelo no script e rode-o de novo.
+   - Incluir por último no <head>, depois do CSS da página e do shell dela.
+   - Aqui também mora a posição da coluna de 402px no desktop.
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700;800&display=swap") screen and (min-width: 1024px);
+
+/* nome próprio: não briga com o @font-face "FS Lola" de cada edição */
+@font-face {
+  font-family: "Casca Lola";
+  src: url("../fonts/FSLola-Bold.otf") format("opentype");
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+
+.casca { display: none; }
+
+@media (min-width: 1024px) {
+
+  /* ---------- geometria ----------
+     Três faixas de largura (--casca-esq, --casca-coluna, --casca-dir = x de
+     cada parte, a partir da borda esquerda do body):
+     - >= 1920: exatamente o Figma (225 / 733 / 1433), centralizado.
+     - 1200–1919: as 3 partes; os 4 espaços (margem, vão, vão, margem =
+       225 : 290 : 298 : 269) encolhem na mesma proporção.
+     - 1024–1199: some a lateral direita; lateral esquerda + coluna
+       centralizadas, espaços na proporção 225 : 290 : 225.
+     Largura das partes: 218 + 402 (+ 218) = 620 (838). */
+  :root {
+    --casca-esq: calc((100vw - 620px) * 0.304054);             /* 225/740 */
+    --casca-coluna: calc(218px + (100vw - 620px) * 0.695946);  /* 515/740 */
+    --casca-dir: 0px;
+    /* altura útil da casca: fim do conteúdo + 36px (a margem de baixo do
+       Figma). Com a lateral direita, o fim é o QR (1044 -> 1080); sem ela, o
+       botão "Edições anteriores" (951 com os 13 itens do menu -> 987).
+       Mudou o número de itens do menu? Refaça a conta. */
+    --casca-altura: 987px;
+    --casca-laranja: #e06437;
+    --casca-cinza: rgba(217, 217, 217, 0.4);
+  }
+
+  /* a coluna da revista: div.page (#74), main.page / main.page-* (#73 e
+     categorias). Seletores com peso (0,1,2) para vencer os das edições. */
+  body div.page,
+  body main.page,
+  body > main[class^="page-"] {
+    margin-left: var(--casca-coluna);
+    margin-right: 0;
+  }
+
+  /* ---------- casca ----------
+     Âncora de altura 0 no topo do body: não ocupa espaço no fluxo, e as duas
+     laterais penduram nela. Sticky com topo = min(0, altura da tela - altura
+     da casca): em telas altas o bastante fica parada como um fixed; nas mais
+     baixas rola junto com a página até mostrar o fim e só então para. */
+  .casca {
+    display: block;
+    position: sticky;
+    top: min(0px, calc(100vh - var(--casca-altura)));
+    width: 0; height: 0;
+    flex: none; align-self: flex-start;  /* nas páginas da #73 o body é flex */
+    z-index: 1000;
+  }
+
+  .casca-esq,
+  .casca-dir {
+    position: absolute; top: 0;
+    width: 218px; height: var(--casca-altura);
+    pointer-events: none;
+  }
+  .casca-esq > *,
+  .casca-dir > * { pointer-events: auto; }
+  .casca-esq { left: var(--casca-esq); }
+  .casca-dir { left: var(--casca-dir); display: none; }
+
+  .casca a { color: inherit; text-decoration: none; transition: opacity .15s ease; }
+  .casca a:hover { opacity: .75; }
+  .casca a:focus-visible { outline: 2px solid #004696; outline-offset: 3px; }
+  .casca p, .casca ul { margin: 0; padding: 0; list-style: none; }
+
+  /* ---------- lateral esquerda ---------- */
+  .casca-logo {
+    position: absolute; top: 44px; left: 34px;
+    display: block; width: 124px; height: 124px;
+  }
+  .casca-logo img { display: block; width: 124px; height: 124px; }
+
+  .casca-edicao {
+    position: absolute; top: 199px; left: 37px;
+    font: 700 20px/normal "Casca Lola", "FS Lola", Arial, sans-serif;
+    color: var(--casca-laranja); white-space: nowrap;
+  }
+
+  /* painel do menu + botão: empilhados, a partir do topo do painel */
+  .casca-menu { position: absolute; top: 260px; left: 0; width: 218px; }
+
+  .casca-nav {
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 8.29px;                       /* passo médio do Figma: 46,17px */
+    padding: 10px 0 31px 33px;
+    border-radius: 13px;
+    background: var(--casca-cinza);
+  }
+  /* o código do Figma diz 14,39px nas seções, mas o desenho mostra todos os
+     itens em 12,58px ("PRINCIPAL" com 64px de largura), com o texto no topo */
+  .casca-nav a {
+    display: block; box-sizing: border-box;
+    height: 37.88px; padding-top: 11.44px;
+    border-bottom: 5.72px solid var(--mc);
+    font: 700 12.58px/normal "Inter", Arial, sans-serif;
+    color: #000; white-space: nowrap;
+  }
+  .casca-nav a.is-active { font-weight: 800; }
+
+  .casca-pilula {
+    display: block; box-sizing: border-box; width: 218px; height: 35px;
+    border-radius: 20px; background: var(--casca-laranja);
+    font: 700 20px/35px "Casca Lola", "FS Lola", Arial, sans-serif;
+    color: #fff; text-align: center; white-space: nowrap;
+  }
+  .casca-menu .casca-pilula { margin-top: 23px; }
+
+  /* ---------- lateral direita ---------- */
+  .casca-siga {
+    position: absolute; top: 611px; left: 0;
+    width: 218px; height: 44px; border-radius: 13px;
+    background: var(--casca-cinza);
+    font: 700 20px/44px "Casca Lola", "FS Lola", Arial, sans-serif;
+    color: #090909; text-align: center;
+  }
+
+  .casca-redes {
+    position: absolute; top: 665px; left: 0; width: 218px;
+    display: grid; grid-template-columns: repeat(3, 54px);
+    justify-content: center; column-gap: 6.5px; row-gap: 15px;
+  }
+  .casca-redes a {
+    display: grid; place-items: center;
+    width: 54px; height: 54px; border-radius: 50%;
+    background: var(--casca-laranja);
+  }
+  .casca-redes img { display: block; }
+
+  /* QR com o endereço da página: montado pelo js/shell-desktop.js; sem JS
+     (ou até ele terminar) o bloco fica escondido */
+  .casca-qr { position: absolute; top: 864px; left: 0; width: 218px; visibility: hidden; }
+  .casca-qr.is-pronto { visibility: visible; }
+  .casca-qr-img { width: 140px; height: 140px; margin: 5px auto 0; }
+  .casca-qr-img svg { display: block; width: 100%; height: 100%; }
+
+  /* TEMPORÁRIO (validação na capa): some o padrão de fundo do shell antigo.
+     Sai quando os shells das edições forem limpos. */
+  body::before { content: none !important; }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --casca-esq: calc((100vw - 838px) * 0.207948);             /* 225/1082 */
+    --casca-coluna: calc(218px + (100vw - 838px) * 0.475970);  /* 515/1082 */
+    --casca-dir: calc(620px + (100vw - 838px) * 0.751386);     /* 813/1082 */
+    --casca-altura: 1080px;
+  }
+  .casca-dir { display: block; }
+}
+
+@media (min-width: 1920px) {
+  :root {
+    --casca-esq: calc((100vw - 1920px) / 2 + 225px);
+    --casca-coluna: calc((100vw - 1920px) / 2 + 733px);
+    --casca-dir: calc((100vw - 1920px) / 2 + 1433px);
+  }
+}
