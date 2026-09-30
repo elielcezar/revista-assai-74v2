@@ -37,8 +37,8 @@ def main():
         # QA nao dispara pageview no Analytics (tag GTM das paginas)
         pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick"), lambda r: r.abort())
         pg.goto(url, wait_until="networkidle")
-        # mede so o frame do Figma: esconde o invólucro (css/shell.css)
-        pg.add_style_tag(content=".dt-sidebar { display: none !important; }"
+        # mede so o frame do Figma: esconde a casca do desktop (css/shell-desktop.css)
+        pg.add_style_tag(content=".casca { display: none !important; }"
                                  " .ex-soc li { animation: none !important; opacity: 1 !important; transform: none !important; }")
         pg.wait_for_timeout(700)
         print(f"scrollHeight = {pg.evaluate('document.documentElement.scrollHeight')}  (#73 1683)\n")

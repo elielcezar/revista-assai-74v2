@@ -19,6 +19,11 @@ css/shell-desktop.css e antes do </body> o js/shell-desktop.js.
     python scripts/shell_sync.py index.html      # só as indicadas
     python scripts/shell_sync.py --check         # só lista o que mudaria
 
+Trava: se o menu gerado para uma página não tiver os mesmos itens, na mesma
+ordem e com os mesmos links do menu que ela tem hoje, a página não é gravada
+e a diferença é listada (--forcar grava assim mesmo, para quando a mudança
+de menu for intencional).
+
 Estilo em css/shell-desktop.css; QR em js/shell-desktop.js.
 """
 import sys, re, glob, pathlib
@@ -58,6 +63,11 @@ REDES = [
     ("LinkedIn",  "https://www.linkedin.com/company/3624827",         "linkedin",  31, 31),
 ]
 
+# itens que só existem no menu de uma página (entram antes do item indicado)
+EXTRAS = {
+    "73/download.html": [(("DOWNLOAD", "download.html", "#004696", True), "EDITORIAL")],
+}
+
 # páginas cujo item ativo não dá para ler do markup atual
 ATIVO_FIXO = {"73/expediente.html": "EXPEDIENTE"}
 
@@ -65,11 +75,24 @@ ABRE = "<!-- ============ CASCA DESKTOP: gerada por scripts/shell_sync.py — n�
 FECHA = "<!-- ============ /CASCA DESKTOP ============ -->"
 
 
-def casca(pasta, ativo):
+def menu_da_pagina(rel):
+    menu = list(MENU)
+    for item, antes_de in EXTRAS.get(rel, []):
+        menu.insert([r for r, *_ in menu].index(antes_de), item)
+    return menu
+
+
+def links_do_menu(bloco):
+    """[(href, rótulo)] do <nav> de um bloco de casca/sidebar, sem comentários."""
+    nav = re.search(r'<nav\b.*?</nav>', re.sub(r'<!--.*?-->', '', bloco, flags=re.S), re.S)
+    return re.findall(r'<a\b[^>]*?\bhref="([^"]*)"[^>]*>\s*([^<]+?)\s*</a>', nav.group(0)) if nav else []
+
+
+def casca(pasta, ativo, menu=MENU):
     p = "../" if pasta else ""
     num, data = EDICOES.get(pasta, EDICOES[None])
     itens = []
-    for rot, alvo, cor, local in MENU:
+    for rot, alvo, cor, local in menu:
         href = alvo if (local and pasta == "73") else p + alvo
         ativa = ' class="is-active" aria-current="page"' if rot == ativo else ""
         itens.append(f'      <a href="{href}" style="--mc:{cor}"{ativa}>{rot}</a>')
@@ -118,7 +141,7 @@ def versao(texto):
     return f"74-{max(nums)}" if nums else None
 
 
-def sincroniza(rel, ver, so_checa):
+def sincroniza(rel, ver, so_checa, forcar=False):
     arq = RAIZ / rel
     with open(arq, encoding="utf-8", newline="") as f:
         s = f.read()
@@ -132,10 +155,23 @@ def sincroniza(rel, ver, so_checa):
     if not m:
         return None
 
+    menu = menu_da_pagina(rel)
     ativo = ATIVO_FIXO.get(rel, rotulo_ativo(m.group(0)))
-    if ativo not in [r for r, *_ in MENU]:
+    if ativo not in [r for r, *_ in menu]:
         ativo = None
-    t = s[:m.start()] + casca(pasta, ativo).replace("\n", nl) + s[m.end():]
+    bloco = casca(pasta, ativo, menu)
+
+    # trava: o menu gerado tem de ter os mesmos itens, na mesma ordem e com os
+    # mesmos links do menu que a página tem hoje
+    antes, depois = links_do_menu(m.group(0)), links_do_menu(bloco)
+    if antes != depois and not forcar:
+        print(f"MENU DIVERGE, não gravei: {rel}")
+        for a, d in zip(antes + [None] * len(depois), depois + [None] * len(antes)):
+            if a != d:
+                print(f"    hoje: {a}  ->  gerado: {d}")
+        return "divergente"
+
+    t = s[:m.start()] + bloco.replace("\n", nl) + s[m.end():]
 
     p = "../" if pasta else ""
     css = f'<link rel="stylesheet" href="{p}css/shell-desktop.css?v={ver}">'
@@ -169,8 +205,8 @@ def main():
     paginas = [pathlib.Path(p).resolve().relative_to(RAIZ).as_posix() for p in paginas]
 
     for rel in paginas:
-        r = sincroniza(rel, ver, so_checa)
-        if r is None:
+        r = sincroniza(rel, ver, so_checa, "--forcar" in sys.argv)
+        if r is None or r == "divergente":
             continue
         print(f"{'mudaria' if so_checa and r else 'ok' if r is False else 'gerada'}: {rel}"
               + (f"  (ativo: {r})" if r else ""))

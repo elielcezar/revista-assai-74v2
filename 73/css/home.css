@@ -360,172 +360,26 @@
     }
   
 
-/* ═══════════════════════════════════════════════════════════════════
-   DESKTOP SIDEBAR — oculto no mobile, visível a partir de 1024px.
-   Todas as medidas derivadas do frame "Desktop - 1" do Figma
-   (node 1852:14248, 1920×1083px):
-     • Logo 124×124 centralizado no sidebar (x:95, y:47)
-     • Nav group: x:130+1.14 = ~x:131, y:203
-     • Item height: 37.88px; stroke-bottom: 5.72px; padding: 11.44px 0
-     • Font: Inter Bold 12.58px (active = 800 Extra Bold)
-   ═══════════════════════════════════════════════════════════════════ */
-
-/* ── Mobile: sidebar completamente oculto ── */
-.dt-sidebar,
-.dt-logo-wrap,
-.dt-logo-img,
-.dt-nav,
-.dt-nav-item {
-  display: none;
-}
-
 /* ════════════════════════════════════════════════════════════════════
-   DESKTOP MEDIA QUERY — min-width: 1024px
-   A coluna da revista (.page) permanece com 402px e rola normalmente.
-   O sidebar fica sticky a altura total da viewport (overflow-y: auto).
+   DESKTOP (>= 1024px): só o que é da capa da #73. A casca (laterais,
+   fundo e posição da coluna) é comum às edições: css/shell-desktop.css.
    ════════════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) {
 
-  /* ── html: base branca para o body::before funcionar com z-index:-1 ── */
   html {
     background-color: #ffffff;
   }
 
-  /* ── Body: linha horizontal — sidebar + coluna revista ── */
-  /* padding-left: 313px reserva o espaço do sidebar fixo no fluxo de layout */
   body {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    background: transparent;
-    padding-left: 313px;
   }
 
-  /*
-   * Pattern do frame "Desktop - 1" do Figma (#1852:14244, opacity 0.4).
-   * Usa body::before com position:fixed para cobrir o viewport sem scrollar.
-   * z-index:-1 garante que fique abaixo de todo conteúdo (sidebar e .page
-   * têm z-index >= 1000 ou position:relative, pintados APÓS este pseudo-elemento
-   * na ordem de stacking do contexto raiz).
-   */
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url("../assets/home73/dt-bg-pattern.png") center / cover no-repeat;
-    /* 0.40 = opacidade exata do node #1852:14244 no Figma */
-    opacity: 0.40;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  /* ── Sidebar: fixo na viewport (position:fixed é mais confiável que sticky
-     quando html tem overflow-x:hidden, que cria scroll-context separado). ── */
-  .dt-sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 313px;
-    height: 100vh;
-    background: transparent;
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    z-index: 1000;
-  }
-
-  .dt-sidebar::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* ── Logo: 124×124, centralizado em 313px (x:95 y:47 no Figma) ── */
-  .dt-logo-wrap {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    padding-top: 47px;
-    /* gap até o início do nav: y:203 - (47+124) = 32px */
-    padding-bottom: 32px;
-    flex-shrink: 0;
-  }
-
-  .dt-logo-img {
-    display: block;
-    width: 124px;
-    height: 124px;
-    object-fit: contain;
-  }
-
-  /* ── Nav vertical: items a partir de x:131 no sidebar de 313px ── */
-  .dt-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    /* padding-left = 131px (x:130 do grupo + 1px offset) */
-    padding-left: 131px;
-    padding-right: 16px;
-    padding-bottom: 48px;
-    gap: 0;
-  }
-
-  /* ── Item base — Inter Bold 12.58px, 37.88px de altura ── */
-  .dt-nav-item {
-    display: flex;
-    align-items: center;
-    height: 37.88px;
-    /* padding: 11.44px 0 compõe a altura junto com a borda de 5.72px:
-       11.44 + font-line + 11.44 + 5.72 ≈ 37.88px */
-    padding: 11.44px 0 0;
-    border-bottom: 5.72px solid transparent;
-    font-family: Inter, sans-serif;
-    font-size: 12.58px;
-    font-weight: 700;
-    line-height: normal;
-    color: #000000;
-    text-decoration: none;
-    white-space: nowrap;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: opacity 0.15s ease;
-  }
-
-  .dt-nav-item:hover {
-    opacity: 0.75;
-  }
-
-  /* Active: Extra Bold 800 (CAPA no Figma usa fontWeight 800) */
-  .dt-nav-item.is-active {
-    font-weight: 800;
-  }
-
-  /* ── Cores das bordas inferiores (igual ao mobile / tokens Figma) ── */
-  .dt-nav--cap       { border-bottom-color: #000000; }
-  .dt-nav--principal { border-bottom-color: #004696;           } /* #004696 */
-  .dt-nav--gestao    { border-bottom-color: #f0051e;       } /* #f0051e */
-  .dt-nav--mkt       { border-bottom-color: #ff7300;        } /* #ff7300 */
-  .dt-nav--produto   { border-bottom-color: #ffaa00; } /* #ffaa00 */
-  .dt-nav--consumidor{ border-bottom-color: #ffdc00;        } /* #ffdc00 */
-  .dt-nav--delivery  { border-bottom-color: #532f82;           } /* #532f82 */
-  .dt-nav--novo      { border-bottom-color: #b40082;                 } /* #b40082 */
-  .dt-nav--academia  { border-bottom-color: #ff5564;           } /* #ff5564 */
-  .dt-nav--coluna    { border-bottom-color: #00bebe;           } /* #00bebe */
-  .dt-nav--noticias  { border-bottom-color: #0082c8;      } /* #0082c8 */
-  .dt-nav--download  { border-bottom-color: #004696;           } /* #004696 */
-  .dt-nav--neutral   { border-bottom-color: #666666;    } /* #666666 */
-
-  /* ── Coluna revista: frame 1920px — sidebar 313px, gap 420px, coluna 402px.
-     313 + 420 = 733px = x:733 do Figma. Flex-wrap: seções empilham sem
+  /* ── Coluna revista: 402px. Flex-wrap: seções empilham sem
      position:absolute; pares de cards (≤402px) ficam lado a lado. ── */
   body > main.page {
     flex-shrink: 0;
-    margin-left: 420px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

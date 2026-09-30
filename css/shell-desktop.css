@@ -154,10 +154,6 @@
   .casca-qr.is-pronto { visibility: visible; }
   .casca-qr-img { width: 140px; height: 140px; margin: 5px auto 0; }
   .casca-qr-img svg { display: block; width: 100%; height: 100%; }
-
-  /* TEMPORÁRIO (validação na capa): some o padrão de fundo do shell antigo.
-     Sai quando os shells das edições forem limpos. */
-  body::before { content: none !important; }
 }
 
 @media (min-width: 1200px) {

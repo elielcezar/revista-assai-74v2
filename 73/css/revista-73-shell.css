@@ -480,17 +480,11 @@ a:focus-visible {
 }
 
 /* ══════════════════════════════════════════════════════════════════════
-   SIDEBAR DESKTOP — compartilhado por todas as páginas.
-   Mobile: completamente oculto. Desktop (≥1024px): sidebar fixo.
+   DESKTOP (≥1024px) — cabeçalho da coluna e largura dela.
+   A casca (laterais, fundo e posição da coluna) é comum às edições e mora
+   em css/shell-desktop.css (raiz), com o markup gerado por
+   scripts/shell_sync.py.
    ══════════════════════════════════════════════════════════════════════ */
-
-.dt-sidebar,
-.dt-logo-wrap,
-.dt-logo-img,
-.dt-nav,
-.dt-nav-item {
-  display: none;
-}
 
 @media (min-width: 1024px) {
 
@@ -502,24 +496,9 @@ a:focus-visible {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    background: transparent;
-    padding-left: 313px;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url("../assets/home73/dt-bg-pattern.png") center / cover no-repeat;
-    opacity: 0.40;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  /* Menu horizontal oculto no desktop — sidebar assume a navegação */
+  /* Menu horizontal oculto no desktop — a casca assume a navegação */
   nav#menu-principal.head-menu {
     display: none;
   }
@@ -589,99 +568,8 @@ a:focus-visible {
     pointer-events: none;
   }
 
-  .dt-sidebar {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 313px;
-    height: 100vh;
-    background: transparent;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    z-index: 1000;
-  }
-
-  .dt-sidebar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .dt-logo-wrap {
-    display: flex;
-    justify-content: start;
-    width: 100%;
-    padding-left: 20px;
-    padding-top: 47px;
-    padding-bottom: 32px;
-    flex-shrink: 0;
-  }
-
-  .dt-logo-img {
-    display: block;
-    width: 124px;
-    height: 124px;
-    object-fit: contain;
-  }
-
-  .dt-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    flex: 1;
-    min-height: 0;
-    padding-left: 50px;
-    padding-right: 16px;
-    padding-bottom: 48px;
-    gap: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: none;
-  }
-
-  .dt-nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .dt-nav-item {
-    display: flex;
-    align-items: center;
-    height: 37.88px;
-    padding: 11.44px 0 0;
-    border-bottom: 5.72px solid transparent;
-    font-family: Inter, sans-serif;
-    font-size: 12.58px;
-    font-weight: 500;
-    line-height: normal;
-    color: #000000;
-    text-decoration: none;
-    white-space: nowrap;
-    box-sizing: border-box;
-    cursor: pointer;
-    transition: opacity 0.15s ease;
-  }
-
-  .dt-nav-item:hover { opacity: 0.75; }
-
-  .dt-nav-item.is-active { font-weight: 800; }
-
-  .dt-nav--cap        { border-bottom-color: #000000; }
-  .dt-nav--principal  { border-bottom-color: #004696; }
-  .dt-nav--gestao     { border-bottom-color: #f0051e; }
-  .dt-nav--mkt        { border-bottom-color: #ff7300; }
-  .dt-nav--produto    { border-bottom-color: #ffaa00; }
-  .dt-nav--consumidor { border-bottom-color: #ffdc00; }
-  .dt-nav--delivery   { border-bottom-color: #532f82; }
-  .dt-nav--novo       { border-bottom-color: #b40082; }
-  .dt-nav--academia   { border-bottom-color: #ff5564; }
-  .dt-nav--coluna     { border-bottom-color: #00bebe; }
-  .dt-nav--noticias   { border-bottom-color: #0082c8; }
-  .dt-nav--download   { border-bottom-color: #004696; }
-  .dt-nav--neutral    { border-bottom-color: #666666; }
-
-  /* Coluna da revista: sidebar 313px + gap 420px = x:733 do Figma (frame 1920) */
+  /* Coluna da revista: 402px. A posição (margin-left) vem de
+     css/shell-desktop.css, igual para todas as edições. */
   body > main.page,
   body > main.page-delivery,
   body > main.page-academia,
@@ -699,37 +587,5 @@ a:focus-visible {
     flex-shrink: 0;
     width: 402px;
     max-width: none;
-    margin-left: 420px;
-  }
-}
-
-/*
- * Desktop estreito (<1920): centraliza sidebar + gap + coluna 402px como bloco único.
- * Bloco = 313 + 420 + 402 = 1135px · miolo começa em 733px dentro do bloco.
- */
-@media (min-width: 1024px) and (max-width: 1919px) {
-  body {
-    padding-left: 0;
-  }
-
-  .dt-sidebar {
-    left: max(0px, calc((100vw - 1135px) / 2));
-  }
-
-  body > main.page,
-  body > main.page-delivery,
-  body > main.page-academia,
-  body > main.page-lista-parceiros,
-  body > main.page-novo-negocio,
-  body > main.page-noticias,
-  body > main.page-gestao-2,
-  body > main.page-categorias,
-  body > main.page-download,
-  body > main.page-principal,
-  body > main.page-editorial,
-  body > main.page-gestao,
-  body > main.page-expediente,
-  body > main.page-parceiros {
-    margin-left: calc(max(0px, (100vw - 1135px) / 2) + 400px);
   }
 }

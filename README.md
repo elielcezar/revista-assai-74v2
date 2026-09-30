@@ -10,10 +10,11 @@ compartilhadas na raiz.
 ```
 /                     index.html (capa da #74) · categoria-*.html (10) · expediente.html
                       editorial.html · parceiros.html · parceiro-1.html … parceiro-5.html
-                      css/ (base, shell, capa, expediente, categoria-*) · js/ · fonts/
+                      css/ (base, shell, shell-desktop, capa, expediente, categoria-*)
+                      js/ (+ vendor/) · fonts/
                       assets/ (capa, categorias, expediente, shell + ícones do head/rodapé)
 /74/                  as 10 matérias da edição #74 + css/ + js/ + assets/
-/73/                  edição #73 completa (repositório git próprio)
+/73/                  edição #73 completa
 /73/_bkp_categorias/  as categorias antigas da #73, fora do ar
 /scripts/             shot.py, compare.py e um probe_*.py por página
 /reference/           renders de comparação (fora do git)
@@ -22,7 +23,7 @@ compartilhadas na raiz.
 ### Navegação
 
 1. O visitante entra pelo `index.html`, a capa da #74.
-2. O menu (horizontal no mobile, sidebar no desktop) leva para
+2. O menu (horizontal no mobile, na casca lateral no desktop) leva para
    `categoria-*.html`, na raiz.
 3. Cada categoria abre com a matéria da **#74** e lista abaixo a matéria
    equivalente da **#73**.
@@ -86,9 +87,19 @@ ingênua dava 440.
 
 ## Invólucro (shell)
 
-`css/shell.css` entra por último no `<head>` e `js/shell.js` antes do JS da
-página. O markup fica entre os comentários `INVÓLUCRO` … `/INVÓLUCRO`, logo
-depois do `<body>`, e é igual em todas as páginas; só muda o `is-active`.
+Duas camadas:
+
+- **Casca do desktop** — uma só, para as duas edições (todas as páginas da
+  raiz, da `74/` e da `73/`). Ver "Casca do desktop" abaixo.
+- **Shell de cada edição** — mobile e cabeçalho da coluna, que dependem do HTML
+  de cada edição:
+  - #74 (capa, expediente e as matérias da `74/`): `css/shell.css` depois do
+    CSS da página e `js/shell.js` antes do JS da página;
+  - #73 (a `73/`, as `categoria-*.html`, EDITORIAL, PARCEIROS e
+    `74/parceiro-*.html`): `73/css/revista-73-shell.css` e
+    `73/js/revista-73-menu.js`.
+
+Shell da #74:
 
 - **Mobile**: menu horizontal no HEAD. Em telas com menos de 402px (quase todo
   celular real), o `js/shell.js` reduz o `.page` com
@@ -108,16 +119,65 @@ depois do `<body>`, e é igual em todas as páginas; só muda o `is-active`.
   dá ao `body` a altura reduzida (remedida por `ResizeObserver`, porque
   acordeões e congelamentos mudam a altura). Nas páginas que congelam a tela, o
   invólucro do congelamento também precisa da altura reduzida — ver armadilha 8.
-- **Desktop (≥ 1024px)**: sidebar fixa de 313px (logo + navegação) com fundo
-  `assets/shell/dt-bg-pattern.png`. A faixa cinza do HEAD some e o HEAD fica
-  com 141px. A coluna de 402px fica em x:733 a partir de 1920px; abaixo disso
-  sidebar e coluna se centralizam como um bloco, com a coluna 400px à direita
-  da sidebar.
+- **Desktop (≥ 1024px)**: a faixa cinza do HEAD some (a casca assume a
+  navegação) e o HEAD fica com 141px.
 
-As páginas de categoria usam um shell próprio, herdado da #73:
-`css/categoria-shell.css` e `js/categoria-menu.js`. EDITORIAL e PARCEIROS
-na raiz usam o shell original da #73 (`73/css/revista-73-shell.css` e
-`73/js/revista-73-menu.js`).
+### Casca do desktop
+
+Figma: frame "Desktop - 1" (`2331:3157`). Lateral esquerda (logo, edição, menu
+num painel, botão "Edições anteriores") e lateral direita (redes sociais e QR
+"Ler no celular"), com a coluna de 402px entre elas, sobre fundo branco.
+
+| arquivo | o quê |
+| --- | --- |
+| [`css/shell-desktop.css`](css/shell-desktop.css) | tudo da casca, **e a posição da coluna** no desktop. Entra por último no `<head>` |
+| [`js/shell-desktop.js`](js/shell-desktop.js) | monta o QR com o endereço da página aberta; baixa `js/vendor/qrcode-generator.min.js` (MIT) só quando a lateral direita aparece |
+| [`scripts/shell_sync.py`](scripts/shell_sync.py) | **gera o markup** da casca em todas as páginas a partir de um modelo só |
+| `assets/shell/` | logo e ícones das redes (`rede-*.svg`) |
+
+**Não edite a casca no HTML.** O markup fica entre os comentários
+`CASCA DESKTOP` … `/CASCA DESKTOP`, logo depois do `<body>`. Para mudar menu,
+textos, redes ou links, mude o modelo em `scripts/shell_sync.py` e rode:
+
+```bash
+python scripts/shell_sync.py            # todas as páginas
+python scripts/shell_sync.py --check    # só lista o que mudaria
+```
+
+O script calcula por página o prefixo dos caminhos (raiz ou `../`), o texto da
+edição (`73/`: "Edição #73 · Jul-Ago/2026"; o resto: "#74 · Setembro/2026") e
+o item ativo. Nas páginas da `73/`, EDITORIAL, PARCEIROS e EXPEDIENTE abrem as
+versões da própria `73/`; a `73/download.html` tem um item DOWNLOAD a mais
+(`EXTRAS` no script). **Trava:** se o menu gerado para uma página não tiver os
+mesmos itens, na mesma ordem e com os mesmos links do que ela tem hoje, a
+página não é gravada e a diferença é listada (`--forcar` grava assim mesmo,
+quando a mudança de menu for intencional).
+
+Comportamento:
+
+- **Largura**: ≥ 1920px, exatamente o Figma (lateral esquerda em x:225, coluna
+  em x:733, lateral direita em x:1433), centralizado em telas maiores. De 1200 a
+  1919px, os quatro espaços (margem, vão, vão, margem) encolhem na mesma
+  proporção. De 1024 a 1199px, some a lateral direita. Abaixo de 1024px não há
+  casca.
+- **Altura**: as duas laterais são fixas (não rolam com a página).
+  - Esquerda: ocupa a altura da tela. Os espaços verticais são múltiplos de
+    `--casca-u`, que vale 1px em telas com 987px de altura útil ou mais e
+    encolhe abaixo disso para a lateral caber inteira. **O logo (124px) e os
+    textos não encolhem.** Piso de 0,35px: abaixo de ~604px o menu rola por
+    dentro. A conta (398px fixos + 589 × u) está no CSS e depende do número de
+    itens do menu — mudou o menu, refaça.
+  - Direita: a 50px da base, medidas do Figma. Some em janelas com menos de
+    540px de altura.
+- **Desvios do Figma** (de propósito): o menu usa 12,58px em todos os itens (o
+  código do Figma diz 14,39px nas seções, mas o desenho mostra 12,58px) e o
+  passo médio de 46px entre eles (o Figma é irregular); sem COLUNA e DOWNLOAD,
+  o painel é mais curto e o botão sobe junto; ícones e QR centralizados na
+  lateral direita (no Figma, ~6px à esquerda).
+- **Pendente**: o destino do botão "Edições anteriores" (hoje `#`,
+  `EDICOES_ANTERIORES` no script).
+
+Os scripts de QA (`shot.py`, `probe_*.py`) escondem a `.casca` antes de medir.
 
 ## Carrosséis e banners
 
@@ -222,12 +282,22 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-79**. Ao mexer em
-CSS ou JS, suba o número em todos os HTMLs de uma vez:
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-108**. Ao mexer em
+CSS ou JS, suba o número em todos os HTMLs de uma vez, **incluindo os da
+`73/`** (eles também carregam a casca, `css/shell-desktop.css`):
 
 ```bash
-sed -i 's/?v=74-79/?v=74-80/g' *.html 74/*.html
+sed -i -E 's/\?v=74-[0-9]+/?v=74-109/g' *.html 74/*.html 73/*.html
 ```
+
+Use a expressão (`74-[0-9]+`), não o número exato: trocar só `74-79` deixava
+para trás os links que já estavam em outra versão (a capa ficou com `base.css`,
+`shell.css`, `shell.js` e `capa.js` presos em 74-79 enquanto o resto ia a
+74-107).
+
+Os arquivos da #73 levam `?v=73-NN` — hoje **73-33** para
+`73/css/revista-73-shell.css`, `73/js/revista-73-menu.js` e `73/css/home.css`.
+Mexeu num deles? Suba as referências a ele em `*.html 74/*.html 73/*.html`.
 
 A versão fica dentro do HTML, então os HTMLs precisam subir para o cache
 limpar. Se a página continuar quebrada depois do deploy, o HTML pode estar em
@@ -258,20 +328,23 @@ python scripts/probe.py            # e um probe_<pagina>.py por página
 ```
 
 Os `probe_*.py` medem a posição real de cada elemento-chave contra as
-coordenadas do Figma. Eles escondem a sidebar antes de medir e bloqueiam o
-GTM. Quando uma inserção desloca a página de propósito (banner, bloco novo), o
+coordenadas do Figma. Eles escondem a casca do desktop antes de medir e
+bloqueiam o GTM. Quando uma inserção desloca a página de propósito (banner, bloco novo), o
 deslocamento é somado às posições esperadas, com o motivo anotado no topo do
 arquivo.
 
-**Estado atual:**
+**Estado atual** (medido na troca da casca, 74-108; os mesmos números antes e
+depois dela):
 
 | página | resultado |
 | --- | --- |
-| capa, gestao, gestao2, produto, consumidor, delivery, negocio, academia, noticias2, expediente | 0 fora de posição |
-| principal | 1/56 — `.carousel-nav--prev` foi movida de `-5px` para `15px` direto no CSS |
-| mkt | 7/50 — `.hero-title2` está com `display: none` em `74/css/mkt.css`, o que sobe 28px o que vem depois |
+| gestao, gestao2, produto, consumidor, delivery, academia, mkt, expediente | 0 fora de posição |
+| principal | 1/53 |
+| negocio | 5/58 |
+| noticias2 | 9/30 |
+| capa | 21/32 — desde os cards com vídeo (commit `c21428c`) |
 
-Os dois pendentes vêm de mudanças feitas à mão, não de regressão. Se as
+Os pendentes vêm de mudanças posteriores aos probes, não da casca. Se as
 posições novas forem as desejadas, basta atualizar o valor esperado no probe.
 
 ## Armadilhas encontradas
@@ -351,8 +424,20 @@ posições novas forem as desejadas, basta atualizar o valor esperado no probe.
     layout em 402px estava certo, e no desktop nada aparecia: só reproduz abaixo
     de 402px. Por isso o `.page` é reduzido com `transform: scale`, que calcula o
     layout nos 402px do Figma e só depois reduz (desvio medido: 0,0px). Ver
-    Invólucro. **Não volte a usar `zoom` aqui**, nem em `css/categoria-shell.css`,
-    que ainda o usa e tem o mesmo defeito latente.
+    Invólucro. **Não volte a usar `zoom` aqui.** O shell da #73 (usado também
+    pelas categorias) já reduz com `transform`, no `73/js/revista-73-menu.js`.
+
+14. **Altura do monitor não é altura da tela.** Num monitor de 1080px, o
+    navegador deixa ~940px úteis (barras e abas); num notebook, ~730px. A
+    primeira casca tinha 1080px de altura e rolava junto com a página: em
+    qualquer tela real, a lateral direita começava cortada e o logo sumia ao
+    rolar. Teste a casca com a altura útil (1920×945, 1536×730, 1366×657),
+    não com a do monitor.
+
+15. **Regra genérica de link vence a cor do botão.** `.casca a { color:
+    inherit }` pesa mais que `.casca-pilula { color: #fff }`, e o texto de
+    "Edições anteriores" (um link) saía escuro. Os resets da casca usam
+    `:where(.casca) …`, que tem peso zero.
 
 ## Assets
 

@@ -1,5 +1,5 @@
 /**
- * Menu padronizado #73 — centraliza ítem ativo (horizontal + sidebar desktop),
+ * Menu padronizado #73 — centraliza ítem ativo no menu horizontal,
  * arrastar com mouse/dedo, rolagem vertical do wheel vira scroll horizontal no nav.
  * Mobile (<402px): escala o frame 402px para caber na tela (transform via JS).
  */
@@ -243,37 +243,11 @@
     centerInScrollContainer(nav, item, "x");
   }
 
-  function centerSidebarMenu() {
-    var sidebar = document.querySelector(".dt-sidebar");
-    if (!sidebar || getComputedStyle(sidebar).display === "none") return;
-    var nav = sidebar.querySelector(".dt-nav");
-    if (!nav) return;
-
-    sidebar.scrollTop = 0;
-
-    var items = nav.querySelectorAll(".dt-nav-item");
-    if (!items.length) return;
-
-    var activeIndex = -1;
-    for (var i = 0; i < items.length; i++) {
-      if (items[i].classList.contains("is-active")) {
-        activeIndex = i;
-        break;
-      }
-    }
-    if (activeIndex < 0) return;
-
-    var anchor = items[Math.max(0, activeIndex - 2)];
-    centerInScrollContainer(nav, anchor, "y");
-  }
-
   function centerActiveMenus() {
     requestAnimationFrame(function () {
       centerHeadMenu();
-      centerSidebarMenu();
       requestAnimationFrame(function () {
         centerHeadMenu();
-        centerSidebarMenu();
       });
     });
   }

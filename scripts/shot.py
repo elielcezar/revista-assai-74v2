@@ -31,8 +31,8 @@ def main():
         # QA nao dispara pageview no Analytics (tag GTM das paginas)
         page.route(re.compile(r"googletagmanager|google-analytics|doubleclick"), lambda r: r.abort())
         page.goto(url, wait_until="networkidle")
-        # captura so o frame do Figma: esconde o invólucro (css/shell.css)
-        page.add_style_tag(content=".dt-sidebar { display: none !important; }")
+        # captura so o frame do Figma: esconde a casca do desktop (css/shell-desktop.css)
+        page.add_style_tag(content=".casca { display: none !important; }")
         # animacoes finitas (ex.: queda dos icones da EXPEDIENTE) vao para o estado final
         page.evaluate("""() => document.getAnimations().forEach(a => {
             try { if (isFinite(a.effect.getComputedTiming().endTime)) a.finish(); } catch (e) {} })""")

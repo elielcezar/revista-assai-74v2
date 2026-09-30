@@ -146,8 +146,9 @@ Checklist:
 - Não depende do tipo de decoração: a coluna inteira congela junto, então
   funciona também nas páginas de decoração global.
 - Sem `position: sticky`/`fixed` que dependa do `.page` como pai direto de
-  `body` (ele passa a ficar dentro de `.fx-congela`); a sidebar do desktop não
-  é afetada.
+  `body` (ele passa a ficar dentro de `.fx-congela`); a casca do desktop
+  (`css/shell-desktop.css`, laterais fixas) não é afetada, e a posição da
+  coluna vem de `body div.page`, que continua valendo dentro dos invólucros.
 - Se o trilho já tiver arrasto próprio (a citação da PRINCIPAL tem, em
   `js/principal.js`), ele continua funcionando: o efeito só escreve o
   `scrollLeft` enquanto o leitor rola.
@@ -811,7 +812,7 @@ fim, depois) e meça: topo do `.page`, fundo do bloco de cima e topo do de baixo
 vários na página, cada trilho rola sozinho (os outros parados) e o centro dele
 fica fixo no ponto da trava;
 largura da coluna igual à da tela em 360px (zoom); sem overflow horizontal; no
-desktop (1440px), coluna e sidebar na mesma posição que sem o efeito.
+desktop (1440px), coluna e casca na mesma posição que sem o efeito.
 
 **`slide-in-up`:** role em passos pequenos pelo caminho real (passando por
 acordeões e congelamentos acima) e anote, para cada item, a distância do topo ao
