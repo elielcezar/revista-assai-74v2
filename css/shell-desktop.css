@@ -38,15 +38,16 @@
     --casca-dir: 0px;
 
     /* ---------- unidade vertical da lateral esquerda ----------
-       Todas as medidas verticais da lateral esquerda (margens, vãos, logo,
-       espaçamento do menu) são N x --casca-u. Os textos não encolhem.
-       A lateral mede 274px fixos (textos: edição 2 x 22, 13 itens x 15,
-       botão 35) + 713 x u (o resto, com os 36px de margem embaixo). Então:
+       Os espaços verticais da lateral esquerda (acima e abaixo do logo, vãos,
+       espaçamento e traços do menu) são N x --casca-u. O logo (124px) e os
+       textos não encolhem.
+       A lateral mede 398px fixos (logo 124, edição 2 x 22, 13 itens x 15,
+       botão 35) + 589 x u (os espaços, com os 36px de margem embaixo). Então:
        - tela com 987px de altura útil ou mais: u = 1px, medidas do Figma;
-       - mais baixa: u = (altura - 274) / 713, e a lateral cabe inteira;
-       - piso de 0,45px (telas com menos de ~595px): aí o menu rola por dentro.
+       - mais baixa: u = (altura - 398) / 589, e a lateral cabe inteira;
+       - piso de 0,35px (telas com menos de ~604px): aí o menu rola por dentro.
        Mudou o número de itens do menu ou um texto fixo? Refaça a conta. */
-    --casca-u: clamp(0.45px, calc((100vh - 274px) / 713), 1px);
+    --casca-u: clamp(0.35px, calc((100vh - 398px) / 589), 1px);
 
     --casca-laranja: #e06437;
     --casca-cinza: rgba(217, 217, 217, 0.4);
@@ -69,7 +70,7 @@
   .casca-esq,
   .casca-dir { position: fixed; z-index: 1000; width: 218px; }
 
-  .casca a { color: inherit; text-decoration: none; transition: opacity .15s ease; }
+  :where(.casca) a { color: inherit; text-decoration: none; transition: opacity .15s ease; }
   .casca a:hover { opacity: .75; }
   .casca a:focus-visible { outline: 2px solid #004696; outline-offset: 3px; }
   :where(.casca) p, :where(.casca) ul { margin: 0; padding: 0; list-style: none; }
@@ -84,11 +85,8 @@
   }
   .casca-esq::-webkit-scrollbar { display: none; }
 
-  .casca-logo {
-    flex: none; display: block; margin-left: 34px;
-    width: calc(124 * var(--casca-u)); height: calc(124 * var(--casca-u));
-  }
-  .casca-logo img { display: block; width: 100%; height: 100%; }
+  .casca-logo { flex: none; display: block; margin-left: 34px; width: 124px; height: 124px; }
+  .casca-logo img { display: block; width: 124px; height: 124px; }
 
   .casca-edicao {
     flex: none; margin: calc(31 * var(--casca-u)) 0 0 37px;
