@@ -101,7 +101,8 @@ a.hero, a.card { display: block; position: relative; overflow: hidden; text-deco
 .grid--2:nth-of-type(3) .card:nth-child(1) .card-title { left: 26px; top: 169px; width: 140px; }
 
 /* DELIVERY — texto embaixo */
-.grid--2:nth-of-type(3) .card:nth-child(2) .card-bg { inset: auto; left: 0; top: -13.56%; width: 109.81%; height: 113.52%; object-fit: cover; max-width: none; }
+/* o recorte vale so para a foto; o video do card (DELIVERY) preenche com cover */
+.grid--2:nth-of-type(3) .card:nth-child(2) img.card-bg { inset: auto; left: 0; top: -13.56%; width: 109.81%; height: 113.52%; object-fit: cover; max-width: none; }
 .grid--2:nth-of-type(3) .card:nth-child(2) .card-tag { left: 13px; top: 125px; }
 .grid--2:nth-of-type(3) .card:nth-child(2) .card-title { left: 13px; top: 152px; width: 168px; }
 
