@@ -73,8 +73,13 @@ EXPECT = [
 
     (".q-fecho",                35, 9145),
 
-    ("footer.foot",              0, 9391),
-    (".foot-bar",                0, 9436),
+    # carrossel de banners Schwanke depois do fecho (fora do Figma):
+    # 40 + 385 (imagem 815x781 em 402px) + 21 (bolinhas) + 40 = 486px a mais
+    # no fim do artigo; so o rodape desce
+    (".s-banners .bcar",         0, 9431),
+
+    ("footer.foot",              0, 9391 + 486),
+    (".foot-bar",                0, 9436 + 486),
 ]
 
 

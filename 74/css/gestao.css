@@ -380,3 +380,23 @@
 .s-fecho { min-height: 376px; padding-top: 130px; }
 .q-fecho { width: 338px; margin-left: 35px; }
 .q-fecho p { font-size: 26px; font-weight: 700; color: #fff; text-align: center; line-height: normal; }
+
+/* =========================================================
+   CARROSSEL DE BANNERS (fora do Figma) — depois do fecho, no fim do
+   artigo: nenhuma decoracao abaixo, so a .art cresce.
+   Mesmo componente da PRINCIPAL: arrasta com mouse e dedo; bolinhas na base
+   ========================================================= */
+.s-banners { padding: 40px 0; }
+.bcar { width: 402px; }
+.bcar-view { width: 402px; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.bcar-view.is-dragging { cursor: grabbing; user-select: none; }
+.bcar-track { display: flex; width: max-content; transition: transform .45s ease; }
+.bslide { flex: none; width: 402px; }
+.bslide img { display: block; max-width: 100%; height: auto; }
+.bcar-dots { display: flex; justify-content: center; align-items: center; gap: 9px; padding-top: 12px; }
+.bcar-dot {
+  width: 9px; height: 9px; border-radius: 50%; background: #d9d9d9;
+  padding: 0; border: 0; cursor: pointer; transition: background .2s ease;
+}
+.bcar-dot.is-active { background: var(--vermelho); }
+.bcar-dot:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }

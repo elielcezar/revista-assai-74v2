@@ -36,11 +36,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-112">
-<link rel="stylesheet" href="css/gestao.css?v=74-112">
-<link rel="stylesheet" href="../css/shell.css?v=74-112">
+<link rel="stylesheet" href="../css/base.css?v=74-113">
+<link rel="stylesheet" href="css/gestao.css?v=74-113">
+<link rel="stylesheet" href="../css/shell.css?v=74-113">
 <!-- casca do desktop: por último -->
-<link rel="stylesheet" href="../css/shell-desktop.css?v=74-112">
+<link rel="stylesheet" href="../css/shell-desktop.css?v=74-113">
 </head>
 <body>
 
@@ -476,6 +476,24 @@
       <blockquote class="q-fecho"><p>“O ‘de graça’ mais inteligente é aquele que tem baixo custo e alto valor percebido. Se não vende, não diferencia, e ninguém nota, tem que cortar sem dó.”</p></blockquote>
     </section>
 
+    <!-- ====== CARROSSEL DE BANNERS (fora do Figma; mesmo componente da PRINCIPAL) ====== -->
+    <section class="s s-banners">
+      <div class="bcar" data-bcar>
+        <div class="bcar-view">
+          <div class="bcar-track" data-btrack>
+            <figure class="bslide" data-bslide><img src="assets/banners/schwanke-1.jpg?v=74-113" alt="Publicidade Schwanke" width="402" height="385"></figure>
+            <figure class="bslide" data-bslide><img src="assets/banners/schwanke-2.jpg?v=74-113" alt="Publicidade Schwanke" width="402" height="385"></figure>
+            <figure class="bslide" data-bslide><img src="assets/banners/schwanke-3.jpg?v=74-113" alt="Publicidade Schwanke" width="402" height="385"></figure>
+          </div>
+        </div>
+        <div class="bcar-dots">
+          <button class="bcar-dot is-active" type="button" data-bdot aria-label="Banner 1" aria-current="true"></button>
+          <button class="bcar-dot" type="button" data-bdot aria-label="Banner 2"></button>
+          <button class="bcar-dot" type="button" data-bdot aria-label="Banner 3"></button>
+        </div>
+      </div>
+    </section>
+
   </article>
 
   <!-- ============ COMPONENTE RODAPE ============ -->
@@ -493,12 +511,12 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-112"></script>
-<script src="js/gestao.js?v=74-112"></script>
+<script src="../js/shell.js?v=74-113"></script>
+<script src="js/gestao.js?v=74-113"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-112"></script>
-<script src="../js/shell-desktop.js?v=74-112"></script>
+<script src="../js/scroll-fx.js?v=74-113"></script>
+<script src="../js/shell-desktop.js?v=74-113"></script>
 </body>
 </html>

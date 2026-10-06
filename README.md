@@ -193,7 +193,7 @@ item por item e param nas pontas.
 | onde | o quê |
 | --- | --- |
 | `74/principal.html` | carrossel da matéria · citação com arrasto horizontal · carrossel de 5 banners com bolinhas |
-| `74/gestao.html` | carrossel de 6 cards |
+| `74/gestao.html` | carrossel de 6 cards · carrossel de 3 banners (Schwanke) com bolinhas, depois do fecho |
 | `74/academia.html` | galeria de 5 cards de prêmios (também corre com o scroll, pelo `pin-horizontal`) |
 | `74/mkt.html` | galeria de rolagem contínua (uma imagem só) |
 | `index.html` | banner fixo depois da primeira linha de cards |
@@ -287,7 +287,7 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-112**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-113**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez, **incluindo os da
 `73/`** (eles também carregam a casca, `css/shell-desktop.css`):
 
