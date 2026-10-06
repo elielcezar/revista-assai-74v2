@@ -182,7 +182,9 @@
    So margem em cima: o titulo das marcas ja traz os 58px de respiro dele
    ========================================================= */
 .adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0 0; }
-.adbox img { display: block; max-width: 100%; height: auto; }
+.adbox img, .adbox video { display: block; max-width: 100%; height: auto; }
+/* banner rotativo depois do exemplo de calculo: imagem (402x536) ou video (402x715) */
+.adbox--exemplo video { width: 100%; }
 
 /* =========================================================
    BLOCO 10 — marcas próprias   (4405 .. 5079)

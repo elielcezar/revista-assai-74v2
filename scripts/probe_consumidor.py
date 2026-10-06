@@ -10,6 +10,8 @@ from playwright.sync_api import sync_playwright
 # selector -> (left, top) absolutos na pagina, do metadata da API REST do Figma
 # do banner rotativo em diante, os tops levam +475 (419 da imagem + 56 de margem):
 # texto e decoracoes da .art-bg foram deslocados juntos
+# segundo banner rotativo, antes do .s-teste: mais +475 do .h-teste para baixo
+# (as faixas .d-faixa--1..5 desceram junto no CSS)
 EXPECT = [
     ("header.head",              0, 0),
     (".head-logo",              54, 78),
@@ -42,11 +44,11 @@ EXPECT = [
     (".h-embalagem",            29, 6243),
     (".t-embalagem",            22, 6301),
 
-    (".h-teste",                26, 7025),
-    (".teste-texto",            20, 7084),
+    (".h-teste",                26, 7500),
+    (".teste-texto",            20, 7559),
 
-    ("footer.foot",              0, 7631),
-    (".foot-bar",                0, 7676),
+    ("footer.foot",              0, 8106),
+    (".foot-bar",                0, 8151),
 ]
 
 

@@ -34,7 +34,7 @@ EDICOES = {
     "73": ("Edição #73", "Jul-Ago/2026"),
     None: ("Edição #74", "Setembro/2026"),
 }
-EDICOES_ANTERIORES = "#"   # destino ainda não definido
+EDICOES_ANTERIORES = "https://www.assai.com.br/revistas"
 
 # (rótulo, página na raiz, cor do traço, abre na própria edição)
 MENU = [
@@ -95,7 +95,8 @@ def casca(pasta, ativo, menu=MENU):
     for rot, alvo, cor, local in menu:
         href = alvo if (local and pasta == "73") else p + alvo
         ativa = ' class="is-active" aria-current="page"' if rot == ativo else ""
-        itens.append(f'      <a href="{href}" style="--mc:{cor}"{ativa}>{rot}</a>')
+        # os links do menu sempre abrem em nova aba
+        itens.append(f'      <a href="{href}" target="_blank" rel="noopener" style="--mc:{cor}"{ativa}>{rot}</a>')
     redes = [
         f'      <li><a href="{url}" target="_blank" rel="noopener" aria-label="Assaí no {nome}">'
         f'<img src="{p}assets/shell/rede-{ic}.svg" alt="" width="{w}" height="{h}"></a></li>'
@@ -112,7 +113,7 @@ def casca(pasta, ativo, menu=MENU):
         '      <nav class="casca-nav" aria-label="Seções da revista">',
         *["  " + i for i in itens],
         '      </nav>',
-        f'      <a class="casca-pilula" href="{EDICOES_ANTERIORES}">Edições anteriores</a>',
+        f'      <a class="casca-pilula" href="{EDICOES_ANTERIORES}" target="_blank" rel="noopener">Edições anteriores</a>',
         '    </div>',
         '  </aside>',
         '  <aside class="casca-dir" aria-label="Assaí nas redes sociais">',

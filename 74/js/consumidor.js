@@ -6,9 +6,8 @@
   var nav = document.querySelector(".head-nav");
   if (nav) nav.scrollLeft = 157;
 
-  /* ---------- banner rotativo: sorteia um anuncio por carregamento ---------- */
-  var adbox = document.querySelector("[data-ad-random]");
-  if (adbox) {
+  /* ---------- banners rotativos: cada um sorteia um anuncio por carregamento ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ad-random]"), function (adbox) {
     var adimg = adbox.querySelector("img");
     var lista = [];
     try { lista = JSON.parse(adbox.getAttribute("data-ad-random")) || []; } catch (e) { lista = []; }
@@ -19,7 +18,7 @@
         adimg.alt = escolhido.alt || "";
       }
     }
-  }
+  });
 
   /* ---------- voltar ao topo ---------- */
   var toTop = document.querySelector(".foot-top");

@@ -12,6 +12,8 @@ from playwright.sync_api import sync_playwright
 #  +520 no que vem depois dele dentro do bloco
 #  +470 nos blocos seguintes (o bloco do trabalho absorve 50px no min-height)
 # margin-bottom de 60px no .bl-trabalho (pedido fora do Figma): +60 do .bl-alcance para baixo
+# banner rotativo entre a abertura e o .bl-perguntas (419 da imagem + 28 + 28 de margem):
+#  +475 do .bl-perguntas para baixo (ja somado abaixo)
 EXPECT = [
     ("header.head",              0, 0),
     (".head-logo",              54, 78),
@@ -24,37 +26,37 @@ EXPECT = [
     (".hero-lead",              23, 786),
     (".t-hero",                 23, 888),
 
-    (".bl-perguntas",            0, 1262),
-    (".h-curiosidade",          20, 1283),
-    (".t-curiosidade",          20, 1342),
-    (".foto-ingredientes",    90.5, 1806),
-    (".h-pergunte",           21.5, 1995),
-    (".perguntas",              20, 2073),
+    (".bl-perguntas",            0, 1737),
+    (".h-curiosidade",          20, 1758),
+    (".t-curiosidade",          20, 1817),
+    (".foto-ingredientes",    90.5, 2281),
+    (".h-pergunte",           21.5, 2470),
+    (".perguntas",              20, 2548),
 
-    (".bl-caso",                 0, 2436),
-    (".caso-foto",              32, 2465),
-    (".h-caso",                 22, 2834),
-    (".t-caso",                 22, 2893),
+    (".bl-caso",                 0, 2911),
+    (".caso-foto",              32, 2940),
+    (".h-caso",                 22, 3309),
+    (".t-caso",                 22, 3368),
 
-    (".bl-trabalho",             0, 3409),
-    (".trabalho-foto",         -65, 3409),
-    (".trabalho-detalhe",    122.7, 3836),
-    (".h-trabalho",             22, 4537),
-    (".t-trabalho",             22, 4623),
+    (".bl-trabalho",             0, 3884),
+    (".trabalho-foto",         -65, 3884),
+    (".trabalho-detalhe",    122.7, 4311),
+    (".h-trabalho",             22, 5012),
+    (".t-trabalho",             22, 5098),
 
-    (".bl-alcance",              0, 5163),
-    (".alcance-foto",        -4.5, 5163),
-    (".alcance-faixa",           0, 5462),
-    (".estatisticas",           20, 5586),
+    (".bl-alcance",              0, 5638),
+    (".alcance-foto",        -4.5, 5638),
+    (".alcance-faixa",           0, 5937),
+    (".estatisticas",           20, 6061),
 
-    (".bl-fecho",                0, 6176),
-    (".h-continuidade",         20, 6176),
-    (".t-continuidade",         20, 6262),
-    (".foto-final",         -129.5, 6618),
-    (".h-reputacao",            21, 6929),
-    (".t-reputacao",            21, 7015),
+    (".bl-fecho",                0, 6651),
+    (".h-continuidade",         20, 6651),
+    (".t-continuidade",         20, 6737),
+    (".foto-final",         -129.5, 7093),
+    (".h-reputacao",            21, 7404),
+    (".t-reputacao",            21, 7490),
 
-    ("footer.foot",              0, 7275),
+    ("footer.foot",              0, 7750),
 ]
 
 

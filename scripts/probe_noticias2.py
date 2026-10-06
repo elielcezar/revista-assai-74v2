@@ -7,6 +7,8 @@ import pathlib
 import re
 from playwright.sync_api import sync_playwright
 
+# banner rotativo depois do .bl-exemplo: o probe bloqueia o js/noticias2.js e
+# mede a imagem que vem no HTML (402x536 + 28 de margem = +564 do .h-rendimento para baixo, ja somado)
 EXPECT = [
     ("header.head",              0,    0),
     (".head-logo",              54,   78),
@@ -35,20 +37,20 @@ EXPECT = [
     (".bl-exemplo",               0, 2943),
     (".t-exemplo",               17, 3036),
 
-    (".h-rendimento",            20, 3288),
-    (".t-rendimento",            20, 3365),
+    (".h-rendimento",            20, 3852),
+    (".t-rendimento",            20, 3929),
 
-    (".h-regularidade",          20, 4094),
-    (".t-regularidade",          20, 4171),
+    (".h-regularidade",          20, 4658),
+    (".t-regularidade",          20, 4735),
 
-    (".h-marcas",                20, 4645),
-    (".t-marcas",                20, 4722),
+    (".h-marcas",                20, 5209),
+    (".t-marcas",                20, 5286),
 
-    (".banner-chef",              0, 5261),
-    (".h-cta",                   20, 5532),
-    (".btn-cta",                 20, 5626),
+    (".banner-chef",              0, 5825),
+    (".h-cta",                   20, 6096),
+    (".btn-cta",                 20, 6190),
 
-    ("footer.foot",               0, 5682),
+    ("footer.foot",               0, 6246),
 ]
 
 
@@ -59,6 +61,8 @@ def main():
         pg = b.new_page(viewport={"width": 402, "height": 900}, device_scale_factor=1)
         # QA nao dispara pageview no Analytics (tag GTM das paginas)
         pg.route(re.compile(r"googletagmanager|google-analytics|doubleclick"), lambda r: r.abort())
+        # o sorteio do banner (imagem ou video, alturas diferentes) mudaria as posicoes a cada execucao
+        pg.route(re.compile(r"js/noticias2\.js"), lambda r: r.abort())
         pg.goto(url, wait_until="networkidle")
         # mede so o frame do Figma: esconde a casca do desktop (css/shell-desktop.css)
         pg.add_style_tag(content=".casca { display: none !important; }")

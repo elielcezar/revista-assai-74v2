@@ -174,8 +174,13 @@ Comportamento:
   passo médio de 46px entre eles (o Figma é irregular); sem COLUNA e DOWNLOAD,
   o painel é mais curto e o botão sobe junto; ícones e QR centralizados na
   lateral direita (no Figma, ~6px à esquerda).
-- **Pendente**: o destino do botão "Edições anteriores" (hoje `#`,
-  `EDICOES_ANTERIORES` no script).
+- **Links de menu abrem em nova aba** (`target="_blank" rel="noopener"`), em
+  todos os menus: o da casca (gerado pelo script), o `head-nav` mobile da #74
+  e o `head-menu` da #73/categorias. Página nova precisa vir assim; os `#`
+  (COLUNA) ficam sem. O mesmo vale para os links das matérias (`74/…`,
+  `73/…`) nos cards da capa e nas `categoria-*.html`.
+- **"Edições anteriores"** abre https://www.assai.com.br/revistas em nova aba
+  (`EDICOES_ANTERIORES` no script).
 
 Os scripts de QA (`shot.py`, `probe_*.py`) escondem a `.casca` antes de medir.
 
@@ -282,12 +287,12 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-108**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-112**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez, **incluindo os da
 `73/`** (eles também carregam a casca, `css/shell-desktop.css`):
 
 ```bash
-sed -i -E 's/\?v=74-[0-9]+/?v=74-109/g' *.html 74/*.html 73/*.html
+sed -i -E 's/\?v=74-[0-9]+/?v=74-113/g' *.html 74/*.html 73/*.html
 ```
 
 Use a expressão (`74-[0-9]+`), não o número exato: trocar só `74-79` deixava

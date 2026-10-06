@@ -113,7 +113,8 @@ a.hero, a.card { display: block; position: relative; overflow: hidden; text-deco
 
 /* MKT DIGITAL */
 .card--mkt { width: 405px; margin-left: -3px; height: 233px; }
-.card--mkt .card-bg { inset: auto; left: .03%; top: -16.33%; width: 99.96%; height: 126.28%; object-fit: cover; }
+/* o recorte vale so para a foto; o video do card preenche com cover */
+.card--mkt img.card-bg { inset: auto; left: .03%; top: -16.33%; width: 99.96%; height: 126.28%; object-fit: cover; }
 .card--mkt .card-fade {
   height: 233px; mix-blend-mode: multiply;
   background: linear-gradient(29.1deg, rgba(0,0,0,0) 41.4%, rgba(61,38,38,.9) 72.7%); /* escuro no canto superior direito, atras do texto */

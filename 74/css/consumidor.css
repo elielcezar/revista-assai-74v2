@@ -19,7 +19,7 @@
 .art {
   position: relative;
   width: 402px;
-  min-height: 7449px;
+  min-height: 7924px;   /* 7449 + 475 do banner antes do .s-teste */
   background: #fff;
   overflow: hidden;
 }
@@ -117,12 +117,13 @@
 
 
 
-/* -- faixas rosa translucidas atras de "O cliente ve/imagina/recebe/compara/decide" -- */
-.d-faixa--1 { left: 130px; top: 6901px; width: 139px; height: 28px; }
-.d-faixa--2 { left: 102px; top: 7006px; width: 196px; height: 28px; }
-.d-faixa--3 { left: 117px; top: 7110px; width: 172px; height: 28px; }
-.d-faixa--4 { left: 102px; top: 7214px; width: 200px; height: 28px; }
-.d-faixa--5 { left: 112px; top: 7318px; width: 181px; height: 28px; }
+/* -- faixas rosa translucidas atras de "O cliente ve/imagina/recebe/compara/decide" --
+   +475 do banner rotativo antes do .s-teste */
+.d-faixa--1 { left: 130px; top: 7376px; width: 139px; height: 28px; }
+.d-faixa--2 { left: 102px; top: 7481px; width: 196px; height: 28px; }
+.d-faixa--3 { left: 117px; top: 7585px; width: 172px; height: 28px; }
+.d-faixa--4 { left: 102px; top: 7689px; width: 200px; height: 28px; }
+.d-faixa--5 { left: 112px; top: 7793px; width: 181px; height: 28px; }
 
 /* =========================================================
    BLOCO 1 — abertura   (0 .. 884)
