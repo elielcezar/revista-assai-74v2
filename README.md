@@ -194,10 +194,12 @@ item por item e param nas pontas.
 | --- | --- |
 | `74/principal.html` | carrossel da matéria · citação com arrasto horizontal · carrossel de 5 banners com bolinhas |
 | `74/gestao.html` | carrossel de 6 cards · carrossel de 3 banners (Schwanke) com bolinhas, depois do fecho |
+| `74/delivery.html` | carrossel de 3 banners (Extrusa) com bolinhas, antes do texto da Senacon (página de decoração global: o que está abaixo desceu 447px) |
 | `74/academia.html` | galeria de 5 cards de prêmios (também corre com o scroll, pelo `pin-horizontal`) |
 | `74/mkt.html` | galeria de rolagem contínua (uma imagem só) |
 | `index.html` | banner fixo depois da primeira linha de cards |
-| `74/mkt.html`, `74/produto.html`, `74/consumidor.html` | banner rotativo |
+| `74/mkt.html`, `74/produto.html`, `74/consumidor.html`, `74/delivery.html` | banner rotativo |
+| `74/negocio.html` | banner rotativo de vídeo (Bimbo ou JBS): o vídeo vem com `preload="none"` e sem autoplay, e o JS sorteia, troca o `src` e dá o play — só um vídeo é baixado |
 
 **Setas invertidas de propósito:** a da esquerda avança e a da direita volta,
 simulando que ela "puxa" o conteúdo para o seu lado.
@@ -287,12 +289,12 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-113**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-116**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez, **incluindo os da
 `73/`** (eles também carregam a casca, `css/shell-desktop.css`):
 
 ```bash
-sed -i -E 's/\?v=74-[0-9]+/?v=74-113/g' *.html 74/*.html 73/*.html
+sed -i -E 's/\?v=74-[0-9]+/?v=74-116/g' *.html 74/*.html 73/*.html
 ```
 
 Use a expressão (`74-[0-9]+`), não o número exato: trocar só `74-79` deixava

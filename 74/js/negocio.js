@@ -6,10 +6,21 @@
   var nav = document.querySelector(".head-nav");
   if (nav) nav.scrollLeft = 323;
 
-  /* ---------- banner de video: autoplay mudo (politica dos navegadores) ---------- */
+  /* ---------- banner rotativo de video: sorteia um anuncio por carregamento ----------
+     cada item: {src, alt}. O HTML traz o primeiro com preload="none" e sem
+     autoplay; aqui troca o src se for outro e da o play mudo (politica dos navegadores) */
   var advid = document.querySelector(".adbox video");
   if (advid) {
+    var adbox = advid.parentNode;
+    var lista = [];
+    try { lista = JSON.parse(adbox.getAttribute("data-ad-random")) || []; } catch (e) { lista = []; }
+    var item = lista[Math.floor(Math.random() * lista.length)];
+    if (item && item.src !== advid.getAttribute("src")) {
+      advid.src = item.src;
+      advid.setAttribute("aria-label", item.alt || "");
+    }
     advid.muted = true;
+    advid.preload = "auto";
     var play = advid.play();
     if (play && play.catch) play.catch(function () {});
   }

@@ -9,6 +9,9 @@ from playwright.sync_api import sync_playwright
 
 # do banner rotativo em diante, os tops levam +475 (419 da imagem + 56 de margem):
 # texto e decoracoes da .art-bg foram deslocados juntos
+# do carrossel de banners Extrusa (antes da .t-senacon) em diante, mais +447
+# (97 de margem no lugar dos 97 da Senacon, 386 da imagem + 21 das bolinhas + 40
+# ate o texto); as decoracoes abaixo (.d-r1487, .d-r1486, .d-r1518) tambem
 EXPECT = [
     ("header.head",              0,    0),
     (".head-logo",              54,   78),
@@ -40,14 +43,18 @@ EXPECT = [
     (".q-pausar",                 0, 5789),
     (".h-fiscalizacao",         109, 6287),
     (".t-discussao",             23, 6410),
-    (".t-senacon",               20, 6595),
+    (".bcar",                     0, 6595),
+    (".t-senacon",               20, 6595 + 447),
 
-    (".h-confira",               25, 7060),
-    (".t-confira",               30, 7106),
-    (".dicas",                    0, 7334),
-    (".t-final",                 20, 7880),
+    (".d-r1487",                -78, 6958 + 447),
+    (".d-r1486",                -98, 6987 + 447),
+    (".d-r1518",                -11, 7322 + 447),
+    (".h-confira",               25, 7060 + 447),
+    (".t-confira",               30, 7106 + 447),
+    (".dicas",                    0, 7334 + 447),
+    (".t-final",                 20, 7880 + 447),
 
-    ("footer.foot",              0, 8049),
+    ("footer.foot",              0, 8049 + 447),
 ]
 
 

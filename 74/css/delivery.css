@@ -15,7 +15,7 @@
 .art {
   position: relative;
   width: 402px;
-  min-height: 7867px;
+  min-height: 8314px;  /* 7867 do Figma + 447 do carrossel de banners */
   background: #fff;
   overflow: hidden;
 }
@@ -92,15 +92,15 @@
 .d-e120b { left: 71px; top: 6053px; width: 258px; height: 129px; }
 
 .d-r1487 {
-  left: -78px; top: 6776px; width: 567px; height: 340px;
+  left: -78px; top: 7223px; width: 567px; height: 340px;
   border-radius: 280px 280px 0 0;
   background-image: linear-gradient(-56.57deg, #e30613 11.52%, #ffdc00 118.65%);
 }
 .d-r1486 {
-  left: -98px; top: 6805px; width: 567px; height: 347px;
+  left: -98px; top: 7252px; width: 567px; height: 347px;
   border-radius: 280px 280px 0 0; background: var(--azul-claro);
 }
-.d-r1518 { left: -11px; top: 7140px; width: 413px; height: 496px; background: var(--azul-claro); }
+.d-r1518 { left: -11px; top: 7587px; width: 413px; height: 496px; background: var(--azul-claro); }
 
 /* =========================================================
    BLOCO 1 — abertura   (0 .. 927)
@@ -210,9 +210,11 @@
 }
 
 /* =========================================================
-   BLOCO 6 — pausar / fiscalização   (5607 .. 6776)
+   BLOCO 6 — pausar / fiscalização   (5607 .. 7223)  (+447 do carrossel)
    ========================================================= */
-.s-pausar { min-height: 1169px; }
+/* 1169 do Figma + 447: a secao cresce o mesmo tanto que o conteudo, senao a
+   folga do min-height (63px) engolia parte do deslocamento */
+.s-pausar { min-height: 1616px; }
 
 .q-pausar {
   position: relative; width: 402px; min-height: 435px; padding: 253px 21px 0;
@@ -229,13 +231,34 @@
   width: 359px; margin: 69px auto 0;
   font-size: 20px; font-weight: 700; color: #fff; text-align: center; line-height: normal;
 }
-.t-senacon { width: 362px; margin: 97px 0 0 20px; }
+/* carrossel de banners (fora do Figma) entre a discussao e o texto da Senacon:
+   97px abaixo da discussao (o mesmo vao que a Senacon tinha, ja no branco, depois
+   do fundo bordo da .d-r1474) e 40px ate o texto. Altura 386 + 21 das bolinhas
+   + 40 = 447px a mais: as decoracoes abaixo (.d-r1487, .d-r1486, .d-r1518), o
+   min-height da .s-pausar e o da .art levam +447.
+   Mesmo componente da PRINCIPAL: arrasta com mouse e dedo; bolinhas na base */
+.bcar { position: relative; width: 402px; margin-top: 97px; }
+.bcar-view { width: 402px; overflow: hidden; cursor: grab; touch-action: pan-y; }
+.bcar-view.is-dragging { cursor: grabbing; user-select: none; }
+.bcar-track { display: flex; width: max-content; transition: transform .45s ease; }
+.bslide { flex: none; width: 402px; }
+/* arte de 391x375, ampliada para a largura da coluna */
+.bslide img { display: block; width: 402px; height: 386px; max-width: none; object-fit: cover; }
+.bcar-dots { display: flex; justify-content: center; align-items: center; gap: 9px; padding-top: 12px; }
+.bcar-dot {
+  width: 9px; height: 9px; border-radius: 50%; background: #d9d9d9;
+  padding: 0; border: 0; cursor: pointer; transition: background .2s ease;
+}
+.bcar-dot.is-active { background: var(--vermelho); }
+.bcar-dot:focus-visible { outline: 2px solid var(--azul); outline-offset: 2px; }
+
+.t-senacon { width: 362px; margin: 40px 0 0 20px; }
 .t-senacon p { font-size: 18px; color: #000; line-height: normal; }
 .t-senacon p + p { margin-top: 20px; }
 .t-senacon strong { font-weight: 700; }
 
 /* =========================================================
-   BLOCO 7 — confira e leia tudo   (6776 .. 7867)
+   BLOCO 7 — confira e leia tudo   (7223 .. 8314)  (+447 do carrossel)
    ========================================================= */
 .s-confira { min-height: 1091px; padding-top: 102px; }
 

@@ -10,6 +10,7 @@ from playwright.sync_api import sync_playwright
 # video Academia Assaí antes de .foto-votacao: os tops seguintes levam +572
 # (544 da proporcao 720x974 em 402px + 28 de margem abaixo; a margem de cima
 #  ocupou os 28px que ja existiam entre o botao e as fotos)
+# o video foi trocado pelo da Seda (720x1280 = 402x715): mais +171 dali em diante
 EXPECT = [
     ("header.head",              0,    0),
     (".head-logo",              54,   78),
@@ -38,14 +39,16 @@ EXPECT = [
     (".t-votacao",                24, 3827),
     (".adbox",                     0, 4165),
 
-    (".h-voce",                   24, 5128),
-    (".t-voce",                   24, 5178),
+    (".foto-votacao-r",          124, 4737 + 171),
 
-    (".h-premio",                 24, 6226),
-    (".t-premio",                 24, 6303),
-    (".logo-premio",             129, 6974),
+    (".h-voce",                   24, 5128 + 171),
+    (".t-voce",                   24, 5178 + 171),
 
-    ("footer.foot",                0, 7046),
+    (".h-premio",                 24, 6226 + 171),
+    (".t-premio",                 24, 6303 + 171),
+    (".logo-premio",             129, 6974 + 171),
+
+    ("footer.foot",                0, 7046 + 171),
 ]
 
 

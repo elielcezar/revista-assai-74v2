@@ -36,11 +36,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/base.css?v=74-113">
-<link rel="stylesheet" href="css/delivery.css?v=74-113">
-<link rel="stylesheet" href="../css/shell.css?v=74-113">
+<link rel="stylesheet" href="../css/base.css?v=74-116">
+<link rel="stylesheet" href="css/delivery.css?v=74-116">
+<link rel="stylesheet" href="../css/shell.css?v=74-116">
 <!-- casca do desktop: por último -->
-<link rel="stylesheet" href="../css/shell-desktop.css?v=74-113">
+<link rel="stylesheet" href="../css/shell-desktop.css?v=74-116">
 </head>
 <body>
 
@@ -200,10 +200,10 @@
     <!-- ====== BANNER ROTATIVO — um dos três, sorteado a cada carregamento ====== -->
     <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/delivery.js sorteia outro -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/celeste.jpg?v=74-113","alt":"Publicidade Celeste"},
-      {"src":"assets/banners/3coracoes.jpg?v=74-113","alt":"Publicidade 3 Corações"},
-      {"src":"assets/banners/melita.jpg?v=74-113","alt":"Publicidade Melitta"}]'>
-      <img src="assets/banners/celeste.jpg?v=74-113" alt="Publicidade Celeste" width="402" height="419">
+      {"src":"assets/banners/celeste.jpg?v=74-116","alt":"Publicidade Celeste"},
+      {"src":"assets/banners/3coracoes.jpg?v=74-116","alt":"Publicidade 3 Corações"},
+      {"src":"assets/banners/melita.jpg?v=74-116","alt":"Publicidade Melitta"}]'>
+      <img src="assets/banners/celeste.jpg?v=74-116" alt="Publicidade Celeste" width="402" height="419">
     </figure>
 
     <!-- ====== BLOCO 5 — bloqueio e ranqueamento (laranja) ====== -->
@@ -228,6 +228,22 @@
 
       <h2 class="h-fiscalizacao">Fiscalização do governo</h2>
       <p class="t-discussao" data-fx-item data-fx-grupo="discussao">A discussão sobre COMO o valor pago pelo cliente é dividido entre plataforma, entregador e estabelecimento também chegou aos órgãos públicos.</p>
+
+      <!-- ====== CARROSSEL DE BANNERS (fora do Figma; mesmo componente da PRINCIPAL) ====== -->
+      <div class="bcar" data-bcar>
+        <div class="bcar-view">
+          <div class="bcar-track" data-btrack>
+            <figure class="bslide" data-bslide><img src="assets/banners/extrusa-1.jpg?v=74-116" alt="Publicidade Extrusa" width="402" height="386"></figure>
+            <figure class="bslide" data-bslide><img src="assets/banners/extrusa-2.jpg?v=74-116" alt="Publicidade Extrusa" width="402" height="386"></figure>
+            <figure class="bslide" data-bslide><img src="assets/banners/extrusa-3.jpg?v=74-116" alt="Publicidade Extrusa" width="402" height="386"></figure>
+          </div>
+        </div>
+        <div class="bcar-dots">
+          <button class="bcar-dot is-active" type="button" data-bdot aria-label="Banner 1" aria-current="true"></button>
+          <button class="bcar-dot" type="button" data-bdot aria-label="Banner 2"></button>
+          <button class="bcar-dot" type="button" data-bdot aria-label="Banner 3"></button>
+        </div>
+      </div>
 
       <div class="t-senacon">
         <p>Entre abril e maio de 2026, a Secretaria Nacional do Consumidor (Senacon), vinculada ao Ministério da Justiça e Segurança Pública, iniciou uma fiscalização para verificar se as plataformas cumpriam as normas de transparência do repasse.</p>
@@ -271,14 +287,14 @@
 
 </div>
 
-<script src="../js/shell.js?v=74-113"></script>
-<script src="js/delivery.js?v=74-113"></script>
+<script src="../js/shell.js?v=74-116"></script>
+<script src="js/delivery.js?v=74-116"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
 <!-- SplitText: o popcorn-pop quebra o titulo em letras -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-113"></script>
-<script src="../js/shell-desktop.js?v=74-113"></script>
+<script src="../js/scroll-fx.js?v=74-116"></script>
+<script src="../js/shell-desktop.js?v=74-116"></script>
 </body>
 </html>
