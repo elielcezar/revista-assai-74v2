@@ -289,12 +289,12 @@ está na skill, no `pop-in`.
 
 ## Cache
 
-CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-116**. Ao mexer em
+CSS, JS e as imagens de banner levam `?v=74-NN` — hoje **74-117**. Ao mexer em
 CSS ou JS, suba o número em todos os HTMLs de uma vez, **incluindo os da
 `73/`** (eles também carregam a casca, `css/shell-desktop.css`):
 
 ```bash
-sed -i -E 's/\?v=74-[0-9]+/?v=74-116/g' *.html 74/*.html 73/*.html
+sed -i -E 's/\?v=74-[0-9]+/?v=74-117/g' *.html 74/*.html 73/*.html
 ```
 
 Use a expressão (`74-[0-9]+`), não o número exato: trocar só `74-79` deixava

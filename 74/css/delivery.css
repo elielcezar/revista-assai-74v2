@@ -25,7 +25,10 @@
    ATENCAO: as decoracoes ficam em .art-bg por coordenada absoluta, entao as que
    estao abaixo do banner foram empurradas na mesma medida. */
 .adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; background: #fff; }
-.adbox img { max-width: 100%; height: auto; }
+/* altura travada em 419 (375x391 em 402px): as decoracoes abaixo foram empurradas
+   por essa medida, entao toda arte sorteada ocupa a mesma caixa. A Minuano
+   (371x395 = 402x428) perde ~4px em cima e embaixo pelo object-fit */
+.adbox img { max-width: 100%; width: 402px; height: 419px; object-fit: cover; }
 
 .art-bg > span { position: absolute; display: block; }
 .art-bg img { width: 100%; height: 100%; }

@@ -1,0 +1,26 @@
+/* =========================================================
+   EDITORIAL (raiz) — banner de video Aurora abaixo do hero.
+   So o editorial.html da raiz carrega este arquivo; o 73/css/editorial.css
+   (compartilhado com o 73/editorial.html) fica intocado.
+
+   Video 720x1280 = 402x715, no fluxo, 28px abaixo do hero:
+   mobile 182 + 715 + 28 = 925; desktop (>= 1024px, cabecalho de 141px) 884.
+   Onde o banner existe, o miolo nao precisa mais reservar o espaco do hero.
+   ========================================================= */
+.page-editorial .ed-banner {
+  width: 402px;
+  margin: 925px 0 0;
+  flex-shrink: 0;
+}
+.page-editorial .ed-banner video {
+  display: block;
+  width: 402px;
+  height: auto;
+}
+.page-editorial .ed-banner + .editorial-miolo {
+  padding-top: 0;
+}
+
+@media (min-width: 1024px) {
+  .page-editorial .ed-banner { margin-top: 884px; }
+}

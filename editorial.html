@@ -38,10 +38,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="73/css/editorial.css?v=73-ed-4">
+  <!-- banner Aurora abaixo do hero: so nesta pagina -->
+  <link rel="stylesheet" href="css/editorial-banner.css?v=74-117">
 
   <link rel="stylesheet" href="73/css/revista-73-shell.css?v=73-33">
 <!-- casca do desktop: por último -->
-<link rel="stylesheet" href="css/shell-desktop.css?v=74-116">
+<link rel="stylesheet" href="css/shell-desktop.css?v=74-117">
 </head>
 <body>
 <!-- ============ CASCA DESKTOP: gerada por scripts/shell_sync.py — não edite aqui ============ -->
@@ -142,6 +144,12 @@
       <img src="73/assets/noticias73/sound.gif" alt="" width="37" height="37" decoding="async">
     </button>
 
+    <!-- Banner de video Aurora logo abaixo do hero (so nesta pagina; o
+         73/editorial.html usa o mesmo CSS e nao tem este bloco) -->
+    <figure class="ed-banner">
+      <video src="74/assets/banners/aurora-web.mp4?v=74-117" width="402" height="715" autoplay muted loop playsinline preload="metadata" aria-label="Publicidade Aurora — se tem Aurora só melhora"></video>
+    </figure>
+
     <section id="sec-miolo" class="sec-ed editorial-miolo" aria-label="Texto editorial">
       <!-- <p class="editorial-lead">
         EDITORIAL<br><br>
@@ -235,6 +243,6 @@
       );
     })();
   </script>
-<script src="js/shell-desktop.js?v=74-116"></script>
+<script src="js/shell-desktop.js?v=74-117"></script>
 </body>
 </html>
