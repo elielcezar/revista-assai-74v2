@@ -1,0 +1,214 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #75 — pagina DELIVERY
+   Figma: 6919:1041 — 402 x 10905 (HEAD de 182 incluso)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Fundos coloridos que ficam atras de texto sao a propria caixa do texto
+   (.caixa), nunca uma forma absoluta separada. As tigelas/cupulas em SVG
+   (890px de largura) sao o background da caixa, centralizadas: o que passa
+   dos 402px e cortado pela propria caixa.
+   ========================================================= */
+
+.delivery .head { --head-bg: var(--roxo); }
+
+.page { --bordo: #ba0042; --verm: #f0051e; --amar: #ffdc00; }
+
+.bl {
+  position: relative;
+  width: 402px;
+  overflow-x: clip;
+  display: flow-root;
+}
+.bl p { font-size: 18px; line-height: normal; }
+.bl strong { font-weight: 700; }
+.am { color: var(--amar); }
+
+.backdrop { position: absolute; inset: 0; pointer-events: none; }
+.backdrop span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+.caixa { position: relative; display: flow-root; color: #fff; }
+
+.h-titulo, .h-caso, .h-agir, .h-contestacao {
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--verm);
+}
+
+/* =========================================================
+   BLOCO 1 — ABERTURA  (182 .. 1242)
+   ========================================================= */
+.bl-hero { padding-top: 48px; overflow: clip; }
+.bl-hero .backdrop { z-index: 0; }
+.bl-hero > :not(.backdrop) { position: relative; z-index: 1; }
+
+.hero-tigela { left: -65px; top: -65px; width: 868px; height: 434px; margin-left: -36px; }
+.hero-tigela { left: 50%; margin-left: -441px; }
+.hero-arcos  { left: -124px; top: 74px; width: 635px; height: 318px; }
+.hero-arcos img { transform: rotate(180deg); }
+
+.hero-titulo { margin: 0 0 0 21px; font-weight: 700; }
+.hero-golpes {
+  display: block; width: 361px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 94.571px; line-height: 70px; color: #ffea00;
+}
+.hero-com { display: block; margin: 11px 0 0 4px; font-size: 43px; line-height: 45px; color: #fff; white-space: nowrap; }
+.hero-olho {
+  width: 353px; margin: 24px 0 0 24px;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: #fff;
+}
+
+.coxinhas { position: relative; width: 402px; height: 227px; margin: -4px 0 0; }
+.coxinha { position: absolute; max-width: none; }
+.coxinha--1 { left: 71px;  top: 0;     width: 146px; height: 202px; }
+.coxinha--2 { left: 179px; top: 24px;  width: 133px; height: 189px; }
+.sombra { position: absolute; max-width: none; mix-blend-mode: multiply; }
+.sombra--a { left: 89px;  top: 157px; width: 151.8px; height: 51.2px; }
+.sombra--b { left: 192px; top: 176px; width: 145.9px; height: 51.6px; }
+.sombra--c { left: 104px; top: 168px; width: 74.8px;  height: 20.4px; }
+.sombra--d { left: 206px; top: 189px; width: 74.8px;  height: 20.4px; }
+
+.hero-assina { width: max-content; margin: 5px auto 0; padding-left: 1px; }
+.hero-edicao {
+  padding: 2px 15px; background: var(--roxo); color: #fff;
+  font-size: 20px !important; font-weight: 500; white-space: nowrap; text-align: center;
+}
+.hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; color: #000; white-space: nowrap; }
+
+.t-hero { width: 362px; margin: 35px 0 0 20px; color: #000; }
+.t-hero p + p { margin-top: 20px; }
+.mosca { position: relative; width: 93px; height: 93px; margin: 35px 0 0 165px; }
+.mosca img { width: 93px; height: 93px; transform: rotate(-90deg); }
+
+/* =========================================================
+   BLOCO 2 — COMO ACONTECE A FRAUDE  (1242 .. 3125)
+   ========================================================= */
+.foto-golpe { width: 402px; height: 315px; margin-top: 33px; overflow: hidden; }
+.foto-golpe img { width: 402px; height: 315px; max-width: none; object-fit: cover; object-position: left top; }
+
+.h-fraude { margin-top: 56px; text-transform: uppercase; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; color: var(--verm); }
+.etapas { width: 362px; margin: 37px 0 0 20px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.etapa {
+  height: 123px; padding: 0 17px 0 21px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  border: 1px solid #ff5564; border-radius: 21px; background: var(--verm); color: #fff;
+}
+.etapa p { width: 331px; }
+.etapa strong { color: var(--amar); }
+
+.h-contestacao { width: 362px; margin: 72px 0 0 20px; }
+.t-contestacao { width: 362px; margin: 27px 0 0 20px; color: #000; }
+.mancha { position: relative; width: 221px; height: 173px; margin: 47px 0 0 91px; }
+.mancha img { width: 221px; height: 173px; }
+
+/* =========================================================
+   BLOCO 3 — IFOOD E 99FOOD  (3125 .. 5008)
+   ========================================================= */
+.caixa--ifood {
+  margin-top: 53px; padding: 49px 0 0 20px;
+  background:
+    url("../assets/delivery/sub1.svg") 50% calc(100% - 201px) / 890.787px 427.16px no-repeat,
+    linear-gradient(var(--bordo), var(--bordo)) 0 0 / 100% 413px no-repeat;
+}
+.h-plat { font-size: 20px; font-weight: 700; line-height: normal; text-transform: uppercase; color: #fff; }
+.t-ifood { width: 363px; margin-top: 27px; }
+.t-ifood p + p { margin-top: 20px; }
+.retrato { position: relative; width: 280px; height: 280px; margin: 50px 0 0 41px; }
+.retrato img { width: 280px; height: 280px; }
+.caixa--ifood .retrato { margin-bottom: 0; }
+
+.q-ifood { width: 362px; margin: 62px 0 0 21px; text-align: center; }
+.q-ifood-texto { font-size: 21px !important; font-weight: 700; color: var(--roxo); }
+.q-ifood-autor { margin-top: 25px; font-weight: 700; font-style: italic; color: var(--cinza); }
+
+.caixa--99 {
+  margin-top: 62px; padding: 107px 0 44px 20px;
+  background: url("../assets/delivery/sub2.svg") 50% 0 / 894.838px 448.15px no-repeat;
+}
+.t-99 { width: 363px; margin-top: 27px; }
+.t-99 p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 4 — O CASO DA PIZZA COM BARATA  (5008 .. 6846)
+   ========================================================= */
+.h-caso { width: 362px; margin: 69px 0 0 20px; }
+.t-caso-1 { width: 362px; margin: 33px 0 0 20px; color: #000; }
+.foto-chat { position: relative; width: 362px; height: 270px; margin: 39px 0 0 20px; border-radius: 21px; overflow: hidden; }
+.foto-chat img { width: 362px; height: 270px; object-fit: cover; }
+.foto-chat::after { content: ""; position: absolute; inset: 0; background: rgba(168, 127, 127, .2); }
+.t-caso-2 { width: 362px; margin: 50px 0 0 20px; color: #000; }
+.foto-pizza { width: 364px; height: 302px; margin: 56px 0 0 19px; border-radius: 21px; overflow: hidden; }
+.foto-pizza img { width: 364px; height: 302px; object-fit: cover; }
+.t-caso-3 { width: 362px; margin: 44px 0 0 20px; color: #000; }
+.t-caso-3 p + p { margin-top: 20px; }
+
+.caixa--beatriz {
+  margin-top: 180px; padding: 0 0 61px 20px;
+  background: url("../assets/delivery/sub2.svg") 50% 0 / 894.838px 448.15px no-repeat;
+}
+.caixa--beatriz .retrato { margin: -130px 0 0 41px; }
+.legenda-beatriz {
+  width: 364px; margin-top: 15px; text-align: center; font-weight: 700; font-style: italic; color: #ff9c9c;
+}
+.t-beatriz { width: 362px; margin-top: 62px; }
+
+/* =========================================================
+   BLOCO 5 — COMO O RESTAURANTE DEVE AGIR  (6846 .. 8690)
+   ========================================================= */
+.h-agir { width: 362px; margin: 59px 0 0 20px; }
+.t-agir { width: 362px; margin: 33px 0 0 20px; color: #000; }
+.t-agir > p + p { margin-top: 20px; }
+.cuidados { margin: 20px 0 0; padding: 0 0 0 27px; list-style: disc; }
+.cuidados li { font-size: 18px; line-height: normal; font-weight: 700; color: var(--verm); }
+.cuidados li + li { margin-top: 20px; }
+.t-ideia { width: 362px; margin: 56px 0 0 20px; color: #000; }
+.t-ideia p + p { margin-top: 20px; }
+
+.arcos { position: relative; margin-top: 26px; }
+.arco {
+  position: relative; width: 450px; height: 459px; margin-left: -24px;
+  border: 1px solid var(--laranja); border-radius: 300px 300px 0 0; overflow: hidden;
+}
+.arco img { width: 100%; height: 100%; object-fit: cover; }
+.arco--2 { margin-top: -229.4px; }
+.arco--3 { margin-top: -283.9px; }
+
+.caixa--recomenda {
+  width: 405px; margin: -296.7px 0 0 -3px; padding: 38px 24px 0;
+  background-image: linear-gradient(-55deg, #e30613 11.52%, #ffdc00 118.65%);
+  min-height: 229px; position: relative; z-index: 1;
+}
+.caixa--recomenda p { width: 354px; font-size: 20px !important; font-weight: 700; text-align: center; }
+.bl-agir { overflow: clip; }
+
+/* =========================================================
+   BLOCO 6 — SEUS DIREITOS  (8690 .. 9874)
+   ========================================================= */
+.h-direitos { margin-top: 45px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--verm); }
+.barra {
+  width: 402px; height: 54px; margin-top: 33px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--verm); color: #fff; font-size: 21px; font-weight: 700; line-height: normal;
+}
+.t-direitos { width: 362px; margin: 39px 0 0 19px; color: #000; }
+.t-direitos p + p { margin-top: 20px; }
+.barra--2 { margin-top: 40px; }
+.t-direitos--2 { margin-top: 39px; padding-bottom: 53px; }
+
+/* =========================================================
+   BLOCO 7 — A IA VEIO PARA ATRAPALHAR?  (9874 .. 10789)
+   ========================================================= */
+.pratos { position: relative; width: 402px; height: 184px; margin-top: 16px; }
+.prato { position: absolute; bottom: 0; max-width: none; }
+.prato--b { z-index: 1; left: 11px; width: 204px; height: 147px; }
+.prato--a { left: 187px; width: 204px; height: 184px; object-fit: cover; }
+.h-ia { width: 362px; margin: 42px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--verm); }
+.t-ia-1 { width: 362px; margin: 33px 0 0 19px; color: #000; }
+.btn-ia {
+  width: 362px; height: 42px; margin: 49px 0 0 20px; padding: 10px 0;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 10px; background: var(--bordo); color: #fff;
+  font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+.btn-ia img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
+.t-ia-2 { width: 362px; margin: 48px 0 0 19px; padding-bottom: 54px; color: #000; }
+.t-ia-2 p + p { margin-top: 20px; }
