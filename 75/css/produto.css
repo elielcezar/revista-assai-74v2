@@ -114,7 +114,7 @@
   border-radius: 10px; background: var(--laranja); color: #fff;
   font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; white-space: nowrap;
 }
-.btn-cartilha img { width: 10px; height: 10px; }
+.btn-cartilha img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
 
 /* =========================================================
    BLOCO 3 — AS LUVAS  (3497 .. 6478)

@@ -1,0 +1,208 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #75 — pagina NOTÍCIAS DO ASSAÍ
+   Figma: 6889:2002 — 402 x 5575 (HEAD de 182 incluso)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Fundos coloridos que ficam atras de texto sao a propria caixa do texto
+   (.caixa), nunca uma forma absoluta separada. Os baloes sao decoracao do
+   bloco (.backdrop) e giram so no <img> interno.
+   ========================================================= */
+
+.noticias .head { --head-bg: var(--azul-claro); }
+
+.page { --navy: #001077; --ouro: linear-gradient(88.95deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%); }
+
+.bl {
+  position: relative;
+  width: 402px;
+  overflow-x: clip;
+  display: flow-root;
+}
+.bl p { font-size: 18px; line-height: normal; }
+.bl strong { font-weight: 700; }
+.bl > :not(.backdrop) { position: relative; z-index: 1; }
+
+.backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.backdrop span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+.caixa { position: relative; display: flow-root; color: #fff; }
+
+/* baloes: a caixa e o retangulo girado; o giro vai so na imagem de dentro */
+.bx { display: flex !important; align-items: center; justify-content: center; }
+.bx img { width: var(--iw); height: var(--ih); transform: rotate(var(--r)); }
+.bx--1 { left: -12px; top: 10px;  width: 55.853px;  height: 60.925px;  --iw: 40.239px; --ih: 49.435px;  --r: -22.05deg; }
+.bx--2 { left: 313px; top: 550px; width: 109.949px; height: 120.25px;  --iw: 80px;     --ih: 98px;      --r: 21.13deg; }
+.bx--3 { left: 268px; top: 588px; width: 118.49px;  height: 129.251px; --iw: 85.366px; --ih: 104.876px; --r: -22.05deg; }
+.bx--4 { left: 173px; top: 95px;  width: 109.949px; height: 120.25px;  --iw: 80px;     --ih: 98px;      --r: 21.13deg; }
+.bx--5 { left: 126px; top: 103px;  width: 118.49px;  height: 129.251px; --iw: 85.366px; --ih: 104.876px; --r: -22.05deg; }
+.bx--6 { left: 6px;   top: 606px; width: 103.474px; height: 115.95px;  --iw: 80px;     --ih: 98px;      --r: -15.65deg; }
+.bx--7 { left: 269px; top: 514px; width: 108.794px; height: 122.831px; --iw: 85.366px; --ih: 104.876px; --r: 14.42deg; }
+.bx--8 { left: 22px;  top: 295px; width: 103.474px; height: 115.95px;  --iw: 80px;     --ih: 98px;      --r: -15.65deg; }
+/* os baloes da mecanica ficam por cima da cupula amarela (no Figma a cobrem) */
+.bl-mecanica .backdrop { z-index: 3; }
+
+/* =========================================================
+   BLOCO 1 — ABERTURA  (182 .. 1057)
+   ========================================================= */
+.hero-foto { position: relative; width: 402px; height: 409px; }
+.hero-foto > img:first-child { width: 402px; height: 409px; object-fit: cover; }
+.hero-selo { position: absolute; left: 275px; top: 15px; width: 110px; height: 114px; }
+
+.hero-titulo { margin: 38px 0 0 25px; }
+.hero-gancho {
+  display: block; width: 312px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 32px; line-height: 34.4px;
+  background-image: linear-gradient(88.05deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-destaque { display: block; margin-top: 2px; font-size: 48px; font-weight: 700; line-height: 45px; color: var(--navy); white-space: nowrap; }
+
+.hero-assina { width: 140px; margin: 36px 0 0 25px; }
+.hero-edicao {
+  padding: 2px 15px; background: var(--azul-claro); color: #fff;
+  font-size: 20px !important; font-weight: 500; text-align: center; white-space: nowrap;
+}
+.hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; color: #000; white-space: nowrap; }
+
+.hero-olho {
+  width: 337px; margin: 56px 0 0 26px; padding-bottom: 0;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza);
+}
+
+/* =========================================================
+   BLOCO 2 — A CAMPANHA  (1057 .. 1900)
+   ========================================================= */
+.carrinhos { position: relative; width: 402px; height: 226px; margin-top: 23px; z-index: 2 !important; }
+.carrinho { position: absolute; max-width: none; }
+.carrinho--1 { left: 125px; top: 0; width: 254px; height: 194px; }
+.carrinho--2 { left: 30px; top: 63px; width: 201px; height: 186px; }
+
+.caixa--campanha {
+  width: 402px; padding: 35px 0 0;
+  background: #00108a url("../assets/noticias/gradiente.jpg") -77px 261px / 492px 277px no-repeat;
+}
+.t-campanha { width: 350px; margin-left: 30px; }
+.t-campanha p + p { margin-top: 20px; }
+
+.lista-premios {
+  width: 351px; margin: 47px 0 -55px 19px; padding: 29px 22px 22px 48px;
+  border-radius: 34px; background-image: linear-gradient(89.29deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
+  color: #000; font-size: 18px; font-weight: 700; font-style: italic; list-style: disc;
+}
+.lista-premios li + li { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 3 — A MECÂNICA  (1900 .. 2443)
+   ========================================================= */
+.cupula-amarela {
+  width: 282px; height: 145px; margin: 170px 0 0 64px;
+  background: url("../assets/noticias/elipse.svg") 0 0 / 282px 144.832px no-repeat;
+  z-index: 2 !important;
+}
+.cupula-amarela h2 {
+  width: 229px; margin: 0 0 0 25.5px; padding-top: 63px;
+  font-size: 24px; font-weight: 700; line-height: normal; text-align: center; text-transform: uppercase; color: #0c1f60;
+}
+.caixa--mecanica {
+  width: 405px; margin: -37px 0 0 -3px; padding: 75px 0 49px 32px;
+  background: var(--navy);
+}
+.caixa--mecanica p { width: 350px; text-align: center; }
+.caixa--mecanica p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 4 — ALGUMAS ESCOLHAS MULTIPLICAM OS NÚMEROS  (2443 .. 3351)
+   ========================================================= */
+.trevo { left: 234px; top: -24px; width: 112px; height: 141px; }
+
+.h-multiplica {
+  width: 352px; margin: 69px 0 0 24px;
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: #0c1f60;
+}
+.t-extras { width: 352px; margin: 24px 0 0 25px; color: #090909; }
+
+.carrossel { width: 402px; margin-top: 29px; overflow-x: auto; scrollbar-width: none; touch-action: pan-x pan-y; }
+.carrossel::-webkit-scrollbar { display: none; }
+.carrossel-faixa {
+  width: 1211px; height: 430px; margin: 0 0 0 58px; padding: 0; list-style: none;
+  display: flex; align-items: flex-start;
+  background-image: linear-gradient(88.81deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
+}
+.extra { flex: none; display: block; }
+.extra figure { width: 209px; }
+.extra img { display: block; width: 209px; }
+.extra p { font-size: 20px !important; font-weight: 700; }
+.extra--1 { width: 236px; margin-left: 84px; }
+.extra--1 figure { margin-top: 71px; height: 201px; }
+.extra--1 p { margin-top: 6px; color: #0c2980; }
+.extra--2 { width: 244px; margin-left: 183px; }
+.extra--3 { width: 264px; margin-left: 148px; }
+.extra--2 figure, .extra--3 figure { margin-top: 64px; height: 214px; }
+.extra--2 p, .extra--3 p { color: #071f66; }
+
+.t-acumulo { width: 353px; margin: 71px 0 0 25px; font-weight: 700; color: #090909; }
+.pendente { color: var(--vermelho); }
+
+/* =========================================================
+   BLOCO 5 — E SE A COMPRA SAIR GRÁTIS?  (3351 .. 4107)
+   ========================================================= */
+.caixa--gratis { width: 402px; margin-top: 71px; padding: 32px 0 0 25px; background: var(--navy); }
+.h-gratis { font-size: 24px; font-weight: 700; line-height: normal; color: var(--amarelo-escuro); }
+.t-gratis { width: 350px; margin: 26px 0 0 1px; padding-bottom: 105px; }
+.t-gratis p + p { margin-top: 20px; }
+.t-ouro {
+  width: 359px; margin: 53px 0 0 25px;
+  font-size: 26px !important; font-weight: 700;
+  background-image: var(--ouro); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* =========================================================
+   BLOCO 6 — COMO PARTICIPAR  (4107 .. 4929)
+   ========================================================= */
+.ilustra { position: relative; z-index: 2; width: 237px; height: 237px; margin: 28px 0 0 88px; }
+.ilustra img { width: 237px; height: 237px; }
+.caixa--passos {
+  width: 354px; margin: -162px 0 0 24px; padding: 75px 11px 0;
+  border-radius: 34px; background: rgba(246, 186, 0, .09); color: #000;
+}
+.passos { width: 332px; margin: 2px 0 0; padding: 0 0 47px; list-style: none; display: flex; flex-direction: column; gap: 33px; }
+.passo { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.passo-num {
+  position: relative; width: 66.6px; height: 33.3px; margin-bottom: 6px;
+  background: url("../assets/noticias/num.svg") no-repeat 0 0 / 66.6px 33.3px;
+}
+.passo-num b {
+  position: absolute; left: 28px; top: 3px; width: 11px;
+  font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: normal; color: #fff; text-align: center;
+}
+.passo-txt { width: 356px; font-weight: 700; }
+.passo-txt--estreito { width: 312px; }
+.passo-tit { font-size: 21px; font-weight: 700; }
+
+/* =========================================================
+   BLOCO 7 — REGULAMENTO  (4929 .. 5461)
+   ========================================================= */
+.bl-regulamento { padding-top: 22px; }
+.t-campanha-datas {
+  width: 346px; margin: 0 0 0 35px;
+  font-size: 26px !important; font-weight: 700; color: var(--navy);
+}
+.caixa--regulamento {
+  width: 567px; margin: 70px 0 -97px -90px; padding: 71px 0 129px 124px;
+  border-radius: 280px 280px 0 0;
+  background-image: linear-gradient(208.84deg, #ffdc00 5.647%, #ff5564 82.413%);
+  color: var(--navy);
+}
+.t-confira { font-size: 20px !important; font-weight: 700; white-space: nowrap; }
+.btn-regulamento {
+  width: 243px; height: 42px; margin: 12px 0 0 40px; padding: 10px 0;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 10px; background: var(--navy); color: #fff;
+  font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+.btn-regulamento img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
+
+/* o rodape passa por cima da cupula, que desce 97px sobre ele */
+.noticias .foot { z-index: 3; background: transparent; } /* a cupula aparece atras da barra, sem o branco do rodape */
