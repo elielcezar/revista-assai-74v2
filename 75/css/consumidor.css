@@ -1,0 +1,260 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #75 — pagina CONSUMIDOR
+   Figma: 6903:2345 — 402 x 11829 (HEAD de 182 incluso; o quadro termina
+   no meio da "formula de sucesso" e nao tem rodape: aqui o texto vem inteiro
+   e o rodape comum fecha a pagina)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Fundos coloridos que ficam atras de texto sao a propria caixa do texto
+   (.caixa / .cupula), nunca uma forma absoluta separada. As cupulas tem
+   567px de largura e raio de 280px: margem negativa, e o bloco corta o que
+   sobra dos lados.
+   ========================================================= */
+
+.consumidor .head { --head-bg: var(--amarelo); }
+.consumidor .head-logo { mix-blend-mode: multiply; }
+
+.page {
+  --ouro: linear-gradient(89.5deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
+  --grad-faixa: linear-gradient(90deg, #f2a31a, #f7e30b 50%, #eeb31b);
+}
+
+.bl {
+  position: relative;
+  width: 402px;
+  overflow-x: clip;
+  display: flow-root;
+}
+.bl p { font-size: 18px; line-height: normal; }
+.bl strong { font-weight: 700; }
+.roxo { color: var(--roxo); font-weight: 700; }
+.am { color: var(--amarelo); }
+
+.backdrop { position: absolute; inset: 0; pointer-events: none; }
+.backdrop span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+.caixa { position: relative; display: flow-root; }
+
+/* cupulas: 567px, raio 280px; --ml e o quanto a caixa sai para a esquerda
+   (o conteudo volta para as coordenadas da coluna pelo padding) */
+.cupula {
+  width: 567px; margin-left: var(--ml); padding-left: calc(var(--ml) * -1);
+  border-radius: 280px 280px 0 0;
+}
+.cupula--amarela { background-image: linear-gradient(89.6deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%); }
+.cupula--rosa  { background: var(--pink); color: #fff; }
+.cupula--roxa  { background: var(--roxo); color: #fff; }
+.h-cupula { width: 303px; font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: var(--roxo); }
+.h-cupula--amarelo { color: var(--amarelo); }
+
+.cupula-num { position: relative; display: block; width: 55px; height: 55px; margin-top: -28px; }
+.cupula-num img { width: 55px; height: 55px; }
+.cupula-num b { position: absolute; left: 15px; top: 4px; font-size: 48px; font-weight: 700; line-height: 45px; color: #fff; }
+
+/* =========================================================
+   BLOCO 1 — ABERTURA  (182 .. 912)
+   ========================================================= */
+.bl-hero { padding-top: 43px; }
+.bl-hero > :not(.backdrop) { position: relative; z-index: 2; }
+.bl-hero > .hero-foto { z-index: 0; }
+.bl-hero .backdrop { z-index: 1; }
+
+.hero-arco-branco { left: -196.5px; top: 59.7px; width: 747px; height: 373.5px; }
+.hero-arco-grad   { left: -175px;   top: 36px;   width: 747px; height: 373.5px; }
+.hero-tigela      { left: -202px;   top: 0;      width: 802.025px; height: 401.013px; }
+
+.hero-titulo {
+  width: 352px; margin: 0 0 0 26px;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 40px; line-height: 43px; text-align: center; color: var(--amarelo);
+}
+.hero-olho {
+  width: 352px; margin: 18px 0 0 25px;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; text-align: center; color: #fff;
+}
+.hero-assina { width: 135px; margin: 36px 0 0 131px; text-align: center; }
+.hero-edicao {
+  width: 115px; padding: 2px 15px; background: var(--amarelo); color: #000;
+  font-size: 20px !important; font-weight: 500; white-space: nowrap;
+}
+.hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; color: #fff; white-space: nowrap; }
+
+.hero-foto { width: 402px; height: 380px; margin-top: -27px; overflow: visible; }
+.hero-foto img { width: 576px; height: 380px; max-width: none; margin-left: -79px; }
+
+/* =========================================================
+   BLOCO 2 — INTRODUÇÃO  (912 .. 1463)
+   ========================================================= */
+.bl-intro { padding-top: 51px; padding-bottom: 60px; }
+.bl-intro p { width: 352px; margin-left: 26px; color: #000; }
+.bl-intro p + p { margin-top: 20px; }
+.bl-intro .roxo { color: var(--roxo); }
+
+/* =========================================================
+   BLOCO 3 — A OCASIÃO VEM ANTES DA ESCOLHA  (1463 .. 2343)
+   ========================================================= */
+.foto-buffet { width: 426px; height: 390px; margin: 0 0 0 -12px; }
+.foto-buffet img { width: 426px; height: 390px; }
+.cupula--ocasiao { --ml: -82.5px; margin-top: -96px; padding-bottom: 44px; position: relative; z-index: 1; }
+.h-ocasiao { width: 362px; margin: 75px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-align: center; text-transform: uppercase; color: var(--roxo); }
+.t-ocasiao { width: 362px; margin-left: 20px; color: #000; }
+.h-ocasiao + .t-ocasiao { margin-top: 33px; }
+.t-ocasiao + .t-ocasiao { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 4 — POR QUE COMEMOS FORA?  (2343 .. 3500)
+   ========================================================= */
+.h-comemos { width: 352px; margin: 47px 0 0 26px; font-size: 24px; font-weight: 700; line-height: normal; text-align: center; text-transform: uppercase; color: var(--roxo); }
+.t-motivacoes { width: 356px; margin: 17px 0 0 23px; text-align: center; color: #000; }
+
+.circulos { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 22px 20px; width: 354px; margin-left: 24px; }
+.circulos--rosa { margin-top: 51px; row-gap: 22.5px; }
+.circulos--roxo { margin-top: 64px; row-gap: 11px; }
+.circulo {
+  width: 167px; height: 167px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  padding-top: 30px; text-align: center; color: #fff;
+}
+.circulos--rosa .circulo { background: var(--pink); }
+.circulos--roxo .circulo { background: var(--roxo); }
+.circulo--centro { margin-left: 93px; }
+.circulo b {
+  display: block; font-size: 48px; font-weight: 700; line-height: 45px;
+  background-image: var(--ouro); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.circulo span { display: block; width: 106px; margin-top: 8px; font-size: 18px; font-weight: 700; line-height: normal; }
+.h-pesa { width: 351px; margin: 73px 0 0 27px; font-size: 18px; font-weight: 700; line-height: normal; text-align: center; color: #000; }
+.fonte {
+  width: 351px; margin: 44px 0 0 27px;
+  font-size: 11px !important; font-weight: 700; font-style: italic; text-align: center; color: var(--cinza);
+}
+
+/* =========================================================
+   BLOCO 5 — O CHEF  (3500 .. 4690)
+   ========================================================= */
+.cupula--chef { --ml: -81px; margin-top: 77px; padding-top: 101px; padding-bottom: 136px; }
+.cupula--chef p { width: 352px; margin-left: 22px; }
+.cupula--chef p + p { margin-top: 20px; }
+.cupula--chef .am { font-weight: 700; }
+.chef { position: relative; z-index: 2; width: 294px; height: 294px; margin: -107px 0 0 56px; }
+.chef img { width: 294px; height: 294px; }
+
+.q-chef { width: 362px; margin: 40px 0 0 20px; text-align: center; }
+.q-chef-texto { font-size: 21px !important; font-weight: 700; color: var(--roxo); }
+.q-chef-autor { margin-top: 25px; font-weight: 700; font-style: italic; color: var(--cinza); }
+
+/* =========================================================
+   BLOCO 6 — DA DESCOBERTA À RECORRÊNCIA  (4690 .. 5175)
+   ========================================================= */
+.cupula--jornada { --ml: -82.5px; margin-top: 55px; padding-top: 75px; padding-bottom: 26px; }
+.cupula--jornada .h-cupula { width: 362px; margin-left: 20px; text-transform: uppercase; }
+.cupula--jornada p { width: 362px; margin-left: 20px; color: #000; }
+.cupula--jornada .h-cupula + p { margin-top: 33px; }
+.cupula--jornada p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 7 — DO FEED À MESA  (5175 .. 6593)
+   ========================================================= */
+.h-feed { width: 176px; margin: 789px 0 0 24px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--roxo); }
+
+.stats { margin: 0; padding: 0; list-style: none; }
+.stat { display: flex; align-items: center; }
+.stat-num {
+  flex: none; width: 154px; height: 40px; padding-left: 22px;
+  display: flex; align-items: center; white-space: nowrap;
+  border-radius: 0 39px 39px 0; background-image: var(--ouro);
+  font-size: 36px !important; font-weight: 700; line-height: 45px; color: var(--roxo);
+}
+.stat-num small { font-size: 24px; }
+.stat-txt { width: 230px; margin-left: 7px; font-weight: 700; color: #000; }
+.stats .stat + .stat { margin-top: 18px; }
+.h-feed + .stats { margin-top: 35px; }
+.bl-feed { padding-bottom: 63px; }
+.barra-roxa {
+  width: 434px; height: 48px; margin: 22px 0 0 -12px; padding: 14px 0 0 36px;
+  font-size: 20px; font-weight: 700; line-height: normal; color: var(--amarelo); background: var(--roxo);
+}
+.barra-roxa + .stats { margin-top: 15px; }
+.fonte--feed { width: 424px; margin: 26px 0 0 28px; text-align: left; font-size: 12px !important; color: #000; }
+
+/* =========================================================
+   BLOCO 8 — ATRAÇÃO E RETENÇÃO  (6593 .. 7620)
+   ========================================================= */
+.foto-pizza { width: 409px; height: 337px; margin: 0 0 0 -3px; }
+.foto-pizza img { width: 409px; height: 337px; }
+.faixa { width: 514px; margin-left: -53px; padding-left: 53px; }
+.faixa--atracao {
+  height: 141px; margin-top: 0; padding-top: 33px;
+  background: url("../assets/consumidor/faixa-atracao.svg") 0 0 / 524px 151px no-repeat;
+}
+.faixa--atracao p {
+  width: 325px; margin-left: 35px; font-size: 24px !important; font-weight: 700; line-height: normal; text-align: center; color: var(--amarelo);
+}
+.t-retencao { width: 343px; margin: 38px 0 0 30px; }
+.t-retencao p + p { margin-top: 20px; }
+.t-retencao { color: #000; }
+
+/* =========================================================
+   BLOCO 9 — NEM TODA OCASIÃO PRECISA SER ATENDIDA / DESCUBRA  (7596 .. 9404)
+   ========================================================= */
+.cupula--nem { --ml: -82px; margin-top: 95px; padding-top: 0; padding-bottom: 257px; }
+.cupula--nem .cupula-num { margin-left: 180px; }
+.cupula--nem .h-cupula { margin: 60px 0 0 34px; width: 347px; padding: 10px 22px; }
+.cupula--nem p { width: 352px; margin-left: 23px; }
+.cupula--nem .h-cupula + p { margin-top: 30px; }
+.cupula--nem p + p { margin-top: 20px; }
+
+.cupula--descubra { --ml: -91px; margin-top: -146px; padding-bottom: 111px; position: relative; z-index: 1; }
+.cupula--descubra .cupula-num { margin-left: 168px; margin-top: -13px; }
+.cupula--descubra .h-cupula { margin: 45px 0 0 25px; width: 347px; padding: 10px 22px; }
+.cupula--descubra p { width: 352px; margin-left: 24px; color: #000; }
+.cupula--descubra .h-cupula + p { margin-top: 39px; }
+.cupula--descubra p + p { margin-top: 20px; }
+
+/* =========================================================
+   BLOCO 10 — 5 PISTAS  (9404 .. 10456)
+   ========================================================= */
+.h-pistas { width: 352px; margin: 50px 0 0 26px; font-size: 32px; font-weight: 700; line-height: normal; color: var(--roxo); }
+.pistas { width: 337px; margin: 48px 0 0 26px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 26px; }
+.pista {
+  display: flex; align-items: center; gap: 17px;
+  padding: 23px 14px; border-radius: 25px; background: var(--roxo); color: #fff;
+}
+.pista-num {
+  position: relative; flex: none; width: 35px; height: 35px;
+  background: url("../assets/consumidor/num35.svg") no-repeat 0 0 / 35px 35px; opacity: .69;
+}
+.pista-num b { position: absolute; left: 10px; top: 3px; font-size: 24px; font-weight: 700; line-height: normal; color: var(--roxo); }
+.pista-txt { width: 249px; }
+.pista-txt h3 {
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase;
+  background-image: var(--ouro); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.pista-txt p { color: #fff; }
+
+/* =========================================================
+   BLOCO 11 — VALE A PENA CRIAR UMA NOVA OFERTA?  (10456 .. 11829+)
+   ========================================================= */
+.cupula--testar { --ml: -81px; margin-top: 128px; padding-bottom: 70px; }
+.cupula--testar .cupula-num { margin-left: 174px; margin-top: -13px; }
+.cupula--testar .h-cupula { margin: 61px 0 0 33px; width: 347px; padding: 10px 11px; }
+.cupula--testar p { width: 352px; margin-left: 28px; }
+.cupula--testar .h-cupula + p { margin-top: 63px; }
+.cupula--testar p + p { margin-top: 20px; }
+
+.faixa--oferta {
+  height: 111px; margin-top: 0; padding-top: 28px;
+  background: url("../assets/consumidor/faixa-oferta.svg") 0 0 / 524px 121px no-repeat;
+  width: 514px; margin-left: -35px; padding-left: 35px;
+}
+.faixa--oferta h2 { width: 274px; margin-left: 55px; font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: #fff; }
+
+.checklist { width: 353px; margin: 39px 0 0 25px; padding: 0; list-style: none; color: #000; }
+.checklist li { font-size: 18px; font-weight: 700; line-height: normal; }
+.checklist li + li { margin-top: 20px; }
+.checklist li::before { content: "✓ "; color: #5cb85c; font-weight: 400; }
+
+.cupula--formula { --ml: -72px; width: 551px; margin-top: -5px; padding-top: 105px; padding-bottom: 131px; }
+.formula-tit, .formula { width: 325px; margin-left: 43px; font-size: 24px !important; font-weight: 700; line-height: normal; text-align: center; color: var(--roxo); }
+.formula { margin-top: 27px; }
