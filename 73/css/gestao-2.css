@@ -121,7 +121,7 @@ body {
 .page-gestao-2 {
   position: relative;
   width: 402px;
-  height: 8110px;
+  height: 8561px; /* 8110 + 451 do carrossel Heinz antes do rodape */
   background: #ffffff;
   overflow-x: hidden;
   overflow-y: visible;
@@ -1413,7 +1413,7 @@ body {
 }
 .gx2-lay--foot {
   left: -1px;
-  top: 7996px;
+  top: 8447px; /* 7996 + 451 do carrossel Heinz */
 }
 .gx2-lay--foot-bg {
   position: absolute;
@@ -1501,6 +1501,43 @@ body {
   object-fit: cover;
   object-position: center center;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   PUBLICIDADE — carrossel Heinz antes do rodape (mesmo componente do carrossel
+   Extrusa-Pack da MKT: js/ad-carousel.js). Entra onde comecava a faixa preta do
+   rodape (7996 + 45 = 8041px), logo depois do fim do bloco laranja; rodape e
+   pagina desceram 451px (419 da arte 782x815 em 402px + 32 das bolinhas).
+   z 501: o topo transparente do rodape (z 500) cobriria as bolinhas.
+   ─────────────────────────────────────────────────────────────────────────── */
+.gx2-ad-slot { left: 0; top: 8041px; width: 402px; height: 451px; overflow: hidden; z-index: 501; }
+.gx2-ad-carousel { display: flex; flex-direction: column; width: 100%; height: 100%; }
+.gx2-ad-carousel__track {
+  display: flex; flex: 0 0 419px; width: 100%; height: 419px;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; touch-action: pan-x;
+  overscroll-behavior-x: contain; cursor: grab; user-select: none; -webkit-user-select: none;
+}
+.gx2-ad-carousel__track.is-dragging { cursor: grabbing; }
+.gx2-ad-carousel__track::-webkit-scrollbar { display: none; }
+.gx2-ad-carousel__slide {
+  position: relative; flex: 0 0 100%; width: 100%; height: 419px;
+  scroll-snap-align: start; scroll-snap-stop: always; overflow: hidden; background: #fff;
+}
+.gx2-ad-carousel__slide img {
+  display: block; width: 100%; height: 100%; object-fit: cover; object-position: center center;
+  pointer-events: none; -webkit-user-drag: none;
+}
+.gx2-ad-carousel__dots {
+  position: relative; flex: 0 0 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #fff; pointer-events: none;
+}
+.gx2-ad-carousel__dots button {
+  pointer-events: auto; width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(0,0,0,.28); cursor: pointer;
+}
+.gx2-ad-carousel__dots button.is-active { background: #f0051e; }
 
 @media (min-width: 1024px) {
   .page-gestao-2 .head-wrap { height: 141px; overflow: hidden; }
