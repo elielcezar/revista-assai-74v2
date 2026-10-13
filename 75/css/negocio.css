@@ -1,0 +1,177 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #75 — pagina NOVO NEGÓCIO
+   Figma: 4424:19580 — 402 x 8971 (HEAD de 182 incluso)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Fundos coloridos que ficam atras de texto sao a propria caixa do texto
+   (.caixa), nunca uma forma absoluta separada.
+   ========================================================= */
+
+.negocio .head { --head-bg: var(--pink); }
+
+.bl {
+  position: relative;
+  width: 402px;
+  overflow-x: clip;
+  display: flow-root;
+}
+.bl p { font-size: 18px; line-height: normal; }
+.bl strong { font-weight: 700; }
+
+.caixa { position: relative; display: flow-root; color: #fff; }
+.am { color: var(--amarelo); }
+
+/* =========================================================
+   BLOCO 1 — ABERTURA  (182 .. 1034)
+   ========================================================= */
+.hero-foto { width: 402px; height: 412px; }
+.hero-foto img { width: 402px; height: 412px; object-fit: cover; }
+
+.hero-titulo { margin: 36px 0 0; text-align: center; }
+.hero-gancho {
+  display: block; width: 361px; margin: 0 auto;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 40px; line-height: 43px; color: var(--azul);
+}
+.hero-destaque {
+  display: block; width: 361px; margin: 6px auto 0;
+  font-size: 38px; font-weight: 700; line-height: 41px; color: var(--laranja);
+}
+.hero-olho {
+  width: 362px; margin: 32px auto 0;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; text-align: center; color: var(--cinza);
+}
+.hero-assina { width: max-content; margin: 43px auto 0; padding-bottom: 45px; text-align: center; }
+.hero-edicao {
+  padding: 2px 15px; background: var(--pink); color: #fff;
+  font-size: 20px !important; font-weight: 500; white-space: nowrap;
+}
+.hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; color: #000; }
+
+/* =========================================================
+   BLOCO 2 — O BAR DE FRENTE PRO FUTURO  (1034 .. 2605)
+   ========================================================= */
+.foto { position: relative; overflow: hidden; }
+.foto--cemiterio { width: 415px; height: 441px; margin-left: -7px; }
+/* o recorte do Figma: largura cheia, 118,16% de altura, subido 18,16% */
+.foto--cemiterio img { position: absolute; left: 0; top: -18.16%; width: 100%; height: 118.16%; max-width: none; }
+.foto--fachada { width: 402px; height: 305px; }
+.foto--fachada img { width: 459px; height: 305px; max-width: none; margin-left: -31px; object-fit: cover; }
+
+/* caixa roxa com texto, sobre a borda da foto de cima */
+.balao {
+  position: relative; z-index: 1;
+  width: 365px; padding: 25px 20px; border-radius: 25px;
+  background: var(--pink); color: #fff; text-align: center;
+}
+.balao--1 { margin: -93px 0 0 11px; height: 130px; }
+.foto--fachada { margin-top: -37px; }
+.balao--2 { margin: -91px 0 0 16px; height: 120px; padding-top: 20px; }
+
+.t-comprova {
+  width: 349px; margin: 45px 0 0 24px;
+  font-size: 20px !important; font-weight: 700; text-align: center; color: var(--pink);
+}
+.t-bar { width: 360px; margin: 44px 0 0 21px; color: #000; }
+.t-clientela { width: 358px; margin: 59px 0 0 21px; font-weight: 700; color: #090909; }
+.t-halloween { width: 360px; margin: 73px 0 0 24px; padding-bottom: 81px; font-size: 20px !important; font-weight: 700; color: var(--pink); }
+
+/* =========================================================
+   BLOCO 3 — DEPOIS DO VELÓRIO + O LARGURA  (2605 .. 5309)
+   ========================================================= */
+.faixa-boo { width: 402px; height: 212px; }
+.faixa-boo img { width: 402px; height: 212px; }
+
+/* cupula azul: o fundo e a propria caixa; a foto sai pela base */
+.caixa--velorio {
+  width: 402px; margin-top: 3px;
+  background: url("../assets/negocio/arco.svg") calc(50% - 2.6px) 0 / 890.8px 100% no-repeat;
+}
+.h-velorio {
+  margin: 35px 0 0 21px;
+  font-size: 20px; font-weight: 700; line-height: normal; text-transform: uppercase;
+}
+.t-velorio { width: 358px; margin: 27px 0 0 23px; }
+.vulcao { width: 280px; height: 280px; margin: 83px 0 -120px 53px; }
+.vulcao img { width: 280px; height: 280px; }
+
+.t-vulcao { width: 353px; margin: 147px 0 0 22px; color: #000; }
+
+.mapa { position: relative; width: 402px; height: 406px; margin-top: 84px; overflow: hidden; }
+.mapa > img:first-child { width: 402px; height: 406px; }
+.mapa-seta { position: absolute; left: 237px; top: 158px; width: 94px; height: 72px; }
+
+.balao--3 { margin: -66px 0 0 18px; height: 120px; padding: 43px 26px 0 35px; text-align: left; font-size: 20px !important; font-weight: 700; }
+.foto--largura { width: 402px; height: 512px; margin-top: -54px; }
+.foto--largura img { width: 402px; height: 512px; }
+
+.h-largura {
+  margin: 46px 0 0 17px;
+  font-size: 24px; font-weight: 700; line-height: normal; color: var(--pink); text-transform: uppercase;
+}
+.t-recife { width: 368px; margin: 32px 0 0 17px; color: #000; }
+.q-espremida {
+  width: 358px; margin: 60px 0 0 20px;
+  font-size: 26px !important; font-weight: 700; color: var(--azul);
+}
+.t-endereco { width: 356px; margin: 38px 0 0 26px; padding-bottom: 40px; /* no Figma a ultima linha fica cortada pela cupula: aqui ganha 40px de respiro */ color: #000; }
+
+/* =========================================================
+   BLOCO 4 — A NARRATIVA E AS LIÇÕES  (5309 .. 8971)
+   ========================================================= */
+/* cupulas (degrade e azul) e retangulo azul: camadas de fundo da caixa */
+.caixa--narrativa {
+  width: 402px; margin-top: 0; padding: 142px 0 131px;
+  background:
+    url("../assets/negocio/e140.svg") -42px 38px / 510.2px 250px no-repeat,
+    url("../assets/negocio/e141.svg") -67px 0 / 510.2px 250px no-repeat,
+    linear-gradient(var(--azul), var(--azul)) 0 288px / 100% 100% no-repeat;
+}
+.h-narrativa {
+  width: 402px; padding-right: 25px; text-align: center;
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase;
+}
+.h-narrativa .am { display: block; }
+.t-narrativa { width: 345px; margin: 57px 0 0 30px; }
+.t-narrativa p + p { margin-top: 20px; }
+
+.t-cozinha {
+  width: 338px; margin: 137px 0 0 39px;
+  font-size: 24px !important; font-weight: 700; color: var(--pink);
+}
+.foto--prato { width: 402px; height: 389px; margin-top: 68px; }
+.foto--prato img { width: 408px; height: 389px; max-width: none; object-fit: cover; }
+
+.caixa--ensina {
+  width: 403px; padding: 36px 25px 57px;
+  background: var(--pink);
+}
+.h-ensina { margin-bottom: 27px; font-size: 24px; font-weight: 700; line-height: normal; }
+.caixa--ensina p + p { margin-top: 20px; }
+
+.t-tres {
+  width: 403px; margin-top: 31px;
+  font-size: 20px !important; font-weight: 700; text-align: center; color: var(--azul);
+}
+
+.licoes { width: 370px; margin: 33px 0 0 18px; padding: 0; list-style: none; }
+.licao { display: flex; flex-direction: column; align-items: center; text-align: center; color: #000; }
+.licao--2 { margin-top: 38px; }
+.licao--3 { margin-top: 44px; }
+.licao-num {
+  position: relative; width: 66.6px; height: 33.3px; margin-bottom: 6px;
+  background: url("../assets/negocio/num.svg") no-repeat 0 0 / 66.6px 33.3px;
+}
+.licao-num b {
+  position: absolute; left: 28px; top: 3px; width: 11px;
+  font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: normal; color: #fff; text-align: center;
+}
+.licao h3 { width: 360px; font-size: 21px; font-weight: 700; line-height: normal; }
+.licao p { width: 360px; margin-top: 20px; }
+
+.caixa--fecho {
+  width: 403px; margin: 42px 0 -25px -2px; padding: 48px 25px 69px;
+  position: relative; z-index: 1;
+  background: var(--azul);
+}
+.caixa--fecho p + p { margin-top: 20px; }
