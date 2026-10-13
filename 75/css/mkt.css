@@ -1,0 +1,174 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #75 — pagina MKT DIGITAL
+   Figma: 6934:6616 — 402 x 8311 (HEAD de 182 incluso)
+   Requer css/base.css (fontes, reset, tokens, head, rodape).
+
+   Fundos coloridos que ficam atras de texto sao a propria caixa do texto
+   (.caixa), nunca uma forma absoluta separada. As cupulas (567px, raio 280)
+   sao mais largas que a coluna: margem negativa, e o bloco corta o que sobra.
+   ========================================================= */
+
+.mkt .head { --head-bg: var(--laranja); }
+
+.page {
+  --azul-c: #0082c8;
+  --grad-az: linear-gradient(90deg, #00adee, #006388);
+}
+
+.bl {
+  position: relative;
+  width: 402px;
+  overflow-x: clip;
+  display: flow-root;
+}
+.bl p { font-size: 18px; line-height: normal; }
+.bl strong { font-weight: 700; }
+.am { color: var(--amarelo); }
+
+.backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
+.backdrop span { position: absolute; display: block; }
+.backdrop img { width: 100%; height: 100%; }
+
+.caixa { position: relative; display: flow-root; }
+
+.h-rosa {
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--pink);
+}
+
+/* videos: coluna de 402; o botao de som e peca presa a cada um */
+.video { position: relative; }
+.video video { display: block; object-fit: cover; background: #000; }
+.video-sound { position: absolute; width: 45px; height: 45px; display: block; z-index: 2; }
+.video-sound-bg  { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
+.video-sound-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+
+/* =========================================================
+   BLOCO 1 — ABERTURA  (182 .. 1326)
+   ========================================================= */
+.video--hero { width: 402px; height: 654px; overflow: hidden; }
+.video--hero video { position: absolute; left: 0; top: 0; width: 402px; height: 654px; }
+.video--hero .video-sound { left: 337px; top: 476px; }
+
+.hero-arco { left: -80px; top: 468px; width: 491px; height: 232.5px; }
+
+.caixa--hero {
+  position: relative; z-index: 2;
+  width: 402px; margin-top: -143px; padding: 118px 0 46px;
+  background:
+    url("../assets/mkt/capa.svg") -29px 0 / 431px 189.5px no-repeat,
+    linear-gradient(var(--azul-c), var(--azul-c)) 0 138px / 100% 100% no-repeat;
+  color: #fff;
+}
+.hero-titulo { width: 373px; margin-left: 27px; font-size: 48px; font-weight: 700; line-height: 55px; }
+.hero-olho {
+  width: 332px; margin: 33px 0 0 28px;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic;
+}
+.hero-assina { width: 138px; margin: 40px 0 0 24px; }
+.hero-edicao {
+  padding: 2px 15px; background: var(--laranja); color: #fff;
+  font-size: 20px !important; font-weight: 500; text-align: center; white-space: nowrap;
+}
+.hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; white-space: nowrap; }
+
+/* =========================================================
+   BLOCO 2 — COOKIES DANÇANTES + O RESULTADO  (1326 .. 2672)
+   ========================================================= */
+.h-rosa { width: 351px; }
+.bl-cookies .h-rosa { margin: 47px 0 0 27px; }
+.t-cookies { width: 327px; margin: 31px 0 0 27px; padding-bottom: 219px; color: #000; }
+.t-cookies p + p { margin-top: 20px; }
+.t-cookies .azul { color: var(--azul-c); }
+
+.caixa--resultado {
+  width: 567px; margin-left: -94px; padding: 92px 0 0 94px; border-radius: 280px 280px 0 0;
+  background-image: var(--grad-az); color: #fff;
+  position: relative; z-index: 0;
+}
+.duas { position: relative; width: 251px; height: 251px; margin: -279px 0 0 75.5px; }
+.duas img { width: 251px; height: 251px; }
+.h-resultado { width: 334px; margin: 28px 0 0 26px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; }
+.t-resultado { width: 331px; margin: 39px 0 0 35px; }
+.t-resultado p { font-size: 20px !important; font-weight: 700; font-style: italic; }
+.t-resultado p + p { margin-top: 20px; }
+.cookie { position: relative; width: 257px; height: 254px; margin: 7px 0 -146px -12px; }
+.cookie img { width: 257px; height: 254px; }
+
+/* =========================================================
+   BLOCO 3 — O VÍDEO FOI MAIS LONGE  (2672 .. 3421)
+   ========================================================= */
+.h-longe { margin: 149px 0 0 32px; }
+.t-boticario { width: 337px; margin: 22px 0 0 36px; color: #090909; }
+.video--clip { width: 425px; height: 439px; margin: 69px 0 0 -11px; }
+.video--clip video { width: 425px; height: 439px; }
+.video--clip .video-sound { left: 334px; top: -19px; }
+
+/* =========================================================
+   BLOCO 4 — O VIRAL NÃO GARANTE VENDAS  (3421 .. 4971)
+   ========================================================= */
+.h-viral { margin: 42px 0 0 26px; text-align: center; }
+.t-pergunta { width: 351px; margin: 32px 0 0 26px; font-weight: 700; text-align: center; color: #000; }
+.q-giulia { width: 346px; margin: 76px 0 0 33px; }
+.q-giulia p { font-size: 26px !important; font-weight: 700; color: var(--azul-c); }
+.t-edna { width: 336px; margin: 65px 0 0 31px; padding-bottom: 0; color: #090909; }
+.t-edna p + p { margin-top: 20px; }
+.foto-cookies { width: 414px; height: 498px; margin: 51px 0 0 -8px; }
+.foto-cookies img { width: 414px; height: 498px; }
+
+/* =========================================================
+   BLOCO 5 — O BÁSICO BEM FEITO TAMBÉM FUNCIONA  (4971 .. 6826)
+   ========================================================= */
+.capa-basico {
+  width: 271px; height: 136px; margin: 40px 0 0 61px;
+  background: url("../assets/mkt/capa2.svg") 0 0 / 271px 135.5px no-repeat;
+}
+.capa-basico h2 {
+  width: 201px; margin: 0 0 0 31px; padding-top: 55px;
+  font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; color: #fff;
+}
+.t-pequeno, .t-mais { width: 337px; margin-left: 28px; font-weight: 700; text-align: center; color: #000; }
+.t-pequeno { margin-top: 25px; }
+.pilulas { width: 362px; margin: 33px 0 0 20px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.pilulas li {
+  height: 75px; padding: 0 17px 0 0;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 21px; background: var(--azul-c); color: #fff;
+  font-size: 18px; font-weight: 700; line-height: normal; text-align: center;
+}
+.pilulas li { padding-left: 23px; }
+.pilulas--2 { margin-top: 0; }
+.t-mais { margin-top: 40px; }
+.t-mais + .pilulas { margin-top: 23px; }
+.t-giulia { width: 342px; margin: 77px 0 0 34px; color: #090909; }
+
+.video--circulo { width: 364px; height: 364px; margin: 77px 0 0 19px; }
+.anel {
+  display: block; width: 364px; height: 364px; padding: 10px; border-radius: 50%;
+  background: linear-gradient(225deg, #ffaa00 0%, #ff5564 60%, #ff5564 100%);
+}
+.video--circulo video { width: 344px; height: 344px; border-radius: 50%; }
+.video--circulo .video-sound { left: 273px; top: 302px; }
+
+/* =========================================================
+   BLOCO 6 — QUER ENTRAR NA TREND?  (6826 .. 7992)
+   ========================================================= */
+.bl-trend { margin-top: 48px; padding-bottom: 0; position: relative; z-index: 1; }
+.caixa--trend {
+  width: 502px; margin-left: -50px; padding: 64px 0 0 50px;
+  border-radius: 0 0 280px 280px;
+  background-image: var(--grad-az); color: #fff;
+}
+.h-trend { width: 351px; margin-left: 7px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
+.passos { width: 332px; margin: 33px 0 0 46px; padding: 0; list-style: none; }
+.passos li { font-size: 18px; line-height: normal; }
+.passos li strong { color: var(--amarelo); }
+.passos li + li { margin-top: 20px; }
+.pronto { width: 318px; margin: 35px 0 0 49px; padding-bottom: 107px; }
+.pronto, .pronto strong { font-weight: 700; }
+
+/* =========================================================
+   BLOCO 7 — FECHO  (7992 .. 8196)
+   ========================================================= */
+.bl-fecho { margin-top: -50px; padding-top: 135px; padding-bottom: 39px; background: linear-gradient(#fff, #ffdc00 370px); }
+.t-cuidados { width: 341px; margin-left: 35px; font-weight: 700; color: #090909; }
+.mkt .foot { background: linear-gradient(rgb(255, 231, 79), rgb(255, 227, 48) 45px, rgb(255, 220, 0)); }
