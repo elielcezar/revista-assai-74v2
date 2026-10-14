@@ -35,7 +35,7 @@ EXPECT = [
     (".caixa--cliente",      0, 3919),
     (".h-cliente",          39, 3983),
     (".t-cliente",          26, 4071),
-    (".exp",                36, 4755),
+    (".exp",                26, 4755),
     (".h-gastar",           24, 5215),
     (".t-gastar",           28, 5299),
     (".pilula--1",          27, 5455),

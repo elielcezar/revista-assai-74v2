@@ -96,7 +96,8 @@
 /* circulo vermelho que sai pela base da caixa */
 .caixa--palco::after {
   content: ""; position: absolute; left: 147px; bottom: -56px;
-  width: 100px; height: 100px; border-radius: 50%; background: var(--vermelho);
+  width: 100px; height: 100px; border-radius: 50%;
+  background: url("../assets/principal/nota-musical.png") center / 27px 71px no-repeat, var(--vermelho);
 }
 .zanatta { position: relative; width: 258px; margin: -85px 0 0 47px; }
 .zanatta img { width: 258px; height: 344px; border-radius: 129px; object-fit: cover; }
@@ -149,7 +150,7 @@
    BLOCO 6 — QUAL EXPERIÊNCIA VOCÊ QUER CRIAR?  (4447 .. 5185)
    ========================================================= */
 .bl-exp { padding-top: 308px; }
-.exp { width: 366px; margin-left: 36px; }
+.exp { width: 366px; margin-left: 26px; }
 /* corre para o lado com o scroll (pin-horizontal, js/scroll-fx.js) */
 .exp-viewport { width: 366px; height: 430px; overflow: hidden; }
 .exp-track {
