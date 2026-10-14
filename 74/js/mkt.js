@@ -57,17 +57,39 @@
     gal.addEventListener("dragstart", function (e) { e.preventDefault(); });
   }
 
-  /* ---------- banner rotativo: sorteia um anuncio por carregamento ---------- */
+  /* ---------- banner rotativo: sorteia um anuncio (imagem ou video) por carregamento ----------
+     cada item: {src, alt, w, h} e, se for video, "video": true. O HTML ja traz a
+     primeira imagem; se o sorteado for video, a img vira um video mudo em loop.
+     O video e mais alto que as artes (402x715 contra 402x384): a diferenca vai
+     para --ad-extra, que desce as decoracoes absolutas abaixo do banner */
   var adbox = document.querySelector("[data-ad-random]");
   if (adbox) {
-    var adimg = adbox.querySelector("img");
+    var atual = adbox.querySelector("img, video");
     var lista = [];
     try { lista = JSON.parse(adbox.getAttribute("data-ad-random")) || []; } catch (e) { lista = []; }
-    if (adimg && lista.length > 1) {
+    if (atual && lista.length > 1) {
       var escolhido = lista[Math.floor(Math.random() * lista.length)];
-      if (escolhido && escolhido.src !== adimg.getAttribute("src")) {
-        adimg.src = escolhido.src;
-        adimg.alt = escolhido.alt || "";
+      if (escolhido && escolhido.src !== atual.getAttribute("src")) {
+        var novo = document.createElement(escolhido.video ? "video" : "img");
+        if (escolhido.video) {
+          novo.muted = novo.loop = novo.autoplay = novo.playsInline = true;
+          novo.setAttribute("muted", "");
+          novo.setAttribute("playsinline", "");
+          novo.setAttribute("aria-label", escolhido.alt || "");
+          novo.preload = "metadata";
+        } else {
+          novo.alt = escolhido.alt || "";
+        }
+        if (escolhido.w) novo.width = escolhido.w;
+        if (escolhido.h) novo.height = escolhido.h;
+        novo.src = escolhido.src;
+        adbox.replaceChild(novo, atual);
+        if (escolhido.video && escolhido.w && escolhido.h) {
+          var art = document.querySelector(".art");
+          if (art) art.style.setProperty("--ad-extra", "calc(402px * " + escolhido.h + " / " + escolhido.w + " - 402px * 2016 / 2112)");
+          var play = novo.play();
+          if (play && play.catch) play.catch(function () {});
+        }
       }
     }
   }

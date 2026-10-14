@@ -15,9 +15,10 @@
 .art {
   position: relative;
   width: 402px;
-  min-height: 8575px;
+  min-height: calc(8575px + var(--ad-extra, 0px));
   background: #fff;
   overflow: hidden;
+  --ad-extra: 0px;
 }
 .art-bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 
@@ -25,7 +26,7 @@
    ATENCAO: esta pagina posiciona as decoracoes em .art-bg por coordenada absoluta,
    entao as que ficam abaixo do banner foram empurradas na mesma medida. */
 .adbox { position: relative; z-index: 1; width: 402px; margin: 28px 0; }
-.adbox img { max-width: 100%; height: auto; }
+.adbox img, .adbox video { display: block; width: 100%; height: auto; }
 
 .art-bg > span { position: absolute; display: block; }
 .art-bg img { width: 100%; height: 100%; }
@@ -44,14 +45,14 @@
 .d-hero-foto { left: -20px; top: -1px; width: 428px; height: 396px; }
 .art-bg .d-hero-foto img { left: 13.52px; top: -87.42px; width: 409.65px; height: 573.6px; }
 
-.d-final-photo { left: -1px; top: 7690px; width: 403px; height: 333px; }
+.d-final-photo { left: -1px; top: calc(7690px + var(--ad-extra, 0px)); width: 403px; height: 333px; }
 .art-bg .d-final-photo img { left: -20.6px; top: 0; width: 499.35px; height: 333px; }
 
-.d-camada1 { left: 13px; top: 4746px; width: 375px; height: 189px; }
+.d-camada1 { left: 13px; top: calc(4746px + var(--ad-extra, 0px)); width: 375px; height: 189px; }
 
 .d-rect1446 { left: 0; top: 2715px; width: 402px; height: 235px; background: var(--laranja); }
 .d-e122a { left: -173px; top: 2387px; width: 747px; height: 373px; background: var(--laranja); }
-.d-e125 { left: -275px; top: 6116.5px; width: 951px; height: 474.5px; background: var(--amarelo-escuro); }
+.d-e125 { left: -275px; top: calc(6116.5px + var(--ad-extra, 0px)); width: 951px; height: 474.5px; background: var(--amarelo-escuro); }
 .d-e123 { left: -173px; top: 2821px; width: 747px; height: 373px; background: var(--vermelho); }
 .d-rect1438 { left: 0; top: 835px; width: 408px; height: 324px; background: var(--laranja); }
 
@@ -74,7 +75,7 @@
 .d-sandwich img { object-fit: fill; }
 
 .d-e122b { left: 48px; top: 3373px; width: 302px; height: 138px; background: var(--amarelo-escuro); }
-.d-e124 { left: 48px; top: 4797px; width: 302px; height: 138px; background: var(--vermelho); }
+.d-e124 { left: 48px; top: calc(4797px + var(--ad-extra, 0px)); width: 302px; height: 138px; background: var(--vermelho); }
 
 /* a rotacao fica num span interno: o pop-in anima o transform do invólucro */
 .d-tomato { left: 191px; top: 3373px; width: 60px; height: 64px; }
@@ -88,25 +89,25 @@
   transform: matrix(0.901235, 0.434951, -0.351351, 0.73346, 17.444, -9.711);
 }
 
-.d-line1 { left: 20px; top: 6777px; width: 124px; height: 5px; background: var(--vermelho); }
-.d-line2 { left: 247px; top: 7252px; width: 124px; height: 5px; background: var(--vermelho); }
+.d-line1 { left: 20px; top: calc(6777px + var(--ad-extra, 0px)); width: 124px; height: 5px; background: var(--vermelho); }
+.d-line2 { left: 247px; top: calc(7252px + var(--ad-extra, 0px)); width: 124px; height: 5px; background: var(--vermelho); }
 
-.d-chat-photo { left: 0; top: 5679px; width: 402px; height: 299px; }
+.d-chat-photo { left: 0; top: calc(5679px + var(--ad-extra, 0px)); width: 402px; height: 299px; }
 .art-bg .d-chat-photo img { left: 0; top: -146.63px; width: 402px; height: 445.63px; }
 
-.d-e126 { left: 48px; top: 7915px; width: 302px; height: 141.5px; background: var(--amarelo-escuro); }
+.d-e126 { left: 48px; top: calc(7915px + var(--ad-extra, 0px)); width: 302px; height: 141.5px; background: var(--amarelo-escuro); }
 .d-e127 {
-  left: 170px; top: 7946px; width: 62px; height: 13px; border-radius: 50%;
+  left: 170px; top: calc(7946px + var(--ad-extra, 0px)); width: 62px; height: 13px; border-radius: 50%;
   background: #402800; opacity: .5; mix-blend-mode: multiply; filter: blur(4px);
 }
-.d-choc { left: 130px; top: 7846px; width: 122px; height: 138px; }
+.d-choc { left: 130px; top: calc(7846px + var(--ad-extra, 0px)); width: 122px; height: 138px; }
 .d-choc img { object-fit: cover; }
 
 /* celular: relativeTransform do Figma (rotacao de +81 graus) */
 /* a caixa fica sem transform (o orbit-in do js/scroll-fx.js anima ela); a rotação
    do Figma passou para dentro, com o mesmo resultado visual de antes
    (matrix original: rotate(80.96deg) com origem 0 0 e translate 285,4720) */
-.d-phone { left: 136.5px; top: 4688px; width: 111px; height: 206px; }
+.d-phone { left: 136.5px; top: calc(4688px + var(--ad-extra, 0px)); width: 111px; height: 206px; }
 .d-phone > span { display: block; width: 100%; height: 100%; transform: rotate(80.96deg); }
 .d-phone img { object-fit: cover; }
 

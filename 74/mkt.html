@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/mkt.css?v=74-117">
+<link rel="stylesheet" href="css/mkt.css?v=74-119">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -211,12 +211,14 @@
       <p class="t-quote"><strong>"O maior valor da IA não está em criar no lugar do empreendedor, mas em facilitar o acesso a recursos e conhecimentos que antes eram restritos a grandes marcas e grandes orçamentos"</strong>, afirma a publicitária e estrategista de marcas, Mayule Nossabein, idealizadora do projeto e podcast <em>Sente Essa Marca</em>.</p>
     </section>
 
-    <!-- ====== BANNER ROTATIVO — um dos dois, sorteado a cada carregamento ====== -->
-    <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/mkt.js sorteia outro -->
+    <!-- ====== BANNER ROTATIVO — imagem ou video, sorteado a cada carregamento ====== -->
+    <!-- o primeiro ja vem no HTML (aparece mesmo sem JS); js/mkt.js sorteia outro.
+         se sair o video, troca a img por um video mudo em loop. Ele e mais alto
+         (402x715 contra 402x384): --ad-extra desce as decoracoes abaixo do banner -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/banners/maturata.jpg?v=74-117","alt":"Publicidade Maturatta"},
-      {"src":"assets/banners/seda.jpg?v=74-117","alt":"Publicidade Seda"}]'>
-      <img src="assets/banners/maturata.jpg?v=74-117" alt="Publicidade Maturatta" width="402" height="384">
+      {"src":"assets/banners/seda.jpg?v=74-117","alt":"Publicidade Seda","w":2112,"h":2016},
+      {"src":"assets/banners/video-seda-web.mp4?v=74-118","alt":"Publicidade Seda — garanta seu volumão no Assaí mais próximo","video":true,"w":720,"h":1280}]'>
+      <img src="assets/banners/seda.jpg?v=74-117" alt="Publicidade Seda" width="402" height="384">
     </figure>
 
     <!-- ====== BLOCO 5 — passo a passo ====== -->
@@ -281,6 +283,10 @@
       <p class="t-final"><strong>A IA acelera o seu ponto de partida e corrige seus erros na hora, mas a consistência e o olhar apurado vêm da sua prática diária e do desejo de melhorar a cada produto servido.</strong></p>
     </section>
 
+    <figure class="adbox">
+      <img src="assets/banners/embalixo2.jpg?v=74-118" alt="Embalixo — ultra resistente, o mais resistente do Brasil. Não vaza, não rasga" width="394" height="411">
+    </figure>
+
   </article>
 
   <!-- ============ COMPONENTE RODAPE ============ -->
@@ -299,7 +305,7 @@
 </div>
 
 <script src="../js/shell.js?v=74-117"></script>
-<script src="js/mkt.js?v=74-117"></script>
+<script src="js/mkt.js?v=74-118"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
