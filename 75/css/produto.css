@@ -197,3 +197,7 @@
 .t-duvida { width: 354px; margin: 15px 0 0 24px; padding-bottom: 19px; color: #000; }
 .t-duvida p + p { margin-top: 20px; }
 .t-duvida .fecho { margin-top: 60px; font-weight: 700; font-style: italic; color: var(--vermelho); }
+
+/* o botao de som sobe 21px para fora do video e cai sobre o fim do bloco anterior (z-index 3):
+   a secao inteira fica acima dele, senao a metade de cima do botao nao recebe clique */
+.bl-anvisa { z-index: 4; }
