@@ -27,13 +27,17 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="slide-in-left"],.fx-espera [data-fx="typewriter"] [data-fx-item],.fx-espera [data-fx="popcorn-pop"]{visibility:hidden}</style>
 <title>Por que o cliente escolheu seu restaurante hoje? — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Entender o motivo da visita é o segredo para ajustar o serviço, proteger as margens e construir um negócio recorrente.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/consumidor.css?v=75-1">
+<link rel="stylesheet" href="css/consumidor.css?v=75-2">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -119,7 +123,7 @@
       <span class="hero-arco-grad"><img src="assets/consumidor/arco-grad.svg" alt=""></span>
       <span class="hero-tigela"><img src="assets/consumidor/bowl.svg" alt=""></span>
     </div>
-    <h1 class="hero-titulo">Por que o cliente escolheu seu restaurante hoje?</h1>
+    <h1 class="hero-titulo" data-fx="popcorn-pop" data-fx-margem="100">Por que o cliente escolheu seu restaurante hoje?</h1>
     <p class="hero-olho">Entender o motivo da visita é o segredo para ajustar o serviço, proteger as margens e construir um negócio recorrente.</p>
     <div class="hero-assina">
       <p class="hero-edicao">#75 out. 26</p>
@@ -151,18 +155,18 @@
     <h2 class="h-comemos">Por que comemos fora?</h2>
     <p class="t-motivacoes">Ao analisar múltiplas respostas, os entrevistados apontaram suas<br><strong>principais motivações:</strong></p>
 
-    <ul class="circulos circulos--rosa">
-      <li class="circulo"><b>55%</b><span>Celebrações e datas especiais</span></li>
-      <li class="circulo"><b>52%</b><span>Descanso ou pausa na rotina</span></li>
-      <li class="circulo"><b>48%</b><span>Tempo com familiares</span></li>
-      <li class="circulo"><b>45%</b><span>Encontros e convívio social</span></li>
+    <ul class="circulos circulos--rosa" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-intervalo="0.3">
+      <li class="circulo" data-fx-item><b>55%</b><span>Celebrações e datas especiais</span></li>
+      <li class="circulo" data-fx-item><b>52%</b><span>Descanso ou pausa na rotina</span></li>
+      <li class="circulo" data-fx-item><b>48%</b><span>Tempo com familiares</span></li>
+      <li class="circulo" data-fx-item><b>45%</b><span>Encontros e convívio social</span></li>
     </ul>
 
     <h3 class="h-pesa">E o que pesa na escolha do restaurante?</h3>
-    <ul class="circulos circulos--roxo">
-      <li class="circulo"><b>56%</b><span>Comida de qualidade</span></li>
-      <li class="circulo"><b>54%</b><span>Prazer na experiência</span></li>
-      <li class="circulo circulo--centro"><b>43%</b><span>Conforto do ambiente</span></li>
+    <ul class="circulos circulos--roxo" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-intervalo="0.3">
+      <li class="circulo" data-fx-item><b>56%</b><span>Comida de qualidade</span></li>
+      <li class="circulo" data-fx-item><b>54%</b><span>Prazer na experiência</span></li>
+      <li class="circulo circulo--centro" data-fx-item><b>43%</b><span>Conforto do ambiente</span></li>
     </ul>
     <p class="fonte">Fonte: Tanjerin — “O que os brasileiros esperam da tecnologia em sua jornada alimentar”, 2026. Pesquisa com 1.312 brasileiros de todas as regiões do país.</p>
   </section>
@@ -174,9 +178,9 @@
       <p>“Quando eu pego um grupo grande, preciso que atenda e satisfaça a maioria dos meus convidados. Então são comidas normalmente mais populares, como um restaurante italiano, onde todo mundo já está habituado”, comenta.</p>
       <p>Por outro lado, em saídas individuais ou em duplas, o <strong class="am">desejo gastronômico</strong> ganha protagonismo e a <strong class="am">busca pelo ambiente ideal</strong> atua como o grande diferencial competitivo do estabelecimento.</p>
     </div>
-    <figure class="chef"><img src="assets/consumidor/chef.png" alt="Beto Madalosso, chef e empresário" width="294" height="294"></figure>
+    <figure class="chef" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/consumidor/chef.png" alt="Beto Madalosso, chef e empresário" width="294" height="294"></figure>
     <blockquote class="q-chef">
-      <p class="q-chef-texto">“Se a pessoa quer desfrutar de algum tipo de comida, a comida está em primeiro lugar e o ambiente em segundo. Aquele que consegue oferecer uma comida boa e ainda oferecer um bom ambiente consegue se destacar, porque está dando um diferencial da experiência.”</p>
+      <p class="q-chef-texto" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100"><span data-fx-item>“Se a pessoa quer desfrutar de algum tipo de comida, a comida está em primeiro lugar e o ambiente em segundo. Aquele que consegue oferecer uma comida boa e ainda oferecer um bom ambiente consegue se destacar, porque está dando um diferencial da experiência.”</span></p>
       <p class="q-chef-autor">Beto Madalosso, chef e empresário</p>
     </blockquote>
   </section>
@@ -195,18 +199,18 @@
   <section class="bl bl-feed">
     <h2 class="h-feed">Do feed à mesa</h2>
     <ul class="stats">
-      <li class="stat"><p class="stat-num">70,2<small>%</small></p><p class="stat-txt">já visitaram um restaurante por causa do Instagram.</p></li>
+      <li class="stat" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><p class="stat-num">70,2<small>%</small></p><p class="stat-txt">já visitaram um restaurante por causa do Instagram.</p></li>
     </ul>
     <h3 class="barra-roxa">O que desperta atenção:</h3>
     <ul class="stats">
-      <li class="stat"><p class="stat-num">38,2<small>%</small></p><p class="stat-txt">Fotos de pratos</p></li>
-      <li class="stat"><p class="stat-num">23,5<small>%</small></p><p class="stat-txt">Vídeos de preparo</p></li>
+      <li class="stat" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><p class="stat-num">38,2<small>%</small></p><p class="stat-txt">Fotos de pratos</p></li>
+      <li class="stat" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><p class="stat-num">23,5<small>%</small></p><p class="stat-txt">Vídeos de preparo</p></li>
     </ul>
     <h3 class="barra-roxa">O que garante satisfação no salão:</h3>
     <ul class="stats">
-      <li class="stat"><p class="stat-num">38,2<small>%</small></p><p class="stat-txt">Qualidade da comida</p></li>
-      <li class="stat"><p class="stat-num">23,0<small>%</small></p><p class="stat-txt">Preço justo</p></li>
-      <li class="stat"><p class="stat-num">17,1<small>%</small></p><p class="stat-txt">Atendimento</p></li>
+      <li class="stat" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><p class="stat-num">38,2<small>%</small></p><p class="stat-txt">Qualidade da comida</p></li>
+      <li class="stat" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><p class="stat-num">23,0<small>%</small></p><p class="stat-txt">Preço justo</p></li>
+      <li class="stat" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><p class="stat-num">17,1<small>%</small></p><p class="stat-txt">Atendimento</p></li>
     </ul>
     <p class="fonte fonte--feed">Fonte: Brazil Panels &amp; Behavior Insights</p>
   </section>
@@ -249,12 +253,12 @@
   <!-- ============ BLOCO 10 — 5 PISTAS ============ -->
   <section class="bl bl-pistas">
     <h2 class="h-pistas">5 pistas que estão no seu caixa</h2>
-    <ol class="pistas">
-      <li class="pista"><span class="pista-num"><b>1</b></span><div class="pista-txt"><h3>Horário</h3><p>Quais são os picos de faturamento e quando o tíquete médio individual aumenta?</p></div></li>
-      <li class="pista"><span class="pista-num"><b>2</b></span><div class="pista-txt"><h3>Comanda</h3><p>Quais produtos ou acompanhamentos costumam ser pedidos juntos?</p></div></li>
-      <li class="pista"><span class="pista-num"><b>3</b></span><div class="pista-txt"><h3>Perfil de mesa</h3><p>Qual é a proporção entre clientes individuais, casais e grupos em cada turno?</p></div></li>
-      <li class="pista"><span class="pista-num"><b>4</b></span><div class="pista-txt"><h3>Origem do cliente</h3><p>A visita aconteceu por localização, recomendação, busca ativa ou redes sociais?</p></div></li>
-      <li class="pista"><span class="pista-num"><b>5</b></span><div class="pista-txt"><h3>Comportamento</h3><p>O cliente que vem por uma promoção consome outros itens e retorna em datas normais?</p></div></li>
+    <ol class="pistas" data-fx="slide-in-up" data-fx-margem="200">
+      <li class="pista" data-fx-item><span class="pista-num"><b>1</b></span><div class="pista-txt"><h3>Horário</h3><p>Quais são os picos de faturamento e quando o tíquete médio individual aumenta?</p></div></li>
+      <li class="pista" data-fx-item><span class="pista-num"><b>2</b></span><div class="pista-txt"><h3>Comanda</h3><p>Quais produtos ou acompanhamentos costumam ser pedidos juntos?</p></div></li>
+      <li class="pista" data-fx-item><span class="pista-num"><b>3</b></span><div class="pista-txt"><h3>Perfil de mesa</h3><p>Qual é a proporção entre clientes individuais, casais e grupos em cada turno?</p></div></li>
+      <li class="pista" data-fx-item><span class="pista-num"><b>4</b></span><div class="pista-txt"><h3>Origem do cliente</h3><p>A visita aconteceu por localização, recomendação, busca ativa ou redes sociais?</p></div></li>
+      <li class="pista" data-fx-item><span class="pista-num"><b>5</b></span><div class="pista-txt"><h3>Comportamento</h3><p>O cliente que vem por uma promoção consome outros itens e retorna em datas normais?</p></div></li>
     </ol>
   </section>
 
@@ -303,6 +307,11 @@
 
 <script src="../js/shell.js?v=74-117"></script>
 <script src="js/consumidor.js?v=75-1"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-123"></script>
 <script src="../js/shell-desktop.js?v=74-117"></script>
 </body>
 </html>

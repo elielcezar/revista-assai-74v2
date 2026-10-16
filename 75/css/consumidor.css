@@ -141,7 +141,7 @@
 .chef img { width: 294px; height: 294px; }
 
 .q-chef { width: 362px; margin: 40px 0 0 20px; text-align: center; }
-.q-chef-texto { font-size: 21px !important; font-weight: 700; color: var(--roxo); }
+.q-chef-texto { height: 184px; font-size: 21px !important; font-weight: 700; color: var(--roxo); }
 .q-chef-autor { margin-top: 25px; font-weight: 700; font-style: italic; color: var(--cinza); }
 
 /* =========================================================
@@ -156,7 +156,7 @@
 /* =========================================================
    BLOCO 7 — DO FEED À MESA  (5175 .. 6593)
    ========================================================= */
-.h-feed { width: 176px; margin: 789px 0 0 24px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--roxo); }
+.h-feed { width: 176px; margin: 0 0 0 24px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--roxo); }
 
 .stats { margin: 0; padding: 0; list-style: none; }
 .stat { display: flex; align-items: center; }
