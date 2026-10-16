@@ -1135,6 +1135,7 @@
        data-fx-margem="100"    px acima do fundo da tela que disparam
        data-fx-atraso="0"      segundos antes de abrir (ex.: título e subtítulo
                                em sequência)
+       data-fx-uma-vez         abre uma vez e fica; sem o atributo, rearma ao sair
 
      Refaz a cada vez que o elemento volta à tela; ao sair, rearma. Não mexe no
      fluxo (só recorta), então serve em página de decoração global.
@@ -1147,28 +1148,34 @@
     var margem = pct(el.getAttribute("data-fx-margem"), 100);
     var de = el.getAttribute("data-fx-de") || "esquerda";
     var atraso = pct(el.getAttribute("data-fx-atraso"), 0);
+    var umaVez = el.hasAttribute("data-fx-uma-vez");
     // inset(cima direita baixo esquerda): o lado que começa 100% é o que
     // esconde, e é dele que a cortina abre
     var fechado = { esquerda: "inset(0 100% 0 0)", direita: "inset(0 0 0 100%)",
                     cima: "inset(0 0 100% 0)", baixo: "inset(100% 0 0 0)" }[de]
                   || "inset(0 100% 0 0)";
     var aberto = "inset(0% 0% 0% 0%)";
-    var dentro = false, tw = null;
+    var dentro = false, feito = false, tw = null;
 
     gsap.set(el, { clipPath: fechado });
     function naTela() {
       var r = el.getBoundingClientRect();
       return r.top < window.innerHeight - margem && r.bottom > 0;
     }
+    function abrir() {
+      gsap.set(el, { clearProps: "clipPath" });
+    }
     function checar() {
+      if (feito) return;
       if (!dentro && naTela()) {
         dentro = true;
         if (tw) tw.kill();
         tw = gsap.fromTo(el, { clipPath: fechado },
           { clipPath: aberto, duration: dur, delay: atraso, ease: "power3.inOut",
-            onComplete: function () { gsap.set(el, { clearProps: "clipPath" }); } });
-      } else if (dentro && !naTela()) {      // saiu: rearma para a próxima vez
-        dentro = false;
+            onComplete: function () { abrir(); if (umaVez) feito = true; } });
+      } else if (dentro && !naTela()) {
+        if (umaVez) { feito = true; if (tw) tw.kill(); abrir(); return; }
+        dentro = false;                       // saiu: rearma para a próxima vez
         if (tw) tw.kill();
         gsap.set(el, { clipPath: fechado });
       }
