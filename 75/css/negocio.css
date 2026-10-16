@@ -136,7 +136,7 @@
 .t-narrativa p + p { margin-top: 20px; }
 
 .t-cozinha {
-  width: 338px; margin: 137px 0 0 39px;
+  width: 338px; height: 243px; margin: 137px 0 0 39px;
   font-size: 24px !important; font-weight: 700; color: var(--pink);
 }
 .foto--prato { width: 402px; height: 389px; margin-top: 68px; }
