@@ -1008,6 +1008,9 @@
        data-fx-balanco-pausa="2"  segundos parado entre uma rajada e a seguinte
        data-fx-balanco-rapidez="0.12"  segundos de cada ida da rajada
        data-fx-flutuacao="10"     depois de surgir, sobe N px e volta, sem parar
+       data-fx-flutuacao-baixo="0"  se definido, o sobe-e-desce também desce N px
+                                  abaixo do ponto de repouso (sem o atributo,
+                                  o ponto de baixo continua sendo o repouso)
        data-fx-flutuacao-velocidade="1"  multiplica a velocidade da flutuação
                                   (1.3 = 30% mais rápida)
      Quem flutua ou balança ganha will-change: transform (camada própria): sem
@@ -1079,8 +1082,11 @@
       }
       if (altura) {
         var vel = pct(attr(el, "data-fx-flutuacao-velocidade", "1"), 1) || 1;
-        gsap.to(el, { y: -altura, duration: gsap.utils.random(1.4, 2) / vel, ease: "sine.inOut",
-          repeat: -1, yoyo: true, delay: gsap.utils.random(0, 0.6) / vel });
+        var baixo = pct(attr(el, "data-fx-flutuacao-baixo", "0"), 0);
+        var opts = { y: -altura, duration: gsap.utils.random(1.4, 2) / vel, ease: "sine.inOut",
+          repeat: -1, yoyo: true, delay: gsap.utils.random(0, 0.6) / vel };
+        // sem o atributo, o ponto de baixo é o repouso (y 0), como antes
+        if (baixo) gsap.fromTo(el, { y: baixo }, opts); else gsap.to(el, opts);
       }
     }
 

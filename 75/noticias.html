@@ -27,13 +27,17 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Suas compras de outubro podem voltar para o caixa — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Na campanha de aniversário do Assaí, cada R$ 20 em compras dá direito a um número da sorte. São mais de R$ 15 milhões em prêmios, incluindo compras grátis, R$ 1 milhão e milhares de Sacolas Assaí.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/noticias.css?v=75-1">
+<link rel="stylesheet" href="css/noticias.css?v=75-6">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -115,16 +119,18 @@
   <section class="bl bl-hero">
     <div class="backdrop" aria-hidden="true">
       <span class="bx bx--1"><img src="assets/noticias/balao-dourado.png" alt=""></span>
-      <span class="bx bx--2"><img src="assets/noticias/balao-azul.png" alt=""></span>
-      <span class="bx bx--3"><img src="assets/noticias/balao-dourado.png" alt=""></span>
+      <div class="balao-par" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+        <span class="bx bx--2" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
+        <span class="bx bx--3" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
+      </div>
     </div>
     <figure class="hero-foto">
       <img src="assets/noticias/hero.jpg" alt="Rodrigo Faro sorrindo, de DJ, com balões azuis e dourados" width="402" height="409">
       <img class="hero-selo" src="assets/noticias/selo.png" alt="Aniversário Assaí 52 anos — O sucesso voltou: compras grátis todos os dias" width="110" height="114">
     </figure>
     <h1 class="hero-titulo">
-      <span class="hero-gancho">Suas compras de outubro podem voltar</span>
-      <span class="hero-destaque">PARA O CAIXA</span>
+      <span class="hero-gancho" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100">Suas compras de outubro podem voltar</span>
+      <span class="hero-destaque" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100">PARA O CAIXA</span>
     </h1>
     <div class="hero-assina">
       <p class="hero-edicao">#75 out . 26</p>
@@ -135,9 +141,9 @@
 
   <!-- ============ BLOCO 2 — A CAMPANHA ============ -->
   <section class="bl bl-campanha">
-    <div class="carrinhos">
-      <img class="carrinho carrinho--1" src="assets/noticias/carrinho1.png" alt="" width="254" height="194">
-      <img class="carrinho carrinho--2" src="assets/noticias/carrinho2.png" alt="Carrinhos de supermercado cheios de produtos" width="201" height="186">
+    <div class="carrinhos" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-intervalo="0.3">
+      <img class="carrinho carrinho--1" data-fx-item src="assets/noticias/carrinho1.png" alt="" width="254" height="194">
+      <img class="carrinho carrinho--2" data-fx-item src="assets/noticias/carrinho2.png" alt="Carrinhos de supermercado cheios de produtos" width="201" height="186">
     </div>
     <!-- azul-marinho que desce em degrade: o fundo e a propria caixa do texto -->
     <div class="caixa caixa--campanha">
@@ -157,9 +163,9 @@
 
   <!-- ============ BLOCO 3 — A MECÂNICA ============ -->
   <section class="bl bl-mecanica">
-    <div class="backdrop" aria-hidden="true">
-      <span class="bx bx--4"><img src="assets/noticias/balao-azul.png" alt=""></span>
-      <span class="bx bx--5"><img src="assets/noticias/balao-dourado.png" alt=""></span>
+    <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+      <span class="bx bx--4" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
+      <span class="bx bx--5" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
     </div>
     <div class="cupula-amarela"><h2>A cada R$ 20, <br>uma nova chance</h2></div>
     <div class="caixa caixa--mecanica">
@@ -170,16 +176,15 @@
   </section>
 
   <!-- ============ BLOCO 4 — ALGUMAS ESCOLHAS MULTIPLICAM OS NÚMEROS ============ -->
-  <section class="bl bl-multiplica">
+  <section class="bl bl-multiplica" data-fx="pin-horizontal">
     <div class="backdrop" aria-hidden="true">
       <span class="trevo"><img src="assets/noticias/trevo.png" alt=""></span>
-      <span class="bx bx--6"><img src="assets/noticias/balao-azul.png" alt=""></span>
     </div>
     <h2 class="h-multiplica">Algumas escolhas multiplicam os números</h2>
     <p class="t-extras">Além do número recebido a cada R$ 20, algumas compras e formas de pagamento dão direito a números extras.</p>
 
     <!-- faixa horizontal: rola para o lado com o dedo/mouse (o efeito de scroll entra na fase das animacoes) -->
-    <div class="carrossel">
+    <div class="carrossel" data-fx-item>
       <ul class="carrossel-faixa">
         <li class="extra extra--1">
           <figure><img src="assets/noticias/card1.png" alt="Garrafa de leite e caixa de leite com +1 trevo" width="209" height="201"></figure>
@@ -196,13 +201,17 @@
       </ul>
     </div>
 
+    <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+      <span class="bx bx--6" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
+    </div>
+
     <p class="t-acumulo">Isso significa que uma mesma compra pode gerar mais chances de participação quando reúne as condições previstas pela promoção. <span class="pendente">XXXX [confirmar possibilidade de acúmulo e regra exata no regulamento].</span></p>
   </section>
 
   <!-- ============ BLOCO 5 — E SE A COMPRA SAIR GRÁTIS? ============ -->
   <section class="bl bl-gratis">
-    <div class="backdrop" aria-hidden="true">
-      <span class="bx bx--7"><img src="assets/noticias/balao-dourado.png" alt=""></span>
+    <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+      <span class="bx bx--7" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
     </div>
     <div class="caixa caixa--gratis">
       <h2 class="h-gratis">E se a compra sair grátis?</h2>
@@ -217,22 +226,25 @@
 
   <!-- ============ BLOCO 6 — COMO PARTICIPAR ============ -->
   <section class="bl bl-passos">
-    <figure class="ilustra"><img src="assets/noticias/ilustra.svg" alt="" aria-hidden="true" width="237" height="237"></figure>
+    <figure class="ilustra">
+      <img src="assets/noticias/ilustra.svg" alt="" aria-hidden="true" width="237" height="237">
+      <h2>Como participar</h2>
+    </figure>
     <div class="caixa caixa--passos">
-      <ol class="passos">
-        <li class="passo"><span class="passo-num"><b>1</b></span><p class="passo-txt"><strong class="passo-tit">COMPRE</strong><br><strong>A cada R$ 20 em compras, ganhe um número da sorte.</strong></p></li>
-        <li class="passo"><span class="passo-num"><b>2</b></span><p class="passo-txt"><strong class="passo-tit">IDENTIFIQUE-SE</strong><br><strong>Informe CPF ou CNPJ no caixa.</strong></p></li>
-        <li class="passo"><span class="passo-num"><b>3</b></span><p class="passo-txt passo-txt--estreito"><strong class="passo-tit">CADASTRE-SE</strong><br><strong>Faça o cadastro pelo site, totem da loja ou WhatsApp.</strong></p></li>
-        <li class="passo"><span class="passo-num"><b>4</b></span><p class="passo-txt passo-txt--estreito"><strong class="passo-tit">ACOMPANHE</strong><br><strong>XXXX [onde consultar números da sorte/resultados].</strong></p></li>
-        <li class="passo"><span class="passo-num"><b>5</b></span><p class="passo-txt"><strong class="passo-tit">CONCORRA</strong><br><strong>A compras grátis de até R$ 700, <br>R$ 1 milhão e milhares de Sacolas Assaí.</strong></p></li>
+      <ol class="passos" data-fx="slide-in-up" data-fx-margem="200">
+        <li class="passo" data-fx-item><span class="passo-num"><b>1</b></span><p class="passo-txt"><strong class="passo-tit">COMPRE</strong><br><strong>A cada R$ 20 em compras, ganhe um número da sorte.</strong></p></li>
+        <li class="passo" data-fx-item><span class="passo-num"><b>2</b></span><p class="passo-txt"><strong class="passo-tit">IDENTIFIQUE-SE</strong><br><strong>Informe CPF ou CNPJ no caixa.</strong></p></li>
+        <li class="passo" data-fx-item><span class="passo-num"><b>3</b></span><p class="passo-txt passo-txt--estreito"><strong class="passo-tit">CADASTRE-SE</strong><br><strong>Faça o cadastro pelo site, totem da loja ou WhatsApp.</strong></p></li>
+        <li class="passo" data-fx-item><span class="passo-num"><b>4</b></span><p class="passo-txt passo-txt--estreito"><strong class="passo-tit">ACOMPANHE</strong><br><strong>XXXX [onde consultar números da sorte/resultados].</strong></p></li>
+        <li class="passo" data-fx-item><span class="passo-num"><b>5</b></span><p class="passo-txt"><strong class="passo-tit">CONCORRA</strong><br><strong>A compras grátis de até R$ 700, <br>R$ 1 milhão e milhares de Sacolas Assaí.</strong></p></li>
       </ol>
     </div>
   </section>
 
   <!-- ============ BLOCO 7 — REGULAMENTO ============ -->
   <section class="bl bl-regulamento">
-    <div class="backdrop" aria-hidden="true">
-      <span class="bx bx--8"><img src="assets/noticias/balao-azul.png" alt=""></span>
+    <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+      <span class="bx bx--8" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
     </div>
     <p class="t-campanha-datas">A campanha acontece entre 1º e 31 de outubro de 2026. Antes de participar, vale conferir o regulamento completo para conhecer datas dos sorteios, critérios de participação, produtos e marcas participantes e todas as condições da promoção.</p>
     <div class="caixa caixa--regulamento">
@@ -262,6 +274,10 @@
 
 <script src="../js/shell.js?v=74-117"></script>
 <script src="js/noticias.js?v=75-1"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-124"></script>
 <script src="../js/shell-desktop.js?v=74-117"></script>
 </body>
 </html>
