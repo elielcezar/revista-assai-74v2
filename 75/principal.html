@@ -27,13 +27,17 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="magnetic-pull"],.fx-espera [data-fx="slide-in-left"],.fx-espera [data-fx="typewriter"] [data-fx-item]{visibility:hidden}</style>
 <title>Música ao vivo vale a pena? — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="A música pode transformar a experiência do cliente e criar novas oportunidades de consumo. Mas, antes de aumentar o volume, é preciso saber se a conta fecha.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/principal.css?v=75-1">
+<link rel="stylesheet" href="css/principal.css?v=75-3">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -122,7 +126,7 @@
     <figure class="hero-foto"><img src="assets/principal/hero.jpg" alt="Músico canta e toca violão em um restaurante cheio" width="477" height="358"></figure>
     <p class="hero-edicao">#75 out. 26</p>
     <p class="hero-autor">Por: Paula Melech</p>
-    <h1 class="hero-titulo">Música <span class="grad-texto">AO VIVO</span><br>vale a pena?</h1>
+    <h1 class="hero-titulo" data-fx="magnetic-pull">Música <span class="grad-texto">AO VIVO</span><br>vale a pena?</h1>
     <p class="hero-olho">A música pode transformar a experiência do cliente e criar novas oportunidades de consumo. Mas, antes de aumentar o volume, é preciso saber se a conta fecha</p>
   </section>
 
@@ -133,7 +137,9 @@
       <p>Quando combina com o público e com a proposta da casa, a atração pode prolongar a permanência, estimular novos pedidos e dar ao cliente mais um motivo para voltar. Mas casa cheia não é sinônimo de lucro: é preciso acompanhar consumo, faturamento e custos.</p>
       <p>Segundo Luis Fernando Menuci, presidente da Associação Brasileira de Bares e Restaurantes no Paraná (Abrasel-PR), a estratégia pode melhorar a experiência do consumidor.</p>
     </div>
-    <figure class="menuci"><img src="assets/principal/menuci.png" alt="Luis Fernando Menuci, presidente da Abrasel-PR" width="240" height="240"></figure>
+    <figure class="menuci" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100">
+      <img data-fx-item src="assets/principal/menuci.png" alt="Luis Fernando Menuci, presidente da Abrasel-PR" width="240" height="240">
+    </figure>
     <blockquote class="q-menuci">
       <p>“Quando a atração artística conversa diretamente com o perfil dos clientes, a experiência do consumidor é elevada: as pessoas tendem a prolongar a permanência no local, desfrutam melhor do ambiente e, naturalmente, ampliam o consumo.”</p>
     </blockquote>
@@ -143,7 +149,9 @@
   <section class="bl bl-palco">
     <!-- a foto sai por cima do topo da caixa laranja; o circulo vermelho (::after) sai por baixo -->
     <div class="caixa caixa--palco">
-      <figure class="zanatta"><img src="assets/principal/paulo-zanatta.jpg" alt="Paulo Zanatta, sócio-proprietário do restaurante Don Max, cortando legumes na cozinha" width="258" height="344"></figure>
+      <figure class="zanatta" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100">
+        <img data-fx-item src="assets/principal/paulo-zanatta.jpg" alt="Paulo Zanatta, sócio-proprietário do restaurante Don Max, cortando legumes na cozinha" width="258" height="344">
+      </figure>
       <h2 class="h-palco">Quando o palco<br>ajuda a vender</h2>
       <p>Paulo Zanatta, sócio-proprietário do restaurante Don Max, em Curitiba (PR), percebe reflexos da música nos pedidos.<br><strong>“Com a música ao vivo, conseguimos atrair clientes em momentos nos quais normalmente não teríamos tanto movimento. Em uma noite de jazz, por exemplo, vendemos mais vinhos e pratos. Já em uma noite de rock, aumentam os pedidos de cervejas e petiscos”</strong>, conta.</p>
     </div>
@@ -155,11 +163,11 @@
     <h2 class="h-efeito">O efeito da música ao vivo</h2>
     <p class="t-consumidores">Entre consumidores de 18 a 49 anos:</p>
     <!-- cartoes empilhados: cada um sobe sobre o de cima; a foto da banda fica por baixo do ultimo -->
-    <ul class="stats">
-      <li class="stat stat--1">85% aproveitam mais<br>a experiência</li>
-      <li class="stat stat--2">83% têm maior probabilidade de retornar</li>
-      <li class="stat stat--3">80% permanecem por<br>mais tempo</li>
-      <li class="stat stat--4">70% gastam mais com<br>comidas e bebidas</li>
+    <ul class="stats" data-fx="slide-in-up" data-fx-margem="200" data-fx-passo="200">
+      <li class="stat stat--1" data-fx-item>85% aproveitam mais<br>a experiência</li>
+      <li class="stat stat--2" data-fx-item>83% têm maior probabilidade de retornar</li>
+      <li class="stat stat--3" data-fx-item>80% permanecem por<br>mais tempo</li>
+      <li class="stat stat--4" data-fx-item>70% gastam mais com<br>comidas e bebidas</li>
     </ul>
     <figure class="banda"><img src="assets/principal/banda.jpg" alt="Banda se apresenta ao vivo em um bar, com luz roxa" width="490" height="276"></figure>
     <p class="t-dados">Os dados mostram que a música pode ir além da ambientação. Quando alinhada ao público, pode favorecer a permanência, estimular novos pedidos e ajudar a movimentar horários mais fracos.</p>
@@ -227,10 +235,10 @@
     <h2 class="h-gastar">Ficar mais tempo significa gastar mais?</h2>
     <p class="t-gastar"><strong>Não necessariamente.</strong> Permanecer mais tempo cria oportunidades de consumo, mas a música não aumenta vendas sozinha. O resultado depende da combinação entre repertório, cardápio, atendimento e perfil dos clientes.</p>
     <ol class="pilulas">
-      <li class="pilula pilula--1"><span class="pilula-icone"><img src="assets/principal/ic-permanece.png" alt="" width="50" height="50"></span>Cliente permanece mais tempo</li>
-      <li class="pilula pilula--2"><span class="pilula-icone"><img src="assets/principal/ic-ocasiao.png" alt="" width="48" height="48"></span>Surge nova ocasião de consumo</li>
-      <li class="pilula pilula--3"><span class="pilula-icone"><img src="assets/principal/ic-cardapio.png" alt="" width="47" height="47"></span>Cardápio + Atendimento ágil</li>
-      <li class="pilula pilula--4"><span class="pilula-icone"><img src="assets/principal/ic-pedido.png" alt="" width="48" height="48"></span>Novo pedido</li>
+      <li class="pilula pilula--1" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><span class="pilula-icone"><img src="assets/principal/ic-permanece.png" alt="" width="50" height="50"></span>Cliente permanece mais tempo</li>
+      <li class="pilula pilula--2" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100" data-fx-atraso="0.7"><span class="pilula-icone"><img src="assets/principal/ic-ocasiao.png" alt="" width="48" height="48"></span>Surge nova ocasião de consumo</li>
+      <li class="pilula pilula--3" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100" data-fx-atraso="1.4"><span class="pilula-icone"><img src="assets/principal/ic-cardapio.png" alt="" width="47" height="47"></span>Cardápio + Atendimento ágil</li>
+      <li class="pilula pilula--4" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100" data-fx-atraso="2.1"><span class="pilula-icone"><img src="assets/principal/ic-pedido.png" alt="" width="48" height="48"></span>Novo pedido</li>
     </ol>
     <p class="t-alerta">Se o atendimento demora ou a experiência sonora incomoda, o tempo adicional dificilmente vira faturamento.</p>
   </section>
@@ -250,22 +258,22 @@
   <section class="bl bl-custo">
     <h2 class="h-custo">Mas, quanto custa?</h2>
     <p class="t-cache">O cachê é apenas parte da conta.</p>
-    <ul class="custos">
-      <li class="custo"><strong>Artista</strong> Cachê do músico ou da banda.</li>
-      <li class="custo"><strong>Estrutura</strong> Som, iluminação e adaptações.</li>
-      <li class="custo"><strong>Equipe</strong> Reforço no salão, cozinha ou segurança.</li>
-      <li class="custo"><strong>Direitos autorais</strong> Pagamento ao Ecad, quando aplicável.</li>
-      <li class="custo"><strong>Operação</strong> Divulgação, energia e limpeza.</li>
-      <li class="custo"><strong>Regras locais</strong> Ruído, horários, alvarás e vizinhança.</li>
+    <ul class="custos" data-fx="slide-in-up" data-fx-margem="200" data-fx-escalonamento="0.25">
+      <li class="custo" data-fx-item><strong>Artista</strong> Cachê do músico ou da banda.</li>
+      <li class="custo" data-fx-item><strong>Estrutura</strong> Som, iluminação e adaptações.</li>
+      <li class="custo" data-fx-item><strong>Equipe</strong> Reforço no salão, cozinha ou segurança.</li>
+      <li class="custo" data-fx-item><strong>Direitos autorais</strong> Pagamento ao Ecad, quando aplicável.</li>
+      <li class="custo" data-fx-item><strong>Operação</strong> Divulgação, energia e limpeza.</li>
+      <li class="custo" data-fx-item><strong>Regras locais</strong> Ruído, horários, alvarás e vizinhança.</li>
     </ul>
     <p class="q-couvert">O couvert artístico pode compensar parte das despesas, desde que informado com clareza, mas não deve ser a única fonte de retorno.</p>
   </section>
 
   <!-- ============ BLOCO 10 — A MÚSICA SE PAGA? ============ -->
-  <section class="bl bl-paga">
+  <section class="bl bl-paga" data-fx="pin-horizontal">
     <h2 class="faixa faixa--vermelha">A música se paga?</h2>
-    <!-- a conta e mais larga que a coluna (como no Figma): rola para o lado -->
-    <div class="conta-rolagem">
+    <!-- a conta e mais larga que a coluna: a tela congela e o scroll rola o trilho -->
+    <div class="conta-rolagem" data-fx-item>
       <div class="conta">
         <p class="conta-item conta-item--receita"><strong>Receita adicional</strong> consumo + couvert</p>
         <span class="conta-sinal" aria-hidden="true">-</span>
@@ -287,9 +295,9 @@
   </section>
 
   <!-- ============ BLOCO 12 — QUANDO A MÚSICA VIRA RUÍDO ============ -->
-  <section class="bl bl-ruido">
+  <section class="bl bl-ruido" data-fx="card-accordeon">
     <h2 class="faixa faixa--grad">Quando a música vira ruído</h2>
-    <ul class="ruido">
+    <ul class="ruido" data-fx-item>
       <li>Clientes precisam falar mais alto</li>
       <li>Repertório não combina com a casa</li>
       <li>Equipe não acompanha a demanda</li>
@@ -305,8 +313,8 @@
       <p>Quando alinhada ao público, ao ambiente e ao cardápio, a música pode melhorar a experiência, movimentar horários mais fracos e criar novas ocasiões de consumo. Uma programação recorrente também pode fortalecer a identidade da casa e estimular a fidelização.</p>
       <p><strong>Sem planejamento, porém, pode virar apenas mais um custo.</strong></p>
     </div>
-    <blockquote class="caixa caixa--grad caixa--final">
-      <p>“No final, gastronomia é também convivência, lazer, hospitalidade e bons momentos”, resume Menuci.</p>
+    <blockquote class="caixa caixa--grad caixa--final" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100">
+      <p data-fx-item>“No final, gastronomia é também convivência, lazer, hospitalidade e bons momentos”, resume Menuci.</p>
     </blockquote>
     <p class="t-final-fim">A música faz sentido quando contribui para essa experiência e, ao mesmo tempo, entrega resultados que justifiquem o investimento.</p>
   </section>
@@ -334,7 +342,9 @@
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
-<script src="../js/scroll-fx.js?v=74-117"></script>
+<!-- SplitText: o magnetic-pull quebra o titulo em letras -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-118"></script>
 <script src="../js/shell-desktop.js?v=74-117"></script>
 </body>
 </html>

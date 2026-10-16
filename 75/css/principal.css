@@ -149,7 +149,7 @@
 /* =========================================================
    BLOCO 6 — QUAL EXPERIÊNCIA VOCÊ QUER CRIAR?  (4447 .. 5185)
    ========================================================= */
-.bl-exp { padding-top: 308px; }
+.bl-exp { padding-top: 100px; }
 .exp { width: 366px; margin-left: 26px; }
 /* corre para o lado com o scroll (pin-horizontal, js/scroll-fx.js) */
 .exp-viewport { width: 366px; height: 430px; overflow: hidden; }
@@ -341,5 +341,5 @@
   background-image: linear-gradient(-53.57deg, var(--grad));
   padding: 49px 36px 57px 30px;
 }
-.caixa--final p { width: 348px; font-size: 26px; font-weight: 700; }
+.caixa--final p { width: 348px; height: 116px; font-size: 26px; font-weight: 700; }
 .t-final-fim { width: 348px; margin: 37px 0 0 30px; padding-bottom: 128px; color: #000; }

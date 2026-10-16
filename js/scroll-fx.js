@@ -720,12 +720,17 @@
      Opções no próprio elemento:
        data-fx-duracao="1.5" segundos
        data-fx-atraso="0"    segundos antes de começar
+       data-fx-quando="scroll"  em vez de ao carregar: espera o topo do elemento
+                             passar da linha (margem px acima do fundo da tela).
+                             Rearma quando o elemento sai da tela.
+       data-fx-margem="100"  (com scroll) px acima do fundo da tela que disparam
 
      Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
      ========================================================= */
   function slideInLeft(el) {
     var duracao = pct(el.getAttribute("data-fx-duracao"), 1.5);
     var atraso = pct(el.getAttribute("data-fx-atraso"), 0);
+    if (el.getAttribute("data-fx-quando") === "scroll") return slideInLeftScroll(el, duracao, atraso);
 
     // começa inteiro para fora, à direita do ancestral que recorta (overflow), px de CSS
     var corte = el.parentElement;
@@ -750,6 +755,44 @@
     } else {
       vai();
     }
+  }
+
+  // slide-in-left disparado pelo scroll: lê a posição real a cada frame (como o
+  // slide-in-up), entra ao cruzar a linha e volta para fora quando sai da tela
+  function slideInLeftScroll(el, duracao, atraso) {
+    var margem = pct(el.getAttribute("data-fx-margem"), 100);
+    var corte = el.parentElement;
+    while (corte && corte !== document.body && getComputedStyle(corte).overflowX === "visible") {
+      corte = corte.parentElement;
+    }
+    function fora() {
+      var borda = (corte && corte !== document.body) ? corte.getBoundingClientRect().right : window.innerWidth;
+      var z = zoom();
+      return (borda - el.getBoundingClientRect().left) / z + gsap.getProperty(el, "x");
+    }
+    gsap.set(el, { x: fora() });
+    var dentro = false;
+    function checar() {
+      var r = el.getBoundingClientRect();
+      var chegou = r.top <= window.innerHeight - margem && r.bottom > 0;
+      var saiu = r.bottom <= 0 || r.top > window.innerHeight;
+      if (!dentro && chegou) {
+        dentro = true;
+        gsap.to(el, { x: 0, duration: duracao, delay: atraso, ease: "power2.out", overwrite: true });
+      } else if (dentro && saiu) {
+        dentro = false;
+        gsap.killTweensOf(el);
+        gsap.set(el, { x: fora() });
+      }
+    }
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", noScroll);
+    window.addEventListener("load", noScroll);
+    checar();
   }
 
   /* =========================================================
@@ -1280,6 +1323,10 @@
        data-fx-apagar="0.03"      segundos por letra ao apagar
        data-fx-pausa="1.2"        segundos que o texto fica inteiro na tela
        data-fx-atraso="0.3"       segundos antes de começar
+       data-fx-quando="scroll"    em vez de ao carregar: começa quando o contêiner
+                                  passa da linha (margem px acima do fundo da
+                                  tela) e recomeça a cada entrada
+       data-fx-margem="100"       (com scroll) px acima do fundo da tela
 
      O markup de cada item é preservado (<br>, <span> de cor): o efeito esvazia
      e repõe só os NÓS DE TEXTO, na ordem. Como as quebras continuam no lugar, a
@@ -1324,8 +1371,9 @@
 
     dados.forEach(function (d) { escrever(d, 0); gsap.set(d.el, { visibility: "hidden" }); });
 
+    var porScroll = sec.getAttribute("data-fx-quando") === "scroll";
     var tl = gsap.timeline({ delay: atraso, repeat: repetir !== null ? -1 : 0,
-                             repeatDelay: pct(repetir, 1) });
+                             repeatDelay: pct(repetir, 1), paused: porScroll });
     dados.forEach(function (d, i) {
       var conta = { n: 0 };
       tl.set(d.el, { visibility: "visible" })
@@ -1339,7 +1387,35 @@
       }
     });
 
+    var pedido = 0, noScroll = null;
+    if (porScroll) {
+      var margem = pct(sec.getAttribute("data-fx-margem"), 100);
+      var dentro = false;
+      var checar = function () {
+        var r = sec.getBoundingClientRect();
+        var chegou = r.top <= window.innerHeight - margem && r.bottom > 0;
+        var saiu = r.bottom <= 0 || r.top > window.innerHeight;
+        if (!dentro && chegou) { dentro = true; tl.restart(true); }
+        else if (dentro && saiu) {          // saiu: rearma para a próxima vez
+          dentro = false;
+          tl.pause(0);
+          dados.forEach(function (d) { escrever(d, 0); gsap.set(d.el, { visibility: "hidden" }); });
+        }
+      };
+      noScroll = function () {
+        if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+      };
+      window.addEventListener("scroll", noScroll, { passive: true });
+      window.addEventListener("resize", noScroll);
+      checar();
+    }
+
     return function () {
+      if (noScroll) {
+        window.removeEventListener("scroll", noScroll);
+        window.removeEventListener("resize", noScroll);
+        if (pedido) cancelAnimationFrame(pedido);
+      }
       tl.kill();
       dados.forEach(function (d) {
         escrever(d, d.total);
