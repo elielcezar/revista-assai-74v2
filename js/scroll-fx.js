@@ -1589,9 +1589,76 @@
     };
   }
 
+  /* =========================================================
+     buzz-spin  (entrada)
+     Vibra rápido, gira, vibra de novo, gira de novo, e recomeça.
+     Cada giro soma os graus ao anterior. Anima o próprio elemento:
+     um rotate que a imagem de dentro já tenha no CSS continua valendo.
+
+       <figure data-fx="buzz-spin" data-fx-quando="scroll">
+
+     Opções:
+       data-fx-vibrar="2"          segundos de cada vibração
+       data-fx-lado="1"            px para cada lado na vibração
+       data-fx-pausa="0"           segundos parada no fim de cada volta
+       data-fx-giro="75"           graus de cada giro
+       data-fx-giro-duracao="0.3"  segundos do giro
+       data-fx-quando="scroll"     começa quando entra (padrão). "carregar" começa já
+       data-fx-margem="100"        px antes da base da janela
+     ========================================================= */
+  function buzzSpin(el) {
+    var seg = pct(el.getAttribute("data-fx-vibrar"), 2);
+    var giro = pct(el.getAttribute("data-fx-giro"), 75);
+    var giroDur = pct(el.getAttribute("data-fx-giro-duracao"), 0.3);
+    var margem = pct(el.getAttribute("data-fx-margem"), 100);
+    var lado = pct(el.getAttribute("data-fx-lado"), 1);
+    var pausa = pct(el.getAttribute("data-fx-pausa"), 0);
+    if (!(seg > 0)) seg = 2;
+    if (!(giroDur > 0)) giroDur = 0.3;
+    if (!(lado > 0)) lado = 1;
+
+    gsap.set(el, { transformOrigin: "50% 50%" });
+
+    function tremer() {
+      var tl = gsap.timeline();
+      var n = Math.max(8, Math.round(seg / 0.05));
+      var cada = seg / n;
+      for (var i = 0; i < n; i++) {
+        tl.to(el, { x: i % 2 ? lado : -lado, y: i % 2 ? -lado : lado, duration: cada, ease: "none" });
+      }
+      tl.set(el, { x: 0, y: 0 });
+      return tl;
+    }
+    function ciclo() {
+      var tl = gsap.timeline({ onComplete: ciclo });
+      tl.add(tremer());
+      tl.to(el, { rotation: "+=" + giro, duration: giroDur, ease: "power2.inOut" });
+      tl.add(tremer());
+      tl.to(el, { rotation: "+=" + giro, duration: giroDur, ease: "power2.inOut" });
+      if (pausa > 0) tl.to(el, { x: 0, y: 0, duration: pausa });
+    }
+
+    if (el.getAttribute("data-fx-quando") === "carregar") { ciclo(); return; }
+
+    var comecou = false, pedido = 0;
+    function checar() {
+      if (comecou) return;
+      var r = el.getBoundingClientRect();
+      if (r.top >= window.innerHeight - margem || r.bottom <= 0) return;
+      comecou = true;
+      ciclo();
+    }
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", noScroll);
+    checar();
+  }
+
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack, "pin-sequencia": pinSequencia, "spin-scroll": spinScroll };
-  var entradas = { "slide-in-left": slideInLeft, "slide-in-right": slideInRight, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn, "pop-shake": popShake };
+  var entradas = { "slide-in-left": slideInLeft, "slide-in-right": slideInRight, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn, "pop-shake": popShake, "buzz-spin": buzzSpin };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.

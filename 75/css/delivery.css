@@ -58,7 +58,7 @@
 }
 
 .coxinhas { position: relative; width: 402px; height: 227px; margin: -4px 0 0; }
-.coxinha { position: absolute; max-width: none; }
+.coxinha { position: absolute; z-index: 1; max-width: none; }
 .coxinha--1 { left: 71px;  top: 0;     width: 146px; height: 202px; }
 .coxinha--2 { left: 179px; top: 24px;  width: 133px; height: 189px; }
 .sombra { position: absolute; max-width: none; mix-blend-mode: multiply; }
@@ -76,7 +76,7 @@
 
 .t-hero { width: 362px; margin: 35px 0 0 20px; color: #000; }
 .t-hero p + p { margin-top: 20px; }
-.mosca { position: relative; width: 93px; height: 93px; margin: 35px 0 0 165px; }
+.mosca { position: relative; width: 93px; height: 93px; margin: 35px 0 24px 165px; }
 .mosca img { width: 93px; height: 93px; transform: rotate(-90deg); }
 
 /* =========================================================
@@ -149,7 +149,7 @@
 .legenda-beatriz {
   width: 364px; margin-top: 15px; text-align: center; font-weight: 700; font-style: italic; color: #ff9c9c;
 }
-.t-beatriz { width: 362px; margin-top: 62px; }
+.t-beatriz { width: 362px; height: 120px; margin-top: 62px; }
 
 /* =========================================================
    BLOCO 5 — COMO O RESTAURANTE DEVE AGIR  (6846 .. 8690)

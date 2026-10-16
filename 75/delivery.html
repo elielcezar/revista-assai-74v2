@@ -27,13 +27,17 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="pop-in"] [data-fx-item],.fx-espera [data-fx="slide-in-up"] [data-fx-item],.fx-espera [data-fx="typewriter"] [data-fx-item]{visibility:hidden}</style>
 <title>Golpes com IA no delivery — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Reclamações com imagens manipuladas e má fé de clientes e entregadores são foco de preocupação por fraudes em pedidos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/delivery.css?v=75-1">
+<link rel="stylesheet" href="css/delivery.css?v=75-4">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -119,19 +123,19 @@
       <span class="hero-arcos"><img src="assets/delivery/anel.svg" alt=""></span>
     </div>
     <h1 class="hero-titulo">
-      <span class="hero-golpes">Golpes</span>
-      <span class="hero-com">com IA no delivery</span>
+      <span class="hero-golpes" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100">Golpes</span>
+      <span class="hero-com" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100" data-fx-atraso="0.3">com IA no delivery</span>
     </h1>
-    <p class="hero-olho">Reclamações com imagens manipuladas e má fé de clientes e entregadores são foco de preocupação por fraudes em pedidos.</p>
+    <p class="hero-olho" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100" data-fx-atraso="0.6">Reclamações com imagens manipuladas e má fé de clientes e entregadores são foco de preocupação por fraudes em pedidos.</p>
 
     <!-- as duas coxinhas e as sombras (multiply) sao um conjunto so -->
-    <figure class="coxinhas">
-      <img class="sombra sombra--a" src="assets/delivery/s156.svg" alt="" aria-hidden="true">
-      <img class="sombra sombra--b" src="assets/delivery/s158.svg" alt="" aria-hidden="true">
-      <img class="sombra sombra--c" src="assets/delivery/s157.svg" alt="" aria-hidden="true">
-      <img class="sombra sombra--d" src="assets/delivery/s157.svg" alt="" aria-hidden="true">
-      <img class="coxinha coxinha--1" src="assets/delivery/coxinha1.png" alt="Coxinha dourada" width="146" height="202">
-      <img class="coxinha coxinha--2" src="assets/delivery/coxinha2.png" alt="Coxinha queimada" width="133" height="189">
+    <figure class="coxinhas" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-entrada="fade-up" data-fx-intervalo="0">
+      <img class="coxinha coxinha--1" data-fx-item data-fx-grupo="1" data-fx-atraso="0.5" src="assets/delivery/coxinha1.png" alt="Coxinha dourada" width="146" height="202">
+      <img class="sombra sombra--a" data-fx-item data-fx-grupo="1" data-fx-atraso="0.5" src="assets/delivery/s156.svg" alt="" aria-hidden="true">
+      <img class="sombra sombra--c" data-fx-item data-fx-grupo="1" data-fx-atraso="0.5" src="assets/delivery/s157.svg" alt="" aria-hidden="true">
+      <img class="coxinha coxinha--2" data-fx-item data-fx-grupo="2" data-fx-atraso="0.7" src="assets/delivery/coxinha2.png" alt="Coxinha queimada" width="133" height="189">
+      <img class="sombra sombra--b" data-fx-item data-fx-grupo="2" data-fx-atraso="0.7" src="assets/delivery/s158.svg" alt="" aria-hidden="true">
+      <img class="sombra sombra--d" data-fx-item data-fx-grupo="2" data-fx-atraso="0.7" src="assets/delivery/s157.svg" alt="" aria-hidden="true">
     </figure>
 
     <div class="hero-assina">
@@ -142,24 +146,24 @@
       <p>Pedir comida por aplicativo e receber algo um pouco diferente, acontece. Nesses casos, o cliente pode reclamar na própria plataforma enviando uma foto e um relato para análise. Tudo isso costuma ser comum na gestão de inúmeros empreendimentos, porém com a popularização das ferramentas de inteligência artificial virou uma porta de entrada para um risco financeiro.</p>
       <p>O desafio agora é agir rapidamente e analisar também se uma fotografia é verdadeira ou falsa. Isso porque, tem se popularizado fraudes nos pedidos por reembolso nas plataformas utilizando fotos falsas com comida estragada, mofada ou até entregue com bichos...</p>
     </div>
-    <figure class="mosca"><img src="assets/delivery/mosca.png" alt="" aria-hidden="true" width="93" height="93"></figure>
+    <figure class="mosca" data-fx="buzz-spin" data-fx-quando="scroll" data-fx-margem="100" data-fx-vibrar="2" data-fx-lado="1" data-fx-pausa="2" data-fx-giro="75" data-fx-giro-duracao="0.1"><img src="assets/delivery/mosca.png" alt="" aria-hidden="true" width="93" height="93"></figure>
   </section>
 
   <!-- ============ BLOCO 2 — COMO ACONTECE A FRAUDE ============ -->
   <section class="bl bl-fraude">
     <figure class="foto-golpe"><img src="assets/delivery/golpe.jpg" alt="Celular com app de delivery mostrando um hambúrguer editado com IA para parecer mofado" width="402" height="268"></figure>
     <h2 class="h-fraude">Como acontece a fraude<br>com imagem alterada:</h2>
-    <ol class="etapas">
-      <li class="etapa"><p><strong>Cliente faz pedido via plataforma<br>de delivery.</strong><br>Podem ser pedidos grandes ou com valor alto fora do padrão comum das lojas.</p></li>
-      <li class="etapa"><p><strong>O pedido é entregue.</strong><br>O consumidor recebe a comida e<br>verifica o produto.</p></li>
-      <li class="etapa"><p><strong>O cliente tira foto da comida e altera com Inteligência Artificial.</strong><br>Não é preciso muito conhecimento nem aplicativos pagos.</p></li>
-      <li class="etapa"><p><strong>O cliente abre a reclamação sobre<br>a entrega.</strong><br>Utilizando a foto manipulada como evidência para alegação de pedido errado, incompleto ou estragado.</p></li>
-      <li class="etapa"><p><strong>Análise da reclamação.</strong><br>Plataformas podem cruzar a imagem com dados do pedido, histórico e outros sinais para identificar inconsistências. O estabelecimento é notificado.</p></li>
-      <li class="etapa"><p><strong>Resolução da reclamação.</strong><br>De acordo com a análise da plataforma e retorno do restaurante, é feito o reembolso ou não do valor do pedido.</p></li>
+    <ol class="etapas" data-fx="slide-in-up" data-fx-margem="200">
+      <li class="etapa" data-fx-item><p><strong>Cliente faz pedido via plataforma<br>de delivery.</strong><br>Podem ser pedidos grandes ou com valor alto fora do padrão comum das lojas.</p></li>
+      <li class="etapa" data-fx-item><p><strong>O pedido é entregue.</strong><br>O consumidor recebe a comida e<br>verifica o produto.</p></li>
+      <li class="etapa" data-fx-item><p><strong>O cliente tira foto da comida e altera com Inteligência Artificial.</strong><br>Não é preciso muito conhecimento nem aplicativos pagos.</p></li>
+      <li class="etapa" data-fx-item><p><strong>O cliente abre a reclamação sobre<br>a entrega.</strong><br>Utilizando a foto manipulada como evidência para alegação de pedido errado, incompleto ou estragado.</p></li>
+      <li class="etapa" data-fx-item><p><strong>Análise da reclamação.</strong><br>Plataformas podem cruzar a imagem com dados do pedido, histórico e outros sinais para identificar inconsistências. O estabelecimento é notificado.</p></li>
+      <li class="etapa" data-fx-item><p><strong>Resolução da reclamação.</strong><br>De acordo com a análise da plataforma e retorno do restaurante, é feito o reembolso ou não do valor do pedido.</p></li>
     </ol>
     <h2 class="h-contestacao">A imagem e contestação sozinhas não garante o reembolso</h2>
     <p class="t-contestacao">Após a reclamação, as plataformas podem usar várias ferramentas para análise. Segundo a Diretora de Customer Experience no iFood, Carolinne Vabo, as evidências visuais são cruzadas com informações sobre o pedido, o histórico do consumidor, da loja parceira e do entregador envolvido na ocorrência. Além disso, utilizam também agentes de IA para fazer essa análise.</p>
-    <figure class="mancha"><img src="assets/delivery/mancha.png" alt="Pizza com mancha escura sobre o queijo" width="221" height="173"></figure>
+    <figure class="mancha" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-entrada="fade-up"><img data-fx-item src="assets/delivery/mancha.png" alt="Pizza com mancha escura sobre o queijo" width="221" height="173"></figure>
   </section>
 
   <!-- ============ BLOCO 3 — O QUE DIZEM IFOOD E 99FOOD ============ -->
@@ -168,13 +172,13 @@
     <div class="caixa caixa--ifood">
       <h2 class="h-plat">O que diz o iFood</h2>
       <div class="t-ifood">
-        <p>Ouvido pela nossa reportagem, o Ifood explica que utiliza algumas <strong>ferramentas de análise do pedido</strong> que também se utilizam de inteligência artificial.</p>
-        <p><strong class="am">Almir, agente de pós-entrega</strong><br>Desenvolvido como especialista em decisões pós-entrega, avalia não apenas a imagem apresentada, mas também o histórico do cliente, da loja parceira e do entregador envolvido na ocorrência.</p>
-        <p><strong class="am">Evidências visuais.</strong><br>Testes estão em andamento com modelos desenvolvidos para detectar possíveis manipulações, considerando o contexto específico do iFood. Eles combinam informações da imagem e da jornada do pedido para avaliar indícios de alteração.</p>
-        <p><strong class="am">Sancho, agente de comportamento.</strong><br>O agente Sancho avalia sinais de fraude na conta do cliente que está solicitando o reembolso, e informações dos pedidos atrelados a este usuário.</p>
-        <p><strong class="am">Histórico do restaurante.</strong><br>Análise do histórico de pedidos, avaliações, reclamações e informações.</p>
+        <p data-fx="reveal-wipe" data-fx-margem="100">Ouvido pela nossa reportagem, o Ifood explica que utiliza algumas <strong>ferramentas de análise do pedido</strong> que também se utilizam de inteligência artificial.</p>
+        <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="0.3"><strong class="am">Almir, agente de pós-entrega</strong><br>Desenvolvido como especialista em decisões pós-entrega, avalia não apenas a imagem apresentada, mas também o histórico do cliente, da loja parceira e do entregador envolvido na ocorrência.</p>
+        <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="0.6"><strong class="am">Evidências visuais.</strong><br>Testes estão em andamento com modelos desenvolvidos para detectar possíveis manipulações, considerando o contexto específico do iFood. Eles combinam informações da imagem e da jornada do pedido para avaliar indícios de alteração.</p>
+        <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="0.9"><strong class="am">Sancho, agente de comportamento.</strong><br>O agente Sancho avalia sinais de fraude na conta do cliente que está solicitando o reembolso, e informações dos pedidos atrelados a este usuário.</p>
+        <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="1.2"><strong class="am">Histórico do restaurante.</strong><br>Análise do histórico de pedidos, avaliações, reclamações e informações.</p>
       </div>
-      <figure class="retrato"><img src="assets/delivery/ifood.png" alt="Carolinne Vabo, Diretora de Customer Experience no iFood" width="280" height="280"></figure>
+      <figure class="retrato" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="200" data-fx-entrada="fade-up"><img data-fx-item src="assets/delivery/ifood.png" alt="Carolinne Vabo, Diretora de Customer Experience no iFood" width="280" height="280"></figure>
     </div>
 
     <blockquote class="q-ifood">
@@ -204,9 +208,9 @@
     </div>
 
     <div class="caixa caixa--beatriz">
-      <figure class="retrato"><img src="assets/delivery/beatriz.png" alt="Beatriz Rodrigues Faria, dona da pizzaria Olivi" width="280" height="280"></figure>
+      <figure class="retrato" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-entrada="fade-up"><img data-fx-item src="assets/delivery/beatriz.png" alt="Beatriz Rodrigues Faria, dona da pizzaria Olivi" width="280" height="280"></figure>
       <p class="legenda-beatriz">Beatriz Rodrigues Faria,<br>dona da pizzaria Olivi (SP)</p>
-      <p class="t-beatriz">Na época, a pizzaria não tinha registros do pedido na saída. Depois do episódio, passou a usar câmeras para documentar os pedidos. Beatriz relata ainda outras tentativas envolvendo mofo, pizza queimada, falta de ingredientes ausente, todos sem sucesso.</p>
+      <p class="t-beatriz" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100"><span data-fx-item>Na época, a pizzaria não tinha registros do pedido na saída. Depois do episódio, passou a usar câmeras para documentar os pedidos. Beatriz relata ainda outras tentativas envolvendo mofo, pizza queimada, falta de ingredientes ausente, todos sem sucesso.</span></p>
     </div>
   </section>
 
@@ -216,14 +220,14 @@
     <div class="t-agir">
       <p>Ir à casa do cliente pode gerar uma situação de confronto que envolve riscos. Mas o que o estabelecimento pode fazer para se proteger?</p>
       <p>A Associação Brasileira de Bares e Restaurantes (Abrasel) reforça a importância de transformar procedimentos cotidianos em registros. Alguns cuidados podem ajudar a criar um histórico da operação:</p>
-      <ul class="cuidados">
-        <li>Fotografe o pedido pronto ou instale uma câmera de registro, especialmente antes de fechar a embalagem.</li>
-        <li>Utilize lacres de segurança.</li>
-        <li>Mantenha registros organizados das informações do pedido.</li>
-        <li>Concentre a comunicação nos canais oficiais da plataforma.</li>
-        <li>Responda rapidamente quando houver uma contestação.</li>
-        <li>Guarde as evidências disponíveis para contextualizar o atendimento.</li>
-        <li>Confira se a foto do cardápio corresponde ao produto entregue.</li>
+      <ul class="cuidados" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-entrada="fade-left" data-fx-intervalo="0.3">
+        <li data-fx-item>Fotografe o pedido pronto ou instale uma câmera de registro, especialmente antes de fechar a embalagem.</li>
+        <li data-fx-item>Utilize lacres de segurança.</li>
+        <li data-fx-item>Mantenha registros organizados das informações do pedido.</li>
+        <li data-fx-item>Concentre a comunicação nos canais oficiais da plataforma.</li>
+        <li data-fx-item>Responda rapidamente quando houver uma contestação.</li>
+        <li data-fx-item>Guarde as evidências disponíveis para contextualizar o atendimento.</li>
+        <li data-fx-item>Confira se a foto do cardápio corresponde ao produto entregue.</li>
       </ul>
     </div>
     <div class="t-ideia">
@@ -232,10 +236,10 @@
     </div>
 
     <!-- tres fotos em arco, uma sobre a outra (a ultima fica por baixo da faixa em degrade) -->
-    <div class="arcos">
-      <figure class="arco arco--1"><img src="assets/delivery/arco1.jpg" alt="Cozinha de pizzaria com funcionário embalando um pedido" width="450" height="459"></figure>
-      <figure class="arco arco--2"><img src="assets/delivery/arco2.jpg" alt="Tela do tablet de pedidos da Olivi Pizzaria" width="450" height="459"></figure>
-      <figure class="arco arco--3"><img src="assets/delivery/arco3.jpg" alt="Pizza de calabresa com manjericão e tomates" width="450" height="459"></figure>
+    <div class="arcos" data-fx="card-stack" data-fx-faixa="10" data-fx-topo="20">
+      <figure class="arco arco--1" data-fx-item><img src="assets/delivery/arco1.jpg" alt="Cozinha de pizzaria com funcionário embalando um pedido" width="450" height="459"></figure>
+      <figure class="arco arco--2" data-fx-item><img src="assets/delivery/arco2.jpg" alt="Tela do tablet de pedidos da Olivi Pizzaria" width="450" height="459"></figure>
+      <figure class="arco arco--3" data-fx-item><img src="assets/delivery/arco3.jpg" alt="Pizza de calabresa com manjericão e tomates" width="450" height="459"></figure>
     </div>
     <div class="caixa caixa--recomenda">
       <p>A grande recomendação é: não dependa de uma única evidência. Em uma contestação, informações do pedido, comunicação com o cliente, registros da operação e evidências visuais podem ajudar a construir o contexto da ocorrência.</p>
@@ -298,6 +302,10 @@
 
 <script src="../js/shell.js?v=74-117"></script>
 <script src="js/delivery.js?v=75-1"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-127"></script>
 <script src="../js/shell-desktop.js?v=74-117"></script>
 </body>
 </html>
