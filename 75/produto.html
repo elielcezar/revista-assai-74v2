@@ -27,13 +27,17 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
+     js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
+<script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
+<style>.fx-espera [data-fx="popcorn-pop"]{visibility:hidden}</style>
 <title>Luva ou mão lavada? — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Entre a segurança no preparo e a percepção do cliente, entenda quando usar luvas e por que elas exigem mais cuidados do que aparentam.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/produto.css?v=75-1">
+<link rel="stylesheet" href="css/produto.css?v=75-2">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -124,7 +128,7 @@
       <p class="hero-edicao">#75 out. 26</p>
       <p class="hero-autor">Por: Carol Belisse</p>
     </div>
-    <h1 class="hero-titulo"><span class="hero-t1">Luva ou</span><span class="hero-t2">mão lavada?</span></h1>
+    <h1 class="hero-titulo" data-fx="popcorn-pop" data-fx-margem="100"><span class="hero-t1">Luva ou</span><span class="hero-t2">mão lavada?</span></h1>
     <p class="hero-olho">Entre a segurança no preparo e a percepção do cliente, entenda quando usar luvas e por que elas exigem mais cuidados do que aparentam.</p>
     <div class="t-hero">
       <p>Em uma cozinha profissional, ver alguém de luvas manipulando alimentos pode transmitir segurança. Já as mãos sem luva podem despertar desconfiança no cliente, especialmente na montagem de sanduíches, saladas e sobremesas. Mas essa impressão não revela, sozinha, se o alimento está sendo preparado com higiene.</p>
@@ -133,7 +137,7 @@
   </section>
 
   <!-- ============ BLOCO 2 — A POLÊMICA E O QUE A ANVISA DIZ ============ -->
-  <section class="bl bl-anvisa">
+  <section class="bl bl-anvisa" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100">
     <!-- video sem som: comeca sozinho e mudo; o botao liga o som (js/produto.js).
          Arquivo do video: assets/produto/polemica.mp4 -->
     <figure class="video">
@@ -151,7 +155,7 @@
     </blockquote>
 
     <!-- o oval desenhado a mao e peca presa ao titulo -->
-    <div class="anvisa-titulo">
+    <div class="anvisa-titulo" data-fx-item>
       <img src="assets/produto/anotacao.svg" alt="" aria-hidden="true" width="262" height="106">
       <h2>O que a Anvisa recomenda?</h2>
     </div>
@@ -196,24 +200,24 @@
 
     <div class="caixa caixa--vermelha">
       <figure class="luvas-circulo"><img src="assets/produto/ellipse123.png" alt="Luvas descartáveis pretas, transparentes e azuis" width="229" height="229"></figure>
-      <ol class="cards">
-        <li class="card card--1">
+      <ol class="cards" data-fx="slide-in-up" data-fx-margem="200">
+        <li class="card card--1" data-fx-item>
           <span class="card-num"><b>1</b></span>
           <div class="card-txt"><h3>A cor faz diferença?</h3><p>Não. Ser preta não torna a luva mais adequada para manipular alimentos.</p></div>
         </li>
-        <li class="card card--2">
+        <li class="card card--2" data-fx-item>
           <span class="card-num"><b>2</b></span>
           <div class="card-txt"><h3>Pode ser usada na cozinha?</h3><p>Coloque cartazes em áreas de circulação (entrada, banheiros, balcão etc.), avisos em cardápios e mesas e comunique também nas redes sociais.</p></div>
         </li>
-        <li class="card card--3">
+        <li class="card card--3" data-fx-item>
           <span class="card-num"><b>3</b></span>
           <div class="card-txt"><h3>Protege do calor?</h3><p>Não necessariamente. Apesar da crença popular, luva descartável não deve ser confundida com equipamento de proteção térmica.</p></div>
         </li>
-        <li class="card card--4">
+        <li class="card card--4" data-fx-item>
           <span class="card-num"><b>4</b></span>
           <div class="card-txt"><h3>Dispensa lavar as mãos?</h3><p>Não. A higienização continua necessária antes de colocar as luvas e nas situações previstas pelas boas práticas.</p></div>
         </li>
-        <li class="card card--5">
+        <li class="card card--5" data-fx-item>
           <span class="card-num"><b>5</b></span>
           <div class="card-txt"><h3>E a troca?</h3><p>A cor também não muda esse cuidado: luvas sujas, danificadas ou usadas antes de uma interrupção da atividade devem ser substituídas.</p></div>
         </li>
@@ -255,6 +259,12 @@
 
 <script src="../js/shell.js?v=74-117"></script>
 <script src="js/produto.js?v=75-1"></script>
+<!-- animações (camada separada; sem elas a página fica como no CSS) -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
+<!-- SplitText: o popcorn-pop quebra o titulo em letras -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js"></script>
+<script src="../js/scroll-fx.js?v=74-118"></script>
 <script src="../js/shell-desktop.js?v=74-117"></script>
 </body>
 </html>

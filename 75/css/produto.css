@@ -54,8 +54,13 @@
 .hero-autor { margin-top: 14px; font-weight: 500; font-style: italic; color: #000; }
 
 .hero-titulo { width: 361px; margin: 19px 0 0 21px; font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic; }
-.hero-titulo span {
+.hero-titulo > span {
   display: block; line-height: 70px;
+  background-image: var(--grad-lj); -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+/* O SplitText do popcorn-pop cria uma div por letra dentro dos spans. Cada
+   letra precisa receber o gradiente; os spans internos devem continuar inline. */
+.hero-titulo > span div {
   background-image: var(--grad-lj); -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 .hero-t1 { font-size: 57.571px; }
