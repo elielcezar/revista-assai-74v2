@@ -104,6 +104,8 @@
 .balao--3 { margin: -66px 0 0 18px; height: 120px; padding: 43px 26px 0 35px; text-align: left; font-size: 20px !important; font-weight: 700; }
 .foto--largura { width: 402px; height: 512px; margin-top: -54px; }
 .foto--largura img { width: 402px; height: 512px; }
+.adbox { width: 402px; }
+.adbox img { display: block; width: 402px; height: auto; }
 
 .h-largura {
   margin: 46px 0 0 17px;

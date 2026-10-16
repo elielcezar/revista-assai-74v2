@@ -188,6 +188,9 @@
 .card-txt h3 { font-size: 24px; font-weight: 700; line-height: normal; color: var(--laranja); }
 .card-txt p { color: #000; }
 
+.story { width: 402px; }
+.story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #5c0012; }
+
 /* =========================================================
    BLOCO 4 — E QUANDO O CLIENTE QUESTIONA?  (6478 .. 7214)
    ========================================================= */

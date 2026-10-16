@@ -6,6 +6,20 @@
   var nav = document.querySelector(".head-nav");
   if (nav) nav.scrollLeft = 159;
 
+  /* ---------- banner rotativo: um anuncio por carregamento ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-ad-random]"), function (adbox) {
+    var adimg = adbox.querySelector("img");
+    var lista = [];
+    try { lista = JSON.parse(adbox.getAttribute("data-ad-random")) || []; } catch (e) { lista = []; }
+    if (adimg && lista.length > 1) {
+      var escolhido = lista[Math.floor(Math.random() * lista.length)];
+      if (escolhido && escolhido.src) {
+        adimg.src = escolhido.src;
+        adimg.alt = escolhido.alt || "";
+      }
+    }
+  });
+
   /* ---------- voltar ao topo ---------- */
   var toTop = document.querySelector(".foot-top");
   if (toTop) {

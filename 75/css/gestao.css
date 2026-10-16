@@ -79,6 +79,8 @@
 .placa img { width: 253px; height: 189px; display: block; }
 .t-passo { width: 350px; margin: 11px 0 0 25px; }
 .t-passo p + p { margin-top: 20px; }
+.story { width: 402px; }
+.story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #1a0a6e; }
 
 /* =========================================================
    BLOCO 3 — A CONTA  (2037 .. 2581)

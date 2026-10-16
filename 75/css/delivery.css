@@ -95,6 +95,9 @@
 .etapa p { width: 331px; }
 .etapa strong { color: var(--amar); }
 
+.adbox { width: 402px; margin-top: 50px; }
+.adbox img { display: block; width: 402px; height: auto; }
+
 .h-contestacao { width: 362px; margin: 72px 0 0 20px; }
 .t-contestacao { width: 362px; margin: 27px 0 0 20px; color: #000; }
 .mancha { position: relative; width: 221px; height: 173px; margin: 47px 0 0 91px; }

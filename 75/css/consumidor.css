@@ -257,4 +257,7 @@
 
 .cupula--formula { --ml: -72px; width: 551px; margin-top: -5px; padding-top: 105px; padding-bottom: 131px; }
 .formula-tit, .formula { width: 325px; margin-left: 43px; font-size: 24px !important; font-weight: 700; line-height: normal; text-align: center; color: var(--roxo); }
+
+.adbox { width: 402px; }
+.adbox img { display: block; width: 402px; height: auto; }
 .formula { margin-top: 27px; }

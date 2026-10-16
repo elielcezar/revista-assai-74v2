@@ -117,6 +117,8 @@
 .t-edna p + p { margin-top: 20px; }
 .foto-cookies { width: 414px; height: 498px; margin: 51px 0 0 -8px; }
 .foto-cookies img { width: 414px; height: 498px; }
+.adbox { width: 402px; }
+.adbox img { display: block; width: 402px; height: auto; }
 
 /* =========================================================
    BLOCO 5 — O BÁSICO BEM FEITO TAMBÉM FUNCIONA  (4971 .. 6826)

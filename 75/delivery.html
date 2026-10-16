@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/delivery.css?v=75-4">
+<link rel="stylesheet" href="css/delivery.css?v=75-6">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -161,6 +161,13 @@
       <li class="etapa" data-fx-item><p><strong>Análise da reclamação.</strong><br>Plataformas podem cruzar a imagem com dados do pedido, histórico e outros sinais para identificar inconsistências. O estabelecimento é notificado.</p></li>
       <li class="etapa" data-fx-item><p><strong>Resolução da reclamação.</strong><br>De acordo com a análise da plataforma e retorno do restaurante, é feito o reembolso ou não do valor do pedido.</p></li>
     </ol>
+    <!-- um banner por vez, sorteado a cada carregamento; o primeiro aparece mesmo sem JS -->
+    <figure class="adbox" data-ad-random='[
+      {"src":"assets/delivery/nacom.png","alt":"Campo Belo Conservas — azeitonas verdes com caroço, na porção certa para a sua receita"},
+      {"src":"assets/delivery/massaleve.png","alt":"Massa Leve — mês da massa fresca"},
+      {"src":"assets/delivery/tresreis.jpeg","alt":"Velas Três Reis — luz e devoção para seu lar"}]'>
+      <img src="assets/delivery/nacom.png" alt="Campo Belo Conservas — azeitonas verdes com caroço, na porção certa para a sua receita" width="391" height="375">
+    </figure>
     <h2 class="h-contestacao">A imagem e contestação sozinhas não garante o reembolso</h2>
     <p class="t-contestacao">Após a reclamação, as plataformas podem usar várias ferramentas para análise. Segundo a Diretora de Customer Experience no iFood, Carolinne Vabo, as evidências visuais são cruzadas com informações sobre o pedido, o histórico do consumidor, da loja parceira e do entregador envolvido na ocorrência. Além disso, utilizam também agentes de IA para fazer essa análise.</p>
     <figure class="mancha" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-entrada="fade-up"><img data-fx-item src="assets/delivery/mancha.png" alt="Pizza com mancha escura sobre o queijo" width="221" height="173"></figure>
@@ -301,7 +308,7 @@
 </div>
 
 <script src="../js/shell.js?v=74-117"></script>
-<script src="js/delivery.js?v=75-1"></script>
+<script src="js/delivery.js?v=75-2"></script>
 <!-- animações (camada separada; sem elas a página fica como no CSS) -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
