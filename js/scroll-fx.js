@@ -796,6 +796,74 @@
   }
 
   /* =========================================================
+     slide-in-right  (entrada: ao carregar, ou ao chegar à tela)
+     Espelho do slide-in-left: o elemento desliza para a DIREITA, entrando
+     vindo de fora do bloco pela esquerda. O ancestral com overflow esconde
+     a parte que ainda está fora.
+
+     Opções no próprio elemento: as mesmas do slide-in-left
+     (data-fx-duracao, data-fx-atraso, data-fx-quando="scroll", data-fx-margem).
+     ========================================================= */
+  function corteEsquerda(el) {
+    var corte = el.parentElement;
+    while (corte && corte !== document.body && getComputedStyle(corte).overflowX === "visible") {
+      corte = corte.parentElement;
+    }
+    return (corte && corte !== document.body) ? corte.getBoundingClientRect().left : 0;
+  }
+  // x que encosta a borda direita do elemento na borda esquerda do recorte
+  function foraPelaEsquerda(el) {
+    return gsap.getProperty(el, "x") - (el.getBoundingClientRect().right - corteEsquerda(el)) / zoom();
+  }
+  function slideInRight(el) {
+    var duracao = pct(el.getAttribute("data-fx-duracao"), 1.5);
+    var atraso = pct(el.getAttribute("data-fx-atraso"), 0);
+    if (el.getAttribute("data-fx-quando") === "scroll") return slideInRightScroll(el, duracao, atraso);
+
+    gsap.set(el, { x: foraPelaEsquerda(el) });
+    var tween = gsap.to(el, {
+      x: 0, duration: duracao, delay: atraso, ease: "power2.out", paused: true,
+      clearProps: "transform"
+    });
+    var foi = false;
+    function vai() { if (!foi) { foi = true; tween.play(); } }
+    var img = el.tagName === "IMG" ? el : el.querySelector("img");
+    if (img && !img.complete) {
+      img.addEventListener("load", vai);
+      img.addEventListener("error", vai);
+      setTimeout(vai, 4000);
+    } else {
+      vai();
+    }
+  }
+  function slideInRightScroll(el, duracao, atraso) {
+    var margem = pct(el.getAttribute("data-fx-margem"), 100);
+    gsap.set(el, { x: foraPelaEsquerda(el) });
+    var dentro = false;
+    function checar() {
+      var r = el.getBoundingClientRect();
+      var chegou = r.top <= window.innerHeight - margem && r.bottom > 0;
+      var saiu = r.bottom <= 0 || r.top > window.innerHeight;
+      if (!dentro && chegou) {
+        dentro = true;
+        gsap.to(el, { x: 0, duration: duracao, delay: atraso, ease: "power2.out", overwrite: true });
+      } else if (dentro && saiu) {
+        dentro = false;
+        gsap.killTweensOf(el);
+        gsap.set(el, { x: foraPelaEsquerda(el) });
+      }
+    }
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", noScroll);
+    window.addEventListener("load", noScroll);
+    checar();
+  }
+
+  /* =========================================================
      scale-up  (efeito de ENTRADA: roda ao carregar, não depende do scroll)
      Os itens crescem a partir da base (centro de baixo), de 0 ao tamanho
      final, um depois do outro na ordem do HTML. Pensado para formas de fundo
@@ -816,6 +884,9 @@
                                 use quando houver uma camada translúcida por
                                 cima (senão as cores somam e o topo escurece).
                                 A cor deve ser a que essa camada dá sobre branco.
+       data-fx-quando="scroll"  em vez de ao carregar: crescem quando o mais
+                                alto entra na tela, uma vez só
+       data-fx-margem="100"      (com scroll) px acima do fundo da tela
 
      Precisa do trecho anti-piscada no <head> (ver a skill scroll-fx).
      ========================================================= */
@@ -823,7 +894,8 @@
     var itens = gsap.utils.toArray(sec.querySelectorAll("[data-fx-item]"));
     if (!itens.length) return;
     var fundo = sec.getAttribute("data-fx-fundo");
-    if (fundo) {
+    var porScroll = sec.getAttribute("data-fx-quando") === "scroll";
+    if (fundo && !porScroll) {
       var acima = sec.getAttribute("data-fx-fundo-abaixo");
       var ref = acima && sec.querySelector(acima);
       if (ref) {
@@ -834,18 +906,59 @@
         sec.style.backgroundColor = fundo;
       }
     }
-    gsap.set(itens, { scale: 0, transformOrigin: sec.getAttribute("data-fx-origem") || "50% 100%" });
-    gsap.to(itens, {
-      scale: 1,
-      duration: pct(sec.getAttribute("data-fx-duracao"), 0.9),
-      stagger: pct(sec.getAttribute("data-fx-intervalo"), 0.15),
-      delay: pct(sec.getAttribute("data-fx-atraso"), 0),
-      ease: "power3.out",
-      clearProps: "transform,transformOrigin", // no fim, devolve os itens ao CSS
-      onComplete: function () {
-        if (fundo) sec.style.backgroundColor = sec.style.backgroundImage = "";
-      }
-    });
+    var origem = sec.getAttribute("data-fx-origem") || "50% 100%";
+    var dur = pct(sec.getAttribute("data-fx-duracao"), 0.9);
+    var stag = pct(sec.getAttribute("data-fx-intervalo"), 0.15);
+    var atraso = pct(sec.getAttribute("data-fx-atraso"), 0);
+    gsap.set(itens, { scale: 0, transformOrigin: origem });
+    if (!porScroll) {
+      gsap.to(itens, {
+        scale: 1, duration: dur, stagger: stag, delay: atraso, ease: "power3.out",
+        clearProps: "transform,transformOrigin", // no fim, devolve os itens ao CSS
+        onComplete: function () {
+          if (fundo) sec.style.backgroundColor = sec.style.backgroundImage = "";
+        }
+      });
+      return;
+    }
+
+    // a caixa do layout, não a caixa já reduzida pelo scale: senão o gatilho
+    // colapsa no ponto de origem e o efeito dispara tarde demais
+    var margem = pct(sec.getAttribute("data-fx-margem"), 100);
+    function faixa(el) {
+      var pai = el.offsetParent || el.parentElement;
+      var r = pai.getBoundingClientRect();
+      var z = pai.offsetHeight ? r.height / pai.offsetHeight : zoom();
+      var top = r.top + el.offsetTop * z;
+      return { top: top, bottom: top + el.offsetHeight * z };
+    }
+    function chegou() {
+      return itens.some(function (el) {
+        var f = faixa(el);
+        return f.top < window.innerHeight - margem && f.bottom > 0;
+      });
+    }
+    var tw = null, dentro = false;
+    function crescer(primeira) {
+      if (tw) tw.kill();
+      gsap.set(itens, { scale: 0, transformOrigin: origem });
+      tw = gsap.to(itens, {
+        scale: 1, duration: dur, stagger: stag, delay: primeira ? atraso : 0, ease: "power3.out",
+        clearProps: "transform,transformOrigin"
+      });
+    }
+    function checar() {
+      if (dentro || !chegou()) return;
+      dentro = true;
+      crescer(false);
+    }
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    if (chegou()) { dentro = true; crescer(true); }
+    window.addEventListener("scroll", noScroll, { passive: true });
+    window.addEventListener("resize", noScroll);
   }
 
   /* =========================================================
@@ -1283,6 +1396,9 @@
        data-fx-intervalo="0.02" segundos entre uma letra e a seguinte
        data-fx-duracao="1"      segundos de cada letra
        data-fx-atraso="0"       segundos antes da primeira
+       data-fx-quando="scroll"  em vez de ao carregar: junta as letras quando o
+                                 texto passa da linha, uma vez só
+       data-fx-margem="100"      (com scroll) px acima do fundo da tela
 
      Precisa: SplitText.min.js (gsap 3.15, jsDelivr) antes deste arquivo e o
      trecho anti-piscada no <head>. Sem o SplitText, o texto fica parado.
@@ -1292,26 +1408,62 @@
     gsap.registerPlugin(SplitText);
     var dist = pct(el.getAttribute("data-fx-distancia"), 200);
     var rot = pct(el.getAttribute("data-fx-rotacao"), 90);
+    var inter = pct(el.getAttribute("data-fx-intervalo"), 0.02);
+    var dur = pct(el.getAttribute("data-fx-duracao"), 1);
+    var atraso = pct(el.getAttribute("data-fx-atraso"), 0);
+    var porScroll = el.getAttribute("data-fx-quando") === "scroll";
+    var margem = pct(el.getAttribute("data-fx-margem"), 100);
     // escondido até as fontes: as letras são medidas na quebra, e com a fonte
     // substituta sairiam do tamanho errado
     gsap.set(el, { visibility: "hidden" });
-    function vai() {
+    var split = null, tw = null;
+
+    function vai(primeiraVez) {
+      if (split) { split.revert(); split = null; }
+      if (tw) tw.kill();
       // chars sem words quebraria linhas no meio da palavra: smartWrap segura a palavra
-      var split = SplitText.create(el, { type: "chars", smartWrap: true });
+      split = SplitText.create(el, { type: "chars", smartWrap: true });
       gsap.set(el, { visibility: "visible" });
-      gsap.from(split.chars, {
+      tw = gsap.from(split.chars, {
         x: function () { return gsap.utils.random(-dist, dist); },
         y: function () { return gsap.utils.random(-dist, dist); },
         rotation: function () { return gsap.utils.random(-rot, rot); },
         opacity: 0,
-        stagger: pct(el.getAttribute("data-fx-intervalo"), 0.02),
-        duration: pct(el.getAttribute("data-fx-duracao"), 1),
-        delay: pct(el.getAttribute("data-fx-atraso"), 0),
+        stagger: inter,
+        duration: dur,
+        delay: primeiraVez ? atraso : 0,
         ease: "power3.out",
-        onComplete: function () { split.revert(); } // volta ao HTML original
+        onComplete: function () { if (split) { split.revert(); split = null; } }
       });
     }
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(vai); else vai();
+
+    if (!porScroll) {
+      if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { vai(true); });
+      else vai(true);
+      return;
+    }
+
+    var pronto = false, dentro = false;
+    function naTela() {
+      var r = el.getBoundingClientRect();
+      return r.top < window.innerHeight - margem && r.bottom > 0;
+    }
+    function checar() {
+      if (!pronto || dentro || !naTela()) return;
+      dentro = true;
+      vai(false);
+    }
+    var pedido = 0;
+    function noScroll() {
+      if (!pedido) pedido = requestAnimationFrame(function () { pedido = 0; checar(); });
+    }
+    function comecar() {
+      pronto = true;
+      if (naTela()) { dentro = true; vai(true); }
+      window.addEventListener("scroll", noScroll, { passive: true });
+      window.addEventListener("resize", noScroll);
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(comecar); else comecar();
   }
 
   /* =========================================================
@@ -1433,7 +1585,7 @@
 
   /* ---------- inicialização ---------- */
   var efeitos = { "card-accordeon": cardAccordeon, "pin-horizontal": pinHorizontal, "slide-in-up": slideInUp, "orbit-in": orbitIn, "card-stack": cardStack, "pin-sequencia": pinSequencia, "spin-scroll": spinScroll };
-  var entradas = { "slide-in-left": slideInLeft, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn, "pop-shake": popShake };
+  var entradas = { "slide-in-left": slideInLeft, "slide-in-right": slideInRight, "scale-up": scaleUp, "pop-in": popIn, "magnetic-pull": magneticPull, "typewriter": typewriter, "popcorn-pop": popcornPop, "reveal-wipe": revealWipe, "drop-in": dropIn, "pop-shake": popShake };
 
   // entradas: já, sem esperar fontes (não medem texto). O trecho do <head>
   // escondeu os elementos antes da primeira pintura; daqui em diante o GSAP manda.

@@ -54,10 +54,13 @@
 .caixa--hero {
   position: relative; z-index: 2;
   width: 402px; margin-top: -143px; padding: 118px 0 46px;
+  color: #fff;
+}
+.hero-cupula {
+  position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background:
     url("../assets/mkt/capa.svg") -29px 0 / 431px 189.5px no-repeat,
     linear-gradient(var(--azul-c), var(--azul-c)) 0 138px / 100% 100% no-repeat;
-  color: #fff;
 }
 .hero-titulo { width: 373px; margin-left: 27px; font-size: 48px; font-weight: 700; line-height: 55px; }
 .hero-olho {
@@ -109,7 +112,7 @@
 .h-viral { margin: 42px 0 0 26px; text-align: center; }
 .t-pergunta { width: 351px; margin: 32px 0 0 26px; font-weight: 700; text-align: center; color: #000; }
 .q-giulia { width: 346px; margin: 76px 0 0 33px; }
-.q-giulia p { font-size: 26px !important; font-weight: 700; color: var(--azul-c); }
+.q-giulia p { height: 319px; font-size: 26px !important; font-weight: 700; color: var(--azul-c); }
 .t-edna { width: 336px; margin: 65px 0 0 31px; padding-bottom: 0; color: #090909; }
 .t-edna p + p { margin-top: 20px; }
 .foto-cookies { width: 414px; height: 498px; margin: 51px 0 0 -8px; }
