@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/negocio.css?v=75-4">
+<link rel="stylesheet" href="css/negocio.css?v=75-5">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -117,12 +117,11 @@
 
   <!-- ============ BLOCO 1 — ABERTURA ============ -->
   <section class="bl bl-hero">
-    <figure class="hero-foto"><img src="assets/negocio/hero.jpg" alt="Petisco servido em um prato em formato de caixão, ao lado de tomates, abóbora e pimenta" width="402" height="412"></figure>
     <h1 class="hero-titulo" data-fx="popcorn-pop" data-fx-margem="100">
       <span class="hero-gancho">A limitação do seu<br>ponto pode virar</span>
       <span class="hero-destaque">SUA MELHOR MARCA</span>
     </h1>
-    <p class="hero-olho">De vizinho de cemitério a corredor espremido: aprenda a usar o inusitado para atrair clientes, criar narrativa e vender mais</p>
+    <p class="hero-olho">Como alguns empreendedores transformaram o que parecia ruim nos seus imóveis em oportunidade para atrair clientes, criar narrativa e vender mais</p>
     <div class="hero-assina">
       <p class="hero-edicao">#75 out . 26</p>
       <p class="hero-autor">Por: Mara Andrich</p>
@@ -130,40 +129,37 @@
   </section>
 
   <!-- ============ BLOCO 2 — O BAR DE FRENTE PRO FUTURO ============ -->
-  <!-- as caixas roxas (texto sobre a foto) entram no fluxo, subindo sobre a borda da foto de cima -->
+  <!-- as fotos e as caixas rosa (texto sobre a foto) ficam em posicao absoluta; o texto segue em fluxo -->
   <section class="bl bl-bar" data-fx="slide-in-up" data-fx-margem="200">
-    <figure class="foto foto--cemiterio"><img src="assets/negocio/foto-cemiterio.jpg" alt="Prato em formato de caixão e cerveja sobre a mesa de um bar, com um cemitério ao fundo" width="415" height="441"></figure>
-    <p class="balao balao--1" data-fx-item>Comer um aperitivo em um bar localizado de frente para um cemitério. A situação parece convidativa, insólita ou assustadora?</p>
-    <figure class="foto foto--fachada"><img src="assets/negocio/caixao.jpg" alt="Fachada do bar, com bandeirinhas coloridas no teto" width="459" height="305"></figure>
-    <p class="balao balao--2" data-fx-item>E se esse aperitivo se chamasse Vulcãozinho do Finado Cumpadi João e fosse servido em prato em formato de caixão? Atrairia clientes?</p>
-    <p class="t-comprova">O Bar de Frente Pro Futuro comprova que sim.</p>
-    <p class="t-bar">O nome tem algo de profético. Em Poços de Caldas (MG), quem pede uma cerveja no balcão tem, do outro lado da rua, vista privilegiada para o próprio futuro. O bar abriu em 2020, num endereço onde antes funcionava um boteco sem nome e sem placa. Jeferson Lopes da Silva, conhecido como Frym, alugou o ponto certo de que ali havia potencial. O público estranhou, e há quem mantenha distância até agora. "Hoje ainda há clientes que são supersticiosos, não frequentam à noite ou sentam de costas para o cemitério", conta Frym.</p>
-    <p class="t-clientela">A clientela veio aos poucos, puxada pela curiosidade e apesar do receio. Muita gente que passa por lá filma o lugar e publica nas redes, uma divulgação espontânea que reforça a divulgação.</p>
-    <p class="t-halloween">Datas como o Halloween ganham peso extra naquele endereço. E Frym brinca com uma vantagem rara para um dono de bar: os vizinhos não reclamam do barulho.</p>
-  </section>
-
-  <!-- ============ BLOCO 3 — DEPOIS DO VELÓRIO + O LARGURA ============ -->
-  <section class="bl bl-largura">
-    <figure class="faixa-boo"><img src="assets/negocio/shutter-faixa.png" alt="" width="402" height="212"></figure>
-
-    <!-- a cupula azul e o fundo da propria caixa de texto; a foto sai pela base dela -->
-    <div class="caixa caixa--velorio">
-      <h2 class="h-velorio">Depois do velório</h2>
-      <p class="t-velorio">Há também quem chegue por um motivo nada festivo. "Muitos dos nossos clientes acabaram de passar por um velório. Então, fazer com que eles se sintam à vontade e descontraídos é nossa aposta e diferencial", diz Frym.</p>
-      <figure class="vulcao" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/negocio/vulcao.png" alt="Casal segurando um prato em formato de caixão com o Vulcãozinho do Finado Cumpadi João" width="280" height="280"></figure>
+    <figure class="foto foto--a"><img src="assets/negocio/foto-a.jpg" alt="Calçada de um bar em Poços de Caldas, com um cemitério ao fundo" width="410" height="279"></figure>
+    <figure class="foto foto--b"><img src="assets/negocio/foto-b.jpg" alt="Frym e clientes posam com um prato em formato de caixão na frente do bar" width="415" height="309"></figure>
+    <figure class="foto foto--c"><img src="assets/negocio/foto-c.jpg" alt="Prato em formato de caixão com minissanduíches, tomates, abóbora e pimenta" width="415" height="309"></figure>
+    <div class="balao balao--1" data-fx-item>
+      <p>Comer um aperitivo em um bar localizado de frente para um cemitério.</p>
+      <p>A situação parece convidativa, insólita<br>ou assustadora?</p>
+    </div>
+    <div class="balao balao--2" data-fx-item>
+      <p>Você apostaria que o local atrairia ou espantaria clientes?</p>
     </div>
 
-    <p class="t-vulcao">Parte desse acolhimento passa pela mesa. Em 2026, o Vulcãozinho do Finado Cumpadi João foi vice-campeão do Comida di Buteco. São minissanduíches de ragu de paleta com queijo gratinado e rúcula, servidos a R$ 40, no prato em formato de caixão.</p>
+    <div class="t-bar">
+      <p>Quem pode responder bem é o De Frente para o Futuro, em  Poços de Caldas (MG).</p>
+      <p>O bar abriu em 2020, num endereço onde antes funcionava um boteco sem nome e sem placa. Jeferson Lopes da Silva, conhecido como Frym, alugou o ponto certo de que ali havia potencial.</p>
+      <p>Inicialmente o público estranhou. A clientela veio aos poucos, puxada pela curiosidade e apesar do receio. Mas, ainda hoje, há quem mantenha distância. "Alguns clientes que são supersticiosos, não frequentam à noite ou sentam de costas para o cemitério", conta Frym. Outros filmam o lugar, a apresentação dos pratos e publica nas redes, uma divulgação espontânea que reforça a divulgação.</p>
+      <p>Datas como o Halloween ganham peso extra naquele endereço. E Frym brinca com uma vantagem rara para um dono de bar: os vizinhos não reclamam do barulho.</p>
+    </div>
+    <figure class="retrato retrato--frym" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/negocio/frym.png" alt="Frym, proprietário do bar De Frente para o Futuro, segurando um prato em formato de caixão" width="240" height="240"></figure>
+    <p class="legenda">Frym, proprietário do bar<br>De Frente para o Futuro</p>
+  </section>
 
-    <!-- mapa: a seta amarela e peca presa a ele -->
-    <figure class="mapa">
-      <img src="assets/negocio/mapa.jpg" alt="Mapa do trajeto de Poços de Caldas, em Minas Gerais, até Recife, em Pernambuco: cerca de 2.514 km" width="402" height="406">
-      <img class="mapa-seta" src="assets/negocio/seta.svg" alt="" aria-hidden="true" width="94" height="72">
-    </figure>
+  <!-- ============ BLOCO 3 — O LARGURA ============ -->
+  <section class="bl bl-largura">
+    <!-- no Figma este quadro e um mapa animado (aviao saindo de Pocos de Caldas); aqui entra a imagem parada -->
+    <figure class="foto foto--mapa"><img src="assets/negocio/mapa.jpg" alt="Mapa do Sudeste ao Nordeste com um avião indicando o trajeto de Poços de Caldas até Recife" width="402" height="286"></figure>
+    <figure class="foto foto--largura"><img src="assets/negocio/largura.jpg" alt="Fachada estreita do Largura Restaurante, em Recife" width="427" height="641"></figure>
     <div data-fx="slide-in-up" data-fx-margem="200">
       <p class="balao balao--3" data-fx-item>A quase 2 mil quilômetros dali…</p>
     </div>
-    <figure class="foto foto--largura"><img src="assets/negocio/largura.jpg" alt="Fachada do Largura Restaurante, estreito, com mesas e cadeiras amarelas na calçada" width="402" height="512"></figure>
 
     <!-- um banner por vez, sorteado a cada carregamento; o primeiro aparece mesmo sem JS -->
     <figure class="adbox" data-ad-random='[
@@ -173,30 +169,31 @@
       <img src="assets/negocio/51.jpg" alt="51 — a boa ideia do Brasil está de roupa nova. Novo rótulo, sabor de sempre. Beba com moderação" width="375" height="391">
     </figure>
 
-    <h2 class="h-largura">O Largura Restaurante</h2>
-    <p class="t-recife">Em Recife (PE), outro bar teria motivos para afastar a clientela, desta vez por causa do próprio imóvel.</p>
-    <p class="q-espremida">O Largura Restaurante opera em uma casa espremida, de porta e janela pra rua. Os clientes se acomodam em um corredor estreito, com banquetas altas, enquanto outros passam por trás, de lado, para chegar ao fundo. O nome, para quem chega sem conhecer a história, parece provocação.</p>
-    <p class="t-endereco">O endereço é o mesmo desde 1989, embora a placa na entrada prefira uma data mais vaga: "desde o século XX". O imóvel pertence à família, e por isso o bar nunca mudou de lugar nem fechou as portas em 37 anos. Com algumas reformas, ganhou espaço nos fundos e hoje recebe de 80 a 100 clientes por dia. O proprietário, Wilson Sebastião, ainda pretende fazer alguns reparos, mas julga a estrutura suficiente. "Os clientes consideram aconchegante", garante.</p>
+    <div class="t-largura">
+      <p>Em Recife (PE), outro bar teria motivos para afastar a clientela, desta vez por causa do próprio imóvel. O Largura Restaurante opera em uma casa espremida, de porta e janela pra rua. Os clientes se acomodam em um corredor estreito, com banquetas altas, enquanto outros passam por trás, de lado, para chegar ao fundo. O nome, para quem chega sem conhecer a história, parece provocação.</p>
+      <p>O endereço é o mesmo desde 1989, embora a placa na entrada prefira uma data mais vaga: "desde o século XX". O imóvel pertence à família, e por isso o bar nunca mudou de lugar nem fechou as portas em 37 anos. Com algumas reformas, ganhou espaço nos fundos e hoje recebe de 80 a 100 clientes por dia. O proprietário, Wilson Sebastião, ainda pretende fazer alguns reparos, mas julga a estrutura suficiente. "Os clientes consideram aconchegante", garante.</p>
+    </div>
+    <figure class="retrato retrato--wilson" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/negocio/wilson.png" alt="Wilson Sebastião, proprietário do Largura" width="240" height="240"></figure>
+    <p class="legenda legenda--wilson">Wilson Sebastião, proprietário do Largura</p>
+
+    <h2 class="h-narrativa">A narrativa é a própria história</h2>
+    <div class="t-narrativa">
+      <p data-fx="reveal-wipe" data-fx-margem="100">O Largura do nome é o próprio Wilson. Antes de abrir o negócio, aos 21 anos, ele trabalhava como garçom e passava parte dos dias na mesa de sinuca, onde tinha o hábito de cantar a caçapa em que a bola ia cair. A bola caía em outra, e os amigos passaram a chamá-lo de Largura, por causa da distância entre a previsão e a jogada. Quando o bar abriu, o apelido combinou com o corredor estreito, e Wilson resolveu apostar na confusão. Tem cliente que chega esperando um salão amplo. “Tem cliente que espera encontrar um dono bem gordo”.</p>
+      <p data-fx="reveal-wipe" data-fx-margem="100">Quem já conhece não se engana mais, e quase todo mundo ali já conhece. Segundo Wilson, 90% da clientela é de rostos familiares, "uma espécie de confraria".</p>
+      <p data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100"><span data-fx-item>Na cozinha, pratos regionais pernambucanos, com destaque para a carne de sol acebolada com farofa de jerimum caboclo e a galinha de cabidela. Nas paredes, fotos de frequentadores, alguns deles nomes conhecidos da cultura brasileira — como o caso do músico Djavan na foto abaixo. Wilson diz que os clientes veem o bar como "a última resistência de Casa Forte", o bairro onde ele funciona.</span></p>
+    </div>
   </section>
 
-  <!-- ============ BLOCO 4 — A NARRATIVA E AS LIÇÕES ============ -->
+  <!-- ============ BLOCO 4 — O QUE ISSO NOS ENSINA ============ -->
   <section class="bl bl-licoes">
-    <!-- as duas cupulas (degrade e azul) e o retangulo sao o fundo desta caixa de texto -->
-    <div class="caixa caixa--narrativa">
-      <h2 class="h-narrativa"><span class="am">A narrativa é</span> a própria história</h2>
-      <div class="t-narrativa">
-        <p data-fx="reveal-wipe" data-fx-margem="100">O Largura do nome é o próprio Wilson. Antes de abrir o negócio, aos 21 anos, ele trabalhava como garçom e passava parte dos dias na mesa de sinuca, onde tinha o hábito de cantar a caçapa em que a bola ia cair. A bola caía em outra, e os amigos passaram a chamá-lo de Largura, por causa da distância entre a previsão e a jogada. Quando o bar abriu, o apelido combinou com o corredor estreito, e Wilson resolveu apostar na confusão. Tem cliente que chega esperando um salão amplo. “Tem cliente que espera encontrar um dono bem gordo”.</p>
-        <p data-fx="reveal-wipe" data-fx-margem="100">Quem já conhece não se engana mais, e quase todo mundo ali já conhece. Segundo Wilson, 90% da clientela é de rostos familiares, "uma espécie de confraria". Nas paredes, fotos de frequentadores, alguns deles nomes conhecidos da cultura brasileira. Wilson diz que os clientes veem o bar como "a última resistência de Casa Forte", o bairro onde ele funciona.</p>
-      </div>
-    </div>
+    <figure class="foto foto--djavan"><img src="assets/negocio/djavan.jpg" alt="Djavan sorri ao lado de um cliente do Largura, em uma foto na parede do bar" width="480" height="325"></figure>
+    <span class="cupula-fundo" aria-hidden="true"></span>
+    <span class="cupula-e140" aria-hidden="true"><img src="assets/negocio/cupula-e140.svg" alt=""></span>
+    <span class="cupula-anel" aria-hidden="true"><img src="assets/negocio/cupula-anel.svg" alt=""></span>
 
-    <p class="t-cozinha" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100"><span data-fx-item>Na cozinha, pratos regionais pernambucanos, com destaque para a carne de sol acebolada com farofa de jerimum caboclo e a galinha de cabidela. O bar abre todos os dias a partir das 11h. À noite, funciona só às quartas, quintas e sextas, até as 22h.</span></p>
-    <figure class="foto foto--prato"><img src="assets/negocio/recife.jpg" alt="Prato de feijoada servido em uma tigela branca, ao lado de arroz e farofa" width="408" height="389"></figure>
-
-    <div class="caixa caixa--ensina">
-      <h2 class="h-ensina">O que isso nos ensina sobre negócios?</h2>
-      <p>Apesar de propostas bem diferentes, o <strong>Bar de Frente Pro Futuro</strong> e o <strong>Largura Restaurante</strong> compartilham a mesma inteligência de mercado: eles pararam de brigar com as limitações do seu espaço e as transformaram no principal ativo do negócio.</p>
-      <p class="am"><strong>Em vez de tentar esconder o ponto inusitado ou a metragem reduzida, os dois empreendedores usaram a própria realidade para construir uma marca autêntica, memorável e impossível de ignorar.</strong></p>
+    <div class="ensina">
+      <h2 class="h-ensina">O que isso nos ensina<br>sobre negócios?</h2>
+      <p class="t-ensina">Apesar de propostas bem diferentes, o Bar de Frente Pro Futuro e o Largura Restaurante compartilham a mesma inteligência de mercado: eles pararam de brigar com as limitações do seu espaço e as transformaram no principal ativo do negócio. Em vez de tentar esconder o ponto inusitado ou a metragem reduzida, os dois empreendedores usaram a própria realidade para construir uma marca autêntica, memorável e impossível de ignorar.</p>
     </div>
 
     <p class="t-tres">Para quem vive do comércio, o sucesso desses dois endereços entrega três lições valiosas de gestão:</p>
@@ -208,19 +205,21 @@
       </li>
       <li class="licao licao--2">
         <span class="licao-num" data-fx-item data-fx-grupo="licao-2"><b>2</b></span>
-        <h3>A curiosidade atrai, mas é a qualidade que retém</h3>
+        <h3>A curiosidade atrai, mas é a<br>qualidade que retém</h3>
         <p>A atração pelo inusitado faz o cliente cruzar a porta pela primeira vez, mas é o produto que garante o faturamento do mês seguinte. Tanto o prato premiado servido no caixão em Poços de Caldas quanto os pratos regionais de peso em Recife provam que o conceito divertido só dura no mercado se vier acompanhado de excelência na cozinha, atendimento atencioso e cerveja trincando.</p>
       </li>
       <li class="licao licao--3">
         <span class="licao-num" data-fx-item data-fx-grupo="licao-3"><b>3</b></span>
-        <h3>Bar é lugar de pertencimento e acolhimento</h3>
+        <h3>Conexão humana gera fidelidade</h3>
         <p>Seja oferecendo um ambiente leve de descompressão para quem acabou de sair de um velório ou criando um clima de "confraria" com os frequentadores do bairro, um estabelecimento prospera quando entende o momento do seu público. No fim das contas, o cliente busca um lugar onde se sinta bem acolhido.</p>
       </li>
     </ol>
 
-    <div class="caixa caixa--fecho">
-      <p data-fx="reveal-wipe" data-fx-margem="100">Um bar confortável, espaçoso e bem localizado pode ser excelente — e completamente esquecível. “O bar em frente ao cemitério” e “o restaurante chamado Largura que é estreitíssimo” são descrições que cabem numa frase e permanecem na cabeça.</p>
-      <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="0.3"><strong>É essa pequena fricção que provoca a pergunta “como assim?”. E curiosidade é uma porta de entrada para experimentar um lugar.</strong></p>
+    <div class="caixa-fecho">
+      <div class="t-fecho">
+        <p data-fx="reveal-wipe" data-fx-margem="100">Um bar confortável, espaçoso e bem localizado pode ser excelente — e completamente esquecível. “O bar em frente ao cemitério” e “o restaurante chamado Largura que é estreitíssimo” são descrições que cabem numa frase e permanecem na cabeça.</p>
+        <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="0.3"><strong>É essa pequena fricção que provoca a pergunta “como assim?”. E curiosidade é uma porta de entrada para experimentar um lugar.</strong></p>
+      </div>
     </div>
   </section>
 

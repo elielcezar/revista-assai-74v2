@@ -1,13 +1,17 @@
 /* =========================================================
    Revista Assaí Bons Negócios #75 — pagina NOVO NEGÓCIO
-   Figma: 4424:19580 — 402 x 8971 (HEAD de 182 incluso)
+   Figma: 6931:7505 (arquivo aquTnQHLWwiogtzEAG9qyp) — 402 x 7277 (HEAD de 182 incluso)
    Requer css/base.css (fontes, reset, tokens, head, rodape).
 
-   Fundos coloridos que ficam atras de texto sao a propria caixa do texto
-   (.caixa), nunca uma forma absoluta separada.
+   Fotos e caixas rosa (texto sobre a foto) ficam em posicao absoluta dentro
+   do bloco; o texto segue em fluxo. O banner rotativo (.adbox) nao existe no
+   Figma: entra depois da foto do Largura e empurra o que vem abaixo em 459px
+   (40 de folga + 419 da imagem).
    ========================================================= */
 
 .negocio .head { --head-bg: var(--pink); }
+
+.page { --bordo: #ba0042; --txt: #090909; }
 
 .bl {
   position: relative;
@@ -18,162 +22,114 @@
 .bl p { font-size: 18px; line-height: normal; }
 .bl strong { font-weight: 700; }
 
-.caixa { position: relative; display: flow-root; color: #fff; }
-.am { color: var(--amarelo); }
+.foto { position: absolute; margin: 0; overflow: hidden; z-index: 0; }
+.foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-/* =========================================================
-   BLOCO 1 — ABERTURA  (182 .. 1034)
-   ========================================================= */
-.hero-foto { width: 402px; height: 412px; }
-.hero-foto img { width: 402px; height: 412px; object-fit: cover; }
-
-.hero-titulo { margin: 36px 0 0; text-align: center; }
-.hero-gancho {
-  display: block; width: 361px; margin: 0 auto;
-  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
-  font-size: 40px; line-height: 43px; color: var(--azul);
-}
-.hero-destaque {
-  display: block; width: 361px; margin: 6px auto 0;
-  font-size: 38px; font-weight: 700; line-height: 41px; color: var(--laranja);
-}
-.hero-olho {
-  width: 362px; margin: 32px auto 0;
-  font-size: 20px !important; line-height: 23px !important; font-style: italic; text-align: center; color: var(--cinza);
-}
-.hero-assina { width: max-content; margin: 43px auto 0; padding-bottom: 45px; text-align: center; }
-.hero-edicao {
-  padding: 2px 15px; background: var(--pink); color: #fff;
-  font-size: 20px !important; font-weight: 500; white-space: nowrap;
-}
-.hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; color: #000; }
-
-/* =========================================================
-   BLOCO 2 — O BAR DE FRENTE PRO FUTURO  (1034 .. 2605)
-   ========================================================= */
-.foto { position: relative; overflow: hidden; }
-.foto--cemiterio { width: 415px; height: 441px; margin-left: -7px; }
-/* o recorte do Figma: largura cheia, 118,16% de altura, subido 18,16% */
-.foto--cemiterio img { position: absolute; left: 0; top: -18.16%; width: 100%; height: 118.16%; max-width: none; }
-.foto--fachada { width: 402px; height: 305px; }
-.foto--fachada img { width: 459px; height: 305px; max-width: none; margin-left: -31px; object-fit: cover; }
-
-/* caixa roxa com texto, sobre a borda da foto de cima */
+/* caixa rosa sobre a foto */
 .balao {
-  position: relative; z-index: 1;
-  width: 365px; padding: 25px 20px; border-radius: 25px;
+  position: absolute; z-index: 2; box-sizing: border-box; width: 365px; border-radius: 25px;
   background: var(--pink); color: #fff; text-align: center;
 }
-.balao--1 { margin: -93px 0 0 11px; height: 130px; }
-.foto--fachada { margin-top: -37px; }
-.balao--2 { margin: -91px 0 0 16px; height: 120px; padding-top: 20px; }
+.balao p { width: 325px; margin: 0 auto; }
+.balao p + p { margin-top: 20px; }
 
-.t-comprova {
-  width: 349px; margin: 45px 0 0 24px;
-  font-size: 20px !important; font-weight: 700; text-align: center; color: var(--pink);
-}
-.t-bar { width: 360px; margin: 44px 0 0 21px; color: #000; }
-.t-clientela { width: 358px; margin: 59px 0 0 21px; font-weight: 700; color: #090909; }
-.t-halloween { width: 360px; margin: 73px 0 0 24px; padding-bottom: 81px; font-size: 20px !important; font-weight: 700; color: var(--pink); }
+.retrato { position: relative; z-index: 1; width: 240px; height: 240px; }
+.retrato img { display: block; width: 240px; height: 240px; }
+.legenda { width: 362px; font-weight: 700; font-style: italic; text-align: center; color: var(--cinza); }
 
 /* =========================================================
-   BLOCO 3 — DEPOIS DO VELÓRIO + O LARGURA  (2605 .. 5309)
+   BLOCO 1 — ABERTURA  (182 .. 632)
    ========================================================= */
-.faixa-boo { width: 402px; height: 212px; }
-.faixa-boo img { width: 402px; height: 212px; }
-
-/* cupula azul: o fundo e a propria caixa; a foto sai pela base */
-.caixa--velorio {
-  width: 402px; margin-top: 3px;
-  background: url("../assets/negocio/arco.svg") calc(50% - 2.6px) 0 / 890.8px 100% no-repeat;
+.bl-hero { min-height: 450px; }
+.hero-titulo { margin: 43.86px 0 0 27px; /* o glifo da Raspoutine cai ~8px abaixo da caixa do Figma */ width: 361px; text-align: center; }
+.hero-gancho {
+  display: block;
+  font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
+  font-size: 40px; line-height: 48px; color: var(--azul);
 }
-.h-velorio {
-  margin: 35px 0 0 21px;
-  font-size: 20px; font-weight: 700; line-height: normal; text-transform: uppercase;
+.hero-destaque { display: block; margin-top: 1px; font-size: 38px; font-weight: 700; line-height: normal; color: var(--bordo); white-space: nowrap; }
+.hero-olho {
+  width: 362px; margin: 22.94px 0 0 27px; text-align: center;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza);
 }
-.t-velorio { width: 358px; margin: 27px 0 0 23px; }
-.vulcao { width: 280px; height: 280px; margin: 83px 0 -120px 53px; }
-.vulcao img { width: 280px; height: 280px; }
+.hero-assina { position: relative; left: 6.5px; width: max-content; margin: 37.21px auto 0; text-align: center; }
+.hero-edicao {
+  padding: 2px 15px; background: var(--pink); color: #fff; white-space: nowrap;
+  font-size: 20px !important; font-weight: 500;
+}
+.hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; color: #000; white-space: nowrap; }
 
-.t-vulcao { width: 353px; margin: 147px 0 0 22px; color: #000; }
+/* =========================================================
+   BLOCO 2 — O BAR DE FRENTE PRO FUTURO  (632 .. 2478)
+   ========================================================= */
+.bl-bar { min-height: 1846px; }
+.foto--a { left: -8.47px; top: 0; width: 410px; height: 279px; }
+.foto--b { left: -9.47px; top: 279px; width: 414.79px; height: 309.44px; }
+.foto--c { left: -9.47px; top: 588.44px; width: 414.79px; height: 309.44px; }
+.balao--1 { left: 18px; top: 197px; height: 150px; padding-top: 25px; }
+.balao--2 { left: 17.53px; top: 561px; height: 80px; padding-top: 20px; }
 
-.mapa { position: relative; width: 402px; height: 406px; margin-top: 84px; overflow: hidden; }
-.mapa > img:first-child { width: 402px; height: 406px; }
-.mapa-seta { position: absolute; left: 237px; top: 158px; width: 94px; height: 72px; }
+.t-bar { width: 360px; margin: 954.01px 0 0 23px; color: #000; }
+.t-bar p + p { margin-top: 20px; }
+.retrato--frym { margin: 60px 0 0 80.53px; }
+.bl-bar .legenda { margin: 31px 0 0 20.53px; }
 
-.balao--3 { margin: -66px 0 0 18px; height: 120px; padding: 43px 26px 0 35px; text-align: left; font-size: 20px !important; font-weight: 700; }
-.foto--largura { width: 402px; height: 512px; margin-top: -54px; }
-.foto--largura img { width: 402px; height: 512px; }
-.adbox { width: 402px; aspect-ratio: 375 / 391; }
+/* =========================================================
+   BLOCO 3 — O LARGURA  (2478 .. 4993 + banner)
+   ========================================================= */
+.bl-largura { min-height: 2974.14px; }
+.foto--mapa { left: 0; top: 0; width: 402px; height: 285.8px; }
+.foto--largura { left: 0; top: 285.8px; width: 427px; height: 640.75px; }
+.balao--3 { left: 19px; top: 231.8px; height: 108px; padding: 43px 0 0 35px; text-align: left; font-size: 20px !important; font-weight: 700; }
+.bl .balao--3 { font-size: 20px; font-weight: 700; width: 365px; margin: 0; }
+.balao--3 { z-index: 2; }
+
+.adbox { width: 402px; aspect-ratio: 375 / 391; margin-top: 966.5px; }
 .adbox img { display: block; width: 402px; height: 100%; object-fit: cover; }
 
-.h-largura {
-  margin: 46px 0 0 17px;
-  font-size: 24px; font-weight: 700; line-height: normal; color: var(--pink); text-transform: uppercase;
-}
-.t-recife { width: 368px; margin: 32px 0 0 17px; color: #000; }
-.q-espremida {
-  width: 358px; margin: 60px 0 0 20px;
-  font-size: 26px !important; font-weight: 700; color: var(--azul);
-}
-.t-endereco { width: 356px; margin: 38px 0 0 26px; padding-bottom: 40px; /* no Figma a ultima linha fica cortada pela cupula: aqui ganha 40px de respiro */ color: #000; }
-
-/* =========================================================
-   BLOCO 4 — A NARRATIVA E AS LIÇÕES  (5309 .. 8971)
-   ========================================================= */
-/* cupulas (degrade e azul) e retangulo azul: camadas de fundo da caixa */
-.caixa--narrativa {
-  width: 402px; margin-top: 0; padding: 142px 0 131px;
-  background:
-    url("../assets/negocio/e140.svg") -42px 38px / 510.2px 250px no-repeat,
-    url("../assets/negocio/e141.svg") -67px 0 / 510.2px 250px no-repeat,
-    linear-gradient(var(--azul), var(--azul)) 0 288px / 100% 100% no-repeat;
-}
-.h-narrativa {
-  width: 402px; padding-right: 25px; text-align: center;
-  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase;
-}
-.h-narrativa .am { display: block; }
-.t-narrativa { width: 345px; margin: 57px 0 0 30px; }
+.t-largura { width: 360px; margin: 61.76px 0 0 21px; color: #000; }
+.t-largura p + p { margin-top: 20px; }
+.retrato--wilson { margin: 53.07px 0 0 81px; }
+.legenda--wilson { margin: 38.07px 0 0 20px; }
+.h-narrativa { width: 362px; margin: 81.71px 0 0 21px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--pink); }
+.t-narrativa { width: 362px; margin: 33px 0 0 21px; color: #000; }
 .t-narrativa p + p { margin-top: 20px; }
 
-.t-cozinha {
-  width: 338px; height: 243px; margin: 137px 0 0 39px;
-  font-size: 24px !important; font-weight: 700; color: var(--pink);
-}
-.foto--prato { width: 402px; height: 389px; margin-top: 68px; }
-.foto--prato img { width: 408px; height: 389px; max-width: none; object-fit: cover; }
+/* =========================================================
+   BLOCO 4 — O QUE ISSO NOS ENSINA  (4993 + banner .. 7161 + banner)
+   ========================================================= */
+.bl-licoes { min-height: 2168px; }
+.foto--djavan { left: -48.45px; top: 0; width: 480.45px; height: 325.11px; }
+.bl > .cupula-fundo { position: absolute; z-index: 0; left: -66.53px; top: 488.14px; width: 479.45px; height: 174.73px; background: var(--pink); }
+.bl > .cupula-e140 { position: absolute; z-index: 0; left: -54.1px; top: 238.14px; width: 510.19px; height: 250px; }
+.bl > .cupula-anel { position: absolute; z-index: 0; left: -77.45px; top: 226.28px; width: 546.56px; height: 273.71px; }
+.cupula-e140 img, .cupula-anel img { display: block; width: 100%; height: 100%; }
 
-.caixa--ensina {
-  width: 403px; padding: 36px 25px 57px;
-  background: var(--pink);
-}
-.h-ensina { margin-bottom: 27px; font-size: 24px; font-weight: 700; line-height: normal; }
-.caixa--ensina p + p { margin-top: 20px; }
+.ensina { position: relative; z-index: 1; width: 362px; margin: 333.04px 0 0 21px; }
+.h-ensina { font-size: 24px; font-weight: 700; line-height: 28px; text-align: center; text-transform: uppercase; color: var(--amarelo-escuro); }
+.t-ensina { margin-top: 33px; font-size: 18px; line-height: 21px !important; color: #fff; }
+.t-tres { position: relative; z-index: 1; width: 362px; margin: 82.04px 0 0 21px; line-height: 21px !important; color: #000; }
 
-.t-tres {
-  width: 403px; margin-top: 31px;
-  font-size: 20px !important; font-weight: 700; text-align: center; color: var(--azul);
-}
-
-.licoes { width: 370px; margin: 33px 0 0 18px; padding: 0; list-style: none; }
-.licao { display: flex; flex-direction: column; align-items: center; text-align: center; color: #000; }
-.licao--2 { margin-top: 38px; }
-.licao--3 { margin-top: 44px; }
+.licoes { position: relative; z-index: 1; width: 362px; margin: 50.97px 0 0 21px; padding: 0; list-style: none; }
+.licao { text-align: center; color: #000; }
+.licao + .licao { margin-top: 45px; }
 .licao-num {
-  position: relative; width: 66.6px; height: 33.3px; margin-bottom: 6px;
-  background: url("../assets/negocio/num.svg") no-repeat 0 0 / 66.6px 33.3px;
+  position: relative; display: block; width: 70.51px; height: 34.22px; margin: 0 auto;
+  background: url("../assets/negocio/num.svg") no-repeat 0 0 / 70.51px 34.22px;
 }
 .licao-num b {
-  position: absolute; left: 28px; top: 3px; width: 11px;
+  position: absolute; left: 29.62px; top: 6.55px; width: 11.27px;
   font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: normal; color: #fff; text-align: center;
 }
-.licao h3 { width: 360px; font-size: 21px; font-weight: 700; line-height: normal; }
-.licao p { width: 360px; margin-top: 20px; }
+.licao h3 { margin-top: 13px; font-size: 21px; font-weight: 700; line-height: normal; color: #000; }
+.licao p { margin-top: 13px; text-align: left; color: #000; }
 
-.caixa--fecho {
-  width: 403px; margin: 42px 0 -25px -2px; padding: 48px 25px 69px;
-  position: relative; z-index: 1;
-  background: var(--azul);
+.caixa-fecho {
+  position: relative; z-index: 1; width: 403px; height: 337px; margin: 60.34px 0 0 -0.5px;
+  display: flex; align-items: center; justify-content: center; background: var(--pink); color: #fff;
 }
-.caixa--fecho p + p { margin-top: 20px; }
+.t-fecho { width: 353px; }
+.t-fecho p + p { margin-top: 20px; }
+.t-fecho strong { font-weight: 700; }
+
+.negocio .foot { z-index: 0; }
