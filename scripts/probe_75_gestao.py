@@ -1,66 +1,57 @@
 #!/usr/bin/env python
-"""Mede a posicao real dos elementos da GESTÃƒO #75 contra as coordenadas do Figma.
+"""Mede a posicao real dos elementos da GESTAO #75 contra as coordenadas do Figma.
 
-    python scripts/probe_75_academia.py
+    python scripts/probe_75_gestao.py
 
-Figma: 6954:9346 (402 x 8900, HEAD de 182 incluso): top esperado = y do Figma.
+Figma: 6956:9875 (arquivo aquTnQHLWwiogtzEAG9qyp, 402 x 8199, HEAD de 182 incluso).
+O story do Omo (715px) entra depois da caixa vermelha e nao existe no Figma:
+tudo o que vem abaixo dele desce 715px (STORY).
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
-D = 0
+D = 182      # o BLOCO do Figma comeca depois do HEAD
+STORY = 715  # story do Omo (video 402 x 715)
+# (seletor, x, y no BLOCO do Figma, depois do story?)
 EXPECT = [
-    (".hero-foto",            0, 182),
-    (".caixa--hero",       -123, 638),
-    (".hero-titulo",         24, 738),
-    (".hero-agora",          24, 832),
-    (".hero-edicao",         23, 963),
-    (".hero-autor",          23, 1003),
-    (".hero-olho",           25, 1052),
-    (".t-intro",             25, 1219),
-    (".caixa--roxo",         -4, 1571),
-    (".placa",               68, 1468),
-    (".t-passo",             25, 1668),
-    (".h-taxa",              18, 2089),
-    (".t-conta",             25, 2129),
-    (".caixa--conta",        13, 2171),
-    (".conta-col--a .conta-icone", 36, 2190),
-    (".conta-sinal--div",    110, 2201),
-    (".conta-col--b .conta-icone", 164, 2190),
-    (".conta-sinal--mul",    260, 2201),
-    (".conta-cem",           298, 2197),
-    (".conta-col--a .conta-rotulo", 4, 2256),
-    (".conta-col--b .conta-rotulo", 177, 2267),
-    (".t-mes",               26, 2364),
-    (".caixa--resultado",    18, 2451),
-    (".faixa-media",          0, 2581),
-    (".lista-dados",         26, 2695),
-    (".foto-mesa",            0, 3133),
-    (".bl-mesa .h-roxo",     24, 3460),
-    (".t-empório",           25, 3514),
-    (".foto-gui",            40, 3958),
-    (".leg-gui",             24, 4294),
-    (".caixa--receita",      24, 4377),
-    (".t-receita",           51, 4422),
-    (".h-antes",             26, 5056),
-    (".t-antes",             26, 5119),
-    (".cupula-passos",       41, 5673),
-    (".caixa--passos",       21, 5748),
-    (".passo--1 .passo-n",  166, 5886),
-    (".passo--1 h3",         23, 5942),
-    (".passo--2 .passo-n",  166, 6028),
-    (".passo--3 .passo-n",  166, 6166),
-    (".passo--4 .passo-n",  166, 6321),
-    (".passo--5 .passo-n",  171, 6476),
-    (".h-decidiu",           24, 6697),
-    (".t-cdc",               24, 6798),
-    (".fundo-checklist",      0, 7236),
-    (".caixa--checklist",    22, 7280),
-    (".t-certifique",        49, 7355),
-    (".h-funciona",          26, 8006),
-    (".lista-vermelha",      26, 8061),
-    (".t-fecho",             26, 8489),
-    ("footer.foot",           0, 8786),
+    (".hero-foto",               -6.37,   -8.31, 0),
+    (".caixa--hero",            -82.5,   370.89, 0),
+    (".hero-titulo",             21.25,  420.01, 0),
+    (".hero-agora",              None,   514.01, 0),
+    (".hero-olho",               21.25,  598.08, 0),
+    (".hero-assina",            132.5,   784.59, 0),
+    (".t-intro",                 21.25,  888.28, 0),
+    (".placa",                   85.11, 1161.05, 0),
+    (".caixa--roxo",             -4,    1251.27, 0),
+    (".t-passo",                 25,    1348.27, 0),
+    (".story",                   0,     1717.27, 0),
+    (".bl-taxa .h-roxo",         20,    1786.13, 1),
+    (".t-taxa",                  20,    1873.13, 1),
+    (".bl-media .h-roxo",        20,    2105.57, 1),
+    (".lista-dados",             20,    2192.57, 1),
+    (".foto-mesa",               -6.5,  2639.87, 1),
+    (".bl-mesa .h-roxo",         21,    2970,    1),
+    (".t-empório",               21,    3030,    1),
+    (".caixa--receita",          -4,    3528.11, 1),
+    (".caixa--receita .h-amarelo", 21,  3569,    1),
+    (".t-receita",               21,    3656,    1),
+    (".foto-gui",                81,    4150.17, 1),
+    (".leg-gui",                 24,    4415,    1),
+    (".bl-cobrar .h-vermelho",   20,    4527,    1),
+    (".t-antes",                 20,    4587,    1),
+    (".prato",                   47.35, 5121.7,  1),
+    (".h-caminhos",              21.5,  5463.7,  1),
+    (".passo--1",                21.5,  5551,    1),
+    (".passo--2",                21.5,  5701,    1),
+    (".passo--3",                21.5,  5852,    1),
+    (".passo--4",                21.5,  6020,    1),
+    (".passo--5",                21.5,  6188,    1),
+    (".caixa--decidiu",         -89.17, 6446.56, 1),
+    (".caixa--decidiu .h-amarelo", 24,  6625,    1),
+    (".t-cdc",                   24,    6721,    1),
+    (".t-checklist",             24,    7165.78, 1),
+    (".t-fecho",                 21.17, 7689.56, 1),
+    ("footer.foot",               0,    7901,    1),
 ]
 
 JS = """(sels) => sels.map(s => { const e = document.querySelector(s); if (!e) return null;
@@ -70,19 +61,21 @@ with sync_playwright() as p:
     b = p.chromium.launch()
     pg = b.new_page(viewport={"width": 402, "height": 900})
     pg.route("**/*google*/**", lambda r: r.abort())
+    pg.route("**/scroll-fx.js*", lambda r: r.abort())
     pg.goto(pathlib.Path("75/gestao.html").resolve().as_uri(), wait_until="load")
     pg.evaluate("document.fonts.ready")
     pg.wait_for_timeout(600)
     pg.evaluate("document.querySelector('.casca') && (document.querySelector('.casca').style.display='none')")
-    res = pg.evaluate(JS, [s for s, _, _ in EXPECT])
+    res = pg.evaluate(JS, [e[0] for e in EXPECT])
     ruins = 0
-    for (s, x, y), r in zip(EXPECT, res):
+    for (s, x, y, dep), r in zip(EXPECT, res):
         if r is None:
-            print(f"{s:22} AUSENTE"); ruins += 1; continue
-        dy = r[1] - y; dx = r[0] - x
+            print(f"{s:28} AUSENTE"); ruins += 1; continue
+        alvo = y + D + (STORY if dep else 0)
+        dy = r[1] - alvo; dx = 0 if x is None else r[0] - x
         flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
         ruins += bool(flag)
-        print(f"{s:22} x {r[0]:7.1f} ({dx:+4.0f})  y {r[1]:7.1f} esp {y:6} ({dy:+5.0f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 8900)")
+        print(f"{s:28} x {r[0]:7.1f} ({dx:+5.1f})  y {r[1]:7.1f} esp {alvo:7.1f} ({dy:+5.1f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 8199 + story {STORY})")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()

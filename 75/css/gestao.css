@@ -1,11 +1,13 @@
 /* =========================================================
    Revista Assaí Bons Negócios #75 — pagina GESTÃO
-   Figma: 6954:9346 — 402 x 8900 (HEAD de 182 incluso)
+   Figma: 6956:9875 (arquivo aquTnQHLWwiogtzEAG9qyp) — 402 x 8199 (HEAD de 182 incluso)
    Requer css/base.css (fontes, reset, tokens, head, rodape).
 
    Fundos coloridos que ficam atras de texto sao a propria caixa do texto
    (.caixa), nunca uma forma absoluta separada. As caixas mais largas que a
    coluna usam margem negativa (--ml) + padding igual; o bloco corta o que sobra.
+   O story do Omo (Unilever) entra depois da caixa vermelha e empurra tudo o que
+   vem abaixo em 715px em relacao ao Figma.
    ========================================================= */
 
 .gestao .head { --head-bg: var(--vermelho, #f0051e); }
@@ -13,7 +15,6 @@
 .page {
   --roxo: #532f82;
   --verm: #f0051e;
-  --lar: #ff7300;
   --am: #ffdc00;
   --am-esc: #ffaa00;
 }
@@ -29,193 +30,166 @@
 .bl em { font-style: italic; }
 .bl .b { font-weight: 700; }
 
-.backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
 .backdrop span { position: absolute; display: block; }
 .backdrop img { width: 100%; height: 100%; }
 
 .caixa { position: relative; display: flow-root; margin-left: var(--ml, 0); width: var(--w, 402px); padding-left: calc(-1 * var(--ml, 0px)); box-sizing: border-box; }
 
-.h-roxo { font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--roxo); width: 341px; }
+/* intertitulos */
+.h-roxo, .h-vermelho, .h-amarelo {
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase;
+}
+.h-roxo { color: var(--roxo); }
+.h-vermelho { color: var(--verm); text-align: center; }
+.h-amarelo { color: var(--am); }
 
-/* subtitulo com bolinha: "• Texto" */
+/* subtitulo vermelho em italico */
 .sub { display: block; font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; color: var(--verm); }
-.sub::before { content: "• "; color: var(--am-esc); }
-.sub--am { color: var(--am); }
+
+/* circulo com interrogacao (decoracao) */
+.interr { position: absolute; display: block; pointer-events: none; }
+.interr > img { display: block; width: 100%; height: 100%; }
+.interr b { position: absolute; display: block; text-align: center; font-weight: 700; color: #fff; }
 
 /* =========================================================
    BLOCO 1 — ABERTURA  (182 .. 1286)
    ========================================================= */
-.hero-arco { left: -123px; top: 427px; width: 610px; height: 305px; z-index: 1; transform: rotate(180deg); }
-.hero-foto { position: relative; z-index: 0; width: 402px; height: 518px; }
-.hero-foto img { width: 402px; height: 518px; display: block; }
+.bl-hero { overflow: clip; }
+.bl-hero > :not(.backdrop) { position: relative; z-index: 2; }
+.bl-hero > .hero-foto { z-index: 0; }
+
+.hero-arco { left: -78.61px; top: 333.27px; width: 559.225px; height: 264.806px; transform: scaleX(-1); }
+
+.hero-foto { width: 408.37px; height: 566.09px; margin: -8.31px 0 0 -6.37px; overflow: hidden; }
+.hero-foto img { position: absolute; left: 0; top: -23.67%; width: 100.61%; height: 129.02%; max-width: none; }
 
 .caixa--hero {
-  --ml: -123px; --w: 611px;
-  z-index: 2; margin-top: -62px; padding-top: 100px; padding-bottom: 42px;
-  border-radius: 305.5px 305.5px 0 0; background: var(--lar); color: #fff;
+  --ml: -82.5px; --w: 567px;
+  min-height: 386.82px; margin-top: -186.9px; padding-top: 49.12px;
+  border-radius: 280px 280px 0 0; background: var(--roxo); color: #fff; text-align: center;
 }
-.hero-titulo { width: 382px; margin-left: 24px; font-size: 48px; font-weight: 700; line-height: 45px; }
-.hero-agora { display: block; width: 531px; margin-top: 4px; font-size: 68px; font-weight: 700; line-height: 68px; color: var(--am); }
+.hero-titulo { width: 359.5px; margin-left: 21.25px; font-size: 39px; font-weight: 700; line-height: 45px; white-space: nowrap; }
+.hero-agora { display: block; margin-top: 4px; font-size: 59px; font-weight: 700; line-height: 68px; color: var(--am); }
+.hero-olho {
+  width: 359.5px; margin: 16.08px 0 0 21.25px;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: #bbb;
+}
 
-.hero-assina { width: 137px; margin: 21px 0 0 23px; }
+.hero-assina { width: 137px; margin: 26.89px auto 0; }
 .hero-edicao {
   padding: 2px 15px; background: var(--verm); color: #fff; text-align: center; white-space: nowrap;
   font-size: 20px !important; font-weight: 500;
 }
-.hero-autor { margin-top: 14px; font-weight: 500; font-style: italic; color: #000; white-space: nowrap; }
-.hero-olho {
-  width: 350px; margin: 29px 0 0 25px;
-  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: #757a7b;
-}
-.t-intro { width: 350px; margin: 52px 0 0 25px; color: #000; }
+.hero-autor { margin-top: 14px; font-weight: 500; font-style: italic; text-align: center; color: #000; white-space: nowrap; }
+.t-intro { width: 359.5px; margin: 43.69px 0 0 21.25px; color: #000; }
 .t-intro p + p { margin-top: 20px; }
 
 /* =========================================================
-   BLOCO 2 — ACOMPANHAR AS RESERVAS  (1571 .. 2037)
+   BLOCO 2 — ACOMPANHAR AS RESERVAS + STORY  (1251 .. 2432)
    ========================================================= */
-.bl-acompanhar { margin-top: 92px; }
-.caixa--roxo { --ml: -4px; --w: 406px; padding-top: 0; padding-bottom: 69px; background: var(--roxo); color: #fff; }
-.placa { position: relative; width: 253px; height: 189px; margin: -103px 0 0 68px; filter: drop-shadow(0 6px 4px rgba(0, 0, 0, .25)); }
-.placa img { width: 253px; height: 189px; display: block; }
-.t-passo { width: 350px; margin: 11px 0 0 25px; }
+.bl-acompanhar { padding-top: 0; }
+.caixa--roxo {
+  --ml: -4px; --w: 406px; min-height: 466px; margin-top: 102.99px;
+  background: var(--verm); color: #fff;
+}
+.placa { position: relative; width: 218.78px; height: 163.43px; margin: -90.22px 0 0 85.11px; filter: drop-shadow(0 6px 4px rgba(0, 0, 0, .25)); }
+.placa img { width: 100%; height: 100%; display: block; }
+.t-passo { width: 350px; margin: 23.8px 0 0 25px; }
 .t-passo p + p { margin-top: 20px; }
 .story { width: 402px; }
 .story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #1a0a6e; }
 
 /* =========================================================
-   BLOCO 3 — A CONTA  (2037 .. 2581)
+   BLOCO 3 — PRIMEIRO PASSO  /  BLOCO 4 — SEGUNDO PASSO
    ========================================================= */
-.h-taxa { width: 354px; margin: 52px 0 0 18px; font-size: 26px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; color: var(--verm); }
-.t-conta { width: 350px; margin: 11px 0 0 25px; color: #000; }
-.caixa--conta {
-  --ml: 13px; --w: 374px; margin-top: 22px; height: 165px; padding-left: 0;
-  margin-left: 13px; border-radius: 23px; background: rgba(83, 47, 130, .2);
-  display: flex; align-items: flex-start;
-}
-.conta-col { display: block; }
-.conta-col--a { margin-left: 23px; width: 82px; }
-.conta-col--b { margin-left: 4px; width: 102px; }
-.conta-icone { display: block; margin-top: 19px; height: 66px; }
-.conta-col--a .conta-icone { width: 82px; }
-.conta-col--b .conta-icone { width: 102px; }
-.conta-rotulo { text-align: center; color: #000; }
-.conta-col--a .conta-rotulo { width: 134px; margin: 0 0 0 -32px; }
-.conta-col--b .conta-rotulo { width: 69px; margin: 11px 0 0 13px; text-align: left; }
-.conta-sinal { display: block; width: 50px; margin-top: 30px; font-size: 48px; font-weight: 700; line-height: 45px; text-align: center; color: var(--verm); }
-.conta-sinal--div { margin-left: -8px; }
-.conta-sinal--mul { margin-left: -6px; }
-.conta-cem { display: block; width: 85px; margin: 26px 0 0 -12px; font-size: 48px; font-weight: 700; line-height: normal; text-align: center; color: #090909; }
+.bl-taxa .h-roxo { width: 362px; margin: 68.87px 0 0 20px; }
+.t-taxa { width: 362px; margin: 33px 0 0 20px; color: #000; }
+.t-taxa p + p { margin-top: 20px; }
 
-.t-mes { width: 350px; margin: 28px 0 0 26px; color: #000; }
-.caixa--resultado {
-  --w: 374px; width: 374px; height: 58px; margin: 27px 0 0 18px; padding: 0; border-radius: 16px; background: rgba(83, 47, 130, .2);
-}
-.caixa--resultado p { padding-top: 14px; font-size: 23px; font-weight: 700; line-height: normal; text-align: center; color: #090909; }
-
-/* =========================================================
-   BLOCO 4 — NÃO PARE NA MÉDIA  (2581 .. 3434)
-   ========================================================= */
-.faixa-media {
-  width: 403px; height: 76px; margin-top: 72px; padding: 12px 0 0 28px; box-sizing: border-box;
-  background: var(--verm); color: #fff; font-size: 24px; font-weight: 700; line-height: normal;
-}
-.faixa-media { padding-right: 80px; }
-.lista-dados { width: 350px; margin: 38px 0 0 26px; padding: 0; list-style: none; color: #000; }
+.bl-media .h-roxo { width: 362px; margin: 72.44px 0 0 20px; }
+.lista-dados { width: 362px; margin: 33px 0 0 20px; padding: 0; list-style: none; color: #000; }
 .lista-dados li { font-size: 18px; line-height: normal; }
 .lista-dados li + li { margin-top: 20px; }
-.t-informacoes { width: 350px; margin: 20px 0 0 26px; color: #000; }
-.foto-mesa { width: 402px; height: 276px; margin-top: 70px; overflow: hidden; position: relative; }
-.foto-mesa img { position: absolute; left: -13px; top: 0; width: 415px; height: 276px; max-width: none; }
+.t-informacoes { width: 362px; margin: 38.54px 0 0 20px; color: #000; }
+.foto-mesa { position: relative; width: 415px; height: 276.67px; margin: 60.77px 0 0 -6.5px; }
+.foto-mesa > img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.interr--a { left: 158.06px; top: -36.36px; width: 99.88px; height: 99.88px; }
+.interr--a b { left: 29.44px; top: 16.41px; width: 41px; font-size: 86.33px; line-height: 67.3px; }
 
 /* =========================================================
-   BLOCO 5 — QUANDO A MESA VAZIA PESA  (3434 .. 5020)
+   BLOCO 5 — QUANDO A MESA VAZIA PESA
    ========================================================= */
-.bl-mesa { margin-top: 51px; }
-.bl-mesa .h-roxo { margin: 0 0 0 24px; }
-.t-empório { width: 350px; margin: 27px 0 0 25px; color: #000; }
+.bl-mesa .h-roxo { width: 361px; margin: 53.49px 0 0 21px; }
+.t-empório { width: 358.55px; margin: 33px 0 0 21px; color: #000; }
 .t-empório p + p { margin-top: 20px; }
-.foto-gui { width: 323px; height: 323px; margin: 4px 0 0 40px; }
-.foto-gui img { width: 323px; height: 323px; display: block; }
-.leg-gui { width: 354px; margin: 13px 0 0 24px; font-weight: 700; font-style: italic; text-align: center; color: #000; }
 
-.caixa--card { --ml: 0px; border-radius: 14px; background: var(--roxo); color: #fff; }
-.caixa--receita { --ml: -24px; --w: 380px; padding: 45px 0 34px; margin-top: 43px; border-radius: 14px 14px 14px 14px; }
-.caixa--receita { margin-left: 24px; width: 356px; padding-left: 0; }
-.t-receita { width: 310px; margin-left: 27px; }
+.caixa--receita {
+  --ml: -4px; --w: 418.48px; min-height: 749.01px; margin-top: 58.11px;
+  background: var(--verm); color: #fff;
+}
+.caixa--receita .h-amarelo { width: 361px; margin: 40.89px 0 0 21px; }
+.t-receita { width: 358.55px; margin: 33.02px 0 0 21px; }
 .t-receita p + p { margin-top: 20px; }
-.t-receita .sub { margin-bottom: 0; }
+.t-receita .b + .b { margin-top: 20px; }
+.t-receita .b + p:not(.b) { margin-top: 0; }
+
+.foto-gui { position: relative; z-index: 1; width: 240px; height: 240px; margin: -126.94px 0 0 81px; }
+.foto-gui img { width: 240px; height: 240px; display: block; }
+.leg-gui { width: 354px; margin: 24.83px 0 0 24px; font-weight: 700; font-style: italic; text-align: center; color: var(--cinza, #666); }
 
 /* =========================================================
-   BLOCO 6 — ANTES DE COBRAR + 5 CAMINHOS  (5020 .. 6659)
+   BLOCO 6 — ANTES DE COBRAR + 5 CAMINHOS
    ========================================================= */
-.h-antes { margin: 36px 0 0 26px; }
-.t-antes { width: 350px; margin: 36px 0 0 26px; color: #000; }
+.bl-cobrar .h-vermelho { width: 359px; margin: 72px 0 0 20px; }
+.t-antes { width: 359px; margin: 33px 0 0 20px; color: #000; }
 .t-antes p + p { margin-top: 20px; }
 
-.caixa--passos {
-  width: 356px; margin: 109px 0 0 21px; padding: 0 0 44px; box-sizing: border-box;
-  border: 1px solid #f6ba00; border-radius: 14px; background: rgba(255, 220, 0, .1);
-  overflow: visible;
-}
-.cupula-passos {
-  width: 321px; height: 160.5px; margin: -75px 0 0 19px; position: relative;
-  background: url("../assets/gestao/el53.svg") 0 0 / 321px 160.5px no-repeat;
-}
-.cupula-passos h2 {
-  width: 239px; margin: 0 0 0 32px; padding-top: 75px;
-  font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: #fff;
-}
-.passos { margin: 0; padding: 0; list-style: none; }
-.passo { position: relative; width: 354px; margin-left: 1px; text-align: center; }
-.passo::before { content: ""; position: absolute; left: 30px; top: 33px; width: 295px; height: 2px; background: var(--am-esc); }
+.prato { position: relative; width: 307.3px; height: 307.3px; margin: 34.71px 0 0 47.35px; }
+.prato > img { position: relative; z-index: 1; display: block; width: 100%; height: 100%; }
+/* a bolinha fica atras da foto; a interrogacao, por cima, no canto superior direito */
+.prato .orb { position: absolute; z-index: 0; left: 28.74px; top: 204.13px; width: 38.7px; height: 38.7px; }
+.prato .interr--c { z-index: 2; left: 226px; top: 37px; width: 91.63px; height: 91.63px; }
+.interr--c b { left: 27px; top: 15.05px; width: 37.6px; font-size: 79.2px; line-height: 61.76px; }
+.prato .orb img { display: block; width: 100%; height: 100%; }
+
+.bl-cobrar .h-caminhos { width: 359px; margin: 34.7px 0 0 21.5px; }
+.passos { width: 360px; margin: 33.3px 0 0 21.5px; padding: 0; list-style: none; }
+.passo { position: relative; text-align: center; }
+.passo + .passo { margin-top: 22px; }
+.passo--1 { height: 128px; }
+.passo--2 { height: 129px; }
+.passo--3, .passo--4, .passo--5 { height: 146px; }
+.passo::before { content: ""; position: absolute; left: 0; top: 32.82px; width: 360px; height: 2px; border-radius: 1px; background: #f2a73f; }
 .passo-n {
-  position: relative; display: block; width: 66.6px; height: 33.3px; margin: 0 auto; padding-top: 4px; box-sizing: border-box;
-  background: url("../assets/gestao/el52.svg") 0 0 / 66.6px 33.3px no-repeat;
-  font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: normal; color: #fff;
+  position: absolute; left: 146.7px; top: 0; width: 66.6px; height: 33.31px; padding-top: 4.1px; box-sizing: border-box;
+  background: url("../assets/gestao/meio-circulo.svg") 0 0 / 66.6px 33.31px no-repeat;
+  font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: 27.67px; color: #fff;
 }
-.passo h3 { margin-top: 23px; font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; color: var(--roxo); }
-.passo p { color: #000; }
-.passo--1 { margin-top: 51px; }
-.passo--2 { margin-top: 23px; }
-.passo--3 { margin-top: 19px; }
-.passo--4 { margin-top: 20px; }
-.passo--5 { margin-top: 15px; margin-left: 6px; }
+.passo h3 { width: 354px; margin: 0 0 0 3px; padding-top: 56px; font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; color: var(--verm); }
+.passo p { width: 354px; margin-left: 3px; color: #000; }
 
 /* =========================================================
-   BLOCO 7 — DECIDIU COBRAR?  (6659 .. 7943)
+   BLOCO 7 — DECIDIU COBRAR? + FECHO
    ========================================================= */
-.h-decidiu { margin: 38px 0 0 24px; }
-.t-cdc { width: 350px; margin: 47px 0 0 24px; color: #000; }
-.t-cdc p + p { margin-top: 20px; }
-.fundo-checklist {
-  position: relative; width: 402px; height: 707px; margin-top: 60px;
-  background: url("../assets/gestao/fundo-checklist.jpg") 0 0 / 402px 707px no-repeat;
+.caixa--decidiu {
+  --ml: -89.17px; --w: 567px; min-height: 672.36px; margin-top: 112.57px;
+  border-radius: 280px 280px 0 0; background: var(--roxo); color: #fff;
 }
-.caixa--checklist { --ml: -22px; --w: 356px; margin-left: 22px; width: 356px; padding: 36px 0 52px; padding-left: 0; top: 44px; }
-.sub--lg { width: 310px; margin-left: 27px; }
-.t-certifique { width: 310px; margin: 17px 0 0 27px; }
-.checklist { width: 310px; margin: 22px 0 0 27px; padding: 0; list-style: none; white-space: pre-wrap; }
-.checklist li { font-size: 18px; font-weight: 700; line-height: normal; }
+.cadeira-circulo { position: absolute; left: 210.2px; top: -33.47px; width: 159.94px; height: 159.94px; }
+.cadeira-img { position: absolute; left: 227.6px; top: -51.59px; width: 120.29px; height: 174.91px; }
+.interr--b { left: 302.08px; top: -73.58px; width: 91.63px; height: 91.63px; }
+.interr--b b { left: 27px; top: 15.05px; width: 37.6px; font-size: 79.2px; line-height: 61.76px; }
+.caixa--decidiu .h-amarelo { width: 341px; margin: 178.44px 0 0 24px; }
+.t-cdc { width: 357px; margin: 42px 0 0 24px; }
+.t-cdc p + p { margin-top: 20px; }
+
+.t-checklist { width: 357px; margin: 46.86px 0 0 24px; color: #000; }
+.checklist { margin: 20px 0 0; padding: 0; list-style: none; }
+/* o emoji aumentaria a linha: altura fixa, como no Figma */
+.checklist li { font-size: 18px; font-weight: 700; line-height: 20px; }
 .checklist li + li { margin-top: 20px; }
 
-/* =========================================================
-   BLOCO 8 — A REGRA ESTÁ FUNCIONANDO?  (7943 .. 8786)
-   ========================================================= */
-.h-funciona { margin: 63px 0 0 26px; }
-.lista-vermelha { width: 350px; margin: 28px 0 0 26px; padding: 0; list-style: none; }
-.lista-vermelha li { font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; color: var(--verm); }
-.lista-vermelha li::before { content: "• "; color: var(--am-esc); }
-.lista-vermelha li + li { margin-top: 23px; }
-.t-fecho { width: 350px; margin: 49px 0 0 26px; padding-bottom: 57px; color: #000; }
-.t-fecho p + p { margin-top: 20px; }
+.t-fecho { width: 362.1px; margin: 63.79px 0 0 21.17px; padding-bottom: 31.44px; color: #000; }
 
 .gestao .foot { z-index: 0; }
-.t-empório p.junto { margin-top: 0; }
-.t-receita .ex + p { margin-top: 0; }
-.caixa--resultado p { padding-right: 8px; }
-.t-empório { padding-bottom: 20px; }
-.caixa--receita { padding-bottom: 54px; }
-.caixa--passos { border: 0; }
-.checklist { white-space: normal; }
-.checklist li { white-space: pre-wrap; }
-.sub--lg::before { content: none; }
