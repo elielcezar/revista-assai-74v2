@@ -30,14 +30,14 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="slide-in-left"],.fx-espera [data-fx="slide-in-right"],.fx-espera [data-fx="typewriter"] [data-fx-item],.fx-espera [data-fx="magnetic-pull"],.fx-espera [data-fx="scale-up"] [data-fx-item]{visibility:hidden}</style>
-<title>Boas ideias podem viralizar. Mas o que acontece depois? — Revista Assaí Bons Negócios #75</title>
-<meta name="description" content="Não foi uma ideia milionária e nem uma superprodução. Uma confeitaria de São Paulo (SP) descobriu que com um recurso simples é possível atrair o público e vender mais.">
+<style>.fx-espera [data-fx="slide-in-right"],.fx-espera [data-fx="typewriter"] [data-fx-item],.fx-espera [data-fx="magnetic-pull"],.fx-espera [data-fx="scale-up"] [data-fx-item]{visibility:hidden}</style>
+<title>Boas ideias podem viralizar. Mas, e depois? — Revista Assaí Bons Negócios #75</title>
+<meta name="description" content="Não foi uma ideia muito planejada e nem uma superprodução. Uma confeitaria de São Paulo (SP) descobriu que com um recurso simples é possível atrair o público. Descubra se isso a fez vender mais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/mkt.css?v=75-4">
+<link rel="stylesheet" href="css/mkt.css?v=75-7">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -128,11 +128,11 @@
       </button>
     </figure>
 
-    <!-- a cupula azul fica atras do texto; o arco colorido vem depois, por cima -->
+    <!-- a cupula em degrade fica atras do texto; o arco colorido vem depois, por cima -->
     <div class="caixa caixa--hero">
       <span class="hero-cupula" data-fx-item aria-hidden="true"></span>
-      <h1 class="hero-titulo" data-fx="magnetic-pull" data-fx-quando="scroll" data-fx-margem="100">Boas ideias podem viralizar.<br>Mas o que acontece depois?</h1>
-      <p class="hero-olho">Não foi uma ideia milionária e nem uma superprodução. Uma confeitaria de São Paulo (SP) descobriu que com um recurso simples é possível atrair o público e vender mais.</p>
+      <h1 class="hero-titulo" data-fx="magnetic-pull" data-fx-quando="scroll" data-fx-margem="100">Boas ideias podem viralizar. Mas, e depois?</h1>
+      <p class="hero-olho">Não foi uma ideia muito planejada e nem uma superprodução. Uma confeitaria de São Paulo (SP) descobriu que com um recurso simples é possível atrair o público. Descubra se isso a fez vender mais.</p>
       <div class="hero-assina">
         <p class="hero-edicao">#75 out . 26</p>
         <p class="hero-autor">Por: Mara Andrich</p>
@@ -140,88 +140,49 @@
     </div>
 
     <div class="backdrop" aria-hidden="true">
-      <span class="hero-arco" data-fx-item><img src="assets/mkt/crescente.svg" alt=""></span>
+      <span class="hero-arco" data-fx-item><img src="assets/mkt/arco-hero.svg" alt=""></span>
     </div>
   </section>
 
   <!-- ============ BLOCO 2 — COOKIES DANÇANTES + O RESULTADO ============ -->
   <section class="bl bl-cookies">
-    <h2 class="h-rosa">Cookies dançantes</h2>
     <div class="t-cookies">
-      <p>A ideia veio da filmmaker, social media e criadora de conteúdo Giulia Paié, filha da proprietária da confeitaria, Eunice Paié. A intenção inicial era fazer um vídeo comum dos cookes assando mas, ao brincar deslizando o dedo no vídeo percebeu que parecia que eles estavam dançando de um jeito divertido e sedutor.</p>
-      <p class="azul"><strong><em>Fez, refez e postou — sete tentativas depois.</em></strong></p>
-      <p>Pessoas de vários lugares assistiam ao vídeo uma vez e o repetiam várias vezes. “A música envolvente, que parecia que estava em looping e o fato de ter sido um vídeo curto foram pontos importantes para despertar o interesse”, analisa Giulia.</p>
+      <p>Quando você pensa em vender ou divulgar um produto, provavelmente imagina fotos, anúncios ou vídeos mostrando que ele está disponível. Mas e se esse produto pudesse simplesmente dançar uma música animada? Foi o que a confeitaria Sweet Love&amp;Nice, de São Paulo (SP) fez para chamar a atenção nas redes. Um vídeo em que cookies fazem uma coreografia dentro do forno alcançou 11 milhões de visualizações no mês de setembro.</p>
+      <p>A ideia veio da <em>filmmaker</em> e criadora de conteúdo Giulia Paié, filha da proprietária da confeitaria, Eunice Paié. A intenção inicial era fazer um vídeo comum dos cookies assando mas, ao brincar deslizando o dedo no vídeo percebeu que parecia que eles estavam dançando de um jeito divertido e sedutor.</p>
+      <p>Fez, refez e — sete tentativas depois — postou. Pessoas de vários lugares assistiam ao vídeo repetidas vezes. “A música envolvente, que parecia que estava em looping e o fato de ter sido um vídeo curto foram pontos importantes para despertar o interesse”, analisa Giulia.</p>
     </div>
 
-    <!-- cupula azul em degrade; a foto sai pelo topo e a mao com o cookie pela base -->
+    <!-- a mao com o cookie fica por cima da cupula vermelha -->
+    <figure class="cookie" data-fx="slide-in-right" data-fx-quando="scroll" data-fx-margem="100"><img src="assets/mkt/cookies.png" alt="Mão segurando um cookie recheado" width="337" height="333"></figure>
+
     <div class="caixa caixa--resultado">
-      <figure class="duas" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/mkt/ellipse148.png" alt="Giulia Paié e a mãe, Eunice Paié, sorrindo" width="251" height="251"></figure>
-      <h2 class="h-resultado">O resultado: a confeitaria disparou nos pedidos.</h2>
+      <h2 class="h-resultado">O resultado</h2>
       <div class="t-resultado">
-        <p>Giulia não sabe mensurar, ao certo, a quantidade de vendas em números absolutos. Mas tem certeza que triplicou a quantidade de encomendas. “Minha mãe teve que correr para dar conta, mas conseguiu”, conta Giulia.</p>
-        <p>O perfil da própria Giulia também registrou um aumento de cerca de 10 mil seguidores. A maior parte deles de São Paulo (SP).</p>
+        <p>Giulia não sabe mensurar, ao certo, a quantidade de vendas em números absolutos mas afirma ter certeza que triplicou a quantidade de encomendas. “Minha mãe teve que correr para dar conta, mas conseguiu”, conta Giulia.</p>
+        <p>O perfil da própria Giulia, que ensina técnicas para criar conteúdos para as redes sociais também registrou um aumento de cerca de 10 mil seguidores. A maior parte deles de São Paulo (SP).</p>
+        <p>Tempos depois, a marca O Boticário entrou em contato e enviou alguns mimos para a confeitaria sugerindo uma “publi”. Entre os produtos havia o perfume que tem notas de baunilha, matchá e ube. A combinação acabou virando inspiração para que a confeitaria criasse um sabor novo para seus cookies.</p>
       </div>
-      <figure class="cookie" data-fx="slide-in-right" data-fx-quando="scroll" data-fx-margem="100"><img src="assets/mkt/cookies.png" alt="Mão segurando um cookie recheado" width="257" height="254"></figure>
     </div>
+    <figure class="duas" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/mkt/ellipse148.png" alt="Giulia Paié e a mãe, Eunice Paié, sorrindo" width="251" height="251"></figure>
+    <p class="leg-duas">Giulia e Eunice Paié</p>
   </section>
 
-  <!-- ============ BLOCO 3 — O VÍDEO FOI MAIS LONGE ============ -->
-  <section class="bl bl-longe">
-    <h2 class="h-rosa h-longe">Mas o vídeo foi mais longe</h2>
-    <p class="t-boticario">O Boticário gostou tanto que entrou em contato e enviou alguns mimos para a confeitaria. Entre cremes hidratantes e body splashes havia o perfume que tem notas de baunilha, matchá e ube. Uma combinação de “ingredientes” que acabou virando inspiração para que a confeitaria criasse um sabor novo para seus cookies. A “publi” resultou também em um novo vídeo onde agora os cookies também falam.</p>
-
-    <figure class="video video--clip">
-      <video src="assets/mkt/video-mkt-web.mp4" poster="assets/mkt/poster-clip.jpg"
-             width="425" height="439" autoplay muted loop playsinline preload="metadata"
-             aria-label="Vídeo: mais um dia no cookieverso, com os cookies falando"></video>
-      <button class="video-sound" type="button" aria-label="Ativar o som do vídeo" aria-pressed="false">
-        <img class="video-sound-bg" src="assets/mkt/ellipse6.svg" alt="">
-        <img class="video-sound-ico" src="assets/mkt/sound.png" alt="">
-      </button>
-    </figure>
-  </section>
-
-  <!-- ============ BLOCO 4 — O VIRAL NÃO GARANTE VENDAS ============ -->
+  <!-- ============ BLOCO 3 — VIRAL NÃO GARANTE VENDAS ============ -->
   <section class="bl bl-viral">
-    <h2 class="h-rosa h-viral">O viral não garante vendas</h2>
-    <p class="t-pergunta">Um vídeo viral pode colocar uma empresa diante de milhões de pessoas ao mesmo tempo. Mas essas pessoas vão comprar?</p>
+    <h2 class="h-viral">Viral não garante vendas</h2>
+    <p class="t-pergunta">Uma postagem pode colocar uma empresa diante de milhões de pessoas ao mesmo tempo. Mas essas pessoas vão comprar?</p>
     <blockquote class="q-giulia" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100">
-      <p data-fx-item>“Um vídeo viral como foi o nosso atinge pessoas do Brasil inteiro, mas não necessariamente o fato de ele ter estourado vai converter em seguidores e/ou vendas, que é o mais importante. Muitas vezes ele viraliza, mas atinge as pessoas erradas, ou pessoas que não são da sua cidade”, Giulia Paié.</p>
+      <p data-fx-item><span class="q-texto">“Um vídeo viral como foi o nosso atinge pessoas do Brasil inteiro, mas não necessariamente o fato de ele ter estourado vai converter em seguidores e/ou vendas, que é o mais importante. Muitas vezes ele viraliza, mas atinge as pessoas erradas, ou pessoas que não são da sua cidade”</span><span class="q-autora">, alerta Giulia Paié.</span></p>
     </blockquote>
     <div class="t-edna">
-      <p>A professora de Negócios Digitais e Comportamento do Consumidor da FAE Centro Universitário, Edna Cicmanec, ressalta que a viralização é uma oportunidade, mas a atenção do público pode desaparecer tão rápido quanto apareceu.</p>
-      <p>Para transformar a atenção em resultado de vendas, é preciso conectar algumas peças: conteúdo atraente + público qualificado + atendimento preparado.</p>
-      <p>A ideia rendeu algumas novas versões mas Giulia preferiu lançar mão de outros formatos — inclusive os mais tradicionais — para não saturar a ideia. “Queríamos converter o hype em pessoas que queriam estar ali no perfil mesmo”, diz.</p>
+      <p>A viralização, de fato, é uma oportunidade, mas a atenção do público pode desaparecer tão rápido quanto apareceu.</p>
+      <p>Para transformar a atenção em resultado de vendas, é preciso conectar algumas coisas:</p>
     </div>
-    <figure class="foto-cookies"><img src="assets/mkt/captura.jpg" alt="Cookies sobre uma grelha, um deles com barra de chocolate por cima" width="414" height="498"></figure>
-    <!-- um banner por vez, sorteado a cada carregamento; o primeiro aparece mesmo sem JS -->
-    <figure class="adbox" data-ad-random='[
-      {"src":"assets/mkt/davene.png","alt":"Davene La Flore — transforme o banho em um momento de autocuidado"},
-      {"src":"assets/mkt/neutrox.png","alt":"Neutrox — conheça a linha completa"},
-      {"src":"assets/mkt/daiagro.png","alt":"Dai Alimentos — qualidade que dá gosto, desde 2001"}]'>
-      <img src="assets/mkt/davene.png" alt="Davene La Flore — transforme o banho em um momento de autocuidado" width="375" height="391">
-    </figure>
-  </section>
-
-  <!-- ============ BLOCO 5 — O BÁSICO BEM FEITO TAMBÉM FUNCIONA ============ -->
-  <section class="bl bl-basico">
-    <div class="capa-basico"><h2>O básico bem feito também funciona</h2></div>
-    <p class="t-pequeno">Para um pequeno negócio algumas estratégias costumam funcionar sem precisar viralizar:</p>
-    <ul class="pilulas" data-fx="slide-in-up" data-fx-margem="200">
-      <li data-fx-item>Criar a partir de perguntas que os clientes já fazem</li>
-      <li data-fx-item>Criar conteúdos que ensina algo relacionado ao seu produto</li>
-      <li data-fx-item>Compartilhar experiências de outros clientes</li>
-      <li data-fx-item>Mostrar o processo de criação, fabricação ou atendimento</li>
+    <ul class="pilulas-mais">
+      <li>conteúdo atraente</li>
+      <li>público qualificado</li>
+      <li>atendimento preparado</li>
     </ul>
-    <p class="t-mais">Mais algumas coisas que agradam os algorítmos e aumentam o alcance:</p>
-    <ul class="pilulas pilulas--2" data-fx="slide-in-up" data-fx-margem="200">
-      <li data-fx-item>Deixar a ideia principal aparecer logo nos primeiros segundos.</li>
-      <li data-fx-item>Mostrar o produto com clareza</li>
-      <li data-fx-item>Manter presença constante</li>
-      <li data-fx-item>Deixar claro a área de atuação. Bairro, cidade, país inteiro…</li>
-      <li data-fx-item>Encerrar com um convite simples para visitar a loja ou fazer uma encomenda.</li>
-    </ul>
-    <p class="t-giulia">Mesmo Giulia sendo da área, ela garante que é possível fazer mesmo sem ter uma equipe de profissionais. “O essencial é tentar manter a constância nas redes (mesmo que sua constância seja 2 vezes na semana), testar diferentes formatos e estar aberto à criatividade, além de se atentar às trends”.</p>
 
     <figure class="video video--circulo">
       <span class="anel"><video src="assets/mkt/video-mkt2-web.mp4" poster="assets/mkt/poster-circulo.jpg"
@@ -232,29 +193,53 @@
         <img class="video-sound-ico" src="assets/mkt/sound.png" alt="">
       </button>
     </figure>
+
+    <!-- um banner por vez, sorteado a cada carregamento; o primeiro aparece mesmo sem JS -->
+    <figure class="adbox" data-ad-random='[
+      {"src":"assets/mkt/davene.png","alt":"Davene La Flore — transforme o banho em um momento de autocuidado"},
+      {"src":"assets/mkt/neutrox.png","alt":"Neutrox — conheça a linha completa"},
+      {"src":"assets/mkt/daiagro.png","alt":"Dai Alimentos — qualidade que dá gosto, desde 2001"}]'>
+      <img src="assets/mkt/davene.png" alt="Davene La Flore — transforme o banho em um momento de autocuidado" width="375" height="391">
+    </figure>
   </section>
 
-  <!-- ============ BLOCO 6 — QUER ENTRAR NA TREND? ============ -->
+  <!-- ============ BLOCO 4 — O BÁSICO BEM FEITO TAMBÉM FUNCIONA ============ -->
+  <section class="bl bl-basico">
+    <div class="capa-basico"><h2>O básico bem feito também funciona</h2></div>
+    <p class="t-pequeno">Para um pequeno negócio algumas estratégias costumam funcionar sem precisar viralizar:</p>
+    <ul class="pilulas pilulas--a" data-fx="slide-in-up" data-fx-margem="200">
+      <li data-fx-item>Criar a partir de perguntas que os clientes já fazem</li>
+      <li data-fx-item>Criar conteúdos que ensina algo relacionado ao seu produto</li>
+      <li data-fx-item>Compartilhar experiências de outros clientes</li>
+      <li data-fx-item>Mostrar o processo de criação, fabricação ou atendimento</li>
+    </ul>
+    <p class="t-mais">Mais algumas coisas que agradam os algoritmos e aumentam o alcance:</p>
+    <ul class="pilulas pilulas--b" data-fx="slide-in-up" data-fx-margem="200">
+      <li data-fx-item>Deixar a ideia principal aparecer logo nos primeiros segundos.</li>
+      <li data-fx-item>Mostrar o produto com clareza</li>
+      <li data-fx-item>Manter presença constante</li>
+      <li data-fx-item>Deixar claro a área de atuação. Bairro, cidade, país inteiro…</li>
+      <li data-fx-item>Encerrar com um convite simples para visitar a loja ou fazer uma encomenda.</li>
+    </ul>
+    <p class="t-giulia">Mesmo Giulia sendo da área de marketing digital e produção de vídeos, ela garante que é possível fazer algo muito bom sem ter uma equipe de profissionais. “O essencial é tentar manter a constância nas redes (mesmo que sua constância seja 2 vezes na semana), testar diferentes formatos e estar aberto à criatividade, além de se atentar às <em>trends</em>”.</p>
+  </section>
+
+  <!-- ============ BLOCO 5 — QUER ENTRAR NA TREND? ============ -->
   <section class="bl bl-trend">
-    <!-- a pagina termina em azul com a base arredondada: o fundo e a propria caixa -->
+    <!-- fundo em degrade: e a propria caixa; a pagina termina cortando a cupula -->
     <div class="caixa caixa--trend">
-      <h2 class="h-trend">Quer entrar na trend?</h2>
-      <ol class="passos">
-        <li data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><strong>1 - Comece pelo forno</strong><br>Com o celular, grave os doces enquanto assam usando o timelapse — recurso que acelera o movimento e transforma minutos em poucos segundos.</li>
-        <li data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><strong>2 - Escolha uma música</strong><br>A música ajuda a definir o ritmo que os cookies vão seguir.</li>
-        <li data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><strong>3 - Use um segundo aparelho</strong><br>Dê play na música em outro celular ou dispositivo. A ideia é ter o áudio tocando enquanto você trabalha o movimento do vídeo.</li>
-        <li data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><strong>4 - Voltar para o celular</strong><br>Ative a função de gravação de tela. Agora, o vídeo e a música podem ser capturados juntos. Voltar no vídeo gravado no timelapse e dar o play na música novamente</li>
-        <li data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><strong>5 - Hora de testar a dança</strong><br>Volte ao vídeo gravado em timelapse.<br>Dê play na música novamente e comece a brincar com o movimento.</li>
-        <li data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><strong>6 - Acelere. Desacelere.</strong><br>É aqui que os cookies ganham personalidade. Use o vai e vem do vídeo para alternar os movimentos: mais rápido, mais devagar, rápido de novo. A ideia é criar a sensação de que os cookies estão dançando no ritmo da música.</li>
-        <li data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><strong>7 - Finalize no CapCut.</strong><br>Abra o vídeo no CapCut, editor de vídeo gratuito. Coloque: vídeo + música e sincronize os dois.</li>
-      </ol>
-      <p class="pronto"><strong class="am">Pronto.</strong><br>Não foi preciso uma grande produção. Foi preciso observar o movimento, encontrar um ritmo e transformar cookies em personagens.</p>
+      <h2 class="h-trend">Quer entrar na <em>trend</em>?<span>Siga o passo a passo preparado pela Giulia</span></h2>
+      <!-- comeca mudo, em loop; o botao liga o som (js/mkt.js) -->
+      <figure class="video trend-video">
+        <video src="assets/mkt/giulia-web.mp4" poster="assets/mkt/trend-video.jpg"
+               width="540" height="960" autoplay muted loop playsinline preload="metadata"
+               aria-label="Vídeo: Giulia Paié explica o passo a passo para gravar os cookies dançantes"></video>
+        <button class="video-sound" type="button" aria-label="Ativar o som do vídeo" aria-pressed="false">
+          <img class="video-sound-bg" src="assets/mkt/ellipse6.svg" alt="">
+          <img class="video-sound-ico" src="assets/mkt/sound.png" alt="">
+        </button>
+      </figure>
     </div>
-  </section>
-
-  <!-- ============ BLOCO 7 — FECHO ============ -->
-  <section class="bl bl-fecho">
-    <p class="t-cuidados">Alguns cuidados que Giulia teve foi desligar todas as luzes e cortinas da casa e deixou apenas a luz do forno ligada, para não aparecer os reflexos.</p>
   </section>
 
   </article>

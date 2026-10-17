@@ -1,18 +1,20 @@
 /* =========================================================
    Revista Assaí Bons Negócios #75 — pagina MKT DIGITAL
-   Figma: 6934:6616 — 402 x 8311 (HEAD de 182 incluso)
+   Figma: 6941:8350 (arquivo aquTnQHLWwiogtzEAG9qyp) — 402 x 6552 (HEAD de 182 incluso)
    Requer css/base.css (fontes, reset, tokens, head, rodape).
 
    Fundos coloridos que ficam atras de texto sao a propria caixa do texto
    (.caixa), nunca uma forma absoluta separada. As cupulas (567px, raio 280)
    sao mais largas que a coluna: margem negativa, e o bloco corta o que sobra.
+   O banner rotativo (.adbox) nao existe no Figma: entra depois do video em circulo
+   e empurra o que vem abaixo (altura da imagem + 46px).
    ========================================================= */
 
 .mkt .head { --head-bg: var(--laranja); }
 
 .page {
-  --azul-c: #0082c8;
-  --grad-az: linear-gradient(90deg, #00adee, #006388);
+  --teal: #00bebe;
+  --grad-av: linear-gradient(-75.95deg, #e30613 11.52%, #ffdc00 118.65%);
 }
 
 .bl {
@@ -23,17 +25,13 @@
 }
 .bl p { font-size: 18px; line-height: normal; }
 .bl strong { font-weight: 700; }
-.am { color: var(--amarelo); }
+.bl em { font-style: italic; }
 
 .backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 3; }
 .backdrop span { position: absolute; display: block; }
 .backdrop img { width: 100%; height: 100%; }
 
-.caixa { position: relative; display: flow-root; }
-
-.h-rosa {
-  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--pink);
-}
+.caixa { position: relative; display: flow-root; margin-left: var(--ml, 0); width: var(--w, 402px); padding-left: calc(-1 * var(--ml, 0px)); box-sizing: border-box; }
 
 /* videos: coluna de 402; o botao de som e peca presa a cada um */
 .video { position: relative; }
@@ -43,31 +41,30 @@
 .video-sound-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
 
 /* =========================================================
-   BLOCO 1 — ABERTURA  (182 .. 1326)
+   BLOCO 1 — ABERTURA  (182 .. 1123)
    ========================================================= */
 .video--hero { width: 402px; height: 654px; overflow: hidden; }
 .video--hero video { position: absolute; left: 0; top: 0; width: 402px; height: 654px; }
-.video--hero .video-sound { left: 337px; top: 476px; }
+.video--hero .video-sound { left: 337px; top: 392.06px; z-index: 4; }
 
-.hero-arco { left: -80px; top: 468px; width: 491px; height: 232.5px; }
+.hero-arco { left: -108.38px; top: 372px; width: 572.77px; height: 271.22px; }
 
 .caixa--hero {
   position: relative; z-index: 2;
-  width: 402px; margin-top: -143px; padding: 118px 0 46px;
+  width: 402px; min-height: 526.48px; margin-top: -239.44px; padding-top: 93.05px;
   color: #fff;
 }
 .hero-cupula {
-  position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    url("../assets/mkt/capa.svg") -29px 0 / 431px 189.5px no-repeat,
-    linear-gradient(var(--azul-c), var(--azul-c)) 0 138px / 100% 100% no-repeat;
+  position: absolute; top: 0; bottom: 0; left: -82.5px; width: 567px; z-index: -1; pointer-events: none;
+  border-radius: 280px 280px 0 0;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(90deg, #06ffe1 39.423%, #718096 100%);
 }
-.hero-titulo { width: 373px; margin-left: 27px; font-size: 48px; font-weight: 700; line-height: 55px; }
+.hero-titulo { width: 362.2px; margin-left: 18.41px; font-size: 46.613px; font-weight: 700; line-height: normal; }
 .hero-olho {
-  width: 332px; margin: 33px 0 0 28px;
+  width: 360.7px; margin: 27.85px 0 0 19.91px;
   font-size: 20px !important; line-height: 23px !important; font-style: italic;
 }
-.hero-assina { width: 138px; margin: 40px 0 0 24px; }
+.hero-assina { width: 138px; margin: 33.26px 0 0 19.91px; }
 .hero-edicao {
   padding: 2px 15px; background: var(--laranja); color: #fff;
   font-size: 20px !important; font-weight: 500; text-align: center; white-space: nowrap;
@@ -75,105 +72,115 @@
 .hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; white-space: nowrap; }
 
 /* =========================================================
-   BLOCO 2 — COOKIES DANÇANTES + O RESULTADO  (1326 .. 2672)
+   BLOCO 2 — COOKIES DANÇANTES + O RESULTADO  (1186 .. 2858)
    ========================================================= */
-.h-rosa { width: 351px; }
-.bl-cookies .h-rosa { margin: 47px 0 0 27px; }
-.t-cookies { width: 327px; margin: 31px 0 0 27px; padding-bottom: 219px; color: #000; }
+.t-cookies { width: 363.5px; margin: 63.43px 0 0 19.91px; color: #000; }
 .t-cookies p + p { margin-top: 20px; }
-.t-cookies .azul { color: var(--azul-c); }
+
+.cookie { position: relative; z-index: 1; width: 336.85px; height: 333.33px; margin: 16.49px 0 0 -10.52px; }
+.cookie img { display: block; width: 100%; height: 100%; }
 
 .caixa--resultado {
-  width: 567px; margin-left: -94px; padding: 92px 0 0 94px; border-radius: 280px 280px 0 0;
-  background-image: var(--grad-az); color: #fff;
-  position: relative; z-index: 0;
+  --ml: -88.02px; --w: 567px; min-height: 897.04px; margin-top: -245.75px;
+  border-radius: 280px 280px 0 0; background-image: var(--grad-av); color: #fff;
 }
-.duas { position: relative; width: 251px; height: 251px; margin: -279px 0 0 75.5px; }
-.duas img { width: 251px; height: 251px; }
-.h-resultado { width: 334px; margin: 28px 0 0 26px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; }
-.t-resultado { width: 331px; margin: 39px 0 0 35px; }
-.t-resultado p { font-size: 20px !important; font-weight: 700; font-style: italic; }
+.h-resultado {
+  width: 362px; margin: 245.75px 0 0 20px; text-align: center;
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--amarelo);
+}
+.t-resultado { width: 362px; margin: 33px 0 0 20px; }
 .t-resultado p + p { margin-top: 20px; }
-.cookie { position: relative; width: 257px; height: 254px; margin: 7px 0 -146px -12px; }
-.cookie img { width: 257px; height: 254px; }
+
+.duas { position: relative; z-index: 1; width: 251px; height: 251px; margin: -116.16px 0 0 75.5px; }
+.duas img { display: block; width: 251px; height: 251px; }
+.leg-duas { width: 362px; margin: 36.21px 0 0 20px; text-align: center; font-weight: 700; font-style: italic; color: var(--cinza); }
 
 /* =========================================================
-   BLOCO 3 — O VÍDEO FOI MAIS LONGE  (2672 .. 3421)
+   BLOCO 3 — VIRAL NÃO GARANTE VENDAS  (2953 .. 4262)
    ========================================================= */
-.h-longe { margin: 149px 0 0 32px; }
-.t-boticario { width: 337px; margin: 22px 0 0 36px; color: #090909; }
-.video--clip { width: 425px; height: 439px; margin: 69px 0 0 -11px; }
-.video--clip video { width: 425px; height: 439px; }
-.video--clip .video-sound { left: 334px; top: -19px; }
-
-/* =========================================================
-   BLOCO 4 — O VIRAL NÃO GARANTE VENDAS  (3421 .. 4971)
-   ========================================================= */
-.h-viral { margin: 42px 0 0 26px; text-align: center; }
-.t-pergunta { width: 351px; margin: 32px 0 0 26px; font-weight: 700; text-align: center; color: #000; }
-.q-giulia { width: 346px; margin: 76px 0 0 33px; }
-.q-giulia p { height: 319px; font-size: 26px !important; font-weight: 700; color: var(--azul-c); }
-.t-edna { width: 336px; margin: 65px 0 0 31px; padding-bottom: 0; color: #090909; }
+.h-viral {
+  width: 362px; margin: 74.41px 0 0 20px;
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--laranja);
+}
+.t-pergunta { width: 362px; margin: 33px 0 0 20px; color: #000; }
+.q-giulia { width: 362px; margin: 41px 0 0 20px; }
+.q-texto { font-size: 20px; font-weight: 700; color: var(--laranja); }
+.q-autora { font-weight: 400; color: #000; }
+.t-edna { width: 362px; margin: 41px 0 0 20px; color: #000; }
 .t-edna p + p { margin-top: 20px; }
-.foto-cookies { width: 414px; height: 498px; margin: 51px 0 0 -8px; }
-.foto-cookies img { width: 414px; height: 498px; }
-.adbox { width: 402px; }
-.adbox img { display: block; width: 402px; height: auto; }
 
-/* =========================================================
-   BLOCO 5 — O BÁSICO BEM FEITO TAMBÉM FUNCIONA  (4971 .. 6826)
-   ========================================================= */
-.capa-basico {
-  width: 271px; height: 136px; margin: 40px 0 0 61px;
-  background: url("../assets/mkt/capa2.svg") 0 0 / 271px 135.5px no-repeat;
-}
-.capa-basico h2 {
-  width: 201px; margin: 0 0 0 31px; padding-top: 55px;
-  font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; color: #fff;
-}
-.t-pequeno, .t-mais { width: 337px; margin-left: 28px; font-weight: 700; text-align: center; color: #000; }
-.t-pequeno { margin-top: 25px; }
-.pilulas { width: 362px; margin: 33px 0 0 20px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 11px; }
-.pilulas li {
-  height: 75px; padding: 0 17px 0 0;
+/* tres pilulas ligadas por circulos com "+" */
+.pilulas-mais { width: 362px; margin: 41px 0 0 20px; padding: 0; list-style: none; }
+.pilulas-mais li {
+  position: relative; height: 75px; padding: 0 31.5px 0 14.5px; box-sizing: border-box;
   display: flex; align-items: center; justify-content: center;
-  border-radius: 21px; background: var(--azul-c); color: #fff;
-  font-size: 18px; font-weight: 700; line-height: normal; text-align: center;
+  border-radius: 21px; background: var(--teal); color: #fff;
+  font-size: 21px; font-weight: 700; line-height: normal; text-align: center;
 }
-.pilulas li { padding-left: 23px; }
-.pilulas--2 { margin-top: 0; }
-.t-mais { margin-top: 40px; }
-.t-mais + .pilulas { margin-top: 23px; }
-.t-giulia { width: 342px; margin: 77px 0 0 34px; color: #090909; }
+.pilulas-mais li + li { margin-top: 67px; }
+.pilulas-mais li + li::before {
+  content: ""; position: absolute; left: 163.5px; top: -51px; width: 35px; height: 35px; opacity: .69;
+  background: url("../assets/mkt/mais1.svg") 0 0 / 35px 35px no-repeat;
+}
+.pilulas-mais li:nth-child(3)::before { background-image: url("../assets/mkt/mais2.svg"); }
+.pilulas-mais li + li::after {
+  content: "+"; position: absolute; left: 172px; top: -52px; width: 18px; height: 37px; opacity: .69;
+  font-size: 33px; font-weight: 700; line-height: 37px; text-align: center; color: #fff;
+}
 
-.video--circulo { width: 364px; height: 364px; margin: 77px 0 0 19px; }
+.video--circulo { width: 364px; height: 364px; margin: 47.35px 0 0 19px; }
 .anel {
-  display: block; width: 364px; height: 364px; padding: 10px; border-radius: 50%;
-  background: linear-gradient(225deg, #ffaa00 0%, #ff5564 60%, #ff5564 100%);
+  display: block; width: 364px; height: 364px; padding: 10px; border-radius: 50%; box-sizing: border-box;
+  background: url("../assets/mkt/anel.png") 0 0 / 364px 364px no-repeat;
 }
 .video--circulo video { width: 344px; height: 344px; border-radius: 50%; }
 .video--circulo .video-sound { left: 273px; top: 302px; }
 
-/* =========================================================
-   BLOCO 6 — QUER ENTRAR NA TREND?  (6826 .. 7992)
-   ========================================================= */
-.bl-trend { margin-top: 48px; padding-bottom: 0; position: relative; z-index: 1; }
-.caixa--trend {
-  width: 502px; margin-left: -50px; padding: 64px 0 0 50px;
-  border-radius: 0 0 280px 280px;
-  background-image: var(--grad-az); color: #fff;
-}
-.h-trend { width: 351px; margin-left: 7px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
-.passos { width: 332px; margin: 33px 0 0 46px; padding: 0; list-style: none; }
-.passos li { font-size: 18px; line-height: normal; }
-.passos li strong { color: var(--amarelo); }
-.passos li + li { margin-top: 20px; }
-.pronto { width: 318px; margin: 35px 0 0 49px; padding-bottom: 107px; }
-.pronto, .pronto strong { font-weight: 700; }
+.adbox { width: 402px; margin-top: 46px; }
+.adbox img { display: block; width: 402px; height: auto; }
 
 /* =========================================================
-   BLOCO 7 — FECHO  (7992 .. 8196)
+   BLOCO 4 — O BÁSICO BEM FEITO TAMBÉM FUNCIONA  (4308 .. 5530)
    ========================================================= */
-.bl-fecho { margin-top: -50px; padding-top: 135px; padding-bottom: 39px; background: linear-gradient(#fff, #ffdc00 370px); }
-.t-cuidados { width: 341px; margin-left: 35px; font-weight: 700; color: #090909; }
-.mkt .foot { background: linear-gradient(rgb(255, 231, 79), rgb(255, 227, 48) 45px, rgb(255, 220, 0)); }
+.capa-basico {
+  width: 271px; height: 135.5px; margin: 46.15px 0 0 65.5px;
+  background: url("../assets/mkt/capa2.svg") 0 0 / 271px 135.5px no-repeat;
+}
+.capa-basico h2 {
+  width: 201px; margin: 0 0 0 30.5px; padding-top: 55px;
+  font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; color: #fff;
+}
+.t-pequeno, .t-mais { width: 337px; margin-left: 28px; text-align: center; color: #000; }
+.t-pequeno { margin-top: 43.01px; }
+.t-mais { margin-top: 63.16px; }
+.pilulas { width: 362px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; margin-left: 20px; }
+.pilulas--a { margin-top: 33px; }
+.pilulas--b { margin-top: 24px; }
+.pilulas li {
+  height: 75px; padding: 0 31.5px 0 14.5px; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 21px; color: #fff;
+  font-size: 18px; font-weight: 700; line-height: normal; text-align: center;
+}
+.pilulas--a li { background: var(--teal); }
+.pilulas--b li { background: var(--laranja); }
+.t-giulia { width: 360.5px; margin: 49.82px 0 0 21.5px; color: #090909; }
+
+/* =========================================================
+   BLOCO 5 — QUER ENTRAR NA TREND?  (5763 .. 6436)
+   ========================================================= */
+.bl-trend { height: 673px; margin-top: 73.02px; overflow: clip; }
+.caixa--trend {
+  --ml: -71.5px; --w: 567px; height: 897.04px;
+  border-radius: 0 0 280px 280px; background-image: var(--grad-av); color: #fff; text-align: center;
+}
+.h-trend {
+  width: 362px; margin: 47.44px 0 0 21.5px;
+  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--amarelo);
+}
+.h-trend em { font-style: italic; }
+.h-trend span { display: block; font-size: 18px; font-weight: 400; text-transform: none; color: #fff; }
+.trend-video { width: 358.79px; height: 513.25px; margin: 40.56px 0 0 21.5px; }
+.trend-video video { width: 100%; height: 100%; }
+.trend-video .video-sound { left: 304px; top: 458px; }
+
