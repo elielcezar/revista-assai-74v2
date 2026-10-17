@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/produto.css?v=75-3">
+<link rel="stylesheet" href="css/produto.css?v=75-4">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -117,55 +117,39 @@
 
   <!-- ============ BLOCO 1 — ABERTURA ============ -->
   <section class="bl bl-hero">
-    <!-- anel azul, arcos vermelhos e a faixa clara atras do titulo -->
+    <!-- meia-elipse da foto, arco azul embaixo dela e a faixa clara atras da tag -->
     <div class="backdrop" aria-hidden="true">
-      <span class="hero-anel"><img src="assets/produto/subtract.svg" alt=""></span>
-      <span class="hero-arcos"><img src="assets/produto/camada2.svg" alt=""></span>
+      <span class="hero-foto"><img src="assets/produto/hero-bowl.jpg" alt="" width="838" height="419"></span>
+      <span class="hero-arco"><img src="assets/produto/subtract.svg" alt=""></span>
       <span class="hero-faixa"></span>
-    </div>
-    <figure class="hero-foto"><img src="assets/produto/hero-bowl.jpg" alt="Mão com luva preta corta tomates sobre uma tábua de madeira" width="402" height="434"></figure>
-    <div class="hero-assina">
-      <p class="hero-edicao">#75 out. 26</p>
-      <p class="hero-autor">Por: Carol Belisse</p>
     </div>
     <h1 class="hero-titulo" data-fx="popcorn-pop" data-fx-margem="100"><span class="hero-t1">Luva ou</span><span class="hero-t2">mão lavada?</span></h1>
     <p class="hero-olho">Entre a segurança no preparo e a percepção do cliente, entenda quando usar luvas e por que elas exigem mais cuidados do que aparentam.</p>
+    <div class="hero-assina">
+      <p class="hero-edicao">#75 out. 26</p>
+      <p class="hero-autor">Por: Manoela Leão</p>
+    </div>
     <div class="t-hero">
-      <p>Em uma cozinha profissional, ver alguém de luvas manipulando alimentos pode transmitir segurança. Já as mãos sem luva podem despertar desconfiança no cliente, especialmente na montagem de sanduíches, saladas e sobremesas. Mas essa impressão não revela, sozinha, se o alimento está sendo preparado com higiene.</p>
-      <p>Foi esse desafio que a Joe Hamburgueria Artesanal enfrentou após a publicação de um vídeo em que uma funcionária encosta o dedo no sorvete. Segundo o empreendedor, a cena gerou polêmica e comentários que questionavam o contato direto com o alimento e a ausência de luvas. “E sinceramente, olhando rápido, eu entendo que estranhou”, diz.</p>
+      <p>Em uma cozinha profissional, ver alguém de luvas manipulando alimentos pode transmitir segurança. Já as mãos sem luva costumam despertar desconfiança no cliente, especialmente na montagem de sanduíches, saladas e sobremesas.</p>
+      <p>O enfrentamento desse desafio é ainda maior quando os preparos são compartilhados nas redes sociais. É comum, após uma publicação deste tipo, choverem comentários e questionamentos sobre a mão que toca o alimento.</p>
+      <p>Mas essa impressão não revela, sozinha, se o alimento está sendo preparado com higiene. Dependendo da forma de como a luva é usada, ela pode até piorar a contaminação. Porque a pessoa coloca a luva e automaticamente sente uma falsa segurança, não sente a sujeira diretamente nas mão. Uma luva suja contamina um alimento pro outro sem ninguém perceber.</p>
     </div>
   </section>
 
-  <!-- ============ BLOCO 2 — A POLÊMICA E O QUE A ANVISA DIZ ============ -->
-  <section class="bl bl-anvisa" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100">
-    <!-- video sem som: comeca sozinho e mudo; o botao liga o som (js/produto.js).
-         Arquivo do video: assets/produto/polemica.mp4 -->
-    <figure class="video">
-      <video src="assets/produto/polemica.mp4" poster="assets/produto/polemica-poster.jpg"
-             width="402" height="539" autoplay muted loop playsinline preload="auto"
-             aria-label="Vídeo da Joe Hamburgueria Artesanal sobre a polêmica das luvas"></video>
-      <button class="video-sound" type="button" aria-label="Ativar o som do vídeo" aria-pressed="false">
-        <img class="video-sound-bg" src="assets/produto/ellipse6.svg" alt="">
-        <img class="video-sound-ico" src="assets/produto/sound.png" alt="">
-      </button>
-    </figure>
+  <!-- ============ BLOCO 2 — O QUE A ANVISA RECOMENDA ============ -->
+  <section class="bl bl-anvisa">
+    <h2 class="h-azul h-anvisa">O que a Anvisa recomenda?</h2>
+    <p class="t-anvisa">O item 4.10.2 da <a href="https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2004/res0216_15_09_2004.html" target="_blank" rel="noopener">Resolução RDC nº 216/2004</a> da Anvisa estabelece que os manipuladores de alimentos devem adotar procedimentos para minimizar o risco de contaminação dos alimentos preparados por meio da antissepsia (higienização correta) das mãos e do uso de utensílios ou luvas descartáveis.</p>
 
-    <blockquote class="q-polemica">
-      <p>“Dependendo da forma de como a luva é usada, ela pode até piorar a contaminação. Porque a pessoa coloca a luva e automaticamente sente uma falsa segurança. Uma luva suja contamina um alimento pro outro sem ninguém perceber”, alerta o empresário.</p>
-    </blockquote>
-
-    <!-- o oval desenhado a mao e peca presa ao titulo -->
-    <div class="anvisa-titulo" data-fx-item>
-      <img src="assets/produto/anotacao.svg" alt="" aria-hidden="true" width="262" height="106">
-      <h2>O que a Anvisa recomenda?</h2>
+    <div class="caixa caixa--norma">
+      <div class="t-norma">
+        <p>A norma não torna o uso de luvas obrigatório e ininterrupto em todas as etapas.</p>
+        <p>O texto usa termos que indicam opções complementares ou equivalentes para evitar o contato direto contaminante (higienização das mãos ou uso de utensílios / pegadores ou luvas descartáveis).</p>
+        <p>Foco na lavagem das mãos: “As unhas devem estar curtas e sem esmalte ou base. Durante a manipulação, devem ser retirados todos os objetos de adorno pessoal”. (4.6.6 )</p>
+      </div>
     </div>
-    <p class="t-anvisa">A Resolução nº 216/2004, da Agência Nacional de Vigilância Sanitária (Anvisa), que estabelece as boas práticas para serviços de alimentação, não determina o uso de luvas durante todo o preparo.</p>
+    <figure class="maos"><img src="assets/produto/maos-rot.png" alt="Mãos calçando luvas azuis" width="330" height="280"></figure>
 
-    <div class="caixa caixa--resolucao">
-      <p>O ítem 4.10.2 da resolução diz: “Os manipuladores devem adotar procedimentos que minimizem o risco de contaminação dos alimentos preparados por meio da anti-sepsia das mãos e pelo uso de utensílios ou luvas descartáveis”. Em outro trecho aparece: As unhas devem estar curtas e sem esmalte ou base. Durante a manipulação, devem ser retirados todos os objetos de adorno pessoal. (4.6.6 )</p>
-    </div>
-
-    <p class="t-trabalhar">Trabalhar com as mãos sem essa proteção em determinada atividade, portanto, não representa, por si só, falta de higiene. O cuidado que permanece em qualquer situação é a higienização correta das mãos.</p>
     <p class="t-cartilha">É o que também diz a Cartilha sobre Boas Práticas para Serviços de Alimentação, criada pela própria Anvisa</p>
 
     <figure class="foto-lavando">
@@ -175,54 +159,36 @@
     </figure>
   </section>
 
-  <!-- ============ BLOCO 3 — AS LUVAS: CONTAMINAÇÃO, LUVAS PRETAS E PERGUNTAS ============ -->
-  <!-- tres cupulas sobrepostas (bordo, azul, vermelha); cada uma e o fundo do proprio texto -->
+  <!-- ============ BLOCO 3 — A LUVA TAMBÉM PODE CARREGAR CONTAMINAÇÃO + LUVAS PRETAS ============ -->
+  <!-- duas cupulas (amarela, de base redonda, e azul); cada uma e o fundo do proprio texto -->
   <section class="bl bl-luvas">
-    <div class="padrao">
-      <figure class="maos"><img src="assets/produto/maos-rot.png" alt="Mãos calçando luvas azuis" width="330" height="280"></figure>
-    </div>
-
-    <div class="caixa caixa--bordo">
-      <h2 class="h-bordo">A luva também pode carregar contaminação</h2>
-      <div class="t-bordo">
-        <p class="destaque">Ter os procedimentos definidos é importante porque colocar uma luva não interrompe o contato do manipulador com tudo o que existe ao redor; se o mesmo par passa pelo alimento, por uma embalagem ou superfície e volta para a preparação, os contaminantes também podem fazer esse caminho.</p>
-        <p>Por isso, a troca precisa acompanhar a atividade. As luvas devem ser substituídas quando estiverem sujas ou danificadas e quando houver interrupção para realizar outras tarefas. Antes de calçar um novo par, as mãos devem ser higienizadas.</p>
-        <p>A passagem do manuseio de alimentos crus para os prontos para consumo, por exemplo, exige higienização das mãos e, quando utilizadas, troca das luvas. Mesmo que o par ainda pareça limpo, ele não deve acompanhar essa mudança de tarefa.</p>
+    <div class="caixa caixa--laranja">
+      <div class="t-laranja">
+        <p class="b">Ter os procedimentos definidos é fundamental porque colocar uma luva não interrompe o contato com tudo o que existe ao redor; se o mesmo par passa pelo alimento, por uma embalagem ou superfície e volta para a preparação, os contaminantes também podem fazer esse caminho.</p>
+        <p>Por isso, a troca precisa acompanhar a atividade. As luvas devem ser substituídas quando estiverem sujas ou danificadas e quando houver interrupção para realizar outras tarefas. Antes de calçar um novo par, as mãos devem ser higienizadas novamente. Não lave, desinfete ou reutilize luvas descartáveis.</p>
+        <p>A passagem do manuseio de alimentos crus para os prontos para consumo também exige higienização das mãos e, quando utilizadas, troca das luvas. Mesmo que o par ainda pareça limpo, ele não deve acompanhar a mudança de tarefa.</p>
       </div>
     </div>
 
-    <figure class="burger"><img src="assets/produto/burger.jpg" alt="Hambúrguer sendo montado por mãos com luvas pretas" width="416" height="401"></figure>
+    <figure class="burger"><img src="assets/produto/burger.jpg" alt="Hambúrguer sendo montado por mãos com luvas pretas" width="473" height="456"></figure>
 
     <div class="caixa caixa--azul">
       <h2 class="h-pretas">E as luvas pretas?</h2>
-      <p class="t-pretas">A cor preta não garante que uma luva seja adequada para manipular alimentos: é preciso conferir sua indicação de uso. Em artigo publicado no Food Safety Brazil, a engenheira de alimentos Daniele Parra também chama atenção para a dificuldade de visualizar sujeira em luvas escuras. De qualquer cor, porém, elas precisam ser trocadas conforme a atividade, mesmo quando parecem limpas.</p>
+      <div class="t-pretas">
+        <p>Embora tenham se tornado muito populares em food trucks, hamburguerias e vídeos de culinária nas redes sociais por razões puramente estéticas, profissionais de segurança alimentar e a própria vigilância sanitária alertam que elas são anti-higiênicas para essa finalidade.</p>
+        <p>Azul costuma ser uma boa escolha, porque contrasta com muitos alimentos e facilita perceber fragmentos caso a luva rasgue.</p>
+      </div>
     </div>
+    <figure class="luvas-circulo"><img src="assets/produto/ellipse123.png" alt="Luvas descartáveis pretas, transparentes e azuis" width="240" height="240"></figure>
 
-    <div class="caixa caixa--vermelha">
-      <figure class="luvas-circulo"><img src="assets/produto/ellipse123.png" alt="Luvas descartáveis pretas, transparentes e azuis" width="229" height="229"></figure>
-      <ol class="cards" data-fx="slide-in-up" data-fx-margem="200">
-        <li class="card card--1" data-fx-item>
-          <span class="card-num"><b>1</b></span>
-          <div class="card-txt"><h3>A cor faz diferença?</h3><p>Não. Ser preta não torna a luva mais adequada para manipular alimentos.</p></div>
-        </li>
-        <li class="card card--2" data-fx-item>
-          <span class="card-num"><b>2</b></span>
-          <div class="card-txt"><h3>Pode ser usada na cozinha?</h3><p>Coloque cartazes em áreas de circulação (entrada, banheiros, balcão etc.), avisos em cardápios e mesas e comunique também nas redes sociais.</p></div>
-        </li>
-        <li class="card card--3" data-fx-item>
-          <span class="card-num"><b>3</b></span>
-          <div class="card-txt"><h3>Protege do calor?</h3><p>Não necessariamente. Apesar da crença popular, luva descartável não deve ser confundida com equipamento de proteção térmica.</p></div>
-        </li>
-        <li class="card card--4" data-fx-item>
-          <span class="card-num"><b>4</b></span>
-          <div class="card-txt"><h3>Dispensa lavar as mãos?</h3><p>Não. A higienização continua necessária antes de colocar as luvas e nas situações previstas pelas boas práticas.</p></div>
-        </li>
-        <li class="card card--5" data-fx-item>
-          <span class="card-num"><b>5</b></span>
-          <div class="card-txt"><h3>E a troca?</h3><p>A cor também não muda esse cuidado: luvas sujas, danificadas ou usadas antes de uma interrupção da atividade devem ser substituídas.</p></div>
-        </li>
-      </ol>
-    </div>
+    <h2 class="h-azul h-materiais">Materiais mais comuns</h2>
+    <p class="t-materiais">Para manipular alimentos, a luva precisa ter indicação do fabricante para contato com alimentos — o material, sozinho, não garante essa adequação.</p>
+    <ol class="cards" data-fx="slide-in-up" data-fx-margem="200">
+      <li class="card" data-fx-item><h3>Nitrila (borracha sintética)</h3><p>Fabricadas com borracha sintética, as luvas de nitrila não contêm látex natural, ajustam-se bem às mãos e oferecem boa resistência. São úteis em tarefas que exigem precisão e no contato com óleos e gorduras, conforme a indicação do fabricante. Não protegem contra calor ou cortes.</p></li>
+      <li class="card" data-fx-item><h3>Polietileno (PE)</h3><p>Leves, transparentes e geralmente folgadas, as luvas de polietileno são uma opção econômica para tarefas rápidas, como montar sanduíches e embalar alimentos. Rasgam com facilidade e oferecem pouca precisão nos movimentos.</p></li>
+      <li class="card" data-fx-item><h3>Vinil (PVC)</h3><p>As luvas de vinil são opções de baixo custo indicadas para tarefas leves, como montagem e porcionamento de alimentos. São menos elásticas que as de nitrila. Confira as restrições do fabricante, especialmente para contato com alimentos gordurosos.</p></li>
+      <li class="card" data-fx-item><h3>Látex (Borracha Natural)</h3><p>Muito elástica, mas desaconselhada para alimentos por risco de causar alergias graves e absorver odores fortes. Sua aplicação deve ser restrita para a área de limpeza e higienização (em versões reutilizáveis).</p></li>
+    </ol>
 
     <figure class="story">
       <video src="assets/produto/story-produto-web.mp4" poster="assets/produto/story-produto-poster.jpg"
@@ -233,15 +199,11 @@
 
   <!-- ============ BLOCO 4 — E QUANDO O CLIENTE QUESTIONA? ============ -->
   <section class="bl bl-questiona">
-    <div class="duvida">
-      <img class="duvida-arcos" src="assets/produto/camada1.svg" alt="" aria-hidden="true" width="350" height="168">
-      <img class="duvida-cupula" src="assets/produto/grp19.svg" alt="" aria-hidden="true" width="255" height="124">
-      <h2 class="h-duvida">E quando o cliente questiona?</h2>
-    </div>
-    <div class="t-duvida">
-      <p><strong>Uma dúvida sobre o uso de luvas merece uma resposta clara. Para o empreendedor, esse é o momento de ouvir a preocupação e explicar os cuidados adotados naquela etapa do preparo:</strong> como as mãos são higienizadas, quando entram os utensílios e em quais situações as luvas são trocadas.</p>
-      <p>Vale preparar a equipe para essa conversa. Dizer apenas que “a legislação não obriga” pouco esclarece como o alimento é protegido. <strong>A explicação ganha força quando corresponde ao que o cliente observa:</strong> quem manipula a comida evita tocar no celular, mantém as tarefas separadas e interrompe o trabalho para higienizar as mãos quando necessário.</p>
-      <p class="fecho">O questionamento também pode revelar uma falha que precisa ser corrigida. Antes de defender a rotina, vale revisá-la. A confiança do cliente se constrói quando o cuidado anunciado pelo negócio aparece, de fato, no preparo.</p>
+    <h2 class="h-azul h-questiona">E quando o cliente questiona?</h2>
+    <div class="t-questiona">
+      <p>Uma dúvida sobre o uso de luvas merece uma resposta clara. Para o empreendedor, esse é o momento de ouvir a preocupação e explicar os cuidados adotados naquela etapa do preparo: como as mãos são higienizadas, quando entram os utensílios e em quais situações as luvas são trocadas.</p>
+      <p>Vale preparar a equipe para essa conversa. Dizer apenas que “a legislação não obriga” pouco esclarece como o alimento é protegido. A explicação ganha força quando corresponde ao que o cliente observa: quem manipula a comida evita tocar no celular, mantém as tarefas separadas e interrompe o trabalho para higienizar as mãos quando necessário.</p>
+      <p>Por vezes, o questionamento também pode revelar uma falha que precisa ser corrigida. Antes de defender a rotina, vale revisá-la. A confiança do cliente se constrói quando o cuidado anunciado pelo negócio aparece, de fato, no preparo.</p>
     </div>
   </section>
 

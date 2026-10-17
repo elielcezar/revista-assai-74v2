@@ -1,18 +1,17 @@
 /* =========================================================
    Revista Assaí Bons Negócios #75 — pagina PRODUTO
-   Figma: 6867:1969 — 402 x 7328 (HEAD de 182 incluso)
+   Figma: 6960:1125 (arquivo aquTnQHLWwiogtzEAG9qyp) — 402 x 5965 (HEAD de 182 incluso)
    Requer css/base.css (fontes, reset, tokens, head, rodape).
 
    Fundos coloridos que ficam atras de texto sao a propria caixa do texto
    (.caixa), nunca uma forma absoluta separada. As cupulas (567px de largura,
    raio de 280px) sao mais largas que a coluna: margem negativa e o bloco
-   corta o que sobra.
+   corta o que sobra. O story do Maturatta (715px + 40 de folga) nao existe no
+   Figma: entra depois dos cards de materiais e empurra o que vem abaixo em 755px.
    ========================================================= */
 
 .produto .head { --head-bg: var(--amarelo-escuro); }
 .produto .head-logo { object-fit: contain; }
-
-.page { --grad-lj: linear-gradient(-45.79deg, #fbbd03 11.595%, #e30613 84.89%); }
 
 .bl {
   position: relative;
@@ -21,191 +20,120 @@
   display: flow-root;
 }
 .bl p { font-size: 18px; line-height: normal; }
-.bl strong { font-weight: 700; }
+.bl strong, .bl .b { font-weight: 700; }
 
-.backdrop { position: absolute; inset: 0; pointer-events: none; }
+.backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
 .backdrop span { position: absolute; display: block; }
 .backdrop img { width: 100%; height: 100%; }
 
-.caixa { position: relative; display: flow-root; }
+.caixa { position: relative; display: flow-root; margin-left: var(--ml, 0); width: var(--w, 402px); padding-left: calc(-1 * var(--ml, 0px)); box-sizing: border-box; }
+
+.h-azul { font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--azul-claro); }
 
 /* =========================================================
-   BLOCO 1 — ABERTURA  (182 .. 1524)
+   BLOCO 1 — ABERTURA  (182 .. 1450)
    ========================================================= */
-/* ordem do Figma: arcos vermelhos < foto < anel azul < textos */
+.bl-hero { overflow: clip; }
 .bl-hero > :not(.backdrop) { position: relative; z-index: 3; }
-.bl-hero > .hero-foto { z-index: 1; }
 
-.hero-anel   { z-index: 2; left: -115px; top: 142px; width: 635px; height: 318px; }
-.hero-anel img { transform: rotate(180deg); }
-.hero-arcos  { z-index: 0; left: 97px; top: 352px; width: 414px; height: 199.224px; }
-.hero-arcos img { transform: scaleY(-1); }
-.hero-faixa  { left: 0; top: 587px; width: 402px; height: 12px; background: rgba(245, 245, 245, .5); }
+/* meia-elipse (raio 419): o recorte e a propria foto */
+.hero-foto { left: -216.05px; top: -26.45px; width: 838.1px; height: 419.05px; clip-path: circle(419.05px at 50% 0); }
+.hero-arco { left: -114.5px; top: 84.03px; width: 635px; height: 318px; }
+.hero-arco img { transform: rotate(180deg); }
+.hero-faixa { left: 0; top: 724px; width: 402px; height: 12px; background: rgba(245, 245, 245, .5); }
 
-/* meia-elipse (868x868): o recorte e a propria foto */
-.hero-foto { width: 402px; height: 434px; margin-top: 3px; clip-path: ellipse(434px 434px at 203px 0); }
-.hero-foto img { width: 402px; height: 434px; }
+.hero-titulo { width: 361px; margin: 441px 0 0 21px; /* o glifo da Raspoutine cai ~4px abaixo da caixa: compensado em h1/olho */ font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic; color: var(--azul-claro); }
+.hero-titulo > span { display: block; line-height: 70px; }
+.hero-t1 { font-size: 57.571px; }
+.hero-t2 { font-size: 64px; }
 
-.hero-assina { width: 160px; margin: 90px 0 0 24px; }
+.hero-olho {
+  width: 350px; margin: 13.5px 0 0 21px;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza);
+}
+.hero-assina { width: 160px; margin: 28.5px 0 0 21px; }
 .hero-edicao {
   padding: 2px 15px; background: var(--amarelo-escuro); color: #fff;
   font-size: 20px !important; font-weight: 500; text-align: center; white-space: nowrap;
 }
 .hero-autor { margin-top: 14px; font-weight: 500; font-style: italic; color: #000; }
-
-.hero-titulo { width: 361px; margin: 19px 0 0 21px; font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic; }
-.hero-titulo > span {
-  display: block; line-height: 70px;
-  background-image: var(--grad-lj); -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-/* O SplitText do popcorn-pop cria uma div por letra dentro dos spans. Cada
-   letra precisa receber o gradiente; os spans internos devem continuar inline. */
-.hero-titulo > span div {
-  background-image: var(--grad-lj); -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.hero-t1 { font-size: 57.571px; }
-.hero-t2 { font-size: 64px; }
-
-.hero-olho {
-  width: 350px; margin: 42px 0 0 26px;
-  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza);
-}
-.t-hero { width: 350px; margin: 46px 0 0 26px; padding-bottom: 56px; color: #000; }
+.t-hero { width: 362.75px; margin: 46.1px 0 0 19.25px; color: #000; }
 .t-hero p + p { margin-top: 20px; }
 
 /* =========================================================
-   BLOCO 2 — A POLÊMICA E A ANVISA  (1524 .. 3497)
+   BLOCO 2 — O QUE A ANVISA RECOMENDA?  (1483 .. 2656)
    ========================================================= */
-.video { position: relative; width: 402px; height: 539px; }
-.video video { display: block; width: 402px; height: 539px; object-fit: cover; background: #000; }
-.video-sound { position: absolute; left: 316px; top: -21px; width: 45px; height: 45px; display: block; }
-.video-sound-bg  { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
-.video-sound-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+.h-anvisa { width: 362px; margin: 39.91px 0 0 20px; }
+.t-anvisa { width: 362px; margin: 33px 0 0 20px; color: #000; }
+.t-anvisa a { color: inherit; text-decoration: underline; }
 
-.q-polemica {
-  position: relative; z-index: 1;
-  width: 354px; margin: -63px 0 0 24px; padding: 31px 14px 0;
-  border-radius: 25px; background: var(--laranja); color: #fff; text-align: center;
+.caixa--norma {
+  --ml: -9.98px; --w: 421.96px; height: 362.34px; margin-top: 42.4px;
+  background-image: linear-gradient(90deg, #00adee, #006388); color: #fff;
 }
-.q-polemica p { font-size: 20px !important; font-weight: 700; font-style: italic; padding-bottom: 30px; }
+.t-norma { width: 364.85px; margin: 41.5px 0 0 17.15px; text-align: center; font-style: italic; }
+.t-norma p + p { margin-top: 20px; }
 
-.anvisa-titulo {
-  position: relative; width: 275px; height: 153px; margin: 38px 0 0 63px;
-  display: grid; place-items: center;
-}
-.anvisa-titulo img { grid-area: 1 / 1; width: 262px; height: 106px; transform: rotate(11.4deg); }
-.anvisa-titulo h2 {
-  grid-area: 1 / 1; width: 234px; margin-left: -3px;
-  font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: var(--azul); text-transform: uppercase;
-}
-.t-anvisa { width: 350px; margin: 1px 0 0 26px; color: #000; }
+/* as maos sobem sobre a base da caixa azul */
+.maos { position: relative; z-index: 2; width: 330.25px; height: 280.11px; margin: -86.97px 0 0 82.7px; }
+.maos img { display: block; width: 100%; height: 100%; }
 
-.caixa--resolucao {
-  width: 354px; margin: 45px 0 0 24px; padding: 39px 27px 34px;
-  border-radius: 34px; background-image: linear-gradient(90deg, #00adee, #006388); color: #fff;
-}
-.caixa--resolucao p { text-align: center; font-style: italic; }
+.t-cartilha { width: 362.8px; margin: 14.15px 0 0 19px; color: #000; }
 
-.t-trabalhar { width: 350px; margin: 43px 0 0 26px; color: #000; }
-.t-cartilha { width: 351px; margin: 56px 0 0 27px; font-weight: 700; color: #000; }
-
-.foto-lavando { position: relative; width: 403px; height: 285px; margin-top: 41px; }
+.foto-lavando { position: relative; z-index: 2; width: 403px; height: 285px; margin: 20px 0 0 -1px; }
 .lavando-recorte { position: absolute; inset: 0; overflow: hidden; display: block; }
 .lavando-recorte img { position: absolute; left: -3.55%; top: -3.86%; width: 111.81%; height: 105.61%; max-width: none; }
 .btn-cartilha {
-  position: absolute; left: 81px; top: 264px; z-index: 1;
-  width: 243px; height: 42px; padding: 10px 0;
+  position: absolute; left: 20px; top: 270.48px; z-index: 1;
+  width: 359px; height: 42px; padding: 10px 0;
   display: flex; align-items: center; justify-content: center; gap: 10px;
-  border-radius: 10px; background: var(--laranja); color: #fff;
+  border-radius: 10px; background: var(--azul-claro); color: #fff;
   font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; white-space: nowrap;
 }
 .btn-cartilha img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
 
 /* =========================================================
-   BLOCO 3 — AS LUVAS  (3497 .. 6478)
+   BLOCO 3 — A LUVA CARREGA CONTAMINAÇÃO  /  LUVAS PRETAS  /  MATERIAIS
    ========================================================= */
-.bl-luvas { padding-top: 0; }
-
-.padrao {
-  position: relative; height: 382px; margin-top: 25px;
-  background: url("../assets/produto/padrao-arcos.svg") -41px 0 / 62.3px 381.725px repeat-x;
+.caixa--laranja {
+  --ml: -82.5px; --w: 567px; position: relative; z-index: 1; height: 576.04px; margin-top: -4px;
+  border-radius: 0 0 280px 280px; background: #fa0; color: #000;
 }
-.maos { position: absolute; left: -2px; top: 23px; width: 330px; height: 280px; }
-.maos img { position: relative; z-index: 5; width: 330px; height: 280px; } /* as maos ficam por cima da cupula bordo */
+.t-laranja { width: 363.2px; margin: 62.83px 0 0 18.09px; }
+.t-laranja p + p { margin-top: 20px; }
 
-/* cupulas: 567 de largura, centro em 192,5; o texto volta para as coordenadas da coluna (91px) */
-.caixa--bordo, .caixa--azul, .caixa--vermelha {
-  width: 567px; margin-left: -91px; border-radius: 280px 280px 0 0; color: #fff;
-}
-.caixa--bordo { margin-top: -145px; z-index: 1; background: var(--bordo, #ba0042); padding: 105px 0 0 91px; }
-.h-bordo {
-  width: 292px; margin-left: 46px; text-align: center;
-  font-size: 24px; font-weight: 700; line-height: normal;
-}
-.t-bordo { width: 350px; margin: 38px 0 0 29px; padding-bottom: 199px; }
-.t-bordo .destaque { font-size: 20px !important; font-weight: 700; font-style: italic; }
-.t-bordo p + p { margin-top: 20px; }
-
-.burger { position: relative; z-index: 2; width: 416px; height: 401px; margin: -127px 0 0 -1px; }
-.burger img { width: 416px; height: 401px; }
+.burger { position: relative; z-index: 0; width: 472.63px; height: 455.59px; margin: -80.7px 0 0 -29.31px; overflow: hidden; }
+.burger img { position: absolute; left: -7.69%; top: -4.75%; width: 158.65%; height: 109.5%; max-width: none; }
 
 .caixa--azul {
-  margin-top: -100px; z-index: 3; padding: 100px 0 0 91px;
-  background-image: linear-gradient(90deg, #00adee, #006388);
+  --ml: -82.5px; --w: 567px; position: relative; z-index: 1; height: 526.91px; margin-top: -93.91px;
+  border-radius: 280px 280px 0 0; background-image: linear-gradient(90deg, #00adee, #006388); color: #fff;
 }
-.h-pretas { width: 292px; margin-left: 47px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
-.t-pretas { width: 353px; margin: 55px 0 0 24px; padding-bottom: 240px; }
+.h-pretas { width: 363px; margin: 69.37px 0 0 19.5px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
+.t-pretas { width: 363px; margin: 33px 0 0 19.5px; }
+.t-pretas p + p { margin-top: 20px; }
 
-/* a vermelha sobe sobre a base da azul; o circulo de luvas sai pelo topo dela */
-.caixa--vermelha {
-  margin-top: -136px; z-index: 4; padding: 0 0 65px 91px;
-  background-image: linear-gradient(-79.86deg, #fbbd03 11.595%, #e30613 84.89%);
-}
-.luvas-circulo { position: relative; width: 229px; height: 229px; margin: -59px 0 0 86px; }
-.luvas-circulo img { width: 229px; height: 229px; }
+/* o circulo sai pela base da cupula azul */
+.luvas-circulo { position: relative; z-index: 2; width: 240px; height: 240px; margin: -122.81px 0 0 81px; }
+.luvas-circulo img { display: block; width: 240px; height: 240px; }
 
-.cards { margin: 25px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; }
-.card {
-  display: flex; align-items: center; gap: 17px;
-  padding-inline: 14px 18px; border-radius: 20px; background: #fff; color: #000;
-}
-.card--1 { width: 334px; margin-left: 44px; padding-block: 23px; }
-.card--2 { width: 327px; margin: 40px 0 0 47px; padding-block: 20px 19px; padding-inline: 15px 18px; gap: 11px; }
-.card--3 { width: 334px; margin: 25px 0 0 47px; padding-block: 25px; padding-inline: 17px 18px; gap: 19px; }
-.card--4 { width: 334px; margin: 24px 0 0 47px; padding-block: 22px 21px; padding-inline: 19px 18px; }
-.card--5 { width: 334px; margin: 24px 0 0 47px; padding-block: 25px; padding-inline: 19px 18px; }
-.card-num {
-  position: relative; flex: none; width: 35px; height: 35px; opacity: .69;
-  background: url("../assets/produto/num.svg") no-repeat 0 0 / 35px 35px;
-}
-.card-num b {
-  position: absolute; left: 10px; top: 3px;
-  font-size: 24px; font-weight: 700; line-height: normal; color: #fff;
-}
-.card-txt { flex: none; width: 240px; }
-.card--1 .card-txt { width: 264px; }
-.card--2 .card-txt { width: 253px; }
-.card-txt h3 { font-size: 24px; font-weight: 700; line-height: normal; color: var(--laranja); }
-.card-txt p { color: #000; }
+.h-materiais { width: 362px; margin: 38px 0 0 20px; }
+.t-materiais { width: 362px; margin: 33px 0 0 20px; color: #000; }
+.cards { width: 410px; margin: 50.91px 0 0 -4px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 17px; }
+.card { padding: 21px 21px 21px 23px; display: flex; flex-direction: column; justify-content: center; background: #e0e8f0; color: #000; }
+/* alturas do Figma (o texto e centrado na caixa) */
+.card:nth-child(1) { height: 208px; }
+.card:nth-child(2), .card:nth-child(3) { height: 188px; }
+.card:nth-child(4) { height: 168px; }
+.card > * { width: 346.64px; margin-left: auto; margin-right: auto; }
+.card h3 { font-size: 24px; font-weight: 700; line-height: normal; color: var(--laranja); }
 
-.story { width: 402px; }
+.story { width: 402px; margin-top: 40px; }
 .story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #5c0012; }
 
 /* =========================================================
-   BLOCO 4 — E QUANDO O CLIENTE QUESTIONA?  (6478 .. 7214)
+   BLOCO 4 — E QUANDO O CLIENTE QUESTIONA?  (5254 .. 5849)
    ========================================================= */
-.duvida { position: relative; width: 350px; height: 168px; margin: 14px 0 0 24px; }
-.duvida-arcos { display: block; width: 350px; height: 168.426px; }
-.duvida-cupula { position: absolute; left: 50px; top: 44px; width: 255px; height: 123.746px; }
-.h-duvida {
-  position: absolute; left: 67px; top: 102px; width: 230px;
-  font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: #fff;
-}
-
-.t-duvida { width: 354px; margin: 15px 0 0 24px; padding-bottom: 19px; color: #000; }
-.t-duvida p + p { margin-top: 20px; }
-.t-duvida .fecho { margin-top: 60px; font-weight: 700; font-style: italic; color: var(--vermelho); }
-
-/* o botao de som sobe 21px para fora do video e cai sobre o fim do bloco anterior (z-index 3):
-   a secao inteira fica acima dele, senao a metade de cima do botao nao recebe clique */
-.bl-anvisa { z-index: 4; }
+.h-questiona { width: 362px; margin: 65px 0 0 20px; }
+.t-questiona { width: 362px; margin: 33px 0 0 20px; padding-bottom: 48px; color: #000; }
+.t-questiona p + p { margin-top: 20px; }
