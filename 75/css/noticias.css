@@ -215,5 +215,5 @@
 /* o rodape passa por cima da cupula, que desce 97px sobre ele */
 .noticias .foot { z-index: 3; background: transparent; } /* a cupula aparece atras da barra, sem o branco do rodape */
 
-.adbox { width: 402px; margin-top: 97px; } /* a cupula do regulamento sobe 97px; este espaco a deixa inteira acima do banner */
-.adbox img { display: block; width: 402px; height: auto; }
+.adbox { width: 402px; aspect-ratio: 375 / 391; margin-top: 97px; } /* a cupula do regulamento sobe 97px; este espaco a deixa inteira acima do banner */
+.adbox img { display: block; width: 402px; height: 100%; object-fit: cover; }

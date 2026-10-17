@@ -136,8 +136,8 @@
 .video--circulo video { width: 344px; height: 344px; border-radius: 50%; }
 .video--circulo .video-sound { left: 273px; top: 302px; }
 
-.adbox { width: 402px; margin-top: 46px; }
-.adbox img { display: block; width: 402px; height: auto; }
+.adbox { width: 402px; aspect-ratio: 375 / 391; margin-top: 46px; }
+.adbox img { display: block; width: 402px; height: 100%; object-fit: cover; }
 
 /* =========================================================
    BLOCO 4 — O BÁSICO BEM FEITO TAMBÉM FUNCIONA  (4308 .. 5530)

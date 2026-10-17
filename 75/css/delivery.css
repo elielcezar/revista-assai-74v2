@@ -95,8 +95,8 @@
 .etapa p { width: 331px; }
 .etapa strong { color: var(--amar); }
 
-.adbox { width: 402px; margin-top: 50px; }
-.adbox img { display: block; width: 402px; height: auto; }
+.adbox { width: 402px; aspect-ratio: 375 / 391; margin-top: 50px; }
+.adbox img { display: block; width: 402px; height: 100%; object-fit: cover; }
 
 .h-contestacao { width: 362px; margin: 72px 0 0 20px; }
 .t-contestacao { width: 362px; margin: 27px 0 0 20px; color: #000; }
