@@ -11,7 +11,7 @@
 
 .delivery .head { --head-bg: var(--roxo); }
 
-.page { --bordo: #ba0042; --verm: #f0051e; --amar: #ffdc00; }
+.page { --bordo: #ba0042; --verm: #f0051e; --amar: #ffdc00; --roxo-d: #532f82; }
 
 .bl {
   position: relative;
@@ -76,7 +76,7 @@
 
 .t-hero { width: 362px; margin: 35px 0 0 20px; color: #000; }
 .t-hero p + p { margin-top: 20px; }
-.mosca { position: relative; width: 93px; height: 93px; margin: 35px 0 24px 165px; }
+.mosca { position: relative; width: 93px; height: 93px; margin: 35px 0 0 165px; }
 .mosca img { width: 93px; height: 93px; transform: rotate(-90deg); }
 
 /* =========================================================
@@ -85,7 +85,7 @@
 .foto-golpe { width: 402px; height: 315px; margin-top: 33px; overflow: hidden; }
 .foto-golpe img { width: 402px; height: 315px; max-width: none; object-fit: cover; object-position: left top; }
 
-.h-fraude { margin-top: 56px; text-transform: uppercase; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; color: var(--verm); }
+.h-fraude { margin-top: 56px; text-transform: uppercase; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; color: var(--roxo-d); }
 .etapas { width: 362px; margin: 37px 0 0 20px; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
 .etapa {
   height: 123px; padding: 0 17px 0 21px;
@@ -110,7 +110,7 @@
   margin-top: 53px; padding: 49px 0 0 20px;
   background:
     url("../assets/delivery/sub1.svg") 50% calc(100% - 201px) / 890.787px 427.16px no-repeat,
-    linear-gradient(var(--bordo), var(--bordo)) 0 0 / 100% 413px no-repeat;
+    linear-gradient(var(--roxo-d), var(--roxo-d)) 0 0 / 100% 413px no-repeat;
 }
 .h-plat { font-size: 20px; font-weight: 700; line-height: normal; text-transform: uppercase; color: #fff; }
 .t-ifood { width: 363px; margin-top: 27px; }
@@ -125,7 +125,7 @@
 
 .caixa--99 {
   margin-top: 62px; padding: 107px 0 44px 20px;
-  background: url("../assets/delivery/sub2.svg") 50% 0 / 894.838px 448.15px no-repeat;
+  background: url("../assets/delivery/sub2-roxo.svg") 50% 0 / 894.838px 448.15px no-repeat;
 }
 .t-99 { width: 363px; margin-top: 27px; }
 .t-99 p + p { margin-top: 20px; }
@@ -186,15 +186,15 @@
 /* =========================================================
    BLOCO 6 — SEUS DIREITOS  (8690 .. 9874)
    ========================================================= */
-.h-direitos { margin-top: 45px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--verm); }
+.h-direitos { margin-top: 45px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--roxo-d); }
 .barra {
-  width: 402px; height: 54px; margin-top: 33px;
+  width: 435.6px; height: 54.21px; margin: 33px 0 0 -27.51px;
   display: flex; align-items: center; justify-content: center;
   background: var(--verm); color: #fff; font-size: 21px; font-weight: 700; line-height: normal;
 }
 .t-direitos { width: 362px; margin: 39px 0 0 19px; color: #000; }
 .t-direitos p + p { margin-top: 20px; }
-.barra--2 { margin-top: 40px; }
+.barra--2 { margin: 40px 0 0 -33.6px; }
 .t-direitos--2 { margin-top: 39px; padding-bottom: 53px; }
 
 /* =========================================================
@@ -204,10 +204,10 @@
 .prato { position: absolute; bottom: 0; max-width: none; }
 .prato--b { z-index: 1; left: 11px; width: 204px; height: 147px; }
 .prato--a { left: 187px; width: 204px; height: 184px; object-fit: cover; }
-.h-ia { width: 362px; margin: 42px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--verm); }
+.h-ia { width: 362px; margin: 42px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--roxo-d); }
 .t-ia-1 { width: 362px; margin: 33px 0 0 19px; color: #000; }
 .btn-ia {
-  width: 362px; height: 42px; margin: 49px 0 0 20px; padding: 10px 0;
+  width: 362px; height: 42px; margin: 44.4px 0 0 20px; padding: 10px 0;
   display: flex; align-items: center; justify-content: center; gap: 10px;
   border-radius: 10px; background: var(--bordo); color: #fff;
   font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; white-space: nowrap;
@@ -215,3 +215,42 @@
 .btn-ia img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
 .t-ia-2 { width: 362px; margin: 48px 0 0 19px; padding-bottom: 54px; color: #000; }
 .t-ia-2 p + p { margin-top: 20px; }
+
+/* No Figma o texto corrido tem passo de linha de 18px (100%) e o paragrafo vazio entre os blocos tambem vale 18.
+   A altura de cada bloco (min-height) e a da caixa do Figma, para nao deslocar o que vem abaixo. */
+.t-hero p,
+.t-contestacao p,
+.t-99 p,
+.t-caso-1 p,
+.t-caso-2 p,
+.t-caso-3 p,
+.t-ideia p,
+.t-direitos p,
+.t-direitos--2 p,
+.t-ia-1 p,
+.t-ia-2 p { line-height: 18px; }
+.t-hero p + p,
+.t-contestacao p + p,
+.t-99 p + p,
+.t-caso-1 p + p,
+.t-caso-2 p + p,
+.t-caso-3 p + p,
+.t-ideia p + p,
+.t-direitos p + p,
+.t-direitos--2 p + p,
+.t-ia-1 p + p,
+.t-ia-2 p + p { margin-top: 18px; }
+.t-hero { min-height: 320px; }
+.t-contestacao { min-height: 180px; }
+.t-99 { min-height: 180px; }
+.t-caso-1 { min-height: 120px; }
+.t-caso-2 { min-height: 60px; }
+.t-caso-3 { min-height: 140px; }
+.t-ideia { min-height: 220px; }
+.t-direitos { min-height: 480px; }
+.t-direitos--2 { min-height: 373px; }
+.t-ia-1 { min-height: 140px; }
+.t-ia-2 { min-height: 334px; }
+
+/* o glifo da Raspoutine cai ~9px abaixo da caixa do Figma */
+.hero-golpes { position: relative; top: -9px; }
