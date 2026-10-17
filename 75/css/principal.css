@@ -1,13 +1,11 @@
 /* =========================================================
    Revista Assaí Bons Negócios #75 — pagina PRINCIPAL
-   Figma: 6842:1693 — 402 x 9296 (sem o HEAD de 182)
+   Figma: 6949:8697 (arquivo aquTnQHLWwiogtzEAG9qyp) — 402 x 7102
    Requer css/base.css (fontes, reset, tokens, head, rodape).
 
    Fundos coloridos que ficam atras de texto sao a propria caixa do texto
    (.caixa), nunca uma forma absoluta separada.
    ========================================================= */
-
-.page { --grad: #e30613 39.235%, #ffdc00 118.65%; }
 
 /* blocos: 402 de largura; o que sangra para os lados e cortado,
    o que sai por cima/baixo do bloco (fotos, circulo) aparece */
@@ -24,322 +22,195 @@
 .backdrop img { width: 100%; height: 100%; }
 
 .caixa { position: relative; display: flow-root; color: #fff; }
-.caixa--grad { background-image: linear-gradient(-70deg, var(--grad)); }
 .caixa p + p { margin-top: 20px; }
+
+/* caixa de 567px com a base em arco (raio 280); o padding devolve aos filhos
+   exatamente os 402px da coluna, entao as medidas internas sao as da pagina */
+.caixa--arco { width: 567px; border-radius: 0 0 280px 280px; }
 
 .grad-texto { -webkit-background-clip: text; background-clip: text; color: transparent; }
 
+/* intertitulo + texto corrido (x 19, 362 de largura) */
+.h-sec {
+  width: 362px; margin-left: 19px;
+  font-size: 24px; font-weight: 700; line-height: normal; color: var(--azul); text-transform: uppercase;
+}
+.t-sec { width: 362px; margin: 33px 0 0 19px; color: #000; }
+.t-sec p + p { margin-top: 20px; }
+
+/* foto redonda com o anel em degrade (o anel vem na propria imagem) */
+.retrato { position: relative; z-index: 1; width: 240px; }
+.retrato img { width: 240px; height: 240px; }
+
+.legenda { display: block; font-size: 18px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; }
+
 /* =========================================================
-   BLOCO 1 — ABERTURA  (0 .. 715)
+   BLOCO 1 — ABERTURA  (0 .. 720)
    ========================================================= */
-.bl-hero { min-height: 715px; overflow: clip; }
+.bl-hero { min-height: 720px; overflow: clip; }
 .bl-hero .backdrop { z-index: 1; }
 .bl-hero > :not(.backdrop) { position: relative; z-index: 2; }
 .bl-hero > .hero-foto { z-index: 0; }
 
-.hero-arco-amarelo { left: -150px; top: 290px; width: 718.394px; height: 714.699px; }
-.hero-arco-degrade { left: -202.06px; top: 290px; width: 710.394px; height: 357.35px; }
-.hero-arco-degrade img { transform: rotate(180deg); }
-.hero-arco-branco  { left: -218px; top: 317.43px; width: 755px; height: 759.576px; }
+/* meia elipse branca (de cabeca para baixo) que fecha a foto */
+.hero-arco-branco  { left: -193.11px; top: 294.31px; width: 755px; height: 379.79px; }
+.hero-arco-branco img { transform: rotate(180deg); }
+.hero-arco-degrade { left: -88.45px; top: 260.8px; width: 559.225px; height: 264.806px; }
+.hero-arco-degrade img { transform: scaleX(-1); }
 
 .hero-foto { width: 477px; height: 358px; margin: -7px 0 0 -47px; }
 .hero-foto img { width: 477px; height: 358px; object-fit: cover; }
 
 .hero-edicao {
-  width: 137px; margin: 13px 0 0 25px; padding: 2px 15px;
-  background: var(--vermelho); color: #fff;
+  width: 137px; margin: 13px 0 0 22px; padding: 2px 15px;
+  background: var(--azul); color: #fff;
   font-size: 20px !important; font-weight: 500; text-align: center; white-space: nowrap;
 }
-.hero-autor { margin: 13px 0 0 25px; font-weight: 500; font-style: italic; color: #000; }
+.hero-autor { margin: 13px 0 0 22px; font-weight: 500; font-style: italic; color: #000; }
 .hero-titulo {
-  margin: 32px 0 0 22px;
-  font-size: 48px; font-weight: 700; line-height: 45px; color: var(--vermelho);
+  margin: 32px 0 0 22px; /* o Figma da 23px de caixa ao autor; aqui a linha tem 20 */
+  font-size: 48px; font-weight: 700; line-height: 45px; color: var(--azul);
 }
-/* no Figma o degrade cobre o titulo inteiro (337x90); o trecho "AO VIVO" pega so a parte de cima */
-.hero-titulo .grad-texto {
-  background-image: linear-gradient(196.81deg, #ffdc00 5.65%, var(--rosa) 82.41%);
-  background-size: 337px 90px; background-position: -163px 0;
-}
+.hero-titulo .grad-texto { background-image: linear-gradient(-34.01deg, #e30613 11.52%, #ffdc00 118.65%); }
 .hero-olho {
   width: 357px; margin: 28px 0 0 23px;
   font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza);
 }
 
 /* =========================================================
-   BLOCO 2 — ABERTURA DO TEXTO + MENUCI  (715 .. 1877)
+   BLOCO 2 — ABERTURA DO TEXTO + MENUCI  (720 .. 1744)
    ========================================================= */
+.bl-intro { min-height: 1023.71px; }
 .caixa--intro {
-  width: 405px; margin-left: -1px; border-radius: 34px;
+  min-height: 585.57px; margin-left: -79.5px;
+  padding: 49.41px 85.5px 0 79.5px;
   background: var(--vermelho);
-  padding: 45px 26px 42px 29px;
 }
-.caixa--intro p + p { margin-top: 42px; }
-.caixa--intro p + p + p { margin-top: 0; }
+.caixa--intro p { width: 350px; margin-left: 28px; }
 
-.menuci { width: 240px; margin: 35px auto 0; }
-.menuci img { width: 240px; height: 240px; }
+/* o circulo cai sobre a base do arco vermelho */
+.retrato--menuci { margin: -144.16px 0 0 80px; }
 
-.q-menuci { width: 349px; margin: 24px 0 0 27px; padding-bottom: 153px; }
-.q-menuci p {
-  font-size: 26px; font-weight: 700; color: var(--vermelho); text-align: center;
-}
+.q-menuci { width: 362px; margin: 49.63px 0 0 20px; text-align: center; }
+.q-menuci p { width: 353.91px; font-size: 21px !important; font-weight: 700; color: var(--azul); }
+.q-menuci .legenda { width: 353.91px; margin-top: 25px; color: var(--cinza); }
 
 /* =========================================================
-   BLOCO 3 — QUANDO O PALCO AJUDA A VENDER  (1877 .. 2721)
+   BLOCO 3 — QUANDO O PALCO AJUDA A VENDER  (1744 .. 2886)
    ========================================================= */
-.bl-palco { padding: 85px 0 115px; }
+.bl-palco { min-height: 1142px; }
+/* a foto comeca 12,84px acima do bloco, mas o frame do Figma corta essa sobra */
+.donmax { position: relative; width: 402px; height: 362.87px; margin-left: 0.36px; overflow: hidden; }
+.donmax img { width: 100%; height: 375.71px; margin-top: -12.84px; object-fit: cover; }
+
 .caixa--palco {
-  width: 402px; border-radius: 201px 201px 0 0;
-  background: var(--laranja);
-  padding: 0 22px 71px 24px;
+  min-height: 728.82px; margin: -6.52px 0 0 -73px;
+  padding: 61.45px 92px 0 73px;
+  background: var(--azul);
 }
-/* circulo vermelho que sai pela base da caixa */
-.caixa--palco::after {
-  content: ""; position: absolute; left: 147px; bottom: -56px;
-  width: 100px; height: 100px; border-radius: 50%;
-  background: url("../assets/principal/nota-musical.png") center / 27px 71px no-repeat, var(--vermelho);
+.h-palco {
+  width: 362px; margin-left: 20.36px;
+  font-size: 24px; font-weight: 700; line-height: normal; color: var(--amarelo); text-transform: uppercase;
 }
-.zanatta { position: relative; width: 258px; margin: -85px 0 0 47px; }
-.zanatta img { width: 258px; height: 344px; border-radius: 129px; object-fit: cover; }
-.h-palco { margin-top: 29px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
-.caixa--palco p { margin-top: 31px; }
+.t-palco { width: 362px; margin: 33px 0 0 20.36px; }
+.retrato--zanatta { margin: 39.84px 0 0 80.36px; }
+.legenda--palco { width: 353.91px; margin: 14.86px 0 0 20px; font-size: 18px; color: #ffdb92; }
+
+/* sai da foto para cima da caixa azul (ordem de pintura do Figma) */
+/* a imagem ja vem espelhada, girada e recortada na borda da coluna: o codigo do
+   Figma (nó 6949:8926) traz a rotacao do preenchimento errada; a posicao saiu do
+   casamento de pontos contra o export do nó (ver README, armadilha 3) */
+.microfone { position: absolute; z-index: 2; left: 117.36px; top: 225.67px; width: 285px; height: 301.5px; pointer-events: none; }
+.microfone img { width: 100%; height: 100%; }
 
 /* =========================================================
-   BLOCO 4 — O EFEITO DA MÚSICA AO VIVO  (2721 .. 3919)
+   BLOCO 4 — O EFEITO DA MÚSICA AO VIVO  (2886 .. 4046)
    ========================================================= */
-.t-levantamento { width: 336px; margin: 0 auto; text-align: center; color: #000; }
-.h-efeito {
-  margin-top: 85px; text-align: center;
-  font-size: 24px; font-weight: 700; line-height: normal; color: var(--vermelho); text-transform: uppercase;
-}
-.t-consumidores { margin-top: 7px; text-align: center; color: #000; }
+.bl-efeito { min-height: 1160px; padding-top: 11.14px; }
 
-.stats { list-style: none; margin: 29px 0 0; padding: 0; }
-.stat {
-  position: relative; z-index: 1;
-  width: 402px; border-radius: 50px;
-  padding: 0 29px; text-align: center;
-  font-size: 24px; font-weight: 700; line-height: normal; color: #fff;
-}
-.stat--1 { min-height: 235px; padding-top: 25px; margin-bottom: -134px; background: var(--vermelho); }
-.stat--2 { min-height: 217px; padding-top: 31px; margin-bottom: -98px;  background: var(--laranja); }
-.stat--3 { min-height: 217px; padding-top: 37px; margin-bottom: -97px;  background: #f4af01; color: #000; }
-.stat--4 { min-height: 138px; padding-top: 39px; background: var(--amarelo); color: #000; }
-
-.banda { width: 402px; height: 276px; margin-top: -58px; overflow: hidden; border-radius: 0 0 50px 50px; }
+.banda { width: 403px; height: 315.85px; margin: 35.98px 0 0 -1px; overflow: hidden; border-radius: 50px 50px 0 0; }
 .banda img { width: 100%; height: 100%; object-fit: cover; }
 
-.t-dados { width: 352px; margin: 64px auto 0; text-align: center; color: #000; }
+.stats { list-style: none; margin: -64.94px 0 0; padding: 0; }
+.stat {
+  position: relative; z-index: 1;
+  width: 403px; margin-left: -1px; border-radius: 50px;
+  padding: 0 29px; text-align: center;
+  font-size: 24px; font-weight: 700; line-height: normal; color: var(--azul);
+}
+.stat--1 { min-height: 235.06px; padding-top: 24.61px; margin-bottom: -134.15px; background: var(--azul); color: #fcd200; }
+.stat--2 { min-height: 216.6px;  padding-top: 30.77px; margin-bottom: -98.45px;  background: var(--laranja); }
+.stat--3 { min-height: 216.6px;  padding-top: 36.92px; margin-bottom: -97.23px;  background: #f4af01; }
+.stat--4 { min-height: 137.84px; padding-top: 39.38px; background: var(--amarelo); }
+
+.t-dados { width: 362.35px; margin: 42.7px 0 0 18.6px; color: #000; }
 
 /* =========================================================
-   BLOCO 5 — HOJE, O CLIENTE QUER MAIS  (3919 .. 4447)
+   BLOCO 5 — HOJE, O CLIENTE QUER MAIS DO QUE UM PRATO  (4046 .. 4493)
    ========================================================= */
-.bl-cliente { padding-top: 72px; }
-.caixa--cliente {
-  width: 402px; border-radius: 34px;
-  background-image: linear-gradient(-73.19deg, var(--grad));
-  padding: 64px 24px 76px 26px;
-}
-.h-cliente {
-  width: 324px; margin: 0 auto; text-align: center;
-  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase;
-}
-.t-cliente { margin-top: 34px; }
+.bl-cliente { min-height: 446.76px; padding-top: 9px; }
 
 /* =========================================================
-   BLOCO 6 — QUAL EXPERIÊNCIA VOCÊ QUER CRIAR?  (4447 .. 5185)
+   BLOCO 6 — QUAL EXPERIÊNCIA VOCÊ QUER CRIAR?  (4493 .. 4962)
    ========================================================= */
-.bl-exp { padding-top: 100px; }
-.exp { width: 366px; margin-left: 26px; }
-/* corre para o lado com o scroll (pin-horizontal, js/scroll-fx.js) */
-.exp-viewport { width: 366px; height: 430px; overflow: hidden; }
+.bl-exp { min-height: 469.24px; }
+.h-exp { color: var(--vermelho); }
+/* corre para o lado com o scroll (pin-horizontal, js/scroll-fx.js, pelo scrollLeft) */
+.exp {
+  width: 383px; margin: 52.24px 0 0 19px;
+  overflow-x: auto; overflow-y: hidden; scrollbar-width: none;
+}
+.exp::-webkit-scrollbar { display: none; }
 .exp-track {
-  display: flex; width: 2085px; height: 430px; overflow: hidden;
-  list-style: none; margin: 0; padding: 0;
-  background: #ba0042;
+  display: flex; gap: 9px; width: max-content;
+  list-style: none; margin: 0; padding: 0 19px 0 0;
 }
-.exp-painel {
-  flex: none; position: relative; width: 417px; height: 428px;
+.exp-card {
+  flex: none; width: 306.22px; height: 317.93px;
   display: flex; flex-direction: column; align-items: center;
-  color: #fff; text-align: center;
+  padding: 37px 22px 48px; border-radius: 50px;
+  background: var(--vermelho); color: #fff; text-align: center;
 }
-.exp-painel--abre   { width: 425px; background: #ba0042; padding-top: 68px; }
-.exp-painel--happy  { width: 421px; background: var(--laranja); }
-.exp-painel--jantar { background: var(--azul-claro); }
-.exp-painel--jovem  { background: #ba0042; }
-.exp-painel--entret { background: var(--pink); }
-
-.exp-abre-titulo {
-  width: 266px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase;
-}
-.exp-icones { display: flex; gap: 11px; list-style: none; margin: 44px 0 0; padding: 0; }
-.exp-icone {
-  width: 76px; height: 75px; border-radius: 16px;
-  display: flex; align-items: center; justify-content: center;
-}
-.exp-icone--laranja { background: var(--laranja); }
-.exp-icone--azul    { background: var(--azul-claro); }
-.exp-icone--pink    { background: var(--pink); }
-.exp-icone img { width: auto; height: auto; max-width: 78px; }
-.exp-icone:nth-of-type(1) img { width: 58px; }
-.exp-icone:nth-of-type(2) img { width: 78px; }
-.exp-icone:nth-of-type(3) img { width: 74px; }
-.exp-icone:nth-of-type(4) img { width: 71px; }
-.exp-abre-texto { width: 345px; margin-top: 52px; font-size: 24px !important; font-weight: 700; }
-
-.exp-icone-img { height: 78px; margin-top: 17px; display: flex; align-items: center; }
-.exp-painel--happy  .exp-icone-img img { width: 58px; }
-.exp-painel--jantar .exp-icone-img img { width: 78px; }
-.exp-painel--jovem  .exp-icone-img img { width: 74px; }
-.exp-painel--entret .exp-icone-img img { width: 71px; }
-.exp-titulo { margin-top: 7px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
-.exp-texto { width: 340px; margin-top: 11px; font-weight: 700; }
-.exp-texto strong { display: block; margin-bottom: 21px; font-size: 26px; }
-.exp-painel--happy  .exp-texto strong { color: #b30b0b; }
-.exp-painel--jantar .exp-texto strong { color: #ba0042; }
-.exp-painel--entret .exp-texto strong { color: var(--laranja); }
-.exp-foto { margin-top: auto; margin-bottom: 22px; width: 356px; height: 162px; border-radius: 34px; overflow: hidden; }
-.exp-foto img { width: 100%; height: 100%; object-fit: cover; }
+.exp-icone { width: 58px; height: 58px; margin-bottom: 28px; }
+.exp-icone--menor { width: 55.13px; height: 55.13px; }
+.exp-titulo { width: 261.28px; font-size: 24px; font-weight: 700; line-height: normal; }
+.exp-titulo span { display: block; color: #fcd200; text-transform: uppercase; }
+/* no Figma, uma linha vazia de 24px separa o titulo do texto */
+.exp-card .exp-texto { width: 261.28px; margin-top: 27px; }
 
 /* =========================================================
-   BLOCO 7 — FICAR MAIS TEMPO SIGNIFICA GASTAR MAIS?  (5185 .. 5838)
+   BLOCO 7 — FICAR MAIS TEMPO SIGNIFICA GASTAR MAIS?  (4962 .. 5334)
    ========================================================= */
-.h-gastar {
-  width: 360px; margin: 30px 0 0 24px;
-  font-size: 24px; font-weight: 700; line-height: normal; color: var(--vermelho); text-transform: uppercase;
-}
-.t-gastar { width: 346px; margin: 30px 0 0 28px; color: #000; }
-
-.pilulas { display: flex; flex-direction: column; gap: 14px; width: 350px; margin: 36px 0 0 27px; padding: 0; list-style: none; }
-.pilula {
-  position: relative; height: 48px; padding: 0 17px 0 21px;
-  display: flex; align-items: center; justify-content: center;
-  border: 1px solid var(--rosa); border-radius: 21px; background: var(--vermelho);
-  font-size: 18px; font-weight: 700; color: #fff; white-space: nowrap;
-}
-.pilula--4 { height: 43px; text-transform: uppercase; }
-/* icone redondo preso a esquerda da pilula */
-.pilula-icone { position: absolute; left: -1px; top: -2px; }
-.pilula--1 .pilula-icone { top: -2px; }
-.pilula--2 .pilula-icone { top: -2px; left: 0; }
-.pilula--3 .pilula-icone { top: 0; left: 0; }
-.pilula--4 .pilula-icone { top: -3px; left: -1px; }
-.pilula--1 .pilula-icone img { width: 50px; }
-.pilula--2 .pilula-icone img { width: 48px; }
-.pilula--3 .pilula-icone img { width: 47px; }
-.pilula--4 .pilula-icone img { width: 48px; }
-
-.t-alerta { width: 352px; margin: 45px 0 0 25px; font-weight: 700; color: #000; }
+.bl-gastar { min-height: 372px; padding-top: 29px; }
 
 /* =========================================================
-   BLOCO 8 — UMA PROGRAMAÇÃO PARA CRIAR HÁBITO  (5838 .. 6228)
+   BLOCO 8 — MAS QUANTO CUSTA? + FECHO  (5334 .. 6804)
    ========================================================= */
-.bl-habito { padding-top: 49px; }
-.caixa--habito {
-  width: 402px; border-radius: 34px;
-  background-image: linear-gradient(-67.75deg, var(--grad));
-  padding: 48px 33px 54px 28px;
+.bl-custo { min-height: 1470px; }
+.bar { width: 426.66px; height: 284.44px; margin-left: -24.66px; }
+.bar img { width: 100%; height: 100%; object-fit: cover; }
+
+.caixa--custo {
+  min-height: 674.49px; margin-left: -82.5px;
+  padding: 123.56px 82.5px 0;
+  background: var(--azul); text-align: center;
 }
-.h-habito { font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
-.t-habito { margin-top: 38px; }
+.h-custo {
+  width: 362px; margin-left: 19px;
+  font-size: 24px; font-weight: 700; line-height: normal; color: var(--amarelo); text-transform: uppercase;
+}
+.caixa--custo .t-cache { width: 362px; margin: 20px 0 0 19px; }
 
-/* =========================================================
-   BLOCO 9 — MAS, QUANTO CUSTA?  (6228 .. 7133)
-   ========================================================= */
-.h-custo { margin-top: 40px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; color: #000; }
-.t-cache { margin-top: 10px; text-align: center; color: #000; }
-
-.custos { display: flex; flex-direction: column; gap: 17px; width: 353px; margin: 35px 0 0 22px; padding: 0; list-style: none; }
-/* borda em degrade: fundo cinza no padding-box, degrade no border-box */
+.custos { width: 362px; margin: 34px 0 0 20px; padding: 0; list-style: none; }
 .custo {
-  min-height: 72px; padding: 0 13px;
+  height: 75px; padding: 0 17px;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  border: 2px solid transparent; border-radius: 21px;
-  background: linear-gradient(#f5f5f5, #f5f5f5) padding-box, linear-gradient(-70deg, var(--grad)) border-box;
-  font-size: 18px; line-height: normal; color: #000; text-align: center;
+  font-size: 18px; line-height: normal; color: var(--amarelo);
 }
-.custo strong { font-size: 21px; }
+.custo strong { display: block; text-transform: uppercase; }
 
-.q-couvert {
-  width: 285px; margin: 65px 0 0 28px;
-  font-size: 26px !important; font-weight: 700;
-  background-image: linear-gradient(-58.63deg, var(--grad));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
+/* na emenda da foto do bar com a caixa azul, por cima das duas */
+.pandeiro { position: absolute; z-index: 2; left: 89.36px; top: 198.2px; width: 209.8px; height: 209.8px; pointer-events: none; }
+.pandeiro img { width: 100%; height: 100%; }
 
-/* =========================================================
-   BLOCO 10 — A MÚSICA SE PAGA?  (7133 .. 7465)
-   ========================================================= */
-.bl-paga { padding-top: 49px; }
-.faixa {
-  height: 58px; display: flex; align-items: center; justify-content: center;
-  font-size: 20px; font-weight: 700; line-height: normal; color: #fff; text-transform: uppercase;
-}
-.faixa--vermelha { background: var(--vermelho); }
-.faixa--grad { background-image: linear-gradient(-19.49deg, var(--grad)); }
-
-.conta-rolagem { margin-top: 14px; overflow-x: auto; scrollbar-width: none; }
-.conta-rolagem::-webkit-scrollbar { display: none; }
-.conta {
-  position: relative; width: 595px; height: 138px; margin-left: 28px;
-  display: flex; align-items: center; padding-left: 18px;
-}
-/* so o fundo em degrade e transparente (37%); as caixas por cima ficam solidas */
-.conta::before {
-  content: ""; position: absolute; inset: 0; border-radius: 34px;
-  background-image: linear-gradient(-30.37deg, var(--grad)); opacity: .37;
-}
-.conta-item {
-  position: relative; flex: none; width: 178px; height: 108px; padding: 0 13px;
-  display: flex; flex-direction: column; justify-content: center;
-  border: 2px solid #fff; border-radius: 21px; background: #f5f5f5; color: #000;
-}
-.conta-item--resultado { width: 125px; align-items: center; text-align: center; }
-.conta-sinal { position: relative; flex: none; width: 26px; text-align: center; font-size: 24px; font-weight: 700; color: #fff; }
-.conta-sinal:first-of-type { margin-right: 5px; }
-.conta-sinal:last-of-type { margin: 0 5px; }
-
-.t-compare { width: 350px; margin: 35px auto 0; text-align: center; font-weight: 700; color: #000; }
-
-/* =========================================================
-   BLOCO 11 — NÃO CONFIE APENAS NA CASA CHEIA  (7465 .. 8101)
-   ========================================================= */
-.salao { position: relative; z-index: 1; width: 424px; height: 318px; margin: 44px 0 0 -11px; border-radius: 34px; overflow: hidden; }
-.salao img { width: 100%; height: 100%; object-fit: cover; }
-.caixa--cheia {
-  width: 414px; margin: -40px 0 0 -11px;
-  background: var(--vermelho);
-  padding: 71px 30px 69px 30.5px;
-}
-.h-cheia { width: 353px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; }
-.caixa--cheia p { width: 353px; margin-top: 29px; }
-
-/* =========================================================
-   BLOCO 12 — QUANDO A MÚSICA VIRA RUÍDO  (8101 .. 8419)
-   ========================================================= */
-.bl-ruido { padding-top: 50px; }
-.bl-ruido .faixa { width: 414px; margin-left: -6px; }
-.ruido {
-  width: 354px; margin: -4px 0 0 26px; padding: 36px 13px 29px;
-  display: flex; flex-direction: column; gap: 11px; list-style: none;
-  border-radius: 0 0 25px 25px; background: rgba(255, 115, 0, .2);
-}
-.ruido li { min-height: 21px; display: flex; align-items: center; gap: 16px; font-size: 18px; font-weight: 700; line-height: normal; color: #000; }
-.ruido li::before { content: ""; flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--amarelo-escuro); }
-
-/* =========================================================
-   BLOCO 13 — AFINAL, VALE A PENA?  (8419 .. 9296)
-   ========================================================= */
-.h-final { width: 332px; margin: 68px 0 0 30px; font-weight: 700; color: var(--vermelho); }
-.h-final-a { display: block; font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic; font-size: 32px; line-height: normal; }
-.h-final-b { display: block; font-size: 40px; line-height: 45px; background-image: linear-gradient(-48.78deg, var(--grad)); }
-.t-final { width: 348px; margin: 28px 0 0 30px; color: #000; }
-.t-final p + p { margin-top: 20px; }
-
-.caixa--final {
-  width: 414px; margin: 52px 0 0;
-  background-image: linear-gradient(-53.57deg, var(--grad));
-  padding: 49px 36px 57px 30px;
-}
-.caixa--final p { width: 348px; height: 116px; font-size: 26px; font-weight: 700; }
-.t-final-fim { width: 348px; margin: 37px 0 0 30px; padding-bottom: 128px; color: #000; }
+.t-fecho { margin-top: 40.07px; }
