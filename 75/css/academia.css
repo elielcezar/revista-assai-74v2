@@ -1,11 +1,13 @@
 /* =========================================================
    Revista Assaí #75 — pagina ACADEMIA ASSAÍ
-   Figma: 6948:8406 — 402 x 7591 (HEAD de 182 incluso)
+   Figma: 6961:2480 (arquivo aquTnQHLWwiogtzEAG9qyp) — 402 x 7307 (HEAD de 182 incluso)
    Requer css/base.css (fontes, reset, tokens, head, rodape).
 
    Fundos coloridos que ficam atras de texto sao a propria caixa do texto
    (.caixa), nunca uma forma absoluta separada. As caixas sao mais largas que
    a coluna: margem negativa (--ml) + padding igual, e o bloco corta o que sobra.
+   O carrossel Heinz (451px) nao existe no Figma: entra depois dos botoes "Para
+   comecar pela base" e empurra o que vem abaixo em 443px.
    ========================================================= */
 
 .academia .head { --head-bg: #ff5564; }
@@ -14,6 +16,7 @@
   --azul: #004696;
   --azul-2: #006388;
   --grad-az: linear-gradient(90deg, #004696, #006388);
+  --rosa: #ff5564;
   --txt: #090909;
 }
 
@@ -36,7 +39,7 @@
 /* pecas presas ao seu bloco */
 .tile {
   position: relative; display: block; flex: none;
-  width: 63.807px; height: 62.106px; box-sizing: border-box;
+  width: 67.434px; height: 65.637px; box-sizing: border-box;
   border: 1px solid #f9f9f9; border-radius: 10px;
 }
 .tile img { position: absolute; display: block; }
@@ -49,40 +52,39 @@
   font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; line-height: normal;
 }
 .btn img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
-.btn--lar { background: var(--laranja); }
-.btn--az  { background: var(--grad-az); }
+.btn--rosa { background: var(--rosa); }
+.btn--az   { background: var(--grad-az); }
 
-.h-sec { font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: #fff; width: 400px; }
+.h-sec { font-size: 24px; font-weight: 700; line-height: normal; color: #fff; }
 .h-sec--lar { color: var(--laranja); }
-.h-lar { font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--laranja); }
 
 .item { position: relative; }
-.item .dot { position: absolute; left: -20.9px; top: 3px; width: 14px; height: 14px; }
+.item .dot { position: absolute; width: 14px; height: 14px; }
 .item p { font-size: 18px; color: var(--txt); }
 .item--branco p { color: #fff; }
 .caixa--cursos .item p { color: #fff; font-weight: 700; }
 .item p strong { display: inline; }
 
 /* =========================================================
-   BLOCO 1 — ABERTURA  (182 .. 1254)
+   BLOCO 1 — ABERTURA  (182 .. 1024)
    ========================================================= */
 .hero-foto { position: relative; z-index: 1; width: 402px; height: 388px; overflow: hidden; }
-.hero-foto-img { position: absolute; left: -233px; top: 0; width: 776px; height: 388px; max-width: none; }
+.hero-foto-img { position: absolute; left: -233px; top: -8px; width: 776px; height: 388px; max-width: none; }
 .tile--cursos img  { left: 13px; top: 9px;  width: 31px; height: 33px; }
 .tile--video img   { left: 9px;  top: 9px;  width: 34px; height: 32px; }
 .tile--baixar img  { left: 14px; top: 10px; width: 22px; height: 28px; }
 .tile--assess img  { left: 5px;  top: 6px;  width: 40px; height: 38px; }
-.tile--a { position: absolute; left: 60px; top: 70px; }
-.tile--a img { left: 5.72px; top: 8.23px; width: 49.534px; height: 43.642px; }
-.tile--b { position: absolute; left: 291px; top: 202px; background: #f9f9f9; }
-.tile--b img { left: 14px; top: 11px; width: 34px; height: 40px; }
+.tile--a { position: absolute; left: 49.58px; top: 50.63px; }
+.tile--a img { left: 7.1px; top: 9.75px; width: 52.35px; height: 46.12px; }
+.tile--b { position: absolute; left: 267px; top: 304.25px; width: 85.018px; height: 82.752px; background: #f9f9f9; }
+.tile--b img { left: 20px; top: 16px; width: 45.3px; height: 53.3px; }
 
 .hero-arco { z-index: 0; width: 747px; height: 373.5px; }
-.hero-arco--az  { left: -154px; top: 69.5px; }
-.hero-arco--lar { left: -174px; top: 39.5px; }
+.hero-arco--az  { left: -154px; top: 61.5px; }
+.hero-arco--lar { left: -174px; top: 31.5px; }
 
-.hero-titulo { position: relative; z-index: 1; margin: 63px 0 0 22px; font-weight: 700; }
-.hero-crescer { display: block; width: 352px; height: 71px; font-size: 66.824px; line-height: 71px; color: var(--laranja); }
+.hero-titulo { position: relative; z-index: 1; margin: 55px 0 0 22px; font-weight: 700; }
+.hero-crescer { display: block; width: 352px; height: 71px; font-size: 66.824px; line-height: 71px; color: var(--rosa); }
 .hero-exige {
   display: block; width: 339px; margin-left: 2px; height: 32px;
   font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
@@ -91,10 +93,10 @@
   color: transparent; -webkit-text-fill-color: transparent;
 }
 
-.hero-linha { position: relative; z-index: 1; display: flex; align-items: flex-start; height: 118px; margin-top: 24px; }
-.hero-assina { width: 129px; margin: 26px 0 0 24px; }
+.hero-linha { position: relative; z-index: 1; display: flex; align-items: flex-start; height: 118px; margin-top: 1.5px; }
+.hero-assina { width: 129px; margin: 35px 0 0 24px; }
 .hero-edicao {
-  padding: 2px 15px; background: #ff5564; color: #fff; text-align: center; white-space: nowrap;
+  padding: 2px 15px; background: var(--rosa); color: #fff; text-align: center; white-space: nowrap;
   font-size: 20px !important; font-weight: 500;
 }
 .hero-autor { margin-top: 14px; width: 158px; font-weight: 500; font-style: italic; color: #000; white-space: nowrap; }
@@ -102,62 +104,59 @@
 
 .hero-olho {
   position: relative; z-index: 1;
-  width: 350px; margin: 25px 0 0 22px;
+  width: 350px; margin: 8px 0 0 22px;
   font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza, #666);
 }
-.hero-texto { position: relative; z-index: 1; width: 350px; margin: 42px 0 0 24px; padding-bottom: 51px; color: #000; }
 
 /* =========================================================
-   BLOCO 2 — MÊS DO EMPREENDEDOR  (1254 .. 2018)
+   BLOCO 2 — MÊS DO EMPREENDEDOR  (1024 .. 1850)
    ========================================================= */
 .caixa--faixa { background-image: var(--grad-az); color: #fff; }
-.caixa--faixa-1 { --ml: -1px; --w: 404px; padding-top: 57px; padding-bottom: 45px; }
-.t-mes { width: 350px; margin-left: 25px; }
-.t-mes strong { font-weight: 700; }
-.t-gratis { margin: 20px 0 0 25px; font-weight: 700; }
-.btn--g1 { width: 347px; margin: 49px 0 0 28px; }
+.caixa--faixa-1 { --ml: -1px; --w: 403px; margin-top: 31px; padding-top: 30.58px; padding-bottom: 53.43px; }
+.t-faixa { width: 350px; margin-left: 24px; }
+.t-faixa p + p { margin-top: 20px; }
+.t-faixa strong { font-weight: 700; }
 
-.h-lar { width: 350px; margin: 40px 0 0 26px; }
-.t-ritmo { width: 350px; margin: 27px 0 0 25px; color: #000; line-height: 22px !important; }
-.btn--g2 { width: 347px; margin: 38px 0 0 25px; }
+.btn--g1 { position: relative; z-index: 2; width: 361px; margin: -25.5px 0 0 21px; }
+
+.h-lar { width: 368px; margin: 45.14px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--rosa); }
+.t-ritmo { width: 368px; margin: 27px 0 0 20px; color: #000; line-height: 22px !important; }
+.btn--g2 { width: 362px; margin: 26.44px 0 0 20px; }
 
 /* =========================================================
-   BLOCO 3 — REFORMA TRIBUTÁRIA  (2018 .. 2919)
+   BLOCO 3 — REFORMA TRIBUTÁRIA  (1895 .. 2792)
    ========================================================= */
-.bl-reforma { margin-top: 40px; }
-.reforma-foto { position: relative; z-index: 0; width: 402px; height: 399px; overflow: hidden; }
-.reforma-foto img { position: absolute; left: -181px; top: 0; width: 798px; height: 399px; max-width: none; }
-.caixa--reforma { --ml: -10px; --w: 425px; z-index: 1; margin-top: -54px; padding-bottom: 84px; }
+.reforma-foto { position: relative; z-index: 0; width: 402px; height: 399px; margin-top: 44.22px; overflow: hidden; }
+.reforma-foto img { position: absolute; left: -198px; top: 0; width: 798px; height: 399px; max-width: none; }
+.caixa--reforma { --ml: -10px; --w: 425px; z-index: 1; margin-top: -107.58px; padding-bottom: 38.21px; }
 .capa-reforma {
-  position: relative; width: 270px; height: 143px; margin: -89px 0 0 63px;
+  position: relative; width: 270px; height: 143px; margin: 11.52px 0 0 63px;
   background: url("../assets/academia/capa.svg") 0 0 / 270px 143px no-repeat;
 }
 .capa-reforma h2 {
-  width: 231px; margin: 0 0 0 20px; padding-top: 73px;
+  width: 231px; margin: 0 0 0 20px; padding-top: 37px;
   font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: #fff;
 }
-.t-reforma { width: 350px; margin: 44px 0 0 31px; }
-.t-reforma p { font-size: 18px; line-height: 22px; }
-.t-reforma p + p { margin-top: 22px; }
+.t-reforma { width: 361.56px; margin: 33.19px 0 0 20.44px; }
+.t-reforma p { font-size: 18px; line-height: 22.4px; }
+.t-reforma p + p { margin-top: 20.6px; }
 
 /* =========================================================
-   BLOCO 4 — INVESTIR  (2919 .. 3475)
+   BLOCO 4 — INVESTIR  (2833 .. 3277)
    ========================================================= */
 .bl-investir { z-index: 4; }
-.h-roxo { width: 341px; margin: 44px 0 0 33px; font-size: 24px; font-weight: 700; line-height: normal; color: #532f82; }
-.t-investir { width: 343px; margin: 33px 0 0 31px; color: #000; }
-.t-investir p + p { margin-top: 22px; }
+.h-roxo { width: 362px; margin: 40.8px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: #f0051e; }
+.t-investir { width: 362px; margin: 33px 0 0 20px; color: #000; }
+.t-investir p + p { margin-top: 20px; }
 .faixa-escolha {
   position: relative; z-index: 4;
-  width: 430px; height: 55px; margin: 47px 0 0 -12px; padding: 14px 0 0 32px; box-sizing: border-box;
+  width: 430px; height: 55px; margin: 56.9px 0 0 -12px; padding: 14px 0 0 32px; box-sizing: border-box;
   background-image: linear-gradient(-17.907deg, #e30613 11.522%, #ffdc00 118.65%);
   font-size: 24px; font-weight: 700; line-height: normal; text-align: center; color: #fff;
 }
 
 /* =========================================================
-   BLOCO 5 — CURSOS, VIDEOCASTS E MATERIAIS  (3455 .. 5189)
-   Ordem de empilhamento do Figma: azul dos cursos por cima, laranja no meio,
-   azul de baixar por baixo.
+   BLOCO 5 — CURSOS, VIDEOCASTS E MATERIAIS
    ========================================================= */
 .bl-cursos { overflow-x: clip; }
 .caixa--az  { background-image: var(--grad-az); color: #fff; border-radius: 34px; }
@@ -165,48 +164,49 @@
 
 .cab { display: flex; align-items: flex-start; }
 
-.caixa--cursos { --ml: -10px; --w: 422px; z-index: 3; margin-top: -20px; padding-bottom: 42px; }
-.caixa--cursos .cab { margin-top: 37px; }
-.caixa--cursos .tile { margin-left: 46px; }
-.h-cursos { margin: 13px 0 0 -65px; }
-.item--c1 { width: 250px; margin: 22px 0 0 81px; }
-.item--c1 .dot, .item--c2 .dot { left: -30px; top: 50%; margin-top: -7px; }
-.btn--c1 { margin: 10px 0 0 28px; }
-.item--c2 { width: 250px; margin: 20px 0 0 84px; }
-.btn--c2 { margin: 14px 0 0 28px; }
-.t-cursos { width: 304px; margin: 38px 0 0 46px; font-weight: 700; color: #fff; }
+/* cursos (azul, por cima) */
+.caixa--cursos { --ml: -3px; --w: 408px; z-index: 3; border-radius: 0 0 34px 34px; margin-top: -54.9px; padding-bottom: 34.14px; }
+.caixa--cursos .cab { margin-top: 88.9px; }
+.caixa--cursos .tile { margin-left: 20px; }
+.h-cursos { width: 286px; margin: 15px 0 0 23px; }
+.item--c1 { width: 250px; margin: 33.11px 0 0 97px; }
+.item--c2 { width: 250px; margin: 44.46px 0 0 97px; }
+.item--c1 .dot, .item--c2 .dot { left: -35px; top: 50%; margin-top: -7px; }
+.btn--c1 { width: 360px; margin: 35px 0 0 20px; }
+.btn--c2 { width: 360px; margin: 39.43px 0 0 20px; }
 
-.caixa--video { --ml: -9px; --w: 414px; z-index: 2; margin-top: -234px; padding-top: 260px; padding-bottom: 77px; }
-.caixa--video .cab { margin: 0; }
-.caixa--video .tile { margin-left: 42px; }
-.h-video { margin: 16px 0 0 -129px; }
-.item--v1 { width: 287px; margin: 26px 0 0 80px; }
-.item--v1 .dot { left: -21px; }
+/* videocasts (laranja, no meio) */
+.caixa--video { --ml: -2.2px; --w: 408.19px; z-index: 2; margin-top: -49.72px; padding-bottom: 59.19px; }
+.t-cursos { width: 356px; margin: 91.72px 0 0 24px; font-weight: 400; color: #fff; }
+.caixa--video .cab { margin-top: 46.5px; }
+.caixa--video .tile { margin-left: 23px; }
+.h-video { width: 286px; margin: 10.96px 0 0 23px; }
+.item--v1 { width: 287.2px; margin: 26px 0 0 95.87px; }
+.item--v1 .dot { left: -36.9px; top: 50%; margin-top: -7px; }
 .btn--v1 { width: 354px; margin: 22px 0 0 24px; }
-.item--v2 { width: 283px; margin: 32px 0 0 87px; }
-.item--v2 .dot { left: -28px; }
-.btn--v2 { width: 350px; margin: 20px 0 0 26px; }
+.item--v2 { width: 282.5px; margin: 44.46px 0 0 95.7px; }
+.item--v2 .dot { left: -36.7px; top: 50%; margin-top: -7px; }
+.btn--v2 { width: 350px; margin: 21px 0 0 26px; }
 
-.caixa--baixar { --ml: -13px; --w: 422px; z-index: 1; margin-top: -35px; padding-top: 71px; padding-bottom: 64px; }
-.caixa--baixar .cab { margin: 0; }
-.caixa--baixar .tile { margin-left: 42px; }
-.h-baixar { margin: 18px 0 0 -126px; }
-.item--b1 { width: 282px; margin: 14px 0 0 86px; }
-.item--b1 .dot { left: -25px; }
-.btn--b1 { width: 354px; margin: 62px 0 0 24px; }
-.item--b2 { width: 281px; margin: 36px 0 0 87px; }
-.item--b2 .dot { left: -26px; }
-.btn--b2 { width: 350px; margin: 28px 0 0 23px; }
+/* baixar (azul, por baixo) */
+.caixa--baixar { --ml: -3px; --w: 408px; z-index: 1; margin-top: -325.14px; padding-bottom: 48.5px; }
+.caixa--baixar .cab { margin-top: 362px; }
+.caixa--baixar .tile { margin-left: 24px; }
+.h-baixar { width: 121px; margin: 11px 0 0 18.6px; text-align: center; }
+.item--b1 { width: 272.1px; margin: 19px 0 0 97.5px; }
+.item--b1 .dot { left: -21.5px; top: 1px; }
+.btn--b1 { width: 354px; margin: 32px 0 0 23px; }
+.item--b2 { width: 280.6px; margin: 41px 0 0 96px; }
+.item--b2 .dot { left: -22px; top: 3px; }
+.btn--b2 { width: 350px; margin: 41.11px 0 0 23px; }
 
 /* =========================================================
-   BLOCO 6 — BASE E ASSESSORIA  (5189 .. 6245)
+   BLOCO 6 — BASE E ASSESSORIA
    ========================================================= */
-.h-base { margin: 60px 0 0 -50px; }
-.t-base { width: 345px; margin: 17px 0 0 25px; font-weight: 700; color: var(--txt); }
-.btn--s1 { margin: 23px 0 0 23px; }
+.h-base { width: 362px; margin: 72.41px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--laranja); }
+.t-base { width: 336px; margin: 24.96px 0 0 20px; font-weight: 400; color: var(--txt); }
+.btn--s1 { margin: 44.05px 0 0 23px; }
 .btn--s2 { margin: 16px 0 0 24px; }
-.t-dicas { width: 349px; margin: 53px 0 0 26px; color: var(--txt); }
-.t-dicas strong { font-weight: 700; }
 
 .carrossel { width: 402px; margin-top: 40px; }
 .carrossel-trilho {
@@ -233,35 +233,33 @@
 .carrossel-pontos button.is-active { background: #f0051e; }
 
 .caixa--assessoria {
-  --ml: -7px; --w: 414px; margin-top: 54px; padding-top: 42px; padding-bottom: 74px;
-  background-image: url("../assets/academia/box-laranja-2.jpg");
+  --ml: 0px; --w: 404.25px; background-image: url("../assets/academia/box-laranja-2.jpg");
+  margin-top: 54px; padding-bottom: 48px;
 }
-.caixa--assessoria .tile { margin-left: 42px; }
-.h-assess { width: 274px; margin-left: 16px; font-size: 24px; font-weight: 700; line-height: normal; color: #fff; }
-.t-sorteio { width: 351px; margin: 29px 0 0 24px; font-weight: 700; }
-.h-aumento { width: 349px; margin: 31px 0 0 24px; font-size: 24px; font-weight: 700; line-height: normal; }
-.t-aumento { width: 349px; margin: 18px 0 0 24px; }
+.caixa--assessoria .cab { margin-top: 53px; }
+.caixa--assessoria .tile { margin-left: 27px; }
+.h-assess { width: 274px; margin: -3px 0 0 16px; font-size: 24px; font-weight: 700; line-height: normal; color: #fff; }
+.t-sorteio { width: 351px; margin: 41px 0 0 27px; font-weight: 700; }
 
 /* =========================================================
-   BLOCO 7 — FECHO  (6245 .. 6789)
+   BLOCO 7 — FECHO
    ========================================================= */
-.h-comece { width: 349px; margin: 71px 0 0 26px; font-size: 24px; font-weight: 700; line-height: normal; color: var(--txt); }
-.t-comece { width: 349px; margin: 21px 0 0 27px; color: var(--txt); }
+.h-comece { width: 349px; margin: 81px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--txt); }
+.t-comece { width: 349px; margin: 26px 0 0 18px; color: var(--txt); }
 .caixa--chamada {
-  width: 297px; height: 135.5px; margin: 65px 0 0 55px; padding: 57px 0 0 33px; box-sizing: border-box;
-  background: url("../assets/academia/ellipse54.svg") 0 0 / 297px 135.5px no-repeat;
+  width: 325px; height: 148.27px; margin: 73px 0 0 39px; padding: 46px 0 0 47px; box-sizing: border-box;
+  background: url("../assets/academia/ellipse54.svg") 0 0 / 325px 148.27px no-repeat;
 }
 .caixa--chamada p {
   width: 216px; font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; color: #fff;
 }
-.btn--site { width: 351px; margin: 0 0 0 26px; }
+.btn--site { width: 362px; margin: 0.08px 0 0 18px; }
 
 /* =========================================================
-   BLOCO 8 — STORY INSTITUCIONAL (espaco publicitario)  (6789 .. 7514)
-   O vermelho desce sobre o topo do rodape (o rodape do Figma tem 116px).
+   BLOCO 8 — STORY INSTITUCIONAL (espaco publicitario)
    ========================================================= */
-.bl-ad { position: relative; z-index: 1; margin-bottom: -39px; overflow-x: clip; }
-.ad-rotulo { height: 23px; margin: 55px 0 0 24px; font-size: 12px !important; line-height: 14px !important; color: var(--cinza, #666); }
+.bl-ad { position: relative; z-index: 1; overflow-x: clip; }
+.ad-rotulo { height: 23px; margin: 77.68px 0 0 24px; font-size: 12px !important; line-height: 14px !important; color: var(--cinza, #666); }
 .ad-box { position: relative; display: flow-root; width: 402px; height: 702px; margin-top: 0; background: #be0003; }
 .ad-texto {
   width: 261px; margin: 197px 0 0 70px; text-align: center; color: #fff;
