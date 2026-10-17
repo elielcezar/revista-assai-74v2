@@ -3,68 +3,72 @@
 
     python scripts/probe_75_noticias.py
 
-Figma: 6889:2002 (402 x 5575, HEAD de 182 incluso): top esperado = y do Figma.
+Figma: 6961:3218 (arquivo aquTnQHLWwiogtzEAG9qyp, 402 x 6012, HEAD de 182 incluso).
+Os 5 blocos do Figma comecam em 182, 1407, 2873, 4530 e 5493 (B2..B5 abaixo).
+O banner rotativo (.adbox, 419px) fecha a pagina e nao existe no Figma: o rodape desce 419px.
+O titulo (.hero-gancho) fica 4px acima da caixa do Figma (524,87 em vez de 528,87): o glifo da
+Raspoutine cai ~4px abaixo da caixa e, assim, bate com o Figma. O probe bloqueia o
+noticias.js para o banner nao ser sorteado.
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
+B2, B3, B4, B5 = 1407, 2873, 4530, 5493
+AD = 419.14
+# (seletor, y esperado)
 EXPECT = [
-    (".hero-foto",            0,  182),
-    (".hero-selo",          275,  197),
-    (".hero-gancho",         25,  629),
-    (".hero-destaque",       25,  700),
-    (".hero-edicao",         25,  781),
-    (".hero-olho",           26,  896),
-    (".carrinho--1",        125, 1057),
-    (".carrinho--2",         30, 1120),
-    (".caixa--campanha",      0, 1283),
-    (".t-campanha",          30, 1318),
-    (".lista-premios",       19, 1665),
-    (".cupula-amarela",      64, 1991),
-    (".caixa--mecanica",     -3, 2099),
-    (".h-multiplica",        24, 2512),
-    (".t-extras",            25, 2590),
-    (".carrossel-faixa",     58, 2679),
-    (".extra--1 figure",    142, 2750),
-    (".extra--1 p",         142, 2957),
-    (".extra--2 figure",    561, 2743),
-    (".extra--3 figure",    953, 2743),
-    (".t-acumulo",           25, 3180),
-    (".caixa--gratis",        0, 3351),
-    (".h-gratis",            25, 3383),
-    (".t-gratis",            26, 3436),
-    (".t-ouro",              25, 3934),
-    (".ilustra",             88, 4107),
-    (".caixa--passos",       24, 4182),
-    (".passos",              35, 4257),
-    (".t-campanha-datas",    35, 4951),
-    (".caixa--regulamento", -90, 5282),
-    (".t-confira",           34, 5353),
-    (".btn-regulamento",     74, 5386),
-    ("footer.foot",           0, 5461),
+    (".hero-gancho", 182 + 524.87),
+    (".hero-destaque", 182 + 612.87),
+    (".hero-olho", 182 + 695.13),
+    (".hero-assina", 182 + 820),
+    (".carrinhos", 182 + 918.28),
+    (".t-topo", B2 + 38.72),
+    (".mais15", B2 + 295.11),
+    (".premios", B2 + 455),
+    (".bl-campanha .cupula-amarela", B2 + 784),
+    (".caixa--mecanica", B2 + 892),
+    (".t-mecanica", B2 + 967),
+    (".btn-site", B2 + 1134),
+    (".t-mecanica--2", B2 + 1207),
+    (".h-multiplica", B3 + 35),
+    (".t-extras", B3 + 134),
+    (".carrossel-wrap", B3 + 299),
+    (".h-marcas", B3 + 799),
+    (".logos", B3 + 958),
+    (".h-gratis", B3 + 1284),
+    (".t-gratis", B3 + 1366),
+    (".bl-passos .cupula-amarela", B4 + 77.46),
+    (".passo--1 .passo-num", B4 + 265.16),
+    (".passo--2 .passo-num", B4 + 431.48),
+    (".passo--3 .passo-num", B4 + 568),
+    (".passo--4 h3", B4 + 821),
+    (".btn-regulamento", B5 + 182.66),
+    (".t-legal", B5 + 266.42),
+    ("footer.foot", 5896 + AD),
 ]
 
 JS = """(sels) => sels.map(s => { const e = document.querySelector(s); if (!e) return null;
-  const r = e.getBoundingClientRect(); return [r.left, r.top + scrollY, r.width, r.height]; })"""
+  const r = e.getBoundingClientRect(); return r.top + scrollY; })"""
 
 with sync_playwright() as p:
     b = p.chromium.launch()
     pg = b.new_page(viewport={"width": 402, "height": 900})
     pg.route("**/*google*/**", lambda r: r.abort())
+    pg.route("**/scroll-fx.js*", lambda r: r.abort())
+    pg.route("**/noticias.js*", lambda r: r.abort())
     pg.goto(pathlib.Path("75/noticias.html").resolve().as_uri(), wait_until="load")
     pg.evaluate("document.fonts.ready")
-    pg.wait_for_timeout(600)
+    pg.wait_for_timeout(800)
     pg.evaluate("document.querySelector('.casca') && (document.querySelector('.casca').style.display='none')")
-    # o carrossel horizontal vira scroll interno: as posicoes x dos cards 2 e 3 contam com scroll 0
-    res = pg.evaluate(JS, [s for s, _, _ in EXPECT])
+    res = pg.evaluate(JS, [e[0] for e in EXPECT])
     ruins = 0
-    for (s, x, y), r in zip(EXPECT, res):
+    for (s, y), r in zip(EXPECT, res):
         if r is None:
-            print(f"{s:22} AUSENTE"); ruins += 1; continue
-        dy = r[1] - y; dx = r[0] - x
-        flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
+            print(f"{s:32} AUSENTE"); ruins += 1; continue
+        dy = r - y
+        flag = "  <<<" if abs(dy) > 3 else ""
         ruins += bool(flag)
-        print(f"{s:22} x {r[0]:7.1f} ({dx:+4.0f})  y {r[1]:7.1f} esp {y:5} ({dy:+5.0f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 5575)")
+        print(f"{s:32} y {r:8.1f} esp {y:8.1f} ({dy:+5.1f}){flag}")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 6012 + banner {AD})")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()

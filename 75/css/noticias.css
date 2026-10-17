@@ -1,16 +1,21 @@
 /* =========================================================
    Revista Assaí Bons Negócios #75 — pagina NOTÍCIAS DO ASSAÍ
-   Figma: 6889:2002 — 402 x 5575 (HEAD de 182 incluso)
+   Figma: 6961:3218 (arquivo aquTnQHLWwiogtzEAG9qyp) — 402 x 6012 (HEAD de 182 incluso)
    Requer css/base.css (fontes, reset, tokens, head, rodape).
 
    Fundos coloridos que ficam atras de texto sao a propria caixa do texto
    (.caixa), nunca uma forma absoluta separada. Os baloes sao decoracao do
    bloco (.backdrop) e giram so no <img> interno.
+   O banner rotativo (.adbox) nao existe no Figma: fecha a pagina, depois do
+   regulamento, e nao desloca nada.
    ========================================================= */
 
 .noticias .head { --head-bg: var(--azul-claro); }
 
-.page { --navy: #001077; --ouro: linear-gradient(88.95deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%); }
+.page {
+  --ouro: linear-gradient(88.95deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
+  --txt: #090909;
+}
 
 .bl {
   position: relative;
@@ -21,6 +26,7 @@
 .bl p { font-size: 18px; line-height: normal; }
 .bl strong { font-weight: 700; }
 .bl > :not(.backdrop) { position: relative; z-index: 1; }
+.am { color: #fcd200; }
 
 .backdrop { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
 .backdrop span { position: absolute; display: block; }
@@ -28,192 +34,184 @@
 
 .caixa { position: relative; display: flow-root; color: #fff; }
 
+.h-azul { font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--azul); }
+
 /* baloes: a caixa e o retangulo girado; o giro vai so na imagem de dentro */
 .bx { display: flex !important; align-items: center; justify-content: center; }
-.bx img { width: var(--iw); height: var(--ih); transform: rotate(var(--r)); }
-.bx--1 { left: -12px; top: 10px;  width: 55.853px;  height: 60.925px;  --iw: 40.239px; --ih: 49.435px;  --r: -22.05deg; }
-.bx--2 { left: 313px; top: 550px; width: 109.949px; height: 120.25px;  --iw: 80px;     --ih: 98px;      --r: 21.13deg; }
-.bx--3 { left: 268px; top: 588px; width: 118.49px;  height: 129.251px; --iw: 85.366px; --ih: 104.876px; --r: -22.05deg; }
-.bx--4 { left: 173px; top: 95px;  width: 109.949px; height: 120.25px;  --iw: 80px;     --ih: 98px;      --r: 21.13deg; }
-.bx--5 { left: 126px; top: 103px;  width: 118.49px;  height: 129.251px; --iw: 85.366px; --ih: 104.876px; --r: -22.05deg; }
-.bx--6 { left: 6px;   top: 606px; width: 103.474px; height: 115.95px;  --iw: 80px;     --ih: 98px;      --r: -15.65deg; }
-.bx--7 { left: 269px; top: 514px; width: 108.794px; height: 122.831px; --iw: 85.366px; --ih: 104.876px; --r: 14.42deg; }
-.bx--8 { left: 22px;  top: 295px; width: 103.474px; height: 115.95px;  --iw: 80px;     --ih: 98px;      --r: -15.65deg; }
-/* o par do hero cai junto da assinatura; as coordenadas dos dois passam a ser relativas a esta caixa */
-.balao-par { position: absolute; left: 228px; top: 550px; width: 154.949px; height: 167.251px; }
-.bl-hero .balao-par .bx--2 { left: 45px; top: 0; }
-.bl-hero .balao-par .bx--3 { left: 0; top: 38px; }
+.bx img { width: var(--iw); height: var(--ih); transform: rotate(var(--r)) scaleX(var(--sx, 1)); }
+.bx--1 { left: 84.67px;  top: 16.82px;  width: 116.327px; height: 122.775px; --iw: 78.445px; --ih: 96.374px;  --r: -30.27deg; }
+.bx--2 { left: 0;        top: 0;        width: 96.049px;  height: 113.371px; --iw: 85.366px; --ih: 104.876px; --r: -6.11deg; }
+.bx--3 { left: 269.38px; top: 681.16px; width: 109.949px; height: 120.25px;  --iw: 80px;     --ih: 98px;      --r: 21.13deg; }
+.bx--4 { left: 113.38px; top: 724.87px; width: 118.49px;  height: 129.251px; --iw: 85.366px; --ih: 104.876px; --r: -22.05deg; }
+.bx--5 { left: 75.83px;  top: 18px;     width: 85.366px;  height: 104.876px; --iw: 85.366px; --ih: 104.876px; --r: 0deg; --sx: -1; }
+.bx--6 { left: 286.87px; top: 132.03px; width: 92.996px;  height: 114.423px; --iw: 92.996px; --ih: 114.423px; --r: 0deg; }
+.bx--7 { left: 221.88px; top: 65.4px;   width: 85.366px;  height: 104.876px; --iw: 85.366px; --ih: 104.876px; --r: 0deg; }
+.bx--8 { left: 123.21px; top: 12.17px;  width: 92.996px;  height: 114.423px; --iw: 92.996px; --ih: 114.423px; --r: 0deg; }
+/* o balao do hero cai junto da assinatura; as coordenadas passam a ser relativas a esta caixa */
+.balao-uno { position: absolute; left: 251.41px; top: 825.31px; width: 96.049px; height: 113.371px; }
 /* os baloes da mecanica ficam por cima da cupula amarela (no Figma a cobrem) */
-.bl-mecanica .backdrop { z-index: 3; }
+.bl-campanha { min-height: 1466px; }
+.bl-campanha .backdrop { z-index: 3; }
+.bl-passos .backdrop { z-index: 3; }
+
+/* cupula amarela (282 x 145): titulo dentro dela */
+.cupula-amarela {
+  position: relative; z-index: 2 !important;
+  width: 282px; height: 145px;
+  background: url("../assets/noticias/elipse.svg") 0 0 / 282px 144.832px no-repeat;
+}
+.cupula-amarela h2 {
+  width: 229px; margin: 0 0 0 26px; padding-top: 63px;
+  font-size: 24px; font-weight: 700; line-height: normal; text-align: center; text-transform: uppercase; color: var(--azul);
+}
 
 /* =========================================================
-   BLOCO 1 — ABERTURA  (182 .. 1057)
+   BLOCO 1 — ABERTURA  (182 .. 1407)
    ========================================================= */
-.hero-foto { position: relative; width: 402px; height: 409px; }
-.hero-foto > img:first-child { width: 402px; height: 409px; object-fit: cover; }
-.hero-selo { position: absolute; left: 275px; top: 15px; width: 110px; height: 114px; }
+.bl-hero { min-height: 1225px; }
+.bl-hero > .hero-foto { position: absolute; left: -296.5px; top: 0; z-index: 0; width: 995px; height: 496px; margin: 0; }
+.hero-foto img { display: block; width: 995px; height: 496px; max-width: none; }
+.bl-hero > .hero-selo { position: absolute; left: 191.47px; top: 10px; z-index: 1; width: 198px; height: 205px; }
 
-.hero-titulo { margin: 38px 0 0 25px; }
+.hero-titulo { margin: 524.88px 0 0 20.37px; /* o glifo da Raspoutine cai ~4px abaixo da caixa do Figma */ }
 .hero-gancho {
   display: block; width: 312px;
   font-family: "Raspoutine", "FS Lola", serif; font-weight: 500; font-style: italic;
-  font-size: 32px; line-height: 34.4px;
-  background-image: linear-gradient(88.05deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
+  font-size: 39px; line-height: 42px;
+  background-image: linear-gradient(-34.76deg, #fbbd03 11.595%, #e30613 84.89%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
-.hero-destaque { display: block; margin-top: 2px; font-size: 48px; font-weight: 700; line-height: 45px; color: var(--navy); white-space: nowrap; }
+.hero-destaque { display: block; margin-top: 4px; font-size: 48px; font-weight: 700; line-height: 45px; color: var(--azul); white-space: nowrap; }
 
-.hero-assina { width: 140px; margin: 36px 0 0 25px; }
+.hero-olho {
+  width: 360px; margin: 37.26px 0 0 20.37px;
+  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza);
+}
+.hero-assina { width: 166px; margin: 32.88px 0 0 20.4px; }
 .hero-edicao {
-  padding: 2px 15px; background: var(--azul-claro); color: #fff;
+  width: 140px; padding: 2px 15px; background: var(--azul-claro); color: #fff; box-sizing: border-box;
   font-size: 20px !important; font-weight: 500; text-align: center; white-space: nowrap;
 }
 .hero-autor { margin-top: 13px; font-weight: 500; font-style: italic; color: #000; white-space: nowrap; }
 
-.hero-olho {
-  width: 337px; margin: 56px 0 0 26px; padding-bottom: 0;
-  font-size: 20px !important; line-height: 23px !important; font-style: italic; color: var(--cinza);
-}
-
-/* =========================================================
-   BLOCO 2 — A CAMPANHA  (1057 .. 1900)
-   ========================================================= */
-.carrinhos { position: relative; width: 402px; height: 226px; margin-top: 23px; z-index: 2 !important; }
+.carrinhos { position: relative; width: 402px; height: 297.55px; margin-top: 39.29px; z-index: 2 !important; }
 .carrinho { position: absolute; max-width: none; }
-.carrinho--1 { left: 125px; top: 0; width: 254px; height: 194px; }
-.carrinho--2 { left: 30px; top: 63px; width: 201px; height: 186px; }
-
-.caixa--campanha {
-  width: 402px; padding: 35px 0 0;
-  background: #00108a url("../assets/noticias/gradiente.jpg") -77px 261px / 492px 277px no-repeat;
-}
-.t-campanha { width: 350px; margin-left: 30px; }
-.t-campanha p + p { margin-top: 20px; }
-
-.lista-premios {
-  width: 351px; margin: 47px 0 -55px 19px; padding: 29px 22px 22px 48px;
-  border-radius: 34px; background-image: linear-gradient(89.29deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
-  color: #000; font-size: 18px; font-weight: 700; font-style: italic; list-style: disc;
-}
-.lista-premios li + li { margin-top: 20px; }
+.carrinho--1 { left: 113.52px; top: 0; width: 303.52px; height: 231.82px; }
+.carrinho--2 { left: 0; top: 75.29px; width: 240.19px; height: 222.26px; }
 
 /* =========================================================
-   BLOCO 3 — A MECÂNICA  (1900 .. 2443)
+   BLOCO 2 — A CAMPANHA E A MECÂNICA  (1407 .. 2873)
    ========================================================= */
-.cupula-amarela {
-  width: 282px; height: 145px; margin: 170px 0 0 64px;
-  background: url("../assets/noticias/elipse.svg") 0 0 / 282px 144.832px no-repeat;
-  z-index: 2 !important;
+.caixa--topo { width: 405px; min-height: 290.23px; margin: 0 0 0 -1.5px; background: var(--azul); }
+.t-topo { width: 350px; margin: 38.74px 0 0 33.95px; }
+.t-topo p + p { margin-top: 20px; }
+.mais15 { display: block; width: 295.73px; height: 130.47px; margin: 4.89px 0 0 64.38px; }
+
+.premios { margin: 29.43px 0 0 20px; padding: 0; list-style: none; width: 362px; }
+.premio {
+  height: 75px; padding-right: 17px; box-sizing: border-box; border-radius: 21px;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  background-image: linear-gradient(193.19deg, #ffdc00 5.647%, #da1627 82.413%);
+  font-size: 21px; font-weight: 700; line-height: normal; color: #fff;
 }
-.cupula-amarela h2 {
-  width: 229px; margin: 0 0 0 25.5px; padding-top: 63px;
-  font-size: 24px; font-weight: 700; line-height: normal; text-align: center; text-transform: uppercase; color: #0c1f60;
+.premio + .premio { margin-top: 15px; }
+.premio span, .premio br { }
+
+.bl-campanha .cupula-amarela { margin: 74px 0 0 65.5px; }
+.caixa--mecanica { width: 405px; min-height: 552.99px; margin: -37px 0 0 -1.5px; background: var(--azul); }
+.t-mecanica { width: 360.5px; margin: 75px 0 0 21.5px; text-align: center; }
+.t-mecanica p + p { margin-top: 20px; }
+.t-mecanica--2 { margin-top: 31px; }
+.btn-site {
+  width: 362px; height: 42px; margin: 27px 0 0 21.5px; padding: 10px 0; box-sizing: border-box;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  border-radius: 10px; background: #ffdc00; color: var(--azul); text-decoration: none; white-space: nowrap;
+  font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; line-height: normal;
 }
-.caixa--mecanica {
-  width: 405px; margin: -37px 0 0 -3px; padding: 75px 0 49px 32px;
-  background: var(--navy);
-}
-.caixa--mecanica p { width: 350px; text-align: center; }
-.caixa--mecanica p + p { margin-top: 20px; }
+.btn-site img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
 
 /* =========================================================
-   BLOCO 4 — ALGUMAS ESCOLHAS MULTIPLICAM OS NÚMEROS  (2443 .. 3351)
+   BLOCO 3 — ESCOLHAS QUE MULTIPLICAM OS NÚMEROS  (2873 .. 4530)
    ========================================================= */
-.trevo { left: 234px; top: -24px; width: 112px; height: 141px; }
+.bl-multiplica { min-height: 1657px; }
+.h-multiplica { width: 360px; height: 84px; margin: 35.05px 0 0 20.47px; }
+.t-extras { width: 366px; margin: 15px 0 0 20.47px; color: var(--txt); }
 
-.h-multiplica {
-  width: 352px; margin: 69px 0 0 24px;
-  font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: #0c1f60;
-}
-.t-extras { width: 352px; margin: 24px 0 0 25px; color: #090909; }
-
-.carrossel { width: 402px; margin-top: 29px; overflow-x: auto; scrollbar-width: none; touch-action: pan-x pan-y; }
+.carrossel-wrap { position: relative; width: 400px; height: 434px; margin: 85px 0 0 0.47px; }
+.carrossel { width: 400px; height: 434px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; touch-action: pan-x pan-y; background: #fff; }
 .carrossel::-webkit-scrollbar { display: none; }
 .carrossel-faixa {
-  width: 1211px; height: 430px; margin: 0 0 0 58px; padding: 0; list-style: none;
-  display: flex; align-items: flex-start;
+  position: relative; width: 1211px; height: 430px; margin: 0 0 0 54px; padding: 0; list-style: none;
   background-image: linear-gradient(88.81deg, #f2a31a 3.636%, #f7e30b 46.113%, #eeb31b 99.567%);
 }
-.extra { flex: none; display: block; }
-.extra figure { width: 209px; }
-.extra img { display: block; width: 209px; }
-.extra p { font-size: 20px !important; font-weight: 700; }
-.extra--1 { width: 236px; margin-left: 84px; }
-.extra--1 figure { margin-top: 71px; height: 201px; }
-.extra--1 p { margin-top: 6px; color: #0c2980; }
-.extra--2 { width: 244px; margin-left: 183px; }
-.extra--3 { width: 264px; margin-left: 148px; }
-.extra--2 figure, .extra--3 figure { margin-top: 64px; height: 214px; }
-.extra--2 p, .extra--3 p { color: #071f66; }
+.extra { position: absolute; top: 0; width: 360px; height: 430px; color: var(--azul); }
+.extra--1 { left: 20px; } .extra--2 { left: 425px; } .extra--3 { left: 818.5px; }
+.extra h3 { position: absolute; left: 0; top: 42px; width: 360px; font-size: 24px; font-weight: 700; line-height: normal; text-align: center; text-transform: uppercase; }
+.extra img { position: absolute; top: 112px; width: 209px; display: block; }
+.extra p { position: absolute; font-size: 20px !important; font-weight: 700; }
+.extra--1 img { left: 64px; }  .extra--1 p { left: 28px; top: 326px; width: 284px; text-align: center; }
+.extra--2 img { left: 65px; }  .extra--2 p { left: 65px; top: 327px; width: 236px; }
+.extra--3 img { left: 76.5px; } .extra--3 p { left: 76.5px; top: 327px; width: 264px; }
+.extra p strong { font-weight: 800; }
+.seta-carrossel { position: absolute; left: 16px; top: 202px; width: 25px; height: 25px; pointer-events: none; z-index: 2; }
+.seta-carrossel img { display: block; width: 25px; height: 25px; }
 
-.t-acumulo { width: 353px; margin: 71px 0 0 25px; font-weight: 700; color: #090909; }
-.pendente { color: var(--vermelho); }
+.h-marcas { width: 360px; height: 84px; margin: 66px 0 0 16.47px; }
+.t-marcas { width: 360px; margin: 0 0 0 16.47px; color: var(--txt); }
+.logos { position: relative; width: 402px; height: 274px; margin: 35px 0 0 0; }
+.logos-faixa { position: absolute; left: 54.47px; top: 0; width: 347.5px; height: 274px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; touch-action: pan-x pan-y; }
+.logos-faixa::-webkit-scrollbar { display: none; }
+.logos-faixa img { display: block; width: 944px; height: 274px; max-width: none; }
+.seta-logos { position: absolute; left: 18.47px; top: 109px; width: 25px; height: 25px; pointer-events: none; }
+.seta-logos-bg { position: absolute; left: 0; top: 0; width: 25px; height: 25px; }
+.seta-logos-seta { position: absolute; left: 6px; top: 6.4px; width: 14px; height: 14px; transform: rotate(180deg); }
 
-/* =========================================================
-   BLOCO 5 — E SE A COMPRA SAIR GRÁTIS?  (3351 .. 4107)
-   ========================================================= */
-.caixa--gratis { width: 402px; margin-top: 71px; padding: 32px 0 0 25px; background: var(--navy); }
-.h-gratis { font-size: 24px; font-weight: 700; line-height: normal; color: var(--amarelo-escuro); }
-.t-gratis { width: 350px; margin: 26px 0 0 1px; padding-bottom: 105px; }
+.h-gratis { width: 360px; height: 67px; margin: 52px 0 0 21.47px; }
+.t-gratis { width: 360px; margin: 15px 0 0 21.47px; color: var(--txt); }
 .t-gratis p + p { margin-top: 20px; }
-.t-ouro {
-  width: 359px; margin: 53px 0 0 25px;
-  font-size: 26px !important; font-weight: 700;
-  background-image: var(--ouro); -webkit-background-clip: text; background-clip: text; color: transparent;
-}
 
 /* =========================================================
-   BLOCO 6 — COMO PARTICIPAR  (4107 .. 4929)
+   BLOCO 4 — VEJA COMO É FÁCIL PARTICIPAR  (4530 .. 5493)
    ========================================================= */
-.ilustra { position: relative; z-index: 2; width: 237px; height: 237px; margin: 28px 0 0 88px; }
-.ilustra img { width: 237px; height: 237px; }
-.ilustra h2 {
-  position: absolute; left: 16px; bottom: calc(237px - 118.5px + 20px); width: 205px; margin: 0;
-  font-size: 24px; font-weight: 700; line-height: 26px; text-align: center; text-transform: uppercase; color: #0c1f60;
-}
-.caixa--passos {
-  width: 354px; margin: -162px 0 0 24px; padding: 75px 11px 0;
-  border-radius: 34px; background: rgba(246, 186, 0, .09); color: #000;
-}
-.passos { width: 332px; margin: 2px 0 0; padding: 0 0 47px; list-style: none; display: flex; flex-direction: column; gap: 33px; }
-.passo { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.bl-passos { min-height: 963px; }
+.bl > .fundo-passos { position: absolute; z-index: 0; left: -0.47px; top: 222.29px; width: 402px; height: 550.6px; background: #f6ba00; opacity: .2; }
+.bl-passos .cupula-amarela { margin: 77.47px 0 0 59.53px; }
+.bl-passos .cupula-amarela h2 { margin-left: 26.5px; padding-top: 45.42px; }
+
+.passos { margin: 42.71px 0 0; padding: 0; list-style: none; }
+.passo { text-align: center; color: var(--txt); }
 .passo-num {
-  position: relative; width: 66.6px; height: 33.3px; margin-bottom: 6px;
-  background: url("../assets/noticias/num.svg") no-repeat 0 0 / 66.6px 33.3px;
+  position: relative; display: block; width: 66.6px; height: 33.31px; margin: 0 auto 0 169.24px;
+  background: url("../assets/noticias/num.svg") no-repeat 0 0 / 66.6px 33.31px;
 }
 .passo-num b {
-  position: absolute; left: 28px; top: 3px; width: 11px;
-  font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: normal; color: #fff; text-align: center;
+  position: absolute; left: 27.8px; top: 3px; width: 11.3px;
+  font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: 27.67px; color: #fff; text-align: center;
 }
-.passo-txt { width: 356px; font-weight: 700; }
-.passo-txt--estreito { width: 312px; }
-.passo-tit { font-size: 21px; font-weight: 700; }
+.passo h3 { width: 360px; margin: 12.32px 0 0 21px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--azul); }
+.passo p { width: 360px; margin: 8px 0 0 21px; }
+.passo--1 { }
+.passo--2 { margin-top: 25.71px; }
+.passo--3 { margin-top: 15.91px; }
+.passo--3 h3, .passo--4 h3 { line-height: 28px; }
+.passo--3 p, .passo--4 p { line-height: 21px; }
+.passo--4 { margin-top: 87.39px; }
+.passo--4 h3 { margin-top: 0; }
 
 /* =========================================================
-   BLOCO 7 — REGULAMENTO  (4929 .. 5461)
+   BLOCO 5 — REGULAMENTO  (5493 .. 5896)
    ========================================================= */
-.bl-regulamento { padding-top: 22px; }
-.t-campanha-datas {
-  width: 346px; margin: 0 0 0 35px;
-  font-size: 26px !important; font-weight: 700; color: var(--navy);
-}
-.caixa--regulamento {
-  width: 567px; margin: 70px 0 -97px -90px; padding: 71px 0 129px 124px;
-  border-radius: 280px 280px 0 0;
-  background-image: linear-gradient(208.84deg, #ffdc00 5.647%, #ff5564 82.413%);
-  color: var(--navy);
-}
-.t-confira { font-size: 20px !important; font-weight: 700; white-space: nowrap; }
+.bl-regulamento { min-height: 403px; }
 .btn-regulamento {
-  width: 243px; height: 42px; margin: 12px 0 0 40px; padding: 10px 0;
+  width: 362px; height: 42px; margin: 182.7px 0 0 20px; padding: 10px 0; box-sizing: border-box;
   display: flex; align-items: center; justify-content: center; gap: 10px;
-  border-radius: 10px; background: var(--navy); color: #fff;
-  font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; white-space: nowrap;
+  border-radius: 10px; background: #ffdc00; color: var(--azul); text-decoration: none; white-space: nowrap;
+  font-family: "Inter", sans-serif; font-size: 18px; font-weight: 700; line-height: normal;
 }
 .btn-regulamento img { width: 15.142px; height: 14.728px; margin: 0 -2.5px; transform: rotate(45deg); }
+.t-legal { width: 360px; margin: 41.76px 0 0 21.47px; font-size: 14px !important; line-height: normal; text-align: center; color: var(--txt); }
 
-/* o rodape passa por cima da cupula, que desce 97px sobre ele */
-.noticias .foot { z-index: 3; background: transparent; } /* a cupula aparece atras da barra, sem o branco do rodape */
+.noticias .foot { z-index: 0; }
 
-.adbox { width: 402px; aspect-ratio: 375 / 391; margin-top: 97px; } /* a cupula do regulamento sobe 97px; este espaco a deixa inteira acima do banner */
+.adbox { width: 402px; aspect-ratio: 375 / 391; margin-top: 0; }
 .adbox img { display: block; width: 402px; height: 100%; object-fit: cover; }

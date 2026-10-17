@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/noticias.css?v=75-9">
+<link rel="stylesheet" href="css/noticias.css?v=75-11">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -117,141 +117,132 @@
 
   <!-- ============ BLOCO 1 — ABERTURA ============ -->
   <section class="bl bl-hero">
+    <figure class="hero-foto"><img src="assets/noticias/hero.jpg" alt="Rodrigo Faro sorrindo, de DJ, com balões azuis e dourados" width="995" height="496"></figure>
+    <img class="hero-selo" src="assets/noticias/selo.png" alt="Aniversário Assaí 52 anos — O sucesso voltou: compras grátis todos os dias" width="198" height="205">
     <div class="backdrop" aria-hidden="true">
       <span class="bx bx--1"><img src="assets/noticias/balao-dourado.png" alt=""></span>
-      <div class="balao-par" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
-        <span class="bx bx--2" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
-        <span class="bx bx--3" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
+      <div class="balao-uno" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+        <span class="bx bx--2" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
       </div>
     </div>
-    <figure class="hero-foto">
-      <img src="assets/noticias/hero.jpg" alt="Rodrigo Faro sorrindo, de DJ, com balões azuis e dourados" width="402" height="409">
-      <img class="hero-selo" src="assets/noticias/selo.png" alt="Aniversário Assaí 52 anos — O sucesso voltou: compras grátis todos os dias" width="110" height="114">
-    </figure>
     <h1 class="hero-titulo">
-      <span class="hero-gancho" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100">Suas compras de outubro podem voltar</span>
-      <span class="hero-destaque" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100">PARA O CAIXA</span>
+      <span class="hero-gancho" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100">Suas compras de outubro podem</span>
+      <span class="hero-destaque" data-fx="reveal-wipe" data-fx-uma-vez data-fx-margem="100">render prêmios</span>
     </h1>
+    <p class="hero-olho">Na campanha de aniversário de 52 anos do Assaí, a cada R$ 20 em compras você ganha um número da sorte. São mais de R$ 15 milhões em prêmios.</p>
     <div class="hero-assina">
       <p class="hero-edicao">#75 out . 26</p>
       <p class="hero-autor">Por: Manoela Leão</p>
     </div>
-    <p class="hero-olho">Na campanha de aniversário do Assaí, cada R$ 20 em compras dá direito a um número da sorte. São mais de R$ 15 milhões em prêmios, incluindo compras grátis, R$ 1 milhão e milhares de Sacolas Assaí.</p>
-  </section>
-
-  <!-- ============ BLOCO 2 — A CAMPANHA ============ -->
-  <section class="bl bl-campanha">
     <div class="carrinhos" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-intervalo="0.3">
-      <img class="carrinho carrinho--1" data-fx-item src="assets/noticias/carrinho1.png" alt="" width="254" height="194">
-      <img class="carrinho carrinho--2" data-fx-item src="assets/noticias/carrinho2.png" alt="Carrinhos de supermercado cheios de produtos" width="201" height="186">
-    </div>
-    <!-- azul-marinho que desce em degrade: o fundo e a propria caixa do texto -->
-    <div class="caixa caixa--campanha">
-      <div class="t-campanha">
-        <p>Quem trabalha com alimentação sabe: o estoque gira e é preciso comprar de novo. Farinha, óleo, bebidas, carnes, embalagens, produtos de limpeza. Em outubro, essas compras que já fazem parte da rotina do negócio também podem valer números da sorte.</p>
-        <p><strong>De 1º a 31 de outubro,</strong> a campanha de aniversário do Assaí distribuirá mais de R$ 15 milhões em prêmios por todo o Brasil.</p>
-        <p>Entre eles estão 10 milhões de compras grátis de até R$ 700, milhares de Sacolas Assaí e um grande prêmio de R$ 1 milhão.</p>
-      </div>
-      <ul class="lista-premios">
-        <li>Mais de R$ 15 milhões em prêmios</li>
-        <li>10 milhões de compras grátis de até R$ 700</li>
-        <li>1 prêmio de R$ 1 milhão</li>
-        <li>Milhares de Sacolas Assaí</li>
-      </ul>
+      <img class="carrinho carrinho--1" data-fx-item src="assets/noticias/carrinho1.png" alt="" width="304" height="232">
+      <img class="carrinho carrinho--2" data-fx-item src="assets/noticias/carrinho2.png" alt="Carrinhos de supermercado cheios de produtos" width="240" height="222">
     </div>
   </section>
 
-  <!-- ============ BLOCO 3 — A MECÂNICA ============ -->
-  <section class="bl bl-mecanica">
+  <!-- ============ BLOCO 2 — A CAMPANHA E A MECÂNICA ============ -->
+  <section class="bl bl-campanha">
+    <!-- faixa azul do topo: o fundo e a propria caixa do texto -->
+    <div class="caixa caixa--topo">
+      <div class="t-topo">
+        <p>Quem trabalha com alimentação sabe: o estoque gira e é preciso comprar de novo. Farinha, óleo, carnes, embalagens, produtos de limpeza. Em outubro, as compras que já fazem parte da rotina do negócio também também abrem chance de ganhar prêmios.</p>
+        <p>A campanha de aniversário de 52 anos do Assaí acontece de <strong class="am">1º a 31 de outubro de 2026</strong> e reúne mais de R$ 15 milhões em premiações.</p>
+      </div>
+    </div>
+    <img class="mais15" src="assets/noticias/mais15.png" alt="Mais de 15 milhões em prêmios" width="296" height="130">
+
+    <ul class="premios">
+      <li class="premio">Milhares de compras grátis<br>de até R$ 700</li>
+      <li class="premio">Sacolas reutilizáveis Assaí</li>
+      <li class="premio">Um grande prêmio de R$ 1 milhão em certificado de ouro</li>
+    </ul>
+
     <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
-      <span class="bx bx--4" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
-      <span class="bx bx--5" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
+      <span class="bx bx--3" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
+      <span class="bx bx--4" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
     </div>
     <div class="cupula-amarela"><h2>A cada R$ 20, <br>uma nova chance</h2></div>
     <div class="caixa caixa--mecanica">
-      <p>A mecânica começa no caixa. A cada R$ 20 em compras, o cliente recebe um número da sorte para participar da promoção.</p>
-      <p>Para isso, é preciso informar o CPF ou CNPJ no momento da compra e fazer o cadastro pelo site da campanha, pelo totem disponível nas lojas ou pelo WhatsApp.</p>
-      <p>Depois do cadastro, os números da sorte gerados pelas compras ficam XXXX.</p>
+      <div class="t-mecanica">
+        <p>A mecânica começa no caixa. Ao fazer suas compras, informe o CPF ou CNPJ para participar da campanha. A cada R$ 20 em compras, você ganha um número da sorte.</p>
+        <p>Para concorrer ao grande prêmio, faça também o cadastro no site oficial</p>
+      </div>
+      <a class="btn-site" href="https://www.aniversarioassai.com.br" target="_blank" rel="noopener">www.aniversarioassai.com.br. <img src="assets/noticias/seta.svg" alt="" width="10" height="10"></a>
+      <div class="t-mecanica t-mecanica--2">
+        <p>As inscrições ficam abertas até 3 de novembro de 2026, mas as compras participantes devem ser realizadas durante outubro.</p>
+        <p>Para concorrer as compras grátis e as sacolas Assaí, o sorteio é realizado direto na hora e no caixa. Já o grande prêmio de R$ 1 milhão em certificado de ouro será destinado ao ganhador no sorteio final.</p>
+      </div>
     </div>
   </section>
 
-  <!-- ============ BLOCO 4 — ALGUMAS ESCOLHAS MULTIPLICAM OS NÚMEROS ============ -->
+  <!-- ============ BLOCO 3 — ESCOLHAS QUE MULTIPLICAM OS NÚMEROS, MARCAS E COMPRA GRÁTIS ============ -->
   <section class="bl bl-multiplica" data-fx="pin-horizontal">
-    <div class="backdrop" aria-hidden="true">
-      <span class="trevo"><img src="assets/noticias/trevo.png" alt=""></span>
-    </div>
-    <h2 class="h-multiplica">Algumas escolhas multiplicam os números</h2>
-    <p class="t-extras">Além do número recebido a cada R$ 20, algumas compras e formas de pagamento dão direito a números extras.</p>
+    <h2 class="h-azul h-multiplica">Algumas escolhas multiplicam os números</h2>
+    <p class="t-extras">Além dos números gerados pelas compras, produtos de marcas participantes, pagamentos com Cartão Passaí ou Pix rendem mais números da sorte.</p>
 
-    <!-- faixa horizontal: rola para o lado com o dedo/mouse (o efeito de scroll entra na fase das animacoes) -->
+    <!-- faixa horizontal: rola para o lado com o scroll (pin-horizontal), com o dedo ou com o mouse -->
+    <div class="carrossel-wrap">
     <div class="carrossel" data-fx-item>
       <ul class="carrossel-faixa">
         <li class="extra extra--1">
-          <figure><img src="assets/noticias/card1.png" alt="Garrafa de leite e caixa de leite com +1 trevo" width="209" height="201"></figure>
-          <p>A cada R$ 20 em produtos das marcas participantes, ganhe +1 número da sorte.</p>
+          <h3>Aumente suas chances<br>de ganhar</h3>
+          <img src="assets/noticias/card2.png" alt="Cartão Passaí com +1 trevo" width="209" height="214">
+          <p>Ao pagar a compra com<br>o cartão Passaí, ganhe<br>+1 número da sorte.</p>
         </li>
         <li class="extra extra--2">
-          <figure><img src="assets/noticias/card2.png" alt="Cartão Passaí com +1 trevo" width="209" height="214"></figure>
-          <p>Ao pagar a compra com o cartão Passaí, ganhe +1 número da sorte.</p>
+          <h3>Aumente suas chances<br>de ganhar</h3>
+          <img src="assets/noticias/card1.png" alt="Garrafa de leite e caixa de leite com +1 trevo" width="209" height="208">
+          <p>A cada R$ 20 em produtos das marcas participantes, ganhe +1 número da sorte.</p>
         </li>
         <li class="extra extra--3">
-          <figure><img src="assets/noticias/card3.png" alt="Celular com Pix e +1 trevo" width="209" height="214"></figure>
-          <p>Ao pagar a compra via Pix, ganhe +1 número da sorte.</p>
+          <h3>Aumente suas chances<br>de ganhar</h3>
+          <img src="assets/noticias/card3.png" alt="Celular com Pix e +1 trevo" width="209" height="214">
+          <p>Ao pagar a compra via Pix, ganhe <strong>+1 número da sorte.</strong></p>
         </li>
       </ul>
     </div>
+    <span class="seta-carrossel" aria-hidden="true"><img src="assets/noticias/seta-carrossel.svg" alt="" width="25" height="25"></span>
+    </div>
 
+    <h2 class="h-azul h-marcas">Conheça as marcas que estão com a gente</h2>
+    <p class="t-marcas">Compre seus produtos favoritos das marcas participantes e ganhe números da sorte extras!</p>
+    <div class="logos">
+      <div class="logos-faixa"><img src="assets/noticias/logos.jpg" alt="Marcas participantes da campanha" width="944" height="274"></div>
+      <span class="seta-logos" aria-hidden="true"><img class="seta-logos-bg" src="assets/noticias/seta-logos-bg.svg" alt="" width="25" height="25"><img class="seta-logos-seta" src="assets/noticias/seta-logos.svg" alt="" width="14" height="1"></span>
+    </div>
+
+    <h2 class="h-azul h-gratis">Premiação de Compra Grátis voltou ainda melhor!</h2>
+    <div class="t-gratis">
+      <p>Esse ano são ainda mais ganhadores por todo o Brasil e sabemos que esse é um prêmio que conversa diretamente com quem compra para trabalhar. Uma compra premiada pode representar economia no abastecimento de uma lanchonete, restaurante, marmitaria ou confeitaria.</p>
+      <p>O limite da premiação é de R$ 700, conforme as condições da campanha. Para quem precisa repor ingredientes e materiais com frequência, essa economia pode abrir espaço no orçamento para outras despesas do negócio.</p>
+    </div>
+  </section>
+
+  <!-- ============ BLOCO 4 — VEJA COMO É FÁCIL PARTICIPAR ============ -->
+  <section class="bl bl-passos">
+    <span class="fundo-passos" aria-hidden="true"></span>
     <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+      <span class="bx bx--5" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
       <span class="bx bx--6" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
     </div>
-
-    <p class="t-acumulo">Isso significa que uma mesma compra pode gerar mais chances de participação quando reúne as condições previstas pela promoção. <span class="pendente">XXXX [confirmar possibilidade de acúmulo e regra exata no regulamento].</span></p>
+    <div class="cupula-amarela cupula-amarela--passos"><h2>Veja <br>como é fácil <br>participar</h2></div>
+    <ol class="passos" data-fx="slide-in-up" data-fx-margem="200">
+      <li class="passo passo--1" data-fx-item><span class="passo-num"><b>1</b></span><h3>Compre</h3><p>Faça suas compras durante o período de 1º a 31 de outubro de 2026. A cada R$ 20, você ganha um número da sorte.</p></li>
+      <li class="passo passo--2" data-fx-item><span class="passo-num"><b>2</b></span><h3>Identifique-se</h3><p>Informe seu CPF ou CNPJ no caixa para concorrer às compras grátis.</p></li>
+      <li class="passo passo--3" data-fx-item><span class="passo-num"><b>3</b></span><h3>Cadastre-se</h3><p>Para concorrer ao grande prêmio, faça seu cadastro em www.aniversarioassai.com.br, pelo app Meu Assaí, nos totens das lojas ou pelo WhatsApp até 3 de novembro de 2026.</p></li>
+      <li class="passo passo--4" data-fx-item><h3>Consulte as regras</h3><p>Confira os regulamentos para conhecer critérios de participação, produtos e marcas participantes, regras dos números extras e condições de cada modalidade.</p></li>
+    </ol>
   </section>
 
-  <!-- ============ BLOCO 5 — E SE A COMPRA SAIR GRÁTIS? ============ -->
-  <section class="bl bl-gratis">
-    <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
-      <span class="bx bx--7" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
-    </div>
-    <div class="caixa caixa--gratis">
-      <h2 class="h-gratis">E se a compra sair grátis?</h2>
-      <div class="t-gratis">
-        <p>Esse é um prêmio que conversa diretamente com quem compra para trabalhar. Entre os prêmios da campanha estão 10 milhões de compras grátis, no valor de até R$ 700 cada.</p>
-        <p>Para quem abastece uma lanchonete, restaurante, marmitaria, confeitaria ou outro negócio de alimentação, recuperar o valor de uma compra significa dinheiro que deixa de sair daquela rodada de abastecimento e permanece disponível para outras despesas do negócio.</p>
-        <p>A forma de concessão da compra grátis, os valores, critérios de contemplação e demais condições são XXXX [inserir conforme regulamento].</p>
-      </div>
-    </div>
-    <p class="t-ouro">Uma compra que já precisava ser feita pode também gerar números da sorte para concorrer aos prêmios da campanha.</p>
-  </section>
-
-  <!-- ============ BLOCO 6 — COMO PARTICIPAR ============ -->
-  <section class="bl bl-passos">
-    <figure class="ilustra">
-      <img src="assets/noticias/ilustra.svg" alt="" aria-hidden="true" width="237" height="237">
-      <h2>Como participar</h2>
-    </figure>
-    <div class="caixa caixa--passos">
-      <ol class="passos" data-fx="slide-in-up" data-fx-margem="200">
-        <li class="passo" data-fx-item><span class="passo-num"><b>1</b></span><p class="passo-txt"><strong class="passo-tit">COMPRE</strong><br><strong>A cada R$ 20 em compras, ganhe um número da sorte.</strong></p></li>
-        <li class="passo" data-fx-item><span class="passo-num"><b>2</b></span><p class="passo-txt"><strong class="passo-tit">IDENTIFIQUE-SE</strong><br><strong>Informe CPF ou CNPJ no caixa.</strong></p></li>
-        <li class="passo" data-fx-item><span class="passo-num"><b>3</b></span><p class="passo-txt passo-txt--estreito"><strong class="passo-tit">CADASTRE-SE</strong><br><strong>Faça o cadastro pelo site, totem da loja ou WhatsApp.</strong></p></li>
-        <li class="passo" data-fx-item><span class="passo-num"><b>4</b></span><p class="passo-txt passo-txt--estreito"><strong class="passo-tit">ACOMPANHE</strong><br><strong>XXXX [onde consultar números da sorte/resultados].</strong></p></li>
-        <li class="passo" data-fx-item><span class="passo-num"><b>5</b></span><p class="passo-txt"><strong class="passo-tit">CONCORRA</strong><br><strong>A compras grátis de até R$ 700, <br>R$ 1 milhão e milhares de Sacolas Assaí.</strong></p></li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- ============ BLOCO 7 — REGULAMENTO ============ -->
+  <!-- ============ BLOCO 5 — REGULAMENTO ============ -->
   <section class="bl bl-regulamento">
     <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
+      <span class="bx bx--7" data-fx-item><img src="assets/noticias/balao-dourado.png" alt=""></span>
       <span class="bx bx--8" data-fx-item><img src="assets/noticias/balao-azul.png" alt=""></span>
     </div>
-    <p class="t-campanha-datas">A campanha acontece entre 1º e 31 de outubro de 2026. Antes de participar, vale conferir o regulamento completo para conhecer datas dos sorteios, critérios de participação, produtos e marcas participantes e todas as condições da promoção.</p>
-    <div class="caixa caixa--regulamento">
-      <p class="t-confira">Confira o regulamento da Promoção</p>
-      <!-- sem endereco no Figma: trocar o # pelo link do regulamento -->
-      <a class="btn-regulamento" href="#">Acesse o regulamento <img src="assets/noticias/seta.svg" alt="" width="10" height="10"></a>
-    </div>
+    <!-- sem endereco no Figma: trocar o # pelo link do regulamento -->
+    <a class="btn-regulamento" href="#">Consulte regulamento <img src="assets/noticias/seta.svg" alt="" width="10" height="10"></a>
+    <p class="t-legal">Promoção válida de 01.10.2026 a 31.10.2026, com inscrições até 03.11.2026. Compra premiada limitada a R$ 700. Grande prêmio entregue em certificado de ouro. O total anunciado considera as três modalidades: sorteio, compras grátis e sacolas. Certificados de Autorização SPA nº 04.052399/2026, 05.052402/2026 e 05.052405/2026. Consulte os regulamentos completos no site da campanha.</p>
   </section>
 
   </article>
