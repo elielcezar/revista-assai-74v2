@@ -247,30 +247,12 @@
 .h-comece { width: 349px; margin: 81px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--txt); }
 .t-comece { width: 349px; margin: 26px 0 0 18px; color: var(--txt); }
 .caixa--chamada {
-  width: 325px; height: 148.27px; margin: 73px 0 0 39px; padding: 46px 0 0 47px; box-sizing: border-box;
+  display: flex; align-items: flex-end; width: 325px; height: 148.27px; margin: 73px 0 0 39px; padding: 0 0 20px 47px; box-sizing: border-box;
   background: url("../assets/academia/ellipse54.svg") 0 0 / 325px 148.27px no-repeat;
 }
 .caixa--chamada p {
   width: 216px; font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; color: #fff;
 }
 .btn--site { width: 362px; margin: 0.08px 0 0 18px; }
-
-/* =========================================================
-   BLOCO 8 — STORY INSTITUCIONAL (espaco publicitario)
-   ========================================================= */
-.bl-ad { position: relative; z-index: 1; overflow-x: clip; }
-.ad-rotulo { height: 23px; margin: 77.68px 0 0 24px; font-size: 12px !important; line-height: 14px !important; color: var(--cinza, #666); }
-.ad-box { position: relative; display: flow-root; width: 402px; height: 702px; margin-top: 0; background: #be0003; }
-.ad-texto {
-  width: 261px; margin: 197px 0 0 70px; text-align: center; color: #fff;
-  font-size: 18px; text-shadow: 0 0 13px rgba(0, 0, 0, .25);
-}
-.ad-texto strong { font-weight: 700; }
-.ad-play { position: absolute; left: 162px; top: 351px; width: 72px; height: 72px; display: block; }
-.ad-play-bg { position: absolute; inset: 0; width: 72px; height: 72px; }
-.ad-play-seta {
-  position: absolute; left: 16px; top: 16px; width: 40px; height: 40px; display: block; transform: rotate(90deg);
-}
-.ad-play-seta img { position: absolute; left: 6.7%; right: 6.7%; top: 0; bottom: 25%; width: 86.6%; height: 75%; }
 
 .academia .foot { z-index: 0; background: #fff; }

@@ -30,14 +30,14 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="drop-in"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="drop-in"] [data-fx-item],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>Crescer também exige preparo — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Reforma Tributária e investimento financeiro estão entre os temas do Mês do Empreendedor da Academia Assaí, que reúne cursos com certificado, videocasts e materiais para apoiar pequenos negócios.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/academia.css?v=75-3">
+<link rel="stylesheet" href="css/academia.css?v=75-4">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -164,7 +164,9 @@
     <figure class="reforma-foto"><img src="assets/academia/homem.png" alt="Empreendedor de avental conferindo pedidos e embalagens em uma cozinha" width="798" height="399"></figure>
     <!-- a cupula laranja e o titulo ficam dentro da propria caixa azul -->
     <div class="caixa caixa--faixa caixa--reforma">
-      <div class="capa-reforma"><h2>Reforma<br>Tributária:<br>por que acompanhar?</h2></div>
+      <div data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100">
+        <div class="capa-reforma" data-fx-item><h2>Reforma<br>Tributária:<br>por que acompanhar?</h2></div>
+      </div>
       <div class="t-reforma">
         <p>2026 marca um período de adaptação às novas regras tributárias. Para os pequenos negócios, entender as mudanças ajuda a se preparar para possíveis impactos nos custos, nas margens e na gestão financeira. Também permite acompanhar cada etapa da transição e planejar com antecedência as decisões que envolvem os tributos.</p>
         <p>Esse é o ponto de partida dos conteúdos preparados pela Academia Assaí sobre o tema. A programação inclui um curso voltado aos impactos da Reforma Tributária para MEIs e pequenas empresas, um videocast que discute o Simples Nacional e um guia prático para acompanhar as mudanças e os principais pontos de atenção.</p>
@@ -279,18 +281,6 @@
       </div>
     </div>
     <a class="btn btn--az btn--site" href="#">Acessar Site Academia Assaí<img src="assets/academia/seta.svg" alt=""></a>
-  </section>
-
-  <!-- ============ BLOCO 8 — STORY INSTITUCIONAL (espaço publicitário, randômico até 4) ============ -->
-  <section class="bl bl-ad">
-    <p class="ad-rotulo">PUBLICIDADE</p>
-    <div class="ad-box">
-      <p class="ad-texto"><strong>STORY INSTITUCIONAL</strong><br><br>Randômico<br>Até 4 por espaço</p>
-      <span class="ad-play" aria-hidden="true">
-        <img class="ad-play-bg" src="assets/academia/ellipse145.svg" alt="">
-        <span class="ad-play-seta"><img src="assets/academia/polygon.svg" alt=""></span>
-      </span>
-    </div>
   </section>
 
   </article>
