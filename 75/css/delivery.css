@@ -120,8 +120,8 @@
 .caixa--ifood .retrato { margin-bottom: 0; }
 
 .q-ifood { width: 362px; margin: 62px 0 0 21px; text-align: center; }
-.q-ifood-texto { font-size: 21px !important; font-weight: 700; color: var(--roxo); }
-.q-ifood-autor { margin-top: 25px; font-weight: 700; font-style: italic; color: var(--cinza); }
+.q-ifood-texto { height: 253px; font-size: 21px !important; font-weight: 700; color: var(--roxo); }
+.q-ifood-autor { height: 40px; margin-top: 25px; font-weight: 700; font-style: italic; color: var(--cinza); }
 
 .caixa--99 {
   margin-top: 62px; padding: 107px 0 44px 20px;
