@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/gestao.css?v=75-4">
+<link rel="stylesheet" href="css/gestao.css?v=75-5">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -178,7 +178,7 @@
     <p class="t-informacoes">Essas informações ajudam a identificar onde o problema está concentrado e se determinadas situações pedem medidas diferentes.</p>
     <figure class="foto-mesa">
       <img src="assets/gestao/mesa.jpg" alt="Mesa posta de um restaurante aconchegante, com taças e velas" width="415" height="277">
-      <span class="interr interr--a" aria-hidden="true"><img src="assets/gestao/circulo-interr1.svg" alt="" width="100" height="100"><b>?</b></span>
+      <span class="interr interr--a" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item data-fx-grupo="a" data-fx-intervalo="0.05" src="assets/gestao/circulo-interr1.svg" alt="" width="100" height="100"><b data-fx-item data-fx-grupo="a">?</b></span>
     </figure>
   </section>
 
@@ -215,10 +215,10 @@
       <p>As medidas podem ser combinadas de acordo com o perfil das reservas e com as situações em que as ausências se concentram.</p>
     </div>
 
-    <figure class="prato">
-      <img src="assets/gestao/prato.png" alt="Prato com guardanapo vinho dobrado e talheres" width="307" height="307">
-      <span class="orb" aria-hidden="true"><img src="assets/gestao/orb-prato.svg" alt="" width="39" height="39"></span>
-      <span class="interr interr--c" aria-hidden="true"><img src="assets/gestao/circulo-interr2.svg" alt="" width="92" height="92"><b>?</b></span>
+    <figure class="prato" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-intervalo="0.3">
+      <img data-fx-item src="assets/gestao/prato.png" alt="Prato com guardanapo vinho dobrado e talheres" width="307" height="307">
+      <span class="orb" data-fx-item aria-hidden="true"><img src="assets/gestao/orb-prato.svg" alt="" width="39" height="39"></span>
+      <span class="interr interr--c" data-fx-item aria-hidden="true"><img src="assets/gestao/circulo-interr2.svg" alt="" width="92" height="92"><b>?</b></span>
     </figure>
 
     <h2 class="h-vermelho h-caminhos">5 caminhos para reduzir o no-show</h2>
@@ -234,12 +234,12 @@
   <!-- ============ BLOCO 7 — DECIDIU COBRAR? + FECHO ============ -->
   <section class="bl bl-regra">
     <!-- cupula roxa; a cadeira e as interrogacoes saem por cima do topo dela -->
-    <div class="caixa caixa--decidiu">
-      <span class="cadeira" aria-hidden="true">
+    <div class="caixa caixa--decidiu" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-intervalo="0.3">
+      <span class="cadeira" data-fx-item aria-hidden="true">
         <img class="cadeira-circulo" src="assets/gestao/circulo-cadeira.svg" alt="" width="160" height="160">
         <img class="cadeira-img" src="assets/gestao/cadeira.png" alt="" width="120" height="175">
       </span>
-      <span class="interr interr--b" aria-hidden="true"><img src="assets/gestao/circulo-interr2.svg" alt="" width="92" height="92"><b>?</b></span>
+      <span class="interr interr--b" data-fx-item aria-hidden="true"><img src="assets/gestao/circulo-interr2.svg" alt="" width="92" height="92"><b>?</b></span>
       <h2 class="h-amarelo">Decidiu cobrar? Deixe a regra clara</h2>
       <div class="t-cdc">
         <p>Se o restaurante decidir cobrar de alguma forma, as condições precisam ser apresentadas ao cliente antes da confirmação da reserva.</p>
@@ -250,14 +250,14 @@
 
     <div class="t-checklist">
       <p>Certifique-se de que cliente consegue encontrar facilmente estas respostas:</p>
-      <ul class="checklist">
-        <li>✅ Qual é o valor cobrado?</li>
-        <li>✅ A cobrança acontece no momento da reserva ou somente em caso de ausência?</li>
-        <li>✅ Até quando é possível cancelar sem cobrança ou perda do valor?</li>
-        <li>✅ O cancelamento pode ser feito de forma simples e por qual canal?</li>
-        <li>✅ Há período de tolerância antes de liberar a mesa?</li>
-        <li>✅ Em quais situações o valor é devolvido, mantido como crédito ou abatido do consumo?</li>
-        <li>✅ Como serão tratadas situações excepcionais?</li>
+      <ul class="checklist" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-intervalo="0.3">
+        <li data-fx-item>✅ Qual é o valor cobrado?</li>
+        <li data-fx-item>✅ A cobrança acontece no momento da reserva ou somente em caso de ausência?</li>
+        <li data-fx-item>✅ Até quando é possível cancelar sem cobrança ou perda do valor?</li>
+        <li data-fx-item>✅ O cancelamento pode ser feito de forma simples e por qual canal?</li>
+        <li data-fx-item>✅ Há período de tolerância antes de liberar a mesa?</li>
+        <li data-fx-item>✅ Em quais situações o valor é devolvido, mantido como crédito ou abatido do consumo?</li>
+        <li data-fx-item>✅ Como serão tratadas situações excepcionais?</li>
       </ul>
     </div>
     <p class="t-fecho">Após implementar a política, acompanhe seus efeitos sobre faltas, reservas, cancelamentos antecipados e ocupação das mesas liberadas. Observe também dúvidas e reclamações, que podem indicar falhas na comunicação das regras. Esses resultados ajudam a avaliar, constantemente, ajustes no valor, no prazo e no formato, além da necessidade de condições diferentes para grupos, datas ou horários.</p>

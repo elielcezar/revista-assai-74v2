@@ -176,8 +176,10 @@
   --ml: -89.17px; --w: 567px; min-height: 672.36px; margin-top: 112.57px;
   border-radius: 280px 280px 0 0; background: var(--roxo); color: #fff;
 }
-.cadeira-circulo { position: absolute; left: 210.2px; top: -33.47px; width: 159.94px; height: 159.94px; }
-.cadeira-img { position: absolute; left: 227.6px; top: -51.59px; width: 120.29px; height: 174.91px; }
+/* a caixa da cadeira tem o tamanho do circulo (o pop-in escala a partir do centro dela); a cadeira sai pelo topo */
+.cadeira { position: absolute; left: 210.2px; top: -33.47px; width: 159.94px; height: 159.94px; }
+.cadeira-circulo { position: absolute; left: 0; top: 0; width: 159.94px; height: 159.94px; }
+.cadeira-img { position: absolute; left: 17.4px; top: -18.12px; width: 120.29px; height: 174.91px; }
 .interr--b { left: 302.08px; top: -73.58px; width: 91.63px; height: 91.63px; }
 .interr--b b { left: 27px; top: 15.05px; width: 37.6px; font-size: 79.2px; line-height: 61.76px; }
 .caixa--decidiu .h-amarelo { width: 341px; margin: 178.44px 0 0 24px; }
