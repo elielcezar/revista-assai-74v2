@@ -30,14 +30,14 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="popcorn-pop"],.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="typewriter"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="popcorn-pop"],.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="slide-in-up"] [data-fx-item],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
 <title>A limitação do seu ponto pode virar sua melhor marca — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="De vizinho de cemitério a corredor espremido: aprenda a usar o inusitado para atrair clientes, criar narrativa e vender mais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/negocio.css?v=75-5">
+<link rel="stylesheet" href="css/negocio.css?v=75-7">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -130,16 +130,20 @@
 
   <!-- ============ BLOCO 2 — O BAR DE FRENTE PRO FUTURO ============ -->
   <!-- as fotos e as caixas rosa (texto sobre a foto) ficam em posicao absoluta; o texto segue em fluxo -->
-  <section class="bl bl-bar" data-fx="slide-in-up" data-fx-margem="200">
+  <section class="bl bl-bar">
     <figure class="foto foto--a"><img src="assets/negocio/foto-a.jpg" alt="Calçada de um bar em Poços de Caldas, com um cemitério ao fundo" width="410" height="279"></figure>
     <figure class="foto foto--b"><img src="assets/negocio/foto-b.jpg" alt="Frym e clientes posam com um prato em formato de caixão na frente do bar" width="415" height="309"></figure>
     <figure class="foto foto--c"><img src="assets/negocio/foto-c.jpg" alt="Prato em formato de caixão com minissanduíches, tomates, abóbora e pimenta" width="415" height="309"></figure>
+    <div class="bal bal--1" data-fx="slide-in-up" data-fx-margem="200">
     <div class="balao balao--1" data-fx-item>
       <p>Comer um aperitivo em um bar localizado de frente para um cemitério.</p>
       <p>A situação parece convidativa, insólita<br>ou assustadora?</p>
     </div>
+    </div>
+    <div class="bal bal--2" data-fx="slide-in-up" data-fx-margem="200">
     <div class="balao balao--2" data-fx-item>
       <p>Você apostaria que o local atrairia ou espantaria clientes?</p>
+    </div>
     </div>
 
     <div class="t-bar">
@@ -157,7 +161,7 @@
     <!-- no Figma este quadro e um mapa animado (aviao saindo de Pocos de Caldas); aqui entra a imagem parada -->
     <figure class="foto foto--mapa"><img src="assets/negocio/mapa.jpg" alt="Mapa do Sudeste ao Nordeste com um avião indicando o trajeto de Poços de Caldas até Recife" width="402" height="286"></figure>
     <figure class="foto foto--largura"><img src="assets/negocio/largura.jpg" alt="Fachada estreita do Largura Restaurante, em Recife" width="427" height="641"></figure>
-    <div data-fx="slide-in-up" data-fx-margem="200">
+    <div class="bal bal--3" data-fx="slide-in-up" data-fx-margem="200">
       <p class="balao balao--3" data-fx-item>A quase 2 mil quilômetros dali…</p>
     </div>
 
@@ -180,7 +184,7 @@
     <div class="t-narrativa">
       <p data-fx="reveal-wipe" data-fx-margem="100">O Largura do nome é o próprio Wilson. Antes de abrir o negócio, aos 21 anos, ele trabalhava como garçom e passava parte dos dias na mesa de sinuca, onde tinha o hábito de cantar a caçapa em que a bola ia cair. A bola caía em outra, e os amigos passaram a chamá-lo de Largura, por causa da distância entre a previsão e a jogada. Quando o bar abriu, o apelido combinou com o corredor estreito, e Wilson resolveu apostar na confusão. Tem cliente que chega esperando um salão amplo. “Tem cliente que espera encontrar um dono bem gordo”.</p>
       <p data-fx="reveal-wipe" data-fx-margem="100">Quem já conhece não se engana mais, e quase todo mundo ali já conhece. Segundo Wilson, 90% da clientela é de rostos familiares, "uma espécie de confraria".</p>
-      <p data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100"><span data-fx-item>Na cozinha, pratos regionais pernambucanos, com destaque para a carne de sol acebolada com farofa de jerimum caboclo e a galinha de cabidela. Nas paredes, fotos de frequentadores, alguns deles nomes conhecidos da cultura brasileira — como o caso do músico Djavan na foto abaixo. Wilson diz que os clientes veem o bar como "a última resistência de Casa Forte", o bairro onde ele funciona.</span></p>
+      <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="0.6">Na cozinha, pratos regionais pernambucanos, com destaque para a carne de sol acebolada com farofa de jerimum caboclo e a galinha de cabidela. Nas paredes, fotos de frequentadores, alguns deles nomes conhecidos da cultura brasileira — como o caso do músico Djavan na foto abaixo. Wilson diz que os clientes veem o bar como "a última resistência de Casa Forte", o bairro onde ele funciona.</p>
     </div>
   </section>
 

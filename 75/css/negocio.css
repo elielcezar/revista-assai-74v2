@@ -26,8 +26,10 @@
 .foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* caixa rosa sobre a foto */
+/* o slide-in-up poe position:relative nos itens: a posicao absoluta fica no .bal, que embrulha o balao */
+.bal { position: absolute; z-index: 2; }
 .balao {
-  position: absolute; z-index: 2; box-sizing: border-box; width: 365px; border-radius: 25px;
+  position: relative; box-sizing: border-box; width: 365px; border-radius: 25px;
   background: var(--pink); color: #fff; text-align: center;
 }
 .balao p { width: 325px; margin: 0 auto; }
@@ -66,8 +68,11 @@
 .foto--a { left: -8.47px; top: 0; width: 410px; height: 279px; }
 .foto--b { left: -9.47px; top: 279px; width: 414.79px; height: 309.44px; }
 .foto--c { left: -9.47px; top: 588.44px; width: 414.79px; height: 309.44px; }
-.balao--1 { left: 18px; top: 197px; height: 150px; padding-top: 25px; }
-.balao--2 { left: 17.53px; top: 561px; height: 80px; padding-top: 20px; }
+
+.bal--1 { left: 18px; top: 197px; }
+.balao--1 { height: 150px; padding-top: 25px; }
+.bal--2 { left: 17.53px; top: 561px; }
+.balao--2 { height: 80px; padding-top: 20px; }
 
 .t-bar { width: 360px; margin: 954.01px 0 0 23px; color: #000; }
 .t-bar p + p { margin-top: 20px; }
@@ -80,9 +85,9 @@
 .bl-largura { min-height: 2974.14px; }
 .foto--mapa { left: 0; top: 0; width: 402px; height: 285.8px; }
 .foto--largura { left: 0; top: 285.8px; width: 427px; height: 640.75px; }
-.balao--3 { left: 19px; top: 231.8px; height: 108px; padding: 43px 0 0 35px; text-align: left; font-size: 20px !important; font-weight: 700; }
+.bal--3 { left: 19px; top: 231.8px; }
+.balao--3 { height: 108px; padding: 43px 0 0 35px; text-align: left; font-size: 20px !important; font-weight: 700; }
 .bl .balao--3 { font-size: 20px; font-weight: 700; width: 365px; margin: 0; }
-.balao--3 { z-index: 2; }
 
 .adbox { width: 402px; aspect-ratio: 375 / 391; margin-top: 966.5px; }
 .adbox img { display: block; width: 402px; height: 100%; object-fit: cover; }
