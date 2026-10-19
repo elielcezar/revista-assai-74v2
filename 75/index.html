@@ -38,78 +38,69 @@
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
 <style>
-  /* recortes do capa.css eram das fotos da #74; na #75 a imagem preenche o card */
-  .capa .card-bg,
-  .capa .grid--2:nth-of-type(2) .card .card-bg,
-  .capa .grid--2:nth-of-type(3) .card:nth-child(1) .card-bg,
-  .capa .grid--2:nth-of-type(3) .card:nth-child(2) img.card-bg,
-  .capa .card--mkt img.card-bg,
-  .capa .card--consumidor .card-bg {
-    inset: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    object-fit: cover;
+  /* A capa da #75 nao usa as linhas .grid do capa.css (feitas para a #74): cada card tem
+     posicao propria, em px do Figma (6961:3584), sem depender da ordem dos irmaos. */
+
+  /* hero: o video preenche a caixa; o link cobre a imagem e o botao de som fica por cima */
+  .capa .hero { position: relative; overflow: hidden; }
+  .capa .hero .card-bg { inset: 0; left: 0; top: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  .capa .hero-link { position: absolute; inset: 0; z-index: 2; }
+  .capa .hero .video-sound {
+    position: absolute; right: 16px; top: 16px; z-index: 4;
+    width: 45px; height: 45px; padding: 0; border: 0; background: none; cursor: pointer;
+  }
+  .capa .video-sound-bg { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
+  .capa .video-sound-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+
+  /* cards: a imagem (ou o video) preenche o cartao */
+  .capa .c75 .card-bg { inset: 0; left: 0; top: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  .capa .c75 .card-title { font-size: 15px; font-weight: 500; line-height: normal; }
+
+  .capa .c75--full { width: 402px; height: 224px; margin-top: 16px; }
+  .capa .c75--delivery, .capa .c75--mkt { margin-top: 13px; }
+  .capa .duo { display: flex; gap: 13px; width: 402px; margin: 13px 0 0 -2px; }
+  .capa .duo--2 { margin-top: 16px; }
+  .capa .duo .c75 { width: 196px; height: 233px; flex: none; }
+
+  /* sobreposicoes (cores do Figma) */
+  .capa .card-fade--bl { height: 100%; bottom: 0; background: linear-gradient(242.33deg, rgba(201,201,201,.4) 53.98%, rgba(64,40,0,.4) 62.78%); }
+  .capa .card-fade--mkt { height: 100%; bottom: 0; background: linear-gradient(119.3deg, rgba(255,255,255,.2) 50.8%, rgba(64,40,0,.2) 64.97%); }
+  .capa .card-fade--up { height: 100%; bottom: 0; background: linear-gradient(to top, rgba(64,40,0,.5) 37.45%, rgba(255,255,255,.5) 55.07%); }
+  .capa .card-fade--topo { top: 0; height: 130.85px; background: linear-gradient(to top, transparent 0%, rgba(61,38,38,.72) 70.67%); }
+  .capa .card-fade--acad { height: 100%; bottom: 0; mix-blend-mode: darken; background: linear-gradient(to bottom, rgba(255,255,255,.6) 36.09%, rgba(64,40,0,.6) 61.85%); }
+
+  /* tag (13px) e texto (15px) de cada card, em px do cartao */
+  .capa .c75--delivery .card-tag, .capa .c75--consumidor .card-tag, .capa .c75--noticias .card-tag { left: 19px; top: 119px; }
+  .capa .c75--delivery .card-title, .capa .c75--consumidor .card-title, .capa .c75--noticias .card-title { left: 19px; top: 146px; width: 167px; }
+  .capa .c75--noticias .card-title { width: 186px; font-size: 14.5px; }
+  .capa .c75--mkt .card-tag { left: 218px; top: 130px; }
+  .capa .c75--mkt .card-title { left: 218px; top: 157px; width: 168.66px; }
+  .capa .c75--produto .card-tag { left: 20.96px; top: 19px; }
+  .capa .c75--produto .card-title { left: 20.96px; top: 46px; width: 153px; text-shadow: none; }
+  .capa .c75--novo .card-tag { left: 16.96px; top: 127px; }
+  .capa .c75--novo .card-title { left: 16.96px; top: 154px; width: 153px; text-shadow: none; }
+  .capa .c75--academia .card-tag { left: 20.96px; top: 97px; }
+  .capa .c75--academia .card-title { left: 20.96px; top: 124px; width: 153px; text-shadow: none; }
+  .capa .c75--gestao .card-tag { left: 14.48px; top: 18.43px; }
+  .capa .c75--gestao .card-title { left: 14.48px; top: 45.43px; width: 167px; }
+
+  /* noticias: selo dentro do card; o balao sai pela borda de cima, por cima do card de baixo */
+  .capa .noticias-wrap { position: relative; margin-top: 16px; }
+  .capa .noticias-wrap .c75--full { margin-top: 0; }
+  .capa .noticias-selo { position: absolute; z-index: 3; left: 18.93px; top: 18.43px; width: 80.35px; height: 83.21px; pointer-events: none; }
+  .capa .noticias-balao { position: absolute; z-index: 5; left: 321px; top: -21.6px; width: 67.51px; height: 76.01px; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+  .capa .noticias-balao img { width: 52.58px; height: 64.6px; transform: rotate(15deg); }
+  /* o balao flutua: sobe e desce 10px (ciclo de 1,42s), com um balanco leve (a imagem de dentro ja vem girada 15deg) */
+  .capa .noticias-balao { will-change: transform; animation: balao-flutua 1.42s ease-in-out infinite alternate; }
+  .capa .noticias-balao img { animation: balao-balanca 1.95s ease-in-out infinite alternate; }
+  @keyframes balao-flutua { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+  @keyframes balao-balanca { from { transform: rotate(11deg); } to { transform: rotate(19deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .capa .noticias-balao, .capa .noticias-balao img { animation: none; }
   }
 
-  /* o olho e um paragrafo: cabe no card, abaixo da etiqueta */
-  .capa .card-title { font-size: 13px; font-weight: 500; line-height: 16px; }
-  .capa .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 0 23px 20px;
-  }
-  .capa .hero .card-tag,
-  .capa .hero-title { position: relative; top: auto; left: auto; }
-  .capa .hero-title { width: 356px; margin-top: 6px; font-size: 16px; font-weight: 700; line-height: 20px; }
-
-  .capa .grid--2:nth-of-type(1) .card:nth-child(1) .card-tag { top: 12px; }
-  .capa .grid--2:nth-of-type(1) .card:nth-child(1) .card-title { top: 36px; width: 165px; }
-
-  /* gestao, academia, novo negocio, noticias e delivery: etiqueta e texto na base */
-  .capa .grid--2:nth-of-type(1) .card:nth-child(2),
-  .capa .grid--2:nth-of-type(2) .card:nth-child(1),
-  .capa .grid--2:nth-of-type(2) .card:nth-child(2),
-  .capa .grid--2:nth-of-type(3) .card:nth-child(1),
-  .capa .grid--2:nth-of-type(3) .card:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
-    padding: 0 10px 12px 12px;
-  }
-  .capa .grid--2:nth-of-type(1) .card:nth-child(2) .card-tag,
-  .capa .grid--2:nth-of-type(2) .card .card-tag,
-  .capa .grid--2:nth-of-type(3) .card .card-tag,
-  .capa .grid--2:nth-of-type(1) .card:nth-child(2) .card-title,
-  .capa .grid--2:nth-of-type(2) .card .card-title,
-  .capa .grid--2:nth-of-type(3) .card .card-title {
-    position: relative;
-    top: auto;
-    left: auto;
-  }
-  .capa .grid--2:nth-of-type(1) .card:nth-child(2) .card-title,
-  .capa .grid--2:nth-of-type(2) .card .card-title,
-  .capa .grid--2:nth-of-type(3) .card .card-title { margin-top: 6px; }
-  .capa .grid--2:nth-of-type(1) .card:nth-child(2) .card-title { width: 180px; }
-  .capa .grid--2:nth-of-type(2) .card:nth-child(1) .card-title { width: 165px; }
-  .capa .grid--2:nth-of-type(2) .card:nth-child(2) .card-title { width: 180px; }
-  .capa .grid--2:nth-of-type(3) .card:nth-child(1) .card-title { width: 165px; }
-  .capa .grid--2:nth-of-type(3) .card:nth-child(2) .card-title { width: 185px; }
-
-  .capa .card--mkt .card-tag { top: 14px; left: 216px; }
-  .capa .card--mkt .card-title { top: 40px; left: 216px; width: 175px; text-align: left; }
-  .capa .card--consumidor .card-tag { top: 12px; left: 248px; }
-  .capa .card--consumidor .card-title { top: 36px; left: 248px; width: 152px; text-align: left; }
-  .capa .card--consumidor .card-fade--tr {
-    top: 0; right: 0; bottom: auto; left: auto;
-    width: 100%; height: 100%;
-    background: linear-gradient(to bottom left, rgba(61,38,38,.92) 0%, rgba(61,38,38,.5) 34%, transparent 62%);
-  }
+  /* o rodape sobe 29px: a ultima linha de cards passa 29px sobre a parte transparente dele */
+  .capa .foot { margin-top: -29px; }
 </style>
 </head>
 <body>
@@ -188,74 +179,82 @@
   <article>
 
     <!-- ====== HERO — PRINCIPAL ====== -->
-    <a class="hero" href="principal.html" target="_blank" rel="noopener">
-      <img class="card-bg" src="assets/principal/hero.jpg" alt="Músico canta e toca violão em um restaurante cheio">
-      <span class="card-fade card-fade--bottom"></span>
-      <span class="card-tag" style="background:#004696">CAPA</span>
-      <p class="card-title hero-title">A música pode transformar a experiência do cliente e criar novas oportunidades de consumo. Mas, antes de aumentar o volume, é preciso saber se a conta fecha</p>
+    <section class="hero">
+      <video class="card-bg" src="assets/capa/musica_capa-web.mp4" poster="assets/capa/musica_capa-poster.jpg"
+             width="402" height="462" autoplay muted loop playsinline preload="auto"
+             aria-label="Música ao vivo em um restaurante"></video>
+      <a class="hero-link" href="principal.html" target="_blank" rel="noopener" aria-label="Abrir a matéria principal"></a>
+      <button class="video-sound" type="button" aria-label="Ativar o som do vídeo" aria-pressed="false">
+        <img class="video-sound-bg" src="assets/mkt/ellipse6.svg" alt="">
+        <img class="video-sound-ico" src="assets/mkt/sound.png" alt="">
+      </button>
+    </section>
+
+    <!-- ====== FULL — DELIVERY ====== -->
+    <a class="card c75 c75--full c75--delivery" href="delivery.html" target="_blank" rel="noopener">
+      <img class="card-bg" src="assets/capa/delivery.jpg" alt="Celular com app de delivery mostrando um hambúrguer editado com IA para parecer mofado">
+      <span class="card-fade card-fade--bl"></span>
+      <span class="card-tag" style="background:var(--roxo)">DELIVERY</span>
+      <p class="card-title">Proteja seu negócio contra fraudes de reembolso feitas com IA</p>
     </a>
-
-    <!-- ====== LINHA 1 — PRODUTO + GESTÃO ====== -->
-    <div class="grid grid--2">
-      <a class="card" href="produto.html" target="_blank" rel="noopener">
-        <img class="card-bg" src="assets/produto/hero-bowl.jpg" alt="Mão com luva preta corta tomates sobre uma tábua de madeira">
-        <span class="card-fade card-fade--top"></span>
-        <span class="card-tag" style="background:var(--laranja)">PRODUTO</span>
-        <p class="card-title">Entre a segurança no preparo e a percepção do cliente, entenda quando usar luvas e por que elas exigem mais cuidados do que aparentam.</p>
-      </a>
-      <a class="card" href="gestao.html" target="_blank" rel="noopener">
-        <video class="card-bg" src="assets/capa/video-gestao-web.mp4" autoplay muted loop playsinline preload="auto" aria-label="Chef Gui Manoel finalizando um prato de ravióli"></video>
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--vermelho)">GESTÃO</span>
-        <p class="card-title">Reservou e não apareceu. E agora?</p>
-      </a>
-    </div>
-
-    <!-- ====== LINHA 2 — ACADEMIA + NOVO NEGÓCIO ====== -->
-    <div class="grid grid--2">
-      <a class="card" href="academia.html" target="_blank" rel="noopener">
-        <video class="card-bg" src="assets/capa/video-academia-web.mp4" autoplay muted loop playsinline preload="auto" aria-label="Empreendedora de uma confeitaria fazendo contas com a calculadora e o notebook ao balcão"></video>
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--rosa)">ACADEMIA</span>
-        <p class="card-title">Reforma Tributária e investimento financeiro estão entre os temas do Mês do Empreendedor da Academia Assaí</p>
-      </a>
-      <a class="card" href="negocio.html" target="_blank" rel="noopener">
-        <img class="card-bg" src="assets/negocio/hero.jpg" alt="Petisco servido em um prato em formato de caixão, ao lado de tomates, abóbora e pimenta">
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--pink)">NOVO NEGÓCIO</span>
-        <p class="card-title">De vizinho de cemitério a corredor espremido: aprenda a usar o inusitado para atrair clientes, criar narrativa e vender mais</p>
-      </a>
-    </div>
 
     <!-- ====== FULL — MKT DIGITAL ====== -->
-    <a class="card card--full card--mkt" href="mkt.html" target="_blank" rel="noopener">
-      <img class="card-bg" src="assets/mkt/poster-hero.jpg" alt="Cookies assando no forno">
-      <span class="card-fade card-fade--bottom"></span>
-      <span class="card-tag card-tag--right" style="background:var(--laranja)">MKT DIGITAL</span>
-      <p class="card-title card-title--right">Não foi uma ideia milionária e nem uma superprodução. Uma confeitaria de São Paulo (SP) descobriu que com um recurso simples é possível atrair o público e vender mais.</p>
+    <a class="card c75 c75--full c75--mkt" href="mkt.html" target="_blank" rel="noopener">
+      <video class="card-bg" src="assets/capa/video-mkt-web.mp4" poster="assets/capa/mkt.jpg" autoplay muted loop playsinline preload="auto" aria-label="Cookies assando no forno"></video>
+      <span class="card-fade card-fade--mkt"></span>
+      <span class="card-tag" style="background:var(--laranja)">MKT DIGITAL</span>
+      <p class="card-title">Do viral às vendas: como uma ideia simples nas redes triplicou os pedidos</p>
     </a>
+
+    <!-- ====== LINHA — PRODUTO + NOVO NEGÓCIO ====== -->
+    <div class="duo">
+      <a class="card c75 c75--produto" href="produto.html" target="_blank" rel="noopener">
+        <img class="card-bg" src="assets/capa/produto.jpg" alt="Hambúrguer com luvas pretas sobre uma bancada">
+        <span class="card-fade card-fade--topo"></span>
+        <span class="card-tag" style="background:var(--amarelo-escuro)">PRODUTO</span>
+        <p class="card-title">Entenda quando usar luvas e por que elas exigem mais cuidados do que aparentam</p>
+      </a>
+      <a class="card c75 c75--novo" href="negocio.html" target="_blank" rel="noopener">
+        <img class="card-bg" src="assets/capa/novo.jpg" alt="Prato em formato de caixão em um bar, com um cemitério ao fundo">
+        <span class="card-fade card-fade--up"></span>
+        <span class="card-tag" style="background:var(--pink)">NOVO NEGÓCIO</span>
+        <p class="card-title">Ponto comercial ruim? Veja como transformar limitações na sua melhor marca</p>
+      </a>
+    </div>
 
     <!-- ====== FULL — CONSUMIDOR ====== -->
-    <a class="card card--full card--consumidor" href="consumidor.html" target="_blank" rel="noopener">
-      <img class="card-bg" src="assets/consumidor/hero-foto.jpg" alt="Grupo de amigos à mesa de um restaurante">
-      <span class="card-fade card-fade--tr"></span>
-      <span class="card-tag card-tag--right" style="background:var(--amarelo);color:#000">CONSUMIDOR</span>
-      <p class="card-title card-title--right">Entender o motivo da visita é o segredo para ajustar o serviço, proteger as margens e construir um negócio recorrente.</p>
+    <a class="card c75 c75--full c75--consumidor" href="consumidor.html" target="_blank" rel="noopener">
+      <img class="card-bg" src="assets/capa/consumidor.jpg" alt="Grupo de amigos à mesa de um restaurante">
+      <span class="card-fade card-fade--bl"></span>
+      <span class="card-tag" style="background:var(--amarelo);color:#000">CONSUMIDOR</span>
+      <p class="card-title">Descubra o que motiva a visita do consumidor e garanta maior taxa de recorrência</p>
     </a>
 
-    <!-- ====== LINHA 3 — NOTÍCIAS + DELIVERY ====== -->
-    <div class="grid grid--2">
-      <a class="card" href="noticias.html" target="_blank" rel="noopener">
-        <video class="card-bg" src="assets/capa/video-noticias-web.mp4" autoplay muted loop playsinline preload="auto" aria-label="Rodrigo Faro sorrindo, de DJ, com balões azuis e dourados"></video>
+    <!-- ====== FULL — NOTÍCIAS (com selo e balão) ====== -->
+    <div class="noticias-wrap">
+      <a class="card c75 c75--full c75--noticias" href="noticias.html" target="_blank" rel="noopener">
+        <video class="card-bg" src="assets/capa/video-noticias-web.mp4" poster="assets/capa/noticias.jpg" autoplay muted loop playsinline preload="auto" aria-label="Rodrigo Faro sorrindo, de DJ, com balões azuis e dourados"></video>
         <span class="card-fade card-fade--bottom"></span>
+        <img class="noticias-selo" src="assets/capa/selo.png" alt="Aniversário Assaí 52 anos — O sucesso voltou: compras grátis todos os dias" width="80" height="83">
         <span class="card-tag" style="background:var(--azul-claro)">NOTÍCIAS</span>
-        <p class="card-title">Aniversário Assaí mais de 15 milhões em prêmios. Participe!</p>
+        <p class="card-title">Aniversário Assaí,<br>mais de R$ 15 milhões<br>em prêmios. Participe!</p>
       </a>
-      <a class="card" href="delivery.html" target="_blank" rel="noopener">
-        <img class="card-bg" src="assets/delivery/golpe.jpg" alt="Celular com app de delivery mostrando um hambúrguer editado com IA para parecer mofado">
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--roxo)">DELIVERY</span>
-        <p class="card-title">Reclamações com imagens manipuladas e má fé de clientes e entregadores são foco de preocupação por fraudes em pedidos.</p>
+      <span class="noticias-balao" aria-hidden="true"><img src="assets/capa/balao.png" alt=""></span>
+    </div>
+
+    <!-- ====== LINHA — ACADEMIA + GESTÃO ====== -->
+    <div class="duo duo--2">
+      <a class="card c75 c75--academia" href="academia.html" target="_blank" rel="noopener">
+        <video class="card-bg" src="assets/capa/video-academia-web.mp4" poster="assets/capa/academia.jpg" autoplay muted loop playsinline preload="auto" aria-label="Empreendedora de uma confeitaria fazendo contas com a calculadora e o notebook ao balcão"></video>
+        <span class="card-fade card-fade--acad"></span>
+        <span class="card-tag" style="background:var(--rosa)">ACADEMIA</span>
+        <p class="card-title">Mês do Empreendedor: cursos gratuitos sobre Reforma Tributária e investimentos</p>
+      </a>
+      <a class="card c75 c75--gestao" href="gestao.html" target="_blank" rel="noopener">
+        <img class="card-bg" src="assets/capa/gestao.jpg" alt="Mesa de restaurante com a placa de reservado">
+        <span class="card-fade card-fade--top"></span>
+        <span class="card-tag" style="background:var(--vermelho)">GESTÃO</span>
+        <p class="card-title">Como organizar suas regras de agendamento mantendo a ocupação máxima do salão</p>
       </a>
     </div>
 
@@ -279,5 +278,25 @@
 <script src="../js/shell.js?v=74-117"></script>
 <script src="../js/capa.js?v=74-117"></script>
 <script src="../js/shell-desktop.js?v=74-117"></script>
+<script>
+/* hero da capa: autoplay mudo; o botao liga e desliga o som sem abrir a materia */
+(function () {
+  var hero = document.querySelector(".hero");
+  if (!hero) return;
+  var video = hero.querySelector("video");
+  var sound = hero.querySelector(".video-sound");
+  if (!video || !sound) return;
+  video.muted = true;
+  sound.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var on = sound.getAttribute("aria-pressed") !== "true";
+    video.muted = !on;
+    if (on && video.paused) video.play().catch(function () {});
+    sound.setAttribute("aria-pressed", String(on));
+    sound.setAttribute("aria-label", on ? "Desativar o som do vídeo" : "Ativar o som do vídeo");
+  });
+})();
+</script>
 </body>
 </html>
