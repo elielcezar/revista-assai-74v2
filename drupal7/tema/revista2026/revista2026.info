@@ -1,0 +1,13 @@
+name = Revista Assaí 2026
+description = Casca, cabeçalho, rodapé e scripts comuns da Revista Assaí Bons Negócios (edições #73 em diante). Ativado por conteúdo via ThemeKey.
+core = 7.x
+engine = phptemplate
+
+regions[content] = Conteúdo
+
+settings[revista2026_tipo] = revista_2026
+settings[revista2026_campo_css] = field_css
+settings[revista2026_campo_js] = field_js
+settings[revista2026_gtm] = 1
+
+features[] = favicon

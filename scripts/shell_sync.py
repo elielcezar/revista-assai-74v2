@@ -5,7 +5,7 @@ A casca (lateral esquerda com logo, edição, menu e "Edições anteriores";
 lateral direita com redes sociais e QR) é igual em todas as páginas das
 edições #75, #74 e #73. Muda só:
   - o prefixo dos caminhos (raiz: "", 75/, 74/ e 73/: "../");
-  - o texto da edição (73/: #73; 75/: #75; o resto: #74);
+  - o texto da edição (73/: #73; 74/: #74; o resto, raiz e 75/: #75);
   - o item ativo do menu;
   - EDITORIAL, PARCEIROS e EXPEDIENTE, que nas páginas da 73/ abrem as
     versões da própria 73/.
@@ -32,8 +32,9 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 
 EDICOES = {
     "73": ("Edição #73", "Jul-Ago/2026"),
+    "74": ("Edição #74", "Setembro/2026"),
     "75": ("Edição #75", "Outubro/2026"),
-    None: ("Edição #74", "Setembro/2026"),
+    None: ("Edição #75", "Outubro/2026"),
 }
 EDICOES_ANTERIORES = "https://www.assai.com.br/revistas"
 

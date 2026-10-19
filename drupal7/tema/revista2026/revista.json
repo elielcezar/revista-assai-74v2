@@ -1,0 +1,118 @@
+{
+  "_leia": "Configuração do tema Revista 2026. Lida pelo tema (template.php) e pelo drupal7/scripts/exportar.py. Endereços em 'paginas' são os aliases dos conteúdos no Drupal, sem barra no começo.",
+
+  "versao": "74-112",
+  "edicao_atual": "74",
+  "titulo_sufixo": "Revista Assaí Bons Negócios",
+
+  "urls": {
+    "_leia": "site: prefixo dos links entre conteúdos no corpo (raiz do Drupal). ftp: endereço público da pasta do FTP que recebe as pastas das edições (ed74/, ed73/).",
+    "site": "/",
+    "ftp": "/sites/default/files/revista2026"
+  },
+
+  "edicoes": {
+    "74": { "rotulo": "Edição #74", "data": "Setembro/2026", "pasta": "ed74", "origens": ["74", ""] },
+    "73": { "rotulo": "Edição #73", "data": "Jul-Ago/2026",  "pasta": "ed73", "origens": ["73"], "prefixo_menu": "73/" }
+  },
+
+  "edicoes_anteriores": "https://www.assai.com.br/revistas",
+  "logo_site": "https://www.assai.com.br",
+  "nossas_lojas": "https://www.assai.com.br/nossas-lojas",
+
+  "_menu": "onde: casca (lateral do desktop), head (menu do cabeçalho da #74), menu73 (menu do cabeçalho das páginas no shell da #73). da_edicao: nas edições com prefixo_menu, abre a versão da própria edição (73/editorial.html...). Sem 'pagina', o item vira '#'.",
+  "menu": [
+    { "rotulo": "CAPA",              "pagina": "index.html",                  "cor": "#000000", "traco": "stroke-cap" },
+    { "rotulo": "PRINCIPAL",         "pagina": "categoria-principal.html",    "cor": "#004696", "traco": "stroke-principal" },
+    { "rotulo": "GESTÃO",            "pagina": "categoria-gestao.html",       "cor": "#f0051e", "traco": "stroke-gestao" },
+    { "rotulo": "MKT DIGITAL",       "pagina": "categoria-mkt-digital.html",  "cor": "#ff7300", "traco": "stroke-mkt" },
+    { "rotulo": "PRODUTO",           "pagina": "categoria-produto.html",      "cor": "#ffaa00", "traco": "stroke-produto" },
+    { "rotulo": "CONSUMIDOR",        "pagina": "categoria-consumidor.html",   "cor": "#ffdc00", "traco": "stroke-consumidor" },
+    { "rotulo": "DELIVERY",          "pagina": "categoria-delivery.html",     "cor": "#532f82", "traco": "stroke-delivery" },
+    { "rotulo": "NOVO NEGÓCIO",      "pagina": "categoria-novo-negocio.html", "cor": "#b40082", "traco": "stroke-novo" },
+    { "rotulo": "ACADEMIA ASSAÍ",    "pagina": "categoria-academia.html",     "cor": "#ff5564", "traco": "stroke-academia" },
+    { "rotulo": "COLUNA",                                                     "cor": "#00bebe", "onde": ["head"] },
+    { "rotulo": "NOTÍCIAS DO ASSAÍ", "pagina": "categoria-noticias.html",     "cor": "#0082c8", "traco": "stroke-noticias" },
+    { "rotulo": "EDITORIAL",         "pagina": "editorial.html",              "cor": "#666666", "traco": "stroke-neutral", "da_edicao": true },
+    { "rotulo": "PARCEIROS",         "pagina": "parceiros.html",              "cor": "#666666", "traco": "stroke-neutral", "da_edicao": true },
+    { "rotulo": "EXPEDIENTE",        "pagina": "expediente.html",             "cor": "#666666", "traco": "stroke-neutral", "da_edicao": true }
+  ],
+
+  "_menu_extras": "itens que só existem no menu de uma página; entram antes do item 'antes'",
+  "menu_extras": {
+    "73/download.html": [
+      { "antes": "EDITORIAL", "rotulo": "DOWNLOAD", "pagina": "73/download.html", "cor": "#004696", "traco": "stroke-download", "onde": ["casca", "menu73"] }
+    ]
+  },
+
+  "redes": [
+    { "nome": "Facebook",  "url": "https://www.facebook.com/assaiatacadistaoficial",  "icone": "facebook",  "w": 17, "h": 32 },
+    { "nome": "Instagram", "url": "https://www.instagram.com/assaiatacadistaoficial", "icone": "instagram", "w": 33, "h": 33 },
+    { "nome": "X",         "url": "https://twitter.com/assaioficial",                 "icone": "x",         "w": 32, "h": 39 },
+    { "nome": "TikTok",    "url": "https://www.tiktok.com/@assaiatacadistaoficial",   "icone": "tiktok",    "w": 31, "h": 40 },
+    { "nome": "YouTube",   "url": "https://www.youtube.com/assaioficial",             "icone": "youtube",   "w": 36, "h": 30 },
+    { "nome": "LinkedIn",  "url": "https://www.linkedin.com/company/3624827",         "icone": "linkedin",  "w": 31, "h": 31 }
+  ],
+
+  "gtm": ["GTM-MS6VK9B", "GTM-W6GXJGP7"],
+
+  "_paginas": "arquivo do protótipo -> alias do conteúdo no Drupal. PROVISÓRIOS: confirmar com os endereços reais do site.",
+  "paginas": {
+    "index.html":                  "revista/ed-74",
+    "categoria-principal.html":    "revista/ed-74/categoria/principal",
+    "categoria-gestao.html":       "revista/ed-74/categoria/gestao",
+    "categoria-gestao-2.html":     "revista/ed-74/categoria/gestao-2",
+    "categoria-mkt-digital.html":  "revista/ed-74/categoria/mkt-digital",
+    "categoria-produto.html":      "revista/ed-74/categoria/produto",
+    "categoria-consumidor.html":   "revista/ed-74/categoria/consumidor",
+    "categoria-delivery.html":     "revista/ed-74/categoria/delivery",
+    "categoria-novo-negocio.html": "revista/ed-74/categoria/novo-negocio",
+    "categoria-academia.html":     "revista/ed-74/categoria/academia",
+    "categoria-noticias.html":     "revista/ed-74/categoria/noticias",
+    "editorial.html":              "revista/ed-74/editorial",
+    "parceiros.html":              "revista/ed-74/parceiros",
+    "expediente.html":             "revista/ed-74/expediente",
+
+    "74/principal.html":  "revista/ed-74/principal",
+    "74/gestao.html":     "revista/ed-74/gestao",
+    "74/gestao2.html":    "revista/ed-74/gestao-2",
+    "74/mkt.html":        "revista/ed-74/mkt-digital",
+    "74/produto.html":    "revista/ed-74/produto",
+    "74/consumidor.html": "revista/ed-74/consumidor",
+    "74/delivery.html":   "revista/ed-74/delivery",
+    "74/negocio.html":    "revista/ed-74/novo-negocio",
+    "74/academia.html":   "revista/ed-74/academia",
+    "74/noticias2.html":  "revista/ed-74/noticias",
+    "74/parceiro-1.html": "revista/ed-74/parceiro-1",
+    "74/parceiro-2.html": "revista/ed-74/parceiro-2",
+    "74/parceiro-3.html": "revista/ed-74/parceiro-3",
+    "74/parceiro-4.html": "revista/ed-74/parceiro-4",
+    "74/parceiro-5.html": "revista/ed-74/parceiro-5",
+    "74/parceiro-6.html": "revista/ed-74/parceiro-6",
+    "74/parceiro-7.html": "revista/ed-74/parceiro-7",
+    "74/parceiro-8.html": "revista/ed-74/parceiro-8",
+
+    "73/index.html":            "revista/ed-73",
+    "73/home.html":             "revista/ed-73/home",
+    "73/principal.html":        "revista/ed-73/principal",
+    "73/gestao.html":           "revista/ed-73/gestao",
+    "73/gestao-2.html":         "revista/ed-73/gestao-2",
+    "73/mkt-digital.html":      "revista/ed-73/mkt-digital",
+    "73/produto.html":          "revista/ed-73/produto",
+    "73/consumidor.html":       "revista/ed-73/consumidor",
+    "73/delivery.html":         "revista/ed-73/delivery",
+    "73/novo-negocio.html":     "revista/ed-73/novo-negocio",
+    "73/academia.html":         "revista/ed-73/academia",
+    "73/noticias.html":         "revista/ed-73/noticias",
+    "73/editorial.html":        "revista/ed-73/editorial",
+    "73/parceiros.html":        "revista/ed-73/parceiros",
+    "73/parceiro-1.html":       "revista/ed-73/parceiro-1",
+    "73/parceiro-2.html":       "revista/ed-73/parceiro-2",
+    "73/parceiro-3.html":       "revista/ed-73/parceiro-3",
+    "73/parceiro-4.html":       "revista/ed-73/parceiro-4",
+    "73/parceiro-5.html":       "revista/ed-73/parceiro-5",
+    "73/single-parceiros.html": "revista/ed-73/parceiro-itabom",
+    "73/expediente.html":       "revista/ed-73/expediente",
+    "73/download.html":         "revista/ed-73/download"
+  }
+}

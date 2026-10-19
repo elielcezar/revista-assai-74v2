@@ -1,37 +1,41 @@
 # Revista Assaí Bons Negócios
 
 Site estático em HTML + CSS + JavaScript puro, sem build. Os arquivos do
-repositório são o produto final. Duas edições convivem: a **#74** (atual) e a
-**#73** (anterior), cada uma na sua pasta, com as listagens de categoria
-compartilhadas na raiz.
+repositório são o produto final. Três edições convivem: a **#75** (atual), a
+**#74** e a **#73**, cada uma na sua pasta, com a capa da edição atual e as
+listagens de categoria compartilhadas na raiz.
 
 ## Estrutura
 
 ```
-/                     index.html (capa da #74) · categoria-*.html (10) · expediente.html
+/                     index.html (capa da #75) · categoria-*.html (10) · expediente.html
                       editorial.html · parceiros.html · parceiro-1.html … parceiro-5.html
                       css/ (base, shell, shell-desktop, capa, expediente, categoria-*)
                       js/ (+ vendor/) · fonts/
                       assets/ (capa, categorias, expediente, shell + ícones do head/rodapé)
-/74/                  as 10 matérias da edição #74 + css/ + js/ + assets/
+/75/                  as 9 matérias da edição #75 + index.html (cópia da capa) + css/ + js/ + assets/
+/74/                  index.html (capa da #74) + as 10 matérias da edição #74 + css/ + js/ + assets/
 /73/                  edição #73 completa
 /73/_bkp_categorias/  as categorias antigas da #73, fora do ar
 /scripts/             shot.py, compare.py e um probe_*.py por página
 /reference/           renders de comparação (fora do git)
+/drupal7/             tema de Drupal 7 + exportação do protótipo (ver drupal7/README.md)
 ```
 
 ### Navegação
 
-1. O visitante entra pelo `index.html`, a capa da #74.
+1. O visitante entra pelo `index.html`, a capa da #75 (a #74 fica em `74/index.html`).
 2. O menu (horizontal no mobile, na casca lateral no desktop) leva para
    `categoria-*.html`, na raiz.
-3. Cada categoria abre com a matéria da **#74** e lista abaixo a matéria
-   equivalente da **#73**.
-4. As matérias da #74 abrem em `74/`, as da #73 em `73/`.
+3. Cada categoria abre com a matéria da **#75** e lista abaixo as matérias
+   equivalentes da **#74** e da **#73** (a mais recente primeiro). A imagem da
+   chamada da #75 é `assets/categorias/<secao>75.jpg` (804×924, recorte da foto
+   de abertura da matéria).
+4. As matérias da #75 abrem em `75/`, as da #74 em `74/`, as da #73 em `73/`.
 5. EDITORIAL e PARCEIROS abrem na raiz (`editorial.html`, `parceiros.html` e
    as matérias `parceiro-1.html` … `parceiro-5.html`), copiados da #73. CSS,
    JS e assets continuam em `73/`.
-6. O item CAPA, em qualquer página das duas edições, volta para o `index.html`
+6. O item CAPA, em qualquer página das três edições, volta para o `index.html`
    da raiz.
 
 Endereços antigos (`mkt.html`, `gestao.html`… na raiz) são stubs de redirect
@@ -42,7 +46,7 @@ que mandam para a categoria correspondente, com `meta refresh` e
 
 | seção | arquivo | frame do Figma |
 | --- | --- | --- |
-| CAPA | [`index.html`](index.html) | `4468:1434` |
+| CAPA | [`74/index.html`](74/index.html) | `4468:1434` |
 | PRINCIPAL | [`74/principal.html`](74/principal.html) | `4424:20329` |
 | GESTÃO 01 | [`74/gestao.html`](74/gestao.html) | `4424:20033` |
 | GESTÃO 02 | [`74/gestao2.html`](74/gestao2.html) | `4424:19879` |
@@ -145,7 +149,7 @@ python scripts/shell_sync.py --check    # só lista o que mudaria
 ```
 
 O script calcula por página o prefixo dos caminhos (raiz ou `../`), o texto da
-edição (`73/`: "Edição #73 · Jul-Ago/2026"; o resto: "#74 · Setembro/2026") e
+edição (`73/`: "Edição #73 · Jul-Ago/2026"; `74/`: "#74 · Setembro/2026"; o resto, raiz e `75/`: "#75 · Outubro/2026") e
 o item ativo. Nas páginas da `73/`, EDITORIAL, PARCEIROS e EXPEDIENTE abrem as
 versões da própria `73/`; a `73/download.html` tem um item DOWNLOAD a mais
 (`EXTRAS` no script). **Trava:** se o menu gerado para uma página não tiver os

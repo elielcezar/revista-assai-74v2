@@ -27,8 +27,8 @@
 </script>
 <!-- End Google Tag Manager -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Revista Assaí Bons Negócios #74 — Capa</title>
-<meta name="description" content="Parceria entre gerações traz escala para negócios familiares e alcança comunidade digital. Confira todas as matérias da Revista Assaí Bons Negócios #74.">
+<title>Revista Assaí Bons Negócios #75 — Capa</title>
+<meta name="description" content="Música ao vivo vale a pena? Confira as matérias da Revista Assaí Bons Negócios #75.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -37,6 +37,71 @@
 <link rel="stylesheet" href="css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="css/shell-desktop.css?v=74-117">
+<style>
+  /* A capa da #75 nao usa as linhas .grid do capa.css (feitas para a #74): cada card tem
+     posicao propria, em px do Figma (6961:3584), sem depender da ordem dos irmaos. */
+
+  /* hero: o video preenche a caixa; o link cobre a imagem e o botao de som fica por cima */
+  .capa .hero { position: relative; overflow: hidden; }
+  .capa .hero .card-bg { inset: 0; left: 0; top: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  .capa .hero-link { position: absolute; inset: 0; z-index: 2; }
+  .capa .hero .video-sound {
+    position: absolute; right: 16px; top: 16px; z-index: 4;
+    width: 45px; height: 45px; padding: 0; border: 0; background: none; cursor: pointer;
+  }
+  .capa .video-sound-bg { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
+  .capa .video-sound-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+
+  /* cards: a imagem (ou o video) preenche o cartao */
+  .capa .c75 .card-bg { inset: 0; left: 0; top: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; }
+  .capa .c75 .card-title { font-size: 15px; font-weight: 500; line-height: normal; }
+
+  .capa .c75--full { width: 402px; height: 224px; margin-top: 16px; }
+  .capa .c75--delivery, .capa .c75--mkt { margin-top: 13px; }
+  .capa .duo { display: flex; gap: 13px; width: 402px; margin: 13px 0 0 -2px; }
+  .capa .duo--2 { margin-top: 16px; }
+  .capa .duo .c75 { width: 196px; height: 233px; flex: none; }
+
+  /* sobreposicoes (cores do Figma) */
+  .capa .card-fade--bl { height: 100%; bottom: 0; background: linear-gradient(242.33deg, rgba(201,201,201,.4) 53.98%, rgba(64,40,0,.4) 62.78%); }
+  .capa .card-fade--mkt { height: 100%; bottom: 0; background: linear-gradient(119.3deg, rgba(255,255,255,.2) 50.8%, rgba(64,40,0,.2) 64.97%); }
+  .capa .card-fade--up { height: 100%; bottom: 0; background: linear-gradient(to top, rgba(64,40,0,.5) 37.45%, rgba(255,255,255,.5) 55.07%); }
+  .capa .card-fade--topo { top: 0; height: 130.85px; background: linear-gradient(to top, transparent 0%, rgba(61,38,38,.72) 70.67%); }
+  .capa .card-fade--acad { height: 100%; bottom: 0; mix-blend-mode: darken; background: linear-gradient(to bottom, rgba(255,255,255,.6) 36.09%, rgba(64,40,0,.6) 61.85%); }
+
+  /* tag (13px) e texto (15px) de cada card, em px do cartao */
+  .capa .c75--delivery .card-tag, .capa .c75--consumidor .card-tag, .capa .c75--noticias .card-tag { left: 19px; top: 119px; }
+  .capa .c75--delivery .card-title, .capa .c75--consumidor .card-title, .capa .c75--noticias .card-title { left: 19px; top: 146px; width: 167px; }
+  .capa .c75--noticias .card-title { width: 186px; font-size: 14.5px; }
+  .capa .c75--mkt .card-tag { left: 218px; top: 130px; }
+  .capa .c75--mkt .card-title { left: 218px; top: 157px; width: 168.66px; }
+  .capa .c75--produto .card-tag { left: 20.96px; top: 19px; }
+  .capa .c75--produto .card-title { left: 20.96px; top: 46px; width: 153px; text-shadow: none; }
+  .capa .c75--novo .card-tag { left: 16.96px; top: 127px; }
+  .capa .c75--novo .card-title { left: 16.96px; top: 154px; width: 153px; text-shadow: none; }
+  .capa .c75--academia .card-tag { left: 20.96px; top: 97px; }
+  .capa .c75--academia .card-title { left: 20.96px; top: 124px; width: 153px; text-shadow: none; }
+  .capa .c75--gestao .card-tag { left: 14.48px; top: 18.43px; }
+  .capa .c75--gestao .card-title { left: 14.48px; top: 45.43px; width: 167px; }
+
+  /* noticias: selo dentro do card; o balao sai pela borda de cima, por cima do card de baixo */
+  .capa .noticias-wrap { position: relative; margin-top: 16px; }
+  .capa .noticias-wrap .c75--full { margin-top: 0; }
+  .capa .noticias-selo { position: absolute; z-index: 3; left: 18.93px; top: 18.43px; width: 80.35px; height: 83.21px; pointer-events: none; }
+  .capa .noticias-balao { position: absolute; z-index: 5; left: 321px; top: -21.6px; width: 67.51px; height: 76.01px; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+  .capa .noticias-balao img { width: 52.58px; height: 64.6px; transform: rotate(15deg); }
+  /* o balao flutua: sobe e desce 10px (ciclo de 1,42s), com um balanco leve (a imagem de dentro ja vem girada 15deg) */
+  .capa .noticias-balao { will-change: transform; animation: balao-flutua 1.42s ease-in-out infinite alternate; }
+  .capa .noticias-balao img { animation: balao-balanca 1.95s ease-in-out infinite alternate; }
+  @keyframes balao-flutua { from { transform: translateY(0); } to { transform: translateY(-10px); } }
+  @keyframes balao-balanca { from { transform: rotate(11deg); } to { transform: rotate(19deg); } }
+  @media (prefers-reduced-motion: reduce) {
+    .capa .noticias-balao, .capa .noticias-balao img { animation: none; }
+  }
+
+  /* o rodape sobe 29px: a ultima linha de cards passa 29px sobre a parte transparente dele */
+  .capa .foot { margin-top: -29px; }
+</style>
 </head>
 <body>
 
@@ -44,7 +109,7 @@
 <div class="casca">
   <aside class="casca-esq" aria-label="Navegação da revista">
     <a class="casca-logo" href="https://www.assai.com.br" target="_blank" rel="noopener"><img src="assets/shell/dt-logo-assai.png" alt="Assaí Atacadista" width="124" height="124"></a>
-    <p class="casca-edicao">Edição #74<br>Setembro/2026</p>
+    <p class="casca-edicao">Edição #75<br>Outubro/2026</p>
     <div class="casca-menu">
       <nav class="casca-nav" aria-label="Seções da revista">
         <a href="index.html" target="_blank" rel="noopener" style="--mc:#000000" class="is-active" aria-current="page">CAPA</a>
@@ -114,89 +179,82 @@
   <article>
 
     <!-- ====== HERO — PRINCIPAL ====== -->
-    <a class="hero" href="74/principal.html" target="_blank" rel="noopener">
-      <!-- o video ja traz o fundo (arcos laranja): substitui as elipses e a foto -->
-      <video class="card-bg" src="assets/capa/capa-web.mp4?v=74-117" autoplay muted loop playsinline preload="auto" aria-label="Dupla de empreendedores de gerações diferentes sorrindo"></video>
-      <span class="card-fade card-fade--bottom"></span>
-      <span class="card-tag" style="background:#004696">CAPA</span>
-      <p class="card-title hero-title">Parceria entre gerações traz escala para negócios familiares e alcança comunidade digital</p>
+    <section class="hero">
+      <video class="card-bg" src="75/assets/capa/musica-capa-v2-web.mp4" poster="75/assets/capa/musica-capa-v2-poster.jpg"
+             width="402" height="462" autoplay muted loop playsinline preload="auto"
+             aria-label="Música ao vivo em um restaurante"></video>
+      <a class="hero-link" href="75/principal.html" target="_blank" rel="noopener" aria-label="Abrir a matéria principal"></a>
+      <button class="video-sound" type="button" aria-label="Ativar o som do vídeo" aria-pressed="false">
+        <img class="video-sound-bg" src="75/assets/mkt/ellipse6.svg" alt="">
+        <img class="video-sound-ico" src="75/assets/mkt/sound.png" alt="">
+      </button>
+    </section>
+
+    <!-- ====== FULL — DELIVERY ====== -->
+    <a class="card c75 c75--full c75--delivery" href="75/delivery.html" target="_blank" rel="noopener">
+      <img class="card-bg" src="75/assets/capa/delivery.jpg" alt="Celular com app de delivery mostrando um hambúrguer editado com IA para parecer mofado">
+      <span class="card-fade card-fade--bl"></span>
+      <span class="card-tag" style="background:var(--roxo)">DELIVERY</span>
+      <p class="card-title">Proteja seu negócio contra fraudes de reembolso feitas com IA</p>
     </a>
-
-    <!-- ====== LINHA 1 — PRODUTO + GESTÃO ====== -->
-    <div class="grid grid--2">
-      <a class="card" href="74/produto.html" target="_blank" rel="noopener">
-        <video class="card-bg" src="assets/capa/video2-web.mp4?v=74-117" autoplay muted loop playsinline preload="auto" aria-label="Fatia de bolo red velvet com morangos"></video>
-        <span class="card-fade card-fade--top"></span>
-        <span class="card-tag" style="background:var(--laranja)">PRODUTO</span>
-        <p class="card-title">Antes de começar o próximo produto viral, responda a quatro perguntas</p>
-      </a>
-      <a class="card" href="74/gestao.html" target="_blank" rel="noopener">
-        <img class="card-bg" src="assets/capa/imgGestaoCard.png" alt="Molho de pimenta em embalagem industrial">
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--vermelho)">GESTÃO</span>
-        <p class="card-title">Identificar o valor e o custo do que é dado de brinde pode salvar seu lucro no final do mês</p>
-      </a>
-    </div>
-
-    <!-- ====== LINHA 2 — ACADEMIA + NOVO NEGÓCIO ====== -->
-    <div class="grid grid--2">
-      <a class="card" href="74/academia.html" target="_blank" rel="noopener">
-        <img class="card-bg" src="assets/capa/imgAcademiaCard.png" alt="Empreendedora sorrindo segurando um pastel">
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--rosa)">ACADEMIA</span>
-        <p class="card-title">Vencedores regionais vão a juri e a voto popular em premiação</p>
-      </a>
-      <a class="card" href="74/negocio.html" target="_blank" rel="noopener">
-        <img class="card-bg" src="assets/capa/imgNegocioCard.png" alt="Pudim no copo sendo exibido por uma mão">
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--pink)">NOVO NEGÓCIO</span>
-        <p class="card-title">É possível abrir uma empresa com R$ 50? Venha descobrir com quem fez</p>
-      </a>
-    </div>
-
-    <!-- ====== BANNER ====== -->
-    <!-- <figure> de proposito: o capa.css conta os blocos com :nth-of-type,
-         entao um <div> aqui deslocaria as regras das linhas seguintes -->
-    <figure class="banner">
-      <img src="74/assets/banners/aurora.png?v=74-117" alt="Publicidade Aurora — se tem Aurora só melhora" width="512" height="341">
-    </figure>
 
     <!-- ====== FULL — MKT DIGITAL ====== -->
-    <a class="card card--full card--mkt" href="74/mkt.html" target="_blank" rel="noopener">
-      <video class="card-bg" src="assets/capa/mkt-web.mp4?v=74-117" autoplay muted loop playsinline preload="auto" aria-label="Panqueca japonesa decorada com morangos"></video>
-      <span class="card-fade card-fade--bottom"></span>
-      <span class="card-tag card-tag--right" style="background:var(--laranja)">MKT DIGITAL</span>
-      <p class="card-title card-title--right">Não engane seu cliente com IA. Mas venha aprender com ela</p>
+    <a class="card c75 c75--full c75--mkt" href="75/mkt.html" target="_blank" rel="noopener">
+      <video class="card-bg" src="75/assets/capa/video-mkt-web.mp4" poster="75/assets/capa/mkt.jpg" autoplay muted loop playsinline preload="auto" aria-label="Cookies assando no forno"></video>
+      <span class="card-fade card-fade--mkt"></span>
+      <span class="card-tag" style="background:var(--laranja)">MKT DIGITAL</span>
+      <p class="card-title">Do viral às vendas: como uma ideia simples nas redes triplicou os pedidos</p>
     </a>
+
+    <!-- ====== LINHA — PRODUTO + NOVO NEGÓCIO ====== -->
+    <div class="duo">
+      <a class="card c75 c75--produto" href="75/produto.html" target="_blank" rel="noopener">
+        <img class="card-bg" src="75/assets/capa/produto.jpg" alt="Hambúrguer com luvas pretas sobre uma bancada">
+        <span class="card-fade card-fade--topo"></span>
+        <span class="card-tag" style="background:var(--amarelo-escuro)">PRODUTO</span>
+        <p class="card-title">Entenda quando usar luvas e por que elas exigem mais cuidados do que aparentam</p>
+      </a>
+      <a class="card c75 c75--novo" href="75/negocio.html" target="_blank" rel="noopener">
+        <img class="card-bg" src="75/assets/capa/novo.jpg" alt="Prato em formato de caixão em um bar, com um cemitério ao fundo">
+        <span class="card-fade card-fade--up"></span>
+        <span class="card-tag" style="background:var(--pink)">NOVO NEGÓCIO</span>
+        <p class="card-title">Ponto comercial ruim? Veja como transformar limitações na sua melhor marca</p>
+      </a>
+    </div>
 
     <!-- ====== FULL — CONSUMIDOR ====== -->
-    <a class="card card--full card--consumidor" href="74/consumidor.html" target="_blank" rel="noopener">
-      <img class="card-bg" src="assets/capa/imgConsumidorCard.png" alt="Duas garrafas de vinho com preços diferentes">
-      <span class="card-tag card-tag--right" style="background:var(--amarelo);color:#000">CONSUMIDOR</span>
-      <p class="card-title card-title--right">Preço é só uma das coisas que o seu produto diz sobre quem ele é</p>
+    <a class="card c75 c75--full c75--consumidor" href="75/consumidor.html" target="_blank" rel="noopener">
+      <img class="card-bg" src="75/assets/capa/consumidor.jpg" alt="Grupo de amigos à mesa de um restaurante">
+      <span class="card-fade card-fade--bl"></span>
+      <span class="card-tag" style="background:var(--amarelo);color:#000">CONSUMIDOR</span>
+      <p class="card-title">Descubra o que motiva a visita do consumidor e garanta maior taxa de recorrência</p>
     </a>
 
-    <!-- ====== FULL — GESTÃO (clube de descontos) ====== -->
-    <a class="card card--full card--inset" href="74/gestao2.html" target="_blank" rel="noopener">
-      <video class="card-bg" src="assets/capa/gestao2-web.mp4?v=74-117" autoplay muted loop playsinline preload="auto" aria-label="Cliente comendo sanduíche em restaurante"></video>
-      <span class="card-fade card-fade--bottom"></span>
-      <span class="card-tag" style="background:var(--vermelho)">GESTÃO</span>
-      <p class="card-title">Vale a pena aderir a clubes de desconto? Melhor descobrir antes</p>
-    </a>
-
-    <!-- ====== LINHA 3 — NOTÍCIAS + DELIVERY ====== -->
-    <div class="grid grid--2">
-      <a class="card" href="74/noticias2.html" target="_blank" rel="noopener">
-        <img class="card-bg" src="assets/capa/imgNoticiasCard.png" alt="Embalagens da linha Assaí Chef">
+    <!-- ====== FULL — NOTÍCIAS (com selo e balão) ====== -->
+    <div class="noticias-wrap">
+      <a class="card c75 c75--full c75--noticias" href="75/noticias.html" target="_blank" rel="noopener">
+        <video class="card-bg" src="75/assets/capa/video-noticias-web.mp4" poster="75/assets/capa/noticias.jpg" autoplay muted loop playsinline preload="auto" aria-label="Rodrigo Faro sorrindo, de DJ, com balões azuis e dourados"></video>
         <span class="card-fade card-fade--bottom"></span>
+        <img class="noticias-selo" src="75/assets/capa/selo.png" alt="Aniversário Assaí 52 anos — O sucesso voltou: compras grátis todos os dias" width="80" height="83">
         <span class="card-tag" style="background:var(--azul-claro)">NOTÍCIAS</span>
-        <p class="card-title">Como economizar sem mudar o padrão do seu prato</p>
+        <p class="card-title">Aniversário Assaí,<br>mais de R$ 15 milhões<br>em prêmios. Participe!</p>
       </a>
-      <a class="card" href="74/delivery.html" target="_blank" rel="noopener">
-        <video class="card-bg" src="assets/capa/video1-web.mp4?v=74-117" autoplay muted loop playsinline preload="auto" aria-label="Mão segurando celular com aplicativo de delivery"></video>
-        <span class="card-fade card-fade--bottom"></span>
-        <span class="card-tag" style="background:var(--roxo)">DELIVERY</span>
-        <p class="card-title">Descontos agressivos aplicados por plataformas transformam venda em prejuízo</p>
+      <span class="noticias-balao" aria-hidden="true"><img src="75/assets/capa/balao.png" alt=""></span>
+    </div>
+
+    <!-- ====== LINHA — ACADEMIA + GESTÃO ====== -->
+    <div class="duo duo--2">
+      <a class="card c75 c75--academia" href="75/academia.html" target="_blank" rel="noopener">
+        <video class="card-bg" src="75/assets/capa/video-academia-web.mp4" poster="75/assets/capa/academia.jpg" autoplay muted loop playsinline preload="auto" aria-label="Empreendedora de uma confeitaria fazendo contas com a calculadora e o notebook ao balcão"></video>
+        <span class="card-fade card-fade--acad"></span>
+        <span class="card-tag" style="background:var(--rosa)">ACADEMIA</span>
+        <p class="card-title">Mês do Empreendedor: cursos gratuitos sobre Reforma Tributária e investimentos</p>
+      </a>
+      <a class="card c75 c75--gestao" href="75/gestao.html" target="_blank" rel="noopener">
+        <img class="card-bg" src="75/assets/capa/gestao.jpg" alt="Mesa de restaurante com a placa de reservado">
+        <span class="card-fade card-fade--top"></span>
+        <span class="card-tag" style="background:var(--vermelho)">GESTÃO</span>
+        <p class="card-title">Como organizar suas regras de agendamento mantendo a ocupação máxima do salão</p>
       </a>
     </div>
 
@@ -220,5 +278,25 @@
 <script src="js/shell.js?v=74-117"></script>
 <script src="js/capa.js?v=74-117"></script>
 <script src="js/shell-desktop.js?v=74-117"></script>
+<script>
+/* hero da capa: autoplay mudo; o botao liga e desliga o som sem abrir a materia */
+(function () {
+  var hero = document.querySelector(".hero");
+  if (!hero) return;
+  var video = hero.querySelector("video");
+  var sound = hero.querySelector(".video-sound");
+  if (!video || !sound) return;
+  video.muted = true;
+  sound.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    var on = sound.getAttribute("aria-pressed") !== "true";
+    video.muted = !on;
+    if (on && video.paused) video.play().catch(function () {});
+    sound.setAttribute("aria-pressed", String(on));
+    sound.setAttribute("aria-label", on ? "Desativar o som do vídeo" : "Ativar o som do vídeo");
+  });
+})();
+</script>
 </body>
 </html>
