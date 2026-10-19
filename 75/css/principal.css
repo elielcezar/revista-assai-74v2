@@ -126,7 +126,7 @@
 /* =========================================================
    BLOCO 4 — O EFEITO DA MÚSICA AO VIVO  (2886 .. 4046)
    ========================================================= */
-.bl-efeito { min-height: 1160px; padding-top: 11.14px; }
+.bl-efeito { min-height: 1917.7px; /* 1160 do Figma + o story em video (42,7 + 715) */  padding-top: 11.14px; }
 
 .banda { width: 403px; height: 315.85px; margin: 35.98px 0 0 -1px; overflow: hidden; border-radius: 50px 50px 0 0; }
 .banda img { width: 100%; height: 100%; object-fit: cover; }
@@ -143,6 +143,8 @@
 .stat--3 { min-height: 216.6px;  padding-top: 36.92px; margin-bottom: -97.23px;  background: #f4af01; }
 .stat--4 { min-height: 137.84px; padding-top: 39.38px; background: var(--amarelo); }
 
+.story { width: 402px; margin-top: 42.7px; }
+.story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #000; }
 .t-dados { width: 362.35px; margin: 42.7px 0 0 18.6px; color: #000; }
 
 /* =========================================================

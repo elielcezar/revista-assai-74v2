@@ -10,6 +10,7 @@ import pathlib
 from playwright.sync_api import sync_playwright
 
 H = 0  # o frame novo ja inclui o HEAD (0..182)
+STORY = 757.4  # story em video (9:16) inserido antes do .t-dados: 42,7 + 715 que o Figma nao tem
 EXPECT = [
     (".hero-edicao",                22,  546),
     (".hero-autor",                 22,  585),
@@ -34,21 +35,21 @@ EXPECT = [
     (".stat--2",                    -1, 3666.94),
     (".stat--3",                    -1, 3785.09),
     (".stat--4",                    -1, 3904.46),
-    (".t-dados",                  18.6, 4085),
-    (".bl-cliente .h-sec",          19, 4237),
-    (".bl-cliente .t-sec",          19, 4324),
-    (".h-exp",                      19, 4674.76),
-    (".exp",                        19, 4781),
-    (".bl-gastar .h-sec",           19, 5173),
-    (".bl-gastar .t-sec",           19, 5260),
-    (".bar",                    -24.66, 5516),
-    (".pandeiro",                89.36, 5714.2),
-    (".caixa--custo",            -82.5, 5800.44),
-    (".h-custo",                    19, 5924),
-    (".t-cache",                    19, 5971),
-    (".custos",                     20, 6045),
-    (".t-fecho",                    19, 6515),
-    ("footer.foot",                  0, 6986),
+    (".t-dados",                  18.6, 4085 + STORY),
+    (".bl-cliente .h-sec",          19, 4237 + STORY),
+    (".bl-cliente .t-sec",          19, 4324 + STORY),
+    (".h-exp",                      19, 4674.76 + STORY),
+    (".exp",                        19, 4781 + STORY),
+    (".bl-gastar .h-sec",           19, 5173 + STORY),
+    (".bl-gastar .t-sec",           19, 5260 + STORY),
+    (".bar",                    -24.66, 5516 + STORY),
+    (".pandeiro",                89.36, 5714.2 + STORY),
+    (".caixa--custo",            -82.5, 5800.44 + STORY),
+    (".h-custo",                    19, 5924 + STORY),
+    (".t-cache",                    19, 5971 + STORY),
+    (".custos",                     20, 6045 + STORY),
+    (".t-fecho",                    19, 6515 + STORY),
+    ("footer.foot",                  0, 6986 + STORY),
 ]
 
 JS = """(sels) => sels.map(s => { const e = document.querySelector(s); if (!e) return null;
