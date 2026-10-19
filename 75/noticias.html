@@ -30,14 +30,14 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="pop-in"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="pop-in"] [data-fx-item],.fx-espera [data-fx="slide-in-up"] [data-fx-item]{visibility:hidden}</style>
 <title>Suas compras de outubro podem voltar para o caixa — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Na campanha de aniversário do Assaí, cada R$ 20 em compras dá direito a um número da sorte. São mais de R$ 15 milhões em prêmios, incluindo compras grátis, R$ 1 milhão e milhares de Sacolas Assaí.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/noticias.css?v=75-11">
+<link rel="stylesheet" href="css/noticias.css?v=75-12">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -149,12 +149,14 @@
         <p>A campanha de aniversário de 52 anos do Assaí acontece de <strong class="am">1º a 31 de outubro de 2026</strong> e reúne mais de R$ 15 milhões em premiações.</p>
       </div>
     </div>
-    <img class="mais15" src="assets/noticias/mais15.png" alt="Mais de 15 milhões em prêmios" width="296" height="130">
+    <div data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100">
+      <img class="mais15" data-fx-item src="assets/noticias/mais15.png" alt="Mais de 15 milhões em prêmios" width="296" height="130">
+    </div>
 
-    <ul class="premios">
-      <li class="premio">Milhares de compras grátis<br>de até R$ 700</li>
-      <li class="premio">Sacolas reutilizáveis Assaí</li>
-      <li class="premio">Um grande prêmio de R$ 1 milhão em certificado de ouro</li>
+    <ul class="premios" data-fx="slide-in-up" data-fx-margem="200">
+      <li class="premio" data-fx-item>Milhares de compras grátis<br>de até R$ 700</li>
+      <li class="premio" data-fx-item>Sacolas reutilizáveis Assaí</li>
+      <li class="premio" data-fx-item>Um grande prêmio de R$ 1 milhão em certificado de ouro</li>
     </ul>
 
     <div class="backdrop" aria-hidden="true" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-flutuacao="20" data-fx-flutuacao-baixo="10" data-fx-flutuacao-velocidade="1.3">
@@ -206,8 +208,8 @@
 
     <h2 class="h-azul h-marcas">Conheça as marcas que estão com a gente</h2>
     <p class="t-marcas">Compre seus produtos favoritos das marcas participantes e ganhe números da sorte extras!</p>
-    <div class="logos">
-      <div class="logos-faixa"><img src="assets/noticias/logos.jpg" alt="Marcas participantes da campanha" width="944" height="274"></div>
+    <div class="logos" data-fx="pin-horizontal">
+      <div class="logos-faixa" data-fx-item><img src="assets/noticias/logos.jpg" alt="Marcas participantes da campanha" width="944" height="274"></div>
       <span class="seta-logos" aria-hidden="true"><img class="seta-logos-bg" src="assets/noticias/seta-logos-bg.svg" alt="" width="25" height="25"><img class="seta-logos-seta" src="assets/noticias/seta-logos.svg" alt="" width="14" height="1"></span>
     </div>
 
