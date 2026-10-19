@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/consumidor.css?v=75-6">
+<link rel="stylesheet" href="css/consumidor.css?v=75-9">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -240,7 +240,9 @@
 
   <!-- ============ BLOCO 9 — NEM TODA OCASIÃO / DESCUBRA / FÓRMULA ============ -->
   <section class="bl bl-nem">
-    <div class="caixa cupula cupula--roxa cupula--nem">
+    <!-- as 3 cupulas se empilham com o scroll (card-stack, js/scroll-fx.js) -->
+    <div class="cards" data-fx="card-stack" data-fx-faixa="10" data-fx-topo="20">
+    <div class="caixa cupula cupula--roxa cupula--nem" data-fx-item>
       <h2 class="h-cupula h-cupula--amarelo">Nem toda ocasião precisa<br>ser atendida</h2>
       <div class="t-cupula">
         <p>Aqui vai um ponto de atenção: tentando aproveitar diferentes ocasiões de consumo no mesmo espaço, muitos restaurantes dividem a operação entre refeições rápidas durante o dia e serviços mais elaborados à noite.</p>
@@ -248,7 +250,7 @@
         <p>“Abraçar muitos formatos para encher a casa é complexo porque desconfigura o negócio. Eu tenho buffet no almoço para atender o pessoal do prédio e à noite é à la carte. São dois negócios dentro de um. Funciona bem, mas a gente se quebra para fazer bem-feito”.</p>
       </div>
     </div>
-    <div class="caixa cupula cupula--amarela cupula--descubra">
+    <div class="caixa cupula cupula--amarela cupula--descubra" data-fx-item>
       <h2 class="h-cupula">Descubra quais ocasiões já existem dentro da sua operação</h2>
       <div class="t-cupula">
         <p>Antes de promover mudanças de consumo no seu estabelecimento, é fundamental buscar evidências reais de demanda.</p>
@@ -257,8 +259,9 @@
         <p>Depois destas análises, o passo essencial é avaliar se a novidade é sustentável, se a cozinha comporta a produção sem perder qualidade e se a margem de lucro permanece saudável.</p>
       </div>
     </div>
-    <div class="caixa cupula cupula--rosa cupula--formula">
+    <div class="caixa cupula cupula--rosa cupula--formula" data-fx-item>
       <p class="formula">A FÓRMULA DE SUCESSO É<br><br>ocasião identificada<br>+<br>operação preparada<br>+<br>margem saudável</p>
+    </div>
     </div>
     <!-- um banner por vez, sorteado a cada carregamento; o primeiro aparece mesmo sem JS -->
     <figure class="adbox" data-ad-random='[

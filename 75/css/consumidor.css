@@ -200,8 +200,16 @@
 .cupula--descubra .h-cupula { margin: 92.35px 0 0 20px; }
 .cupula--descubra .t-cupula { margin-left: 20px; }
 
-.cupula--formula { --ml: -83px; position: relative; z-index: 2; width: 551px; min-height: 328.11px; margin-top: -132.31px; }
+/* card-stack: o ultimo card so chega ao alto da pilha se houver rolagem suficiente depois dele
+   (a propria altura + banner 419 + rodape 116). Em telas altas a pagina acabava antes e ele
+   parava abaixo do amarelo; a altura minima cresce com a tela para ele sempre alcancar o topo.
+   Em celular (tela <= 898px) vale a altura do Figma, 328px. */
+.cupula--formula { --ml: -83px; position: relative; z-index: 2; width: 551px; min-height: max(328.11px, calc(100vh - 570px)); margin-top: -132.31px; }
 .formula { width: 325px; margin: 89.05px 0 0 30px; font-size: 24px !important; font-weight: 700; line-height: normal; text-align: center; color: #fff; }
 
-.adbox { width: 402px; aspect-ratio: 375 / 391; }
+/* card-stack: o fundo das cupulas desce alem da ultima (a rosa); o recorte no conteiner
+   impede que o "rabo" das que travam no topo invada o banner que vem depois */
+.cards { overflow-y: clip; }
+/* o banner fica por cima dos cards empilhados (card-stack): eles tem z-index ate 2 e saem por baixo dele */
+.adbox { position: relative; z-index: 3; width: 402px; aspect-ratio: 375 / 391; }
 .adbox img { display: block; width: 402px; height: 100%; object-fit: cover; }

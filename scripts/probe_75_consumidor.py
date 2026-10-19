@@ -6,6 +6,8 @@
 Figma: 6941:8303 (arquivo aquTnQHLWwiogtzEAG9qyp, 402 x 9006, HEAD de 182 incluso).
 O titulo (.hero-titulo) fica 4px acima da caixa do Figma (33,77 em vez de 37,77): o glifo
 da Raspoutine cai ~4px abaixo da caixa e, assim, bate com o Figma.
+A cupula rosa (.cupula--formula) cresce em telas altas (min-height: max(328, 100vh - 570)); o probe usa
+viewport de 800px de altura, em que vale os 328px do Figma.
 O banner rotativo (.adbox) fecha a pagina e nao existe no Figma; o probe bloqueia o
 consumidor.js para ele nao ser sorteado.
 """
@@ -69,7 +71,7 @@ JS = """(sels) => sels.map(s => { const e = document.querySelector(s); if (!e) r
 
 with sync_playwright() as p:
     b = p.chromium.launch()
-    pg = b.new_page(viewport={"width": 402, "height": 900})
+    pg = b.new_page(viewport={"width": 402, "height": 800})
     pg.route("**/*google*/**", lambda r: r.abort())
     pg.route("**/scroll-fx.js*", lambda r: r.abort())
     pg.route("**/consumidor.js*", lambda r: r.abort())
