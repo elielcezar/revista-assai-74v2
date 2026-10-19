@@ -30,7 +30,7 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="popcorn-pop"]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="popcorn-pop"],.fx-espera [data-fx="slide-in-left"]{visibility:hidden}</style>
 <title>Luva ou mão lavada? — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Entre a segurança no preparo e a percepção do cliente, entenda quando usar luvas e por que elas exigem mais cuidados do que aparentam.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -148,7 +148,7 @@
         <p>Foco na lavagem das mãos: “As unhas devem estar curtas e sem esmalte ou base. Durante a manipulação, devem ser retirados todos os objetos de adorno pessoal”. (4.6.6 )</p>
       </div>
     </div>
-    <figure class="maos"><img src="assets/produto/maos-rot.png" alt="Mãos calçando luvas azuis" width="330" height="280"></figure>
+    <figure class="maos" data-fx="slide-in-left" data-fx-quando="scroll" data-fx-margem="100"><img src="assets/produto/maos-rot.png" alt="Mãos calçando luvas azuis" width="330" height="280"></figure>
 
     <p class="t-cartilha">É o que também diz a Cartilha sobre Boas Práticas para Serviços de Alimentação, criada pela própria Anvisa</p>
 
@@ -179,7 +179,7 @@
         <p>Azul costuma ser uma boa escolha, porque contrasta com muitos alimentos e facilita perceber fragmentos caso a luva rasgue.</p>
       </div>
     </div>
-    <figure class="luvas-circulo"><img src="assets/produto/ellipse123.png" alt="Luvas descartáveis pretas, transparentes e azuis" width="240" height="240"></figure>
+    <figure class="luvas-circulo" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/produto/ellipse123.png" alt="Luvas descartáveis pretas, transparentes e azuis" width="240" height="240"></figure>
 
     <h2 class="h-azul h-materiais">Materiais mais comuns</h2>
     <p class="t-materiais">Para manipular alimentos, a luva precisa ter indicação do fabricante para contato com alimentos — o material, sozinho, não garante essa adequação.</p>
