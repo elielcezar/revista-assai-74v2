@@ -37,7 +37,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/negocio.css?v=75-7">
+<link rel="stylesheet" href="css/negocio.css?v=75-10">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -131,9 +131,9 @@
   <!-- ============ BLOCO 2 — O BAR DE FRENTE PRO FUTURO ============ -->
   <!-- as fotos e as caixas rosa (texto sobre a foto) ficam em posicao absoluta; o texto segue em fluxo -->
   <section class="bl bl-bar">
-    <figure class="foto foto--a"><img src="assets/negocio/foto-a.jpg" alt="Calçada de um bar em Poços de Caldas, com um cemitério ao fundo" width="410" height="279"></figure>
-    <figure class="foto foto--b"><img src="assets/negocio/foto-b.jpg" alt="Frym e clientes posam com um prato em formato de caixão na frente do bar" width="415" height="309"></figure>
-    <figure class="foto foto--c"><img src="assets/negocio/foto-c.jpg" alt="Prato em formato de caixão com minissanduíches, tomates, abóbora e pimenta" width="415" height="309"></figure>
+    <figure class="foto foto--a"><img src="assets/negocio/foto-a.jpg?v=75-2" alt="Calçada de um bar em Poços de Caldas, com um cemitério ao fundo" width="410" height="279"></figure>
+    <figure class="foto foto--b"><img src="assets/negocio/foto-b.jpg?v=75-2" alt="Frym e clientes posam com um prato em formato de caixão na frente do bar" width="415" height="309"></figure>
+    <figure class="foto foto--c"><img src="assets/negocio/foto-c.jpg?v=75-2" alt="Prato em formato de caixão com minissanduíches, tomates, abóbora e pimenta" width="415" height="309"></figure>
     <div class="bal bal--1" data-fx="slide-in-up" data-fx-margem="200">
     <div class="balao balao--1" data-fx-item>
       <p>Comer um aperitivo em um bar localizado de frente para um cemitério.</p>
@@ -152,32 +152,36 @@
       <p>Inicialmente o público estranhou. A clientela veio aos poucos, puxada pela curiosidade e apesar do receio. Mas, ainda hoje, há quem mantenha distância. "Alguns clientes que são supersticiosos, não frequentam à noite ou sentam de costas para o cemitério", conta Frym. Outros filmam o lugar, a apresentação dos pratos e publica nas redes, uma divulgação espontânea que reforça a divulgação.</p>
       <p>Datas como o Halloween ganham peso extra naquele endereço. E Frym brinca com uma vantagem rara para um dono de bar: os vizinhos não reclamam do barulho.</p>
     </div>
-    <figure class="retrato retrato--frym" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/negocio/frym.png" alt="Frym, proprietário do bar De Frente para o Futuro, segurando um prato em formato de caixão" width="240" height="240"></figure>
+    <figure class="retrato retrato--frym" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/negocio/frym.png?v=75-2" alt="Frym, proprietário do bar De Frente para o Futuro, segurando um prato em formato de caixão" width="240" height="240"></figure>
     <p class="legenda">Frym, proprietário do bar<br>De Frente para o Futuro</p>
   </section>
 
   <!-- ============ BLOCO 3 — O LARGURA ============ -->
   <section class="bl bl-largura">
-    <!-- no Figma este quadro e um mapa animado (aviao saindo de Pocos de Caldas); aqui entra a imagem parada -->
-    <figure class="foto foto--mapa"><img src="assets/negocio/mapa.jpg" alt="Mapa do Sudeste ao Nordeste com um avião indicando o trajeto de Poços de Caldas até Recife" width="402" height="286"></figure>
-    <figure class="foto foto--largura"><img src="assets/negocio/largura.jpg" alt="Fachada estreita do Largura Restaurante, em Recife" width="427" height="641"></figure>
+    <!-- no Figma este quadro e um mapa animado (aviao saindo de Pocos de Caldas): video em loop -->
+    <figure class="foto foto--mapa">
+      <video src="assets/negocio/video-aviao-web.mp4?v=75-3" poster="assets/negocio/video-aviao-poster.jpg?v=75-3"
+             width="402" height="286" autoplay muted loop playsinline preload="auto"
+             aria-label="Mapa do Sudeste ao Nordeste com um avião indo de Poços de Caldas até Recife"></video>
+    </figure>
+    <figure class="foto foto--largura"><img src="assets/negocio/largura.jpg?v=75-2" alt="Fachada estreita do Largura Restaurante, em Recife" width="427" height="641"></figure>
     <div class="bal bal--3" data-fx="slide-in-up" data-fx-margem="200">
       <p class="balao balao--3" data-fx-item>A quase 2 mil quilômetros dali…</p>
     </div>
 
     <!-- um banner por vez, sorteado a cada carregamento; o primeiro aparece mesmo sem JS -->
     <figure class="adbox" data-ad-random='[
-      {"src":"assets/negocio/51.jpg","alt":"51 — a boa ideia do Brasil está de roupa nova. Novo rótulo, sabor de sempre. Beba com moderação"},
-      {"src":"assets/negocio/bembrasil.PNG","alt":"Bem Brasil — batata para air fryer: colocou, apertou e pliiiiim"},
-      {"src":"assets/negocio/cepera.jpg","alt":"Cepêra — o trio que resolve o básico: barbecue, mostarda e ketchup"}]'>
-      <img src="assets/negocio/51.jpg" alt="51 — a boa ideia do Brasil está de roupa nova. Novo rótulo, sabor de sempre. Beba com moderação" width="375" height="391">
+      {"src":"assets/negocio/51.jpg?v=75-2","alt":"51 — a boa ideia do Brasil está de roupa nova. Novo rótulo, sabor de sempre. Beba com moderação"},
+      {"src":"assets/negocio/bembrasil.PNG?v=75-2","alt":"Bem Brasil — batata para air fryer: colocou, apertou e pliiiiim"},
+      {"src":"assets/negocio/cepera.jpg?v=75-2","alt":"Cepêra — o trio que resolve o básico: barbecue, mostarda e ketchup"}]'>
+      <img src="assets/negocio/51.jpg?v=75-2" alt="51 — a boa ideia do Brasil está de roupa nova. Novo rótulo, sabor de sempre. Beba com moderação" width="375" height="391">
     </figure>
 
     <div class="t-largura">
       <p>Em Recife (PE), outro bar teria motivos para afastar a clientela, desta vez por causa do próprio imóvel. O Largura Restaurante opera em uma casa espremida, de porta e janela pra rua. Os clientes se acomodam em um corredor estreito, com banquetas altas, enquanto outros passam por trás, de lado, para chegar ao fundo. O nome, para quem chega sem conhecer a história, parece provocação.</p>
       <p>O endereço é o mesmo desde 1989, embora a placa na entrada prefira uma data mais vaga: "desde o século XX". O imóvel pertence à família, e por isso o bar nunca mudou de lugar nem fechou as portas em 37 anos. Com algumas reformas, ganhou espaço nos fundos e hoje recebe de 80 a 100 clientes por dia. O proprietário, Wilson Sebastião, ainda pretende fazer alguns reparos, mas julga a estrutura suficiente. "Os clientes consideram aconchegante", garante.</p>
     </div>
-    <figure class="retrato retrato--wilson" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/negocio/wilson.png" alt="Wilson Sebastião, proprietário do Largura" width="240" height="240"></figure>
+    <figure class="retrato retrato--wilson" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100"><img data-fx-item src="assets/negocio/wilson.png?v=75-2" alt="Wilson Sebastião, proprietário do Largura" width="240" height="240"></figure>
     <p class="legenda legenda--wilson">Wilson Sebastião, proprietário do Largura</p>
 
     <h2 class="h-narrativa">A narrativa é a própria história</h2>
@@ -190,10 +194,10 @@
 
   <!-- ============ BLOCO 4 — O QUE ISSO NOS ENSINA ============ -->
   <section class="bl bl-licoes">
-    <figure class="foto foto--djavan"><img src="assets/negocio/djavan.jpg" alt="Djavan sorri ao lado de um cliente do Largura, em uma foto na parede do bar" width="480" height="325"></figure>
+    <figure class="foto foto--djavan"><img src="assets/negocio/djavan.jpg?v=75-2" alt="Djavan sorri ao lado de um cliente do Largura, em uma foto na parede do bar" width="480" height="325"></figure>
     <span class="cupula-fundo" aria-hidden="true"></span>
-    <span class="cupula-e140" aria-hidden="true"><img src="assets/negocio/cupula-e140.svg" alt=""></span>
-    <span class="cupula-anel" aria-hidden="true"><img src="assets/negocio/cupula-anel.svg" alt=""></span>
+    <span class="cupula-e140" aria-hidden="true"><img src="assets/negocio/cupula-e140.svg?v=75-2" alt=""></span>
+    <span class="cupula-anel" aria-hidden="true"><img src="assets/negocio/cupula-anel.svg?v=75-2" alt=""></span>
 
     <div class="ensina">
       <h2 class="h-ensina">O que isso nos ensina<br>sobre negócios?</h2>
@@ -221,8 +225,8 @@
 
     <div class="caixa-fecho">
       <div class="t-fecho">
-        <p data-fx="reveal-wipe" data-fx-margem="100">Um bar confortável, espaçoso e bem localizado pode ser excelente — e completamente esquecível. “O bar em frente ao cemitério” e “o restaurante chamado Largura que é estreitíssimo” são descrições que cabem numa frase e permanecem na cabeça.</p>
-        <p data-fx="reveal-wipe" data-fx-margem="100" data-fx-atraso="0.3"><strong>É essa pequena fricção que provoca a pergunta “como assim?”. E curiosidade é uma porta de entrada para experimentar um lugar.</strong></p>
+        <p>Um bar confortável, espaçoso e bem localizado pode ser excelente — e completamente esquecível. “O bar em frente ao cemitério” e “o restaurante chamado Largura que é estreitíssimo” são descrições que cabem numa frase e permanecem na cabeça.</p>
+        <p><strong>É essa pequena fricção que provoca a pergunta “como assim?”. E curiosidade é uma porta de entrada para experimentar um lugar.</strong></p>
       </div>
     </div>
   </section>

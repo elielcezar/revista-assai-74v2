@@ -120,9 +120,9 @@
 .pilulas-mais li + li { margin-top: 67px; }
 .pilulas-mais li + li::before {
   content: ""; position: absolute; left: 163.5px; top: -51px; width: 35px; height: 35px; opacity: .69;
-  background: url("../assets/mkt/mais1.svg") 0 0 / 35px 35px no-repeat;
+  background: url("../assets/mkt/mais1.svg?v=75-2") 0 0 / 35px 35px no-repeat;
 }
-.pilulas-mais li:nth-child(3)::before { background-image: url("../assets/mkt/mais2.svg"); }
+.pilulas-mais li:nth-child(3)::before { background-image: url("../assets/mkt/mais2.svg?v=75-2"); }
 .pilulas-mais li + li::after {
   content: "+"; position: absolute; left: 172px; top: -52px; width: 18px; height: 37px; opacity: .69;
   font-size: 33px; font-weight: 700; line-height: 37px; text-align: center; color: #fff;
@@ -131,7 +131,7 @@
 .video--circulo { width: 364px; height: 364px; margin: 47.35px 0 0 19px; }
 .anel {
   display: block; width: 364px; height: 364px; padding: 10px; border-radius: 50%; box-sizing: border-box;
-  background: url("../assets/mkt/anel.png") 0 0 / 364px 364px no-repeat;
+  background: url("../assets/mkt/anel.png?v=75-2") 0 0 / 364px 364px no-repeat;
 }
 .video--circulo video { width: 344px; height: 344px; border-radius: 50%; }
 .video--circulo .video-sound { left: 273px; top: 302px; }
@@ -144,7 +144,7 @@
    ========================================================= */
 .capa-basico {
   width: 271px; height: 135.5px; margin: 46.15px 0 0 65.5px;
-  background: url("../assets/mkt/capa2.svg") 0 0 / 271px 135.5px no-repeat;
+  background: url("../assets/mkt/capa2.svg?v=75-2") 0 0 / 271px 135.5px no-repeat;
 }
 .capa-basico h2 {
   width: 201px; margin: 0 0 0 30.5px; padding-top: 55px;

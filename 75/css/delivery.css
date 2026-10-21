@@ -109,7 +109,7 @@
 .caixa--ifood {
   margin-top: 53px; padding: 49px 0 0 20px;
   background:
-    url("../assets/delivery/sub1.svg") 50% calc(100% - 201px) / 890.787px 427.16px no-repeat,
+    url("../assets/delivery/sub1.svg?v=75-2") 50% calc(100% - 201px) / 890.787px 427.16px no-repeat,
     linear-gradient(var(--roxo-d), var(--roxo-d)) 0 0 / 100% 413px no-repeat;
 }
 .h-plat { font-size: 20px; font-weight: 700; line-height: normal; text-transform: uppercase; color: #fff; }
@@ -125,7 +125,7 @@
 
 .caixa--99 {
   margin-top: 62px; padding: 107px 0 44px 20px;
-  background: url("../assets/delivery/sub2-roxo.svg") 50% 0 / 894.838px 448.15px no-repeat;
+  background: url("../assets/delivery/sub2-roxo.svg?v=75-2") 50% 0 / 894.838px 448.15px no-repeat;
 }
 .t-99 { width: 363px; margin-top: 27px; }
 .t-99 p + p { margin-top: 20px; }
@@ -146,7 +146,7 @@
 
 .caixa--beatriz {
   margin-top: 180px; padding: 0 0 61px 20px;
-  background: url("../assets/delivery/sub2.svg") 50% 0 / 894.838px 448.15px no-repeat;
+  background: url("../assets/delivery/sub2.svg?v=75-2") 50% 0 / 894.838px 448.15px no-repeat;
 }
 .caixa--beatriz .retrato { margin: -130px 0 0 41px; }
 .legenda-beatriz {

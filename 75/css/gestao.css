@@ -163,7 +163,7 @@
 .passo::before { content: ""; position: absolute; left: 0; top: 32.82px; width: 360px; height: 2px; border-radius: 1px; background: #f2a73f; }
 .passo-n {
   position: absolute; left: 146.7px; top: 0; width: 66.6px; height: 33.31px; padding-top: 4.1px; box-sizing: border-box;
-  background: url("../assets/gestao/meio-circulo.svg") 0 0 / 66.6px 33.31px no-repeat;
+  background: url("../assets/gestao/meio-circulo.svg?v=75-2") 0 0 / 66.6px 33.31px no-repeat;
   font-family: "Inter", sans-serif; font-size: 22px; font-weight: 700; line-height: 27.67px; color: #fff;
 }
 .passo h3 { width: 354px; margin: 0 0 0 3px; padding-top: 56px; font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; color: var(--verm); }

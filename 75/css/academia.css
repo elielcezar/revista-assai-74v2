@@ -131,7 +131,7 @@
 .caixa--reforma { --ml: -10px; --w: 425px; z-index: 1; margin-top: -107.58px; padding-bottom: 38.21px; }
 .capa-reforma {
   position: relative; width: 270px; height: 143px; margin: 11.52px 0 0 63px;
-  background: url("../assets/academia/capa.svg") 0 0 / 270px 143px no-repeat;
+  background: url("../assets/academia/capa.svg?v=75-2") 0 0 / 270px 143px no-repeat;
 }
 .capa-reforma h2 {
   width: 231px; margin: 0 0 0 20px; padding-top: 37px;
@@ -160,7 +160,7 @@
    ========================================================= */
 .bl-cursos { overflow-x: clip; }
 .caixa--az  { background-image: var(--grad-az); color: #fff; border-radius: 34px; }
-.caixa--lar { background: url("../assets/academia/box-laranja-1.jpg") 0 0 / 100% 100% no-repeat; color: #fff; border-radius: 34px; }
+.caixa--lar { background: url("../assets/academia/box-laranja-1.jpg?v=75-2") 0 0 / 100% 100% no-repeat; color: #fff; border-radius: 34px; }
 
 .cab { display: flex; align-items: flex-start; }
 
@@ -233,7 +233,7 @@
 .carrossel-pontos button.is-active { background: #f0051e; }
 
 .caixa--assessoria {
-  --ml: 0px; --w: 404.25px; background-image: url("../assets/academia/box-laranja-2.jpg");
+  --ml: 0px; --w: 404.25px; background-image: url("../assets/academia/box-laranja-2.jpg?v=75-2");
   margin-top: 54px; padding-bottom: 48px;
 }
 .caixa--assessoria .cab { margin-top: 53px; }
@@ -248,7 +248,7 @@
 .t-comece { width: 349px; margin: 26px 0 0 18px; color: var(--txt); }
 .caixa--chamada {
   display: flex; align-items: flex-end; width: 325px; height: 148.27px; margin: 73px 0 0 39px; padding: 0 0 20px 47px; box-sizing: border-box;
-  background: url("../assets/academia/ellipse54.svg") 0 0 / 325px 148.27px no-repeat;
+  background: url("../assets/academia/ellipse54.svg?v=75-2") 0 0 / 325px 148.27px no-repeat;
 }
 .caixa--chamada p {
   width: 216px; font-size: 20px; font-weight: 700; font-style: italic; line-height: normal; text-align: center; color: #fff;

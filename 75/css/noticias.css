@@ -58,7 +58,7 @@
 .cupula-amarela {
   position: relative; z-index: 2 !important;
   width: 282px; height: 145px;
-  background: url("../assets/noticias/elipse.svg") 0 0 / 282px 144.832px no-repeat;
+  background: url("../assets/noticias/elipse.svg?v=75-2") 0 0 / 282px 144.832px no-repeat;
 }
 .cupula-amarela h2 {
   width: 229px; margin: 0 0 0 26px; padding-top: 63px;
@@ -182,7 +182,7 @@
 .passo { text-align: center; color: var(--txt); }
 .passo-num {
   position: relative; display: block; width: 66.6px; height: 33.31px; margin: 0 auto 0 169.24px;
-  background: url("../assets/noticias/num.svg") no-repeat 0 0 / 66.6px 33.31px;
+  background: url("../assets/noticias/num.svg?v=75-2") no-repeat 0 0 / 66.6px 33.31px;
 }
 .passo-num b {
   position: absolute; left: 27.8px; top: 3px; width: 11.3px;

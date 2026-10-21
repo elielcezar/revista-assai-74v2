@@ -36,8 +36,9 @@
 .bl-hero { overflow: clip; }
 .bl-hero > :not(.backdrop) { position: relative; z-index: 3; }
 
-/* meia-elipse (raio 419): o recorte e a propria foto */
-.hero-foto { left: -216.05px; top: -26.45px; width: 838.1px; height: 419.05px; clip-path: circle(419.05px at 50% 0); }
+/* a foto acaba logo DENTRO da borda externa do arco azul (circulo de raio 317,5 centrado em 203, 84,03 da secao),
+   para o arco cobrir a base da foto em toda a largura: com o raio 419 do Figma sobravam cantos da foto abaixo do arco */
+.hero-foto { left: -216.05px; top: -26.45px; width: 838.1px; height: 419.05px; clip-path: circle(315px at 419.05px 110.48px); }
 .hero-arco { left: -114.5px; top: 84.03px; width: 635px; height: 318px; }
 .hero-arco img { transform: rotate(180deg); }
 .hero-faixa { left: 0; top: 724px; width: 402px; height: 12px; background: rgba(245, 245, 245, .5); }
