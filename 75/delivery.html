@@ -30,14 +30,14 @@
 <!-- scroll-fx: esconde os efeitos de entrada antes da primeira pintura; o
      js/scroll-fx.js assume depois. Se ele não rodar, reaparecem em 3s. -->
 <script>document.documentElement.classList.add("fx-espera");setTimeout(function(){document.documentElement.classList.remove("fx-espera")},3000);</script>
-<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="pop-in"] [data-fx-item],.fx-espera [data-fx="slide-in-up"] [data-fx-item],.fx-espera [data-fx="typewriter"] [data-fx-item]{visibility:hidden}</style>
+<style>.fx-espera [data-fx="reveal-wipe"],.fx-espera [data-fx="pop-in"] [data-fx-item],.fx-espera [data-fx="slide-in-up"] [data-fx-item]{visibility:hidden}</style>
 <title>Golpes com IA no delivery — Revista Assaí Bons Negócios #75</title>
 <meta name="description" content="Reclamações com imagens manipuladas e má fé de clientes e entregadores são foco de preocupação por fraudes em pedidos.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/base.css?v=74-117">
-<link rel="stylesheet" href="css/delivery.css?v=75-14">
+<link rel="stylesheet" href="css/delivery.css?v=75-15">
 <link rel="stylesheet" href="../css/shell.css?v=74-117">
 <!-- casca do desktop: por último -->
 <link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
@@ -189,9 +189,8 @@
     </div>
 
     <blockquote class="q-ifood">
-      <!-- digitados um depois do outro (o 2o espera o 1o terminar + 0,3s); os dois ficam na tela -->
-      <p class="q-ifood-texto" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100" data-fx-velocidade="0.024" data-fx-atraso="0"><span data-fx-item>“Quando identificamos reincidência comprovada, aplicamos medidas proporcionais que podem incluir restrições a reembolsos ou pagamentos e, conforme o caso, o bloqueio definitivo da conta, respeitando o direito à contestação. O objetivo é prevenir práticas fraudulentas e proteger a experiência de consumidores, lojas parceiras e entregadores.”</span></p>
-      <p class="q-ifood-autor" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100" data-fx-velocidade="0.08" data-fx-atraso="8.51"><span data-fx-item>Carolinne Vabo,<br>Diretora de Customer Experience no iFood.</span></p>
+      <p class="q-ifood-texto">“Quando identificamos reincidência comprovada, aplicamos medidas proporcionais que podem incluir restrições a reembolsos ou pagamentos e, conforme o caso, o bloqueio definitivo da conta, respeitando o direito à contestação. O objetivo é prevenir práticas fraudulentas e proteger a experiência de consumidores, lojas parceiras e entregadores.”</p>
+      <p class="q-ifood-autor">Carolinne Vabo,<br>Diretora de Customer Experience no iFood.</p>
     </blockquote>
 
     <div class="caixa caixa--99">
@@ -218,7 +217,7 @@
     <div class="caixa caixa--beatriz">
       <figure class="retrato" data-fx="pop-in" data-fx-quando="scroll" data-fx-margem="100" data-fx-entrada="fade-up"><img data-fx-item src="assets/delivery/beatriz.png?v=75-2" alt="Beatriz Rodrigues Faria, dona da pizzaria Olivi" width="280" height="280"></figure>
       <p class="legenda-beatriz">Beatriz Rodrigues Faria,<br>dona da pizzaria Olivi (SP)</p>
-      <p class="t-beatriz" data-fx="typewriter" data-fx-quando="scroll" data-fx-margem="100"><span data-fx-item>Na época, a pizzaria não tinha registros do pedido na saída. Depois do episódio, passou a usar câmeras para documentar os pedidos. Beatriz relata ainda outras tentativas envolvendo mofo, pizza queimada, falta de ingredientes ausente, todos sem sucesso.</span></p>
+      <p class="t-beatriz">Na época, a pizzaria não tinha registros do pedido na saída. Depois do episódio, passou a usar câmeras para documentar os pedidos. Beatriz relata ainda outras tentativas envolvendo mofo, pizza queimada, falta de ingredientes ausente, todos sem sucesso.</p>
     </div>
   </section>
 
