@@ -42,6 +42,28 @@ Endereços antigos (`mkt.html`, `gestao.html`… na raiz) são stubs de redirect
 que mandam para a categoria correspondente, com `meta refresh` e
 `location.replace` — funcionam com e sem JavaScript.
 
+## Páginas da #75
+
+| seção | arquivo | frame do Figma |
+| --- | --- | --- |
+| CAPA | [`index.html`](index.html) (cópia em [`75/index.html`](75/index.html)) | `6961:3584` |
+| PRINCIPAL | [`75/principal.html`](75/principal.html) | `6949:8697` |
+| GESTÃO | [`75/gestao.html`](75/gestao.html) | `6956:9875` |
+| MKT DIGITAL | [`75/mkt.html`](75/mkt.html) | `6941:8350` |
+| PRODUTO | [`75/produto.html`](75/produto.html) | `6960:1125` |
+| CONSUMIDOR | [`75/consumidor.html`](75/consumidor.html) | `6941:8303` |
+| DELIVERY | [`75/delivery.html`](75/delivery.html) | `6931:4097` |
+| NOVO NEGÓCIO | [`75/negocio.html`](75/negocio.html) | `6931:7505` |
+| ACADEMIA ASSAÍ | [`75/academia.html`](75/academia.html) | `6961:2480` |
+| NOTÍCIAS DO ASSAÍ | [`75/noticias.html`](75/noticias.html) | `6961:3218` |
+
+O hero da capa é um vídeo (`75/assets/capa/musica-capa-v4-web.mp4`, ~240KB,
+com poster). O original sem compressão fica ao lado (`musica-capa-v4.mp4`).
+Ao trocar o vídeo, mude o `src` e o `poster` **nos dois arquivos da capa**
+(`index.html` e `75/index.html`, com e sem o prefixo `75/`).
+
+Cada página tem um probe em `scripts/probe_75_<pagina>.py`.
+
 ## Páginas da #74
 
 | seção | arquivo | frame do Figma |
@@ -305,6 +327,13 @@ Use a expressão (`74-[0-9]+`), não o número exato: trocar só `74-79` deixava
 para trás os links que já estavam em outra versão (a capa ficou com `base.css`,
 `shell.css`, `shell.js` e `capa.js` presos em 74-79 enquanto o resto ia a
 74-107).
+
+Os arquivos próprios da #75 (`75/css/`, `75/js/`, `75/assets/`) levam
+`?v=75-NN`, subido **por arquivo**, não em bloco: a maioria está em 75-2 e só o
+que mudou depois sobe (o vídeo da capa, por exemplo, está em 75-4 no `index.html`
+e no `75/index.html`). Ao mexer num deles, suba a referência a ele em
+`index.html 75/*.html`. Os arquivos compartilhados (`css/`, `js/`) seguem no
+esquema `74-NN`, também a partir das páginas da `75/`.
 
 Os arquivos da #73 levam `?v=73-NN` — hoje **73-33** para
 `73/css/revista-73-shell.css`, `73/js/revista-73-menu.js` e `73/css/home.css`.
