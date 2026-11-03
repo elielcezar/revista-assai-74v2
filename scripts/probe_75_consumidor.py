@@ -12,6 +12,9 @@ O banner rotativo (.adbox) fecha a pagina e nao existe no Figma; o probe bloquei
 consumidor.js para ele nao ser sorteado.
 O anuncio Salsaretti (.pub-predilecta, 40 de folga + 419) tambem nao existe no Figma: entra
 logo depois da faixa roxa e empurra tudo a partir de .t-retencao (y >= RETENCAO) em PUB.
+O carrossel Extrusa-Pack (40 + 419 + 32 dos pontos + 40 ate o .h-comemos, no lugar dos 47,51
+dele = CAR) tambem nao existe no Figma: entra entre os blocos 3 e 4 e empurra tudo a partir
+do .h-comemos (y >= COMEMOS).
 """
 import pathlib
 from playwright.sync_api import sync_playwright
@@ -19,6 +22,8 @@ from playwright.sync_api import sync_playwright
 D = 182   # o BLOCO do Figma comeca depois do HEAD
 PUB = 459.1       # anuncio Salsaretti: 40 + 419,1 (402 x 391/375)
 RETENCAO = 6681.95  # y do .t-retencao: dai para baixo, tudo vem depois do anuncio
+CAR = 483.49        # carrossel Extrusa-Pack
+COMEMOS = 2200.21   # y do .h-comemos: dai para baixo, tudo vem depois do carrossel
 # (seletor, x, y no BLOCO do Figma)
 EXPECT = [
     (".hero-titulo",                 26,     33.77),
@@ -88,11 +93,11 @@ with sync_playwright() as p:
     for (s, x, y), r in zip(EXPECT, res):
         if r is None:
             print(f"{s:38} AUSENTE"); ruins += 1; continue
-        alvo = y + D + (PUB if y >= RETENCAO else 0)
+        alvo = y + D + (PUB if y >= RETENCAO else 0) + (CAR if y >= COMEMOS else 0)
         dy = r[1] - alvo; dx = r[0] - x
         flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
         ruins += bool(flag)
         print(f"{s:38} x {r[0]:7.1f} ({dx:+5.1f})  y {r[1]:7.1f} esp {alvo:7.1f} ({dy:+5.1f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 9006 + anuncio {PUB} + banner)")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 9006 + carrossel {CAR} + anuncio {PUB} + banner)")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()

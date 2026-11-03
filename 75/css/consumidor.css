@@ -96,6 +96,34 @@
 /* =========================================================
    BLOCO 4 — POR QUE COMEMOS FORA?
    ========================================================= */
+/* publicidade Extrusa-Pack (fora do Figma): carrossel entre os blocos 3 e 4; arte de 804x838
+   na largura da coluna (419) + 32 dos pontos, 40 de folga acima e abaixo (no lugar dos 47,51 do
+   .h-comemos). Empurra o resto em 483,49px */
+.carrossel { width: 402px; margin-top: 40px; }
+.carrossel-trilho {
+  display: flex; width: 402px; height: 419px;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain; cursor: grab;
+}
+.carrossel-trilho.is-dragging { cursor: grabbing; }
+.carrossel-trilho::-webkit-scrollbar { display: none; }
+.carrossel-slide {
+  flex: 0 0 100%; width: 402px; height: 419px;
+  scroll-snap-align: start; scroll-snap-stop: always; overflow: hidden;
+}
+.carrossel-slide img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.carrossel-pontos {
+  height: 32px; display: flex; align-items: center; justify-content: center; gap: 8px; background: #fff;
+}
+.carrossel-pontos button {
+  width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, .28); cursor: pointer;
+}
+.carrossel-pontos button.is-active { background: var(--roxo); }
+.carrossel + .bl-comemos .h-comemos { margin-top: 40px; }
+
 .h-comemos { width: 352px; margin: 47.51px 0 0 26px; font-size: 24px; font-weight: 700; line-height: normal; text-align: center; text-transform: uppercase; color: var(--roxo); }
 .t-motivacoes { width: 356px; margin: 16.76px 0 0 23px; text-align: center; color: #000; }
 
