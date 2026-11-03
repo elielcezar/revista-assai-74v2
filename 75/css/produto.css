@@ -97,6 +97,10 @@
 .t-anvisa { width: 362px; margin: 33px 0 0 20px; color: #000; }
 .t-anvisa a { color: inherit; text-decoration: underline; }
 
+/* publicidade L'OR (fora do Figma): arte de 391x375 na largura da coluna (385,55), 40 de folga acima */
+.pub-jde { width: 402px; margin-top: 40px; aspect-ratio: 391 / 375; }
+.pub-jde img { display: block; width: 402px; height: 100%; object-fit: cover; }
+
 .caixa--norma {
   --ml: -9.98px; --w: 421.96px; height: 362.34px; margin-top: 42.4px;
   background-image: linear-gradient(90deg, #00adee, #006388); color: #fff;

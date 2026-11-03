@@ -9,6 +9,8 @@ de materiais e empurra tudo o que vem abaixo em STORY.
 O carrossel Hellmann's (418 + 32 dos pontos + 40 de folga) tambem nao existe no Figma:
 entra entre a abertura e o bloco da Anvisa e empurra tudo a partir de .h-anvisa
 (y >= ANVISA) em CARROSSEL.
+O anuncio L'OR (.pub-jde, 40 de folga + 385,55) tambem nao existe no Figma: entra entre o
+.t-anvisa e a .caixa--norma e empurra tudo a partir dela (y >= NORMA) em JDE.
 O titulo (.hero-titulo) fica 4px acima da caixa do Figma (441 em vez de 445) porque o
 glifo da Raspoutine cai ~4px abaixo da caixa; o glifo bate com o Figma.
 """
@@ -19,6 +21,8 @@ D = 182        # o BLOCO do Figma comeca depois do HEAD
 STORY = 755    # story do Maturatta: 715 + 40
 CARROSSEL = 490  # carrossel Hellmann's: 418 + 32 + 40
 ANVISA = 1301    # y do .h-anvisa: dai para baixo, tudo vem depois do carrossel
+JDE = 425.55     # anuncio L'OR: 40 + 385,55 (402 x 375/391)
+NORMA = 1543.4   # y da .caixa--norma: dai para baixo, tudo vem depois do anuncio
 # (seletor, x, y no BLOCO do Figma, depois do story?)
 EXPECT = [
     (".hero-titulo",              21,    441,     0),
@@ -69,11 +73,11 @@ with sync_playwright() as p:
     for (s, x, y, dep), r in zip(EXPECT, res):
         if r is None:
             print(f"{s:24} AUSENTE"); ruins += 1; continue
-        alvo = y + D + (STORY if dep else 0) + (CARROSSEL if y >= ANVISA else 0)
+        alvo = y + D + (STORY if dep else 0) + (CARROSSEL if y >= ANVISA else 0) + (JDE if y >= NORMA else 0)
         dy = r[1] - alvo; dx = r[0] - x
         flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
         ruins += bool(flag)
         print(f"{s:24} x {r[0]:7.1f} ({dx:+5.1f})  y {r[1]:7.1f} esp {alvo:7.1f} ({dy:+5.1f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 5965 + story {STORY} + carrossel {CARROSSEL})")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 5965 + story {STORY} + carrossel {CARROSSEL} + anuncio {JDE})")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()
