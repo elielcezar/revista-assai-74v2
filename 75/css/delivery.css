@@ -184,6 +184,12 @@
 .bl-agir { overflow: clip; }
 
 /* =========================================================
+   PUBLICIDADE — STORY DOVE (fora do Figma: 715 + 40 de folga, empurra o resto em 755px)
+   ========================================================= */
+.story { width: 402px; margin-top: 40px; }
+.story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #fff; }
+
+/* =========================================================
    BLOCO 6 — SEUS DIREITOS  (8690 .. 9874)
    ========================================================= */
 .h-direitos { margin-top: 45px; text-align: center; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--roxo-d); }

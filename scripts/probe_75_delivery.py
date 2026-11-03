@@ -8,11 +8,16 @@ Os 7 blocos "DELIVERY" do Figma comecam em 182, 1242, 3125, 5008, 6846, 8690 e 9
 O banner rotativo (.adbox, 419px + 50 de folga) nao existe no Figma: entra depois das
 etapas e empurra o que vem abaixo em AD. O probe bloqueia o delivery.js para o banner
 nao ser sorteado.
+O story da Dove (715px + 40 de folga) tambem nao existe no Figma: entra entre o bloco
+"Como o restaurante deve agir" e "Seus direitos" e empurra tudo a partir de .h-direitos
+(y >= DIREITOS) em STORY.
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
 AD = 469   # banner rotativo: 419 + 50
+STORY = 755      # story da Dove: 715 + 40
+DIREITOS = 8735  # y do .h-direitos: dai para baixo, tudo vem depois do story
 # (seletor, x, y no Figma, depois do banner?)
 EXPECT = [
     (".mosca",             165,  1148.91, 0),   # 182 + 966.91
@@ -48,11 +53,11 @@ with sync_playwright() as p:
     for (s, x, y, dep), r in zip(EXPECT, res):
         if r is None:
             print(f"{s:22} AUSENTE"); ruins += 1; continue
-        alvo = y + (AD if dep else 0)
+        alvo = y + (AD if dep else 0) + (STORY if y >= DIREITOS else 0)
         dy = r[1] - alvo; dx = r[0] - x
         flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
         ruins += bool(flag)
         print(f"{s:22} x {r[0]:7.1f} ({dx:+5.1f})  y {r[1]:7.1f} esp {alvo:8.1f} ({dy:+5.1f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 10905 + banner {AD})")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 10905 + banner {AD} + story {STORY})")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()
