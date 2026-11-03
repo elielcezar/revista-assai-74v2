@@ -103,6 +103,11 @@
 /* =========================================================
    BLOCO 4 — O QUE ISSO NOS ENSINA  (4993 + banner .. 7161 + banner)
    ========================================================= */
+/* story da Downy (fora do Figma), entre os blocos 3 e 4: usa a folga de 47px que o bloco 3 ja tem
+   abaixo do texto e deixa 40 ate a foto do Djavan. Empurra o resto em 715 + 40 = 755px */
+.story { width: 402px; margin-bottom: 40px; }
+.story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #0a1f6b; }
+
 .bl-licoes { min-height: 2168px; }
 .foto--djavan { left: -48.45px; top: 0; width: 480.45px; height: 325.11px; }
 .bl > .cupula-fundo { position: absolute; z-index: 0; left: -66.53px; top: 488.14px; width: 479.45px; height: 174.73px; background: var(--pink); }

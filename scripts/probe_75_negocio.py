@@ -11,12 +11,15 @@ para o banner nao ser sorteado. O titulo (.hero-gancho) fica 8px acima da caixa 
 (43,86 em vez de 51,86): o glifo da Raspoutine cai ~8px abaixo da caixa.
 O anuncio Embalixo (.pub-embalixo: 82,04 do .ensina + 419,37 + 40 ate o .t-tres, no lugar dos
 82,04 que o .t-tres tinha = EMB) tambem nao existe no Figma: empurra tudo a partir do .t-tres.
+O story da Downy (715 + 40 ate a foto do Djavan = DOWNY) tambem nao existe no Figma: entra entre
+os blocos 3 e 4 e empurra todo o bloco 4.
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
 AD = 459.14
 EMB = 459.37
+DOWNY = 755
 B1, B2, B3, B4 = 182, 632, 2478, 4993
 # (seletor, y esperado)
 EXPECT = [
@@ -32,11 +35,11 @@ EXPECT = [
     (".retrato--wilson", B3 + 1461.32 + AD),
     (".legenda--wilson", B3 + 1739.39 + AD),
     (".h-narrativa", B3 + 1841.09 + AD),
-    (".ensina", B4 + 333 + AD),
-    (".t-tres", B4 + 714.03 + AD + EMB),
-    (".licao-num", B4 + 828 + AD + EMB),
-    (".caixa-fecho", B4 + 1831 + AD + EMB),
-    ("footer.foot", 7161 + AD + EMB),
+    (".ensina", B4 + 333 + AD + DOWNY),
+    (".t-tres", B4 + 714.03 + AD + EMB + DOWNY),
+    (".licao-num", B4 + 828 + AD + EMB + DOWNY),
+    (".caixa-fecho", B4 + 1831 + AD + EMB + DOWNY),
+    ("footer.foot", 7161 + AD + EMB + DOWNY),
 ]
 
 JS = """(sels) => sels.map(s => { const e = document.querySelector(s); if (!e) return null;
@@ -61,6 +64,6 @@ with sync_playwright() as p:
         flag = "  <<<" if abs(dy) > 3 else ""
         ruins += bool(flag)
         print(f"{s:28} y {r:8.1f} esp {y:8.1f} ({dy:+5.1f}){flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 7277 + banner {AD} + anuncio {EMB})")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 7277 + banner {AD} + anuncio {EMB} + story {DOWNY})")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()
