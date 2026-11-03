@@ -6,12 +6,16 @@
 Figma: 6956:9875 (arquivo aquTnQHLWwiogtzEAG9qyp, 402 x 8199, HEAD de 182 incluso).
 O story do Omo (715px) entra depois da caixa vermelha e nao existe no Figma:
 tudo o que vem abaixo dele desce 715px (STORY).
+O carrossel Embalixo (40 + 385,55 + 32 dos pontos + 40 ate a caixa vermelha, no lugar dos 58,11
+dela = CAR) tambem nao existe no Figma: empurra tudo a partir da .caixa--receita (y >= RECEITA).
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
 D = 182      # o BLOCO do Figma comeca depois do HEAD
 STORY = 715  # story do Omo (video 402 x 715)
+CAR = 439.44     # carrossel Embalixo
+RECEITA = 3528.11  # y da .caixa--receita: dai para baixo, tudo vem depois do carrossel
 # (seletor, x, y no BLOCO do Figma, depois do story?)
 EXPECT = [
     (".hero-foto",               -6.37,   -8.31, 0),
@@ -71,11 +75,11 @@ with sync_playwright() as p:
     for (s, x, y, dep), r in zip(EXPECT, res):
         if r is None:
             print(f"{s:28} AUSENTE"); ruins += 1; continue
-        alvo = y + D + (STORY if dep else 0)
+        alvo = y + D + (STORY if dep else 0) + (CAR if y >= RECEITA else 0)
         dy = r[1] - alvo; dx = 0 if x is None else r[0] - x
         flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
         ruins += bool(flag)
         print(f"{s:28} x {r[0]:7.1f} ({dx:+5.1f})  y {r[1]:7.1f} esp {alvo:7.1f} ({dy:+5.1f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 8199 + story {STORY})")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 8199 + story {STORY} + carrossel {CAR})")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()
