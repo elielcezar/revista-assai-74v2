@@ -96,6 +96,36 @@
 .leg-duas { width: 362px; margin: 36.21px 0 0 20px; text-align: center; font-weight: 700; font-style: italic; color: var(--cinza); }
 
 /* =========================================================
+   PUBLICIDADE — CARROSSEL GOMES DA COSTA (fora do Figma)
+   arte de 815x782 na largura da coluna (385,72) + 32 dos pontos, 40 de folga acima e
+   abaixo (no lugar dos 74,41 do .h-viral). Empurra o resto em 423,31px
+   ========================================================= */
+.carrossel { width: 402px; margin-top: 40px; }
+.carrossel-trilho {
+  display: flex; width: 402px; height: 385.72px;
+  overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
+  -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain; cursor: grab;
+}
+.carrossel-trilho.is-dragging { cursor: grabbing; }
+.carrossel-trilho::-webkit-scrollbar { display: none; }
+.carrossel-slide {
+  flex: 0 0 100%; width: 402px; height: 385.72px;
+  scroll-snap-align: start; scroll-snap-stop: always; overflow: hidden;
+}
+.carrossel-slide img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.carrossel-pontos {
+  height: 32px; display: flex; align-items: center; justify-content: center; gap: 8px; background: #fff;
+}
+.carrossel-pontos button {
+  width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, .28); cursor: pointer;
+}
+.carrossel-pontos button.is-active { background: var(--laranja); }
+.carrossel + .bl-viral .h-viral { margin-top: 40px; }
+
+/* =========================================================
    BLOCO 3 — VIRAL NÃO GARANTE VENDAS  (2953 .. 4262)
    ========================================================= */
 .h-viral {

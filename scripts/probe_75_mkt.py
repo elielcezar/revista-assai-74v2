@@ -7,12 +7,17 @@ Figma: 6941:8350 (arquivo aquTnQHLWwiogtzEAG9qyp, 402 x 6552, HEAD de 182 inclus
 O banner rotativo (.adbox) nao existe no Figma: entra depois do video em circulo e
 empurra tudo o que vem abaixo em AD (altura da 1a imagem, davene, em 402px + 46 de folga).
 O probe bloqueia o mkt.js para o banner nao ser sorteado.
+O carrossel Gomes da Costa (40 + 385,72 + 32 dos pontos + 40 ate o .h-viral, no lugar dos 74,41
+dele = CAR) tambem nao existe no Figma: entra entre os blocos 2 e 3 e empurra tudo a partir
+do .h-viral (y >= VIRAL).
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
 D = 182        # o BLOCO do Figma comeca depois do HEAD
 AD = 465.14    # banner rotativo: 419,14 + 46
+CAR = 423.31   # carrossel Gomes da Costa
+VIRAL = 2771   # y do .h-viral: dai para baixo, tudo vem depois do carrossel
 # (seletor, x, y no BLOCO do Figma, depois do banner?)
 EXPECT = [
     (".hero-titulo",              18.41,  507.61, 0),
@@ -62,11 +67,11 @@ with sync_playwright() as p:
     for (s, x, y, dep), r in zip(EXPECT, res):
         if r is None:
             print(f"{s:32} AUSENTE"); ruins += 1; continue
-        alvo = y + D + (AD if dep else 0)
+        alvo = y + D + (AD if dep else 0) + (CAR if y >= VIRAL else 0)
         dy = r[1] - alvo; dx = r[0] - x
         flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
         ruins += bool(flag)
         print(f"{s:32} x {r[0]:7.1f} ({dx:+5.1f})  y {r[1]:7.1f} esp {alvo:7.1f} ({dy:+5.1f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 6552 + banner {AD})")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 6552 + banner {AD} + carrossel {CAR})")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()
