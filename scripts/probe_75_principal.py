@@ -5,12 +5,16 @@
 
 Figma: 6949:8697 (arquivo aquTnQHLWwiogtzEAG9qyp, 402 x 7102, com o HEAD).
 Topo esperado = y do Figma no frame (blocos em 182, 1926, 3068, 4228, 5144, 5516).
+O story da Dove (40 de folga + 715) tambem nao existe no Figma: entra entre o bloco 3 (palco)
+e o 4 (efeito) e empurra tudo a partir de .bl-efeito (y >= EFEITO) em DOVE.
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
 H = 0  # o frame novo ja inclui o HEAD (0..182)
 STORY = 757.4  # story em video (9:16) inserido antes do .t-dados: 42,7 + 715 que o Figma nao tem
+DOVE = 755     # story da Dove entre os blocos 3 e 4: 40 + 715
+EFEITO = 3068  # inicio do bloco 4 no Figma: dai para baixo, tudo vem depois do story da Dove
 EXPECT = [
     (".hero-edicao",                22,  546),
     (".hero-autor",                 22,  585),
@@ -69,9 +73,10 @@ with sync_playwright() as p:
     for (s, x, y), r in zip(EXPECT, res):
         if r is None:
             print(f"{s:34} AUSENTE"); ruins += 1; continue
-        dy = r[1] - (y + H); dx = r[0] - x
+        alvo = y + H + (DOVE if y >= EFEITO else 0)
+        dy = r[1] - alvo; dx = r[0] - x
         flag = "  <<<" if abs(dy) > 3 or abs(dx) > 3 else ""
         ruins += bool(flag)
-        print(f"{s:34} x {r[0]:7.1f} ({dx:+5.0f})  y {r[1]:7.1f} esp {y+H:5} ({dy:+5.0f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
+        print(f"{s:34} x {r[0]:7.1f} ({dx:+5.0f})  y {r[1]:7.1f} esp {alvo:7.1f} ({dy:+5.0f})  {r[2]:.0f}x{r[3]:.0f}{flag}")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()

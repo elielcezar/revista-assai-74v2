@@ -145,6 +145,11 @@
 
 .story { width: 402px; margin-top: 42.7px; }
 .story video { display: block; width: 402px; height: 715px; object-fit: cover; background: #000; }
+
+/* story da Dove (fora do Figma), entre os blocos 3 e 4: 40 de folga + 715, empurra o resto em 755px;
+   fundo branco como o do video. Fica depois do .story para vencer a margem dele */
+.story--dove { margin-top: 40px; }
+.story--dove video { background: #fff; }
 .t-dados { width: 362.35px; margin: 42.7px 0 0 18.6px; color: #000; }
 
 /* =========================================================
