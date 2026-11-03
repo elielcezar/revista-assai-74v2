@@ -186,6 +186,9 @@
 .faixa { width: 514px; margin-left: -53px; padding-left: 53px; box-sizing: border-box; }
 .faixa--atracao { height: 141px; padding-top: 33px; background: var(--roxo); }
 .faixa--atracao p { width: 325px; margin-left: 35px; font-size: 24px !important; font-weight: 700; line-height: normal; text-align: center; color: var(--amarelo); }
+/* publicidade Salsaretti (fora do Figma): 40 de folga + 419 da arte, na largura da coluna */
+.pub-predilecta { width: 402px; margin-top: 40px; aspect-ratio: 375 / 391; }
+.pub-predilecta img { display: block; width: 402px; height: 100%; object-fit: cover; }
 .t-retencao { width: 362px; margin: 55.05px 0 0 20px; color: #000; }
 .t-retencao p + p { margin-top: 20px; }
 
