@@ -8,12 +8,18 @@ y abaixo no BLOCO do Figma, que comeca em 182).
 O carrossel Heinz (40 + 451 + 54 - 102 = 443px) nao existe no Figma: entra depois dos botoes
 "Para comecar pela base" e empurra o que vem abaixo em SH. O probe bloqueia o scroll-fx e o
 ad-carousel.
+O anuncio Melitta (.pub-melitta, 40 de folga + 419) tambem nao existe no Figma: entra depois
+de .t-comece e empurra tudo a partir de .caixa--chamada (y >= CHAMADA) em MEL.
+O bloco de publicidade do fim da pagina (.ad-rotulo) foi removido (commit e2ba326): o rodape
+sobe 802,6px em relacao ao Figma e o esperado dele ja vem descontado.
 """
 import pathlib
 from playwright.sync_api import sync_playwright
 
 D = 182     # o BLOCO do Figma comeca depois do HEAD
 SH = 443    # carrossel Heinz
+MEL = 459.1       # anuncio Melitta: 40 + 419,1 (402 x 391/375)
+CHAMADA = 6016    # y da .caixa--chamada: dai para baixo, tudo vem depois do anuncio
 # (seletor, y no BLOCO do Figma, depois do carrossel?, "top" ou "bottom")
 EXPECT = [
     (".hero-crescer", 443, 0, "top"),
@@ -68,8 +74,7 @@ EXPECT = [
     (".t-comece", 5843, 1, "top"),
     (".caixa--chamada", 6016, 1, "top"),
     (".btn--site", 6164.33, 1, "top"),
-    (".ad-rotulo", 6284, 1, "top"),
-    ("footer.foot", 7009, 1, "top"),
+    ("footer.foot", 6206.4, 1, "top"),   # 7009 - 802,6 do bloco de publicidade removido
 ]
 
 JS = """(items) => items.map(([s, m]) => { const e = document.querySelector(s); if (!e) return null;
@@ -90,11 +95,11 @@ with sync_playwright() as p:
     for (s, y, dep, m), r in zip(EXPECT, res):
         if r is None:
             print(f"{s:30} AUSENTE"); ruins += 1; continue
-        alvo = y + D + (SH if dep else 0)
+        alvo = y + D + (SH if dep else 0) + (MEL if y >= CHAMADA else 0)
         dy = r[1] - alvo
         flag = "  <<<" if abs(dy) > 3 else ""
         ruins += bool(flag)
         print(f"{s:30} {m:6} y {r[1]:8.1f} esp {alvo:8.1f} ({dy:+5.1f}){flag}")
-    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 7307 + carrossel {SH})")
+    print(f"altura da pagina: {pg.evaluate('document.documentElement.scrollHeight')} (Figma 7307 + carrossel {SH} + anuncio {MEL} - publicidade removida 802,6)")
     print(f"fora de posicao: {ruins}/{len(EXPECT)}")
     b.close()

@@ -246,6 +246,9 @@
    ========================================================= */
 .h-comece { width: 349px; margin: 81px 0 0 20px; font-size: 24px; font-weight: 700; line-height: normal; text-transform: uppercase; color: var(--txt); }
 .t-comece { width: 349px; margin: 26px 0 0 18px; color: var(--txt); }
+/* publicidade Melitta (fora do Figma): 40 de folga + 419 da arte, na largura da coluna */
+.pub-melitta { width: 402px; margin-top: 40px; aspect-ratio: 375 / 391; }
+.pub-melitta img { display: block; width: 402px; height: 100%; object-fit: cover; }
 .caixa--chamada {
   display: flex; align-items: flex-end; width: 325px; height: 148.27px; margin: 73px 0 0 39px; padding: 0 0 20px 47px; box-sizing: border-box;
   background: url("../assets/academia/ellipse54.svg?v=75-2") 0 0 / 325px 148.27px no-repeat;
