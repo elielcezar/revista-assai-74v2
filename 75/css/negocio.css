@@ -115,6 +115,12 @@
 .t-ensina { margin-top: 33px; font-size: 18px; line-height: 21px !important; color: #fff; }
 .t-tres { position: relative; z-index: 1; width: 362px; margin: 82.04px 0 0 21px; line-height: 21px !important; color: #000; }
 
+/* publicidade Embalixo (fora do Figma): fica a 82 do .ensina, como o .t-tres ficava (a cupula rosa
+   acaba ~30px abaixo do .ensina), e o .t-tres passa a 40 dela. Empurra o resto em 40 + 419,37 = 459,37px */
+.pub-embalixo { position: relative; z-index: 1; width: 402px; margin-top: 82.04px; aspect-ratio: 394 / 411; }
+.pub-embalixo img { display: block; width: 402px; height: 100%; object-fit: cover; }
+.pub-embalixo + .t-tres { margin-top: 40px; }
+
 .licoes { position: relative; z-index: 1; width: 362px; margin: 50.97px 0 0 21px; padding: 0; list-style: none; }
 .licao { text-align: center; color: #000; }
 .licao + .licao { margin-top: 45px; }
