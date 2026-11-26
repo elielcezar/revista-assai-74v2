@@ -1,0 +1,1 @@
+try{localStorage.removeItem('rv76-plano')}catch(e){}

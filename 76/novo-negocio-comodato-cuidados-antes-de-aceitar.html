@@ -1,0 +1,518 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Thu Nov 26 2026 13:42:42 GMT+0000 (Coordinated Universal Time)  -->
+<html lang="pt-BR" data-wf-page="6af9d7553742de15df865aa6" data-wf-site="6ae120959d4de28ff1b3d8e8">
+<head>
+  <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MS6VK9B');
+</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W6GXJGP7');
+</script>
+<!-- End Google Tag Manager -->
+  <title>Comodato: cuidados antes de aceitar um equipamento · Revista Assaí Bons Negócios</title>
+  <meta content="Geladeira, chopeira ou máquina de café sem pagar pela compra. Veja o que conferir sobre metas, exclusividade, manutenção e devolução antes de assinar." name="description">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css?v=76-1" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css?v=76-1" rel="stylesheet" type="text/css">
+  <link href="css/assai-76.webflow.css?v=76-1" rel="stylesheet" type="text/css">
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.png" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="images/favicon-dark.png" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="images/favicon-48.png" rel="icon" type="image/png" sizes="48x48">
+  <link href="images/webclip-180.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="images/webclip-192.png" rel="icon" type="image/png" sizes="192x192">
+  <link href="images/webclip.png" rel="icon" type="image/png" sizes="512x512"><!--  Revista: cabeçalho e rodapé  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Sans:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+.rv-cab{position:sticky;top:0;z-index:50;overflow:visible}
+.rv-cab-menu{scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rv-cab-menu::-webkit-scrollbar{display:none}
+html{scroll-behavior:smooth}
+.rv-cab-item,.rv-rod-icone,.rv-rod-lojas,.rv-cab-edicao,.rv-cab-busca-btn{transition:opacity .2s ease}
+.rv-cab-item:hover,.rv-rod-icone:hover,.rv-rod-lojas:hover,.rv-cab-edicao:hover,.rv-cab-busca-btn:hover{opacity:.7}
+.rv-cab-item[aria-current="page"]{font-weight:700}
+.rv-cab-edicao,.rv-cab-busca-btn{background:none;border:0;padding:0;margin:0;color:inherit;font:inherit;cursor:pointer;display:flex;align-items:center;gap:4px}
+.rv-cab-edicao[aria-expanded="true"] svg{transform:rotate(180deg)}
+.rv-cab-edicao svg{transition:transform .2s ease}
+.rv-cab-progresso-barra{transform:scaleX(0);transform-origin:0 50%}
+/* lista de edições */
+.rv-edicoes{position:absolute;z-index:60;width:220px;padding:8px 0;border-radius:16px;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.14);overflow:hidden;font-family:"FS Lola",sans-serif}
+.rv-edicoes[hidden],.rv-busca[hidden]{display:none}
+.rv-edicoes a{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;color:#000;font-size:18px;line-height:23px;text-decoration:none}
+.rv-edicoes a:hover,.rv-edicoes a:focus-visible{background:#f9f9f9;outline:none}
+.rv-edicoes a.is-atual{background:#f9f9f9;font-weight:700}
+.rv-edicoes .rv-edicoes-atual{display:flex;align-items:center;gap:8px;color:#666;font-size:12px;font-weight:500}
+.rv-edicoes .is-impressas{border-top:1px solid #e4e4e4}
+/* painel de busca */
+.rv-busca{position:absolute;left:0;right:0;z-index:60;display:flex;justify-content:center;align-items:center;gap:16px;padding:24px 40px;background:#fff;border-bottom:1px solid #e4e4e4;box-shadow:0 8px 28px rgba(0,0,0,.14)}
+.rv-busca form{display:flex;align-items:center;gap:12px;width:100%;max-width:720px;height:48px;padding:0 20px;border:1.5px solid #000;border-radius:999px;margin:0}
+.rv-busca input{flex:1;min-width:0;border:0;outline:0;background:none;font:400 16px/20px Inter,sans-serif;color:#000}
+.rv-busca input::placeholder{color:#666}
+.rv-busca button{background:none;border:0;padding:0;cursor:pointer;color:#000;display:flex}
+.rv-busca svg{width:24px;height:24px}
+
+.rv-busca{padding:12px 16px;gap:12px}
+.rv-busca form{height:44px}
+.rv-busca input{font-size:15px}
+
+</style>
+  <script>
+/* Revista Assaí · efeitos comuns das matérias
+   Cena fixa: a foto de fundo troca conforme o card lido.
+   (Parallax de fotos e imagens retirado em 17/11 a pedido de Manoela: não usar.
+    Blocos de cor empilhados foram retirados em 15/11: não usar por padrão.) */
+addEventListener('DOMContentLoaded',function(){
+(function(){var q=function(s){return[].slice.call(document.querySelectorAll(s))};var C=q('.rv-cena').map(function(c){return{f:[].slice.call(c.querySelectorAll('.rv-cena-foto')),k:[].slice.call(c.querySelectorAll('.rv-cena-card'))}}).filter(function(c){return c.f.length&&c.f.length===c.k.length});if(!C.length)return;function t(){var h=innerHeight;C.forEach(function(c){var a=0;c.k.forEach(function(k,i){if(k.getBoundingClientRect().top<h*.75)a=i});c.f.forEach(function(f,i){f.classList.toggle('is-ativa',i===a)})})}var p=0;function g(){if(!p){p=1;requestAnimationFrame(function(){p=0;t()})}}addEventListener('scroll',g,{passive:true});addEventListener('resize',g);addEventListener('load',t);t()})();
+});
+</script>
+  <link href="css/revista76.css?v=76-1" rel="stylesheet" type="text/css">
+  <style>.head { --head-bg: #b40082; }</style>
+  <link href="../css/shell.css?v=74-117" rel="stylesheet" type="text/css">
+<!-- casca do desktop: por último -->
+<link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
+</head>
+<body>
+<!-- ============ CASCA DESKTOP: gerada por scripts/shell_sync.py — não edite aqui ============ -->
+<div class="casca">
+  <aside class="casca-esq" aria-label="Navegação da revista">
+    <a class="casca-logo" href="https://www.assai.com.br" target="_blank" rel="noopener"><img src="../assets/shell/dt-logo-assai.png" alt="Assaí Atacadista" width="124" height="124"></a>
+    <p class="casca-edicao">Edição #76<br>Novembro/2026</p>
+    <div class="casca-menu">
+      <nav class="casca-nav" aria-label="Seções da revista">
+        <a href="../index.html" target="_blank" rel="noopener" style="--mc:#000000">CAPA</a>
+        <a href="../categoria-principal.html" target="_blank" rel="noopener" style="--mc:#004696">PRINCIPAL</a>
+        <a href="../categoria-gestao.html" target="_blank" rel="noopener" style="--mc:#f0051e">GESTÃO</a>
+        <a href="../categoria-mkt-digital.html" target="_blank" rel="noopener" style="--mc:#ff7300">MKT DIGITAL</a>
+        <a href="../categoria-produto.html" target="_blank" rel="noopener" style="--mc:#ffaa00">PRODUTO</a>
+        <a href="../categoria-consumidor.html" target="_blank" rel="noopener" style="--mc:#ffdc00">CONSUMIDOR</a>
+        <a href="../categoria-delivery.html" target="_blank" rel="noopener" style="--mc:#532f82">DELIVERY</a>
+        <a href="../categoria-novo-negocio.html" target="_blank" rel="noopener" style="--mc:#b40082" class="is-active" aria-current="page">NOVO NEGÓCIO</a>
+        <a href="../categoria-academia.html" target="_blank" rel="noopener" style="--mc:#ff5564">ACADEMIA ASSAÍ</a>
+        <a href="../categoria-noticias.html" target="_blank" rel="noopener" style="--mc:#0082c8">NOTÍCIAS DO ASSAÍ</a>
+        <a href="../editorial.html" target="_blank" rel="noopener" style="--mc:#666666">EDITORIAL</a>
+        <a href="../parceiros.html" target="_blank" rel="noopener" style="--mc:#666666">PARCEIROS</a>
+        <a href="../expediente.html" target="_blank" rel="noopener" style="--mc:#666666">EXPEDIENTE</a>
+      </nav>
+      <a class="casca-pilula" href="https://www.assai.com.br/revistas" target="_blank" rel="noopener">Edições anteriores</a>
+    </div>
+  </aside>
+  <aside class="casca-dir" aria-label="Assaí nas redes sociais">
+    <p class="casca-siga">Siga o Assaí</p>
+    <ul class="casca-redes">
+      <li><a href="https://www.facebook.com/assaiatacadistaoficial" target="_blank" rel="noopener" aria-label="Assaí no Facebook"><img src="../assets/shell/rede-facebook.svg" alt="" width="17" height="32"></a></li>
+      <li><a href="https://www.instagram.com/assaiatacadistaoficial" target="_blank" rel="noopener" aria-label="Assaí no Instagram"><img src="../assets/shell/rede-instagram.svg" alt="" width="33" height="33"></a></li>
+      <li><a href="https://twitter.com/assaioficial" target="_blank" rel="noopener" aria-label="Assaí no X"><img src="../assets/shell/rede-x.svg" alt="" width="32" height="39"></a></li>
+      <li><a href="https://www.tiktok.com/@assaiatacadistaoficial" target="_blank" rel="noopener" aria-label="Assaí no TikTok"><img src="../assets/shell/rede-tiktok.svg" alt="" width="31" height="40"></a></li>
+      <li><a href="https://www.youtube.com/assaioficial" target="_blank" rel="noopener" aria-label="Assaí no YouTube"><img src="../assets/shell/rede-youtube.svg" alt="" width="36" height="30"></a></li>
+      <li><a href="https://www.linkedin.com/company/3624827" target="_blank" rel="noopener" aria-label="Assaí no LinkedIn"><img src="../assets/shell/rede-linkedin.svg" alt="" width="31" height="31"></a></li>
+    </ul>
+    <div class="casca-qr">
+      <p class="casca-pilula">Ler no celular</p>
+      <div class="casca-qr-img" role="img" aria-label="QR code com o endereço desta página"></div>
+    </div>
+  </aside>
+</div>
+<!-- ============ /CASCA DESKTOP ============ -->
+
+<div class="page tem-faixa">
+
+  <!-- ============ COMPONENTE HEAD (#75) ============ -->
+  <header class="head">
+    <div class="head-brand">
+      <img class="head-logo" src="../assets/imgLogoHead.svg" alt="Assaí Bons Negócios" width="283" height="30">
+    </div>
+    <nav class="head-nav" aria-label="Seções da revista" data-rolagem="323">
+      <ul>
+        <li style="--mc:#000000"><a href="../index.html" target="_blank" rel="noopener">CAPA</a></li>
+        <li style="--mc:#004696"><a href="../categoria-principal.html" target="_blank" rel="noopener">PRINCIPAL</a></li>
+        <li style="--mc:#f0051e"><a href="../categoria-gestao.html" target="_blank" rel="noopener">GESTÃO</a></li>
+        <li style="--mc:#ff7300"><a href="../categoria-mkt-digital.html" target="_blank" rel="noopener">MKT DIGITAL</a></li>
+        <li style="--mc:#ffaa00"><a href="../categoria-produto.html" target="_blank" rel="noopener">PRODUTO</a></li>
+        <li style="--mc:#ffdc00"><a href="../categoria-consumidor.html" target="_blank" rel="noopener">CONSUMIDOR</a></li>
+        <li style="--mc:#532f82"><a href="../categoria-delivery.html" target="_blank" rel="noopener">DELIVERY</a></li>
+        <li style="--mc:#b40082" class="is-active"><a href="../categoria-novo-negocio.html" aria-current="page" target="_blank" rel="noopener">NOVO NEGÓCIO</a></li>
+        <li style="--mc:#ff5564"><a href="../categoria-academia.html" target="_blank" rel="noopener">ACADEMIA ASSAÍ</a></li>
+        <li style="--mc:#0082c8"><a href="../categoria-noticias.html" target="_blank" rel="noopener">NOTÍCIAS DO ASSAÍ</a></li>
+        <li style="--mc:#666666"><a href="../editorial.html" target="_blank" rel="noopener">EDITORIAL</a></li>
+        <li style="--mc:#666666"><a href="../parceiros.html" target="_blank" rel="noopener">PARCEIROS</a></li>
+        <li style="--mc:#666666"><a href="../expediente.html" target="_blank" rel="noopener">EXPEDIENTE</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<div class="rv-page is-novo-negocio">
+    <main id="materia" class="rv-main">
+      <section aria-label="Abertura" class="rv-nn-abre">
+        <figure class="rv-figura is-abre">
+          <div class="rv-moldura is-solta"><img src="images/novonegocio76-abertura.jpeg" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/novonegocio76-abertura-p-500.jpeg 500w, images/novonegocio76-abertura-p-800.jpeg 800w, images/novonegocio76-abertura-p-1080.jpeg 1080w, images/novonegocio76-abertura.jpeg 1206w" alt="Geladeira expositora com cervejas e refrigerantes ao lado do balcão de um bar." class="rv-nn-img"></div>
+          <figcaption class="rv-abre-credito is-simples rv-abre-credito is-simples">Imagem gerada com IA</figcaption>
+        </figure>
+      </section>
+      <section class="rv-bloco">
+        <div class="rv-coluna is-centro">
+          <h1 class="rv-titulo-materia"><span class="rv-titulo-a">Comodato</span> <span class="rv-titulo-b is-azul is-nn">Cuidados antes de aceitar um equipamento</span></h1>
+          <div class="rv-selo-linha"><span class="rv-selo-edicao">Ed. 76</span><span class="rv-selo-data">Nov. 2026 · 5 min de leitura</span></div>
+          <p class="rv-autoria">Por: Manoela Leão<br>com entrevistas de Mara Andrich</p>
+          <p class="rv-linha-fina">Geladeira, chopeira ou máquina de café sem pagar pela compra. Antes de aceitar o negócio, veja o que conferir sobre metas, exclusividade, manutenção e devolução antes de assinar.</p>
+        </div>
+      </section>
+      <section class="rv-bloco is-azul">
+        <div class="rv-coluna">
+          <p class="rv-p rv-p-light">Imagine um restaurante que está se preparando para abrir as portas. Depois de investir em reforma, cozinha, mobiliário e contratação de equipe, o empreendedor percebe que o orçamento está apertado. Mas ainda falta uma geladeira expositora para as bebidas.</p>
+          <p class="rv-p rv-p-light">É nesse momento que um fornecedor apresenta uma proposta: disponibilizar o equipamento em comodato, ou seja, emprestá-lo gratuitamente para uso temporário, com obrigação de devolução.</p>
+          <p class="rv-p rv-p-light">O restaurante evita o investimento na compra e preserva o caixa para outras necessidades. O fornecedor conquista espaço no ponto de venda e amplia as oportunidades de comercialização de sua marca.</p>
+          <p class="rv-p rv-p-light">A proposta parece vantajosa para os dois lados. Antes de aceitar, porém, é preciso conhecer as condições que acompanham o equipamento. Nas entrevistas a seguir, um advogado e um consultor de gestão para gastronomia explicam o que observar.</p>
+        </div>
+      </section>
+      <section class="rv-bloco">
+        <div class="rv-coluna">
+          <p class="rv-rotulo is-azul">Advogado</p>
+          <p class="rv-nn-quem"><span class="rv-nn-nome">Alcelyr Valle da Costa Neto</span><span class="rv-nn-cargo">Doutor e mestre em Educação e Novas Tecnologias pela UNINTER e especialista em Direito Processual Civil pela Universidade Cândido Mendes.</span></p>
+          <div class="rv-nn-pergunta"><span class="rv-nn-num">1</span>
+            <h2 class="rv-nn-inter">O que caracteriza um contrato de comodato?</h2>
+          </div>
+          <p class="rv-p">O comodato é o empréstimo gratuito de um bem para uso temporário, com obrigação de devolução ao final do contrato. Disciplinado pelos artigos 579 a 585 do Código Civil Brasileiro, não transfere a propriedade.</p>
+          <p class="rv-p">Um exemplo recorrente é o fornecimento de freezers e refrigeradores por fabricantes de bebidas a bares, restaurantes e supermercados.</p>
+          <div class="rv-nn-pergunta"><span class="rv-nn-num">2</span>
+            <h2 class="rv-nn-inter">Quais condições e riscos o estabelecimento deve conhecer?</h2>
+          </div>
+          <p class="rv-p">A depender da negociação, o fornecedor poderá exigir exclusividade, volume mínimo de compras, exposição da marca, localização estratégica dos produtos e conservação do equipamento.</p>
+          <p class="rv-p">Na exclusividade, o fornecedor pode exigir que somente seus produtos sejam comercializados naquele equipamento. Um exemplo é o freezer cedido por fabricante de cerveja com proibição de armazenar produtos concorrentes. Há também contratos que restringem significativamente a comercialização de produtos concorrentes. O estabelecimento pode ficar excessivamente vinculado ao fornecedor, limitando sua liberdade empresarial.</p>
+        </div>
+      </section>
+      <section class="rv-bloco is-editoria">
+        <div class="rv-coluna">
+          <p class="rv-p rv-p-light">As metas de compra devem ser compatíveis com a realidade do negócio. Muitos contratos preveem multas por quebra de exclusividade, perda do equipamento e rescisão antecipada.</p>
+        </div>
+      </section>
+      <section class="rv-bloco">
+        <div class="rv-coluna">
+          <p class="rv-p">O comerciante deve conservar o bem com o mesmo zelo que teria com o seu patrimônio. Mesmo sem ser proprietário, pode responder pela perda em caso de furto, extravio ou dano, caso haja culpa ou negligência.</p>
+          <p class="rv-p">Frequentemente, o comodato está ligado a um contrato principal de fornecimento. Nesses casos, a quebra do fornecimento pode gerar a devolução imediata do bem. A retirada do equipamento poderá comprometer a operação do estabelecimento.</p>
+          <div class="rv-nn-pergunta"><span class="rv-nn-num">3</span>
+            <h2 class="rv-nn-inter">O que conferir no contrato antes de assinar?</h2>
+          </div>
+          <p class="rv-p">É preciso ler o contrato integralmente, sem considerá-lo uma mera formalidade, e verificar:</p>
+          <div id="checklist" data-checklist="" class="rv-nn-checklist">
+            <div class="rv-nn-item"><span class="rv-nn-item-titulo">Equipamento e prazo</span><span class="rv-nn-item-texto">qual bem está sendo cedido e se o prazo é determinado ou indeterminado.</span><span aria-hidden="true" class="rv-nn-caixa"></span></div>
+            <div class="rv-nn-item"><span class="rv-nn-item-titulo">Metas de compra</span><span class="rv-nn-item-texto">volume mínimo exigido e impacto financeiro.</span><span aria-hidden="true" class="rv-nn-caixa"></span></div>
+            <div class="rv-nn-item"><span class="rv-nn-item-titulo">Manutenção e sinistros</span><span class="rv-nn-item-texto">quem responde pela manutenção e por situações como furto, roubo, incêndio e danos elétricos.</span><span aria-hidden="true" class="rv-nn-caixa"></span></div>
+            <div class="rv-nn-item"><span class="rv-nn-item-titulo">Multas</span><span class="rv-nn-item-texto">valores e hipóteses de incidência. Devem ser proporcionais e razoáveis.</span><span aria-hidden="true" class="rv-nn-caixa"></span></div>
+            <div class="rv-nn-item"><span class="rv-nn-item-titulo">Fiscalização</span><span class="rv-nn-item-texto">possibilidade de inspeções pelo fornecedor.</span><span aria-hidden="true" class="rv-nn-caixa"></span></div>
+            <div class="rv-nn-item"><span class="rv-nn-item-titulo">Rescisão</span><span class="rv-nn-item-texto">hipóteses de encerramento, aviso prévio, consequências financeiras e procedimentos de devolução.</span><span aria-hidden="true" class="rv-nn-caixa"></span></div>
+          </div>
+          <p class="rv-p">O ideal é que o contrato seja previamente analisado por profissional especializado, garantindo equilíbrio contratual, segurança jurídica e preservação da autonomia do estabelecimento.</p>
+          <a href="documents/assai76-checklist-comodato.pdf" class="rv-nn-botao"><span>Baixar o checklist (PDF)</span><span aria-hidden="true" class="rv-nn-seta"></span></a>
+        </div>
+      </section>
+      <section class="rv-nn-cena">
+        <div class="rv-nn-quadro">
+          <figure class="rv-figura is-abre">
+            <div class="rv-nn-c-topo">
+              <div class="rv-nn-c-onda"></div>
+              <div class="rv-nn-c-branco"></div>
+              <div class="rv-nn-c-cupula"></div><img src="images/novonegocio76-chopeira-recorte.png" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/novonegocio76-chopeira-recorte-p-500.png 500w, images/novonegocio76-chopeira-recorte-p-800.png 800w, images/novonegocio76-chopeira-recorte-p-1080.png 1080w, images/novonegocio76-chopeira-recorte.png 1312w" alt="Chopeira de balcão em aço inox." class="rv-nn-c-img">
+            </div>
+            <figcaption class="rv-abre-credito is-simples rv-abre-credito is-simples">Imagem gerada com IA</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="rv-bloco is-azul-claro">
+        <div class="rv-coluna">
+          <p class="rv-rotulo is-azul">Consultor</p>
+          <p class="rv-nn-quem"><span class="rv-nn-nome">Emerson Fabris</span><span class="rv-nn-cargo">Consultor de Gestão e Operações para Gastronomia.</span></p>
+          <div class="rv-nn-pergunta"><span class="rv-nn-num">1</span>
+            <h2 class="rv-nn-inter">Além do contrato, o que deve entrar na avaliação financeira?</h2>
+          </div>
+          <p class="rv-p">É importante avaliar os preços dos produtos e as metas de compra para garantir que a parceria seja financeiramente vantajosa. O fornecedor ganha com a venda dos produtos e estabelece uma meta para isso. O estabelecimento precisa focar em vender para bater essa meta.</p>
+          <div class="rv-nn-pergunta"><span class="rv-nn-num">2</span>
+            <h2 class="rv-nn-inter">Como comparar o comodato com a compra do equipamento?</h2>
+          </div>
+          <p class="rv-p">No plano de negócios, o investimento no equipamento é relacionado com as vendas necessárias para amortizá-lo. O estabelecimento precisa comparar essa métrica com a proposta do contrato de comodato.</p>
+          <div class="rv-nn-pergunta"><span class="rv-nn-num">3</span>
+            <h2 class="rv-nn-inter">Qual é o erro mais comum nessa decisão?</h2>
+          </div>
+          <p class="rv-p">Muitos donos vão no impulso: “não preciso gastar e eles me dão a manutenção”. Esse é o maior erro. A mentalidade de aprender a administrar é fundamental.</p>
+        </div>
+      </section>
+      <section aria-label="Simulador: compra ou comodato" class="rv-bloco">
+        <div class="rv-coluna">
+          <h2 class="rv-nn-titulo-sim">Compare as alternativas</h2>
+          <p class="rv-p">Responda às perguntas com os números da proposta que você recebeu. O resultado muda na hora.</p>
+          <p class="rv-nn-nota">Os números de partida são um exemplo da edição, com valores fictícios. Não integram as respostas dos entrevistados.</p>
+        </div>
+        <div class="rv-coluna is-larga">
+          <div data-calc="" class="rv-nn-calc">
+            <div class="rv-nn-calc-lados">
+              <div class="rv-nn-calc-lado is-comodato">
+                <h3 class="rv-nn-calc-lado-titulo is-comodato">Se você aceitar o comodato</h3>
+                <p class="rv-nn-calc-dica">O equipamento é emprestado e a manutenção fica com o fornecedor. Em troca, você costuma pagar mais nas compras.</p>
+                <p id="calc-q-prazo" class="rv-nn-calc-perg">Por quantos meses dura o contrato de comodato?</p>
+                <div class="rv-nn-calc-campo"><span data-calc-campo="prazo" data-calc-q="calc-q-prazo" class="rv-nn-calc-valor-campo">24</span><span class="rv-nn-calc-un">meses</span></div>
+                <p id="calc-q-extra" class="rv-nn-calc-perg">Quanto você pagaria a mais por mês ao fornecedor?</p>
+                <div class="rv-nn-calc-campo"><span class="rv-nn-calc-un">R$</span><span data-calc-campo="extra" data-calc-q="calc-q-extra" class="rv-nn-calc-valor-campo">150</span></div>
+                <p class="rv-nn-calc-dica">Diferença de preço em relação a outro fornecedor, ou produto que você compraria só para bater a meta.</p>
+              </div>
+              <div class="rv-nn-calc-lado is-compra">
+                <h3 class="rv-nn-calc-lado-titulo">Se você comprar</h3>
+                <p id="calc-q-modo" class="rv-nn-calc-perg">Como você pagaria?</p>
+                <div class="rv-nn-calc-modos"><span data-calc-modo="parcelado" class="rv-nn-calc-modo">Parcelado</span><span data-calc-modo="avista" class="rv-nn-calc-modo">À vista</span></div>
+                <div data-calc-grupo="parcelado" class="rv-nn-calc-grupo">
+                  <p id="calc-q-parcelas" class="rv-nn-calc-perg">Em quantas parcelas?</p>
+                  <div class="rv-nn-calc-campo"><span data-calc-campo="parcelas" data-calc-q="calc-q-parcelas" class="rv-nn-calc-valor-campo">12</span><span class="rv-nn-calc-un">parcelas</span></div>
+                  <p id="calc-q-parcela" class="rv-nn-calc-perg">Qual o valor de cada parcela, com juros?</p>
+                  <div class="rv-nn-calc-campo"><span class="rv-nn-calc-un">R$</span><span data-calc-campo="parcela" data-calc-q="calc-q-parcela" class="rv-nn-calc-valor-campo">560</span></div>
+                </div>
+                <div data-calc-grupo="avista" class="rv-nn-calc-grupo">
+                  <p id="calc-q-preco" class="rv-nn-calc-perg">Quanto custa o equipamento à vista?</p>
+                  <div class="rv-nn-calc-campo"><span class="rv-nn-calc-un">R$</span><span data-calc-campo="preco" data-calc-q="calc-q-preco" class="rv-nn-calc-valor-campo">6.000</span></div>
+                </div>
+                <p id="calc-q-manut" class="rv-nn-calc-perg">Quanto você gastaria por ano com conserto e manutenção?</p>
+                <div class="rv-nn-calc-campo"><span class="rv-nn-calc-un">R$</span><span data-calc-campo="manut" data-calc-q="calc-q-manut" class="rv-nn-calc-valor-campo">400</span></div>
+                <p id="calc-q-vida" class="rv-nn-calc-perg">Por quantos anos o equipamento costuma durar?</p>
+                <div class="rv-nn-calc-campo"><span data-calc-campo="vida" data-calc-q="calc-q-vida" class="rv-nn-calc-valor-campo">8</span><span class="rv-nn-calc-un">anos</span></div>
+                <p class="rv-nn-calc-dica">Se não tem certeza de que vai usar o equipamento por todo esse tempo, coloque só os anos em que pretende usá-lo.</p>
+              </div>
+            </div>
+            <div aria-live="polite" class="rv-nn-calc-res">
+              <p data-calc-saida="veredito" class="rv-nn-calc-veredito">Neste exemplo, comprar sai mais barato: R$ 47 a menos por mês, ou R$ 1.120 nos 24 meses do contrato.</p>
+              <div class="rv-nn-calc-metricas">
+                <div class="rv-nn-calc-metrica">
+                  <p class="rv-nn-calc-rot">O comodato custa, por mês</p>
+                  <p data-calc-saida="mes-comodato" class="rv-nn-calc-valor">R$ 150</p>
+                  <div class="rv-nn-calc-trilho">
+                    <div data-calc-barra="comodato" class="rv-nn-calc-barra is-comodato"></div>
+                  </div>
+                  <p class="rv-nn-calc-conta">O que você paga a mais nas compras.</p>
+                </div>
+                <div class="rv-nn-calc-metrica">
+                  <p class="rv-nn-calc-rot">Comprar custa, por mês</p>
+                  <p data-calc-saida="mes-compra" class="rv-nn-calc-valor">R$ 103</p>
+                  <div class="rv-nn-calc-trilho">
+                    <div data-calc-barra="compra" class="rv-nn-calc-barra is-compra"></div>
+                  </div>
+                  <p data-calc-saida="conta-compra" class="rv-nn-calc-conta">12 parcelas de R$ 560 (R$ 6.720) + R$ 3.200 de manutenção em 8 anos, divididos por 96 meses.</p>
+                </div>
+              </div>
+              <p data-calc-saida="virada" class="rv-nn-calc-frase">O comodato compensa enquanto o que você paga a mais ao fornecedor ficar abaixo de R$ 103 por mês.</p>
+              <p data-calc-saida="caixa" class="rv-nn-calc-frase">No caixa: enquanto durarem as 12 parcelas, a compra tira R$ 593 por mês (parcela e manutenção). Depois, só a manutenção, R$ 33 por mês. No comodato, saem R$ 150 todo mês.</p>
+            </div>
+          </div>
+        </div>
+        <div class="rv-coluna">
+          <p class="rv-nn-nota">O custo de comprar é dividido pelos meses de vida útil do equipamento. A conta considera a manutenção do comodato por conta do fornecedor e as demais despesas iguais nos dois casos.</p>
+        </div>
+      </section>
+      <section class="rv-bloco is-azul">
+        <div class="rv-coluna">
+          <p class="rv-p rv-p-light">Use os preços e as condições da proposta recebida para fazer sua comparação. Se a meta de compras superar o que o estabelecimento consegue vender, considere também o dinheiro preso no estoque e o risco de perdas.</p>
+          <p class="rv-p rv-p-light">Por fim, confira o caixa: uma compra pode apresentar menor custo ao longo do tempo e ainda exigir um desembolso inicial que comprometa estoque, equipe e outras necessidades da operação.</p>
+        </div>
+      </section>
+    </main>
+</div>
+
+  <!-- ============ COMPONENTE RODAPE (#75) ============ -->
+  <footer class="foot">
+    <span class="foot-bar" aria-hidden="true"></span>
+    <a class="foot-top" href="#" aria-label="Voltar ao topo"><img src="../assets/imgGroup8650.svg" alt=""></a>
+    <button class="foot-share" type="button" aria-label="Compartilhar">
+      <img class="foot-share-a" src="../assets/imgGroup.svg" alt="">
+      <img class="foot-share-b" src="../assets/imgVector1.svg" alt="">
+      <img class="foot-share-c" src="../assets/imgVector2.svg" alt="">
+    </button>
+    <span class="foot-brand"><img src="../assets/imgGroup2.svg" alt="Assaí Atacadista"></span>
+    <a class="foot-stores" href="https://www.assai.com.br/nossas-lojas" target="_blank" rel="noopener noreferrer">NOSSAS LOJAS <img src="../assets/imgGroup8651.svg" alt=""></a>
+  </footer>
+
+</div>
+<script src="js/jquery-3.5.1.min.js?v=76-1" type="text/javascript"></script>
+  <script src="js/webflow.js?v=76-1" type="text/javascript"></script>
+  <style>
+/* Revista Assaí · Novo Negócio #76 */
+/* abertura no computador (17/11): a foto aparece inteira no centro e as laterais continuam a cor da própria imagem (cópia desfocada) */
+
+/* chopeira (17/11): fundo branco, arcos de canto a canto; a cúpula e a legenda têm a cor do bloco seguinte */
+.rv-nn-cena{background:#FFFFFF;padding-top:0;padding-bottom:0}
+.rv-nn-cena .rv-nn-quadro{max-width:none}
+.rv-nn-cena .rv-figura{margin:0}
+.rv-nn-cena .rv-abre-credito{margin:0;padding:8px 22px 12px;background:rgba(0,129,200,.2)}
+/* simulador: mais espaço entre a nota e a calculadora no computador */
+
+/* checklist marcável */
+.rv-nn-item:focus-visible{outline:3px solid #FFDC00;outline-offset:3px}
+.rv-nn-caixa{transition:background-color .2s}
+.rv-nn-item[aria-checked="true"] .rv-nn-caixa{background:#FFDC00}
+.rv-nn-item[aria-checked="true"] .rv-nn-caixa::after{content:"";position:absolute;left:6px;top:1px;width:7px;height:13px;border-right:3px solid #004696;border-bottom:3px solid #004696;transform:rotate(45deg)}
+.rv-nn-botao:focus-visible{outline:2px solid #B40082;outline-offset:3px}
+/* impressão do checklist (o botão abre a janela de impressão; "Salvar como PDF") */
+@media print{
+  html.rv-imprime-checklist body *{visibility:hidden}
+  html.rv-imprime-checklist #checklist,html.rv-imprime-checklist #checklist *{visibility:visible}
+  html.rv-imprime-checklist #checklist{position:absolute;left:0;top:0;width:100%;margin:0}
+  html.rv-imprime-checklist #checklist::before{content:"Comodato: o que conferir no contrato antes de assinar · Revista Assaí Bons Negócios #76";visibility:visible;display:block;margin-bottom:12px;font:700 18px/24px "FS Lola",Arial,sans-serif;color:#000}
+  html.rv-imprime-checklist .rv-nn-item{-webkit-print-color-adjust:exact;print-color-adjust:exact;break-inside:avoid}
+}
+/* calculadora comodato × compra (17/11): primeiro o comodato (prazo do contrato), depois a compra (vida útil); resultado em reais por mês */
+.rv-nn-calc{display:flex;flex-direction:column;gap:16px;margin-top:8px}
+.rv-nn-calc-lado{box-sizing:border-box;background:#FFFFFF;border:1.5px solid #D9D9D9;border-radius:16px;padding:20px 24px}
+.rv-nn-calc-lado.is-compra{border-top:6px solid #B40082}
+.rv-nn-calc-lado.is-comodato{border-top:6px solid #0082C8}
+.rv-nn-calc-lados{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.rv-nn-calc-lado-titulo{margin:0 0 4px;font:700 22px/28px "FS Lola",Arial,sans-serif;color:#B40082}
+.rv-nn-calc-lado-titulo.is-comodato{color:#004696}
+.rv-nn-calc-perg{margin:18px 0 8px;font:700 16px/22px "FS Lola",Arial,sans-serif;color:#000}
+.rv-nn-calc-campo{display:flex;align-items:center;gap:8px}
+.rv-nn-calc-un{font-size:16px;line-height:22px;color:#555}
+.rv-nn-calc-input{box-sizing:border-box;width:140px;margin:0;padding:8px 12px;border:1.5px solid #B40082;border-radius:8px;background:#FFFFFF;color:#000;font:500 18px/24px "FS Lola",Arial,sans-serif}
+.rv-nn-calc-lado.is-comodato .rv-nn-calc-input{border-color:#0082C8}
+.rv-nn-calc-input:focus{outline:2px solid #004696;outline-offset:1px}
+.rv-nn-calc-dica{margin:8px 0 0;font-size:14px;line-height:20px;color:#555}
+.rv-nn-calc-modos{display:flex;flex-wrap:wrap;gap:8px}
+.rv-nn-calc-modo{display:inline-block;padding:8px 18px;border:1.5px solid #B40082;border-radius:999px;background:#FFFFFF;color:#B40082;font:700 15px/20px "FS Lola",Arial,sans-serif;cursor:pointer;user-select:none}
+.rv-nn-calc-modo[aria-pressed="true"]{background:#B40082;color:#FFFFFF}
+.rv-nn-calc-modo:focus-visible{outline:2px solid #004696;outline-offset:2px}
+.rv-nn-calc-grupo[hidden]{display:none}
+.rv-nn-calc-res{background:#F2F2F2;border-radius:16px;padding:24px}
+.rv-nn-calc-veredito{margin:0 0 16px;font:700 22px/30px "FS Lola",Arial,sans-serif;color:#000}
+.rv-nn-calc-metricas{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-bottom:16px}
+.rv-nn-calc-metrica{background:#FFFFFF;border-radius:12px;padding:16px}
+.rv-nn-calc-rot{margin:0;font-size:14px;line-height:20px;color:#555}
+.rv-nn-calc-valor{margin:4px 0 10px;font:700 32px/38px "FS Lola",Arial,sans-serif;color:#000}
+.rv-nn-calc-trilho{height:14px;border-radius:7px;background:#E6E6E6;overflow:hidden}
+.rv-nn-calc-barra{height:100%;border-radius:7px;transition:width .5s ease}
+.rv-nn-calc-barra.is-compra{width:69%;background:#B40082}
+.rv-nn-calc-barra.is-comodato{width:100%;background:#0082C8}
+.rv-nn-calc-conta{margin:10px 0 0;font-size:13px;line-height:18px;color:#555}
+.rv-nn-calc-frase{margin:0 0 8px;font-size:17px;line-height:26px;color:#000}
+.rv-nn-calc-frase:last-child{margin-bottom:0}
+
+  .rv-nn-calc-lados,.rv-nn-calc-metricas{grid-template-columns:minmax(0,1fr)}
+  .rv-nn-calc-lado,.rv-nn-calc-res{padding:18px}
+  .rv-nn-calc-veredito{font-size:20px;line-height:28px}
+
+@media (prefers-reduced-motion: reduce){.rv-nn-calc-barra,.rv-nn-caixa{transition:none}}
+</style>
+  <script>
+/* Revista Assaí · Novo Negócio #76
+   Barra de progresso; checklist com caixas marcáveis (toque, Enter ou espaço) e botão que imprime só o checklist
+   (na janela de impressão, "Salvar como PDF"); calculadora comodato × compra (17/11): o comodato pergunta o prazo do contrato
+   e o valor a mais por mês; a compra pergunta a forma de pagamento (parcelado com juros ou à vista), a manutenção e a vida útil.
+   Custo mensal da compra = (total pago + manutenção na vida útil) ÷ meses de vida útil. Resultado em reais por mês, ponto de virada e efeito no caixa.
+   Sem JS: a calculadora mostra o exemplo da edição (comodato R$ 150/mês por 24 meses; compra 12 × R$ 560, manutenção R$ 400/ano, 8 anos). */
+(function(){
+  function q(s, r){ return [].slice.call((r || document).querySelectorAll(s)); }
+  var materia = document.getElementById('materia') || document.querySelector('.rv-main');
+  var barra = document.querySelector('.rv-cab-progresso-fill');
+  function progresso(){
+    if (!barra || !materia) return;
+    var r = materia.getBoundingClientRect(), total = r.height - innerHeight;
+    barra.style.width = ((total > 0 ? Math.max(0, Math.min(1, -r.top / total)) : 0) * 100).toFixed(2) + '%';
+  }
+  var pend = false;
+  addEventListener('scroll', function(){ if (!pend){ pend = true; requestAnimationFrame(function(){ pend = false; progresso(); }); } }, {passive: true});
+  addEventListener('resize', progresso); progresso();
+  /* Checklist */
+  q('[data-checklist] .rv-nn-item').forEach(function(it){
+    it.setAttribute('role', 'checkbox'); it.setAttribute('tabindex', '0'); it.setAttribute('aria-checked', 'false');
+    function trocar(){ it.setAttribute('aria-checked', it.getAttribute('aria-checked') === 'true' ? 'false' : 'true'); }
+    it.addEventListener('click', trocar);
+    it.addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); trocar(); } });
+  });
+  q('[data-imprimir="checklist"]').forEach(function(b){
+    b.setAttribute('role', 'button');
+    b.addEventListener('click', function(e){
+      e.preventDefault();
+      document.documentElement.classList.add('rv-imprime-checklist');
+      setTimeout(function(){ window.print(); }, 50);
+    });
+  });
+  addEventListener('afterprint', function(){ document.documentElement.classList.remove('rv-imprime-checklist'); });
+  /* Calculadora comodato × compra */
+  function num(t){ var x = String(t).replace(/\s/g, '').replace(/\./g, '').replace(',', '.'); var n = parseFloat(x); return isFinite(n) && n > 0 ? n : 0; }
+  function rs(n){ return 'R$ ' + Math.round(n).toLocaleString('pt-BR'); }
+  q('[data-calc]').forEach(function(calc){
+    var campos = {}, modo = 'parcelado';
+    q('[data-calc-campo]', calc).forEach(function(s){
+      var k = s.getAttribute('data-calc-campo'), inp = document.createElement('input');
+      inp.type = 'text'; inp.inputMode = 'numeric'; inp.className = 'rv-nn-calc-input';
+      inp.value = s.textContent.trim();
+      if (s.getAttribute('data-calc-q')) inp.setAttribute('aria-labelledby', s.getAttribute('data-calc-q'));
+      s.parentNode.replaceChild(inp, s);
+      campos[k] = inp;
+      inp.addEventListener('input', calcular);
+      inp.addEventListener('blur', function(){ inp.value = Math.round(num(inp.value)).toLocaleString('pt-BR'); });
+    });
+    var modos = q('[data-calc-modo]', calc), grupos = q('[data-calc-grupo]', calc);
+    if (modos.length){
+      modos[0].parentNode.setAttribute('role', 'group');
+      modos[0].parentNode.setAttribute('aria-labelledby', 'calc-q-modo');
+    }
+    function muda(m){
+      modo = m;
+      modos.forEach(function(b){ b.setAttribute('aria-pressed', b.getAttribute('data-calc-modo') === m ? 'true' : 'false'); });
+      grupos.forEach(function(g){ g.hidden = g.getAttribute('data-calc-grupo') !== m; });
+      calcular();
+    }
+    modos.forEach(function(b){
+      b.setAttribute('role', 'button'); b.setAttribute('tabindex', '0');
+      b.addEventListener('click', function(){ muda(b.getAttribute('data-calc-modo')); });
+      b.addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); muda(b.getAttribute('data-calc-modo')); } });
+    });
+    function v(k){ return campos[k] ? num(campos[k].value) : 0; }
+    function sai(k, t){ var e = calc.querySelector('[data-calc-saida="' + k + '"]'); if (e) e.textContent = t; }
+    function calcular(){
+      var prazo = Math.max(1, Math.round(v('prazo'))), extra = v('extra');
+      var n = Math.round(v('parcelas')), parc = v('parcela'), preco = v('preco');
+      var anos = Math.max(1, v('vida')), mv = Math.round(anos * 12), manutAno = v('manut'), manutMes = manutAno / 12, manutT = manutAno * anos;
+      var total = modo === 'parcelado' ? n * parc : preco;
+      var mesC = (total + manutT) / mv, mesM = extra, d = mesC - mesM;
+      sai('mes-compra', rs(mesC)); sai('mes-comodato', rs(mesM));
+      sai('conta-compra', (modo === 'parcelado' ? n + ' parcelas de ' + rs(parc) + ' (' + rs(total) + ')' : rs(total) + ' do equipamento') +
+        ' + ' + rs(manutT) + ' de manutenção em ' + anos.toLocaleString('pt-BR') + (anos === 1 ? ' ano' : ' anos') + ', divididos por ' + mv + ' meses.');
+      var mx = Math.max(mesC, mesM, 1);
+      var bc = calc.querySelector('[data-calc-barra="compra"]'), bm = calc.querySelector('[data-calc-barra="comodato"]');
+      if (bc) bc.style.width = (mesC / mx * 100).toFixed(1) + '%';
+      if (bm) bm.style.width = (mesM / mx * 100).toFixed(1) + '%';
+      var fim = ' nos ' + prazo + ' meses do contrato.', ver;
+      if (Math.abs(d) < 0.5) ver = 'Neste exemplo, as duas opções custam o mesmo: ' + rs(mesC) + ' por mês.';
+      else if (d > 0) ver = 'Neste exemplo, o comodato sai mais barato: ' + rs(d) + ' a menos por mês, ou ' + rs(d * prazo) + fim;
+      else ver = 'Neste exemplo, comprar sai mais barato: ' + rs(-d) + ' a menos por mês, ou ' + rs(-d * prazo) + fim;
+      sai('veredito', ver);
+      sai('virada', 'O comodato compensa enquanto o que você paga a mais ao fornecedor ficar abaixo de ' + rs(mesC) + ' por mês.');
+      var cx;
+      if (modo === 'parcelado'){
+        cx = 'No caixa: enquanto durarem as ' + n + ' parcelas, a compra tira ' + rs(parc + manutMes) + ' por mês' + (manutMes >= 0.5 ? ' (parcela e manutenção). Depois, só a manutenção, ' + rs(manutMes) + ' por mês.' : '. Depois, nada.');
+      } else {
+        cx = 'No caixa: para comprar à vista, você precisa de ' + rs(total) + ' hoje' + (manutMes >= 0.5 ? ', mais ' + rs(manutMes) + ' por mês de manutenção.' : '.');
+      }
+      sai('caixa', cx + ' No comodato, saem ' + rs(extra) + ' todo mês.');
+    }
+    muda('parcelado');
+  });
+})();
+</script>
+  <script src="js/revista76.js?v=76-1"></script>
+<script src="../js/shell-desktop.js?v=74-117"></script>
+</body>
+</html>

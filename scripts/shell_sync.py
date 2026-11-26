@@ -3,9 +3,9 @@
 
 A casca (lateral esquerda com logo, edição, menu e "Edições anteriores";
 lateral direita com redes sociais e QR) é igual em todas as páginas das
-edições #75, #74 e #73. Muda só:
-  - o prefixo dos caminhos (raiz: "", 75/, 74/ e 73/: "../");
-  - o texto da edição (73/: #73; 74/: #74; o resto, raiz e 75/: #75);
+edições #76, #75, #74 e #73. Muda só:
+  - o prefixo dos caminhos (raiz: "", 76/, 75/, 74/ e 73/: "../");
+  - o texto da edição (73/: #73; 74/: #74; 76/: #76; o resto, raiz e 75/: #75);
   - o item ativo do menu;
   - EDITORIAL, PARCEIROS e EXPEDIENTE, que nas páginas da 73/ abrem as
     versões da própria 73/.
@@ -34,6 +34,7 @@ EDICOES = {
     "73": ("Edição #73", "Jul-Ago/2026"),
     "74": ("Edição #74", "Setembro/2026"),
     "75": ("Edição #75", "Outubro/2026"),
+    "76": ("Edição #76", "Novembro/2026"),
     None: ("Edição #75", "Outubro/2026"),
 }
 EDICOES_ANTERIORES = "https://www.assai.com.br/revistas"
@@ -205,7 +206,7 @@ def main():
     paginas = args or sorted(
         str(pathlib.Path(f).as_posix())
         for f in glob.glob(str(RAIZ / "*.html")) + glob.glob(str(RAIZ / "74/*.html")) + glob.glob(str(RAIZ / "73/*.html"))
-        + glob.glob(str(RAIZ / "75/*.html")))
+        + glob.glob(str(RAIZ / "75/*.html")) + glob.glob(str(RAIZ / "76/*.html")))
     paginas = [pathlib.Path(p).resolve().relative_to(RAIZ).as_posix() for p in paginas]
 
     for rel in paginas:

@@ -1,0 +1,80 @@
+/* =========================================================
+   Revista Assaí Bons Negócios #76 — invólucro das páginas vindas do Webflow
+   Coluna de 402px, HEAD e RODAPÉ da #75 (mesmas medidas de css/base.css).
+   A cor da faixa do HEAD vem de --head-bg, definida em cada página.
+
+   Abaixo de 402px o conteúdo do Webflow é fluido (ocupa a tela) e só o HEAD e o
+   RODAPÉ, desenhos fixos de 402px, são reduzidos (zoom, em js/revista76.js).
+   Não usa o transform: scale do js/shell.js da #75: com ele os position: sticky
+   das matérias (painéis que acompanham a rolagem) saíam da tela.
+   ========================================================= */
+
+.page {
+  width: 100%;
+  max-width: 402px;
+  margin: 0 auto;
+  background: #fff;
+  /* clip, e nao hidden: hidden faria do .page o recipiente dos position: sticky
+     das materias (paineis que acompanham a rolagem) e eles parariam de grudar */
+  overflow-x: clip;
+}
+
+/* ---------- reset so dos componentes da #75 (o conteudo do Webflow tem o seu) ----------
+   :where() tem peso zero: as regras dos componentes abaixo (ex.: o branco do
+   "NOSSAS LOJAS") vencem o reset (README, armadilha 15) */
+:where(.head, .foot), :where(.head, .foot) * { box-sizing: border-box; }
+:where(.head, .foot) img { display: block; max-width: none; }
+:where(.head) ul { margin: 0; padding: 0; list-style: none; }
+:where(.head, .foot) a { color: inherit; text-decoration: none; }
+:where(.foot) button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* =========================================================
+   COMPONENTE HEAD  (402 x 182)
+   ========================================================= */
+.head { position: relative; width: 402px; height: 182px; overflow: hidden; background: #fff; }
+.head-brand { height: 141px; background: var(--head-bg, #004696); position: relative; }
+.head-logo { position: absolute; width: 283px; height: 30px; top: 78px; left: 50%; margin-left: -147px; }
+
+.head-nav {
+  height: 41px;
+  background: #d9d9d9;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+}
+.head-nav::-webkit-scrollbar { display: none; }
+.head-nav ul { display: flex; align-items: flex-start; gap: 14px; padding: 5px 0 0 8px; height: 41px; width: max-content; }
+.head-nav li { border-bottom: 5px solid var(--mc); display: flex; align-items: center; justify-content: center; }
+.head-nav a {
+  font-family: "Inter", "FS Lola", Arial, sans-serif;
+  font-size: 11px; font-weight: 400; color: #000; white-space: nowrap;
+  padding: 10px 0 4px; line-height: normal;
+}
+.head-nav .is-active a { font-weight: 700; }
+
+/* =========================================================
+   COMPONENTE RODAPE  (402 x 116)
+   ========================================================= */
+.foot { position: relative; width: 402px; height: 116px; background: #fff; overflow: hidden; font-family: "FS Lola", "Segoe UI", Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.foot-bar { position: absolute; left: 0; top: 45px; width: 402px; height: 71px; background: #000; display: block; }
+
+.foot-top { position: absolute; left: 18px; top: 72px; width: 19px; height: 18px; display: flex; align-items: center; justify-content: center; }
+.foot-top img { width: 18px; height: 19px; transform: rotate(90deg); }
+
+.foot-share { position: absolute; left: 50px; top: 72px; width: 17px; height: 20px; display: block; }
+.foot-share-a { position: absolute; left: 0; top: 0; width: 17px; height: 20px; }
+.foot-share-b { position: absolute; left: 5px; top: 4px; width: 6px; height: 4px; }
+.foot-share-c { position: absolute; left: 5px; top: 12px; width: 6px; height: 4px; }
+
+.foot-brand { position: absolute; left: 169px; top: 62px; width: 50px; height: 37px; overflow: hidden; display: block; }
+.foot-brand img { width: 50px; height: 37px; }
+
+.foot-stores {
+  position: absolute; left: 292px; top: 76.9px;
+  font-size: 10px; font-weight: 500; color: #fff; white-space: nowrap; line-height: normal;
+}
+.foot-stores img { position: absolute; left: 70.5px; top: -4.9px; width: 20px; height: 19px; }
+
+/* materias cujo <main> termina na faixa azul-marinho do Webflow: o RODAPE sobe os
+   45px brancos de cima por cima da faixa (transparentes) e a barra preta encosta nela */
+.page.tem-faixa > .foot { margin-top: -45px; background: transparent; }

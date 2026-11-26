@@ -1,0 +1,19 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="402" height="146" viewBox="0 0 402 146" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="B22 &#194;&#183; Elemento" clip-path="url(#clip0_0_306)">
+<rect width="402" height="146" fill="white"/>
+<path id="Ellipse 134" d="M-154.46 393.468C-154.46 294.41 -115.109 199.408 -45.0642 129.364C24.9806 59.3187 119.982 19.968 219.04 19.968C318.098 19.968 413.1 59.3188 483.145 129.364C553.189 199.408 592.54 294.41 592.54 393.468L219.04 393.468L-154.46 393.468Z" fill="url(#paint0_linear_0_306)"/>
+<path id="Ellipse 119" d="M-181.524 426.007C-181.524 326.948 -142.174 231.947 -72.1287 161.902C-2.08386 91.8575 92.9173 52.5067 191.976 52.5067C291.034 52.5068 386.035 91.8575 456.08 161.902C526.125 231.947 565.476 326.948 565.476 426.007L191.976 426.007L-181.524 426.007Z" fill="white"/>
+<path id="Ellipse 116" d="M-209.485 462.006C-209.485 355.651 -167.236 253.651 -92.0313 178.447C-16.8269 103.243 85.1723 60.9931 191.527 60.9931C297.883 60.9931 399.882 103.242 475.086 178.447C550.291 253.651 592.54 355.651 592.54 462.006L191.527 462.006L-209.485 462.006Z" fill="#00BEBE" fill-opacity="0.2"/>
+<g id="image 71">
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_306" x1="537.778" y1="152.697" x2="-24.8952" y2="51.1032" gradientUnits="userSpaceOnUse">
+<stop offset="0.139317" stop-color="#00BEBE"/>
+<stop offset="1" stop-color="#0082C8"/>
+</linearGradient>
+<clipPath id="clip0_0_306">
+<rect width="402" height="146" fill="white"/>
+</clipPath>
+</defs>
+</svg>

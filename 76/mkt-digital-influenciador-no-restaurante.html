@@ -1,0 +1,783 @@
+<!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Thu Nov 26 2026 13:42:42 GMT+0000 (Coordinated Universal Time)  -->
+<html lang="pt-BR" data-wf-page="6af75399fc70cf53b1ec71ff" data-wf-site="6ae120959d4de28ff1b3d8e8">
+<head>
+  <meta charset="utf-8">
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MS6VK9B');
+</script>
+<!-- End Google Tag Manager -->
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){
+  w[l]=w[l]||[];
+  w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+  var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+  j.async=true;
+  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+  f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-W6GXJGP7');
+</script>
+<!-- End Google Tag Manager -->
+  <title>Influenciador no restaurante: quando a parceria ajuda e quando atrapalha · Revista Assaí Bons Negócios</title>
+  <meta content="Três casas de Curitiba contam como lidam com influenciadores, e um advogado explica o que o restaurante pode e não pode fazer na visita." name="description">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="css/normalize.css?v=76-1" rel="stylesheet" type="text/css">
+  <link href="css/webflow.css?v=76-1" rel="stylesheet" type="text/css">
+  <link href="css/assai-76.webflow.css?v=76-1" rel="stylesheet" type="text/css">
+  <script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script>
+  <link href="images/favicon.png" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: light)">
+  <link href="images/favicon-dark.png" rel="icon" type="image/png" sizes="32x32" media="(prefers-color-scheme: dark)">
+  <link href="images/favicon-48.png" rel="icon" type="image/png" sizes="48x48">
+  <link href="images/webclip-180.png" rel="apple-touch-icon" sizes="180x180">
+  <link href="images/webclip-192.png" rel="icon" type="image/png" sizes="192x192">
+  <link href="images/webclip.png" rel="icon" type="image/png" sizes="512x512"><!--  Revista: cabeçalho e rodapé  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Fira+Sans:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+.rv-cab{position:sticky;top:0;z-index:50;overflow:visible}
+.rv-cab-menu{scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.rv-cab-menu::-webkit-scrollbar{display:none}
+html{scroll-behavior:smooth}
+.rv-cab-item,.rv-rod-icone,.rv-rod-lojas,.rv-cab-edicao,.rv-cab-busca-btn{transition:opacity .2s ease}
+.rv-cab-item:hover,.rv-rod-icone:hover,.rv-rod-lojas:hover,.rv-cab-edicao:hover,.rv-cab-busca-btn:hover{opacity:.7}
+.rv-cab-item[aria-current="page"]{font-weight:700}
+.rv-cab-edicao,.rv-cab-busca-btn{background:none;border:0;padding:0;margin:0;color:inherit;font:inherit;cursor:pointer;display:flex;align-items:center;gap:4px}
+.rv-cab-edicao[aria-expanded="true"] svg{transform:rotate(180deg)}
+.rv-cab-edicao svg{transition:transform .2s ease}
+.rv-cab-progresso-barra{transform:scaleX(0);transform-origin:0 50%}
+/* lista de edições */
+.rv-edicoes{position:absolute;z-index:60;width:220px;padding:8px 0;border-radius:16px;background:#fff;box-shadow:0 8px 28px rgba(0,0,0,.14);overflow:hidden;font-family:"FS Lola",sans-serif}
+.rv-edicoes[hidden],.rv-busca[hidden]{display:none}
+.rv-edicoes a{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;color:#000;font-size:18px;line-height:23px;text-decoration:none}
+.rv-edicoes a:hover,.rv-edicoes a:focus-visible{background:#f9f9f9;outline:none}
+.rv-edicoes a.is-atual{background:#f9f9f9;font-weight:700}
+.rv-edicoes .rv-edicoes-atual{display:flex;align-items:center;gap:8px;color:#666;font-size:12px;font-weight:500}
+.rv-edicoes .is-impressas{border-top:1px solid #e4e4e4}
+/* painel de busca */
+.rv-busca{position:absolute;left:0;right:0;z-index:60;display:flex;justify-content:center;align-items:center;gap:16px;padding:24px 40px;background:#fff;border-bottom:1px solid #e4e4e4;box-shadow:0 8px 28px rgba(0,0,0,.14)}
+.rv-busca form{display:flex;align-items:center;gap:12px;width:100%;max-width:720px;height:48px;padding:0 20px;border:1.5px solid #000;border-radius:999px;margin:0}
+.rv-busca input{flex:1;min-width:0;border:0;outline:0;background:none;font:400 16px/20px Inter,sans-serif;color:#000}
+.rv-busca input::placeholder{color:#666}
+.rv-busca button{background:none;border:0;padding:0;cursor:pointer;color:#000;display:flex}
+.rv-busca svg{width:24px;height:24px}
+
+.rv-busca{padding:12px 16px;gap:12px}
+.rv-busca form{height:44px}
+.rv-busca input{font-size:15px}
+
+</style>
+  <script>
+/* Revista Assaí · efeitos comuns das matérias
+   Cena fixa: a foto de fundo troca conforme o card lido.
+   (Parallax de fotos e imagens retirado em 17/11 a pedido de Manoela: não usar.
+    Blocos de cor empilhados foram retirados em 15/11: não usar por padrão.) */
+addEventListener('DOMContentLoaded',function(){
+(function(){var q=function(s){return[].slice.call(document.querySelectorAll(s))};var C=q('.rv-cena').map(function(c){return{f:[].slice.call(c.querySelectorAll('.rv-cena-foto')),k:[].slice.call(c.querySelectorAll('.rv-cena-card'))}}).filter(function(c){return c.f.length&&c.f.length===c.k.length});if(!C.length)return;function t(){var h=innerHeight;C.forEach(function(c){var a=0;c.k.forEach(function(k,i){if(k.getBoundingClientRect().top<h*.75)a=i});c.f.forEach(function(f,i){f.classList.toggle('is-ativa',i===a)})})}var p=0;function g(){if(!p){p=1;requestAnimationFrame(function(){p=0;t()})}}addEventListener('scroll',g,{passive:true});addEventListener('resize',g);addEventListener('load',t);t()})();
+});
+</script>
+  <link href="css/revista76.css?v=76-1" rel="stylesheet" type="text/css">
+  <style>.head { --head-bg: #ff7300; }</style>
+  <link href="../css/shell.css?v=74-117" rel="stylesheet" type="text/css">
+<!-- casca do desktop: por último -->
+<link rel="stylesheet" href="../css/shell-desktop.css?v=74-117">
+</head>
+<body>
+<!-- ============ CASCA DESKTOP: gerada por scripts/shell_sync.py — não edite aqui ============ -->
+<div class="casca">
+  <aside class="casca-esq" aria-label="Navegação da revista">
+    <a class="casca-logo" href="https://www.assai.com.br" target="_blank" rel="noopener"><img src="../assets/shell/dt-logo-assai.png" alt="Assaí Atacadista" width="124" height="124"></a>
+    <p class="casca-edicao">Edição #76<br>Novembro/2026</p>
+    <div class="casca-menu">
+      <nav class="casca-nav" aria-label="Seções da revista">
+        <a href="../index.html" target="_blank" rel="noopener" style="--mc:#000000">CAPA</a>
+        <a href="../categoria-principal.html" target="_blank" rel="noopener" style="--mc:#004696">PRINCIPAL</a>
+        <a href="../categoria-gestao.html" target="_blank" rel="noopener" style="--mc:#f0051e">GESTÃO</a>
+        <a href="../categoria-mkt-digital.html" target="_blank" rel="noopener" style="--mc:#ff7300" class="is-active" aria-current="page">MKT DIGITAL</a>
+        <a href="../categoria-produto.html" target="_blank" rel="noopener" style="--mc:#ffaa00">PRODUTO</a>
+        <a href="../categoria-consumidor.html" target="_blank" rel="noopener" style="--mc:#ffdc00">CONSUMIDOR</a>
+        <a href="../categoria-delivery.html" target="_blank" rel="noopener" style="--mc:#532f82">DELIVERY</a>
+        <a href="../categoria-novo-negocio.html" target="_blank" rel="noopener" style="--mc:#b40082">NOVO NEGÓCIO</a>
+        <a href="../categoria-academia.html" target="_blank" rel="noopener" style="--mc:#ff5564">ACADEMIA ASSAÍ</a>
+        <a href="../categoria-noticias.html" target="_blank" rel="noopener" style="--mc:#0082c8">NOTÍCIAS DO ASSAÍ</a>
+        <a href="../editorial.html" target="_blank" rel="noopener" style="--mc:#666666">EDITORIAL</a>
+        <a href="../parceiros.html" target="_blank" rel="noopener" style="--mc:#666666">PARCEIROS</a>
+        <a href="../expediente.html" target="_blank" rel="noopener" style="--mc:#666666">EXPEDIENTE</a>
+      </nav>
+      <a class="casca-pilula" href="https://www.assai.com.br/revistas" target="_blank" rel="noopener">Edições anteriores</a>
+    </div>
+  </aside>
+  <aside class="casca-dir" aria-label="Assaí nas redes sociais">
+    <p class="casca-siga">Siga o Assaí</p>
+    <ul class="casca-redes">
+      <li><a href="https://www.facebook.com/assaiatacadistaoficial" target="_blank" rel="noopener" aria-label="Assaí no Facebook"><img src="../assets/shell/rede-facebook.svg" alt="" width="17" height="32"></a></li>
+      <li><a href="https://www.instagram.com/assaiatacadistaoficial" target="_blank" rel="noopener" aria-label="Assaí no Instagram"><img src="../assets/shell/rede-instagram.svg" alt="" width="33" height="33"></a></li>
+      <li><a href="https://twitter.com/assaioficial" target="_blank" rel="noopener" aria-label="Assaí no X"><img src="../assets/shell/rede-x.svg" alt="" width="32" height="39"></a></li>
+      <li><a href="https://www.tiktok.com/@assaiatacadistaoficial" target="_blank" rel="noopener" aria-label="Assaí no TikTok"><img src="../assets/shell/rede-tiktok.svg" alt="" width="31" height="40"></a></li>
+      <li><a href="https://www.youtube.com/assaioficial" target="_blank" rel="noopener" aria-label="Assaí no YouTube"><img src="../assets/shell/rede-youtube.svg" alt="" width="36" height="30"></a></li>
+      <li><a href="https://www.linkedin.com/company/3624827" target="_blank" rel="noopener" aria-label="Assaí no LinkedIn"><img src="../assets/shell/rede-linkedin.svg" alt="" width="31" height="31"></a></li>
+    </ul>
+    <div class="casca-qr">
+      <p class="casca-pilula">Ler no celular</p>
+      <div class="casca-qr-img" role="img" aria-label="QR code com o endereço desta página"></div>
+    </div>
+  </aside>
+</div>
+<!-- ============ /CASCA DESKTOP ============ -->
+
+<div class="page tem-faixa">
+
+  <!-- ============ COMPONENTE HEAD (#75) ============ -->
+  <header class="head">
+    <div class="head-brand">
+      <img class="head-logo" src="images/head/logo-head-mkt.svg" alt="Assaí Bons Negócios" width="283" height="30">
+    </div>
+    <nav class="head-nav" aria-label="Seções da revista" data-rolagem="7">
+      <ul>
+        <li style="--mc:#000000"><a href="../index.html" target="_blank" rel="noopener">CAPA</a></li>
+        <li style="--mc:#004696"><a href="../categoria-principal.html" target="_blank" rel="noopener">PRINCIPAL</a></li>
+        <li style="--mc:#f0051e"><a href="../categoria-gestao.html" target="_blank" rel="noopener">GESTÃO</a></li>
+        <li style="--mc:#ff7300" class="is-active"><a href="../categoria-mkt-digital.html" aria-current="page" target="_blank" rel="noopener">MKT DIGITAL</a></li>
+        <li style="--mc:#ffaa00"><a href="../categoria-produto.html" target="_blank" rel="noopener">PRODUTO</a></li>
+        <li style="--mc:#ffdc00"><a href="../categoria-consumidor.html" target="_blank" rel="noopener">CONSUMIDOR</a></li>
+        <li style="--mc:#532f82"><a href="../categoria-delivery.html" target="_blank" rel="noopener">DELIVERY</a></li>
+        <li style="--mc:#b40082"><a href="../categoria-novo-negocio.html" target="_blank" rel="noopener">NOVO NEGÓCIO</a></li>
+        <li style="--mc:#ff5564"><a href="../categoria-academia.html" target="_blank" rel="noopener">ACADEMIA ASSAÍ</a></li>
+        <li style="--mc:#0082c8"><a href="../categoria-noticias.html" target="_blank" rel="noopener">NOTÍCIAS DO ASSAÍ</a></li>
+        <li style="--mc:#666666"><a href="../editorial.html" target="_blank" rel="noopener">EDITORIAL</a></li>
+        <li style="--mc:#666666"><a href="../parceiros.html" target="_blank" rel="noopener">PARCEIROS</a></li>
+        <li style="--mc:#666666"><a href="../expediente.html" target="_blank" rel="noopener">EXPEDIENTE</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<div class="rv-page is-mkt">
+    <main id="materia" class="rv-main">
+      <section aria-label="Abertura" class="rv-visor"><img src="images/mkt76-abertura-mesa.jpg.jpg" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/mkt76-abertura-mesa-p-500.jpg 500w, images/mkt76-abertura-mesa-p-800.jpg 800w, images/mkt76-abertura-mesa.jpg.jpg 932w" alt="Mesa vista de cima com pratos, xícara de café e pães, enquadrada como na tela de uma câmera." class="rv-visor-img">
+        <div aria-hidden="true" class="rv-visor-grade"></div><span aria-hidden="true" class="rv-visor-canto is-1"></span><span aria-hidden="true" class="rv-visor-canto is-2"></span><span aria-hidden="true" class="rv-visor-canto is-3"></span><span aria-hidden="true" class="rv-visor-canto is-4"></span>
+        <div aria-hidden="true" class="rv-visor-rec"><span class="rv-visor-ponto"></span><span>REC</span></div>
+        <p class="rv-visor-credito">Foto: Pedro Mamoré.</p>
+      </section>
+      <section class="rv-bloco">
+        <div class="rv-coluna">
+          <h1 class="rv-titulo-materia"><span class="rv-titulo-a is-azul">Influenciador no restaurante:</span> <span class="rv-titulo-b is-medio">Quando a parceria ajuda e quando atrapalha</span></h1>
+          <div class="rv-selo-row"><span class="rv-selo-edicao">Ed. 76</span><span class="rv-selo-data">Nov. 2026 · 9 min de leitura</span></div>
+          <p class="rv-autoria">Por: Paula Melech</p>
+          <p class="rv-linha-fina">Para transformar visibilidade em uma boa experiência, a parceria precisa combinar com o público e caber na rotina da casa.</p>
+        </div>
+      </section>
+      <section class="rv-bloco is-fundo">
+        <div class="rv-coluna">
+          <p class="rv-lide">O prato chega, mas a primeira garfada pode esperar. Antes dela, vêm o enquadramento, o vídeo e a publicação. Do outro lado da tela, alguém descobre o restaurante, e pode decidir fazer uma visita.</p>
+          <p class="rv-p">Para a casa, a cena abre uma oportunidade de divulgação. No salão, porém, o atendimento continua. Luzes, equipamentos e circulação precisam conviver com a experiência de quem só quer aproveitar a refeição.</p>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-divulgacao" class="rv-bloco is-cena">
+        <div class="rv-coluna">
+          <h2 id="mkt-divulgacao" class="rv-intertitulo is-caixa-alta is-coral">Divulgação × desconforto</h2>
+        </div>
+        <div class="rv-cena">
+          <div class="rv-cena-palco">
+            <div class="rv-cena-foto is-ativa"><img src="images/mkt76-b03-tela1-v2.jpg" loading="lazy" alt="Fachada do Guachinche Casa Aguere, em Tenerife, com uma placa que proíbe fotos e vídeos." class="rv-cena-img">
+              <p class="rv-cena-credito">Foto: Divulgação.</p>
+            </div>
+            <div class="rv-cena-foto"><img src="images/mkt76-b03-tela2-v2.jpg" loading="lazy" alt="Cozinheiro preparando pizzas no balcão de uma cozinha." class="rv-cena-img">
+              <p class="rv-cena-credito">Foto: Divulgação.</p>
+            </div>
+            <div class="rv-cena-foto"><img src="images/mkt76-b03-tela3-v2.png" loading="lazy" sizes="194px" srcset="images/mkt76-b03-tela3-v2-p-500.png 500w, images/mkt76-b03-tela3-v2.png 574w" alt="Mão segurando um copo de café gelado dentro de uma cafeteria." class="rv-cena-img">
+              <p class="rv-cena-credito">Foto: Divulgação.</p>
+            </div>
+            <div class="rv-cena-foto"><img src="images/mkt76-b03-tela4-v2.png" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/mkt76-b03-tela4-v2-p-500.png 500w, images/mkt76-b03-tela4-v2-p-800.png 800w, images/mkt76-b03-tela4-v2-p-1080.png 1080w, images/mkt76-b03-tela4-v2.png 1150w" alt="Mesa com frango frito e tigelas de lámen vistas de cima." class="rv-cena-img">
+              <p class="rv-cena-credito">Foto: Divulgação.</p>
+            </div>
+            <div class="rv-cena-pelicula"></div>
+          </div>
+          <div class="rv-cena-tela">
+            <div class="rv-cena-card">
+              <p class="rv-lide">Na Espanha, o Guachinche Casa Aguere, em Tenerife, anunciou publicamente veto a influenciadores. Já o Pastifizzio, em Valladolid, recusou refeições em troca de avaliações, mas admitiu campanhas publicitárias acordadas, segundo reportagem do El País de agosto de 2026.</p>
+            </div>
+          </div>
+          <div class="rv-cena-tela">
+            <div class="rv-cena-card">
+              <p class="rv-lide">A reação tem precedentes.</p>
+            </div>
+          </div>
+          <div class="rv-cena-tela">
+            <div class="rv-cena-card">
+              <p class="rv-lide">Nos Estados Unidos, o café Dae, no Brooklyn, restringiu sessões de fotos e vídeos em 2023, preservando registros rápidos na própria mesa.</p>
+            </div>
+          </div>
+          <div class="rv-cena-tela">
+            <div class="rv-cena-card">
+              <p class="rv-lide">Em Manchester, o Lucky Ramen and Sushi tornou pública uma negociação que gerou conflito em 2024. Após ter seu pedido de refeição em troca de divulgação publicado pelo restaurante, um influenciador reclamou da exposição e defendeu que a comida gratuita compensaria seu trabalho de promoção. A casa também divulgou essa reação, sem identificar a pessoa, e a discussão atraiu centenas de comentários.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="rv-bloco">
+        <div class="rv-coluna">
+          <p class="rv-p">Os casos mostram que vetar pessoas, limitar gravações e recusar permutas são decisões diferentes. A tendência também chegou ao Brasil. Antes de aceitar uma parceria ou anunciar uma proibição, a pergunta é: que tipo de relação faz sentido para o seu negócio?</p>
+          <nav aria-label="Três casas, três posições" class="rv-regua">
+            <p class="rv-regua-titulo">Três casas, três posições</p>
+            <div aria-hidden="true" class="rv-regua-linha"><span class="rv-regua-marco is-azul"></span><span class="rv-regua-marco is-laranja"></span><span class="rv-regua-marco is-ambar"></span></div>
+            <div class="rv-regua-casas">
+              <a href="#fuga-cafe" class="rv-regua-casa"><strong class="rv-regua-nome">Fuga Café</strong><span class="rv-regua-posicao">Parcerias pagas: não</span></a>
+              <a href="#manana-cafe" class="rv-regua-casa"><strong class="rv-regua-nome">Manana Café</strong><span class="rv-regua-posicao">Com cautela</span></a>
+              <a href="#luponero" class="rv-regua-casa"><strong class="rv-regua-nome">Luponero</strong><span class="rv-regua-posicao">Sim, com assessoria</span></a>
+            </div>
+          </nav>
+        </div>
+      </section>
+      <section id="luponero" class="rv-bloco is-ambar">
+        <div class="rv-coluna">
+          <p class="rv-selo-posicao">Parcerias: sim, com assessoria</p>
+          <h2 class="rv-intertitulo is-caixa-alta">Luponero</h2>
+          <p class="rv-p">No Luponero, em Curitiba (PR), as parcerias com influenciadores fazem parte de um investimento contínuo em divulgação. Para o proprietário, Ugo Zambon, ver alguém vivendo uma experiência no restaurante pode despertar em outras pessoas a vontade de conhecer a casa.</p>
+          <p class="rv-p">Ele percebe efeitos positivos dessa exposição na visibilidade do negócio e na atração de novos clientes, embora ainda não tenha um levantamento consolidado para apresentar números ou atribuir reservas a uma publicação específica.</p>
+          <p class="rv-p">A gestão passa por uma assessoria de influenciadores, que recebe as propostas, analisa os perfis e define os formatos das ações. Segundo Ugo, contar com uma equipe dedicada ajuda a organizar as parcerias e avaliar quais combinam com a casa e com o público que ela deseja alcançar.</p>
+          <p class="rv-p">À mesa, a escolha é do influenciador convidado. Ele tem liberdade para explorar o cardápio, pedir o que desperta seu interesse e apresentar a experiência com a própria linguagem. A proposta é que o conteúdo reflita o gosto e o olhar de cada criador.</p>
+        </div>
+      </section>
+      <section class="rv-bloco">
+        <div class="rv-coluna">
+          <figure class="rv-voz">
+            <div class="rv-voz-anel"><img src="images/mkt76-voz-ugo-zambon.jpg" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/mkt76-voz-ugo-zambon-p-500.jpg 500w, images/mkt76-voz-ugo-zambon-p-800.jpg 800w, images/mkt76-voz-ugo-zambon.jpg 1050w" alt="Ugo Zambon, proprietário do Luponero, segurando uma pizza." class="rv-voz-img"></div>
+            <blockquote data-cita="" class="rv-olho">
+              <p class="rv-olho-texto"><span class="rv-cita-linha">“A produção de conteúdo faz parte da visita,</span> <span class="rv-cita-linha">mas queremos que eles também possam sentar,</span> <span class="rv-cita-linha">conversar e curtir a experiência”</span></p>
+            </blockquote>
+            <figcaption class="rv-olho-autor rv-olho-autor">Ugo Zambon,<br>proprietário do Luponero</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section id="fuga-cafe" class="rv-bloco is-azul">
+        <div class="rv-coluna">
+          <p class="rv-selo-posicao">Parcerias pagas: não</p>
+          <h2 class="rv-intertitulo is-caixa-alta is-claro">Fuga Café</h2>
+          <p class="rv-p rv-p-light">No Fuga Café, também em Curitiba, Victor Pandolfi, sócio-fundador, prefere outro caminho. A casa não mantém parcerias pagas com influenciadores e recebe criadores apenas como clientes comuns.</p>
+          <p class="rv-p rv-p-light">A decisão passa por uma experiência anterior de divulgação que, segundo ele, atraiu um público pouco alinhado à proposta do café. Victor relata reclamações sobre detalhes do atendimento, como a equipe não oferecer açúcar. Na percepção dele, quem chega espontaneamente costuma conhecer melhor o perfil da casa.</p>
+          <figure class="rv-voz">
+            <blockquote data-cita="" class="rv-olho">
+              <p class="rv-olho-texto is-ambar"><span class="rv-cita-linha">“Se tem algum influenciador,</span> <span class="rv-cita-linha">pode ter certeza que é algo orgânico”</span></p>
+            </blockquote>
+            <figcaption class="rv-olho-autor is-claro rv-olho-autor is-claro">Victor Pandolfi,<br>sócio-fundador do Fuga Café</figcaption>
+          </figure>
+          <p class="rv-p rv-p-light">A divulgação nas redes acontece de forma espontânea, a partir de visitas sem parceria com a casa. “Se tem algum influenciador, pode ter certeza que é algo orgânico”, afirma Victor. Ou seja, criadores frequentam o café como clientes comuns e compartilham suas próprias impressões sobre a experiência.</p>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-afinidade" class="rv-bloco">
+        <div class="rv-coluna">
+          <h2 id="mkt-afinidade" class="rv-intertitulo is-caixa-alta is-coral">Antes dos seguidores, olhe a afinidade</h2>
+          <p class="rv-instrucao">Toque nos cartões para virar</p>
+          <div data-viraveis="" class="rv-viraveis">
+            <a type="button" aria-pressed="false" href="#" class="rv-viravel w-button"><span class="rv-viravel-frente"><svg aria-hidden="true" fill="none" viewbox="0 0 40 40" height="40" width="40" class="rv-viravel-icone rv-viravel-icone">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M14.9993 18.6667C17.9449 18.6667 20.3327 16.2789 20.3327 13.3333C20.3327 10.3878 17.9449 8 14.9993 8C12.0538 8 9.66602 10.3878 9.66602 13.3333C9.66602 16.2789 12.0538 18.6667 14.9993 18.6667Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M5 31.6667C5 26.1667 9.5 22.5 15 22.5C20.5 22.5 25 26.1667 25 31.6667"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M28.334 19C30.5431 19 32.334 17.2091 32.334 15C32.334 12.7909 30.5431 11 28.334 11C26.1248 11 24.334 12.7909 24.334 15C24.334 17.2091 26.1248 19 28.334 19Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M27.5 22.667C31.8333 23.0003 35 26.167 35 30.8337"></path>
+                </svg><span class="rv-viravel-titulo">Público</span><span class="rv-viravel-dica">virar ↻</span></span><span class="rv-viravel-verso"><span class="rv-viravel-pergunta">“Quem acompanha esse perfil tem interesse na proposta da sua casa?”</span><span class="rv-viravel-dica">voltar ↺</span></span></a>
+            <a type="button" aria-pressed="false" href="#" class="rv-viravel w-button"><span class="rv-viravel-frente"><svg aria-hidden="true" fill="none" viewbox="0 0 40 40" height="40" width="40" class="rv-viravel-icone rv-viravel-icone">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M27.5007 4.16699H12.5007C10.1995 4.16699 8.33398 6.03247 8.33398 8.33366V31.667C8.33398 33.9682 10.1995 35.8337 12.5007 35.8337H27.5007C29.8018 35.8337 31.6673 33.9682 31.6673 31.667V8.33366C31.6673 6.03247 29.8018 4.16699 27.5007 4.16699Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M16.666 15V25L24.9993 20L16.666 15Z"></path>
+                </svg><span class="rv-viravel-titulo">Conteúdo</span><span class="rv-viravel-dica">virar ↻</span></span><span class="rv-viravel-verso"><span class="rv-viravel-pergunta">“As experiências apresentadas combinam com seu cardápio, ambiente e faixa de preço?”</span><span class="rv-viravel-dica">voltar ↺</span></span></a>
+            <a type="button" aria-pressed="false" href="#" class="rv-viravel w-button"><span class="rv-viravel-frente"><svg aria-hidden="true" fill="none" viewbox="0 0 40 40" height="40" width="40" class="rv-viravel-icone rv-viravel-icone">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M19.9993 34.9997C19.9993 34.9997 9.16602 24.9997 9.16602 16.6663C9.16602 13.7932 10.3074 11.0377 12.339 9.00602C14.3707 6.97437 17.1262 5.83301 19.9993 5.83301C22.8725 5.83301 25.628 6.97437 27.6597 9.00602C29.6913 11.0377 30.8327 13.7932 30.8327 16.6663C30.8327 24.9997 19.9993 34.9997 19.9993 34.9997Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M20 20.667C22.2091 20.667 24 18.8761 24 16.667C24 14.4579 22.2091 12.667 20 12.667C17.7909 12.667 16 14.4579 16 16.667C16 18.8761 17.7909 20.667 20 20.667Z"></path>
+                </svg><span class="rv-viravel-titulo">Localização</span><span class="rv-viravel-dica">virar ↻</span></span><span class="rv-viravel-verso"><span class="rv-viravel-pergunta">“A audiência está na sua cidade ou em regiões de onde podem vir clientes?”</span><span class="rv-viravel-dica">voltar ↺</span></span></a>
+            <a type="button" aria-pressed="false" href="#" class="rv-viravel w-button"><span class="rv-viravel-frente"><svg aria-hidden="true" fill="none" viewbox="0 0 40 40" height="40" width="40" class="rv-viravel-icone rv-viravel-icone">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M4.16602 20.0003C4.16602 20.0003 9.99935 9.16699 19.9993 9.16699C29.9993 9.16699 35.8327 20.0003 35.8327 20.0003C35.8327 20.0003 29.9993 30.8337 19.9993 30.8337C9.99935 30.8337 4.16602 20.0003 4.16602 20.0003Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M20 25C22.7614 25 25 22.7614 25 20C25 17.2386 22.7614 15 20 15C17.2386 15 15 17.2386 15 20C15 22.7614 17.2386 25 20 25Z"></path>
+                </svg><span class="rv-viravel-titulo">Expectativa</span><span class="rv-viravel-dica">virar ↻</span></span><span class="rv-viravel-verso"><span class="rv-viravel-pergunta">“O conteúdo ajuda a entender o que a pessoa encontrará ao chegar?”</span><span class="rv-viravel-dica">voltar ↺</span></span></a>
+          </div>
+          <p aria-live="polite" class="rv-viraveis-fim">A afinidade é um bom ponto de partida. Ela não garante retorno, mas ajuda a orientar a escolha.</p>
+        </div>
+      </section>
+      <section id="manana-cafe" class="rv-bloco">
+        <div class="rv-coluna">
+          <figure class="rv-figura">
+            <div class="rv-moldura"><img src="images/mkt76-b08-fachada-manana.jpg" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/mkt76-b08-fachada-manana-p-500.jpg 500w, images/mkt76-b08-fachada-manana-p-800.jpg 800w, images/mkt76-b08-fachada-manana-p-1080.jpg 1080w, images/mkt76-b08-fachada-manana.jpg 1400w" alt="Fachada do Manana Café, em Curitiba." class="rv-foto-img"></div>
+            <figcaption class="rv-legenda-foto rv-legenda-foto">Fachada do Manana Café, em Curitiba. Foto: Pedro Mamoré.</figcaption>
+          </figure>
+          <p class="rv-selo-posicao">Parcerias: com cautela</p>
+          <h2 class="rv-intertitulo is-caixa-alta is-coral">Manana Café</h2>
+          <p class="rv-p">No Manana Café, em Curitiba, as parcerias com influenciadores ajudam a apresentar a marca a quem ainda não a conhece. A repercussão no ambiente online, porém, nem sempre se transforma em vendas pelo site.</p>
+          <p class="rv-p">Segundo a proprietária, Dora Suh, os resultados variam conforme o influenciador. “Às vezes é bacana, mas muitas vezes gera somente seguidores, mas não vendas”, afirma.</p>
+          <p class="rv-p">A diferença entre ampliar a audiência e gerar compras pesa na forma como a casa trabalha com esses criadores. “Como já tivemos experiências boas e outras ruins, a gente não trabalha tanto com influenciadores”, explica Dora.</p>
+          <figure class="rv-voz">
+            <div class="rv-voz-anel"><img src="images/mkt76-voz-dora-suh.jpg" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/mkt76-voz-dora-suh-p-500.jpg 500w, images/mkt76-voz-dora-suh-p-800.jpg 800w, images/mkt76-voz-dora-suh.jpg 932w" alt="Dora Suh, proprietária do Manana Café." class="rv-voz-img"></div>
+            <blockquote data-cita="" class="rv-olho">
+              <p class="rv-olho-texto"><span class="rv-cita-linha">“Às vezes é bacana,</span> <span class="rv-cita-linha">mas muitas vezes gera somente seguidores,</span> <span class="rv-cita-linha">mas não vendas”</span></p>
+            </blockquote>
+            <figcaption class="rv-olho-autor rv-olho-autor">Dora Suh,<br>proprietária do Manana Café</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-rotina" class="rv-bloco">
+        <div class="rv-coluna">
+          <h2 id="mkt-rotina" class="rv-intertitulo is-caixa-alta is-coral">A visita precisa caber na rotina da casa</h2>
+          <figure class="rv-figura">
+            <div class="rv-moldura"><img src="images/mkt76-b09-salao-luponero.jpg" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/mkt76-b09-salao-luponero-p-500.jpg 500w, images/mkt76-b09-salao-luponero-p-800.jpg 800w, images/mkt76-b09-salao-luponero.jpg 1050w" alt="Salão do restaurante Luponero, em Curitiba." class="rv-foto-img"></div>
+            <figcaption class="rv-legenda-foto rv-legenda-foto">Salão do Luponero, em Curitiba. Foto: Divulgação.</figcaption>
+          </figure>
+          <p class="rv-p">Uma gravação pode acontecer com um celular sobre a mesa. Também pode envolver iluminação, microfone, repetição de cenas e circulação pelo salão.</p>
+          <p class="rv-p">Por isso, alinhe a produção antes da visita. Horários, equipamentos e espaços disponíveis ajudam a evitar que a equipe precise negociar tudo durante o atendimento.</p>
+          <p class="rv-p">No Luponero, os convites não incluem roteiro nem orientações específicas de filmagem. Os influenciadores podem levar a família e são estimulados a conhecer a comida, o atendimento e o ambiente com naturalidade.</p>
+          <p class="rv-p">É o formato escolhido pela casa. Outros estabelecimentos podem precisar de limites diferentes, conforme o espaço, o movimento e a proposta do serviço.</p>
+          <div data-checklist="" aria-labelledby="mkt-combinado" role="group" class="rv-lista-check is-degrade">
+            <p id="mkt-combinado" class="rv-lista-chamada">Antes do convite, alinhe estes cinco pontos</p>
+            <div role="checkbox" tabindex="0" aria-checked="false" class="rv-marcavel"><span aria-hidden="true" class="rv-marcavel-caixa"><svg fill="none" viewbox="0 0 24 24" height="14" width="14">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3" stroke="currentColor" d="M5 12.5l4.5 4.5L19 7.5"></path>
+                </svg></span><span class="rv-marcavel-conteudo"><span class="rv-marcavel-titulo">Horário</span><span class="rv-marcavel-desc">Combine dia, duração e um período compatível com o movimento da casa.</span></span></div>
+            <div role="checkbox" tabindex="0" aria-checked="false" class="rv-marcavel"><span aria-hidden="true" class="rv-marcavel-caixa"><svg fill="none" viewbox="0 0 24 24" height="14" width="14">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3" stroke="currentColor" d="M5 12.5l4.5 4.5L19 7.5"></path>
+                </svg></span><span class="rv-marcavel-conteudo"><span class="rv-marcavel-titulo">Equipamentos</span><span class="rv-marcavel-desc">Alinhe o uso de luzes, tripés e microfones sem comprometer circulação e conforto.</span></span></div>
+            <div role="checkbox" tabindex="0" aria-checked="false" class="rv-marcavel"><span aria-hidden="true" class="rv-marcavel-caixa"><svg fill="none" viewbox="0 0 24 24" height="14" width="14">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3" stroke="currentColor" d="M5 12.5l4.5 4.5L19 7.5"></path>
+                </svg></span><span class="rv-marcavel-conteudo"><span class="rv-marcavel-titulo">Espaços</span><span class="rv-marcavel-desc">Defina onde gravar e quais áreas têm acesso restrito.</span></span></div>
+            <div role="checkbox" tabindex="0" aria-checked="false" class="rv-marcavel"><span aria-hidden="true" class="rv-marcavel-caixa"><svg fill="none" viewbox="0 0 24 24" height="14" width="14">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3" stroke="currentColor" d="M5 12.5l4.5 4.5L19 7.5"></path>
+                </svg></span><span class="rv-marcavel-conteudo"><span class="rv-marcavel-titulo">Consumo</span><span class="rv-marcavel-desc">Esclareça o que será oferecido, o que será pago e quantas pessoas participarão.</span></span></div>
+            <div role="checkbox" tabindex="0" aria-checked="false" class="rv-marcavel"><span aria-hidden="true" class="rv-marcavel-caixa"><svg fill="none" viewbox="0 0 24 24" height="14" width="14">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="3" stroke="currentColor" d="M5 12.5l4.5 4.5L19 7.5"></path>
+                </svg></span><span class="rv-marcavel-conteudo"><span class="rv-marcavel-titulo">Publicação</span><span class="rv-marcavel-desc">Registre formatos, prazos, identificação da relação comercial e eventual uso do conteúdo pelo restaurante.</span></span></div>
+            <p class="rv-lista-fim">Combinados claros deixam a equipe e o convidado preparados para a visita.</p>
+          </div>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-pode" class="rv-bloco">
+        <div class="rv-coluna">
+          <h2 id="mkt-pode" class="rv-intertitulo is-caixa-alta is-coral">O que pode × o que não pode</h2>
+          <p class="rv-p">Receber um influenciador como cliente é diferente de contratar uma produção de conteúdo. Essa distinção orienta os cuidados com a visita, explica o advogado Eros Belin de Moura Cordeiro, especialista em Direito do Consumidor.</p>
+          <div data-topicos="" class="rv-podenao">
+            <div class="rv-podenao-col is-pode">
+              <p class="rv-podenao-cab is-azul"><svg aria-hidden="true" fill="none" viewbox="0 0 28 28" height="28" width="28">
+                  <path stroke-width="1.5" stroke="currentColor" d="M14 2.75C20.2132 2.75 25.25 7.7868 25.25 14C25.25 20.2132 20.2132 25.25 14 25.25C7.7868 25.25 2.75 20.2132 2.75 14C2.75 7.7868 7.7868 2.75 14 2.75Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="2.6" stroke="currentColor" d="M8.5 14.5L12.1 18.1L19.5 10"></path>
+                </svg><span>Pode</span></p>
+              <div class="rv-topico is-aberto">
+                <a type="button" aria-expanded="true" href="#" class="rv-topico-resumo w-button"><span>Recusar uma parceria</span><span aria-hidden="true" class="rv-topico-sinal"></span></a>
+                <p class="rv-topico-texto">A casa pode não aceitar uma proposta comercial. Isso não impede o criador de frequentar o local como consumidor.</p>
+              </div>
+              <div class="rv-topico">
+                <a type="button" aria-expanded="false" href="#" class="rv-topico-resumo w-button"><span>Combinar a produção</span><span aria-hidden="true" class="rv-topico-sinal"></span></a>
+                <p class="rv-topico-texto">Alinhar horário, equipamentos e espaços para preservar o atendimento e a circulação.</p>
+              </div>
+              <div class="rv-topico">
+                <a type="button" aria-expanded="false" href="#" class="rv-topico-resumo w-button"><span>Restringir o acesso a áreas de trabalho</span><span aria-hidden="true" class="rv-topico-sinal"></span></a>
+                <p class="rv-topico-texto">A visita ao salão não dá livre acesso à cozinha ou a outros espaços restritos.</p>
+              </div>
+              <div class="rv-topico">
+                <a type="button" aria-expanded="false" href="#" class="rv-topico-resumo w-button"><span>Formalizar as condições</span><span aria-hidden="true" class="rv-topico-sinal"></span></a>
+                <p class="rv-topico-texto">Registrar os combinados da parceria, inclusive os limites para o uso negociado de espaços e da imagem do estabelecimento.</p>
+              </div>
+            </div>
+            <div class="rv-podenao-col is-naopode">
+              <p class="rv-podenao-cab is-vermelho"><svg aria-hidden="true" fill="none" viewbox="0 0 28 28" height="28" width="28">
+                  <path stroke-width="1.5" stroke="currentColor" d="M14 2.75C20.2132 2.75 25.25 7.7868 25.25 14C25.25 20.2132 20.2132 25.25 14 25.25C7.7868 25.25 2.75 20.2132 2.75 14C2.75 7.7868 7.7868 2.75 14 2.75Z"></path>
+                  <path stroke-linecap="round" stroke-width="2.6" stroke="currentColor" d="M9.5 9.5L18.5 18.5M18.5 9.5L9.5 18.5"></path>
+                </svg><span>Não pode</span></p>
+              <div class="rv-topico is-aberto">
+                <a type="button" aria-expanded="true" href="#" class="rv-topico-resumo w-button"><span>Barrar alguém só por ser influenciador</span><span aria-hidden="true" class="rv-topico-sinal"></span></a>
+                <p class="rv-topico-texto">A recusa injustificada de atendimento a quem se dispõe a pagar contraria o Código de Defesa do Consumidor, que proíbe recusar a venda a quem se dispõe a pagar (artigo 39).</p>
+              </div>
+              <div class="rv-topico">
+                <a type="button" aria-expanded="false" href="#" class="rv-topico-resumo w-button"><span>Tratar a autorização da casa como autorização de todos</span><span aria-hidden="true" class="rv-topico-sinal"></span></a>
+                <p class="rv-topico-texto">O aval do restaurante não substitui os cuidados com a imagem de clientes e funcionários.</p>
+              </div>
+              <div class="rv-topico">
+                <a type="button" aria-expanded="false" href="#" class="rv-topico-resumo w-button"><span>Publicar imagens de terceiros para fins comerciais sem autorização</span><span aria-hidden="true" class="rv-topico-sinal"></span></a>
+                <p class="rv-topico-texto">Segundo a Súmula 403 do STJ, esse uso pode gerar indenização independentemente de prova do prejuízo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="rv-bloco is-azul">
+        <div class="rv-coluna">
+          <div role="note" class="rv-alerta">
+            <p class="rv-alerta-titulo"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24" height="24" width="24">
+                <path stroke-linejoin="round" stroke-width="2.2" stroke="#004696" d="M12 3L22 20H2L12 3Z"></path>
+                <path stroke-linecap="round" stroke-width="2.2" stroke="#004696" d="M12 9.5V14.5"></path>
+                <path fill="#004696" d="M11.9992 18.5004C12.7172 18.5004 13.2992 17.9184 13.2992 17.2004C13.2992 16.4824 12.7172 15.9004 11.9992 15.9004C11.2812 15.9004 10.6992 16.4824 10.6992 17.2004C10.6992 17.9184 11.2812 18.5004 11.9992 18.5004Z"></path>
+              </svg><span>Atenção: depende da situação</span></p>
+            <p class="rv-alerta-texto">Uma foto do próprio prato, uma produção publicitária e uma gravação que bloqueia a passagem têm impactos diferentes. As regras precisam considerar o contexto e respeitar os direitos do consumidor. Um registro pessoal não deve ser automaticamente tratado como uma parceria comercial.</p>
+          </div>
+          <p class="rv-p rv-p-light">Para Cordeiro, explicar as condições com antecedência e formalizar a parceria ajuda a estabelecer esses limites. Quando a visita envolve parceria comercial, o restaurante pode definir por contrato onde e como a gravação acontece.</p>
+        </div>
+      </section>
+      <section class="rv-bloco">
+        <div class="rv-coluna">
+          <figure class="rv-voz">
+            <div class="rv-voz-anel"><img src="images/mkt76-voz-eros-cordeiro.jpg" loading="lazy" sizes="(max-width: 401px) 100vw, 402px" srcset="images/mkt76-voz-eros-cordeiro-p-500.jpg 500w, images/mkt76-voz-eros-cordeiro-p-800.jpg 800w, images/mkt76-voz-eros-cordeiro-p-1080.jpg 1080w, images/mkt76-voz-eros-cordeiro.jpg 1400w" alt="Eros Belin de Moura Cordeiro, advogado especialista em Direito do Consumidor." class="rv-voz-img"></div>
+            <blockquote data-cita="" class="rv-olho">
+              <p class="rv-olho-texto"><span class="rv-cita-linha">“Neste caso, evidentemente,</span> <span class="rv-cita-linha">o empresário pode delimitar</span> <span class="rv-cita-linha">e o ideal é que faça</span> <span class="rv-cita-linha">através de um instrumento contratual”</span></p>
+            </blockquote>
+            <figcaption class="rv-olho-autor rv-olho-autor">Eros Belin de Moura Cordeiro,<br>advogado especialista em Direito do Consumidor</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-cliente" class="rv-bloco">
+        <div class="rv-coluna">
+          <h2 id="mkt-cliente" class="rv-intertitulo is-caixa-alta is-coral">Quem avalia é o cliente</h2>
+          <p class="rv-p">Mesmo com regras para a visita, o cliente continua livre para avaliar o que consumiu. O próprio especialista ressalta que estabelecer limites para a exploração de espaços e imagens não elimina a possibilidade de uma avaliação do serviço nas redes sociais.</p>
+          <div class="rv-definicao">
+            <div aria-hidden="true" class="rv-selos-publi"><span class="rv-selo-publi">#publi</span><span class="rv-selo-publi">#publicidade</span><span class="rv-selo-publi">Parceria paga</span></div>
+            <p class="rv-definicao-texto">Uma parceria também precisa preservar a transparência com quem acompanha o conteúdo. O Guia de Publicidade por Influenciadores Digitais, do Conselho Nacional de Autorregulamentação Publicitária (Conar), orienta que todo conteúdo feito em parceria comercial seja identificado como publicidade, com termos como #publi ou #publicidade ou com as ferramentas das próprias redes, como o selo de parceria paga. A identificação precisa aparecer logo na primeira visualização da postagem, sem que o seguidor precise abrir a legenda inteira.</p>
+          </div>
+          <p class="rv-p">No Luponero, Ugo resume os critérios que considera essenciais:</p>
+          <figure class="rv-voz">
+            <blockquote data-cita="" class="rv-olho">
+              <p class="rv-olho-texto"><span class="rv-cita-linha">“Acredito que uma boa parceria precisa</span> <span class="rv-cita-linha">de afinidade, liberdade e transparência.”</span></p>
+            </blockquote>
+            <figcaption class="rv-olho-autor rv-olho-autor">Ugo Zambon,<br>proprietário do Luponero</figcaption>
+          </figure>
+          <p class="rv-p">Para ele, cada parte contribui de uma forma: o restaurante recebe bem, o criador compartilha seu olhar e o público encontra informações e impressões para decidir se quer conhecer a casa. A parceria é positiva quando amplia a visibilidade do negócio, combina com o trabalho do influenciador e apresenta uma nova opção a quem acompanha o conteúdo.</p>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-pontos" class="rv-bloco is-azul">
+        <div class="rv-coluna is-larga">
+          <h2 id="mkt-pontos" class="rv-intertitulo is-caixa-alta is-claro">Encontre os pontos de atenção</h2>
+          <p class="rv-instrucao is-claro">Toque nos pontos da ilustração ou na lista</p>
+          <div data-pontos="" class="rv-pontos">
+            <div class="rv-pontos-ilustra"><svg aria-label="Ilustração de um salão de restaurante com uma gravação em andamento: tripé com celular e luz no corredor, luz apontada para outra mesa e duas pessoas ao fundo. A cena não representa nenhuma das casas entrevistadas." role="img" fill="none" viewbox="0 0 358 280" class="rv-pontos-svg rv-pontos-svg">
+                <path fill="#ffffff" d="M358 0H0V200H358V0Z"></path>
+                <path fill="#FF7300" d="M358 200H0V280H358V200Z"></path>
+                <path stroke-width="2" stroke="#000000" d="M84 26H22C19.7909 26 18 27.7909 18 30V78C18 80.2091 19.7909 82 22 82H84C86.2091 82 88 80.2091 88 78V30C88 27.7909 86.2091 26 84 26Z"></path>
+                <path stroke-width="2" stroke="#000000" d="M53 26V82M18 54H88"></path>
+                <path fill="#666666" d="M64 115C70.0751 115 75 110.075 75 104C75 97.9249 70.0751 93 64 93C57.9249 93 53 97.9249 53 104C53 110.075 57.9249 115 64 115Z"></path>
+                <path fill="#666666" d="M48 150C48 134 55 124 64 124C73 124 80 134 80 150H48Z"></path>
+                <path fill="#666666" d="M102 111C108.075 111 113 106.075 113 100C113 93.9249 108.075 89 102 89C95.9249 89 91 93.9249 91 100C91 106.075 95.9249 111 102 111Z"></path>
+                <path fill="#666666" d="M86 146C86 130 93 120 102 120C111 120 118 130 118 146H86Z"></path>
+                <path stroke-linecap="round" stroke-width="5" stroke="#000000" d="M30 190H140"></path>
+                <path stroke-linecap="round" stroke-width="4" stroke="#000000" d="M85 190V240M60 240H110"></path>
+                <path stroke-linecap="round" stroke-width="4" stroke="#000000" d="M30 160V240M140 160V240"></path>
+                <path fill="#FF5564" d="M190 118L300 160V210L190 128V118Z"></path>
+                <path stroke-width="7" stroke="#FF7300" d="M182 142C193.046 142 202 133.046 202 122C202 110.954 193.046 102 182 102C170.954 102 162 110.954 162 122C162 133.046 170.954 142 182 142Z"></path>
+                <path stroke-width="2.5" stroke="#000000" fill="#ffffff" d="M185.5 112H178.5C177.119 112 176 113.119 176 114.5V129.5C176 130.881 177.119 132 178.5 132H185.5C186.881 132 188 130.881 188 129.5V114.5C188 113.119 186.881 112 185.5 112Z"></path>
+                <path stroke-linecap="round" stroke-width="4" stroke="#000000" d="M182 142V200M208 256L182 160L156 256M182 160V256"></path>
+                <path stroke-linecap="round" stroke-width="5" stroke="#000000" d="M232 210H342"></path>
+                <path stroke-linecap="round" stroke-width="4" stroke="#000000" d="M287 210V250M262 250H312"></path>
+                <path stroke-width="2" stroke="#000000" fill="#ffffff" d="M270 208C277.732 208 284 206.209 284 204C284 201.791 277.732 200 270 200C262.268 200 256 201.791 256 204C256 206.209 262.268 208 270 208Z"></path>
+                <path stroke-width="2" stroke="#000000" fill="#ffffff" d="M312 208C319.732 208 326 206.209 326 204C326 201.791 319.732 200 312 200C304.268 200 298 201.791 298 204C298 206.209 304.268 208 312 208Z"></path>
+                <path stroke-linecap="round" stroke-width="4" stroke="#000000" d="M236 176V256M338 176V256"></path>
+              </svg>
+              <a type="button" aria-label="Ponto 1: tripé no corredor" href="#" class="rv-ponto is-1 w-button">1</a>
+              <a type="button" aria-label="Ponto 2: luz voltada para outra mesa" href="#" class="rv-ponto is-2 w-button">2</a>
+              <a type="button" aria-label="Ponto 3: pessoas ao fundo" href="#" class="rv-ponto is-3 w-button">3</a>
+            </div>
+            <div class="rv-pontos-lista">
+              <div class="rv-ponto-item is-aberto">
+                <a type="button" aria-expanded="true" href="#" class="rv-ponto-resumo w-button"><span class="rv-ponto-num">1</span><span>Tripé no corredor</span></a>
+                <p class="rv-ponto-texto">A gravação bloqueia a passagem? Reorganize a produção para preservar o atendimento.</p>
+              </div>
+              <div class="rv-ponto-item">
+                <a type="button" aria-expanded="false" href="#" class="rv-ponto-resumo w-button"><span class="rv-ponto-num">2</span><span>Luz voltada para outra mesa</span></a>
+                <p class="rv-ponto-texto">O equipamento incomoda quem está no salão? Reveja posição, intensidade e horário.</p>
+              </div>
+              <div class="rv-ponto-item">
+                <a type="button" aria-expanded="false" href="#" class="rv-ponto-resumo w-button"><span class="rv-ponto-num">3</span><span>Pessoas ao fundo</span></a>
+                <p class="rv-ponto-texto">Clientes ou funcionários aparecem? Planeje o enquadramento e os cuidados com a imagem de cada pessoa.</p>
+              </div>
+            </div>
+          </div>
+          <p class="rv-p rv-p-light is-fechamento">Os alertas também aparecem fora da gravação: consumo e entregas mal definidos ou expectativas que a casa não consegue atender.</p>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-medir" class="rv-bloco">
+        <div class="rv-coluna">
+          <h2 id="mkt-medir" class="rv-intertitulo is-caixa-alta is-laranja-escuro">A parceria valeu a pena?</h2>
+          <p class="rv-p">Curtidas e visualizações ajudam a acompanhar o alcance. Para o restaurante, também interessa observar se houve procura, reservas, consumo e retorno de clientes.</p>
+          <p class="rv-p">Algumas formas simples de medir:</p>
+          <ul data-medidas="" role="list" class="rv-medidas">
+            <li class="rv-medida"><span aria-hidden="true" class="rv-medida-icone"><svg fill="none" viewbox="0 0 52 52" height="52" width="52">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M12.5 18.5H39.5V23C38.7044 23 37.9413 23.3161 37.3787 23.8787C36.8161 24.4413 36.5 25.2044 36.5 26C36.5 26.7956 36.8161 27.5587 37.3787 28.1213C37.9413 28.6839 38.7044 29 39.5 29V33.5H12.5V29C13.2956 29 14.0587 28.6839 14.6213 28.1213C15.1839 27.5587 15.5 26.7956 15.5 26C15.5 25.2044 15.1839 24.4413 14.6213 23.8787C14.0587 23.3161 13.2956 23 12.5 23V18.5Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M22.25 29.75L29.75 22.25"></path>
+                  <path stroke-width="1.75" stroke="currentColor" d="M23.0004 24.3504C23.746 24.3504 24.3504 23.746 24.3504 23.0004C24.3504 22.2548 23.746 21.6504 23.0004 21.6504C22.2548 21.6504 21.6504 22.2548 21.6504 23.0004C21.6504 23.746 22.2548 24.3504 23.0004 24.3504Z"></path>
+                  <path stroke-width="1.75" stroke="currentColor" d="M29.0004 30.3504C29.746 30.3504 30.3504 29.746 30.3504 29.0004C30.3504 28.2548 29.746 27.6504 29.0004 27.6504C28.2548 27.6504 27.6504 28.2548 27.6504 29.0004C27.6504 29.746 28.2548 30.3504 29.0004 30.3504Z"></path>
+                </svg></span>
+              <div class="rv-medida-texto">
+                <p class="rv-medida-titulo">Cupom exclusivo</p>
+                <p class="rv-medida-desc">Cada influenciador divulga um código próprio, e o caixa registra quantas vezes ele foi usado.</p>
+              </div>
+            </li>
+            <li class="rv-medida"><span aria-hidden="true" class="rv-medida-icone"><svg fill="none" viewbox="0 0 52 52" height="52" width="52">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M14 15.5H38V30.5H23L17 36.5V30.5H14V15.5Z"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M23.877 21.1994C23.8838 20.8151 23.9948 20.4398 24.1981 20.1136C24.4015 19.7875 24.6895 19.5226 25.0316 19.3472C25.3736 19.1718 25.7568 19.0926 26.1404 19.1179C26.5239 19.1432 26.8934 19.2721 27.2094 19.4909C27.5255 19.7097 27.7762 20.0102 27.9349 20.3603C28.0936 20.7104 28.1543 21.097 28.1106 21.4788C28.0669 21.8607 27.9203 22.2236 27.6866 22.5287C27.4528 22.8339 27.1406 23.0699 26.7833 23.2115C26.1126 23.5469 25.8891 23.994 25.8891 24.5529"></path>
+                  <path stroke-width="1.75" stroke="currentColor" d="M25.889 26.8991C26.1977 26.8991 26.4479 26.6489 26.4479 26.3402C26.4479 26.0315 26.1977 25.7812 25.889 25.7812C25.5803 25.7812 25.3301 26.0315 25.3301 26.3402C25.3301 26.6489 25.5803 26.8991 25.889 26.8991Z"></path>
+                </svg></span>
+              <div class="rv-medida-texto">
+                <p class="rv-medida-titulo">Pergunta no atendimento</p>
+                <p class="rv-medida-desc">Perguntar como o cliente conheceu a casa, na reserva ou no caixa, e anotar as respostas durante o período da ação.</p>
+              </div>
+            </li>
+            <li class="rv-medida"><span aria-hidden="true" class="rv-medida-icone"><svg fill="none" viewbox="0 0 52 52" height="52" width="52">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M23 29.0004C23.5583 29.5674 24.2238 30.0176 24.9577 30.3249C25.6916 30.6322 26.4793 30.7904 27.275 30.7904C28.0707 30.7904 28.8584 30.6322 29.5923 30.3249C30.3262 30.0176 30.9917 29.5674 31.55 29.0004L36.05 24.5004C37.1838 23.3666 37.8208 21.8289 37.8208 20.2254C37.8208 18.622 37.1838 17.0843 36.05 15.9505C34.9162 14.8166 33.3784 14.1797 31.775 14.1797C30.1716 14.1797 28.6338 14.8166 27.5 15.9505L26 17.4505"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M29.0005 23.0009C28.4422 22.434 27.7767 21.9838 27.0428 21.6765C26.3088 21.3692 25.5211 21.2109 24.7254 21.2109C23.9298 21.2109 23.1421 21.3692 22.4081 21.6765C21.6742 21.9838 21.0087 22.434 20.4505 23.0009L15.9505 27.5009C14.8167 28.6347 14.1797 30.1725 14.1797 31.7759C14.1797 33.3793 14.8166 34.9171 15.9505 36.0509C17.0843 37.1847 18.622 37.8217 20.2254 37.8217C21.8289 37.8217 23.3666 37.1847 24.5005 36.0509L26.0005 34.5509"></path>
+                </svg></span>
+              <div class="rv-medida-texto">
+                <p class="rv-medida-titulo">Link próprio</p>
+                <p class="rv-medida-desc">Um link de reserva ou de pedido só para aquela parceria mostra quantas pessoas chegaram por ela.</p>
+              </div>
+            </li>
+            <li class="rv-medida"><span aria-hidden="true" class="rv-medida-icone"><svg fill="none" viewbox="0 0 52 52" height="52" width="52">
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M12.5 38H39.5"></path>
+                  <path stroke-linejoin="round" stroke-linecap="round" stroke-width="1.75" stroke="currentColor" d="M17 38V29M23 38V24.5M29 38V30.5M35 38V21.5"></path>
+                </svg></span>
+              <div class="rv-medida-texto">
+                <p class="rv-medida-titulo">Comparação de períodos</p>
+                <p class="rv-medida-desc">Comparar reservas e vendas da semana da ação com semanas parecidas sem ação.</p>
+              </div>
+            </li>
+          </ul>
+          <p class="rv-p">Uma publicação isolada, porém, não explica sozinha as mudanças no movimento.</p>
+        </div>
+      </section>
+      <section aria-labelledby="mkt-camera" class="rv-bloco is-azul">
+        <div class="rv-coluna">
+          <h2 id="mkt-camera" class="rv-intertitulo is-caixa-alta is-amarelo">Antes de a câmera ligar</h2>
+          <p class="rv-p rv-p-light">O prato chega, e a primeira garfada continua podendo esperar. A diferença está no que foi combinado antes: o horário fora do pico, o canto do salão reservado para a gravação, a luz que não invade a mesa ao lado, o cupom que vai mostrar se a visita trouxe clientes. O Luponero organiza visitas, o Manana observa que ganhar seguidores nem sempre significa vender e o Fuga Café recebe criadores como clientes comuns. Nas três casas, a decisão parte da mesma pergunta: a experiência que aparece no vídeo é a que o cliente vai encontrar quando chegar.</p>
+        </div>
+      </section>
+    </main>
+</div>
+
+  <!-- ============ COMPONENTE RODAPE (#75) ============ -->
+  <footer class="foot">
+    <span class="foot-bar" aria-hidden="true"></span>
+    <a class="foot-top" href="#" aria-label="Voltar ao topo"><img src="../assets/imgGroup8650.svg" alt=""></a>
+    <button class="foot-share" type="button" aria-label="Compartilhar">
+      <img class="foot-share-a" src="../assets/imgGroup.svg" alt="">
+      <img class="foot-share-b" src="../assets/imgVector1.svg" alt="">
+      <img class="foot-share-c" src="../assets/imgVector2.svg" alt="">
+    </button>
+    <span class="foot-brand"><img src="../assets/imgGroup2.svg" alt="Assaí Atacadista"></span>
+    <a class="foot-stores" href="https://www.assai.com.br/nossas-lojas" target="_blank" rel="noopener noreferrer">NOSSAS LOJAS <img src="../assets/imgGroup8651.svg" alt=""></a>
+  </footer>
+
+</div>
+<script src="js/jquery-3.5.1.min.js?v=76-1" type="text/javascript"></script>
+  <script src="js/webflow.js?v=76-1" type="text/javascript"></script>
+  <style>
+.rv-marcavel:focus-visible,.rv-viravel:focus-visible,.rv-topico-resumo:focus-visible,.rv-ponto:focus-visible,.rv-ponto-resumo:focus-visible,.rv-regua-casa:focus-visible{outline:2px solid #000;outline-offset:2px}
+[id="luponero"],[id="fuga-cafe"],[id="manana-cafe"]{scroll-margin-top:110px}
+/* abertura: ponto do REC pisca */
+@keyframes rv-pisca{0%,60%{opacity:1}61%,100%{opacity:.15}}
+.rv-visor-ponto{animation:rv-pisca 1.2s steps(1,end) infinite}
+/* abertura (17/11): foco automático + cantos que fecham, zoom lento contínuo, contador de gravação */
+@keyframes rv-foco{0%,35%{filter:blur(14px) brightness(1.08)}75%,100%{filter:none}}
+@keyframes rv-zoom{from{transform:scale(1.02) translate(0,0)}to{transform:scale(1.14) translate(-2.5%,-1.5%)}}
+@keyframes rv-canto{0%{transform:none}40%,62%{transform:translate(var(--cx),var(--cy))}100%{transform:none}}
+.rv-visor.is-armado .rv-visor-img{transform-origin:50% 50%;will-change:transform;animation:rv-foco 1.8s ease-out both,rv-zoom 22s ease-in-out 1.8s infinite alternate}
+.rv-visor.is-armado .rv-visor-canto{animation:rv-canto 1.8s cubic-bezier(.45,0,.2,1) both}
+.rv-visor-canto.is-1{--cx:var(--fx,0px);--cy:var(--fy,0px)}
+.rv-visor-canto.is-2{--cx:calc(-1 * var(--fx,0px));--cy:var(--fy,0px)}
+.rv-visor-canto.is-3{--cx:var(--fx,0px);--cy:calc(-1 * var(--fy,0px))}
+.rv-visor-canto.is-4{--cx:calc(-1 * var(--fx,0px));--cy:calc(-1 * var(--fy,0px))}
+.rv-visor-tempo{font-variant-numeric:tabular-nums;letter-spacing:.02em}
+/* régua: marcos entram da esquerda para a direita */
+.rv-regua.is-armada .rv-regua-marco{opacity:0;transform:translateX(-12px)}
+.rv-regua.is-armada .rv-regua-marco.is-visivel{opacity:1;transform:none}
+/* cartões que viram */
+@keyframes rv-vira{from{transform:rotateY(90deg)}to{transform:rotateY(0)}}
+.rv-viravel{perspective:800px}
+.rv-viravel.is-virado .rv-viravel-frente{display:none}
+.rv-viravel.is-virado .rv-viravel-verso{display:flex;animation:rv-vira .32s ease-out}
+.rv-viravel:not(.is-virado) .rv-viravel-frente.is-voltou{animation:rv-vira .32s ease-out}
+.rv-viraveis-fim.is-oculto{display:none}
+/* combinado da visita */
+.rv-marcavel[aria-checked="true"]{border:2px solid var(--_editoria---editoria--cor)}
+.rv-marcavel[aria-checked="true"] .rv-marcavel-desc{display:block}
+/* pode × não pode */
+.rv-podenao.is-js .rv-topico:not(.is-aberto) .rv-topico-texto{display:none}
+.rv-topico.is-aberto .rv-topico-sinal{background-size:14px 2px,0 0}
+/* pontos de atenção */
+.rv-ponto-texto{display:block}
+.rv-pontos.is-js .rv-ponto-item:not(.is-aberto) .rv-ponto-texto{display:none}
+.rv-ponto{transition:transform .2s ease}
+.rv-ponto.is-ativo{transform:translate(-50%,-50%) scale(1.18);box-shadow:0 0 0 3px #fff}
+@keyframes rv-pulsa{0%{box-shadow:0 0 0 0 rgba(255,85,100,.7)}100%{box-shadow:0 0 0 18px rgba(255,85,100,0)}}
+.rv-pontos.is-pulsando .rv-ponto{animation:rv-pulsa 1s ease-out 1}
+/* "A parceria valeu a pena?": cartões empilham (17/11). Ponto de parada mais baixo que na Produto. */
+.rv-medidas{grid-template-columns:1fr!important}
+.rv-medida{position:sticky;box-shadow:0 -8px 24px rgba(0,0,0,.12);transform-origin:50% 0;transition:transform .35s ease,filter .35s ease}
+.rv-medida:nth-child(1){top:34vh}.rv-medida:nth-child(2){top:calc(34vh + 14px)}.rv-medida:nth-child(3){top:calc(34vh + 28px)}.rv-medida:nth-child(4){top:calc(34vh + 42px)}
+.rv-medida:nth-child(1){top:30vh}.rv-medida:nth-child(2){top:calc(30vh + 12px)}.rv-medida:nth-child(3){top:calc(30vh + 24px)}.rv-medida:nth-child(4){top:calc(30vh + 36px)}
+@media (prefers-reduced-motion: reduce){
+  .rv-cita-linha{opacity:1!important;transition:none!important}
+  .rv-visor-ponto{animation:none}
+  .rv-cena-foto{transition:none}
+  .rv-viravel-verso,.rv-viravel-frente{animation:none!important}
+  .rv-pontos.is-pulsando .rv-ponto{animation:none}
+  .rv-medida{position:static;transition:none;box-shadow:none}
+}
+</style>
+  <script>
+/* Revista Assaí · página de matéria (MKT Digital #76)
+   Abertura com foco automático, zoom lento e contador de gravação;
+   barra de progresso, citações que acendem linha a linha,
+   régua das três casas, cartões que viram, combinado da visita marcável,
+   pode × não pode que abre ao toque, pontos de atenção,
+   "A parceria valeu a pena?" com cartões que sobem e param um sobre o outro (os de baixo encolhem um pouco).
+   Cena fixa (foto de fundo troca por card) vem do <head>.
+   Com "reduzir movimento": citações acesas, marcos visíveis, cartões em lista. */
+(function(){
+  var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var materia = document.getElementById('materia') || document.querySelector('.rv-main');
+  var barra = document.querySelector('.rv-cab-progresso-fill');
+  var citas = [].slice.call(document.querySelectorAll('[data-cita]')).map(function(c){
+    return {el: c, linhas: [].slice.call(c.querySelectorAll('.rv-cita-linha'))};
+  });
+  var pilhas = [];
+  function cada(sel, fn, raiz){ [].slice.call((raiz || document).querySelectorAll(sel)).forEach(fn); }
+  /* Abertura: contador de gravação ao lado do REC; foco automático e zoom lento (sem "reduzir movimento") */
+  cada('.rv-visor', function(v){
+    var rec = v.querySelector('.rv-visor-rec');
+    if (rec){
+      var tempo = document.createElement('span'), t0 = Date.now();
+      tempo.className = 'rv-visor-tempo';
+      tempo.textContent = '00:00:00';
+      rec.appendChild(tempo);
+      setInterval(function(){
+        var s = Math.floor((Date.now() - t0) / 1000);
+        function d(n){ return (n < 10 ? '0' : '') + n; }
+        tempo.textContent = d(Math.floor(s / 3600)) + ':' + d(Math.floor(s / 60) % 60) + ':' + d(s % 60);
+      }, 1000);
+    }
+    if (reduz) return;
+    v.style.setProperty('--fx', Math.round(v.offsetWidth * 0.3) + 'px');
+    v.style.setProperty('--fy', Math.round(v.offsetHeight * 0.24) + 'px');
+    var img = v.querySelector('.rv-visor-img');
+    function arma(){ v.classList.add('is-armado'); }
+    if (!img || img.complete) arma(); else { img.addEventListener('load', arma); img.addEventListener('error', arma); }
+  });
+  /* Links do construtor que fazem papel de botão: teclado e leitor de tela */
+  cada('a[type="button"]', function(a){
+    a.setAttribute('role', 'button');
+    if (!a.hasAttribute('tabindex')) a.setAttribute('tabindex', '0');
+    a.addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); a.click(); } });
+    a.addEventListener('click', function(e){ e.preventDefault(); });
+  });
+  function quadro(){
+    var vh = window.innerHeight;
+    if (barra && materia){
+      var r = materia.getBoundingClientRect();
+      var total = r.height - vh;
+      var p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
+      barra.style.width = (p * 100).toFixed(2) + '%';
+    }
+    if (reduz) return;
+    citas.forEach(function(c){
+      var cr = c.el.getBoundingClientRect();
+      var inicio = vh * 0.78, passo = vh * 0.07;
+      var acesas = Math.floor((inicio - cr.top) / passo) + 1;
+      c.linhas.forEach(function(l, i){ l.classList.toggle('is-acesa', i < acesas); });
+    });
+    pilhas.forEach(function(cartoes){
+      cartoes.forEach(function(c, i){
+        var d = 0, t = c.getBoundingClientRect().top;
+        for (var j = i + 1; j < cartoes.length; j++){ if (cartoes[j].getBoundingClientRect().top - t < 60) d++; }
+        c.style.transform = d ? 'scale(' + (1 - Math.min(d, 3) * .04) + ')' : '';
+        c.style.filter = d ? 'brightness(' + (1 - Math.min(d, 3) * .05) + ')' : '';
+      });
+    });
+  }
+  /* "A parceria valeu a pena?": cartões empilháveis */
+  cada('[data-medidas]', function(lista){
+    lista.classList.remove('is-armada');
+    if (!reduz) pilhas.push([].slice.call(lista.querySelectorAll('.rv-medida')));
+  });
+  var pendente = false;
+  function agendar(){ if (!pendente){ pendente = true; requestAnimationFrame(function(){ pendente = false; quadro(); }); } }
+  window.addEventListener('scroll', agendar, {passive: true});
+  window.addEventListener('resize', agendar);
+  window.addEventListener('load', quadro);
+  quadro();
+  if (reduz) citas.forEach(function(c){ c.linhas.forEach(function(l){ l.classList.add('is-acesa'); }); });
+  /* Entra quando aparece na tela (uma vez) */
+  function aoAparecer(el, fn, limiar){
+    if (reduz || !('IntersectionObserver' in window)){ fn(); return; }
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting){ io.disconnect(); fn(); } }); }, {threshold: limiar || 0.35});
+    io.observe(el);
+  }
+  /* Régua das três casas: marcos entram da esquerda para a direita */
+  cada('.rv-regua', function(regua){
+    var marcos = [].slice.call(regua.querySelectorAll('.rv-regua-marco'));
+    if (reduz) return;
+    regua.classList.add('is-armada');
+    aoAparecer(regua, function(){ marcos.forEach(function(m, i){ setTimeout(function(){ m.classList.add('is-visivel'); }, 250 * i); }); }, 0.6);
+  });
+  /* Cartões que viram: a mensagem final aparece depois de abrir os quatro */
+  cada('[data-viraveis]', function(grade){
+    var cartoes = [].slice.call(grade.querySelectorAll('.rv-viravel'));
+    var fim = grade.parentNode.querySelector('.rv-viraveis-fim');
+    var vistos = {};
+    if (fim) fim.classList.add('is-oculto');
+    cartoes.forEach(function(c, i){
+      c.addEventListener('click', function(){
+        var virado = !c.classList.contains('is-virado');
+        c.classList.toggle('is-virado', virado);
+        c.setAttribute('aria-pressed', virado ? 'true' : 'false');
+        var frente = c.querySelector('.rv-viravel-frente');
+        if (frente){ frente.classList.remove('is-voltou'); if (!virado){ void frente.offsetWidth; frente.classList.add('is-voltou'); } }
+        if (virado) vistos[i] = true;
+        if (fim && Object.keys(vistos).length === cartoes.length) fim.classList.remove('is-oculto');
+      });
+    });
+  });
+  /* Combinado da visita: marcar abre a orientação (nada fica guardado) */
+  cada('.rv-marcavel', function(item){
+    var caixa = item.querySelector('.rv-marcavel-caixa');
+    function alternar(){
+      var marcado = item.getAttribute('aria-checked') !== 'true';
+      item.setAttribute('aria-checked', marcado ? 'true' : 'false');
+      if (caixa) caixa.classList.toggle('is-marcado', marcado);
+    }
+    item.addEventListener('click', alternar);
+    item.addEventListener('keydown', function(e){ if (e.key === ' ' || e.key === 'Enter'){ e.preventDefault(); alternar(); } });
+  });
+  /* Pode × não pode: cada tópico abre a explicação; o resumo fica sempre visível */
+  cada('[data-topicos]', function(quadroT){
+    quadroT.classList.add('is-js');
+    cada('.rv-topico', function(t){
+      var b = t.querySelector('.rv-topico-resumo');
+      if (!b) return;
+      b.addEventListener('click', function(){
+        var aberto = !t.classList.contains('is-aberto');
+        t.classList.toggle('is-aberto', aberto);
+        b.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+      });
+    }, quadroT);
+  });
+  /* Pontos de atenção: toque no ponto ou na lista acende o par */
+  cada('[data-pontos]', function(bloco){
+    var pontos = [].slice.call(bloco.querySelectorAll('.rv-ponto'));
+    var itens = [].slice.call(bloco.querySelectorAll('.rv-ponto-item'));
+    bloco.classList.add('is-js');
+    function abrir(i){
+      itens.forEach(function(it, j){
+        var on = j === i;
+        it.classList.toggle('is-aberto', on);
+        var b = it.querySelector('.rv-ponto-resumo');
+        if (b) b.setAttribute('aria-expanded', on ? 'true' : 'false');
+      });
+      pontos.forEach(function(p, j){ p.classList.toggle('is-ativo', j === i); p.setAttribute('aria-pressed', j === i ? 'true' : 'false'); });
+    }
+    pontos.forEach(function(p, i){ p.addEventListener('click', function(){ abrir(i); }); });
+    itens.forEach(function(it, i){ var b = it.querySelector('.rv-ponto-resumo'); if (b) b.addEventListener('click', function(){ abrir(it.classList.contains('is-aberto') ? -1 : i); }); });
+    abrir(0);
+    aoAparecer(bloco, function(){ bloco.classList.add('is-pulsando'); }, 0.5);
+  });
+})();
+</script>
+  <script src="js/revista76.js?v=76-1"></script>
+<script src="../js/shell-desktop.js?v=74-117"></script>
+</body>
+</html>

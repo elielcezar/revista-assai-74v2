@@ -13,6 +13,7 @@ listagens de categoria compartilhadas na raiz.
                       css/ (base, shell, shell-desktop, capa, expediente, categoria-*)
                       js/ (+ vendor/) · fonts/
                       assets/ (capa, categorias, expediente, shell + ícones do head/rodapé)
+/76/                  edição #76 em aprovação, vinda do Webflow (ver "Edição #76"); 76/_webflow/ = exportação intacta
 /75/                  as 9 matérias da edição #75 + index.html (cópia da capa) + css/ + js/ + assets/
 /74/                  index.html (capa da #74) + as 10 matérias da edição #74 + css/ + js/ + assets/
 /73/                  edição #73 completa
@@ -41,6 +42,82 @@ listagens de categoria compartilhadas na raiz.
 Endereços antigos (`mkt.html`, `gestao.html`… na raiz) são stubs de redirect
 que mandam para a categoria correspondente, com `meta refresh` e
 `location.replace` — funcionam com e sem JavaScript.
+
+## Edição #76 (Webflow)
+
+A partir da #76 o design entrega as páginas exportadas do **Webflow** (já
+responsivas), e não mais pelo Figma. Elas são adaptadas ao formato das edições
+anteriores: casca do desktop, coluna de 402px, HEAD e RODAPÉ da #75. Por
+enquanto a #76 fica só em `76/`, para aprovação; a home e as categorias da raiz
+ainda são da #75.
+
+| seção | arquivo |
+| --- | --- |
+| CAPA | [`76/index.html`](76/index.html) |
+| PRINCIPAL | [`76/principal-poder-de-compra-2027.html`](76/principal-poder-de-compra-2027.html) |
+| GESTÃO | [`76/gestao-o-que-faz-um-funcionario-ficar.html`](76/gestao-o-que-faz-um-funcionario-ficar.html) |
+| MKT DIGITAL | [`76/mkt-digital-influenciador-no-restaurante.html`](76/mkt-digital-influenciador-no-restaurante.html) |
+| PRODUTO | [`76/produto-reinventar-salgado.html`](76/produto-reinventar-salgado.html) |
+| CONSUMIDOR | [`76/consumidor-alimentos-funcionais-exigem-rigor.html`](76/consumidor-alimentos-funcionais-exigem-rigor.html) |
+| DELIVERY | [`76/delivery-quando-a-embalagem-vira-experiencia.html`](76/delivery-quando-a-embalagem-vira-experiencia.html) |
+| NOVO NEGÓCIO | [`76/novo-negocio-comodato-cuidados-antes-de-aceitar.html`](76/novo-negocio-comodato-cuidados-antes-de-aceitar.html) |
+| ACADEMIA ASSAÍ | [`76/academia-ideias-que-transformam.html`](76/academia-ideias-que-transformam.html) |
+| NOTÍCIAS DO ASSAÍ | [`76/noticias-como-escolher-maquininha-de-cartao.html`](76/noticias-como-escolher-maquininha-de-cartao.html) e [`76/noticias-corridas-de-rua-bons-negocios.html`](76/noticias-corridas-de-rua-bons-negocios.html) |
+
+**Não edite as páginas da `76/` à mão.** Elas são geradas por
+[`scripts/webflow76.py`](scripts/webflow76.py) a partir da exportação intacta
+em `76/_webflow/`. Quando o design reexportar, substitua o conteúdo de
+`76/_webflow/` pelo zip novo e rode:
+
+```bash
+python scripts/webflow76.py
+```
+
+O script para e avisa se aparecer página nova na exportação ou arquivo novo no
+CDN do Webflow. `76/_webflow/` é só a fonte da conversão: **não sobe para o
+servidor**.
+
+O que a conversão faz:
+
+- **Layout de celular forçado.** O CSS do Webflow é "desktop primeiro" (o
+  celular vem em `@media (max-width: 991/767/479px)`), e as media queries olham
+  a janela, não a coluna. As `max-width` são desembrulhadas no lugar, na mesma
+  ordem, e as `min-width` saem. Medido: a coluna de 402px no desktop fica
+  idêntica (pixel a pixel, fora animações) à página original vista a 402px.
+- **`vw`** vira `min(Xvw, px de 402)` e o `sizes` das imagens passa a valer para
+  a coluna. Sem isso, o desktop baixava fotos de 920px+ para mostrar em 402px.
+- **Abaixo de 402px o conteúdo é fluido**, como o Webflow foi feito. Só o HEAD e
+  o RODAPÉ da #75, desenhos fixos de 402px, são reduzidos (`zoom`, em
+  `76/js/revista76.js`). A #76 **não** usa o `js/shell.js`: o `transform: scale`
+  dele fazia os `position: sticky` das matérias (painéis que acompanham a
+  rolagem) saírem da tela em 7 das 11 páginas. Pelo mesmo motivo a coluna usa
+  `overflow-x: clip`, e não `hidden`.
+- **Cabeçalho e rodapé do Webflow saem** (seletor de edição, busca e barra de
+  progresso de leitura também). Entram o HEAD e o RODAPÉ da #75, com as cores e
+  os logos da #75; o menu do celular é o da casca (sem COLUNA nem DOWNLOAD) e
+  leva às `categoria-*.html` da raiz, como na #75.
+- Onde o `<main>` do Webflow termina na faixa azul-marinho (todas as matérias
+  menos ACADEMIA), o RODAPÉ sobe 45px e a barra preta encosta nela, como no
+  Webflow.
+- O botão **compartilhar** funciona, com o código do rodapé do Webflow (na #75
+  ele não faz nada).
+- **Arquivos do CDN do Webflow** foram baixados: vídeos em `76/videos/`
+  (otimizados quando ficavam menores) e scripts e jQuery em `76/js/`. Só o
+  `og:image` de 5 páginas ainda aponta para o CDN.
+- Ajustes nos scripts das matérias: o carrossel de celular da CONSUMIDOR fica
+  sempre ligado (dependia de `max-width: 991px`), e a GESTÃO procurava o
+  cabeçalho por `header` e acharia o HEAD da #75.
+- Entram o GTM, a casca (`shell_sync.py` conhece a pasta `76/`: "Edição #76 ·
+  Novembro/2026") e a cache `?v=76-NN` nos arquivos da 76.
+- `busca.html`, `401.html` e `404.html` (do Webflow) não entram.
+- **Fontes.** A exportação veio sem elas (o CSS apontava para `url('../images/')`).
+  As FS Lola enviadas pelo design (Regular, Medium, Bold, ExtraBold) ficam em
+  `76/fonts/`. Os itálicos vêm de `fonts/` (as letras têm as mesmas larguras das
+  enviadas), e a Raspoutine é a `RaspoutineMedium-fix.otf`: as três Raspoutine
+  enviadas têm o defeito dos acentos da armadilha 2.
+
+Pendência da #76: o link dos dois botões "Acesse o curso" da ACADEMIA
+(`LINK_CURSO='#'` no Webflow).
 
 ## Páginas da #75
 
