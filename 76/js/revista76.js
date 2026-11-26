@@ -28,6 +28,62 @@
     });
   }
 
+  /* carrosseis de rolagem lateral do Webflow: ideias do DELIVERY ([data-carrossel]) e
+     beneficios do Assai Pay na NOTICIAS ([data-faixa], que ja tem setas e pontos).
+     No celular sao rolagem nativa (dedo), que o mouse nao arrasta. Com mouse: arrastar
+     anda um item por vez e para nas pontas, como os carrosseis da #74/#75. O dedo
+     continua com a rolagem nativa; indicadores, setas e pontos acompanham a rolagem. */
+  var faixas = [];
+  var q1 = document.querySelectorAll(".page [data-carrossel]");
+  for (var k = 0; k < q1.length; k++) faixas.push([q1[k], q1[k].children]);
+  var q2 = document.querySelectorAll(".page [data-faixa]");
+  for (k = 0; k < q2.length; k++) {
+    var jan = q2[k].querySelector(".rv-nt-janela");
+    if (jan) faixas.push([jan, q2[k].querySelectorAll(".rv-nt-painel")]);
+  }
+  for (k = 0; k < faixas.length; k++) (function (lista, itens) {
+    var x0 = null, s0 = 0, moveu = false, id = 0;
+    function posicoes() {
+      var p = [];
+      for (var i = 0; i < itens.length; i++) p.push(itens[i].offsetLeft - itens[0].offsetLeft);
+      return p;
+    }
+    lista.classList.add("rv-arrastavel");
+    lista.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      x0 = e.clientX; s0 = lista.scrollLeft; moveu = false; id = e.pointerId;
+      lista.style.scrollSnapType = "none";
+      lista.classList.add("is-arrastando");
+      try { lista.setPointerCapture(id); } catch (err) {}
+    });
+    lista.addEventListener("pointermove", function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0;
+      if (Math.abs(dx) > 3) moveu = true;
+      lista.scrollLeft = s0 - dx;
+    });
+    function solta(e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0, p = posicoes(), i = 0, melhor = Infinity;
+      x0 = null;
+      for (var j = 0; j < p.length; j++) {           // item em que o arraste começou
+        if (Math.abs(p[j] - s0) < melhor) { melhor = Math.abs(p[j] - s0); i = j; }
+      }
+      if (Math.abs(dx) > 40) i += dx < 0 ? 1 : -1;
+      i = Math.max(0, Math.min(p.length - 1, i));
+      lista.classList.remove("is-arrastando");
+      try { lista.releasePointerCapture(id); } catch (err) {}
+      lista.scrollTo({ left: p[i], behavior: "smooth" });
+      setTimeout(function () { lista.style.scrollSnapType = ""; }, 450);
+    }
+    lista.addEventListener("pointerup", solta);
+    lista.addEventListener("pointercancel", solta);
+    lista.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    lista.addEventListener("click", function (e) {
+      if (moveu) { e.preventDefault(); e.stopPropagation(); moveu = false; }
+    }, true);
+  })(faixas[k][0], faixas[k][1]);
+
   /* compartilhar: como no rodape do Webflow (compartilhamento do aparelho; sem ele,
      copia o link e o botao fica meio apagado por 1,2s) */
   var share = document.querySelector(".foot-share");

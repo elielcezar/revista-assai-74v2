@@ -20,7 +20,7 @@ import re, sys, shutil, pathlib, importlib.util
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 DEST = RAIZ / "76"
 RAW = DEST / "_webflow"
-V = "76-1"
+V = "76-3"
 COL = 402
 
 spec = importlib.util.spec_from_file_location("shell_sync", RAIZ / "scripts/shell_sync.py")
@@ -48,6 +48,16 @@ LOGOS_75 = {  # cópia dos logos próprios da #75
     "logo-head-consumidor.svg": "75/assets/consumidor/logo-head.svg",
     "logo-head-academia.svg": "75/assets/academia/logo-head.svg",
 }
+# ajustes de layout pedidos na aprovação, por página (entram depois de todo o CSS da página)
+AJUSTES = {
+    # vídeo da cozinha: o Webflow (24/11) desceu o vídeo 20px no celular "para o arco não
+    # cobrir as cabeças", e a borda de cima ficou reta sob a curva. A moldura oval desce os
+    # mesmos 20px e o vídeo volta ao topo dela: mesmo lugar e quadro, borda seguindo o arco.
+    "principal-poder-de-compra-2027.html":
+        ".rv-pi-arco .rv-pi-foto { top: calc(19.87% + 20px); }\n"
+        ".rv-pi-arco .rv-ilustra-video, .rv-pi-arco .rv-pi-img { top: 0 !important; }",
+}
+
 # não entram no formato das edições anteriores (busca do Webflow, páginas de erro, vazio)
 APAGAR = ["busca.html", "401.html", "404.html", "gestao-versao-anterior.html"]
 # o <main> termina numa faixa azul-marinho de 48px: o RODAPÉ encosta nela (sobe os 45px
@@ -251,6 +261,7 @@ def converte_html(nome, s):
     s = re.sub(r"(<style[^>]*>)(.*?)(</style>)", lambda m: m.group(1) + converte_css(m.group(2)) + m.group(3), s, flags=re.S)
     # cor/logo do HEAD (#75) e invólucro, depois de todo o CSS da página
     extra_logo = f"\n.head-logo {{ {estilo_logo}; }}" if estilo_logo else ""
+    extra_logo += f"\n/* ajuste da aprovação (scripts/webflow76.py, AJUSTES) */\n{AJUSTES[nome]}" if nome in AJUSTES else ""
     s = s.replace("</head>",
                   f'  <link href="css/revista76.css?v={V}" rel="stylesheet" type="text/css">\n'
                   f"  <style>.head {{ --head-bg: {cor}; }}{extra_logo}</style>\n"
@@ -377,6 +388,12 @@ REVISTA76_CSS = """/* =========================================================
 /* materias cujo <main> termina na faixa azul-marinho do Webflow: o RODAPE sobe os
    45px brancos de cima por cima da faixa (transparentes) e a barra preta encosta nela */
 .page.tem-faixa > .foot { margin-top: -45px; background: transparent; }
+
+/* carrosseis de rolagem lateral do Webflow: com mouse, arrastar (js/revista76.js) */
+@media (hover: hover) and (pointer: fine) {
+  .page .rv-arrastavel { cursor: grab; user-select: none; }
+  .page .rv-arrastavel.is-arrastando { cursor: grabbing; }
+}
 """
 
 REVISTA76_JS = """/* Revista Assaí #76 — invólucro das páginas vindas do Webflow (comportamento igual ao da #75) */
@@ -408,6 +425,62 @@ REVISTA76_JS = """/* Revista Assaí #76 — invólucro das páginas vindas do We
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  /* carrosseis de rolagem lateral do Webflow: ideias do DELIVERY ([data-carrossel]) e
+     beneficios do Assai Pay na NOTICIAS ([data-faixa], que ja tem setas e pontos).
+     No celular sao rolagem nativa (dedo), que o mouse nao arrasta. Com mouse: arrastar
+     anda um item por vez e para nas pontas, como os carrosseis da #74/#75. O dedo
+     continua com a rolagem nativa; indicadores, setas e pontos acompanham a rolagem. */
+  var faixas = [];
+  var q1 = document.querySelectorAll(".page [data-carrossel]");
+  for (var k = 0; k < q1.length; k++) faixas.push([q1[k], q1[k].children]);
+  var q2 = document.querySelectorAll(".page [data-faixa]");
+  for (k = 0; k < q2.length; k++) {
+    var jan = q2[k].querySelector(".rv-nt-janela");
+    if (jan) faixas.push([jan, q2[k].querySelectorAll(".rv-nt-painel")]);
+  }
+  for (k = 0; k < faixas.length; k++) (function (lista, itens) {
+    var x0 = null, s0 = 0, moveu = false, id = 0;
+    function posicoes() {
+      var p = [];
+      for (var i = 0; i < itens.length; i++) p.push(itens[i].offsetLeft - itens[0].offsetLeft);
+      return p;
+    }
+    lista.classList.add("rv-arrastavel");
+    lista.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      x0 = e.clientX; s0 = lista.scrollLeft; moveu = false; id = e.pointerId;
+      lista.style.scrollSnapType = "none";
+      lista.classList.add("is-arrastando");
+      try { lista.setPointerCapture(id); } catch (err) {}
+    });
+    lista.addEventListener("pointermove", function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0;
+      if (Math.abs(dx) > 3) moveu = true;
+      lista.scrollLeft = s0 - dx;
+    });
+    function solta(e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0, p = posicoes(), i = 0, melhor = Infinity;
+      x0 = null;
+      for (var j = 0; j < p.length; j++) {           // item em que o arraste começou
+        if (Math.abs(p[j] - s0) < melhor) { melhor = Math.abs(p[j] - s0); i = j; }
+      }
+      if (Math.abs(dx) > 40) i += dx < 0 ? 1 : -1;
+      i = Math.max(0, Math.min(p.length - 1, i));
+      lista.classList.remove("is-arrastando");
+      try { lista.releasePointerCapture(id); } catch (err) {}
+      lista.scrollTo({ left: p[i], behavior: "smooth" });
+      setTimeout(function () { lista.style.scrollSnapType = ""; }, 450);
+    }
+    lista.addEventListener("pointerup", solta);
+    lista.addEventListener("pointercancel", solta);
+    lista.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    lista.addEventListener("click", function (e) {
+      if (moveu) { e.preventDefault(); e.stopPropagation(); moveu = false; }
+    }, true);
+  })(faixas[k][0], faixas[k][1]);
 
   /* compartilhar: como no rodape do Webflow (compartilhamento do aparelho; sem ele,
      copia o link e o botao fica meio apagado por 1,2s) */

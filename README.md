@@ -101,6 +101,14 @@ O que a conversão faz:
   Webflow.
 - O botão **compartilhar** funciona, com o código do rodapé do Webflow (na #75
   ele não faz nada).
+- **Faixas de rolagem lateral** (ideias do DELIVERY, `[data-carrossel]`, e
+  benefícios do Assaí Pay na NOTÍCIAS, `[data-faixa]`): no desktop do Webflow eram
+  grade; no celular são rolagem nativa, que o mouse não arrasta. Com mouse,
+  arrastar anda um item por vez e para nas pontas (`76/js/revista76.js`); com o
+  dedo continua a rolagem nativa.
+- **Ajustes da aprovação** ficam em `AJUSTES`, no `webflow76.py`, e sobrevivem a
+  uma reexportação. Hoje: o vídeo da cozinha na PRINCIPAL (a moldura oval desce
+  os 20px que o Webflow desceu o vídeo, para a borda de cima seguir o arco).
 - **Arquivos do CDN do Webflow** foram baixados: vídeos em `76/videos/`
   (otimizados quando ficavam menores) e scripts e jQuery em `76/js/`. Só o
   `og:image` de 5 páginas ainda aponta para o CDN.

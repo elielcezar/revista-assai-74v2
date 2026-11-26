@@ -78,3 +78,9 @@
 /* materias cujo <main> termina na faixa azul-marinho do Webflow: o RODAPE sobe os
    45px brancos de cima por cima da faixa (transparentes) e a barra preta encosta nela */
 .page.tem-faixa > .foot { margin-top: -45px; background: transparent; }
+
+/* carrosseis de rolagem lateral do Webflow: com mouse, arrastar (js/revista76.js) */
+@media (hover: hover) and (pointer: fine) {
+  .page .rv-arrastavel { cursor: grab; user-select: none; }
+  .page .rv-arrastavel.is-arrastando { cursor: grabbing; }
+}
