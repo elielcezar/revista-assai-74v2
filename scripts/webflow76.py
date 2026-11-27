@@ -21,7 +21,7 @@ from html import escape
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 DEST = RAIZ / "76"
 RAW = DEST / "_webflow"
-V = "76-7"
+V = "76-15"
 COL = 402
 
 spec = importlib.util.spec_from_file_location("shell_sync", RAIZ / "scripts/shell_sync.py")
@@ -71,16 +71,35 @@ def anuncio(marca, corpo, extra="", attr=""):
             f'      <figure class="rv76-pub{extra}"{attr}><p class="rv76-pub-rot">Publicidade</p>{corpo}</figure>')
 
 
-def anuncio_img(marca, itens, dentro=False):
+def anuncio_img(marca, itens, dentro=False, grade=False):
     """itens: [(arquivo, alt, largura, altura), ...]. Com mais de um, o JS sorteia um por visita
-    (o HTML já traz o primeiro, que aparece sem JavaScript)."""
+    (o HTML já traz o primeiro, que aparece sem JavaScript). dentro: no meio da coluna de texto;
+    grade: linha inteira da grade de cards da capa."""
     a, alt, w, h = itens[0]
     img = f'<img src="banners/{a}?v={V}" alt="{escape(alt)}" width="{w}" height="{h}" loading="lazy">'
     attr = ""
     if len(itens) > 1:
         lista = [[f"banners/{x[0]}?v={V}", x[1], x[2], x[3]] for x in itens]
         attr = ' data-rv76-random="' + escape(json.dumps(lista, ensure_ascii=False), quote=True) + '"'
-    return anuncio(marca, img, " rv76-pub--dentro" if dentro else "", attr)
+    return anuncio(marca, img, " rv76-pub--dentro" if dentro else " rv76-pub--grade" if grade else "", attr)
+
+
+def anuncio_carrossel(marca, nome, itens):
+    """Carrossel padrão da revista (o da #75): 73/js/ad-carousel.js. 1 slide por vez, bolinhas,
+    arraste com mouse e troca automática a cada 4,5 s enquanto aparece na tela.
+    itens: [(arquivo, alt, largura, altura), ...]"""
+    slides = "".join(
+        f'<div class="rv76-car-slide" data-ad-slide><img src="banners/{a}?v={V}" alt="{escape(alt)}" '
+        f'width="{w}" height="{h}" loading="lazy"></div>' for a, alt, w, h in itens)
+    ativo = ' class="is-active" aria-current="true"'
+    pontos = "".join(
+        f'<button type="button"{ativo if i == 0 else ""} '
+        f'data-ad-dot="{i}" aria-label="Slide {i + 1} de {len(itens)}"></button>' for i in range(len(itens)))
+    return (f"<!-- ============ PUBLICIDADE — {marca} (fora do Webflow) ============ -->\n"
+            f'      <div class="rv76-pub rv76-car" data-ad-carousel aria-label="Publicidade {escape(nome)}">'
+            f'<p class="rv76-pub-rot">Publicidade</p>'
+            f'<div class="rv76-car-trilho" data-ad-track tabindex="0">{slides}</div>'
+            f'<div class="rv76-car-pontos" role="tablist" aria-label="Slides da publicidade">{pontos}</div></div>')
 
 
 def anuncio_video(marca, arquivo, alt):
@@ -88,11 +107,37 @@ def anuncio_video(marca, arquivo, alt):
                           f'playsinline preload="metadata" aria-label="{escape(alt)}"></video>')
 
 
+# Capa: cards cuja imagem de fundo é trocada por vídeo (mudo, em loop, só toca visível). Chave = classe
+# que identifica o card; valor = arquivo em 76/banners/. Sem o vídeo, a imagem do Webflow continua lá.
+CARDS_VIDEO = {
+    "index.html": {
+        "cp-consumidor": "home-consumidor.mp4",
+        "cp-produto": "home-produto.mp4",
+        "is-cp-n2": "home-noticias-corrida.mp4",
+    },
+}
+
+# Capa: o vídeo do hero (PRINCIPAL) é este, com som; o botão de som é o da #75 (75/assets/mkt/)
+HERO_VIDEO = {"index.html": "home-principal3.mp4"}
+
 ANUNCIOS = {
+    "index.html": [
+        ("antes-da-tag", '<a href="mkt-digital-influenciador-no-restaurante.html"',
+         anuncio_img("BANNER ORAL-B (CAPA)", [("home-oralb2.gif", "Publicidade Oral-B: Tá brilhante, tô confiante! "
+                     "Creme dental Oral-B 3D White Carvão e escovas Oral-B 3D White", 375, 250)], grade=True)),
+    ],
     "principal-poder-de-compra-2027.html": [
         ("depois", 'aria-label="Endividamento das famílias"',
-         anuncio_img("BANNER ORAL-B", [("principal-oralb.jpg", "Publicidade Oral-B: Tá brilhante, tô confiante! "
-                     "Creme dental Oral-B 3D White Carvão e escovas Oral-B 3D White", 372, 250)])),
+         anuncio_carrossel("CARROSSEL LACTALIS (NESTLÉ ZERO)", "Nestlé Zero", [
+             ("lactalis-1.png", "Publicidade Nestlé Zero, da Lactalis: iogurte Nestlé Zero sabor ameixa, com 0% "
+              "de açúcar adicionado, 0% de gorduras totais e 0% de lactose. É mais que zero. É Nestlé zero.", 375, 391),
+             ("lactalis-2.png", "Publicidade Nestlé Zero, da Lactalis: iogurte Nestlé Zero sabor morango, com 0% "
+              "de açúcar adicionado, 0% de gorduras totais e 0% de lactose. É mais que zero. É Nestlé zero.", 375, 391),
+             ("lactalis-3.png", "Publicidade Nestlé Zero, da Lactalis: iogurte Nestlé Zero batido, com 0% de "
+              "açúcar adicionado, 0% de gorduras totais e 0% de lactose. É mais que zero. É Nestlé zero.", 375, 391),
+             ("lactalis-4.png", "Publicidade Nestlé Zero, da Lactalis: os três iogurtes Nestlé Zero, de ameixa, "
+              "morango e batido, com 0% de açúcar adicionado, 0% de gorduras totais e 0% de lactose. "
+              "É mais que zero. É Nestlé zero.", 375, 391)])),
     ],
     "gestao-o-que-faz-um-funcionario-ficar.html": [
         ("depois-de-texto", 'class="rv-coluna is-texto"',
@@ -146,6 +191,15 @@ ANUNCIOS = {
         ("antes-de-texto", "Quanto custa uma maquininha de cartão?",
          anuncio_img("BANNER 3CORAÇÕES", [("noticias-3coracoes.png", "Publicidade 3corações: escolhas especiais "
                      "para a sua primavera. Cafés 3corações sobre pedestais com flores.", 391, 375)])),
+    ],
+}
+
+# frases tiradas do texto a pedido do cliente (pedido -> trecho exato, com o espaço que a antecede);
+# cada trecho tem de aparecer uma vez na página, senão a conversão para
+REMOVER_TRECHOS = {
+    "noticias-corridas-de-rua-bons-negocios.html": [
+        " Cada prova foi planejada para receber até 3 mil corredores adultos, além de crianças e pessoas "
+        "com deficiência (PCD).",
     ],
 }
 
@@ -385,6 +439,9 @@ def insere_anuncio(s, onde, ancora, anuncio_html):
 
 def converte_html(nome, s):
     ativo, cor, logo, estilo_logo = PAGINAS[nome]
+    for trecho in REMOVER_TRECHOS.get(nome, []):
+        assert s.count(trecho) == 1, f"trecho a remover não encontrado (ou repetido) em {nome}: {trecho[:50]}"
+        s = s.replace(trecho, "")
 
     # --- <head> ---
     s = s.replace("<html ", '<html lang="pt-BR" ', 1) if " lang=" not in s[:300] else s
@@ -422,6 +479,13 @@ def converte_html(nome, s):
     s = s[:ib] + novo + s[fim:]
     for onde, ancora, anuncio_html in ANUNCIOS.get(nome, []):
         s = insere_anuncio(s, onde, ancora, anuncio_html)
+    if nome in HERO_VIDEO:
+        s, n = re.subn(r'data-src="[^"]*principal76-abertura\.mp4"', f'data-src="banners/{HERO_VIDEO[nome]}?v={V}" data-som', s)
+        assert n == 1, "hero da capa: data-src do Webflow não encontrado"
+    for classe_card, arq in CARDS_VIDEO.get(nome, {}).items():
+        s, n = re.subn(r'(<a[^>]*class="rv-cp-card[^"]*' + re.escape(classe_card) + r'[^"]*")',
+                       lambda m: m.group(1) + f' data-video="banners/{arq}?v={V}"', s, count=1)
+        assert n == 1, f"card da capa não encontrado: {classe_card}"
 
     # --- scripts ---
     # cabeçalho/rodapé do Webflow saíram: o script deles também
@@ -451,6 +515,10 @@ def converte_html(nome, s):
     # #75: o transform: scale dele quebrava os position: sticky das matérias)
     i = s.rfind("</body>")
     s = s[:i] + f'  <script src="js/revista76.js?v={V}"></script>\n' + s[i:]
+    if "data-ad-carousel" in s:   # carrossel de publicidade: o script padrão da revista (o da #75)
+        s = s.replace(f'  <script src="js/revista76.js?v={V}"></script>',
+                      f'  <script src="../73/js/ad-carousel.js?v=73-34"></script>\n'
+                      f'  <script src="js/revista76.js?v={V}"></script>', 1)
     return s
 
 
@@ -542,8 +610,34 @@ REVISTA76_CSS = """/* =========================================================
 .rv76-pub-rot { display: block; width: max-content; margin: 0; padding: 1px 6px;
   border: 1px solid #c8c8c8; border-radius: 3px; font: 500 10px/14px "FS Lola", Arial, sans-serif;
   letter-spacing: .08em; text-transform: uppercase; color: #6b6b6b; }
+/* capa: botao de som do hero (igual ao da #75: bolinha 45px com o icone do alto-falante) */
+.rv76-hero { position: relative; }
+.rv76-som { position: absolute; right: 16px; top: 16px; z-index: 4; width: 45px; height: 45px; padding: 0; border: 0; background: none; cursor: pointer; }
+.rv76-som-bg { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
+.rv76-som-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+.rv76-som:focus-visible { outline: 3px solid #FFAA00; outline-offset: 2px; border-radius: 50%; }
+/* capa: video do card de corridas, enquadrado no rosto (como a imagem: object-position no alto) */
+.rv-cp-card.is-cp-n2 .rv-cp-video { object-position: 50% 18%; }
 .rv76-pub img, .rv76-pub video { display: block; width: 100%; height: auto; }
 .rv76-pub video { aspect-ratio: 9 / 16; object-fit: cover; background: #fff; }
+/* carrossel de publicidade (o padrao da #75, 73/js/ad-carousel.js): 1 slide por vez, bolinhas embaixo */
+.rv76-car-trilho { display: flex; width: 100%; overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y; overscroll-behavior-x: contain; cursor: grab; }
+/* durante o arraste com mouse (a classe vem do ad-carousel.js) o snap sai: com ele ligado o
+   navegador devolve o scroll a cada movimento e o mouse nao arrasta. Ao soltar, o snap volta
+   e escolhe o slide mais proximo */
+.rv76-car-trilho.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.rv76-car-trilho::-webkit-scrollbar { display: none; }
+.rv76-car-slide { flex: 0 0 100%; aspect-ratio: 375 / 391; scroll-snap-align: start;
+  scroll-snap-stop: always; overflow: hidden; }
+.rv76-car-slide img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.rv76-car-pontos { height: 32px; display: flex; align-items: center; justify-content: center; gap: 8px; background: #fff; }
+.rv76-car-pontos button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, .28); cursor: pointer; }
+.rv76-car-pontos button.is-active { background: #004696; }
+/* capa: ocupa a linha inteira da grade de cards (que tem 8px de espaco entre as linhas) */
+.rv76-pub--grade { grid-column: 1 / -1; padding-top: 0; }
 /* dentro da coluna de texto (DELIVERY): sai dos 22px de margem e ocupa a largura da pagina */
 .rv76-pub--dentro { margin: 24px calc(50% - min(50vw, 201px)); padding-top: 0; }
 
@@ -640,6 +734,24 @@ REVISTA76_JS = """/* Revista Assaí #76 — invólucro das páginas vindas do We
     }, true);
   })(faixas[k][0], faixas[k][1]);
 
+  /* carrossel de publicidade (73/js/ad-carousel.js): com mouse, arrastar mais de 40px anda um slide
+     (so o snap do navegador exigiria passar da metade da largura); com o dedo segue a rolagem nativa */
+  Array.prototype.forEach.call(document.querySelectorAll(".page .rv76-car-trilho"), function (t) {
+    var x0 = null, i0 = 0;
+    t.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      x0 = e.clientX; i0 = Math.round(t.scrollLeft / (t.clientWidth || 1));
+    });
+    t.addEventListener("pointerup", function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) < 40) return;
+      var i = Math.max(0, Math.min(t.children.length - 1, i0 + (dx < 0 ? 1 : -1)));
+      t.scrollTo({ left: i * t.clientWidth, behavior: "smooth" });
+    });
+    t.addEventListener("pointercancel", function () { x0 = null; });
+  });
+
   /* publicidade (ANUNCIOS no webflow76.py): conjuntos de banners mostram um sorteado por visita;
      story em video e mudo, em loop, e so toca enquanto aparece (com "reduzir movimento": parado, com controles) */
   var pubs = document.querySelectorAll(".page [data-rv76-random]");
@@ -659,6 +771,59 @@ REVISTA76_JS = """/* Revista Assaí #76 — invólucro das páginas vindas do We
         if (e.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else { v.pause(); }
       });
     }, { threshold: 0.4 }).observe(v);
+  });
+
+  /* capa: o hero (video criado pelo script do Webflow a partir do data-src) comeca mudo; o botao de som
+     (o da #75) liga e desliga o audio sem abrir a materia. O video pausa fora da tela, para o som nao seguir
+     quem rolou para os cards. O botao fica ao lado do link (nao dentro dele), num invólucro do hero. */
+  var heroSom = document.querySelector(".rv-cp-hero[data-som]");
+  if (heroSom) {
+    var hv = heroSom.querySelector("video");
+    if (hv) {
+      var wrap = document.createElement("div");
+      wrap.className = "rv76-hero";
+      heroSom.parentNode.insertBefore(wrap, heroSom);
+      wrap.appendChild(heroSom);
+      var bt = document.createElement("button");
+      bt.type = "button"; bt.className = "rv76-som";
+      bt.setAttribute("aria-label", "Ativar o som do vídeo"); bt.setAttribute("aria-pressed", "false");
+      bt.innerHTML = '<img class="rv76-som-bg" src="../75/assets/mkt/ellipse6.svg?v=75-2" alt=""><img class="rv76-som-ico" src="../75/assets/mkt/sound.png?v=75-2" alt="">';
+      wrap.appendChild(bt);
+      hv.muted = true;
+      bt.addEventListener("click", function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var on = bt.getAttribute("aria-pressed") !== "true";
+        hv.muted = !on;
+        if (on && hv.paused) { var pp = hv.play(); if (pp && pp.catch) pp.catch(function () {}); }
+        bt.setAttribute("aria-pressed", String(on));
+        bt.setAttribute("aria-label", on ? "Desativar o som do vídeo" : "Ativar o som do vídeo");
+      });
+      if ("IntersectionObserver" in window && !reduzPub) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) { var pr = hv.play(); if (pr && pr.catch) pr.catch(function () {}); } else { hv.pause(); }
+          });
+        }, { threshold: 0.25 }).observe(heroSom);
+      }
+    }
+  }
+
+  /* capa: cards com data-video (CARDS_VIDEO no webflow76.py) trocam a imagem por video mudo em loop, que
+     so toca enquanto o card aparece; com "reduzir movimento" fica so a imagem */
+  Array.prototype.forEach.call(document.querySelectorAll(".rv-cp-card[data-video]"), function (c) {
+    if (reduzPub) return;
+    var cv = document.createElement("video");
+    cv.className = "rv-cp-video";
+    cv.src = c.getAttribute("data-video");
+    cv.muted = true; cv.loop = true; cv.playsInline = true; cv.preload = "metadata";
+    cv.setAttribute("muted", ""); cv.setAttribute("playsinline", ""); cv.setAttribute("aria-hidden", "true");
+    c.insertBefore(cv, c.querySelector(".rv-cp-pelicula"));
+    if (!("IntersectionObserver" in window)) { var p0 = cv.play(); if (p0 && p0.catch) p0.catch(function () {}); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var pr = cv.play(); if (pr && pr.catch) pr.catch(function () {}); } else { cv.pause(); }
+      });
+    }, { threshold: 0.25 }).observe(c);
   });
 
   /* compartilhar: como no rodape do Webflow (compartilhamento do aparelho; sem ele,

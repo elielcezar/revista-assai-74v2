@@ -84,6 +84,24 @@
     }, true);
   })(faixas[k][0], faixas[k][1]);
 
+  /* carrossel de publicidade (73/js/ad-carousel.js): com mouse, arrastar mais de 40px anda um slide
+     (so o snap do navegador exigiria passar da metade da largura); com o dedo segue a rolagem nativa */
+  Array.prototype.forEach.call(document.querySelectorAll(".page .rv76-car-trilho"), function (t) {
+    var x0 = null, i0 = 0;
+    t.addEventListener("pointerdown", function (e) {
+      if (e.pointerType !== "mouse" || e.button !== 0) return;
+      x0 = e.clientX; i0 = Math.round(t.scrollLeft / (t.clientWidth || 1));
+    });
+    t.addEventListener("pointerup", function (e) {
+      if (x0 === null) return;
+      var dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) < 40) return;
+      var i = Math.max(0, Math.min(t.children.length - 1, i0 + (dx < 0 ? 1 : -1)));
+      t.scrollTo({ left: i * t.clientWidth, behavior: "smooth" });
+    });
+    t.addEventListener("pointercancel", function () { x0 = null; });
+  });
+
   /* publicidade (ANUNCIOS no webflow76.py): conjuntos de banners mostram um sorteado por visita;
      story em video e mudo, em loop, e so toca enquanto aparece (com "reduzir movimento": parado, com controles) */
   var pubs = document.querySelectorAll(".page [data-rv76-random]");
@@ -103,6 +121,59 @@
         if (e.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else { v.pause(); }
       });
     }, { threshold: 0.4 }).observe(v);
+  });
+
+  /* capa: o hero (video criado pelo script do Webflow a partir do data-src) comeca mudo; o botao de som
+     (o da #75) liga e desliga o audio sem abrir a materia. O video pausa fora da tela, para o som nao seguir
+     quem rolou para os cards. O botao fica ao lado do link (nao dentro dele), num invólucro do hero. */
+  var heroSom = document.querySelector(".rv-cp-hero[data-som]");
+  if (heroSom) {
+    var hv = heroSom.querySelector("video");
+    if (hv) {
+      var wrap = document.createElement("div");
+      wrap.className = "rv76-hero";
+      heroSom.parentNode.insertBefore(wrap, heroSom);
+      wrap.appendChild(heroSom);
+      var bt = document.createElement("button");
+      bt.type = "button"; bt.className = "rv76-som";
+      bt.setAttribute("aria-label", "Ativar o som do vídeo"); bt.setAttribute("aria-pressed", "false");
+      bt.innerHTML = '<img class="rv76-som-bg" src="../75/assets/mkt/ellipse6.svg?v=75-2" alt=""><img class="rv76-som-ico" src="../75/assets/mkt/sound.png?v=75-2" alt="">';
+      wrap.appendChild(bt);
+      hv.muted = true;
+      bt.addEventListener("click", function (e) {
+        e.preventDefault(); e.stopPropagation();
+        var on = bt.getAttribute("aria-pressed") !== "true";
+        hv.muted = !on;
+        if (on && hv.paused) { var pp = hv.play(); if (pp && pp.catch) pp.catch(function () {}); }
+        bt.setAttribute("aria-pressed", String(on));
+        bt.setAttribute("aria-label", on ? "Desativar o som do vídeo" : "Ativar o som do vídeo");
+      });
+      if ("IntersectionObserver" in window && !reduzPub) {
+        new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) { var pr = hv.play(); if (pr && pr.catch) pr.catch(function () {}); } else { hv.pause(); }
+          });
+        }, { threshold: 0.25 }).observe(heroSom);
+      }
+    }
+  }
+
+  /* capa: cards com data-video (CARDS_VIDEO no webflow76.py) trocam a imagem por video mudo em loop, que
+     so toca enquanto o card aparece; com "reduzir movimento" fica so a imagem */
+  Array.prototype.forEach.call(document.querySelectorAll(".rv-cp-card[data-video]"), function (c) {
+    if (reduzPub) return;
+    var cv = document.createElement("video");
+    cv.className = "rv-cp-video";
+    cv.src = c.getAttribute("data-video");
+    cv.muted = true; cv.loop = true; cv.playsInline = true; cv.preload = "metadata";
+    cv.setAttribute("muted", ""); cv.setAttribute("playsinline", ""); cv.setAttribute("aria-hidden", "true");
+    c.insertBefore(cv, c.querySelector(".rv-cp-pelicula"));
+    if (!("IntersectionObserver" in window)) { var p0 = cv.play(); if (p0 && p0.catch) p0.catch(function () {}); return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var pr = cv.play(); if (pr && pr.catch) pr.catch(function () {}); } else { cv.pause(); }
+      });
+    }, { threshold: 0.25 }).observe(c);
   });
 
   /* compartilhar: como no rodape do Webflow (compartilhamento do aparelho; sem ele,

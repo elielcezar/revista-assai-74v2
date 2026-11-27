@@ -86,8 +86,34 @@
 .rv76-pub-rot { display: block; width: max-content; margin: 0; padding: 1px 6px;
   border: 1px solid #c8c8c8; border-radius: 3px; font: 500 10px/14px "FS Lola", Arial, sans-serif;
   letter-spacing: .08em; text-transform: uppercase; color: #6b6b6b; }
+/* capa: botao de som do hero (igual ao da #75: bolinha 45px com o icone do alto-falante) */
+.rv76-hero { position: relative; }
+.rv76-som { position: absolute; right: 16px; top: 16px; z-index: 4; width: 45px; height: 45px; padding: 0; border: 0; background: none; cursor: pointer; }
+.rv76-som-bg { position: absolute; left: 0; top: 0; width: 45px; height: 45px; }
+.rv76-som-ico { position: absolute; left: 4px; top: 4px; width: 37px; height: 37px; object-fit: cover; }
+.rv76-som:focus-visible { outline: 3px solid #FFAA00; outline-offset: 2px; border-radius: 50%; }
+/* capa: video do card de corridas, enquadrado no rosto (como a imagem: object-position no alto) */
+.rv-cp-card.is-cp-n2 .rv-cp-video { object-position: 50% 18%; }
 .rv76-pub img, .rv76-pub video { display: block; width: 100%; height: auto; }
 .rv76-pub video { aspect-ratio: 9 / 16; object-fit: cover; background: #fff; }
+/* carrossel de publicidade (o padrao da #75, 73/js/ad-carousel.js): 1 slide por vez, bolinhas embaixo */
+.rv76-car-trilho { display: flex; width: 100%; overflow-x: auto; overflow-y: hidden;
+  scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y; overscroll-behavior-x: contain; cursor: grab; }
+/* durante o arraste com mouse (a classe vem do ad-carousel.js) o snap sai: com ele ligado o
+   navegador devolve o scroll a cada movimento e o mouse nao arrasta. Ao soltar, o snap volta
+   e escolhe o slide mais proximo */
+.rv76-car-trilho.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+.rv76-car-trilho::-webkit-scrollbar { display: none; }
+.rv76-car-slide { flex: 0 0 100%; aspect-ratio: 375 / 391; scroll-snap-align: start;
+  scroll-snap-stop: always; overflow: hidden; }
+.rv76-car-slide img { display: block; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.rv76-car-pontos { height: 32px; display: flex; align-items: center; justify-content: center; gap: 8px; background: #fff; }
+.rv76-car-pontos button { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, .28); cursor: pointer; }
+.rv76-car-pontos button.is-active { background: #004696; }
+/* capa: ocupa a linha inteira da grade de cards (que tem 8px de espaco entre as linhas) */
+.rv76-pub--grade { grid-column: 1 / -1; padding-top: 0; }
 /* dentro da coluna de texto (DELIVERY): sai dos 22px de margem e ocupa a largura da pagina */
 .rv76-pub--dentro { margin: 24px calc(50% - min(50vw, 201px)); padding-top: 0; }
 

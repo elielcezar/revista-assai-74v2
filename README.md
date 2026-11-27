@@ -112,6 +112,18 @@ O que a conversão faz:
   grade; no celular são rolagem nativa, que o mouse não arrasta. Com mouse,
   arrastar anda um item por vez e para nas pontas (`76/js/revista76.js`); com o
   dedo continua a rolagem nativa.
+- **Frases removidas a pedido do cliente** ficam em `REMOVER_TRECHOS`, no `webflow76.py`
+  (hoje: em NOTÍCIAS, corridas de rua, "Cada prova foi planejada para receber até 3 mil
+  corredores adultos…"). Se o texto mudar na reexportação, a conversão para e avisa.
+- **Vídeos nos cards da capa** (`CARDS_VIDEO`, no `webflow76.py`): o card ganha `data-video`
+  e o `revista76.js` troca a imagem por vídeo mudo em loop, que só toca com o card visível
+  (com "reduzir movimento" fica a imagem). Hoje: CONSUMIDOR (`home-consumidor.mp4`), PRODUTO
+  (`home-produto.mp4`) e NOTÍCIAS corridas (`home-noticias-corrida.mp4`), em `76/banners/`,
+  sem áudio, ~700KB cada.
+- **Hero da capa (PRINCIPAL)** (`HERO_VIDEO`, no `webflow76.py`): vídeo com som
+  (`76/banners/home-principal3.mp4`) no lugar do vídeo do Webflow, com o botão de som da #75
+  (`75/assets/mkt/` precisa estar no servidor). Começa mudo; o botão liga/desliga o som sem
+  abrir a matéria; o vídeo pausa fora da tela. A matéria PRINCIPAL continua com o vídeo próprio.
 - **Ajustes da aprovação** ficam em `AJUSTES`, no `webflow76.py`, e sobrevivem a
   uma reexportação. Hoje: o vídeo da cozinha na PRINCIPAL (a moldura oval desce
   os 20px que o Webflow desceu o vídeo, para a borda de cima seguir o arco).
@@ -132,12 +144,18 @@ O que a conversão faz:
   controles). Conjuntos (ACADEMIA, NOVO NEGÓCIO, DELIVERY): o HTML traz o
   primeiro e o `revista76.js` sorteia um por visita. Os vídeos de `banners/`
   foram comprimidos para 720×1280 (originais fora do projeto).
+  Carrossel de anúncios (PRINCIPAL): é o padrão da revista, com o mesmo script da
+  #75 (`../73/js/ad-carousel.js`: 1 slide por vez, bolinhas, troca a cada 4,5 s enquanto
+  aparece). Duas coisas próprias da 76: o snap sai durante o arraste (`.is-dragging`),
+  senão o mouse não arrasta, e com mouse arrastar mais de 40px anda um slide
+  (`revista76.js`). A pasta `73/js/` precisa estar no servidor, como já na #75.
   Para mudar o lugar de um anúncio, edite `ANUNCIOS`: `depois`/`antes` de uma
   `<section>`, `depois-de-texto`/`antes-de-texto` ou `antes-da-tag`.
 
   | página | anúncio | onde |
   | --- | --- | --- |
-  | PRINCIPAL | banner Oral-B | depois da seção "Endividamento das famílias" |
+  | CAPA | banner Oral-B (`home-oralb2.gif`, animado) | linha inteira da grade, antes do card do MKT Digital |
+  | PRINCIPAL | carrossel Lactalis (Nestlé Zero), 4 slides, 1 por vez | depois da seção "Endividamento das famílias" |
   | GESTÃO | story Takis (Bimbo) | depois do bloco do título (`rv-coluna is-texto`), antes do "Ponto 1 de 6" |
   | PRODUTO | story Maturatta (JBS) | depois do 1º `rv-bloco` (título e autor) |
   | ACADEMIA | sorteio: Itabom, Kim, Santa Maria | depois do `rv-lead-bloco` |
