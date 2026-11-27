@@ -149,6 +149,10 @@ ANUNCIOS = {
     ],
 }
 
+# link dos botões "Acesse o curso" da ACADEMIA (informado pelo cliente em 27/11)
+LINK_CURSO = "https://nova.academiaassai.com.br/cursos/"
+LINK_CURSO_PAGINAS = {"academia-ideias-que-transformam.html"}
+
 # não entram no formato das edições anteriores (busca do Webflow, páginas de erro, vazio)
 APAGAR = ["busca.html", "401.html", "404.html", "gestao-versao-anterior.html"]
 # o <main> das matérias termina num padding-bottom de 48px: o RODAPÉ sobe os 45px brancos de
@@ -435,6 +439,11 @@ def converte_html(nome, s):
         s = s.replace(ACADEMIA_CDN_BASE, "var CDN='videos/';")
         for n in ACADEMIA_VIDEOS:
             s = s.replace(f"'{ACADEMIA_HASH[n]}_{n}.mp4'", f"'{n}.mp4'")
+    # ACADEMIA: os dois botões "Acesse o curso" (a exportação traz href="#" e LINK_CURSO='#')
+    if nome in LINK_CURSO_PAGINAS:
+        s = s.replace("var LINK_CURSO='#';", f"var LINK_CURSO='{LINK_CURSO}';")
+        s, n = re.subn(r'<a href="#"( class="rv-botao )', rf'<a href="{LINK_CURSO}" target="_blank" rel="noopener"\1', s)
+        assert n == 2, f"botões 'Acesse o curso' esperados: 2, achados: {n}"
     # comportamentos que dependiam da largura da janela/do cabeçalho do Webflow
     s = s.replace("window.matchMedia('(max-width: 991px)')", "window.matchMedia('all')")   # CONSUMIDOR: carrossel de celular sempre ligado
     s = s.replace("document.querySelector('.rv-cab, .rv-header, header')", "document.querySelector('.rv-cab')")  # GESTÃO: não confundir com o HEAD da #75

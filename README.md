@@ -155,8 +155,8 @@ O que a conversão faz:
   enviadas), e a Raspoutine é a `RaspoutineMedium-fix.otf`: as três Raspoutine
   enviadas têm o defeito dos acentos da armadilha 2.
 
-Pendência da #76: o link dos dois botões "Acesse o curso" da ACADEMIA
-(`LINK_CURSO='#'` no Webflow).
+Os dois botões "Acesse o curso" da ACADEMIA (`LINK_CURSO='#'` no Webflow) levam a
+https://nova.academiaassai.com.br/cursos/, definido em `LINK_CURSO` no `webflow76.py`.
 
 ## Páginas da #75
 
