@@ -96,9 +96,15 @@ O que a conversão faz:
   progresso de leitura também). Entram o HEAD e o RODAPÉ da #75, com as cores e
   os logos da #75; o menu do celular é o da casca (sem COLUNA nem DOWNLOAD) e
   leva às `categoria-*.html` da raiz, como na #75.
-- Onde o `<main>` do Webflow termina na faixa azul-marinho (todas as matérias
-  menos ACADEMIA), o RODAPÉ sobe 45px e a barra preta encosta nela, como no
-  Webflow.
+- **Fundo do `<main>`:** a classe `.rv-main` (o `<main id="materia">` de todas
+  as matérias) perde o `background-color`, como o cliente corrigiu no Designer em
+  26/11. Era uma edição errada: a nossa exportação trazia `#1a1f3a`
+  (azul-marinho, com texto preto por cima em várias seções), e a do cliente,
+  `#d8f2f3`. A classe fica só com o `padding-bottom`. Numa exportação já
+  corrigida, esse passo não muda nada (`sem_fundo_main`, no `webflow76.py`).
+- Onde o `<main>` termina no `padding-bottom` de 48px (todas as matérias menos
+  ACADEMIA), o RODAPÉ sobe 45px por cima dele. Assim a barra preta fica a 48px
+  do conteúdo, como no Webflow, e os dois espaços brancos não se somam.
 - O botão **compartilhar** funciona, com o código do rodapé do Webflow (na #75
   ele não faz nada).
 - **Faixas de rolagem lateral** (ideias do DELIVERY, `[data-carrossel]`, e
@@ -118,6 +124,31 @@ O que a conversão faz:
 - Entram o GTM, a casca (`shell_sync.py` conhece a pasta `76/`: "Edição #76 ·
   Novembro/2026") e a cache `?v=76-NN` nos arquivos da 76.
 - `busca.html`, `401.html` e `404.html` (do Webflow) não entram.
+- **Publicidade** (arquivos em `76/banners/`, inseridos pela lista `ANUNCIOS` do
+  `webflow76.py`, então sobrevivem a uma reexportação). Cada anúncio, ou cada
+  conjunto sorteado, leva a etiqueta discreta "Publicidade" (exigência legal).
+  Imagem: largura da coluna. Vídeo: story 9:16 de 402px, mudo, em loop, que só
+  toca enquanto aparece na tela (com "reduzir movimento" fica parado, com
+  controles). Conjuntos (ACADEMIA, NOVO NEGÓCIO, DELIVERY): o HTML traz o
+  primeiro e o `revista76.js` sorteia um por visita. Os vídeos de `banners/`
+  foram comprimidos para 720×1280 (originais fora do projeto).
+  Para mudar o lugar de um anúncio, edite `ANUNCIOS`: `depois`/`antes` de uma
+  `<section>`, `depois-de-texto`/`antes-de-texto` ou `antes-da-tag`.
+
+  | página | anúncio | onde |
+  | --- | --- | --- |
+  | PRINCIPAL | banner Oral-B | depois da seção "Endividamento das famílias" |
+  | GESTÃO | story Takis (Bimbo) | depois do bloco do título (`rv-coluna is-texto`), antes do "Ponto 1 de 6" |
+  | PRODUTO | story Maturatta (JBS) | depois do 1º `rv-bloco` (título e autor) |
+  | ACADEMIA | sorteio: Itabom, Kim, Santa Maria | depois do `rv-lead-bloco` |
+  | NOVO NEGÓCIO | sorteio: Engetech, Goldenplast, Haleon | depois do bloco `is-editoria` |
+  | MKT DIGITAL | story Aurora | antes de "Quem avalia é o cliente" |
+  | CONSUMIDOR | story OMO (Unilever) | depois do 1º `rv-bloco` (título e autor) |
+  | DELIVERY | sorteio: Celeste, Carmim/Flora, Glade/Johnson | antes da 1ª foto (`rv-figura`), dentro da coluna de texto |
+  | NOTÍCIAS (maquininha) | banner 3corações | antes da seção "Quanto custa uma maquininha de cartão?" |
+- **Favicon:** os `<link rel="icon">` e `apple-touch-icon` do Webflow (um "ô"
+  magenta) saem. Como a 73, a 74 e a 75, que não declaram favicon, a 76 usa o
+  ícone padrão do Assaí que o servidor entrega em `/favicon.ico`.
 - **Fontes.** A exportação veio sem elas (o CSS apontava para `url('../images/')`).
   As FS Lola enviadas pelo design (Regular, Medium, Bold, ExtraBold) ficam em
   `76/fonts/`. Os itálicos vêm de `fonts/` (as letras têm as mesmas larguras das

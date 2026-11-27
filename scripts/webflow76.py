@@ -15,12 +15,13 @@ novo (76/videos/ e os js baixados do CDN em 76/js/ são mantidos).
   RODAPÉ da #75 (cores e logos da #75), a casca do desktop (shell_sync) e o GTM.
 - Vídeos, poster e scripts do CDN do Webflow apontam para os arquivos locais.
 """
-import re, sys, shutil, pathlib, importlib.util
+import re, sys, json, shutil, pathlib, importlib.util
+from html import escape
 
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 DEST = RAIZ / "76"
 RAW = DEST / "_webflow"
-V = "76-3"
+V = "76-7"
 COL = 402
 
 spec = importlib.util.spec_from_file_location("shell_sync", RAIZ / "scripts/shell_sync.py")
@@ -58,10 +59,101 @@ AJUSTES = {
         ".rv-pi-arco .rv-ilustra-video, .rv-pi-arco .rv-pi-img { top: 0 !important; }",
 }
 
+# publicidade (fora do Webflow), arquivos em 76/banners/. Por página, uma lista de
+# (onde, âncora, html):
+#   "depois" / "antes"            âncora = trecho da tag de abertura de uma <section> (a 1ª que o contém)
+#   "depois-de-texto" / "antes-de-texto"   âncora = texto; vale a <section> mais interna que o contém
+#   "antes-da-tag"                âncora = trecho de uma tag qualquer (a 1ª), p.ex. <figure class="rv-figura">
+# Cada anúncio, ou conjunto de anúncios sorteados, leva a etiqueta "Publicidade" (exigência legal).
+# Imagem: largura da coluna; vídeo: story 9:16 de 402px, mudo, em loop, só toca quando aparece.
+def anuncio(marca, corpo, extra="", attr=""):
+    return (f"<!-- ============ PUBLICIDADE — {marca} (fora do Webflow) ============ -->\n"
+            f'      <figure class="rv76-pub{extra}"{attr}><p class="rv76-pub-rot">Publicidade</p>{corpo}</figure>')
+
+
+def anuncio_img(marca, itens, dentro=False):
+    """itens: [(arquivo, alt, largura, altura), ...]. Com mais de um, o JS sorteia um por visita
+    (o HTML já traz o primeiro, que aparece sem JavaScript)."""
+    a, alt, w, h = itens[0]
+    img = f'<img src="banners/{a}?v={V}" alt="{escape(alt)}" width="{w}" height="{h}" loading="lazy">'
+    attr = ""
+    if len(itens) > 1:
+        lista = [[f"banners/{x[0]}?v={V}", x[1], x[2], x[3]] for x in itens]
+        attr = ' data-rv76-random="' + escape(json.dumps(lista, ensure_ascii=False), quote=True) + '"'
+    return anuncio(marca, img, " rv76-pub--dentro" if dentro else "", attr)
+
+
+def anuncio_video(marca, arquivo, alt):
+    return anuncio(marca, f'<video src="banners/{arquivo}?v={V}" width="720" height="1280" muted loop '
+                          f'playsinline preload="metadata" aria-label="{escape(alt)}"></video>')
+
+
+ANUNCIOS = {
+    "principal-poder-de-compra-2027.html": [
+        ("depois", 'aria-label="Endividamento das famílias"',
+         anuncio_img("BANNER ORAL-B", [("principal-oralb.jpg", "Publicidade Oral-B: Tá brilhante, tô confiante! "
+                     "Creme dental Oral-B 3D White Carvão e escovas Oral-B 3D White", 372, 250)])),
+    ],
+    "gestao-o-que-faz-um-funcionario-ficar.html": [
+        ("depois-de-texto", 'class="rv-coluna is-texto"',
+         anuncio_video("STORY TAKIS (BIMBO)", "gestao-bimbo.mp4", "Publicidade Takis: Se joga na intensidade. "
+                       "Encontre Takis no Assaí! Pacote de Takis Intense Nacho sobre fundo colorido.")),
+    ],
+    "produto-reinventar-salgado.html": [
+        ("depois", 'class="rv-bloco"',
+         anuncio_video("STORY MATURATTA (JBS)", "produto-jbs.mp4", "Publicidade Maturatta Friboi: Antes da grelha acender, os preparativos já começaram. Antecipe as compras. Cortes de carne na grelha e embalagens de produtos Maturatta.")),
+    ],
+    "academia-ideias-que-transformam.html": [
+        ("depois", 'class="rv-lead-bloco"',
+         anuncio_img("BANNERS ACADEMIA (SORTEIO)", [
+             ("academia-itabom.png", "Publicidade Itabom: linhas completas para preparos rápidos e receitas "
+              "especiais.", 375, 391),
+             ("academia-kim.png", "Publicidade Kim Nobre: pães macios por dentro, irresistíveis por inteiro. "
+              "Experimente as versões original e integral.", 375, 391),
+             ("academia-santamaria.png", "Publicidade Esfrelux, da Santa Maria: a escolha inteligente para quem "
+              "vive em ritmo acelerado. Experimente agora!", 375, 391)])),
+    ],
+    "novo-negocio-comodato-cuidados-antes-de-aceitar.html": [
+        ("depois", 'class="rv-bloco is-editoria"',
+         anuncio_img("BANNERS NOVO NEGÓCIO (SORTEIO)", [
+             ("novonegocio-engetech.png", "Publicidade Engetech: tem um Dover-Roll ideal para cada necessidade, "
+              "o melhor saco para lixo do Brasil. Você encontra no Assaí!", 391, 375),
+             ("novonegocio-goldenplast.png", "Publicidade Goldenplast: talheres Linha Master. Qualidade e "
+              "resistência para o seu dia a dia! Disponível na rede Assaí Atacadista.", 375, 391),
+             ("novonegocio-haleaon.png", "Publicidade Sensodyne: o cuidado da sensibilidade começa hoje. "
+              "Embalagens do creme dental Sensodyne.", 391, 375)])),
+    ],
+    "mkt-digital-influenciador-no-restaurante.html": [
+        ("antes", 'aria-labelledby="mkt-cliente"',
+         anuncio_video("STORY AURORA", "mkt-aurora.mp4", "Publicidade Aurora: Se tem Aurora, só melhora. Pessoas provam linguiças e empanados de frango da Aurora; embalagens dos produtos aparecem no fim.")),
+    ],
+    "consumidor-alimentos-funcionais-exigem-rigor.html": [
+        ("depois", 'class="rv-bloco"',
+         anuncio_video("STORY OMO (UNILEVER)", "consumior-unilever.mp4", "Publicidade OMO: lavagem perfeita, agora "
+                       "é OMO Todo Ciclo. Caixa do sabão em pó OMO Todo Ciclo.")),
+    ],
+    "delivery-quando-a-embalagem-vira-experiencia.html": [
+        ("antes-da-tag", '<figure class="rv-figura">',
+         anuncio_img("BANNERS DELIVERY (SORTEIO)", [
+             ("delivery-celeste.jpg", "Publicidade Celeste: mega pano de microfibra super absorvente, mega panão "
+              "nas lojas Assaí!", 375, 391),
+             ("delivery-flora.png", "Publicidade Carmim Reguengos, da Casa Flora: Olaria tem uma opção para cada "
+              "gosto. Duas garrafas de vinho Olaria. Beba com moderação.", 391, 375),
+             ("delivery-johnson.jpg", "Publicidade Glade, da SC Johnson: casa de novela? Chá Branco nela. "
+              "Aromatizadores Glade Chá Branco.", 391, 375)], dentro=True)),
+    ],
+    "noticias-como-escolher-maquininha-de-cartao.html": [
+        ("antes-de-texto", "Quanto custa uma maquininha de cartão?",
+         anuncio_img("BANNER 3CORAÇÕES", [("noticias-3coracoes.png", "Publicidade 3corações: escolhas especiais "
+                     "para a sua primavera. Cafés 3corações sobre pedestais com flores.", 391, 375)])),
+    ],
+}
+
 # não entram no formato das edições anteriores (busca do Webflow, páginas de erro, vazio)
 APAGAR = ["busca.html", "401.html", "404.html", "gestao-versao-anterior.html"]
-# o <main> termina numa faixa azul-marinho de 48px: o RODAPÉ encosta nela (sobe os 45px
-# brancos de cima dele por cima da faixa, transparentes), como no Webflow
+# o <main> das matérias termina num padding-bottom de 48px: o RODAPÉ sobe os 45px brancos de
+# cima dele por cima desse padding (transparentes), e a barra preta fica a 48px do conteúdo,
+# como no Webflow. (O padding era a "faixa azul-marinho" até a correção do fundo do .rv-main.)
 SEM_FAIXA = {"index.html", "academia-ideias-que-transformam.html"}
 
 # ---------------------------------------------------------------- fontes
@@ -171,8 +263,18 @@ def vw_em_px(css):
                   lambda m: f"min({m.group(1)}vw, {float(m.group(1)) * COL / 100:g}px)", css)
 
 
+def sem_fundo_main(css):
+    """Correção do cliente (26/11): o background-color da classe .rv-main (o <main id="materia">
+    de todas as matérias) foi uma edição errada no Designer e saiu; a classe fica só com o
+    padding-bottom. A nossa exportação trazia #1a1f3a (azul-marinho: texto preto sobre ele em
+    várias seções); a do cliente, #d8f2f3. Numa exportação já corrigida isto não muda nada."""
+    return re.sub(r"(?m)^([ \t]*\.rv-main\s*\{)([^}]*)\}",
+                  lambda m: m.group(1) + re.sub(r"\n[ \t]*background-color:[^;]*;", "", m.group(2)) + "}",
+                  css)
+
+
 def converte_css(css):
-    return vw_em_px(forca_celular(css))
+    return sem_fundo_main(vw_em_px(forca_celular(css)))
 
 
 def sizes_402(valor):
@@ -247,6 +349,36 @@ FOOT = """  <!-- ============ COMPONENTE RODAPE (#75) ============ -->
   </footer>"""
 
 
+def secoes(s):
+    """(início, fim, tag de abertura) de cada <section>, inclusive as aninhadas, na ordem da página."""
+    pilha, out = [], []
+    for m in re.finditer(r"<(/?)section\b[^>]*>", s):
+        if m.group(1):
+            ini = pilha.pop()
+            out.append((ini.start(), m.end(), ini.group(0)))
+        else:
+            pilha.append(m)
+    assert not pilha, "<section> sem fechamento"
+    return sorted(out)
+
+
+def insere_anuncio(s, onde, ancora, anuncio_html):
+    """Insere o anúncio na página conforme `onde` (ver ANUNCIOS)."""
+    if onde == "antes-da-tag":
+        i = s.index(ancora)
+        return s[:i] + anuncio_html + "\n          " + s[i:]
+    if onde in ("depois", "antes"):
+        alvos = [x for x in secoes(s) if ancora in x[2]]
+    else:
+        pos = s.index(ancora)
+        alvos = sorted((x for x in secoes(s) if x[0] < pos < x[1]), key=lambda x: x[1] - x[0])
+    assert alvos, f"âncora do anúncio não encontrada: {ancora}"
+    ini, fim, _ = alvos[0]
+    if onde.startswith("depois"):
+        return s[:fim] + "\n      " + anuncio_html + s[fim:]
+    return s[:ini] + anuncio_html + "\n      " + s[ini:]
+
+
 def converte_html(nome, s):
     ativo, cor, logo, estilo_logo = PAGINAS[nome]
 
@@ -257,6 +389,9 @@ def converte_html(nome, s):
     for c in ("normalize.css", "webflow.css", "assai-76.webflow.css"):
         s = s.replace(f'href="css/{c}"', f'href="css/{c}?v={V}"')
     s = converte_sizes(s)
+    # favicon: o do Webflow (um "ô" magenta) sai; como nas edições anteriores (73-75), que não
+    # declaram nenhum, fica o ícone padrão do Assaí do servidor (/favicon.ico)
+    s = re.sub(r'[ \t]*<link\b[^>]*\brel="(?:icon|shortcut icon|apple-touch-icon)"[^>]*>\r?\n?', "", s)
     # estilos embutidos: mesmo tratamento do CSS
     s = re.sub(r"(<style[^>]*>)(.*?)(</style>)", lambda m: m.group(1) + converte_css(m.group(2)) + m.group(3), s, flags=re.S)
     # cor/logo do HEAD (#75) e invólucro, depois de todo o CSS da página
@@ -281,6 +416,8 @@ def converte_html(nome, s):
     novo = ("\n" + casca + "\n\n" + f'<div class="{classe}">\n\n' + head_html(ativo, logo) + "\n\n"
             + antes.strip() + meio.rstrip() + "\n" + depois.strip() + "\n\n" + FOOT + "\n\n</div>\n")
     s = s[:ib] + novo + s[fim:]
+    for onde, ancora, anuncio_html in ANUNCIOS.get(nome, []):
+        s = insere_anuncio(s, onde, ancora, anuncio_html)
 
     # --- scripts ---
     # cabeçalho/rodapé do Webflow saíram: o script deles também
@@ -385,9 +522,21 @@ REVISTA76_CSS = """/* =========================================================
 }
 .foot-stores img { position: absolute; left: 70.5px; top: -4.9px; width: 20px; height: 19px; }
 
-/* materias cujo <main> termina na faixa azul-marinho do Webflow: o RODAPE sobe os
-   45px brancos de cima por cima da faixa (transparentes) e a barra preta encosta nela */
+/* materias cujo <main> termina no padding-bottom de 48px do Webflow: o RODAPE sobe os
+   45px brancos de cima por cima do padding (transparentes), e a barra preta fica a 48px
+   do conteudo, como no Webflow (sem somar os dois espacos) */
 .page.tem-faixa > .foot { margin-top: -45px; background: transparent; }
+
+/* publicidade (ANUNCIOS no scripts/webflow76.py): imagem na largura da coluna, ou story de video
+   9:16; branco acima, como a Predilecta na #75, e a etiqueta "Publicidade" discreta no canto */
+.rv76-pub { margin: 0; padding-top: 22px; background: #fff; }
+.rv76-pub-rot { display: block; width: max-content; margin: 0; padding: 1px 6px;
+  border: 1px solid #c8c8c8; border-radius: 3px; font: 500 10px/14px "FS Lola", Arial, sans-serif;
+  letter-spacing: .08em; text-transform: uppercase; color: #6b6b6b; }
+.rv76-pub img, .rv76-pub video { display: block; width: 100%; height: auto; }
+.rv76-pub video { aspect-ratio: 9 / 16; object-fit: cover; background: #fff; }
+/* dentro da coluna de texto (DELIVERY): sai dos 22px de margem e ocupa a largura da pagina */
+.rv76-pub--dentro { margin: 24px calc(50% - min(50vw, 201px)); padding-top: 0; }
 
 /* carrosseis de rolagem lateral do Webflow: com mouse, arrastar (js/revista76.js) */
 @media (hover: hover) and (pointer: fine) {
@@ -481,6 +630,27 @@ REVISTA76_JS = """/* Revista Assaí #76 — invólucro das páginas vindas do We
       if (moveu) { e.preventDefault(); e.stopPropagation(); moveu = false; }
     }, true);
   })(faixas[k][0], faixas[k][1]);
+
+  /* publicidade (ANUNCIOS no webflow76.py): conjuntos de banners mostram um sorteado por visita;
+     story em video e mudo, em loop, e so toca enquanto aparece (com "reduzir movimento": parado, com controles) */
+  var pubs = document.querySelectorAll(".page [data-rv76-random]");
+  for (var pi = 0; pi < pubs.length; pi++) {
+    try {
+      var sorteio = JSON.parse(pubs[pi].getAttribute("data-rv76-random"));
+      var it = sorteio[Math.floor(Math.random() * sorteio.length)], im = pubs[pi].querySelector("img");
+      if (im && it) { im.src = it[0]; im.alt = it[1]; im.width = it[2]; im.height = it[3]; }
+    } catch (err) {}
+  }
+  var reduzPub = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  Array.prototype.forEach.call(document.querySelectorAll(".page .rv76-pub video"), function (v) {
+    v.muted = true;
+    if (reduzPub || !("IntersectionObserver" in window)) { v.controls = true; return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else { v.pause(); }
+      });
+    }, { threshold: 0.4 }).observe(v);
+  });
 
   /* compartilhar: como no rodape do Webflow (compartilhamento do aparelho; sem ele,
      copia o link e o botao fica meio apagado por 1,2s) */

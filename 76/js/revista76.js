@@ -84,6 +84,27 @@
     }, true);
   })(faixas[k][0], faixas[k][1]);
 
+  /* publicidade (ANUNCIOS no webflow76.py): conjuntos de banners mostram um sorteado por visita;
+     story em video e mudo, em loop, e so toca enquanto aparece (com "reduzir movimento": parado, com controles) */
+  var pubs = document.querySelectorAll(".page [data-rv76-random]");
+  for (var pi = 0; pi < pubs.length; pi++) {
+    try {
+      var sorteio = JSON.parse(pubs[pi].getAttribute("data-rv76-random"));
+      var it = sorteio[Math.floor(Math.random() * sorteio.length)], im = pubs[pi].querySelector("img");
+      if (im && it) { im.src = it[0]; im.alt = it[1]; im.width = it[2]; im.height = it[3]; }
+    } catch (err) {}
+  }
+  var reduzPub = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  Array.prototype.forEach.call(document.querySelectorAll(".page .rv76-pub video"), function (v) {
+    v.muted = true;
+    if (reduzPub || !("IntersectionObserver" in window)) { v.controls = true; return; }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } else { v.pause(); }
+      });
+    }, { threshold: 0.4 }).observe(v);
+  });
+
   /* compartilhar: como no rodape do Webflow (compartilhamento do aparelho; sem ele,
      copia o link e o botao fica meio apagado por 1,2s) */
   var share = document.querySelector(".foot-share");
